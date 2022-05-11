@@ -11,6 +11,7 @@
 		<a href="home/homeMain">홈페이지-테스트용</a><br/>
 		<a href="home/homeIndex">홈페이지-인덱스</a><br/>
 		<a href="admin/adminIndex">어드민-인덱스</a><br/>
+		<a href="admin/image">어드민-이미지</a><br/>
 		<a href="mypageCommunity/mypageCommunityIndex">마이페이지&커뮤니티-인덱스</a><br/>
 </body>
 </html>

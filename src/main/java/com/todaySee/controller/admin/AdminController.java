@@ -21,5 +21,10 @@ public class AdminController {
 
     }
 
+    @RequestMapping("/image")
+    public void image(Model m) {
+
+    }
+
 
 }
