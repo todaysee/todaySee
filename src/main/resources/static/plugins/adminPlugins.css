@@ -1,0 +1,20 @@
+/*<!-- Font Awesome -->*/
+@import "fontawesome-free/css/all.min.css";
+/*<!-- Tempusdominus Bootstrap 4 -->*/
+@import "tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css";
+/*<!-- iCheck -->*/
+@import "icheck-bootstrap/icheck-bootstrap.min.css";
+/*<!-- JQVMap -->*/
+@import "jqvmap/jqvmap.min.css";
+/*<!-- overlayScrollbars -->*/
+@import "overlayScrollbars/css/OverlayScrollbars.min.css";
+/*<!-- Daterange picker -->*/
+@import "daterangepicker/daterangepicker.css";
+/*<!-- summernote -->*/
+@import "summernote/summernote-bs4.min.css";
+/*<!-- Theme style -->*/
+@import "../dist/css/adminlte.min.css";
+/*<!-- Ionicons -->*/
+@import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+/*<!-- Google Font: Source Sans Pro -->*/
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
