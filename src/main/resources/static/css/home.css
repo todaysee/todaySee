@@ -1,0 +1,6 @@
+/*<!-- CSS bootstrap -->*/
+@import "home/bootstrap.min.css";
+/*<!--  Style -->*/
+@import "home/style.css";
+/*<!--  Responsive -->*/
+@import "home/responsive.css";
