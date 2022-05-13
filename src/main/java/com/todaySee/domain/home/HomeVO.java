@@ -1,4 +1,5 @@
 package com.todaySee.domain.home;
 
-public class a {
+public class HomeVO {
+
 }
