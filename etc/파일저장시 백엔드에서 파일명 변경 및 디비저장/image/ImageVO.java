@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "ImageInfo")
+@Table(name = "ImageInfo") // @Table(name = "imageinfo")
 public class ImageVO {
 
     @Id
