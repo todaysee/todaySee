@@ -20,17 +20,17 @@
 <body>
 
 <!-- Start Preloader Area -->
-<%@ include file="../inculde/mypageCommunity/preLoader.jsp"%>
+<%@ include file="../inculde/community/preLoader.jsp"%>
 
 
 <!-- Start Main Content Wrapper Area -->
 <div class="main-content-wrapper d-flex flex-column">
 
 	<!-- Start Navbar Area -->
-	<%@ include file="../inculde/mypageCommunity/navbar.jsp"%>
+	<%@ include file="../inculde/community/navbar.jsp"%>
 
 	<!-- Start Sidemenu Area -->
-	<%@ include file="../inculde/mypageCommunity/sideMenu.jsp"%>
+	<%@ include file="../inculde/community/sideMenu.jsp"%>
 
 
 	<!-- Start Content Page Box Area -->
@@ -946,14 +946,14 @@
 	<!-- End Content Page Box Area -->
 
 	<!-- Start Right Sidebar Area -->
-	<%@ include file="../inculde/mypageCommunity/rightSidebar.jsp"%>
+	<%@ include file="../inculde/community/rightSidebar.jsp"%>
 
 
 </div>
 <!-- End Main Content Wrapper Area -->
 
 <!-- Start Copyright Area -->
-<%@ include file="../inculde/mypageCommunity/footer.jsp"%>
+<%@ include file="../inculde/community/footer.jsp"%>
 
 
 

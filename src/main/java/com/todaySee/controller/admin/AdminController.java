@@ -3,26 +3,30 @@ package com.todaySee.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
 
 
-    @RequestMapping("/{step}")
-    public void viewPage(@PathVariable String step){
-        //경로에 따라서 return 사용 여부 갈림
+
+
+    @GetMapping("/admin")
+    public String adminIndex(Model m) {
+        System.out.println("admin main 페이지 접속");
+        return "/admin/adminIndex";
     }
 
-    @RequestMapping("/adminIndex")
-    public void adminIndex(Model m) {
-
-    }
-
-    @RequestMapping("/image")
-    public void image(Model m) {
+    //@RequestMapping("/admin", method = RequestMethod.GET)
+    @GetMapping("/admin/i")
+    public String image(Model m) {
         System.out.println("image 페이지 접속");
+
+        return "/admin/image";
     }
+
+
 }
