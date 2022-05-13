@@ -1,7 +1,8 @@
-package com.todaySee.service.home;
+package com.todaySee.home.service;
 
 
-import com.todaySee.persistence.home.HomeRepository;
+
+import com.todaySee.home.persistence.HomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
