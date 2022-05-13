@@ -23,8 +23,6 @@ public class AdminController {
 
     @RequestMapping("/image")
     public void image(Model m) {
-
+        System.out.println("image 페이지 접속");
     }
-
-
 }
