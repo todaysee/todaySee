@@ -5,53 +5,49 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Links of CSS files -->
-	<link rel="stylesheet" href="/css/mypageCommunity.css">
-
 	<title>Zust - Social Community & Marketplace HTML Template</title>
 
+	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
+	<!-- CSS files -->
+	<link rel="stylesheet" href="/css/mypageCommunity.css">
 </head>
 
 <body>
 
-<!-- Start Preloader Area -->
-<%@ include file="../inculde/mypageCommunity/preLoader.jsp"%>
+<!--=========== Loader =============-->
+<%@ include file="../inculde/community/preLoader.jsp"%>
+<!--=========== Loader =============-->
 
-
-<!-- Start Main Content Wrapper Area -->
+<!--========== Body ==============-->
 <div class="main-content-wrapper d-flex flex-column">
+	<!--========== Header Navbar ==============-->
+	<%@ include file="../inculde/community/navbar.jsp"%>
+	<!--========== Header Navbar ==============-->
+	<!--========== SideBar ==============-->
+	<%@ include file="../inculde/community/sideMenu.jsp"%>
+	<!--========== SideBar ==============-->
 
-	<!-- Start Navbar Area -->
-	<%@ include file="../inculde/mypageCommunity/navbar.jsp"%>
-
-	<!-- Start Sidemenu Area -->
-	<%@ include file="../inculde/mypageCommunity/sideMenu.jsp"%>
-
-
-	<!-- Start Content Page Box Area -->
+	<!--========== Body ==============-->
 	<div class="content-page-box-area">
 
 	</div>
-	<!-- End Content Page Box Area -->
+	<!--========== Body ==============-->
 
-	<!-- Start Right Sidebar Area -->
-	<%@ include file="../inculde/mypageCommunity/rightSidebar.jsp"%>
-
+	<!--========== Right SideBar ==============-->
+	<%@ include file="../inculde/community/rightSidebar.jsp"%>
+	<!--========== Right SideBar ==============-->
 
 </div>
-<!-- End Main Content Wrapper Area -->
+<!--========== Body ==============-->
 
-<!-- Start Copyright Area -->
-<%@ include file="../inculde/mypageCommunity/footer.jsp"%>
+<!--========== Footer ==============-->
+<%@ include file="../inculde/community/footer.jsp"%>
+<!--========== Footer ==============-->
 
-
-
-<!-- Links of JS files -->
 <script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>

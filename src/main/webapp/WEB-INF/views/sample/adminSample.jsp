@@ -9,29 +9,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AdminLTE 3 | Dashboard</title>
 
-	<!-- Google Font: Source Sans Pro -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Favicon -->
+
 	<!-- adminPlugins.css-->
 	<link rel="stylesheet" href="/plugins/adminPlugins.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-	<!-- Preloader 페이지 실행전에 나오는 페이지-->
+	<!--=========== Loader =============-->
 	<%@ include file="../inculde/admin/preLoader.jsp"%>
-
-	<!-- Navbar -->
+	<!--=========== Loader =============-->
+	<!--========== Header Navbar ==============-->
 	<%@ include file="../inculde/admin/navbar.jsp"%>
-	<!-- /.navbar -->
+	<!--========== Header Navbar ==============-->
 
-	<!-- Main Sidebar Container -->
+	<!--========== SideBar ==============-->
 	<%@ include file="../inculde/admin/sidebar.jsp"%>
+	<!--========== SideBar ==============-->
 
-	<!-- Content Wrapper. Contains page content -->
+	<!--========== Body ==============-->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 
@@ -41,16 +41,20 @@
 
 		<!-- /.content -->
 	</div>
-	<!-- /.content-wrapper -->
-	<%@ include file="../inculde/admin/footer.jsp"%>
+	<!--========== Body ==============-->
 
-	<!-- Control Sidebar -->
+	<!--========== Footer ==============-->
+	<%@ include file="../inculde/admin/footer.jsp"%>
+	<!--========== Footer ==============-->
+
+	<!--========== Control Sidebar ==============-->
 	<aside class="control-sidebar control-sidebar-dark">
 		<!-- Control sidebar content goes here -->
 	</aside>
-	<!-- /.control-sidebar -->
+	<!--========== Control Sidebar ==============-->
+
 </div>
-<!-- ./wrapper -->
+
 
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>
