@@ -1,4 +1,6 @@
 package com.todaySee.community.service;
 
-public class a {
+
+public interface CommunityService {
+
 }

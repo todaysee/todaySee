@@ -1,4 +1,6 @@
 package com.todaySee.admin.service;
 
-public class a {
+
+public interface AdminService {
+
 }
