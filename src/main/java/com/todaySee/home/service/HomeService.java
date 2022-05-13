@@ -1,4 +1,4 @@
-package com.todaySee.service.home;
+package com.todaySee.home.service;
 
 
 public interface HomeService {

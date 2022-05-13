@@ -1,4 +1,4 @@
-package com.todaySee.domain.home;
+package com.todaySee.home.domain;
 
 import lombok.Data;
 

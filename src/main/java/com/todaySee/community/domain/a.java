@@ -1,4 +1,4 @@
-package com.todaySee.service.mypageCommunity;
+package com.todaySee.community.domain;
 
 public class a {
 }

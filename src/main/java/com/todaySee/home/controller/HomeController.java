@@ -1,7 +1,8 @@
-package com.todaySee.controller.home;
+package com.todaySee.home.controller;
 
 
-import com.todaySee.service.home.HomeService;
+
+import com.todaySee.home.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

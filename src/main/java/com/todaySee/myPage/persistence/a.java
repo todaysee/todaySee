@@ -1,4 +1,4 @@
-package com.todaySee.service.mypageCommunity;
+package com.todaySee.myPage.persistence;
 
 public class a {
 }
