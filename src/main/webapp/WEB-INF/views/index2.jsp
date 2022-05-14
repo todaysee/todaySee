@@ -17,7 +17,18 @@
 		<a href="/idFind">홈페이지-idFind</a><br/>
 		<a href="/passwordFind">홈페이지-passwordFind</a><br/>
 		<hr/>
-
+		<a href="/myPage">마이페이지-인덱스</a><br/>
+		<a href="/myPage/board">마이페이지-board</a><br/>
+		<a href="/myPage/view">마이페이지-view</a><br/>
+		<a href="/myPage/like">마이페이지-like</a><br/>
+		<a href="/myPage/comments">마이페이지-comments</a><br/>
+		<a href="/myPage/bookMark">마이페이지-bookMark</a><br/>
+		<a href="/myPage/myPageGrade">마이페이지-myPageGrade</a><br/>
+		<hr/>
+		<a href="/community">커뮤니티-인덱스</a><br/>
+		<a href="/community/chatList">커뮤니티-채팅목록</a><br/>
+		<a href="/community/chatRoom">커뮤니티-채팅방</a><br/>
+		<hr/>
 		<a href="/admin">어드민-인덱스</a><br/>
 		<a href="/admin/image">어드민-이미지</a><br/>
 		<a href="mypageCommunity/mypageCommunityIndex">마이페이지&커뮤니티-인덱스</a><br/>
