@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/myPage/board" class="nav-link">
+                <a href="/myPage/reviewList" class="nav-link">
                     <span class="icon"><i class="flaticon-star"></i></span>
                     <span class="menu-title">나의 영상활동</span>
                 </a>

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -25,9 +23,9 @@ public class MyPageController {
     }
 
     //마이페이지 작성 게시글 목록
-    @GetMapping("/myPage/board")
+    @GetMapping("/myPage/reviewList")
     public String myPageBoard(Model m) {
-        return "/myPage/myPageBoard";
+        return "/myPage/myPageReviewList";
     }
 
     @GetMapping("/myPage/view")
