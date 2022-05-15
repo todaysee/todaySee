@@ -17,11 +17,15 @@
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <link rel="stylesheet" href="/css/mypageCommunity/chatList.css">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- js files -->
 <script src="/js/mypageCommunity/chatList.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -41,33 +45,24 @@
 
 		<!--========== Body ==============-->
 		<div class="content-page-box-area">
-			<div class="py-10 h-screen bg-gray-300 px-2">
-				<div
-					class="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg overflow-hidden md:max-w-lg">
-					<div class="md:flex">
-						<div class="w-full p-4">
-							
-							<ul>
-								<li
-									class="flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded cursor-pointer transition">
-									<div class="flex ml-2">
-										<div class="flex flex-col ml-2">
-											<span class="font-medium text-black">Jessica Koel</span> <span
-												class="text-sm text-gray-400 truncate w-32">Hey,
-												Joel, I here to help you out please tell me</span>
-										</div>
-									</div>
-									<div class="flex flex-col items-center">
-										<span class="text-gray-300">11:26</span> <i
-											class="fa fa-star text-green-400"></i>
-									</div>
-								</li>
-								
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="all-notifications-body">
+                    <div class="all-notifications-header d-flex justify-content-between align-items-center">
+                        <h3>채팅방 목록</h3>
+                    </div>
+                    <div class="item d-flex justify-content-between align-items-center">
+                        <div class="figure">
+                            <a href="my-profile.html"><img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image"></a>
+                        </div>
+                        <div class="text">
+                            <h4><a href="my-profile.html">James Vanwin</a></h4>
+                            <span>Posted A Comment On Your Status</span>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
 		</div>
 		<!--========== Body ==============-->
 
