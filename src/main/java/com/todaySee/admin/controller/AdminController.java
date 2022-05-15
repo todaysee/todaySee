@@ -11,12 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminController {
 
 	@GetMapping("/admin")
-	public String adminMain() {
-		return "admin/adminIndex";
+	public String adminChart() {
+		return "admin/movieChart";
 	}
 	
+	@GetMapping("/admin/userChart")
+	public String adminChart2() {
+		return "admin/userChart";
+	}
 	
-
+	@GetMapping("/admin/userList")
+	public String userList() {
+		return "admin/userList";
+	}
  
 
     @RequestMapping("/image")
@@ -24,8 +31,8 @@ public class AdminController {
         System.out.println("image 페이지 접속");
     }
     
-    @GetMapping("/adminTable")
+    @GetMapping("/userReport")
     public String adminTable() {
-    	return "admin/adminTable";
+    	return "admin/userReport";
     }
 }

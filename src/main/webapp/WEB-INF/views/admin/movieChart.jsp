@@ -10,7 +10,7 @@
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function(){
 
 		$('.titleReport').removeClass('active')
@@ -21,10 +21,10 @@
 		$('.clickChart').addClass('menu-open')
 
 	})
-
+ -->
 
 </script>
-	<title>관리자 페이지</title>
+	<title>관리자 영화차트</title>
 
 	<!-- adminPlugins.css-->
 	<link rel="stylesheet" href="/plugins/adminPlugins.css">
@@ -691,6 +691,9 @@
 <script src="/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/dist/js/pages/dashboard.js"></script>
+
+<script src="/dist/admin/admin.js"></script>
+
 </body>
 </html>
 
