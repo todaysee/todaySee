@@ -19,33 +19,31 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/community/preLoader.jsp"%>
+<%@ include file="../inculde/mypage/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->
 <div class="main-content-wrapper d-flex flex-column">
 	<!--========== Header Navbar ==============-->
-	<%@ include file="../inculde/community/navbar.jsp"%>
+	<%@ include file="../inculde/mypage/navbar.jsp"%>
 	<!--========== Header Navbar ==============-->
 	<!--========== SideBar ==============-->
-	<%@ include file="../inculde/community/sideMenu.jsp"%>
+	<%@ include file="../inculde/mypage/sideMenu.jsp"%>
 	<!--========== SideBar ==============-->
 
 	<!--========== Body ==============-->
 	<div class="content-page-box-area">
-
+		
 	</div>
 	<!--========== Body ==============-->
 
-	<!--========== Right SideBar ==============-->
-	<%@ include file="../inculde/community/rightSidebar.jsp"%>
-	<!--========== Right SideBar ==============-->
+
 
 </div>
 <!--========== Body ==============-->
 
 <!--========== Footer ==============-->
-<%@ include file="../inculde/community/footer.jsp"%>
+<%@ include file="../inculde/mypage/footer.jsp"%>
 <!--========== Footer ==============-->
 
 <script src="/js/mypageCommunity/jquery.min.js"></script>
