@@ -23,4 +23,9 @@ public class AdminController {
     public void image(Model m) {
         System.out.println("image 페이지 접속");
     }
+    
+    @GetMapping("/adminTable")
+    public String adminTable() {
+    	return "admin/adminTable";
+    }
 }
