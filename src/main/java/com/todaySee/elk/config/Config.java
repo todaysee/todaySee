@@ -9,8 +9,8 @@ import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
-
-@Configuration
+  
+@Configuration 
 @EnableElasticsearchRepositories(basePackages = "com.todaySee.elk.repository")
 @ComponentScan(basePackages = {"com.todaySee.elk"})
 public class Config extends AbstractElasticsearchConfiguration {
@@ -19,7 +19,7 @@ public class Config extends AbstractElasticsearchConfiguration {
 	public String elasticsearchUrl;
 	
 	
-	@Bean
+	@Bean  
 	@Override
 	public RestHighLevelClient elasticsearchClient() {
 		final ClientConfiguration config = ClientConfiguration.builder()
