@@ -37,111 +37,126 @@
             <h3>Account Setting</h3>
         </div>
 
-        <div class="account-setting-list-tabs">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="userTab" data-bs-toggle="tab" href="#userNameChange" role="tab" aria-controls="profile-information">닉네임 변경</a>
-                </li>
+        <div class="row">
+            <div class="col-lg-1 col-md-12">
+            </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" id="passwordTab" data-bs-toggle="tab" href="#passwordChange" role="tab" aria-controls="account">비밀번호 변경</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" id="signOutTab" data-bs-toggle="tab" href="#signOut" role="tab" aria-controls="privacy">회원 탈퇴</a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="userNameChange" role="tabpanel">
-                <form class="account-setting-form">
-                    <h3>닉네임 변경하기</h3>
-
+            <div class="col-lg-10 col-md-12">
+                <div class="account-setting-form">
+                    <h3>내 정보 수정</h3>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>변경할 닉네임을 입력하세요.</label>
-                                <input type="text" class="form-control" placeholder="닉네임 적기">
+                                <label>닉네임 변경하기</label>
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
-
-                        <div class="col-lg-12 col-md-12">
-                            <button type="button" class="btn default-btn">변경하기</button>
+                        <div class="col-lg-2 col-md-12">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" style="margin-bottom: 15px;">
+                                닉네임 변경
+                            </button>
                         </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="tab-pane fade" id="passwordChange" role="tabpanel">
-                <form class="account-setting-form">
-                    <h3>비밀번호 변경하기</h3>
-
-                    <div class="row">
+                        <hr/>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>변경할 비밀번호 입력</label>
-                                <input type="password" class="form-control" placeholder="Full name">
-                                <label>변경할 비밀번호 한번 더 입력</label>
-                                <input type="password" class="form-control" placeholder="Full name">
+                                <label>비밀번호 변경하기</label>
+                                <input type="password" class="form-control" readonly>
                             </div>
                         </div>
-
                         <div class="col-lg-12 col-md-12">
-                            <button type="submit" class="default-btn">변경하기</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-            <div class="tab-pane fade" id="signOut" role="tabpanel">
-                <form class="account-setting-form">
-                    <h3>회원 탈퇴하기</h3>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-12">
                             <div class="form-group">
-                                <label>탈퇴사유</label>
-                                <div class='form-check'>
-                                    <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="상품 다양성/가격품질 불만"> <label
-                                        class='form-check-label'>상품 다양성/가격품질 불만</label>
-                                </div>
-                                <div class='form-check'>
-                                    <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="교환/환불/품질불만"> <label
-                                        class='form-check-label'>교환/환불/품질불만</label>
-                                </div>
-                                <div class='form-check'>
-                                    <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="배송지연"> <label
-                                        class='form-check-label'>배송지연</label>
-                                </div>
-                                <div class='form-check'>
-                                    <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="이용빈도 낮음"><label
-                                        class='form-check-label'>이용빈도 낮음</label>
-                                </div>
-                                <div class='form-check'>
-                                    <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="etc"> <label
-                                        class='form-check-label'>기타</label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="textEtc"
-                                           placeholder="입력해주세요." name='account_ReasonText' readonly>
+                                <label>변경할 비밀번호 한번더 입력</label>
+                                <input type="password" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" style="margin-bottom: 15px;">
+                                비밀번호 변경
+                            </button>
+                        </div>
+                        <hr/>
+                        <div class="col-lg-2 col-md-12 ms-auto">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" style="margin-bottom: 15px;" data-bs-toggle="modal" data-bs-target="#userSignOutModal">
+                                회원 탈퇴하기
+                            </button>
+                        </div>
+                        <!-- Modal1 -->
+                        <div class="modal fade" id="userSignOutModal" tabindex="-1"
+                             aria-labelledby="userSignOutModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="userSignOutModalLabel">회원 탈퇴</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="">회원님의 탈퇴를 위해서 비밀번호를 확인 합니다.</div>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label style="margin-bottom: 10px;">비밀번호</label>
+                                                <input type="password" class="form-control" style="margin-bottom: 15px">
+                                            </div>
+                                            <br/>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div style="margin-bottom: 10px;">탈퇴사유</div>
+                                                    <div class='form-check'>
+                                                        <input class="form-check-input" type='radio'
+                                                               name='account_Reason' value="상품 다양성/가격품질 불만"> <label
+                                                            class='form-check-label'>상품 다양성/가격품질 불만</label>
+                                                    </div>
+                                                    <div class='form-check'>
+                                                        <input class="form-check-input" type='radio'
+                                                               name='account_Reason' value="교환/환불/품질불만"> <label
+                                                            class='form-check-label'>교환/환불/품질불만</label>
+                                                    </div>
+                                                    <div class='form-check'>
+                                                        <input class="form-check-input" type='radio'
+                                                               name='account_Reason' value="배송지연"> <label
+                                                            class='form-check-label'>배송지연</label>
+                                                    </div>
+                                                    <div class='form-check'>
+                                                        <input class="form-check-input" type='radio'
+                                                               name='account_Reason' value="이용빈도 낮음"><label
+                                                            class='form-check-label'>이용빈도 낮음</label>
+                                                    </div>
+                                                    <div class='form-check'>
+                                                        <input class="form-check-input" type='radio'
+                                                               name='account_Reason' value="etc"> <label
+                                                            class='form-check-label'>기타</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="textEtc"
+                                                               placeholder="입력해주세요." name='account_ReasonText' readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/myPage/update">
+                                            <button type="button" class="btn btn-primary">확인</button>
+                                        </a>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            닫기
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 col-md-12">
-                            <button type="submit" class="default-btn">탈퇴 하기</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-12">
+            </div>
         </div>
     </div>
     <!--========== Body ==============-->
