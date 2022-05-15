@@ -134,6 +134,10 @@
         </div>
       </li>
     </ul>
+    <div>
+    <input type="text" class="form-control" placeholder="채팅방 이름">
+    <button  class="send-btn.d-inline-block">생성</button>
+    </div>
   </div>
 </div>
 	

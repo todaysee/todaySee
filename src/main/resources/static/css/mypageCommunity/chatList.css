@@ -6,7 +6,8 @@ body {
 }
 .chat {
   background: #ffffff;
-  width: 300px;
+  width: 800px;
+  height: 800px;
   margin: 0 auto;
 }
 .chat header {
@@ -58,7 +59,7 @@ body {
 .chat .body {
   position: relative;
   max-height: 360px;
-  overflow-y: scroll;
+  
 }
 .chat .body .search {
   display: none;
