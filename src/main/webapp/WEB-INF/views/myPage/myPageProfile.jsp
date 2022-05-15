@@ -73,121 +73,121 @@
             </div>
         </div>
 
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="timeline" role="tabpanel">
-                <div class="row">
-                    <div class="col-lg-1 col-md-12">
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="account-setting-form">
-                            <h3>내 프로필</h3>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>닉네임</label>
-                                        <input type="text" class="form-control" value="닉네임" readonly>
+        <div class="row">
+            <div class="col-lg-1 col-md-12">
+            </div>
+
+            <div class="col-lg-10 col-md-12">
+                <div class="account-setting-form">
+                    <h3>내 프로필</h3>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>닉네임</label>
+                                <input type="text" class="form-control" value="닉네임" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>이름</label>
+                                <input type="text" class="form-control" value="이름" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>성별</label>
+                                <input type="text" class="form-control" value="성별" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>생년월일</label>
+                                <input type="text" class="form-control" value="2022-05-15" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>이메일</label>
+                                <input type="text" class="form-control" placeholder="test@test.com" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>가입일자</label>
+                                <input type="text" class="form-control" value="2022-05-15" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>평가한 영상 수</label>
+                                <input type="number" class="form-control" value="33" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>작성 리뷰 수</label>
+                                <input type="number" class="form-control" value="33" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>받은 좋아요</label>
+                                <input type="number" class="form-control" value="33" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label>작성 게시글 수</label>
+                                <input type="number" class="form-control" value="33" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#userInfoChangeModal">
+                                정보 수정
+                            </button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="userInfoChangeModal" tabindex="-1"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">비밀번호 입력</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>이름</label>
-                                        <input type="text" class="form-control" value="이름" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>성별</label>
-                                        <input type="text" class="form-control" value="성별" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>생년월일</label>
-                                        <input type="text" class="form-control" value="2022-05-15" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>이메일</label>
-                                        <input type="text" class="form-control" placeholder="test@test.com" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <label>가입일자</label>
-                                        <input type="text" class="form-control" value="2022-05-15" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>평가한 영상 수</label>
-                                        <input type="number" class="form-control" value="33" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>작성 리뷰 수</label>
-                                        <input type="number" class="form-control" value="33" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>받은 좋아요</label>
-                                        <input type="number" class="form-control" value="33" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="form-group">
-                                        <label>작성 게시글 수</label>
-                                        <input type="number" class="form-control" value="33" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-12">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                        정보 수정
-                                    </button>
-                                </div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">비밀번호 입력</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <div class="">회원님의 정보 수정을 위해 비밀번호를 확인 합니다.</div>
-                                                    <br/>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label>비밀번호</label>
-                                                        <input type="password" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-												<button type="button" class="btn btn-primary">확인</button>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    닫기
-                                                </button>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="">회원님의 정보 수정을 위해 비밀번호를 확인 합니다.</div>
+                                            <br/>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>비밀번호</label>
+                                                <input type="password" class="form-control">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="/myPage/update">
+                                            <button type="button" class="btn btn-primary">확인</button>
+                                        </a>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            닫기
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1 col-md-12">
-                    </div>
                 </div>
             </div>
+            <div class="col-lg-1 col-md-12">
+            </div>
         </div>
+
     </div>
 
 
