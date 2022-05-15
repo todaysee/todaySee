@@ -14,6 +14,9 @@
 	<link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
 	<!-- CSS files -->
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	<link rel="stylesheet" href="/css/mypageCommunity/chatList.css">
+	<!-- js files -->
+	<script src = "/js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>
@@ -33,7 +36,108 @@
 
 	<!--========== Body ==============-->
 	<div class="content-page-box-area">
-
+	<h1>채팅 리스트</h1>
+<div class='chat'>
+  <div class='body'>
+    <div class='search'>
+      <input placeholder='Search...' type='text'>
+    </div>
+    <ul>
+      <li>
+        <a class='thumbnail' href='#'>
+          NR
+        </a>
+        <div class='content'>
+          <h3>Nick Roach</h3>
+          <span class='preview'>hey how are things going on the...</span>
+          <span class='meta'>
+            2h ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+      <li>
+        <a class='thumbnail' href='#'>
+          KS
+        </a>
+        <div class='content'>
+          <h3>Kenny Sing</h3>
+          <span class='preview'>make sure you take a look at the...</span>
+          <span class='meta'>
+            3h ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+      <li>
+        <a class='thumbnail' href='#'>
+          MS
+        </a>
+        <div class='content'>
+          <h3>Mitch Skolnik</h3>
+          <span class='preview'>i love wood grain things!</span>
+          <span class='meta'>
+            6h ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+      <li>
+        <a class='thumbnail' href='#'>
+          YP
+        </a>
+        <div class='content'>
+          <h3>Yuriy Portnykh</h3>
+          <span class='preview'>check issues for the latest version...</span>
+          <span class='meta'>
+            10h ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+      <li>
+        <a class='thumbnail' href='#'>
+          JR
+        </a>
+        <div class='content'>
+          <h3>Josh Ronk</h3>
+          <span class='preview'>make sure to do the following by...</span>
+          <span class='meta'>
+            2d ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+      <li>
+        <a class='thumbnail' href='#'>
+          BM
+        </a>
+        <div class='content'>
+          <h3>Benjamin Mueller</h3>
+          <span class='preview'>Hi nice to meet you!</span>
+          <span class='meta'>
+            1w ago &middot;
+            <a href='#'>Category</a>
+            &middot;
+            <a href='#'>Reply</a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+	
+	
 	</div>
 	<!--========== Body ==============-->
 
