@@ -52,6 +52,7 @@
             <scope>test</scope>
         </dependency>
         
+        <!--jsp 사용시 추가-->
         <dependency>
 		   <groupId>org.elasticsearch</groupId>
 		   <artifactId>elasticsearch</artifactId>
