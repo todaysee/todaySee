@@ -38,11 +38,6 @@ public class MyPageController {
         return "/myPage/myPageLike";
     }
 
-    @GetMapping("/myPage/comments")
-    public String myPageComments(Model m) {
-        return "/myPage/myPageComments";
-    }
-
     @GetMapping("/myPage/bookMark")
     public String myPageBookMark(Model m) {
         return "/myPage/myPageBookMark";
@@ -70,6 +65,12 @@ public class MyPageController {
         model.addAttribute("contentList", list);
         return "/myPage/test";
     }
+
+    @GetMapping("/myPage/comments")
+    public String myPageComments() {
+        return "/myPage/myPageCommentsList";
+    }
+
 
     @GetMapping("/myPage/modal")
     public String modal() {
