@@ -24,7 +24,11 @@ public class AdminController {
 	public String userList() {
 		return "admin/userList";
 	}
- 
+	
+	@GetMapping("/movieAdmin")
+	public String movieAdmin() {
+		return "admin/movieAdmin";
+	}
 
     @RequestMapping("/image")
     public void image(Model m) {

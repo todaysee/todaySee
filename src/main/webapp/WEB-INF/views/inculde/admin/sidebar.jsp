@@ -55,36 +55,31 @@
             <ul class="nav nav-treeview">
             </ul>
           </li>
-          <li class="nav-item" id="clickReport">
-            <a href="#" class="nav-link" id="titleReport">
+          <li class="nav-item" id="clickAdmin">
+            <a href="#" class="nav-link" id="titleAdmin">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                신고
+                관리
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/userReport" class="nav-link" id="report1">
+                <a href="/userReport" class="nav-link" id="admin">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>신고1</p>
+                  <p>신고관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/data.html" class="nav-link" id="report2">
+                <a href="/movieAdmin" class="nav-link" id="movieAdmin">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>신고2</p>
+                  <p>영상관리</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link" id="report3">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>신고3</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
-            <li class="nav-item" id="userList">
+            <li class="nav-item" id="clickUserList">
             <a href="/admin/userList" class="nav-link" id="titleUserList">
               <i class="nav-icon fas fa-table"></i>
               <p>
