@@ -40,18 +40,18 @@
 			<div class="col-lg-6 col-md-12 square">
 				<div class="news-feed-area">
 					<div class="news-feed news-feed-form">
-						<h3 class="news-feed-title">Create New Post</h3>
+						<h3 class="news-feed-title">글쓰기</h3>
 
 						<form>
 							<div class="form-group">
-								<textarea name="message" class="form-control" placeholder="Write something here..."></textarea>
+								<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
 							</div>
 							<ul class="button-group d-flex justify-content-between align-items-center">
 								<li class="photo-btn">
-									<button type="submit"><i class="flaticon-gallery"></i> Photo</button>
+									<button type="submit"><i class="flaticon-gallery"></i> 사진</button>
 								</li>
 								<li class="post-btn">
-									<button type="submit">Post</button>
+									<button type="submit">작성</button>
 								</li>
 							</ul>
 						</form>
@@ -174,8 +174,7 @@
 									<a href="#"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-									<label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+									<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
 								</div>
 							</form>
 						</div>
@@ -245,8 +244,8 @@
 									<a href="#"><img src="/images/mypageCommunity/user/user-2.jpg" class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-									<label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+									<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
+									
 								</div>
 							</form>
 						</div>
@@ -316,8 +315,8 @@
 									<a href="#"><img src="/images/mypageCommunity/user/user-15.jpg" class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-									<label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+									<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
+					
 								</div>
 							</form>
 						</div>
@@ -440,8 +439,8 @@
 									<a href="#"><img src="/images/mypageCommunity/user/user-19.jpg" class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-									<label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+									<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
+				
 								</div>
 							</form>
 						</div>
@@ -511,8 +510,8 @@
 									<a href="#"><img src="/images/mypageCommunity/user/user-22.jpg" class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control" placeholder="Write a comment..."></textarea>
-									<label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+									<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
+									
 								</div>
 							</form>
 						</div>
