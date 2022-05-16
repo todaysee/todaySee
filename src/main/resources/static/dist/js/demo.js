@@ -6,7 +6,7 @@
  */
 
 /* eslint-disable camelcase */
-
+/*15 * 60 * 1000*/
 (function ($) {
   'use strict'
 
@@ -14,7 +14,7 @@
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
       // eslint-disable-next-line no-alert
-      alert('You load AdminLTE\'s "demo.js", \nthis file is only created for testing purposes!')
+      //alert('오랜만이군요 !')
     }
   }, 1000)
 

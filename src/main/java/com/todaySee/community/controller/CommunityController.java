@@ -15,14 +15,6 @@ public class CommunityController {
         return "/community/communityIndex";
     }
 
-    @GetMapping("/community/chatList")
-    public String chatList(){
-        return "/community/communityChatList";
-    }
-
-    @GetMapping("/community/chatRoom")
-    public String communityChatRoom(){
-        return "/community/communityChatRoom";
-    }
+   
 
 }

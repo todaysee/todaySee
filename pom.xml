@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
+    <parent> 
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+    </parent> 
     <groupId>com.todaySee</groupId>
     <artifactId>todaySee</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -52,6 +52,33 @@
         
         <!--jsp 사용시 추가-->
         <dependency>
+		   <groupId>org.elasticsearch</groupId>
+		   <artifactId>elasticsearch</artifactId>
+		   <version>7.15.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client -->
+		<dependency>
+		    <groupId>org.elasticsearch.client</groupId>
+		    <artifactId>elasticsearch-rest-high-level-client</artifactId>
+		    <version>7.15.2</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		    <version>2.5.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-client -->
+		<dependency>
+		    <groupId>org.elasticsearch.client</groupId>
+		    <artifactId>elasticsearch-rest-client</artifactId>
+		    <version>7.15.2</version>
+		</dependency>
+
+        <!--jsp 사용시 추가-->
+        <dependency> 
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
@@ -75,6 +102,20 @@
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
         </dependency>
+        
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<!-- JSON -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		
+		
     </dependencies>
 
     <build>

@@ -11,88 +11,53 @@
 
     <div class="sidemenu-body">
         <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
-            <li class="nav-item active">
-                <a href="index.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-newspaper"></i></span>
-                    <span class="menu-title">News Feed</span>
-                </a>
-            </li>
             <li class="nav-item">
-                <a href="notifications.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-bell"></i></span>
-                    <span class="menu-title">Notifications</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="messages.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-comment-1"></i></span>
-                    <span class="menu-title">Messages</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="friends.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-friends"></i></span>
-                    <span class="menu-title">Friends</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="groups.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-team"></i></span>
-                    <span class="menu-title">Groups</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="favorite.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-star"></i></span>
-                    <span class="menu-title">Favorite</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="events.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-calendar"></i></span>
-                    <span class="menu-title">Events</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="live-chat.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-live-chat"></i></span>
-                    <span class="menu-title">Live Chat</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="birthday.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-cake"></i></span>
-                    <span class="menu-title">Birthday</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="video.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-video"></i></span>
-                    <span class="menu-title">Video</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="weather.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-cloudy"></i></span>
-                    <span class="menu-title">Weather</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="marketplace.html" class="nav-link">
-                    <span class="icon"><i class="flaticon-online-shopping"></i></span>
-                    <span class="menu-title">Marketplace</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="login.html" class="nav-link">
+                <a href="/myPage/profile" class="nav-link">
                     <span class="icon"><i class="flaticon-user"></i></span>
-                    <span class="menu-title">Login</span>
+                    <span class="menu-title">내 프로필</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <span class="icon"><i class="flaticon-newspaper"></i></span>
+                    <span class="menu-title">홈으로</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/community" class="nav-link">
+                    <span class="icon"><i class="flaticon-bell"></i></span>
+                    <span class="menu-title">커뮤니티</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/community/chatList" class="nav-link">
+                    <span class="icon"><i class="flaticon-comment-1"></i></span>
+                    <span class="menu-title">채팅</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/myPage" class="nav-link">
+                    <span class="icon"><i class="flaticon-friends"></i></span>
+                    <span class="menu-title">나의 메인</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/myPage/like" class="nav-link">
+                    <span class="icon"><i class="flaticon-team"></i></span>
+                    <span class="menu-title">나의 취향</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/myPage/reviewList" class="nav-link">
+                    <span class="icon"><i class="flaticon-star"></i></span>
+                    <span class="menu-title">나의 영상활동</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="register.html" class="nav-link">
                     <span class="icon"><i class="flaticon-information"></i></span>
-                    <span class="menu-title">Register</span>
+                    <span class="menu-title">로그 아웃</span>
                 </a>
             </li>
         </ul>
