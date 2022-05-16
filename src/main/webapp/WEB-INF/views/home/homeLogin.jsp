@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>Login</title>
-
+	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
@@ -111,12 +111,18 @@
                                   	 	</div>
                                         	</div>
                                         	<div class="or-text"><span></span></div> 
+                                        
                                         	
                                         	<!-- 이미지 링크 -->
-                                        	<div class="loginimages" style="center;">
-                                    <img src="images/home/login/kakao-login.png" alt="naver" style="width:210px; position:relative; right:20%;">
-                              		<img src="images/home/login/naver-login.png" alt="naver" style="width:200px; position:relative; right:20%;">
-                                </div>
+                                        	<p>
+                                        	
+                                        	<div class="loginimages" class="col-lg-6 col-md-12">
+                              		<img src="images/home/login/kakao-login.png" alt="kakao" style="max-width: 50%; float:left; width: 250px;">
+                              		<img src="images/home/login/naver-login.png" alt="naver" style="max-width:50%; width:225px;">
+                              		</div>
+                            
+                               
+                                
                                         
                                 
                             </form>
