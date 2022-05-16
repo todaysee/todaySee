@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Zust - Social Community & Marketplace HTML Template</title>
 
 <!-- Favicon -->
@@ -17,6 +17,8 @@
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <link rel="stylesheet" href="../css/mypageCommunity/chatList.css">
+<!-- js files -->
+<script src = "../js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>
@@ -35,7 +37,7 @@
 		<!--========== SideBar ==============-->
 
 		<!--========== Body ==============-->
-		<div class="content-page-box-area">
+		<div class="content-page-box-areac">
 			<div
 				class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
@@ -49,18 +51,18 @@
 				<div class="events-search-box">
 				
 					<form>
-						<input type="text" class="input-search"
+						<input type="text" class="input-search" name="roomName" id="roomName"
 							placeholder="채팅방 이름을 적어주세요">
 							
 					</form>
 				</div>
 				<div class="events-btn">
-					<a class="default-btn">채팅방 생성</a>
+					<a class="default-btn" id="createRoom">채팅방 생성</a>
 					
 				</div>
 			</div>
 			<div class="all-notifications-body" >
-				<div
+				<!-- <div
 					class="all-notifications-header d-flex justify-content-between align-items-center">
 					<h3>채팅방 목록</h3>
 				</div>
@@ -74,9 +76,9 @@
 					</div>
 					<div class="text">
 						<h4>
-							<a>James Vanwin</a>
+							<a></a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
@@ -95,7 +97,7 @@
 						<h4>
 							<a>James Vanwin</a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
@@ -113,7 +115,7 @@
 						<h4>
 							<a>James Vanwin</a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
@@ -131,7 +133,7 @@
 						<h4>
 							<a>James Vanwin</a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
@@ -149,7 +151,7 @@
 						<h4>
 							<a>James Vanwin</a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
@@ -167,12 +169,12 @@
 						<h4>
 							<a>James Vanwin</a>
 						</h4>
-						<span>Posted A Comment On Your Status</span>
+						<span>즐거운 시간 보내세요.</span>
 
 					</div>
 					
 
-				</div>
+				</div> -->
 				
 				
 
