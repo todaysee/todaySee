@@ -12,22 +12,18 @@
 
 <table border="1">
     <tr>
-        <th bgcolor="orange" width="100">번호</th>
-        <th bgcolor="orange" width="200">제목</th>
-        <th bgcolor="orange" width="150">유튜브링크</th>
-        <th bgcolor="orange" width="150">연령</th>
-        <th bgcolor="orange" width="100">장르</th>
-        <th bgcolor="orange" width="100">정보</th>
-        <th bgcolor="orange" width="100">컨텐츠링크</th>
+        <th bgcolor="orange" width="40">번호</th>
+        <th bgcolor="orange" width="450">제목</th>
+        <th bgcolor="orange" width="40">연령</th>
+        <th bgcolor="orange" width="350">장르</th>
+        <th bgcolor="orange" width="800">컨텐츠링크</th>
     </tr>
     <c:forEach items="${contentList }" var="content">
         <tr>
             <td>${content.contentNumber }</td>
             <td>${content.contentTitle }</td>
-            <td>${content.contentYoutube }</td>
             <td>${content.contentAge }</td>
             <td>${content.contentGenre }</td>
-            <td>${content.contentInfo }</td>
             <td>${content.contentLink }</td>
 
         </tr>

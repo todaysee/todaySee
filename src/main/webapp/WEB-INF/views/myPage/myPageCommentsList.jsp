@@ -19,7 +19,13 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
+    <style>
+        #pagination a {
+            display:inline-block;
+            margin-right:5px;
+            cursor:pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -83,8 +89,7 @@
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
+                                                    <input type="checkbox" value="">
                                                 </div>
                                             </td>
                                             <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
@@ -104,8 +109,7 @@
                                         <tr>
                                             <td>
                                                 <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
+                                                    <input type="checkbox">
                                                 </div>
                                             </td>
                                             <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
