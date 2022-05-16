@@ -28,7 +28,7 @@
 <!--=========== Loader =============-->
 
 <!--========== Header ==============-->
-<%@ include file="../inculde/home/navbar.jsp"%>
+
 <!--========== Header ==============-->
 
 <!--========== Body ==============-->
@@ -53,14 +53,14 @@
                         <div class="profile-authentication-image">
                             <div class="content-image">
                             
-                            <!-- 이미지 링크 
+                            <!-- 이미지 링크 -->
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/images/logo.png" alt="Zust"></a>
+                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
                                 </div>
                                 <div class="vector-image">
-                                    <img src="assets/images/vector.png" alt="image">
+                                    <img src="images/myPageCommunity/vector.png" alt="image">
                                 </div>
-                                -->
+                                
                             </div>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
 
 
 <!--========== Footer ==============-->
-<%@ include file="../inculde/home/footer.jsp"%>
+
 <!--========== Footer ==============-->
 
 <!-- js-min -->

@@ -16,16 +16,7 @@
 	href="/images/mypageCommunity/favicon.png">
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
-<link rel="stylesheet" href="/css/mypageCommunity/chatList.css">
-<link rel="stylesheet" type="text/css"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- js files -->
-<script src="/js/mypageCommunity/chatList.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+<link rel="stylesheet" href="../css/mypageCommunity/chatList.css">
 </head>
 
 <body>
@@ -45,24 +36,148 @@
 
 		<!--========== Body ==============-->
 		<div class="content-page-box-area">
-		<div class="all-notifications-body">
-                    <div class="all-notifications-header d-flex justify-content-between align-items-center">
-                        <h3>채팅방 목록</h3>
-                    </div>
-                    <div class="item d-flex justify-content-between align-items-center">
-                        <div class="figure">
-                            <a href="my-profile.html"><img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image"></a>
-                        </div>
-                        <div class="text">
-                            <h4><a href="my-profile.html">James Vanwin</a></h4>
-                            <span>Posted A Comment On Your Status</span>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                    
-                </div>
+			<div
+				class="events-inner-box-style d-flex justify-content-between align-items-center">
+				<div class="title">
+					<h3>채팅방 이미지 선택</h3>
+					
+				</div>
+				<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+				
+				<div class="events-search-box">
+				
+					<form>
+						<input type="text" class="input-search"
+							placeholder="채팅방 이름을 적어주세요">
+							
+					</form>
+				</div>
+				<div class="events-btn">
+					<a class="default-btn">채팅방 생성</a>
+					
+				</div>
+			</div>
+			<div class="all-notifications-body" >
+				<div
+					class="all-notifications-header d-flex justify-content-between align-items-center">
+					<h3>채팅방 목록</h3>
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				
+				
+
+
+			</div>
 		</div>
 		<!--========== Body ==============-->
 

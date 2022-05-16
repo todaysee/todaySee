@@ -80,17 +80,6 @@
 							</div>
 						</div>
 					</div>
-					<div id="yourName">
-						<table class="inputTable">
-							<tr>
-								<th>사용자명</th>
-								<th><input type="text" name="userName" id="userName"></th>
-								<th><button onclick="chatName()" id="startBtn">이름
-										등록</button></th>
-							</tr>
-						</table>
-					</div>
-
 					<div class="chat-list-footer">
 						<form class="d-flex align-items-center">
 							<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
