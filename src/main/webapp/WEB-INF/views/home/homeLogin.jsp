@@ -13,12 +13,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>Login</title>
-
+	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>	
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	
 	
 </head>
 
@@ -29,7 +30,7 @@
 <!--=========== Loader =============-->
 
 <!--========== Header ==============-->
-<%@ include file="../inculde/home/navbar.jsp"%>
+
 <!--========== Header ==============-->
 
 <!--========== Body ==============-->
@@ -55,20 +56,20 @@
                         <div class="profile-authentication-image">
                             <div class="content-image">
                             
-                            <!-- 이미지 링크 
+                            	<!-- 이미지 링크 -->
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/images/logo.png" alt="Zust"></a>
+                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
                                 </div>
                                 <div class="vector-image">
-                                    <img src="assets/images/vector.png" alt="image">
+                                    <img src="images/myPageCommunity/vector.png" alt="image">
                                 </div>
-                                -->
+                                
                             </div>
                         </div>
                     </div>
     	
                     <div class="col-lg-6 col-md-12">
-                        <div class="login-form">
+                        <div class="login-form" style="float:center;">
                             <h2>Login</h2>
         
                             <form>
@@ -109,6 +110,19 @@
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>
+                                        	<div class="or-text"><span></span></div> 
+                                        
+                                        	
+                                        	<!-- 이미지 링크 -->
+                                        	<p>
+                                        	
+                                        	<div class="loginimages" class="col-lg-6 col-md-12">
+                              		<img src="images/home/login/kakao-login.png" alt="kakao" style="max-width: 50%; float:left; width: 250px;">
+                              		<img src="images/home/login/naver-login.png" alt="naver" style="max-width:50%; width:225px;">
+                              		</div>
+                            
+                               
+                                
                                         
                                 
                             </form>
@@ -149,7 +163,7 @@
 
 
 <!--========== Footer ==============-->
-<%@ include file="../inculde/home/footer.jsp"%>
+
 <!--========== Footer ==============-->
 
 <!-- js-min -->
