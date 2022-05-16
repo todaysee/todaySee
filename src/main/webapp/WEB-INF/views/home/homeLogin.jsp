@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="/css/home.css"/>	
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
 	
+	
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 <!--=========== Loader =============-->
 
 <!--========== Header ==============-->
-<%@ include file="../inculde/home/navbar.jsp"%>
+
 <!--========== Header ==============-->
 
 <!--========== Body ==============-->
@@ -55,20 +56,20 @@
                         <div class="profile-authentication-image">
                             <div class="content-image">
                             
-                            <!-- 이미지 링크 
+                            	<!-- 이미지 링크 -->
                                 <div class="logo">
-                                    <a href="index.html"><img src="assets/images/logo.png" alt="Zust"></a>
+                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
                                 </div>
                                 <div class="vector-image">
-                                    <img src="assets/images/vector.png" alt="image">
+                                    <img src="images/myPageCommunity/vector.png" alt="image">
                                 </div>
-                                -->
+                                
                             </div>
                         </div>
                     </div>
     	
                     <div class="col-lg-6 col-md-12">
-                        <div class="login-form">
+                        <div class="login-form" style="float:center;">
                             <h2>Login</h2>
         
                             <form>
@@ -109,6 +110,13 @@
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>
+                                        	<div class="or-text"><span></span></div> 
+                                        	
+                                        	<!-- 이미지 링크 -->
+                                        	<div class="loginimages" style="center;">
+                                    <img src="images/home/login/kakao-login.png" alt="naver" style="width:210px; position:relative; right:20%;">
+                              		<img src="images/home/login/naver-login.png" alt="naver" style="width:200px; position:relative; right:20%;">
+                                </div>
                                         
                                 
                             </form>
@@ -149,7 +157,7 @@
 
 
 <!--========== Footer ==============-->
-<%@ include file="../inculde/home/footer.jsp"%>
+
 <!--========== Footer ==============-->
 
 <!-- js-min -->
