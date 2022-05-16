@@ -16,7 +16,7 @@
 	href="/images/mypageCommunity/favicon.png">
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
-<link rel="stylesheet" href="/css/mypageCommunity/chatList.css">
+<link rel="stylesheet" href="../css/mypageCommunity/chatList.css">
 </head>
 
 <body>
