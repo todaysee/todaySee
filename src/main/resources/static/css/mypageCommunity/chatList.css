@@ -1,4 +1,4 @@
 .cricle{padding: 0px 0px 30px 0px ;}
 
 /* 호버 애니메이션 */
-.cricle:hover{cursor:pointer; background-color:aliceblue;}
+.cricle:hover{cursor:pointer; background-color:aliceblue; border-radius:27px 27px 27px 27px;}

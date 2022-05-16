@@ -101,6 +101,78 @@
 					
 
 				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
+				<div class="item d-flex justify-content-between align-items-center cricle">
+
+					
+					<div class="figure">
+						<a href="my-profile.html"><img
+							src="../images/mypageCommunity/user/user-55.jpg"
+							class="rounded-circle" alt="image"></a>
+					</div>
+					<div class="text">
+						<h4>
+							<a>James Vanwin</a>
+						</h4>
+						<span>Posted A Comment On Your Status</span>
+
+					</div>
+					
+
+				</div>
 				
 				
 
