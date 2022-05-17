@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/mypageCommunity.css">
     <style>
         .reviewBody { display:none; }
+        #end {display:none;}
     </style>
 </head>
 
@@ -432,7 +433,7 @@
 
 
             <a href="#" id="load">Load More</a>
-
+            <div id="end">마지막 영상입니다.</div>
         </div>
     </div>
     <!--========== Body ==============-->
@@ -455,30 +456,6 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#search").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            if(value === ''){
-                location.reload();
-            }else {
-                $(".reviewBody").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            }
-        });
-        plusReview();
-        function plusReview(){
-            $(".reviewBody").slice(0, 8).show(); // select the first ten
-            $("#load").click(function(e){ // click event for load more
-                e.preventDefault();
-                $(".reviewBody:hidden").slice(0, 4).show(); // select next 10 hidden divs and show them
-                if($(".reviewBody:hidden").length == 0){ // check if any hidden divs still exist
-                    alert("전부다 보여짐"); // alert if there are none left
-                }
-            });
-        }
-    });
-</script>
+<script src="/js/searchLoadMore.js"></script>
 </body>
 </html>
