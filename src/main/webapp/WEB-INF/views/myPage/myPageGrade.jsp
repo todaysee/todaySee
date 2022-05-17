@@ -40,7 +40,6 @@
 	<!--========== Right SideBar ==============-->
 	<%@ include file="../inculde/mypage/rightSidebar.jsp"%>
 	<!--========== Right SideBar ==============-->
-
 </div>
 <!--========== Body ==============-->
 

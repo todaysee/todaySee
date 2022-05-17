@@ -14,6 +14,7 @@ public final class AjaxVoDtoConverter {
         ajaxDto.setContentNumber(AjaxVO.getContentNumber());
         ajaxDto.setContentTitle(AjaxVO.getContentTitle());
         ajaxDto.setContentMainImgLink(AjaxVO.getContentMainImgLink());
+        ajaxDto.setContentPosterImgLink(AjaxVO.getContentPosterImgLink());
 
         return ajaxDto;
     }
@@ -24,6 +25,7 @@ public final class AjaxVoDtoConverter {
         ajaxVO.setContentNumber(ajaxDto.getContentNumber());
         ajaxVO.setContentTitle(ajaxDto.getContentTitle());
         ajaxVO.setContentMainImgLink(ajaxDto.getContentMainImgLink());
+        ajaxVO.setContentPosterImgLink(ajaxDto.getContentPosterImgLink());
 
         return ajaxVO;
     }
