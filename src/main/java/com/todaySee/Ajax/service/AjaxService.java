@@ -1,10 +1,8 @@
-package com.todaySee.myPage.service;
+package com.todaySee.Ajax.service;
 
-import com.todaySee.myPage.domain.AjaxDto;
-import com.todaySee.myPage.domain.AjaxVO;
+import com.todaySee.Ajax.dto.AjaxDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 
 public interface AjaxService {

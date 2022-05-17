@@ -3,45 +3,36 @@
 //         referrerpolicy="no-referrer"></script>
 // <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" crossOrigin="anonymous"></script>
 
-$('#scrollTestBody').scroll(function () {
-    var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
-    var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
-    var contentH = $('.container').height(); //문서 전체 내용을 갖는 div의 높이
-    if (scrollT + scrollH + 1 >= contentH) { // 스크롤바가 아래 쪽에 위치할 때
-        $('#testScrollNext').trigger('click');
-    }
-});
-
 
 let totalPages = 1;
 
 function fetchNotes(startPage) {
     $.ajax({
-        type: "GET",
-        url: "http://localhost:8080/ajaxPaging",
+        type : "GET",
+        url : "http://localhost:8080/ajaxPaging",
         data: {
             page: startPage,
             size: 5
         },
-        success: function (response) {
+        success: function(response){
             $('#testh1').empty();
             // add table rows
             $.each(response.content, (i, content) => {
                 let noteRow = '<div>' +
                     '<h1>' + content.contentNumber + '</h1>' +
                     '<h1>' + content.contentTitle + '</h1>' +
-                    '<img src="' + content.contentMainImgLink + '">' +
+                    '<h1>' + '<a href =' + content.contentMainImgLink + '>'  + '이미지링크' + '</a>'  +'</h1>' +
                     '</div>';
                 $('#noteTable tbody').append(noteRow);
             });
 
-            if ($('ul.pagination li').length - 2 != response.totalPages) {
+            if ($('ul.pagination li').length - 2 != response.totalPages){
                 // build pagination list at the first time loading
                 $('ul.pagination').empty();
                 buildPagination(response);
             }
         },
-        error: function (e) {
+        error : function(e) {
             alert("ERROR: ", e);
             console.log("ERROR: ", e);
         }
@@ -64,8 +55,8 @@ function buildPagination(response) {
     var next = '';
     var last = '';
     if (pageNumber < totalPages) {
-        if (pageNumber !== totalPages - 1) {
-            next = '<li class="page-item"><a class="page-link" id="testScrollNext" style="display: none">Next ›</a></li>';
+        if(pageNumber !== totalPages - 1) {
+            next = '<li class="page-item"><a class="page-link">더보기</a></li>';
         }
     } else {
         next = ''; // on the last page, don't show 'next' link
@@ -90,26 +81,26 @@ function buildPagination(response) {
     $("ul.pagination").append(pagingLink);
 }
 
-$(document).on("click", "ul.pagination li a", function () {
+$(document).on("click", "ul.pagination li a", function() {
     var data = $(this).attr('data');
     let val = $(this).text();
     console.log('val: ' + val);
 
     // click on the NEXT tag
-    if (val.toUpperCase() === "« FIRST") {
+    if(val.toUpperCase() === "« FIRST") {
         let currentActive = $("li.active");
         fetchNotes(0);
         $("li.active").removeClass("active");
         // add .active to next-pagination li
         currentActive.next().addClass("active");
-    } else if (val.toUpperCase() === "LAST »") {
+    } else if(val.toUpperCase() === "LAST »") {
         fetchNotes(totalPages - 1);
         $("li.active").removeClass("active");
         // add .active to next-pagination li
         currentActive.next().addClass("active");
-    } else if (val.toUpperCase() === "NEXT ›") {
+    } else if(val.toUpperCase() === "더보기") {
         let activeValue = parseInt($("ul.pagination li.active").text());
-        if (activeValue < totalPages) {
+        if(activeValue < totalPages){
             let currentActive = $("li.active");
             startPage = activeValue;
             fetchNotes(startPage);
@@ -118,9 +109,9 @@ $(document).on("click", "ul.pagination li a", function () {
             // add .active to next-pagination li
             currentActive.next().addClass("active");
         }
-    } else if (val.toUpperCase() === "‹ PREV") {
+    } else if(val.toUpperCase() === "‹ PREV") {
         let activeValue = parseInt($("ul.pagination li.active").text());
-        if (activeValue > 1) {
+        if(activeValue > 1) {
             // get the previous page
             startPage = activeValue - 2;
             fetchNotes(startPage);
@@ -139,7 +130,8 @@ $(document).on("click", "ul.pagination li a", function () {
     }
 });
 
-(function () {
+(function(){
     // get first-page at initial time
     fetchNotes(0);
 })();
+   

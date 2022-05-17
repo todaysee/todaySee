@@ -1,14 +1,14 @@
-package com.todaySee.myPage.converter;
+package com.todaySee.Ajax.converter;
 
-import com.todaySee.myPage.domain.AjaxDto;
-import com.todaySee.myPage.domain.AjaxVO;
+import com.todaySee.Ajax.dto.AjaxDto;
+import com.todaySee.Ajax.domain.AjaxVO;
 
-public final class EntityDtoConverter {
+public final class AjaxVoDtoConverter {
 
-    private EntityDtoConverter() {
+    private AjaxVoDtoConverter() {
     }
 
-    public static AjaxDto entityToDto(AjaxVO AjaxVO) {
+    public static AjaxDto voToDto(AjaxVO AjaxVO) {
         AjaxDto ajaxDto = new AjaxDto();
 
         ajaxDto.setContentNumber(AjaxVO.getContentNumber());
@@ -18,7 +18,7 @@ public final class EntityDtoConverter {
         return ajaxDto;
     }
 
-    public static AjaxVO dtoToEntity(AjaxDto ajaxDto) {
+    public static AjaxVO dtoToVo(AjaxDto ajaxDto) {
         AjaxVO ajaxVO = new AjaxVO();
 
         ajaxVO.setContentNumber(ajaxDto.getContentNumber());

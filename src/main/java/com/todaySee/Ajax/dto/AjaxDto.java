@@ -1,4 +1,4 @@
-package com.todaySee.myPage.domain;
+package com.todaySee.Ajax.dto;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @Entity // Entity Class
 @Table(name = "content")
-public class AjaxVO {
+public class AjaxDto {
 
     @Id
     private Integer contentNumber;
