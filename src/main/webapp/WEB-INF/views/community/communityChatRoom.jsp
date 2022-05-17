@@ -60,7 +60,7 @@
 
 							<div class="chat-body">
 								<div class="chat-message">
-									<p>Hello, dear I want talk to you?</p>
+									<span></span>
 								</div>
 							</div>
 						</div>
@@ -74,17 +74,17 @@
 							</div>
 
 							<div class="chat-body" >
-								<div class="chat-message chating" id="chating">
+								<div class="chat-message">
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="chat-list-footer">
-						<form class="d-flex align-items-center">
-							<input type="text" id="chatting" class="form-control" placeholder="메세지를 입력하세요.">
+						<form class="d-flex align-items-center"> 
+							<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
 
-							<button onlick="send()" id="sendBtn" class="send-btn">보내기</button>
-						</form>
+							<button type="button" onclick="send();" id="sendBtn" class="send-btn">보내기</button>
+ 						</form>
 					</div>
 				</div>
 			</div>
