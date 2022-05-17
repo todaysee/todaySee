@@ -2,7 +2,7 @@
 
 
 
-$(function(){
+
 	
 
 
@@ -98,4 +98,3 @@ var ws;
 		};
 		fileReader.readAsArrayBuffer(file);
 	}
-})
