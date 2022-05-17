@@ -6,8 +6,125 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <link rel="stylesheet" href="style.css">
+
   <title>회원관리</title>
 
+	<style type="text/css">
+	.userListTable{
+		cursor:pointer
+	
+  }
+  .detailUser span{
+    font-size: 18px;
+  }
+  .search {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+}
+.search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  background: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width 0.4s;
+}
+.search input:focus {
+  width: 190px;
+  border-color: #669900;
+}
+.search .material-icons {
+  height: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto;
+  transition: 0.4s;
+}
+.search.focused .material-icons {
+  opacity: 0;
+}
+	
+	</style>
+  <script>
+  
+    $(function(){
+      $('.userTable').click(function(){
+        const userNumber= $(this).text();
+        
+        let data= {
+                userNumber : userNumber
+        }
+        $.ajax({
+          url : '/admin/userList/'+userNumber,
+          type : 'GET',
+          dataType : 'json',
+          contentType: 'application/json',
+          success : function(data){
+            
+            $('.emailUser').text(data.email)
+            $('.nickNameUser').text(data.nickName)
+            $('.genderUser').text(data.gender)
+            $('.loginDateUser').text(data.login_date)
+            $('.sangtaeUser').text(data.user_Sangtae)
+             
+              
+
+
+          },
+          error: function(e){
+            alert('에러발생')
+            console.log(e)
+          }
+        })
+
+      })
+      
+      const searchEl = document.querySelector('.search')
+      const searchInputEl = searchEl.querySelector('input')
+
+      searchEl.addEventListener('click',function(){
+        searchInputEl.focus();
+      })
+
+      searchInputEl.addEventListener('focus', function(){
+        searchEl.classList.add('focused')
+        searchInputEl.setAttribute('placeholder','통합검색')
+      })
+
+      searchInputEl.addEventListener('blur', function(){
+        searchEl.classList.remove('focused')
+        searchInputEl.setAttribute('placeholder','')
+      })
+
+      $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+
+   
+
+
+
+    })
+
+        
+  </script>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -16,6 +133,12 @@
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+  <!-- 추가 -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -59,7 +182,7 @@
         <div class="col-md-3" id="userDetail">
           <a href="compose.html" class="btn btn-primary btn-block mb-3">Compose</a>
           <form action="">
-          <div class="card">
+          <div class="card detailUser">
             <div class="card-header">
               <h3 class="card-title">회원정보</h3>
 
@@ -73,33 +196,33 @@
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 이름
+                    <i class="fas fa-inbox"></i> 이메일
                    
-                    <span class="badge float-right"><h5>$이름이</h5></span>
+                    <span class="badge float-right emailUser"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-envelope"></i> 닉네임
-                    <span class="badge float-right"><h5>$닉네임</h5></span>
+                    <span class="badge float-right nickNameUser"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-file-alt"></i> 성별
-                    <span class="badge float-right"><h5>$성별</h5></span>
+                    <span class="badge float-right genderUser"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="fas fa-filter"></i> 최근 로그인 날짜
-                    <span class="badge float-right"><h5>$로그인 날짜</h5></span>
+                    <span class="badge float-right loginDateUser"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-trash-alt"></i> 회원상태
-                    <span class="badge float-right"><h5>$회원상태</h5></span>
+                    <span class="badge float-right sangtaeUser"><h5></h5></span>
                   </a>
                 </li>
               </ul>
@@ -153,7 +276,12 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">신고 관리</h3>
-                  <span class="badge float-right"><a><input type="text" value=""></a></span>
+                  <span class="badge float-right">
+                    <div class="search">
+                    <input type="text" id="autoComplete"/>
+                    <div class="material-icons"><i class="fas fa-search"></i></div>
+                  </div>
+                </span>
                  
                 </div>
                
@@ -165,39 +293,27 @@
            
                <!-- /.card-header -->
                <div class="card-body">
-                <table id="ex1" class="table table-bordered table-striped">
+                <table id="ex1" class="table table-bordered table-striped table-hover userListTable">
                   <thead>
                   <tr>
+                    <th>번호</th>
                     <th>이메일</th>
-                    <th>이름</th>
+                    <th>닉네임</th>
                     <th>성별</th>
-                    <th>채팅방이름</th>
                     <th>회원상태</th>
                   </tr>
                   </thead>
                   <tbody>
+                  <c:forEach items="${userList}" var="test1">
+                  <tr >
+                    <td class="userTable">${test1.userNumber}</td>
+                    <td class="userTable1">${test1.email}</td>
+                    <td class="userTable1">${test1.nickName }</td>
+                    <td class="userTable1">${test1.gender }</td>
+                    <td class="userTable1">1U</td>
+                  </tr>
+                  </c:forEach>
                   
-                  <tr>
-                    <td>1</td>
-                    <td>All others1</td>
-                    <td>남</td>
-                    <td>ㅇㅇ</td>
-                    <td>1U</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>All others2</td>
-                    <td>여자</td>
-                    <td>ㄴㄴ</td>
-                    <td>2U</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>All others3</td>
-                    <td>남자</td>
-                    <td>ㅇㄴ</td>
-                    <td>U2</td>
-                  </tr>
                   </tbody>
                   
                 </table>
@@ -240,40 +356,10 @@
 <script src="/dist/js/demo.js"></script>
 <!-- Page specific script -->
 
+<!-- 추가 -->
 <script src="/dist/admin/admin.js"></script>
 
 
-<script>
-  $(function () {
-    //Enable check and uncheck all functionality
-    $('.checkbox-toggle').click(function () {
-      var clicks = $(this).data('clicks')
-      if (clicks) {
-        //Uncheck all checkboxes
-        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
-        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
-      } else {
-        //Check all checkboxes
-        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
-        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
-      }
-      $(this).data('clicks', !clicks)
-    })
 
-    //Handle starring for font awesome
-    $('.mailbox-star').click(function (e) {
-      e.preventDefault()
-      //detect type
-      var $this = $(this).find('a > i')
-      var fa    = $this.hasClass('fa')
-
-      //Switch states
-      if (fa) {
-        $this.toggleClass('fa-star')
-        $this.toggleClass('fa-star-o')
-      }
-    })
-  })
-</script>
 </body>
 </html>

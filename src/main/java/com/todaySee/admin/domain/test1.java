@@ -23,7 +23,7 @@ public class test1 {
     
     String gender;
     
-    Date userDate;
+    String userDate;
     
     String user_Sangtae;
     
@@ -31,7 +31,7 @@ public class test1 {
     
     String profile;
     
-    Date login_date;
+    String login_date;
 
 
 
