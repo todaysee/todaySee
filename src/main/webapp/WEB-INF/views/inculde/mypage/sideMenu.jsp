@@ -18,42 +18,23 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/" class="nav-link">
-                    <span class="icon"><i class="flaticon-newspaper"></i></span>
-                    <span class="menu-title">홈으로</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/community" class="nav-link">
-                    <span class="icon"><i class="flaticon-bell"></i></span>
-                    <span class="menu-title">커뮤니티</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/community/chatList" class="nav-link">
-                    <span class="icon"><i class="flaticon-comment-1"></i></span>
-                    <span class="menu-title">채팅</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/myPage" class="nav-link">
-                    <span class="icon"><i class="flaticon-friends"></i></span>
-                    <span class="menu-title">나의 메인</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="/myPage/like" class="nav-link">
                     <span class="icon"><i class="flaticon-team"></i></span>
                     <span class="menu-title">나의 취향</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/myPage/reviewList" class="nav-link">
+                <a href="/myPage/review" class="nav-link">
                     <span class="icon"><i class="flaticon-star"></i></span>
-                    <span class="menu-title">나의 영상활동</span>
+                    <span class="menu-title">내 리뷰보기</span>
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a href="/myPage/list" class="nav-link">
+                    <span class="icon"><i class="flaticon-team"></i></span>
+                    <span class="menu-title">글관리</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="register.html" class="nav-link">
                     <span class="icon"><i class="flaticon-information"></i></span>

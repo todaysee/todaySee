@@ -1,14 +1,11 @@
 package com.todaySee.myPage.controller;
 
 
-import com.todaySee.myPage.domain.MyPageVO;
 import com.todaySee.myPage.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 public class MyPageController {
@@ -23,14 +20,9 @@ public class MyPageController {
     }
 
     //마이페이지 작성 게시글 목록
-    @GetMapping("/myPage/reviewList")
+    @GetMapping("/myPage/review")
     public String myPageBoard(Model m) {
         return "/myPage/myPageReviewList";
-    }
-
-    @GetMapping("/myPage/view")
-    public String myPageView(Model m) {
-        return "/myPage/myPageView";
     }
 
     @GetMapping("/myPage/like")
@@ -63,6 +55,10 @@ public class MyPageController {
         return "/myPage/myPageCommentsList";
     }
 
+    @GetMapping("/myPage/list")
+    public String mypageBoardCommnetsList() {
+        return "/myPage/mypageBoardCommnetsList";
+    }
 
     @GetMapping("/myPage/modal")
     public String modal() {
