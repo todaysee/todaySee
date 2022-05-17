@@ -18,6 +18,301 @@
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>
+
+	<!--=========== Star Rating =============-->
+	<!-- star css -->
+	<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+	<!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+	<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+	<!--=========== Star Rating =============-->
+
+	<!-- 추가 CSS -->
+	<style>
+		/*============================================
+        padding - 권소연 추가
+		==============================================*/
+
+		.padding {
+			padding: 130px 0px 130px 0px;
+		}
+
+		.padding-2 {
+			padding: 30px 0px 60px 0px;
+		}
+
+		.padding-3 {
+			padding: 0px 30px 0px 30px;
+		}
+
+		.padding-4 {
+			padding: 20px 0px 20px 0px;
+		}
+
+		.padding-5 {
+			padding: 10px 0px 30px 0px;
+			border-bottom: 3px solid var(--primary-color);
+		}
+
+		.padding-6 {
+			padding: 10px 0px 60px 0px;
+		}
+
+		.padding-7 {
+			padding: 30px 0px 10px 0px;
+		}
+
+		.padding-8 {
+			padding: 20px 0px 20px 0px;
+			border-bottom: 3px solid var(--primary-color);
+		}
+
+		/*============================================
+        메인 이미지 - 권소연 추가
+        ==============================================*/
+
+		.gen-episode-contain .gen-episode-img img {
+			height: 70vh;
+		}
+
+		/*============================================
+        신고 & 보고싶어요 버튼 - 권소연 추가
+        ==============================================*/
+
+		.gen-button-like {
+			text-transform: uppercase;
+			position: relative;
+			width: auto;
+			font-weight: 400;
+			background: var(--black-color);
+			color: var(--white-color);
+			font-family: var(--title-fonts);
+			font-size: 16px;
+			padding: 12px 30px;
+			line-height: 2;
+			vertical-align: middle;
+			border: none;
+			display: inline-block;
+			overflow: hidden;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+
+		.gen-button-like:hover,
+		.gen-button-like:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
+		/*============================================
+        Modal - 권소연 추가
+        ==============================================*/
+
+		.modal-content {
+			background: var(--dark-color);
+		}
+
+		.close {
+			color: var(--white-color);
+		}
+
+		.modalSelect {
+			color: var(--white-color)
+		}
+
+		/*============================================
+        Report Modal 안의 작성자, 내용 관련 - 권소연 추가
+        ==============================================*/
+
+		.gen-extra-report ul {
+			margin: 0 0 30px;
+			padding: 0;
+		}
+
+		.gen-extra-report ul li {
+			list-style: none;
+			color: var(--secondary-color);
+			margin: 0 0 5px;
+			font-size: 18px;
+		}
+
+		.gen-extra-report ul li span:first-child {
+			display: inline-block;
+			width: 25%;
+			font-weight: 500;
+		}
+
+		.gen-extra-report ul li span:last-child {
+			color: var(--white-color);
+		}
+
+		.gen-after-report {
+			display: flex;
+			border-bottom: 3px solid var(--primary-color);
+			padding: 0 0 10px 0;
+			align-items: flex-end;
+			-ms-flex-pack: justify !important;
+			justify-content: space-between !important;
+		}
+
+		.gen-after-report .gen-extra-data ul {
+			margin: 0;
+		}
+
+		.gen-after-report .gen-socail-share {
+			border-bottom: none;
+			padding: 0;
+			display: flex;
+			text-align: center;
+		}
+
+		@media (max-width:767px) {
+			.gen-after-report {
+				display: inline-block;
+				width: 100%;
+			}
+		}
+
+		@media (max-width:767px) {
+			.gen-single-movie-info .gen-after-report .gen-socail-share ul {
+				margin: 0 0 0 15px;
+			}
+		}
+
+		@media (max-width:479px) {
+			.gen-single-movie-info .gen-after-report .gen-socail-share {
+				margin: 30px 0 0;
+				display: inline-block;
+				width: 100%;
+				text-align: left;
+			}
+
+			.gen-single-movie-info .gen-after-report .gen-socail-share ul {
+				margin: 15px 0 0 0;
+			}
+		}
+
+		/*============================================
+        Like Modal 안의  - 권소연 추가
+        ==============================================*/
+
+		.gen-movie-like .gen-btn-new {
+			border-radius: 900px;
+			padding: 0;
+			width: 5vh;
+			height: 5vh;
+			opacity: 0;
+			display: inline-block;
+			line-height: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.gen-movie-like .gen-btn-new i {
+			margin: 0;
+			padding: 0;
+		}
+
+		.gen-movie-like .gen-btn-new {
+			opacity: 1;
+		}
+
+		.gen-btn-new {
+			text-transform: uppercase;
+			position: relative;
+			width: auto;
+			font-weight: 400;
+			background: var(--black-color);
+			color: var(--white-color);
+			font-family: var(--title-fonts);
+			font-size: 16px;
+			padding: 1% 3%;
+			line-height: 2;
+			vertical-align: middle;
+			border: none;
+			display: inline-block;
+			overflow: hidden;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+
+		.gen-btn {
+			text-transform: uppercase;
+			position: relative;
+			width: auto;
+			font-weight: 400;
+			background: var(--primary-color);
+			color: var(--white-color);
+			font-family: var(--title-fonts);
+			font-size: 16px;
+			padding: 0.5vh 1vh;
+			line-height: 2;
+			vertical-align: middle;
+			border: none;
+			display: inline-block;
+			overflow: hidden;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+
+		.gen-btn span {
+			z-index: 9;
+			position: relative;
+		}
+
+		.gen-btn:hover,
+		.gen-btn:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
+		.gen-btn-like {
+			border-radius: 50%;
+		}
+
+		.text-new {
+			line-height: 50px;
+			vertical-align: middle;
+		}
+
+		.checkbox2 + label{
+			position: relative;
+		}
+		.checkbox input[type="checkbox"].checkbox2{
+			display: none;
+		}
+		.checkbox input[type="checkbox"].checkbox2 + label:before { /* 체크박스 배경 */
+			display: inline-block;
+			content: '';
+			width: 1.25em;
+			height: 1.25em;
+			border: 2px solid #a66;
+			background-color: #a00;
+			border-radius: 50%;
+			margin: 0 5px -6px 0;
+		}
+		.checkbox input[type="checkbox"].checkbox2 + label:after { /* 체크 마크 */
+			position: absolute;
+			left: 4px;
+			content: '✔'; /* 체크 마크 ASCii 문자 */
+			font-size: 1.5em;
+			line-height: 0.8;
+			color: #a88;
+			transition: all .3s;
+		}
+		[type="checkbox"].checkbox2 + label:after { /* 기본 상태 - 투명에 크기 0 */
+			opacity: 0;
+			transform: scale(0);
+		}
+		[type="checkbox"]:checked.checkbox2 + label:after { /* 체크 상태 - 불투명에 크기 1 */
+			opacity: 1;
+			transform: scale(1);
+		}
+	</style>
+	<!-- 추가 CSS -->
+
 </head>
 
 <body>
@@ -31,13 +326,1327 @@
 <!--========== Header ==============-->
 
 <!--========== Body ==============-->
+<section class="gen-section-padding-3 gen-single-movie">
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-lg-12">
+				<div class="gen-single-movie-wrapper style-1">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="col-lg-12">
+								<div id="change" class="gen-episode-contain">
+									<div class="gentech-tv-show-img-holder">
+										<div class="gen-episode-img">
+											<img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri" alt="stream-lab-image">
+<%--											<img src="/images/home/background/asset-15.jpeg" alt="stream-lab-image">--%>
+											<div class="gen-movie-action">
+												<a href="#" class="gen-button youtube_btn">
+													<i class="fa fa-play"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="gen-single-movie-info">
+								<div class="row">
+									<div class="col-xl-6 col-lg-6 col-md-6">
+										<h2 class="gen-title">영상 제목</h2>
+									</div>
+									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+										<div class="gen-movie-action">
+											<div class="gen-btn-container text-right">
+												<a type="button" class="gen-button-like gen-button-flat myModalLike" data-bs-toggle="modal" data-bs-target="#modalLike">
+													<span class="text"><i class="fa fa-heart"></i>보고싶어요</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="gen-single-meta-holder">
+									<ul>
+										<li class="gen-sen-rating">카테고리</li>
+										<li>
+											<i class="fas fa-eye">
+											</i>
+											<span>237 Views</span>
+										</li>
+									</ul>
+								</div>
+								<p>영상 줄거리 & 설명
+									Streamlab is a long established fact that a reader will be distracted by the
+									readable
+									content of a page when Streamlab at its layout. The point of using Lorem
+									Streamlab
+									is that it has a more-or-less normal distribution of Streamlab as opposed
+									Streamlab.
+								</p>
+								<div class="gen-after-excerpt">
+									<div class="gen-extra-data">
+										<ul>
+											<li>
+												<span>언어 :</span>
+												<span>English</span>
+											</li>
+											<li>
+												<span>자막 :</span>
+												<span>English</span>
+											</li>
+											<li>
+												<span>음성 언어 :</span>
+												<span>English</span>
+											</li>
+											<li><span>장르 :</span>
+												<span>
+                                                        <a href="action.html">
+                                                            Action, </a>
+                                                    </span>
+												<span>
+                                                        <a href="adventure.html">
+                                                            Documentary </a>
+                                                    </span>
+											</li>
+											<li><span>영상 시간 :</span>
+												<span>1hr 24 mins</span>
+											</li>
+											<li>
+												<span>영상이 올라온 날짜 :</span>
+												<span>14 Aug,2018</span>
+											</li>
+											<li>
+												<span>플랫폼 :</span>
+												<span>
+                                                        <div class="gen-socail-share">
+                                                            <ul class="social-inner">
+                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                                                                </li>
+                                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+                                                                </li>
+                                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+											</li>
+										</ul>
+									</div>
+									<div class="gen-socail-share">
+										<h4 class="align-self-center">공유 :</h4>
+										<ul class="social-inner">
+											<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+											</li>
+											<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+											</li>
+											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
 
+						<!-- 인물 -->
+						<div class="col-lg-12">
+							<div class="padding-2">
+								<div class="pm-inner">
+									<div class="gen-more-like">
+										<div class="row">
+											<div class="col-xl-6 col-lg-6 col-md-6">
+												<h5 class="gen-more-title">출연 배우</h5>
+											</div>
+											<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+												<div class="gen-movie-action">
+													<div class="gen-btn-container text-right">
+														<a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+															<span class="text">더보기</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12">
+												<div class="gen-style-2">
+													<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
+														 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
+														 data-loop="false" data-margin="30">
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div class="row">
+																<div class="col-xl-3 col-lg-3 col-md-3">
+																	<div class="list-content">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																</div>
+																<div class="col-xl-9 col-lg-9 col-md-9">
+																	<div class="text">
+																		<h3>
+																			<a href="my-profile.html">Vanwin</a>
+																		</h3>
+																		<span>11 July, 2021</span>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 리뷰 -->
+						<div class="col-lg-12">
+							<div class="padding-2">
+								<div class="pm-inner">
+									<div class="gen-more-like">
+										<div class="row">
+											<div class="col-xl-12 col-lg-12 col-md-12">
+												<h5 class="gen-more-title">리뷰</h5>
+											</div>
+										</div>
+
+										<!-- 리뷰 작성 -->
+										<div class="send-item">
+											<div class="padding-5">
+												<form name="comment" id="comment" method="post" action="#">
+													<div class="row">
+														<div class="col-xl-1 col-lg-1 col-md-1">
+															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+														</div>
+														<div class="send-content col-xl-3 col-lg-3 col-md-3">
+															<h3>
+																<a href="my-profile.html">James Vanwin</a>
+															</h3>
+															<span>10 July, 2021</span>
+															<span>
+                                                                        <input id="input-9" name="input-9" required class="rating-loading">
+                                                                    </span>
+														</div>
+														<div class="text col-xl-7 col-lg-7 col-md-7">
+															<textarea rows="3" cols="60" placeholder="Enter Your Comment"></textarea>
+														</div>
+														<div class="col-xl-1 col-lg-1 col-md-1">
+															<input type="submit" value="등록하기">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<!-- 리뷰 작성 -->
+
+										<!-- 리뷰 item -->
+										<div class="send-item">
+											<div class="padding-4">
+												<div class="row">
+													<div class="col-xl-1 col-lg-1 col-md-1">
+														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+													</div>
+													<div class="send-content col-xl-3 col-lg-3 col-md-3">
+														<h3>
+															<a href="my-profile.html">James Vanwin</a>
+														</h3>
+														<span>10 July, 2021</span>
+														<span>
+                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
+                                                            </span>
+													</div>
+													<div class="text col-xl-8 col-lg-8 col-md-8">
+														<p>
+															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+														</p>
+														<div class="text-right">
+															<div class="gen-btn-container">
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 리뷰 item -->
+
+										<!-- 리뷰 item -->
+										<div class="send-item">
+											<div class="padding-4">
+												<div class="row">
+													<div class="col-xl-1 col-lg-1 col-md-1">
+														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+													</div>
+													<div class="send-content col-xl-3 col-lg-3 col-md-3">
+														<h3>
+															<a href="my-profile.html">James Vanwin</a>
+														</h3>
+														<span>10 July, 2021</span>
+														<span>
+                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
+                                                            </span>
+													</div>
+													<div class="text col-xl-8 col-lg-8 col-md-8">
+														<p>
+															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+														</p>
+														<div class="text-right">
+															<div class="gen-btn-container">
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 리뷰 item -->
+
+										<!-- 리뷰 item -->
+										<div class="send-item">
+											<div class="padding-4">
+												<div class="row">
+													<div class="col-xl-1 col-lg-1 col-md-1">
+														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+													</div>
+													<div class="send-content col-xl-3 col-lg-3 col-md-3">
+														<h3>
+															<a href="my-profile.html">James Vanwin</a>
+														</h3>
+														<span>10 July, 2021</span>
+														<span>
+                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
+                                                            </span>
+													</div>
+													<div class="text col-xl-8 col-lg-8 col-md-8">
+														<p>
+															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+														</p>
+														<div class="text-right">
+															<div class="gen-btn-container">
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- 리뷰 item -->
+
+										<!-- 더보기 -->
+										<div class="col-lg-12">
+											<div class="gen-load-more-button">
+												<div class="gen-btn-container">
+													<a class="gen-button gen-button-loadmore" href="#">
+														<span class="button-text">리뷰 더보기</span>
+														<span class="loadmore-icon" style="display: none;"><i
+																class="fa fa-spinner fa-spin"></i></span>
+													</a>
+												</div>
+											</div>
+										</div>
+										<!-- 더보기 -->
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 재미있게 보신 작품과 비슷해요 -->
+						<div class="col-lg-12">
+							<div class="padding-2">
+								<div class="pm-inner">
+									<div class="gen-more-like">
+										<div class="row">
+											<div class="col-xl-6 col-lg-6 col-md-6">
+												<h5 class="gen-more-title">재미있게 보신 작품과 비슷해요</h5>
+											</div>
+											<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+												<div class="gen-movie-action">
+													<div class="gen-btn-container text-right">
+														<a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
+															<span class="text">더보기</span>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12">
+												<div class="gen-style-2">
+													<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
+														 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
+														 data-loop="false" data-margin="30">
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-5.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">The
+																					warrior life</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>2hr 00mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-6.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">machine
+																					war</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1h 22mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-7.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">the
+																					horse lady</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 24 mins</li>
+																					<li>
+																						<a href="drama.html"><span>Drama</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-8.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">Ship
+																					of full moon</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 35mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-9.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">Rebuneka
+																					the doll</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 44 mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-4.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">thieve
+																					the bank</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>30min</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-8.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">Ship of full moon</a></h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 35mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-11.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">the
+																					giant ship</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1h 02 mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-12.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">common
+																					man’s idea</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 51 mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+
+
+														<div class="item">
+															<div
+																	class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+																<div class="gen-carousel-movies-style-2 movie-grid style-2">
+																	<div class="gen-movie-contain">
+																		<div class="gen-movie-img">
+																			<img src="/images/home/background/asset-13.jpeg" alt="owl-carousel-video-image">
+																			<div class="gen-movie-add">
+																				<div class="wpulike wpulike-heart">
+																					<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
+																							type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+																				</div>
+																				<ul class="menu bottomRight">
+																					<li class="share top">
+																						<i class="fa fa-share-alt"></i>
+																						<ul class="submenu">
+																							<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
+																							</li>
+																							<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+																						</ul>
+																					</li>
+																				</ul>
+																				<div class="movie-actions--link_add-to-playlist dropdown">
+																					<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
+																							class="fa fa-plus"></i></a>
+																					<div class="dropdown-menu mCustomScrollbar">
+																						<div class="mCustomScrollBox">
+																							<div class="mCSB_container">
+																								<a class="login-link" href="register.html">Sign in to add this movie
+																									to a
+																									playlist.</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="gen-movie-action">
+																				<a href="single-movie.html" class="gen-button">
+																					<i class="fa fa-play"></i>
+																				</a>
+																			</div>
+																		</div>
+																		<div class="gen-info-contain">
+																			<div class="gen-movie-info">
+																				<h3><a href="single-movie.html">the
+																					jin’s friend</a>
+																				</h3>
+																			</div>
+																			<div class="gen-movie-meta-holder">
+																				<ul>
+																					<li>1hr 42 mins</li>
+																					<li>
+																						<a href="action.html"><span>Action</span></a>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<!-- #post-## -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <!--========== Body ==============-->
 
 
 <!--========== Footer ==============-->
 <%@ include file="../inculde/home/footer.jsp"%>
 <!--========== Footer ==============-->
+
+
+<!--========== Report Modal ==============-->
+<div class="modal fade" id="modalReport" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalReportLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalReportLabel" >리뷰 신고하기</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="padding-6">
+						<div class="gen-after-report">
+							<div class="gen-extra-report">
+								<ul>
+									<li>
+										<span>리뷰 작성자 :</span>
+										<span>English</span>
+									</li>
+									<li>
+										<span>리뷰 내용 :</span>
+										<p>Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="padding-7">
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">사유 선택:</label>
+								<select class="modalSelect">
+									<option>스팸홍보/도배글입니다.</option>
+									<option>음란물입니다.</option>
+									<option>불법정보를 포함하고 있습니다.</option>
+									<option>청소년에게 유해한 내용입니다.</option>
+									<option>욕설/생명경시/혐오/차별적 표현입니다.</option>
+									<option>개인정보 노출 게시물입니다.</option>
+									<option>불쾌한 표현이 있습니다.</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 ml-auto">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-danger">등록</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--========== Report Modal ==============-->
+
+
+<!--========== Like Modal ==============-->
+<div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalReportLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalReportLabel" >추가할 즐겨찾기 선택</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="padding-8">
+					<form>
+						<div class="row">
+							<div class="col-xl-3 col-lg-3 col-md-3">
+								<span class="text-new">새 즐겨찾기</span>
+							</div>
+							<div class="col-xl-7 col-lg-7 col-md-7">
+								<p class="comment-form-author">
+									<input type="text" placeholder="새 즐겨찾기 이름">
+								</p>
+							</div>
+							<div class="col-xl-2 col-lg-2 col-md-2 gen-movie-like">
+								<a class="gen-btn-new"><i class="fa fa-plus"></i></a>
+							</div>
+						</div>
+					</form>
+				</div>
+				<form>
+					<div class="padding-2">
+						<div class="gen-movie-action">
+							<div class="checkbox">
+								<input type="checkbox" name="check2" id="check1" value="2" class="checkbox2">
+								<label for="check1">디자인체크박스1</label>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="check2" id="check2" value="2" class="checkbox2">
+								<label for="check2">디자인체크박스2</label>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="check2" id="check3" value="2" class="checkbox2">
+								<label for="check3">디자인체크박스3</label>
+							</div>
+							<div class="checkbox">
+								<input type="checkbox" name="check2" id="check4" value="2" class="checkbox2">
+								<label for="check4">디자인체크박스4</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 ml-auto">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+						<button type="button" class="btn btn-danger">추가</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--========== Like Modal ==============-->
 
 <!-- js-min -->
 <script src="/js/home/jquery-3.6.0.min.js"></script>
@@ -59,6 +1668,63 @@
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
 
+<!--========== Star Rating ==============-->
+<!-- star js -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js" type="text/javascript"></script>
+<!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+<!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+<script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+<!--========== Star Rating ==============-->
+
+<!-- 추가 js -->
+<script>
+	// 상단 이미지 유튜브 링크로 변경
+	$('.youtube_btn').click(function(){
+		// alert('ok');
+		$('#change').empty(); /* id가 change 아래 요소를 모두 삭제 */
+		$('#change').attr('class', 'gen-video-holder'); /* id=change에 class 추가  */
+		/* id=change 아래 요소 추가 */
+		$('#change').append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/HOZg-ZdY2tY?autohide=1&autoplay=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fwww.justwatch.com&widgetid=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+	});
+
+	// 리뷰 별점 - plugin 사용
+	$('#input-9').rating({
+		step: 0.5,
+		starCaptions: {0.5: '0.5', 1: '1.0', 1.5: '1.5', 2: '2.0', 2.5: '2.5', 3:'3.0', 3.5: '3.5', 4:'4.0', 4.5: '4.5', 5:'5.0'}
+	});
+
+	// 작성된 리뷰 별점 - plugin 사용
+	$('.input-4').rating("refresh", {
+		disabled: true,
+		showClear: false,
+		displayOnly: true,
+		step: 0.5,
+		starCaptions: {0.5: '0.5', 1: '1.0', 1.5: '1.5', 2: '2.0', 2.5: '2.5', 3:'3.0', 3.5: '3.5', 4:'4.0', 4.5: '4.5', 5:'5.0'},
+		clearCaption: 'No stars yet'
+	});
+
+	// 신고 모달 띄우기
+	$('.myModal').on('click', function () {
+		$('#modalReport').modal('show');
+	})
+
+	// 즐겨찾기 모달 띄우기
+	$('.myModalLike').on('click', function(){
+		$('#modalLike').modal('show');
+	});
+
+	// 즐겨찾기 선택
+	$('input[type=radio]').on('clike', function(){
+		alert('ok');
+	});
+
+	// AJAX 즐겨찾기 추가
+
+
+	// 리뷰 더보기
+
+</script>
 
 </body>
 
