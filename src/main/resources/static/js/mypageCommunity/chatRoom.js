@@ -1,3 +1,11 @@
+
+
+
+
+$(function(){
+	
+
+
 var ws;
 
 	function wsOpen(){
@@ -89,3 +97,4 @@ var ws;
 		};
 		fileReader.readAsArrayBuffer(file);
 	}
+})
