@@ -8,7 +8,8 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Zust - Social Community & Marketplace HTML Template</title>
 
 <!-- Favicon -->
@@ -18,7 +19,7 @@
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <link rel="stylesheet" href="../css/mypageCommunity/chatList.css">
 <!-- js files -->
-<script src = "../js/mypageCommunity/chatList.js"></script>
+<script src="../js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>
@@ -42,26 +43,32 @@
 				class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
 					<h3>채팅방 이미지 선택</h3>
-					
+
 				</div>
-				<a href="my-profile.html"><img
-							src="../images/mypageCommunity/user/user-55.jpg"
-							class="rounded-circle" alt="image"></a>
-				
+				<form name="signform" method="POST" ENCTYPE="multipart/form-data"
+					action="./design_update.htm">
+					<img src="../images/mypageCommunity/user/user-55.jpg"
+						class="rounded-circle" id="target_img" alt="image"> <input
+						type="file" id="file" name="file" style="display: none;"
+						onchange="changeValue(this)"/> <input type="hidden"
+						name="target_url"/>
+
+				</form>
+
 				<div class="events-search-box">
-				
+
 					<form>
-						<input type="text" class="input-search" name="roomName" id="roomName"
-							placeholder="채팅방 이름을 적어주세요">
-							
+						<input type="text" class="input-search" name="roomName"
+							id="roomName" placeholder="채팅방 이름을 적어주세요">
+
 					</form>
 				</div>
 				<div class="events-btn">
 					<a class="default-btn" id="createRoom">채팅방 생성</a>
-					
+
 				</div>
 			</div>
-			<div class="all-notifications-body" >
+			<div class="all-notifications-body">
 				<!-- <div
 					class="all-notifications-header d-flex justify-content-between align-items-center">
 					<h3>채팅방 목록</h3>
@@ -175,8 +182,8 @@
 					
 
 				</div> -->
-				
-				
+
+
 
 
 			</div>

@@ -35,11 +35,11 @@ var ws;
 				var roomNumber = d.roomNumber;
 				tag += '<div class="item d-flex justify-content-between align-items-center cricle">'+
 					'<div class="figure">'+
-						'<a href="my-profile.html">'+
-						'<img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image"></a>'+
+						'<img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
 					'</div>'+
 					'<div class="text">'+
 						'<h4>'+
+						/*'<a>'+ "<"+(idx+1)+">" +'</a>'+*/
 						'<a>'+ rn +'</a>'+
 						'</h4>'+
 						'<span>'+ '행복한 시간 보내세요.' +'</span>'+
@@ -65,10 +65,15 @@ var ws;
 			}
 		});
 	}
+$(function(){
+	
+$('#target_img').click(function (e) {
+    document.signform.target_url.value = document.getElementById( 'target_img' ).src;
+    e.preventDefault();
+    $('#file').click();
+}); 
+})
+  
 
-/*$(function(){
-	$('#createRoom').click(function(){
-		$('.input-search').val()
-	})
-	$('.text')
-})*/
+
+
