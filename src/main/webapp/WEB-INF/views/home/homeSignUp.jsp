@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>SignUp</title>
+	<title>회원가입</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -67,7 +67,7 @@
     
                     <div class="col-lg-6 col-md-12">
                         <div class="register-form">
-                            <h2>Register</h2>
+                            <h2>회원가입</h2>
         
                             <form>
                                 <div class="form-group">
@@ -75,26 +75,39 @@
                                     <input type="text" class="form-control">
                                 </div>
 
-                                <div class="form-group">
+								
+								&nbsp;
+								<div class="row">
+                                <div class="form-group col-md-9" >
                                     <label>Email</label>
-                                    <input type="email" class="form-control">
-                                </div>
-        
+                                    <input type="email" class="form-control" style="margin-right:0px;">
+									</div>
+									<div class="post-btn col-md-3">
+                                  <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; 
+                                  padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;">중복확인</button>
+                             		</div>
+                             		</div>
+                             		
+                             		
                                 <div class="form-group">
+                                
                                     <label>Password</label>
                                     <input type="password" class="form-control">
                                 </div>
 
+                                &nbsp;
                                 <div class="form-group">
                                     <label>Confirm Password</label>
                                     <input type="password" class="form-control">
                                 </div>
                                 
+                                &nbsp;
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="password" class="form-control">
                                 </div>
                                 
+                                &nbsp;
                                 <div class="form-group">
                                     <label>Gender</label>
                                     
@@ -106,21 +119,40 @@
                                    	
                                 </div>
                                
-                                
+                                &nbsp;
                                 <div class="form-group">
                                     <label>CellPhone</label>
                                     <input type="password" class="form-control">
                                 </div>
         
+                                
                                 <div class="remember-me-wrap">
-                                    <p>
-                                        <input type="checkbox" id="test1">
-                                        <label for="test1">I Accept The <a href="privacy.html">Privacy</a></label>
-                                    </p>
+                                    	 <input type="checkbox" id="test1">
+                                        <label for="test1" style="float: right;">I Accept The <a href="privacy.html">Privacy</a></label>
+                                        	&nbsp;&nbsp;	&nbsp;	
+                                        	
+                                   
                                 </div>
-                                <!-- <button type="submit" class="default-btn"><a href="/registerSucess">Register</a></button> -->
                                 <div class="or-text"><span></span></div>  
-                                <button type="submit" class="google-btn">Register</button>
+                                
+                                <div class="post-btn">
+								<button type="submit" name="register" style="border-radius: 13px; 
+											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">Register</button>	
+											</div>
+									
+									
+									<div class="lost-your-password-wrap" style="margin-top: 20px;">
+                                		<div style="float:left;">
+                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey";>홈으로 가기  </a>
+                                        	</div>
+                                        	<div style="float:right;">
+                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey;">이메일/비밀번호 찾기 </a>
+                                        	
+                                  	 	</div>
+                                        	</div>
+                                        	
+                                        		
+                                
                             </form>
                         </div>
                     </div>
