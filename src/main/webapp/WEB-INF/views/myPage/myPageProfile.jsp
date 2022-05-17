@@ -55,20 +55,6 @@
                         <h3>이름 들어감</h3>
                         <span><a href="mailto:matthew@gmail.com">이메일 주소</a></span>
                     </div>
-                    <ul class="statistics">
-                        <li>
-                            <a href="#">
-                                <span class="item-number">59862</span>
-                                <span class="item-text">평가 영상 수</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="item-number">8591</span>
-                                <span class="item-text">받은 좋아요</span>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
