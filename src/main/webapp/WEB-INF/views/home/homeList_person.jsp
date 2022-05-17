@@ -18,6 +18,18 @@
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>
+	
+	<style type="text/css">
+		
+		#click_page > a {
+			color : #e50916;
+		}
+		
+		.search_result{
+			padding: 3% 0% 1% 3%
+		}
+	</style>
+
 </head>
 
 <body>
@@ -45,10 +57,13 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li class="active" ><a href="/search/content">콘텐츠</a></li>
-                                <li class=""><a href="/search/person">인물</a></li>
-                                <li class=""><a href="/search/bookmark">즐겨찾기</a></li>
-                                <li class=""><a href="/search/community">커뮤니티</a></li>
+                                <li ><a href="/search/content">콘텐츠</a></li>
+                                <li><span>&#124;</span></li>
+                                <li id="click_page"><a href="/search/person">인물</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/bookmark">즐겨찾기</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/community">커뮤니티</a></li>
                             </ol>
                         </div>
                     </nav>
@@ -57,6 +72,11 @@
         </div>
     </div>
     <!-- breadcrumb -->
+	
+	<div class="search_result">
+		<h4>"${search_result}"의 검색 결과</h4>
+	</div>
+	
 <!-- owl-carousel Videos Section-1 Start -->
 <section class="gen-section-padding-2">
 	<div class="container">

@@ -14,8 +14,123 @@
 	<title>Streamlab - Video Streaming HTML5 Template</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
+	
+	<!-- 커뮤니티 CSS -->
+	<link rel="stylesheet" href="/css/mypageCommunity.css"/>
+	
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>
+	<style type="text/css">
+				
+		body {
+			background-color: #161616;
+		}
+
+		#click_page > a {
+			color : #e50916;
+		}
+		.board {
+			padding : 3% 3%;
+		}
+		.feed_post {
+			padding : 2%;
+			background-color: #161616;
+		}
+		
+		.news-feed-area .news-feed-post{
+			background-color:  #221f1f;
+		}
+		
+		div.info.ms-3 > span.name > a {
+			color: #ffffff;
+		}
+		span.small-text > a {
+			color: #ffffff;
+		}
+		.post-body > p {
+			color: #ffffff;
+		}
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react span {
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment span{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share span{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react i{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment i{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share i{
+			color: #ffffff;
+		}
+		
+		.community_like {
+			background-color:  #221f1f;
+			border:  #221f1f;
+		}
+		.loadMorePosts{
+			background-color: #161616;
+			border:  #221f1f;
+			color: #ffffff;
+		}
+		
+		.load-more-posts-btn i{
+			color: #e50916;
+		}
+		
+		.write_date{
+			color: #6b7c8f;
+		}
+		
+		.search_result{
+			padding: 3% 0% 1% 3%
+		}
+		
+		
+		<!-- 커뮤니티 인기글 css --> 
+		.post_like{
+			color: #ffffff;
+		}
+		
+		.like_number{
+			color: #ffffff;
+		}
+		
+		.comment_number{
+			color: #ffffff;
+		}
+		
+		.community_like_icon{
+			color: #ffffff;
+		}
+		
+		.community_comment_icon{
+			color: #ffffff;
+		}
+	
+	</style>
 </head>
 
 <body>
@@ -338,13 +453,12 @@
 </section>
 <!-- owl-carousel Videos Section-2 End -->
 
-
 <!-- owl-carousel Videos Section-3 Start -->
-<section class="gen-section-padding-2">
+<section class="pt-0 gen-section-padding-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">Watch For Free: Movie Mania</h4>
+				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 				<div class="gen-movie-action">
@@ -362,19 +476,17 @@
 					<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
-
-						<!-- start for -->
+						 
+						 <!-- start for -->
 						<div class="item">
-							<div
-									class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
+							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-1.jpeg" alt="owl-carousel-video-images">
+											<img src="/images/home/background/asset-14.jpeg" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-															type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
 												</div>
 												<ul class="menu bottomRight">
 													<li class="share top">
@@ -410,13 +522,14 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">King of Skull</a></h3>
+												<h3><a href="/single-movie.html">제목</a>
+												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>2hr 13mins</li>
+													<li>시즌 또는 시간</li>
 													<li>
-														<a href="/action.html"><span>Action</span></a>
+														<a href="/adventure.html"><span>장르</span></a>
 													</li>
 												</ul>
 											</div>
@@ -426,8 +539,7 @@
 							</div>
 							<!-- #post-## -->
 						</div>
-					<!-- end of for -->
-
+						<!-- end of for -->
 					</div>
 				</div>
 			</div>
@@ -441,7 +553,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">All Time Hits</h4>
+				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 				<div class="gen-movie-action">
@@ -459,18 +571,17 @@
 					<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
-						
-						<!-- start for -->
+						 
+						 <!-- start for -->
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-10.jpeg" alt="owl-carousel-video-image">
+											<img src="/images/home/background/asset-14.jpeg" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-															type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
 												</div>
 												<ul class="menu bottomRight">
 													<li class="share top">
@@ -506,14 +617,14 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">skull of myths</a>
+												<h3><a href="/single-movie.html">제목</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>1hr 24mins</li>
+													<li>시즌 또는 시간</li>
 													<li>
-														<a href="/action.html"><span>Action</span></a>
+														<a href="/adventure.html"><span>장르</span></a>
 													</li>
 												</ul>
 											</div>
@@ -532,9 +643,88 @@
 </section>
 <!-- owl-carousel Videos Section-4 End -->
 
+<!-- owl-carousel Videos Section-2 Start -->
+<section class="pt-0 gen-section-padding-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-6 col-md-6">
+				<h4 class="gen-heading-title">커뮤니티 인기글</h4>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
+				<div class="gen-movie-action">
+					<div class="gen-btn-container text-right">
+						<a href="/tv-shows-pagination.html" class="gen-button gen-button-flat">
+							<span class="text">More Videos</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-12">
+				<div class="gen-style-2">
+			<div class="news-feed-area">
+						 <!-- start for -->
+				 <div class="board">
+				
+				<div class="row">
+				<!-- start for -->
+					<div class=" feed_post">
+					<div class="news-feed news-feed-post post_back">
+						<div class="post-header d-flex justify-content-between align-items-center">
+							<div class="image">
+								<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-32.jpg" class="rounded-circle" alt="image"></a>
+							</div>
+							<div class="info ms-3">
+								<span class="name community_title"><a href="my-profile.html">제목</a></span>
+								<div class='row'>
+								<span class="small-text user_name col-md-9"><a href="#">작성자</a></span>
+								<span class="small-text col-md-3 write_date"><a href="#">xxxx.xx.xx</a></span>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="post-body">
+							<p>Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.</p>
+							<ul class="post-meta-wrap d-flex justify-content-between">
+								<li class="post_like">
+									<button class="community_like"><i class="flaticon-like community_like_icon"></i><span class="number like_number">1499 </span></button>
+								</li>	
+								<li class="post_comment">
+									<a href="#"><i class="flaticon-comment community_comment_icon"></i><span class="number comment_number">599 </span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- end of for -->
+				</div>
+			</div>
+		</div>
+						<!-- end of for -->
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+<!-- owl-carousel Videos Section-2 End -->
+
+
 <!-- footer start -->
 <%@ include file="../inculde/home/footer.jsp"%>
 <!-- Back-to-Top end -->
+
+<!-- 커뮤니티 JS -->
+<script src="/js/mypageCommunity/jquery.min.js"></script>
+<script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
+<script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
+<script src="/js/mypageCommunity/jquery-ui.min.js"></script>
+<script src="/js/mypageCommunity/simplebar.min.js"></script>
+<script src="/js/mypageCommunity/metismenu.min.js"></script>
+<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
+<script src="/js/mypageCommunity/wow.min.js"></script>
+<script src="/js/mypageCommunity/main.js"></script>
 
 <!-- js-min -->
 <script src="/js/home/jquery-3.6.0.min.js"></script>
