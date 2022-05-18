@@ -28,17 +28,25 @@ var ws;
 
 	function createChatingRoom(res){
 		if(res != null){
-			var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";
+			/*var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";*/
+			var tag = ''
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomNumber = d.roomNumber;
-				tag += "<tr>"+
-							"<td class='num'>"+(idx+1)+"</td>"+
-							"<td class='room'>"+ rn +"</td>"+
-							"<td class='go'><button type='button' onclick='goRoom(\""+roomNumber+"\", \""+rn+"\")'>참여</button></td>" +
-						"</tr>";	
+				tag += '<div class="item d-flex justify-content-between align-items-center cricle">'+
+					'<div class="figure">'+
+						'<img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
+					'</div>'+
+					'<div class="text">'+
+						'<h4>'+
+						/*'<a>'+ "<"+(idx+1)+">" +'</a>'+*/
+						'<a>'+ rn +'</a>'+
+						'</h4>'+
+						'<span>'+ '행복한 시간 보내세요.' +'</span>'+
+					'</div>'+
+				'</div>'
 			});
-			$("#roomList").empty().append(tag);
+			$('.all-notifications-body').empty().append(tag);
 		}
 	}
 
@@ -57,3 +65,15 @@ var ws;
 			}
 		});
 	}
+$(function(){
+	
+$('#target_img').click(function (e) {
+    document.signform.target_url.value = document.getElementById( 'target_img' ).src;
+    e.preventDefault();
+    $('#file').click();
+}); 
+})
+  
+
+
+
