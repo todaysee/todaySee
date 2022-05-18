@@ -12,8 +12,8 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>가입완료</title>
-
+	<title>	회원가입 </title>
+	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
@@ -68,24 +68,36 @@
     	
                     <div class="col-lg-6 col-md-12">
                         <div class="login-form" style="height:100%;">
-					<h2 style="text-align: center; vertical-align: middle; margin-top: 60px !important;">회원가입이 완료되었습니다 ! </h2>                            
-                                
-        						
-                                <div class="form-group">
-								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 닉네임님 환영합니다 !  </h2>								 
-								</div>                              
+                            <div style="text-align:center"><h2>회원가입</h2></div>
         
-                                 
-                                 <form>
-                                 <div class="row" style="margin-left: 40px !important;">
-                                 
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color: grey;"> 메인화면 </button>                                
-								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"> 로그인 </button>  
-								                                
-								                               
-								</div>
-                                 
-           
+                            <form>
+                            	<div class="loginimages" style="width: 100%; margin-top: 60px !important; margin-left: 15% !important;">
+                                <div class="naverImage">
+                              		<img src="images/home/login/naverLogin.png" alt="naver" style=" width:70%;">
+                              		</div>
+                                <div class="kakaoImage" style="margin:auto;">
+                              		<img src="images/home/login/kakaoLogin.png" alt="kakao" style="width: 70%; margin-top: 10px !important;">
+                              		</div><br>
+                              		</div>
+                               
+                               		
+                              		
+                              		<button type="submit" class="default-btn" style="background-color: grey; width: 70%; margin-left: 15%; 
+                              		margin-top: 50px !important; padding-top: 15px !important; margin-bottom: 20px !important;"> 회원가입 </button>
+                              		 
+                              		 
+        
+                                 	<div class="lost-your-password-wrap">
+                                		<div style="float:left; color:grey;">
+                                		<a href="forgot-password.html" class="lost-your-password" style="margin-left: 90px !important;">홈으로 가기  </a>
+                                        	</div>
+                                        	<a href="forgot-password.html" class="lost-your-password" style="margin-right: 90px !important;">로그인하기 </a>
+                                        	<div style="float:right; color:grey;">
+                                  	 	</div>
+                                        	</div>
+                                        	<div class="or-text"><span></span></div> 
+                                        
+                          
                             </form>
                         </div>
                     </div>

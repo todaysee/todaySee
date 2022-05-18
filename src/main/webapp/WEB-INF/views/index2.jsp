@@ -13,9 +13,13 @@
 		<a href="/details">홈페이지-details</a><br/>
 		<a href="/signUp">홈페이지-signUp</a><br/>
 		<a href="/complete">홈페이지-complete</a><br/>
+		<a href="/homechooseLogin">홈페이지-homechooseLogin</a><br/>
 		<a href="/login">홈페이지-login</a><br/>
 		<a href="/idFind">홈페이지-idFind</a><br/>
+		<a href="/homeIdFindList">홈페이지-homeIdFindList</a><br/>
 		<a href="/passwordFind">홈페이지-passwordFind</a><br/>
+		<a href="/homeResettingPwd">홈페이지-homeResettingPwd</a><br/>
+		
 		<hr/>
 		<a href="/myPage">마이페이지-인덱스</a><br/>
 		<a href="/myPage/board">마이페이지-board</a><br/>
