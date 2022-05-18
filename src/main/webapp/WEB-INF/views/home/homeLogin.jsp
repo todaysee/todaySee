@@ -19,8 +19,6 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>	
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
-	
-	
 </head>
 
 <body>
@@ -69,8 +67,8 @@
                     </div>
     	
                     <div class="col-lg-6 col-md-12">
-                        <div class="login-form" style="float:center;">
-                            <h2>Login</h2>
+                        <div class="login-form">
+                            <div style="text-align:center"><h2>Login</h2></div>
         
                             <form>
                                 <div class="form-group">

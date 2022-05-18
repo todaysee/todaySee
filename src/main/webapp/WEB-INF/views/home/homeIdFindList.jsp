@@ -12,13 +12,14 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>가입완료</title>
+	<title> ID 찾기 </title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
-	<link rel="stylesheet" href="/css/home.css"/>	
+	<link rel="stylesheet" href="/css/home.css"/>
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	
 </head>
 
 <body>
@@ -68,24 +69,71 @@
     	
                     <div class="col-lg-6 col-md-12">
                         <div class="login-form" style="height:100%;">
-					<h2 style="text-align: center; vertical-align: middle; margin-top: 60px !important;">회원가입이 완료되었습니다 ! </h2>                            
-                                
-        						
-                                <div class="form-group">
-								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 닉네임님 환영합니다 !  </h2>								 
-								</div>                              
+                        
+                            <div style="text-align:center"><h2> 이메일 목록 </h2></div>
         
-                                 
-                                 <form>
-                                 <div class="row" style="margin-left: 40px !important;">
-                                 
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color: grey;"> 메인화면 </button>                                
-								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"> 로그인 </button>  
-								                                
-								                               
-								</div>
-                                 
-           
+                            <form>
+                                <div class="favourite-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>이메일</th>
+                                        <th>	회원가입 날짜</th>
+                                        
+                                    </tr>
+                                </thead>
+        
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h5>1</h5>
+                                       
+                                        </td>
+                                        <td>mun****@***.com</td>
+                                        <td>20xx.xx.xx</td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h5>2</h5>
+                                            
+                                        </td>
+                                        <td>kim****@***.com</td>
+                                        <td>20xx.xx.xx</td>
+                                     
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h5>3</h5>
+                                            
+                                        </td>
+                                        <td>kim****@***.com</td>
+                                        <td>20xx.xx.xx</td>
+                                        
+                                    </tr>
+                                     </tbody>
+                            </table>
+                        </div>
+                            
+										<div class="text" style="color: grey; text-align: left; margin-bottom: 5% !important; margin-left: 49% !important;">
+										사용자는 최대 3개의 계정을 가질 수 있습니다. </div>        
+                                
+                               
+                                		<div class="lost-your-password-wrap" style="font-size: 30px;">
+                                		<div style="float:left; color:grey;">
+                                        	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
+                                        	</div>
+                                        	<a href="forgot-password.html" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
+                                        	<a href="forgot-password.html" class="lost-your-password">비밀번호 찾기 </a>
+                                        	<div style="float:right; color:grey;">
+                                  	 	</div>
+                                        	</div>
+                                        	<div class="or-text"><span></span></div> 
+                                        
+                                
                             </form>
                         </div>
                     </div>
@@ -119,7 +167,9 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
-   
+
+
+
 <!--========== Body ==============-->
 
 
