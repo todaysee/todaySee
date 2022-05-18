@@ -67,7 +67,7 @@ var ws;
 	}
 
 	function send() {
-		alert('확인')
+		//alert('확인')
 		var option ={
 			type: "message",
 			roomNumber: $("#roomNumber").val(),
