@@ -67,7 +67,7 @@
     
                     <div class="col-lg-6 col-md-12">
                         <div class="register-form">
-                            <h2>회원가입</h2>
+                            <div style="text-align:center"><h2>회원가입</h2></div>
         
                             <form>
                                 <div class="form-group">

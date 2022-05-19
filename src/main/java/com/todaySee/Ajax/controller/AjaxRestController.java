@@ -17,10 +17,11 @@ public class AjaxRestController {
     private AjaxService ajaxService;
 
     @GetMapping("/ajaxPaging")
-    public Page<AjaxDto> test(Pageable pageable) {
+    public Page<AjaxDto> test1(Pageable pageable) {
 
         return ajaxService.pages(pageable);
     }
+
 
 
 }

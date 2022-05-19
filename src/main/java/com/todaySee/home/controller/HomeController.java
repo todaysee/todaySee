@@ -138,6 +138,12 @@ public class HomeController {
     public String homeDetails() {
         return "/home/homeDetails";
     }
+    
+    //회원가입방법 선택 
+    @GetMapping("/homechooseLogin")
+    public String homechooseLogin() {
+    	return "/home/homechooseLogin";
+    }
 
     //회원가입 페이지
     @GetMapping("/signUp")
@@ -162,6 +168,12 @@ public class HomeController {
     public String homeIdFind() {
         return "/home/homeIdFind";
     }
+    
+    //아이디 찾기 이메일 목록 리스트 페이지 
+    @GetMapping("/homeIdFindList")
+    public String homeIdFindList() {
+    	return "/home/homeIdFindList";
+    }
 
     //비밀번호 찾기 페이지
     @GetMapping("/passwordFind")
@@ -169,7 +181,11 @@ public class HomeController {
         return "/home/homePasswordFind";
     }
 
-
+    //비밀번호 재설정 페이지
+    @GetMapping("/homeResettingPwd")
+    public String homeResettingPwd() {
+    	return "/home/homeResettingPwd";
+    }
 
 
 

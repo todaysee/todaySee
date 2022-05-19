@@ -82,9 +82,9 @@ public class ChatController {
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
-			mv.setViewName("/community/chatRoom");
+			mv.setViewName("/community/communityChatRoom");
 		}else {
-			mv.setViewName("/community/chatList");
+			mv.setViewName("/community/communityChatList");
 		}
 		return mv;
 	}
