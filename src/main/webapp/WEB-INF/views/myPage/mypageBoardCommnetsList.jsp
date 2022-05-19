@@ -64,13 +64,32 @@
             </div>
 
             <div class="tab-pane fade" id="account" role="tabpanel">
-                <div class="row" id="reviewBody2">
-
+                <div class="row">
+                    <div class="col-lg-1 col-md-12">
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="account-setting-form">
+                            <h3>내 댓글</h3>
+                            <div class="card card-primary card-outline">
+                                <div class="card-body p-0">
+                                    <div>
+                                        <button id="btnAllSelect" class="btn btn-primary btn-block" type="button">전체선택</button>
+                                    </div>
+                                    <div id="pagingCommentsBody">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <ul id="paginationComments" class="pagination justify-content-center"
+                            style="margin:20px 0; cursor: pointer;">
+                        </ul>
+                    </div>
+                    <div class="col-lg-1 col-md-12">
+                    </div>
                 </div>
 
-                <ul id="paginationComments" class="pagination justify-content-center"
-                    style="margin:20px 0; cursor: pointer;">
-                </ul>
+
 
             </div>
 
@@ -92,6 +111,12 @@
 <!--========== Footer ==============-->
 <%@ include file="../inculde/mypage/footer.jsp" %>
 <!--========== Footer ==============-->
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" crossorigin="anonymous"
         referrerpolicy="no-referrer"></script>
@@ -105,8 +130,23 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
+
 <script>
     window.onload = function () {
+
+        $('#btnAllSelect').click(function () {
+            var clicks = $(this).data('clicks')
+            if (clicks) {
+                //Uncheck all checkboxes
+                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+            } else {
+                //Check all checkboxes
+                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+            }
+            $(this).data('clicks', !clicks)
+        })
 
         let totalPages = 1;
         let totalCommentsPages = 1;
@@ -163,43 +203,35 @@
             });
         }
 
-        function fetchComments(startPage) {
+        function fetchComments(startPageComments) {
             $.ajax({
                 type: "GET",
                 url: "http://localhost:8080/ajaxPaging",
                 data: {
-                    page: startPage,
-                    size: 4
+                    page: startPageComments,
+                    size: 8
                 },
                 success: function (response) {
-                    $('#reviewBody2').empty();
+                    $('#pagingCommentsBody').empty();
                     $.each(response.content, (i, content) => {
-                        let reviewRow = '<div class="col-lg-3 col-md-6">' +
-                            '<div class="single-events-card">' +
-                            '<div class="text-center h2">' +
-                            content.contentTitle +
-                            '</div>' +
-                            '<img src="' + content.contentPosterImgLink + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop' + content.contentNumber + '">' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="modal fade" id="staticBackdrop' + content.contentNumber + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
-                            '<div class="modal-dialog">' +
-                            '<div class="modal-content">' +
-                            '<div class="modal-header">' +
-                            '<h5 class="modal-title" id="staticBackdropLabel">' + content.contentTitle + '</h5>' +
-                            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                            '</div>' +
-                            '<div class="modal-body">' +
-                            '<img src="' + content.contentPosterImgLink + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
-                            '</div>' +
-                            '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                            '<button type="button" class="btn btn-primary">Understood</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-                        $('#reviewBody2').append(reviewRow);
+                        let reviewRow = '<div class="table-responsive mailbox-messages">' +
+                            '<table class="table table-hover table-striped">' +
+                                '<tbody>' +
+                                '<tr>' +
+                                    '<td width="50">' +
+                                        '<div class="icheck-primary">' +
+                                            '<input type="checkbox" value="">' +
+                                        '</div>' +
+                                    '</td>' +
+                                   '<td width="350" class="mailbox-name">' + content.contentTitle +'</td>' +
+                                    '<td width="250"  class="mailbox-subject"><b>' + content.contentGenre + '</b>' +
+                                    '</td>' +
+                                    '<td width="100" class="mailbox-date">'+ content.contentReleaseDate +'</td>' +
+                                '</tr>' +
+                                '</tbody>' +
+                            '</table>' +
+                        '</div>';
+                        $('#pagingCommentsBody').append(reviewRow);
                     });
 
                     if ($('ul#paginationComments li').length - 2 != response.totalPages) {

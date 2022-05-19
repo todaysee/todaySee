@@ -22,4 +22,6 @@ public class AjaxRestController {
         return ajaxService.pages(pageable);
     }
 
+
+
 }

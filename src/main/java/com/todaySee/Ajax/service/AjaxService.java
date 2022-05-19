@@ -10,5 +10,6 @@ public interface AjaxService {
     public Page<AjaxDto> pages(Pageable pageable);
 
 
+
 }
 
