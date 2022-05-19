@@ -15,6 +15,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer review_number;
 
+    @Column(length = 3000)
     String review_content;
 
     @CreationTimestamp
