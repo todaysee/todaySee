@@ -8,25 +8,22 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "bookmark")
-public class Bookmark {
+@Table(name = "commentscomments")
+public class CommentsComments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer bookmark_number;
+    Integer commentscomments_number;
 
-    Integer bookmark_state;
-    String bookmark_name;
+    String commentscomments_content;
+    Integer commentscomments_like;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date bookmark_date;
+    Date commentscomments_date;
 
     @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
+    @JoinColumn(name="comments_number")
+    private Comments comments;
 
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
 }

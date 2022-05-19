@@ -14,18 +14,18 @@ public class AjaxController {
     //페이징기능
     @GetMapping("/test3")
     public String test3() {
-        return "ajaxTestFileJsp/testAjaxPaging";
+        return "WEB-INF/views/ajaxTestFileJsp/testAjaxPaging.jsp";
     }
     
     //더보기기능
     @GetMapping("/test4")
     public String test4(Model model) {
-        return "ajaxTestFileJsp/testAjaxMore";
+        return "WEB-INF/views/ajaxTestFileJsp/testAjaxMore.jsp";
     }
 
     //스크롤기능
     @GetMapping("/test5")
     public String test5(Model model) {
-        return "ajaxTestFileJsp/testAjaxScroll";
+        return "WEB-INF/views/ajaxTestFileJsp/testAjaxScroll.jsp";
     }
 }

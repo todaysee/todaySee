@@ -8,22 +8,20 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "chatroom")
-public class ChatRoom {
+@Table(name = "report")
+public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer chatroom_number;
+    Integer report_number;
 
-    String chatroom_name;
-    String chatroom_img; // 확인요망
+    String report_target;
+    String report_content;
+
+    Integer report_state;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date chatroom_date;
-    Integer chatroom_state;
+    Date report_date;
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
 }
