@@ -2,7 +2,7 @@ package com.todaySee.home.controller;
 
 
 
-import com.todaySee.home.service.HomeService;
+
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -23,8 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @Autowired
-    HomeService homeService;
+
 
     //테스트 페이지
     @GetMapping("/2")

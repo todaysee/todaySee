@@ -14,10 +14,6 @@ public class AdminController {
 	public String adminMain() {
 		return "admin/adminIndex";
 	}
-	
-	
-
- 
 
     @GetMapping("/image")
     public String image(Model m) {
