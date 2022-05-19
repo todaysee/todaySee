@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "searchcount")
-public class searchCount {
+public class SearchCount {
 
     @Id
     @CreationTimestamp
