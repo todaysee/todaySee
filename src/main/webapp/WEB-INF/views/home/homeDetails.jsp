@@ -237,6 +237,12 @@
 			border-radius: 0px;
 		}
 
+		.gen-btn-new:hover,
+		.gen-btn-new:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
 		.gen-btn {
 			text-transform: uppercase;
 			position: relative;
@@ -310,6 +316,40 @@
 			opacity: 1;
 			transform: scale(1);
 		}
+
+		/*============================================
+        플랫폼  - 권소연 추가
+        ==============================================*/
+
+		.gen-socail-share .ott-inner {
+			margin: 0 0 0 15px;
+			padding: 0;
+			display: flex;
+		}
+
+		.gen-socail-share .ott-inner li {
+			list-style: none;
+			margin: 0 15px 0 0;
+		}
+
+		.gen-socail-share .ott-inner li:last-child {
+			margin-right: 0;
+		}
+
+		.gen-socail-share .ott-inner li a {
+			display: inline-block;
+			font-size: 18px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background: var(--black-color);
+			color: var(--white-color);
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			border-radius: 0;
+		}
+
 	</style>
 	<!-- 추가 CSS -->
 
@@ -357,7 +397,7 @@
 										<div class="gen-movie-action">
 											<div class="gen-btn-container text-right">
 												<a type="button" class="gen-button-like gen-button-flat myModalLike" data-bs-toggle="modal" data-bs-target="#modalLike">
-													<span class="text"><i class="fa fa-heart"></i>보고싶어요</span>
+													<span class="text"><i class="fa fa-heart"></i> 보고싶어요</span>
 												</a>
 											</div>
 										</div>
@@ -384,18 +424,6 @@
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
 										<ul>
-											<li>
-												<span>언어 :</span>
-												<span>English</span>
-											</li>
-											<li>
-												<span>자막 :</span>
-												<span>English</span>
-											</li>
-											<li>
-												<span>음성 언어 :</span>
-												<span>English</span>
-											</li>
 											<li><span>장르 :</span>
 												<span>
                                                         <a href="action.html">
@@ -406,23 +434,28 @@
                                                             Documentary </a>
                                                     </span>
 											</li>
+											<li>
+												<span>연령등급 :</span>
+												<span>English</span>
+											</li>
 											<li><span>영상 시간 :</span>
 												<span>1hr 24 mins</span>
 											</li>
 											<li>
-												<span>영상이 올라온 날짜 :</span>
+												<span>영상 등록 년도 :</span>
 												<span>14 Aug,2018</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
 												<span>
                                                         <div class="gen-socail-share">
-                                                            <ul class="social-inner">
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+                                                            <ul class="ott-inner">
+                                                                <li><a href="#" class="facebook"><img src="/images/home/netflix1.png" alt="netflix"/></a></li>
+                                                                <li><a href="#" class="facebook"><img src="/images/home/watcha.png" alt="watcha"/></a></li>
+                                                                <li><a href="#" class="facebook"><img src="/images/home/wavve.png" alt="wavve"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/disney.png" alt="disney"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/appleTv.png" alt="appleTV"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/amazonPrimeVideo.png" alt="Amazon Prime Video"/></a></li>
                                                             </ul>
                                                         </div>
                                                     </span>
@@ -442,7 +475,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- 리뷰 -->
 						<div class="col-lg-12">
 							<div class="padding-2">
@@ -474,8 +507,11 @@
 														<div class="text col-xl-7 col-lg-7 col-md-7">
 															<textarea rows="3" cols="60" placeholder="Enter Your Comment"></textarea>
 														</div>
-														<div class="col-xl-1 col-lg-1 col-md-1">
-															<input type="submit" value="등록하기">
+														<div class="col-xl-1 col-lg-1 col-md-1 checkbox">
+															<input type="checkbox" id="spoiler" class="checkbox2"/><label for="spoiler">스포일러</label>
+															<div class="gen-btn-container">
+																<input type="submit" value="등록"/>
+															</div>
 														</div>
 													</div>
 												</form>
@@ -506,7 +542,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
@@ -539,7 +578,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
@@ -572,7 +614,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
