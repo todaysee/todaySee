@@ -15,6 +15,7 @@ public class CommentsComments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer commentscomments_number;
 
+    @Column(length = 3000)
     String commentscomments_content;
     Integer commentscomments_like;
 

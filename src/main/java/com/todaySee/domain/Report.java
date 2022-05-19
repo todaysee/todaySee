@@ -16,6 +16,7 @@ public class Report {
     Integer report_number;
 
     String report_target;
+    @Column(length = 3000)
     String report_content;
 
     Integer report_state;
