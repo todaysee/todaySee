@@ -18,11 +18,7 @@ function fetchNotes(startPage) {
             // add table rows
             $.each(response.content, (i, content) => {
                 let reviewRow = '<div class="col-lg-3 col-md-6">' +
-                                    '<div class="single-events-card">' +
-                                        '<a href =' + content.contentPosterImgLink + '>' +
-                                            '<img src="' + content.contentPosterImgLink + '" alt="image">' +
-                                        '</a>' +
-                                    '</div>' +
+                                    'aaaa' +
                                 '</div>';
                 $('#nreviewBody').append(reviewRow);
             });
