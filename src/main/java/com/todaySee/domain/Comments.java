@@ -18,6 +18,7 @@ public class Comments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer comments_number;
 
+    @Column(length = 3000)
     String comments_content;
     Integer comments_like;
 
