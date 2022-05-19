@@ -1334,7 +1334,7 @@
 						<div class="padding-7">
 							<div class="form-group">
 								<label for="message-text" class="col-form-label">사유 선택:</label>
-								<select class="modalSelect">
+								<select class="modalSelect" id="message-text">
 									<option>스팸홍보/도배글입니다.</option>
 									<option>음란물입니다.</option>
 									<option>불법정보를 포함하고 있습니다.</option>
