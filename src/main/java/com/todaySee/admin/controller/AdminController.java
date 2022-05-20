@@ -14,14 +14,12 @@ public class AdminController {
 	public String adminMain() {
 		return "admin/adminIndex";
 	}
-	
-	
 
- 
+    @GetMapping("/image")
+    public String image(Model m) {
 
-    @RequestMapping("/image")
-    public void image(Model m) {
         System.out.println("image 페이지 접속");
+        return "admin/image";
     }
     
     @GetMapping("/adminTable")

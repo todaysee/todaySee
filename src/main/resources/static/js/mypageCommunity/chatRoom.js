@@ -1,3 +1,11 @@
+
+
+
+
+
+	
+
+
 var ws;
 
 	function wsOpen(){
@@ -59,6 +67,7 @@ var ws;
 	}
 
 	function send() {
+		//alert('확인')
 		var option ={
 			type: "message",
 			roomNumber: $("#roomNumber").val(),
