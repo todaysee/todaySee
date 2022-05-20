@@ -31,6 +31,11 @@ public class MyPageController {
         return "/myPage/myPageBookMark";
     }
 
+    @GetMapping("/myPage/bookMark/list")
+    public String myPageBookMarkList(Model m) {
+        return "/myPage/myPageBookMarkList";
+    }
+
     @GetMapping("/myPage/myPageGrade")
     public String myPageGrade(Model m) {
         return "/myPage/myPageGrade";
