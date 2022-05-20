@@ -10,21 +10,21 @@ let totalPages = 1;
 function fetchNotes(startPage) {
     $.ajax({
         type : "GET",
-        url : "http://localhost:8080/ajaxPaging",
+        url : "http://localhost:8080/ajaxPaging", // AjaxRestController 컨트롤러에 요청을 보낸다.
         data: {
             page: startPage,
             size: 10
         },
         success: function(response){
-            $('#noteTable tbody').empty();
-            // add table rows
+            $('#noteTable tbody').empty(); // 페이징을 하기위한 위치의 자손들을 비워놈
+            // 반복을 돌릴 것의 디자인
             $.each(response.content, (i, content) => {
                 let noteRow = '<tr>' +
-                    '<td>' + content.contentNumber + '</td>' +
-                    '<td>' + content.contentTitle + '</td>' +
-                    '<td>' + '<a href =' + content.contentMainImgLink + '>'  + '이미지링크' + '</a>'  +'</td>' +
+                    '<td>' + content.content_number + '</td>' +
+                    '<td>' + content.content_title + '</td>' +
+                    '<td>' + '<a href =' + content.content_main_images_url + '>'  + '이미지링크' + '</a>'  +'</td>' +
                     '</tr>';
-                $('#noteTable tbody').append(noteRow);
+                $('#noteTable tbody').append(noteRow); // 자손 추가
             });
 
             if ($('ul.pagination li').length - 2 != response.totalPages){

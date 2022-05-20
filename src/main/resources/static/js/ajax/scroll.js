@@ -3,12 +3,12 @@
 //         referrerpolicy="no-referrer"></script>
 // <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" crossOrigin="anonymous"></script>
 
-$('#scrollTestBody').scroll(function () {
+$('#scrollTestBody').scroll(function () { // 무한 스크롤을 더보기 버튼으로 구현함
     var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
     var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
     var contentH = $('.container').height(); //문서 전체 내용을 갖는 div의 높이
     if (scrollT + scrollH + 1 >= contentH) { // 스크롤바가 아래 쪽에 위치할 때
-        $('#testScrollNext').trigger('click');
+        $('#testScrollNext').trigger('click'); // 버튼 클릭하여 페이징 작동
     }
 });
 
@@ -28,9 +28,9 @@ function fetchNotes(startPage) {
             // add table rows
             $.each(response.content, (i, content) => {
                 let noteRow = '<div>' +
-                    '<h1>' + content.contentNumber + '</h1>' +
-                    '<h1>' + content.contentTitle + '</h1>' +
-                    '<img src="' + content.contentMainImgLink + '">' +
+                    '<h1>' + content.content_number + '</h1>' +
+                    '<h1>' + content.content_title + '</h1>' +
+                    '<img src="' + content.content_main_images_url + '">' +
                     '</div>';
                 $('#noteTable tbody').append(noteRow);
             });
