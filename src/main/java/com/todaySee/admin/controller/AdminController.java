@@ -61,14 +61,17 @@ public class AdminController {
 	@ResponseBody
 	public test1 userList2(Model m, test1 t, @PathVariable Integer userNumber) throws Exception {
 	
-	
-	test1 addList = s.getUser(userNumber);
+		test1 addList = s.getUser(userNumber);
 
 		return addList;
 	}
+	
     
 
-
+	@GetMapping("/testReport")
+	public String testReport() {
+		return "/admin/testReport";
+	}
 
 
 

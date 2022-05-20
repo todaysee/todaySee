@@ -47,9 +47,9 @@ $(function(){
 			
 		}
 		
-		$('#userDetail').css(function(){
-			display: "none"
-		})
+		// $('#userDetail').css(function(){
+		// 	display: "none"
+		// })
 		
 
 		

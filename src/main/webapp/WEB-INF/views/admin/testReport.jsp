@@ -18,7 +18,7 @@
   }
 
   	
-	#example1{
+	.userListTable{
 		cursor:pointer
 	
   }
@@ -165,25 +165,6 @@
             </div>
             <div class="card-body p-0">
               <ul class="nav nav-pills flex-column">
-
-                <li class="nav-item active">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 회원번호
-                   
-                    <span class="badge float-right emailUser"><h5></h5></span>
-                  </a>
-                </li>
-
-
-                <li class="nav-item active">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 이름
-                   
-                    <span class="badge float-right emailUser"><h5></h5></span>
-                  </a>
-                </li>
-
-
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
                     <i class="fas fa-inbox"></i> 이메일
@@ -191,17 +172,6 @@
                     <span class="badge float-right emailUser"><h5></h5></span>
                   </a>
                 </li>
-
-                <li class="nav-item active">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 전화번호
-                   
-                    <span class="badge float-right emailUser"><h5></h5></span>
-                  </a>
-                </li>
-
-
-
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-envelope"></i> 닉네임
@@ -220,23 +190,12 @@
                     <span class="badge float-right loginDateUser"><h5></h5></span>
                   </a>
                 </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fas fa-filter"></i> 회원가입 날짜
-                    <span class="badge float-right loginDateUser"><h5></h5></span>
-                  </a>
-                </li>
-
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-trash-alt"></i> 회원상태
                     <span class="badge float-right sangtaeUser"><h5></h5></span>
                   </a>
                 </li>
-
-
-                
               </ul>
             </div>
             <!-- /.card-body -->
@@ -244,7 +203,7 @@
         </form>
           <!-- /.card -->
           <div class="card">
-            <!-- <div class="card-header">
+            <div class="card-header">
               <h3 class="card-title">신고 대상</h3>
 
               <div class="card-tools">
@@ -276,7 +235,7 @@
                   </a>
                 </li>
               </ul>
-            </div> -->
+            </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

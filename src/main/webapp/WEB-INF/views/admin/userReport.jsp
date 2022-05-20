@@ -6,6 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <title>유저 신고관리</title>
 
@@ -19,8 +20,45 @@
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+
 </head>
 
+      <style>
+        ul{
+          list-style: none;
+          margin: 0px;
+          padding: 0px;
+        }
+        li{
+          margin: 0px;
+          margin-right: 20px;
+          padding: 0px;
+          float: left;
+          cursor: pointer;
+        }
+      </style>
+
+      <script type="text/javascript">
+
+        
+
+
+            $(function ($) {
+            	$('#tab-content2').hide()
+                $('#tab-content3').hide() 	
+            	
+            	
+        $(".tab-content").eq(0).show(0);
+        $(".tab-ul li").click(function () {
+          var idx = $(this).index();
+          $(".tab-content").hide();
+          $(".tab-content").eq(idx).show();
+          $(".tab-ul li").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
     
     
 
@@ -77,33 +115,48 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+                <ul class="tab-ul">
+                  
+                  <li class="active">리뷰&댓글 신고</li>
+                  <li>게시글 신고</li>
+               </ul>
               </div>
-             
 
+
+
+
+              
+
+
+
+
+          <div class="tab-content" id="tab-content2">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">신고 관리</h3>
+                <h3 class="card-title">리뷰 댓글 관리</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <div class="card-body" >
+                <table id="example2" class="table table-bordered table-striped jqplugin">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
+                    <th>2</th>
                     <th>Browser</th>
                     <th>Platform(s)</th>
                     <th>Engine version</th>
                     <th>CSS grade</th>
+                    <th>신고처리</th>
                   </tr>
                   </thead>
                   <tbody>
                   
                   <tr>
-                    <td>Other browsers</td>
+                    <td>2</td>
                     <td>All others</td>
                     <td>-</td>
                     <td>-</td>
                     <td>U</td>
+                    <th><button class="btn btn-outline-danger">신고처리</button></th>
                   </tr>
                   </tbody>
                   
@@ -114,6 +167,50 @@
             <!-- /.card -->
           </div>
           <!-- /.col -->
+
+
+
+
+
+          <div class="tab-content" id="tab-content3">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">게시글신고 관리</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example3" class="table table-bordered table-striped jqplugin">
+                  <thead>
+                  <tr>
+                    <th> 3</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                    <th>Engine version</th>
+                    <th>CSS grade</th>
+                    <th>신고처리</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <tr>
+                    <td>3</td>
+                    <td>All others</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>U</td>
+                    <th><button class="btn btn-outline-danger">신고처리</button></th>
+                  </tr>
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+
+          <!-- /.col -->
         </div>
         <!-- /.row -->
       </div>
@@ -121,12 +218,17 @@
     </section>
     <!-- /.content -->
   </div>
+</div>
+
+
+
+    
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+      <!-- <b>Version</b> 3.2.0 -->
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved. -->
   </footer>
 
   <!-- Control Sidebar -->
@@ -162,22 +264,27 @@
 
 <script src="/dist/admin/admin.js"></script>
 
-<script>
+<script src="/dist/admin/choi_admin.js"></script>
+<script>  
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+    $("#jqpluginMom.jqplugin").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false, "destroy":true,
       /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
+    $('#jqpluginMom.jqplugin').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": false,
+      "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,
       "responsive": true,
-    });
+      "destroy":true,
+    }); 
   });
+
+
+
 </script>
 </body>
 </html>
