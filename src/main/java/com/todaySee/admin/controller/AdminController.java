@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.todaySee.admin.service.AdminService;
+import com.todaySee.domain.User;
+
 
 @Controller
 public class AdminController {
 
 	
-//	@Autowired
-//	AdminService s;
+	@Autowired
+	AdminService s;
 	
 	
 	@GetMapping("/admin")
@@ -34,12 +37,12 @@ public class AdminController {
 		return "admin/userChart";
 	}
 	
-//	@GetMapping("/admin/userList")
-//	public String userList(Model m, test1 t) {
-//	m.addAttribute("userList",s.getUserList(t));
-//		
-//		return "admin/userList";
-//	}
+	@GetMapping("/admin/userList")
+	public String userList(Model m, User user) {
+	m.addAttribute("userList",s.getUserList(user));
+		
+		return "admin/userList";
+	}
 	
 	@GetMapping("/movieAdmin")
 	public String movieAdmin() {
@@ -55,15 +58,15 @@ public class AdminController {
     public String adminTable() {
     	return "admin/userReport";
     }
-//	@GetMapping("/admin/userList/{userNumber}")
-//	@ResponseBody
-//	public test1 userList2(Model m, test1 t, @PathVariable Integer userNumber) throws Exception {
-//	
-//		test1 addList = s.getUser(userNumber);
-//
-//		return addList;
-//	}
-//	
+	@GetMapping("/admin/userList/{userNumber}")
+	@ResponseBody
+	public User userList2(Model m, User u, @PathVariable Integer userNumber) throws Exception {
+	
+		User addList = s.getUser(userNumber);
+
+		return addList;
+	}
+	
     
 
 	@GetMapping("/testReport")
