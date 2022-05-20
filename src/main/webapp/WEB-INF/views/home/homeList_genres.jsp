@@ -57,6 +57,7 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
+
                                <li ><a href="/search/genres?contentgenre_number=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
                                 <li ><a href="/search/genres?contentgenre_number=2">로맨스</a></li>
@@ -91,6 +92,7 @@
                                 <li ><a href="/search/genres?contentgenre_number=6">공포</a></li>
                                 <li><span>&#124;</span></li>
                                 <li ><a href="/search/genres?contentgenre_number=17">판타지</a></li>
+
                               </ol>
                         </div>
                     </nav>
@@ -108,15 +110,20 @@
                 <div class="col-lg-12">
                     <div class="row">
                     <!-- start for -->
+
                      <c:forEach items="${genresContentList}" var="genresContent">
+
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                                 <div class="gen-movie-contain">
                                     <div class="gen-movie-img">
+
                                         <img src="${ genresContent.content_main_images_url}" alt="streamlab-image">
                                         <div class="gen-movie-add">
                                             <div class="wpulike wpulike-heart">
                                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
+
+
                                             </div>
                                             <ul class="menu bottomRight">
                                                 <li class="share top">
@@ -155,6 +162,7 @@
                                     </div>
                                     <div class="gen-info-contain">
                                         <div class="gen-movie-info">
+
                                             <h3><a href="single-movie.html">${genresContent.content_title}</a></h3>
                                         </div>
                                         <div class="gen-movie-meta-holder">
@@ -162,6 +170,7 @@
                                                 <li>${genresContent.content_running_time}</li>
                                                 <li>
                                                     <a href="/search/genres?contentgenre_number=${ contentgenre_number}"><span>Action</span></a>
+
                                                 </li>
                                             </ul>
                                         </div>
@@ -169,7 +178,9 @@
                                 </div>
                             </div>
                         </div>
+
                       </c:forEach>
+
                         <!-- end of for -->
                             </div>
                         </div>
@@ -187,6 +198,7 @@
                         </nav>
                     </div>
                 </div>
+
     </section>
     <!-- Section-1 End -->
 

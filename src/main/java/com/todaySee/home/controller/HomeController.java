@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
 
@@ -128,6 +127,7 @@ public class HomeController {
     	model.addAttribute("genresContentList", genresContentList);
     	model.addAttribute("contentgenre_number",contentgenre_number);
     	
+
     	return "/home/homeList_genres";
     }
 
