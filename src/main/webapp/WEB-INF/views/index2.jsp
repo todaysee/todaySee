@@ -27,6 +27,7 @@
 		<a href="/myPage/like">마이페이지-like</a><br/>
 		<a href="/myPage/comments">마이페이지-comments</a><br/>
 		<a href="/myPage/bookMark">마이페이지-bookMark</a><br/>
+		<a href="/myPage/bookMark/list">마이페이지-bookMark 상세보기</a><br/>
 		<a href="/myPage/myPageGrade">마이페이지-myPageGrade</a><br/>
 		<a href="/myPage/list">마이페이지-db테스트</a><br/>
 		<hr/>
