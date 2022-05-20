@@ -237,6 +237,12 @@
 			border-radius: 0px;
 		}
 
+		.gen-btn-new:hover,
+		.gen-btn-new:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
 		.gen-btn {
 			text-transform: uppercase;
 			position: relative;
@@ -310,6 +316,40 @@
 			opacity: 1;
 			transform: scale(1);
 		}
+
+		/*============================================
+        플랫폼  - 권소연 추가
+        ==============================================*/
+
+		.gen-socail-share .ott-inner {
+			margin: 0 0 0 15px;
+			padding: 0;
+			display: flex;
+		}
+
+		.gen-socail-share .ott-inner li {
+			list-style: none;
+			margin: 0 15px 0 0;
+		}
+
+		.gen-socail-share .ott-inner li:last-child {
+			margin-right: 0;
+		}
+
+		.gen-socail-share .ott-inner li a {
+			display: inline-block;
+			font-size: 18px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background: var(--black-color);
+			color: var(--white-color);
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			border-radius: 0;
+		}
+
 	</style>
 	<!-- 추가 CSS -->
 
@@ -357,7 +397,7 @@
 										<div class="gen-movie-action">
 											<div class="gen-btn-container text-right">
 												<a type="button" class="gen-button-like gen-button-flat myModalLike" data-bs-toggle="modal" data-bs-target="#modalLike">
-													<span class="text"><i class="fa fa-heart"></i>보고싶어요</span>
+													<span class="text"><i class="fa fa-heart"></i> 보고싶어요</span>
 												</a>
 											</div>
 										</div>
@@ -384,18 +424,6 @@
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
 										<ul>
-											<li>
-												<span>언어 :</span>
-												<span>English</span>
-											</li>
-											<li>
-												<span>자막 :</span>
-												<span>English</span>
-											</li>
-											<li>
-												<span>음성 언어 :</span>
-												<span>English</span>
-											</li>
 											<li><span>장르 :</span>
 												<span>
                                                         <a href="action.html">
@@ -406,23 +434,28 @@
                                                             Documentary </a>
                                                     </span>
 											</li>
+											<li>
+												<span>연령등급 :</span>
+												<span>English</span>
+											</li>
 											<li><span>영상 시간 :</span>
 												<span>1hr 24 mins</span>
 											</li>
 											<li>
-												<span>영상이 올라온 날짜 :</span>
+												<span>영상 등록 년도 :</span>
 												<span>14 Aug,2018</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
 												<span>
                                                         <div class="gen-socail-share">
-                                                            <ul class="social-inner">
-                                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-                                                                </li>
-                                                                <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+                                                            <ul class="ott-inner">
+                                                                <li><a href="#" class="facebook"><img src="/images/home/netflix1.png" alt="netflix"/></a></li>
+                                                                <li><a href="#" class="facebook"><img src="/images/home/watcha.png" alt="watcha"/></a></li>
+                                                                <li><a href="#" class="facebook"><img src="/images/home/wavve.png" alt="wavve"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/disney.png" alt="disney"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/appleTv.png" alt="appleTV"/></a></li>
+																<li><a href="#" class="facebook"><img src="/images/home/amazonPrimeVideo.png" alt="Amazon Prime Video"/></a></li>
                                                             </ul>
                                                         </div>
                                                     </span>
@@ -438,236 +471,6 @@
 											</li>
 											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
 										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- 인물 -->
-						<div class="col-lg-12">
-							<div class="padding-2">
-								<div class="pm-inner">
-									<div class="gen-more-like">
-										<div class="row">
-											<div class="col-xl-6 col-lg-6 col-md-6">
-												<h5 class="gen-more-title">출연 배우</h5>
-											</div>
-											<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-												<div class="gen-movie-action">
-													<div class="gen-btn-container text-right">
-														<a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
-															<span class="text">더보기</span>
-														</a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-12">
-												<div class="gen-style-2">
-													<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
-														 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
-														 data-loop="false" data-margin="30">
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-
-
-														<div class="item">
-															<div class="row">
-																<div class="col-xl-3 col-lg-3 col-md-3">
-																	<div class="list-content">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-1.jpg" class="rounded-circle" alt="image"></a>
-																	</div>
-																</div>
-																<div class="col-xl-9 col-lg-9 col-md-9">
-																	<div class="text">
-																		<h3>
-																			<a href="my-profile.html">Vanwin</a>
-																		</h3>
-																		<span>11 July, 2021</span>
-																	</div>
-																</div>
-															</div>
-															<!-- #post-## -->
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -704,8 +507,11 @@
 														<div class="text col-xl-7 col-lg-7 col-md-7">
 															<textarea rows="3" cols="60" placeholder="Enter Your Comment"></textarea>
 														</div>
-														<div class="col-xl-1 col-lg-1 col-md-1">
-															<input type="submit" value="등록하기">
+														<div class="col-xl-1 col-lg-1 col-md-1 checkbox">
+															<input type="checkbox" id="spoiler" class="checkbox2"/><label for="spoiler">스포일러</label>
+															<div class="gen-btn-container">
+																<input type="submit" value="등록"/>
+															</div>
 														</div>
 													</div>
 												</form>
@@ -736,7 +542,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
@@ -769,7 +578,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
@@ -802,7 +614,10 @@
 														<div class="text-right">
 															<div class="gen-btn-container">
 																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i>신고</span>
+																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																</a>
+																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																</a>
 															</div>
 														</div>
@@ -1564,7 +1379,7 @@
 						<div class="padding-7">
 							<div class="form-group">
 								<label for="message-text" class="col-form-label">사유 선택:</label>
-								<select class="modalSelect">
+								<select class="modalSelect" id="message-text">
 									<option>스팸홍보/도배글입니다.</option>
 									<option>음란물입니다.</option>
 									<option>불법정보를 포함하고 있습니다.</option>
@@ -1589,11 +1404,11 @@
 
 
 <!--========== Like Modal ==============-->
-<div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalReportLabel" aria-hidden="true">
+<div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalBookmarkLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="modalReportLabel" >추가할 즐겨찾기 선택</h5>
+				<h5 class="modal-title" id="modalBookmarkLabel" >추가할 즐겨찾기 선택</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
