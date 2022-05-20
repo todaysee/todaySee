@@ -85,133 +85,17 @@
 								class="post-header d-flex justify-content-between align-items-center">
 								<div class="image">
 									<a href="my-profile.html"><img
-										src="/images/mypageCommunity/user/user-32.jpg"
-										class="rounded-circle" alt="image"></a>
-								</div>
-								<div class="info ms-3">
-									<span class="name"><a href="my-profile.html">Julie
-											R. Morleyv</a></span> <span class="small-text"><a href="#">10
-											Mins Ago</a></span>
-								</div>
-							</div>
-
-							<div class="post-body">
-								<p>Donec rutrum congue leo eget malesuada. Nulla quis lorem
-									ut libero malesuada feugiat. Donec rutrum congue leo eget
-									malesuada. Donec rutrum congue leo eget malesuada. Praesent
-									sapien massa convallis a pellentesque nec egestas non nisi.
-									Curabitur non nulla sit amet nisl tempus convallis quis.</p>
-								<div class="post-image">
-									<img src="/images/mypageCommunity/news-feed-post/post-1.jpg"
-										alt="image">
-								</div>
-								<ul
-									class="post-meta-wrap d-flex justify-content-between align-items-center">
-									<li class="post-react"><a href="#"><i
-											class="flaticon-like"></i><span>Like</span> <span
-											class="number">1499 </span></a></li>
-									<li class="post-comment"><a href="#"><i
-											class="flaticon-comment"></i><span>Comment</span> <span
-											class="number">599 </span></a></li>
-									<li class="post-share"><a href="#"><i
-											class="flaticon-share"></i><span>Share</span> <span
-											class="number">24 </span></a></li>
-								</ul>
-								<div class="post-comment-list">
-									<div class="comment-list">
-										<div class="comment-image">
-											<a href="my-profile.html"><img
-												src="/images/mypageCommunity/user/user-33.jpg"
-												class="rounded-circle" alt="image"></a>
-										</div>
-										<div class="comment-info">
-											<h3>
-												<a href="my-profile.html">David Moore</a>
-											</h3>
-											<span>5 Mins Ago</span>
-											<p>Donec rutrum congue leo eget malesuada nulla quis
-												lorem ut libero malesuada feugiat donec rutrum congue leo
-												eget malesuada donec rutrum congue leo eget malesuada.
-												Praesent sapien massa convallis a pellentesque non nisi
-												curabitur non nulla sit amet nisl tempus convallis lectus.</p>
-											<ul class="comment-react">
-												<li><a href="#" class="like">Like(2)</a></li>
-												<li><a href="#">Reply</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="comment-list">
-										<div class="comment-image">
-											<a href="my-profile.html"><img
-												src="/images/mypageCommunity/user/user-34.jpg"
-												class="rounded-circle" alt="image"></a>
-										</div>
-										<div class="comment-info">
-											<h3>
-												<a href="my-profile.html">Claire P. Toy</a>
-											</h3>
-											<span>45 Mins Ago</span>
-											<p>Donec rutrum congue leo eget malesuada praesent sapien
-												massa convallis a pellentesque nec egestas non nisi
-												curabitur non nulla sit amet nisl tempus convallis quis ac
-												lectus.</p>
-											<ul class="comment-react">
-												<li><a href="#" class="like">Like(12)</a></li>
-												<li><a href="#">Reply</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="comment-list">
-										<div class="comment-image">
-											<a href="my-profile.html"><img
-												src="/images/mypageCommunity/user/user-8.jpg"
-												class="rounded-circle" alt="image"></a>
-										</div>
-										<div class="comment-info">
-											<h3>
-												<a href="my-profile.html">Karen Williams</a>
-											</h3>
-											<span>5 Mins Ago</span>
-											<p>Donec rutrum congue leo eget malesuada nulla quis
-												lorem ut libero malesuada feugiat donec rutrum congue leo
-												eget.</p>
-											<ul class="comment-react">
-												<li><a href="#" class="like">Like(2)</a></li>
-												<li><a href="#">Reply</a></li>
-											</ul>
-										</div>
-									</div>
-									<div class="more-comments">
-										<a href="#">More Comments+</a>
-									</div>
-								</div>
-								<form class="post-footer">
-									<div class="footer-image">
-										<a href="#"><img
-											src="/images/mypageCommunity/user/user-1.jpg"
-											class="rounded-circle" alt="image"></a>
-									</div>
-									<div class="form-group">
-										<textarea name="message" class="form-control"
-											placeholder="내용을 적어주세요."></textarea>
-									</div>
-
-								</form>
-							</div>
-						</div>
-
-						<div class="news-feed news-feed-post">
-							<div
-								class="post-header d-flex justify-content-between align-items-center">
-								<div class="image">
-									<a href="my-profile.html"><img
 										src="/images/mypageCommunity/user/user-35.jpg"
 										class="rounded-circle" alt="image"></a>
 								</div>
 								<div class="info ms-3">
-									<span class="name"><a href="my-profile.html">William
-											Fenton</a></span> <span class="small-text"><a href="#">50
-											Mins Ago</a></span>
+									<span class="name community_title"><a
+										href="my-profile.html">제목</a></span>
+									<div class='row'>
+										<span class="small-text user_name col-md-9"><a href="#">작성자</a></span>
+										<span class="small-text col-md-3 write_date"><a
+											href="#">xxxx.xx.xx</a></span>
+									</div>
 								</div>
 							</div>
 
@@ -223,9 +107,10 @@
 								</div>
 								<ul
 									class="post-meta-wrap d-flex justify-content-between align-items-center">
-									<li class="post-react"><a href="#"><i
-											class="flaticon-like"></i><span>Like</span> <span
-											class="number">3 </span></a></li>
+									<li class="post-react"><button class="community_like">
+											<i class="flaticon-like"></i><span>Like</span> <span
+												class="number">3 </span>
+										</button></li>
 									<li class="post-comment"><a href="#"><i
 											class="flaticon-comment"></i><span>Comment</span> <span
 											class="number">0 </span></a></li>
@@ -269,10 +154,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="modalReportLabel">리뷰 신고하기</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+
 					</div>
 					<div class="modal-body">
 						<form>
