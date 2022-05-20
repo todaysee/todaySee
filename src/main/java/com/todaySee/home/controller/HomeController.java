@@ -8,6 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.todaySee.domain.Content;
+import com.todaySee.home.service.HomeServiceImpl;
+
  
 @Controller
 public class HomeController {
 
-
+	@Autowired
+	private HomeServiceImpl homeServiceImpl;
 
     //테스트 페이지
     @GetMapping("/2")
@@ -112,8 +117,17 @@ public class HomeController {
      * @return
      */
     @GetMapping("/search/genres")
-    public String homeList_person(int genre) {
-    	System.out.println("장르 파라메터 : "+genre);
+    public String homeList_person(Integer contentgenre_number, Model model) {
+    	
+    	if(contentgenre_number == null) contentgenre_number = 1;
+    	
+    	System.out.println("장르 파라메터 : "+contentgenre_number);
+    	
+    	List<Content> genresContentList = homeServiceImpl.getGenresContentList(contentgenre_number);
+    	
+    	model.addAttribute("genresContentList", genresContentList);
+    	model.addAttribute("contentgenre_number",contentgenre_number);
+    	
     	return "/home/homeList_genres";
     }
 

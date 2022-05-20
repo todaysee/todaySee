@@ -57,40 +57,40 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                               <li ><a href="/search/genres?genre=1">드라마</a></li>
+                               <li ><a href="/search/genres?contentgenre_number=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=2">로맨스</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=2">로맨스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=3">스릴러</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=3">스릴러</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=4">SF</a></li>
+                                <li ><a href="/search/genres?genrecontentgenre_number=4">SF</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=5">가족</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=5">가족</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=16">코미디</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=16">코미디</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=7">다큐멘터리</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=7">다큐멘터리</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=9">스포츠</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=9">스포츠</a></li>
                             </ol>
                             <ol class="breadcrumb">
-                                <li ><a href="/search/genres?genre=8">범죄</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=8">범죄</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=10">애니메이션</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=10">애니메이션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=11">예능</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=11">예능</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=12">액션</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=12">액션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=13">역사</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=13">역사</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=14">음악</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=14">음악</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=15">전쟁</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=15">전쟁</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=6">공포</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=6">공포</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genre=17">판타지</a></li>
+                                <li ><a href="/search/genres?contentgenre_number=17">판타지</a></li>
                               </ol>
                         </div>
                     </nav>
@@ -108,16 +108,15 @@
                 <div class="col-lg-12">
                     <div class="row">
                     <!-- start for -->
+                     <c:forEach items="${genresContentList}" var="genresContent">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                                 <div class="gen-movie-contain">
                                     <div class="gen-movie-img">
-                                        <img src="/images/home/background/asset-5.jpeg" alt="streamlab-image">
+                                        <img src="${ genresContent.content_main_images_url}" alt="streamlab-image">
                                         <div class="gen-movie-add">
                                             <div class="wpulike wpulike-heart">
-                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-                                                        type="button" class="wp_ulike_btn wp_ulike_put_image"></button>
-                                                </div>
+                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
                                             </div>
                                             <ul class="menu bottomRight">
                                                 <li class="share top">
@@ -156,13 +155,13 @@
                                     </div>
                                     <div class="gen-info-contain">
                                         <div class="gen-movie-info">
-                                            <h3><a href="single-movie.html">The warrior life</a></h3>
+                                            <h3><a href="single-movie.html">${genresContent.content_title}</a></h3>
                                         </div>
                                         <div class="gen-movie-meta-holder">
                                             <ul>
-                                                <li>2hr 00mins</li>
+                                                <li>${genresContent.content_running_time}</li>
                                                 <li>
-                                                    <a href="action.html"><span>Action</span></a>
+                                                    <a href="/search/genres?contentgenre_number=${ contentgenre_number}"><span>Action</span></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -170,6 +169,7 @@
                                 </div>
                             </div>
                         </div>
+                      </c:forEach>
                         <!-- end of for -->
                             </div>
                         </div>
@@ -187,8 +187,6 @@
                         </nav>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
     <!-- Section-1 End -->
 
