@@ -16,16 +16,103 @@
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
+
+	<!-- 커뮤니티 CSS -->
+	<link rel="stylesheet" href="/css/mypageCommunity.css"/>
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>
 	
-	<!-- 커뮤니티 CSS -->
-	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	
 	<style type="text/css">
-		.board {
-		padding: 5%
+			
+		body {
+			background-color: #161616;
 		}
+
+		#click_page > a {
+			color : #e50916;
+		}
+		.board {
+			padding : 3% 3%;
+		}
+		.feed_post {
+			padding : 2%;
+			background-color: #161616;
+		}
+		
+		.news-feed-area .news-feed-post{
+			background-color:  #221f1f;
+		}
+		
+		div.info.ms-3 > span.name > a {
+			color: #ffffff;
+		}
+		span.small-text > a {
+			color: #ffffff;
+		}
+		.post-body > p {
+			color: #ffffff;
+		}
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react span {
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment span{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share span{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share .number{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-react i{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-comment i{
+			color: #ffffff;
+		}
+		
+		.news-feed-area .news-feed-post .post-body .post-meta-wrap .post-share i{
+			color: #ffffff;
+		}
+		
+		.community_like {
+			background-color:  #221f1f;
+			border:  #221f1f;
+		}
+		.loadMorePosts{
+			background-color: #161616;
+			border:  #221f1f;
+			color: #ffffff;
+		}
+		
+		.load-more-posts-btn i{
+			color: #e50916;
+		}
+		
+		.write_date{
+			color: #6b7c8f;
+		}
+		
+		.search_result{
+			padding: 3% 0% 1% 3%
+		}
+
 	</style>
+	
 </head>
 
 <body>
@@ -53,10 +140,13 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li class="active" ><a href="/search/content">콘텐츠</a></li>
-                                <li class=""><a href="/search/person">인물</a></li>
-                                <li class=""><a href="/search/bookmark">즐겨찾기</a></li>
-                                <li class=""><a href="/search/community">커뮤니티</a></li>
+                                <li ><a href="/search/content">콘텐츠</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/person">인물</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/bookmark">즐겨찾기</a></li>
+                                <li><span>&#124;</span></li>
+                                <li id="click_page"><a href="/search/community">커뮤니티</a></li>
                             </ol>
                         </div>
                     </nav>
@@ -65,62 +155,40 @@
         </div>
     </div>
     <!-- breadcrumb -->
+	
+	<div class="search_result">
+		<h4>"${search_result}"의 검색 결과</h4>
+	</div>
+	
 			<div class="board">
 				<div class="news-feed-area">
 				
-				<div class="">
-					<div class="col-md-4">
-					<div class="news-feed news-feed-post">
+				<div class="row">
+				<!-- start for -->
+					<div class="col-md-4 feed_post">
+					<div class="news-feed news-feed-post post_back">
 						<div class="post-header d-flex justify-content-between align-items-center">
 							<div class="image">
 								<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-32.jpg" class="rounded-circle" alt="image"></a>
 							</div>
 							<div class="info ms-3">
-								<span class="name"><a href="my-profile.html">Julie R. Morleyv</a></span>
-								<span class="small-text"><a href="#">10 Mins Ago</a></span>
+								<span class="name community_title"><a href="my-profile.html">제목</a></span>
+								<div class='row'>
+								<span class="small-text user_name col-md-9"><a href="#">작성자</a></span>
+								<span class="small-text col-md-3 write_date"><a href="#">xxxx.xx.xx</a></span>
+								</div>
 							</div>
-							<div class="dropdown">
-								<button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-edit"></i> Edit Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-private"></i> Hide Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-trash"></i> Delete Post</a></li>
-								</ul>
-							</div>
+
 						</div>
 
 						<div class="post-body">
 							<p>Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.</p>
 							<div class="post-image">
-								<img src="/images/mypageCommunity/news-feed-post/post-1.jpg" alt="image">
+								<img src="/images/mypageCommunity/news-feed-post/post-1.jpg" alt="image" id="imgClick">
 							</div>
 							<ul class="post-meta-wrap d-flex justify-content-between align-items-center">
 								<li class="post-react">
-									<a href="#"><i class="flaticon-like"></i><span>Like</span> <span class="number">1499 </span></a>
-
-									<ul class="react-list">
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-1.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-2.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-3.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-4.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-5.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-6.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-7.png" alt="Like"></a>
-										</li>
-									</ul>
+									<button class="community_like"><i class="flaticon-like community_like_icon"></i><span>Like</span> <span class="number">1499 </span></button>
 								</li>
 								<li class="post-comment">
 									<a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span class="number">599 </span></a>
@@ -132,141 +200,14 @@
 						</div>
 					</div>
 				</div>
-					<div class="col-md-4">
-					<div class="news-feed news-feed-post">
-						<div class="post-header d-flex justify-content-between align-items-center">
-							<div class="image">
-								<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-32.jpg" class="rounded-circle" alt="image"></a>
-							</div>
-							<div class="info ms-3">
-								<span class="name"><a href="my-profile.html">Julie R. Morleyv</a></span>
-								<span class="small-text"><a href="#">10 Mins Ago</a></span>
-							</div>
-							<div class="dropdown">
-								<button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-edit"></i> Edit Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-private"></i> Hide Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-trash"></i> Delete Post</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="post-body">
-							<p>Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.</p>
-							<div class="post-image">
-								<img src="/images/mypageCommunity/news-feed-post/post-1.jpg" alt="image">
-							</div>
-							<ul class="post-meta-wrap d-flex justify-content-between align-items-center">
-								<li class="post-react">
-									<a href="#"><i class="flaticon-like"></i><span>Like</span> <span class="number">1499 </span></a>
-
-									<ul class="react-list">
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-1.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-2.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-3.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-4.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-5.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-6.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-7.png" alt="Like"></a>
-										</li>
-									</ul>
-								</li>
-								<li class="post-comment">
-									<a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span class="number">599 </span></a>
-								</li>
-								<li class="post-share">
-									<a href="#"><i class="flaticon-share"></i><span>Share</span> <span class="number">24 </span></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-					<div class="col-md-4">
-					<div class="news-feed news-feed-post">
-						<div class="post-header d-flex justify-content-between align-items-center">
-							<div class="image">
-								<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-32.jpg" class="rounded-circle" alt="image"></a>
-							</div>
-							<div class="info ms-3">
-								<span class="name"><a href="my-profile.html">Julie R. Morleyv</a></span>
-								<span class="small-text"><a href="#">10 Mins Ago</a></span>
-							</div>
-							<div class="dropdown">
-								<button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-menu"></i></button>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-edit"></i> Edit Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-private"></i> Hide Post</a></li>
-									<li><a class="dropdown-item d-flex align-items-center" href="#"><i class="flaticon-trash"></i> Delete Post</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="post-body">
-							<p>Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Donec rutrum congue leo eget malesuada. Praesent sapien massa convallis a pellentesque nec egestas non nisi. Curabitur non nulla sit amet nisl tempus convallis quis.</p>
-							<div class="post-image">
-								<img src="/images/mypageCommunity/news-feed-post/post-1.jpg" alt="image">
-							</div>
-							<ul class="post-meta-wrap d-flex justify-content-between align-items-center">
-								<li class="post-react">
-									<a href="#"><i class="flaticon-like"></i><span>Like</span> <span class="number">1499 </span></a>
-
-									<ul class="react-list">
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-1.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-2.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-3.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-4.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-5.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-6.png" alt="Like"></a>
-										</li>
-										<li>
-											<a href="#"><img src="/images/mypageCommunity/react/react-7.png" alt="Like"></a>
-										</li>
-									</ul>
-								</li>
-								<li class="post-comment">
-									<a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span class="number">599 </span></a>
-								</li>
-								<li class="post-share">
-									<a href="#"><i class="flaticon-share"></i><span>Share</span> <span class="number">24 </span></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				</div>
+				<!-- end of for -->
 					<div class="load-more-posts-btn">
-						<a href="#"><i class="flaticon-loading"></i> Load More Posts</a>
+						<a href="javascript:moreList();" class="loadMorePosts"><i class="flaticon-loading"></i> Load More Posts</a>
 					</div>
 				</div>
 			</div>
-
+		</div>
 <!--========== Body ==============-->
-
 
 <!--========== Footer ==============-->
 <%@ include file="../inculde/home/footer.jsp"%>
@@ -303,7 +244,47 @@
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
 
+	<script type="text/javascript">
+	
 
+		let com_list = false;
+		$('.community_like').click(function(){
+
+			// 클릭 시 하트 색 빨간색으로 변경
+			if(!com_list){
+				$(this).children('i').css('color', '#e50916')
+				com_list = true;
+			}else{
+				$(this).children('i').css('color', '#ffffff')
+				com_list = false;
+			}
+			
+		})// end of $('.community_like').click()
+		
+		function moreList(btn){
+			console.log("morelist에서 받은 매개변수 : " + btn);
+			console.log("morelist 매개변수로 들어온 (버튼객제)의 valse = 페이징 " + btn.value);
+			
+			$.ajax({
+				url : "",
+				type : "post",	
+				dataType:'json',
+				data : {},	// 마지막 페이지 번호
+				success : function(){
+					
+				},
+				error : function(ex){
+					alert('실패')
+					console.log(ex)
+					
+				}
+				
+			});
+			
+		} // end of moreList()
+
+
+	</script>
 
 </body>
 
