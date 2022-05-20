@@ -1,11 +1,5 @@
 package com.todaySee.home.controller;
 
-
-
-
-
-
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -21,8 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.todaySee.home.service.HomeService;
-
+ 
 @Controller
 public class HomeController {
 
@@ -119,7 +112,8 @@ public class HomeController {
      * @return
      */
     @GetMapping("/search/genres")
-    public String homeList_person() {
+    public String homeList_person(int genre) {
+    	System.out.println("장르 파라메터 : "+genre);
     	return "/home/homeList_genres";
     }
 

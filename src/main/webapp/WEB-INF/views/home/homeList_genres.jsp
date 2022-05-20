@@ -57,14 +57,41 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li ><a href="/search/content">콘텐츠</a></li>
+                               <li ><a href="/search/genres?genre=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
-                                <li id="click_page"><a href="/search/person">인물</a></li>
+                                <li ><a href="/search/genres?genre=2">로맨스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/bookmark">즐겨찾기</a></li>
+                                <li ><a href="/search/genres?genre=3">스릴러</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/community">커뮤니티</a></li>
+                                <li ><a href="/search/genres?genre=4">SF</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=5">가족</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=16">코미디</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=7">다큐멘터리</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=9">스포츠</a></li>
                             </ol>
+                            <ol class="breadcrumb">
+                                <li ><a href="/search/genres?genre=8">범죄</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=10">애니메이션</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=11">예능</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=12">액션</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=13">역사</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=14">음악</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=15">전쟁</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=6">공포</a></li>
+                                <li><span>&#124;</span></li>
+                                <li ><a href="/search/genres?genre=17">판타지</a></li>
+                              </ol>
                         </div>
                     </nav>
                 </div>
@@ -85,7 +112,7 @@
                             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                                 <div class="gen-movie-contain">
                                     <div class="gen-movie-img">
-                                        <img src="images/background/asset-5.jpeg" alt="streamlab-image">
+                                        <img src="/images/home/background/asset-5.jpeg" alt="streamlab-image">
                                         <div class="gen-movie-add">
                                             <div class="wpulike wpulike-heart">
                                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
