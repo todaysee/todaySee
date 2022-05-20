@@ -2,8 +2,6 @@ package com.todaySee.home.controller;
 
 
 
-import com.todaySee.home.service.HomeService;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,13 +10,14 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.todaySee.home.service.HomeService;
 
 @Controller
 public class HomeController {
@@ -79,14 +78,19 @@ public class HomeController {
                 InputStream receiver = client.getInputStream();
                 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(receiver, "UTF-8"));
-                String message = "";
+                
+                String message = "";	// 파이썬에서 보낸 정보를 담을 변수 선언
+                StringTokenizer st;		// 파이썬에서 보낸 정보를 쪼개기 위해 StringTokenizer 선언
                 
                 while((message = reader.readLine()) != null) {
-                	
+                	st = new StringTokenizer(message, "/");		
                 	System.out.println("메시지 확인(1)"+message);
-                	System.out.println("메시지 확인(2)"+message);
                 	
-//                	message = message.trim().replace("", " ");
+                	int count = 0;
+                	while(st.hasMoreTokens()) {
+                		System.out.println(count+"번째"+st.nextToken());
+                		count++;
+                	}
                 }
                 
                 m.addAttribute("test",message);
@@ -111,9 +115,9 @@ public class HomeController {
     /** 검색 결과 페이지 - 인물
      * @return
      */
-    @GetMapping("/search/person")
+    @GetMapping("/search/genres")
     public String homeList_person() {
-    	return "/home/homeList_person";
+    	return "/home/homeList_genres";
     }
 
     /** 검색 결과 페이지 - 즐겨찾기
