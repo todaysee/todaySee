@@ -15,9 +15,13 @@ public class Images {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer images_number;
 
+    @Column(length = 3000)
     String images_url;
+    @Column(length = 3000)
     String images_file_name; // 원본 파일명
+    @Column(length = 3000)
     String images_file_rename; // 수정된 파일명
+    @Column(length = 1000)
     String images_type; // 파일의 저장위치
 
     @CreationTimestamp

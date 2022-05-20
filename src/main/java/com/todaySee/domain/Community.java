@@ -15,6 +15,7 @@ public class Community {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer community_number;
 
+    @Column(length = 1000)
     String community_title;
 
     @CreationTimestamp

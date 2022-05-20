@@ -16,6 +16,8 @@ public class Bookmark {
     Integer bookmark_number;
 
     Integer bookmark_state;
+
+    @Column(length = 1000)
     String bookmark_name;
 
     @CreationTimestamp
