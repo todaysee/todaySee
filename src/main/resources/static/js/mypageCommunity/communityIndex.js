@@ -3,6 +3,12 @@ $(function(){
 	$('.close').click(function(){
 		$('#modalReport').modal('hide');
 })
+$('.btn-secondary').click(function(){
+		$('#modalReport').modal('hide');
+})
+
+
+
 	
 })
 
