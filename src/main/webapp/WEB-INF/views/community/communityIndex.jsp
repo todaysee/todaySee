@@ -9,12 +9,15 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- Links of CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <link rel="stylesheet" href="../css/mypageCommunity/communityIndex.css">
 
-
+<!-- js files -->
+<script src="../js/mypageCommunity/communityIndex.js"></script>
 
 <title>Zust - Social Community & Marketplace HTML Template</title>
 
@@ -106,9 +109,7 @@
 									class="post-meta-wrap d-flex justify-content-between align-items-center">
 									<li class="post-react"><a href="#"><i
 											class="flaticon-like"></i><span>Like</span> <span
-											class="number">1499 </span></a>
-
-										</li>
+											class="number">1499 </span></a></li>
 									<li class="post-comment"><a href="#"><i
 											class="flaticon-comment"></i><span>Comment</span> <span
 											class="number">599 </span></a></li>
@@ -194,6 +195,7 @@
 										<textarea name="message" class="form-control"
 											placeholder="내용을 적어주세요."></textarea>
 									</div>
+
 								</form>
 							</div>
 						</div>
@@ -223,15 +225,17 @@
 									class="post-meta-wrap d-flex justify-content-between align-items-center">
 									<li class="post-react"><a href="#"><i
 											class="flaticon-like"></i><span>Like</span> <span
-											class="number">3 </span></a>
-
-										</li>
+											class="number">3 </span></a></li>
 									<li class="post-comment"><a href="#"><i
 											class="flaticon-comment"></i><span>Comment</span> <span
 											class="number">0 </span></a></li>
 									<li class="post-share"><a href="#"><i
 											class="flaticon-share"></i><span>Share</span> <span
 											class="number">0 </span></a></li>
+									<li><a type="button" class="gen-button-like myModal"
+										data-bs-toggle="modal" data-bs-target="#modalReport"> <span><i
+												class="fa fa-exclamation-triangle"></i>신고</span>
+									</a></li>
 								</ul>
 								<form class="post-footer">
 									<div class="footer-image">
@@ -256,6 +260,63 @@
 				</div>
 			</div>
 		</div>
+
+		<!--========== Report Modal ==============-->
+		<div class="modal fade" id="modalReport" data-backdrop="static"
+			data-keyboard="false" tabindex="-1"
+			aria-labelledby="modalReportLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalReportLabel">리뷰 신고하기</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="padding-6">
+								<div class="gen-after-report">
+									<div class="gen-extra-report">
+										<ul>
+											<li><span>리뷰 작성자 :</span> <span>English</span></li>
+											<li><span>리뷰 내용 :</span>
+												<p>Streamlab is a long established fact that a reader
+													will be distracted by the readable content of a page when
+													Streamlab at its layout. The point of using Lorem Streamlab
+													is that it has a more-or-less normal distribution of
+													Streamlab as opposed Streamlab.</p></li>
+										</ul>
+									</div>
+								</div>
+								<div class="padding-7">
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">사유
+											선택:</label> <select class="modalSelect">
+											<option>스팸홍보/도배글입니다.</option>
+											<option>음란물입니다.</option>
+											<option>불법정보를 포함하고 있습니다.</option>
+											<option>청소년에게 유해한 내용입니다.</option>
+											<option>욕설/생명경시/혐오/차별적 표현입니다.</option>
+											<option>개인정보 노출 게시물입니다.</option>
+											<option>불쾌한 표현이 있습니다.</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 ml-auto">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">닫기</button>
+								<button type="button" class="btn btn-danger">등록</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--========== Report Modal ==============-->
+
 		<!-- End Content Page Box Area -->
 
 		<!-- Start Right Sidebar Area -->
@@ -280,5 +341,6 @@
 	<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 	<script src="/js/mypageCommunity/wow.min.js"></script>
 	<script src="/js/mypageCommunity/main.js"></script>
+
 </body>
 </html>

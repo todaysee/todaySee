@@ -1,5 +1,124 @@
 .square{margin: 0% 8% 0% 12%; width:75%;}
 
 .search-test{
-	margin-left:18%;
+	margin-left:20%;
 }
+
+
+		/*============================================
+        신고 & 보고싶어요 버튼 - 권소연 추가
+        ==============================================*/
+
+		.gen-button-like {
+			text-transform: uppercase;
+			position: relative;
+			width: auto;
+			font-weight: 400;
+			background: var(--black-color);
+			color: var(--white-color);
+			font-family: var(--title-fonts);
+			font-size: 16px;
+			padding: 12px 30px;
+			line-height: 2;
+			vertical-align: middle;
+			border: none;
+			display: inline-block;
+			overflow: hidden;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+
+		.gen-button-like:hover,
+		.gen-button-like:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
+		/*============================================
+        Modal - 권소연 추가
+        ==============================================*/
+
+		.modal-content {
+			background: var(--dark-color);
+		}
+
+		.close {
+			color: var(--white-color);
+		}
+
+		.modalSelect {
+			color: var(--white-color)
+		}
+
+		/*============================================
+        Report Modal 안의 작성자, 내용 관련 - 권소연 추가
+        ==============================================*/
+
+		.gen-extra-report ul {
+			margin: 0 0 30px;
+			padding: 0;
+		}
+
+		.gen-extra-report ul li {
+			list-style: none;
+			color: var(--secondary-color);
+			margin: 0 0 5px;
+			font-size: 18px;
+		}
+
+		.gen-extra-report ul li span:first-child {
+			display: inline-block;
+			width: 25%;
+			font-weight: 500;
+		}
+
+		.gen-extra-report ul li span:last-child {
+			color: var(--white-color);
+		}
+
+		.gen-after-report {
+			display: flex;
+			border-bottom: 3px solid var(--primary-color);
+			padding: 0 0 10px 0;
+			align-items: flex-end;
+			-ms-flex-pack: justify !important;
+			justify-content: space-between !important;
+		}
+
+		.gen-after-report .gen-extra-data ul {
+			margin: 0;
+		}
+
+		.gen-after-report .gen-socail-share {
+			border-bottom: none;
+			padding: 0;
+			display: flex;
+			text-align: center;
+		}
+
+		@media (max-width:767px) {
+			.gen-after-report {
+				display: inline-block;
+				width: 100%;
+			}
+		}
+
+		@media (max-width:767px) {
+			.gen-single-movie-info .gen-after-report .gen-socail-share ul {
+				margin: 0 0 0 15px;
+			}
+		}
+
+		@media (max-width:479px) {
+			.gen-single-movie-info .gen-after-report .gen-socail-share {
+				margin: 30px 0 0;
+				display: inline-block;
+				width: 100%;
+				text-align: left;
+			}
+
+			.gen-single-movie-info .gen-after-report .gen-socail-share ul {
+				margin: 15px 0 0 0;
+			}
+		}
