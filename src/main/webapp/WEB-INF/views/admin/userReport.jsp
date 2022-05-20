@@ -114,16 +114,15 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header nav">
                 <ul class="tab-ul">
                   
-                  <li class="active">리뷰&댓글 신고</li>
-                  <li>게시글 신고</li>
+                  <li class="nav-link active">리뷰&댓글 신고</li>
+                  <li class="nav-link">게시글 신고</li>
                </ul>
               </div>
 
-
-
+              
 
               
 

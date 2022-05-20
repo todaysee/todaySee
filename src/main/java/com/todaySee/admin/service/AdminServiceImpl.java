@@ -25,4 +25,5 @@ public class AdminServiceImpl implements AdminService {
 		return  adminRepository.findById(userNumber).get();
 	}
 
+	
 }
