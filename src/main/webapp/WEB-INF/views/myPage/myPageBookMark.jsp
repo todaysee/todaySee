@@ -43,19 +43,12 @@
 	<div class="content-page-box-area">
 		<div class="content-page-box-area">
 			<div class="page-banner-box bg-5">
-				<h3>Groups</h3>
+				<h3>즐겨찾기</h3>
 			</div>
 
 			<div class="groups-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
 					<h3>사용자님이 생성한 보고싶어요 리스트</h3>
-				</div>
-
-				<div class="groups-search-box">
-					<form>
-						<input type="text" class="input-search" placeholder="Search groups...">
-						<button type="submit"><i class="ri-search-line"></i></button>
-					</form>
 				</div>
 			</div>
 

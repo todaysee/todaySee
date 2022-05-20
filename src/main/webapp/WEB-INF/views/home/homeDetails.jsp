@@ -1404,11 +1404,11 @@
 
 
 <!--========== Like Modal ==============-->
-<div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalReportLabel" aria-hidden="true">
+<div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalBookmarkLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="modalReportLabel" >추가할 즐겨찾기 선택</h5>
+				<h5 class="modal-title" id="modalBookmarkLabel" >추가할 즐겨찾기 선택</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

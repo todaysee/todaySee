@@ -186,7 +186,7 @@
 	<div class="content-page-box-area">
 		<div class="content-page-box-area">
 			<div class="page-banner-box bg-7">
-				<h3>Events</h3>
+				<h3>즐겨찾기</h3>
 			</div>
 
 			<div class="events-inner-box-style d-flex justify-content-between align-items-center">
@@ -195,9 +195,10 @@
 				</div>
 				<div class="bookmarkDateils-box">
 					<div class="events-footer d-flex justify-content-between align-items-center">
-						<a href="#" class="default-btn">현재 리스트 삭제</a>&nbsp
+						<a href="#" class="default-btn" data-bs-toggle="modal" data-bs-target="#modalListUpdate">현재 리스트 수정</a>&nbsp
+						<a href="#" class="default-btn delete-btn">현재 리스트 삭제</a>&nbsp
 						<a href="#" class="default-btn">선택 영상을 리스트에서 삭제</a>&nbsp
-						<a href="#" class="default-btn">선택 영상을 다른 리스트로 이동</a>&nbsp
+						<a href="#" class="default-btn" data-bs-toggle="modal" data-bs-target="#modalListMove">선택 영상을 다른 리스트로 이동</a>&nbsp
 					</div>
 				</div>
 			</div>
@@ -223,7 +224,7 @@
 							<p>장르</p>
 
 							<div class="events-footer d-flex justify-content-between align-items-center">
-								<a href="#" class="default-btn">리스트에서 삭제</a>
+								<a href="#" class="default-btn delete-btn">리스트에서 삭제</a>
 								<span>플랫폼</span>
 							</div>
 						</div>
@@ -242,7 +243,7 @@
 							<p>Online</p>
 
 							<div class="events-footer d-flex justify-content-between align-items-center">
-								<a href="#" class="default-btn">Attend</a>
+								<a href="#" class="default-btn ">Attend</a>
 								<span>August 06, 2021</span>
 							</div>
 						</div>
@@ -380,6 +381,46 @@
 <%@ include file="../inculde/mypage/footer.jsp"%>
 <!--========== Footer ==============-->
 
+<!--========== List Update Modal ==============-->
+<div class="modal fade" id="modalListUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalListUpdateLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalListUpdateLabel">리스트 수정하기</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				...
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-primary">수정하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--========== List Update Modal ==============-->
+
+<!--========== List Update Modal ==============-->
+<div class="modal fade" id="modalListMove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalListMoveLable" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalListMoveLable">영상 이동하기</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				...
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-primary">이동하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--========== List Update Modal ==============-->
+
 <script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
@@ -389,5 +430,16 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
+
+<!-- 추가 script -->
+<script>
+	$('.delete-btn').on('click', function(){
+		if(confirm('정말 삭제하시겠습니까?') == true) {
+			alert('삭제되었습니다.');
+		} else {
+			alert('취소되었습니다.');
+		}
+	});
+</script>
 </body>
 </html>
