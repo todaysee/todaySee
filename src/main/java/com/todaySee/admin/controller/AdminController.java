@@ -49,9 +49,10 @@ public class AdminController {
 		return "admin/movieAdmin";
 	}
 
-    @RequestMapping("/image")
-    public void image(Model m) {
+    @GetMapping("/image")
+    public String image(Model m) {
         System.out.println("image 페이지 접속");
+		return "admin/image";
     }
     
     @GetMapping("/userReport")

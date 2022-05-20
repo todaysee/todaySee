@@ -19,9 +19,9 @@ function fetchNotes(startPage) {
             // add table rows
             $.each(response.content, (i, content) => {
                 let noteRow = '<div>' +
-                    '<h1>' + content.contentNumber + '</h1>' +
-                    '<h1>' + content.contentTitle + '</h1>' +
-                    '<h1>' + '<a href =' + content.contentMainImgLink + '>'  + '이미지링크' + '</a>'  +'</h1>' +
+                    '<h1>' + content.content_number + '</h1>' +
+                    '<h1>' + content.content_title + '</h1>' +
+                    '<h1>' + '<a href =' + content.content_main_images_url + '>'  + '이미지링크' + '</a>'  +'</h1>' +
                     '</div>';
                 $('#noteTable tbody').append(noteRow);
             });
@@ -39,7 +39,7 @@ function fetchNotes(startPage) {
     });
 }
 
-function buildPagination(response) {
+function buildPagination(response) { // 더보기에 필요한 버튼만 남겨놓음
     totalPages = response.totalPages;
 
     var pageNumber = response.pageable.pageNumber;
@@ -56,7 +56,7 @@ function buildPagination(response) {
     var last = '';
     if (pageNumber < totalPages) {
         if(pageNumber !== totalPages - 1) {
-            next = '<li class="page-item"><a class="page-link">더보기</a></li>';
+            next = '<li class="page-item"><a class="page-link">더보기</a></li>'; //더보기 버튼으로 한페이지씩 불러옴
         }
     } else {
         next = ''; // on the last page, don't show 'next' link
