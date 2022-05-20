@@ -35,7 +35,8 @@
 <body>
 <%-- 파이썬 --%>
 <form id="uploadForm">
-    <input type="hidden" name="test" value="test" > <%--아이디 세션--%>
+    <input type="hidden" name="user_number" value="1" > <%--아이디--%>
+    <input type="hidden" name="images_type" value="test" > <%--타입--%>
     <input type="file" id="fileName" name="file" accept="image/png"/>
     <button type="button" id="uploadBtn">Save</button>
 </form>
