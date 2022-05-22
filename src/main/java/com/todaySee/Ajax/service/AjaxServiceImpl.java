@@ -6,8 +6,8 @@ package com.todaySee.Ajax.service;
 
 import com.todaySee.Ajax.converter.AjaxVoDtoConverter;
 import com.todaySee.Ajax.dto.AjaxDto;
-import com.todaySee.Ajax.domain.AjaxVO;
 import com.todaySee.Ajax.persistence.AjaxRepository;
+import com.todaySee.domain.Content;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class AjaxServiceImpl implements AjaxService {
 
     @Override
     public Page<AjaxDto> pages(Pageable pageable) {
-        Page<AjaxVO> notes =ajaxRepository.findAll(pageable);
+        Page<Content> notes =ajaxRepository.findAll(pageable);
 
         Page<AjaxDto> pages = notes.map(entity -> {
             AjaxDto dto = AjaxVoDtoConverter.voToDto(entity);
