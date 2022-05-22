@@ -106,7 +106,7 @@
                 <div class="row">
                   <div class="col-md-1 ml-auto">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                      영상 추가
+                      <i class="fa fa-film" aria-hidden="true"></i>영상 추가
                     </button>
                   </div>
                 </div>
@@ -213,14 +213,120 @@
           <!-- modal -->
 
           <div id="link">My video</div>
-          <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+          <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                       
+                      영화제목 쓸거  
+                        
+                      <ul class="nav nav-pills">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#">영상정보</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">수정</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Link</a>
+                        </li>
+                        
+                      </ul>
                     </div>
+
                     <div class="modal-body">
-                        <iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe>
+                      <div class="container-fluid">
+
+                        <div class="row">
+                          <div class="col-md-6">
+                            
+                            <div class="col-12">
+                              <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
+                              <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
+                            </div>
+                          </div>
+
+
+
+                          <div class="col-md-6">
+                            <ul class="nav nav-pills flex-column">
+
+                              <li class="nav-item active">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호
+                                 
+                                  <span class="badge float-right userNumber"><h5></h5></span>
+                                </a>
+                              </li>
+              
+              
+                              <li class="nav-item active">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-address-book" aria-hidden="true"></i> 줄거리
+                                 
+                                  <span class="badge float-right userName"><h5></h5></span>
+                                </a>
+                              </li>
+              
+              
+                              <li class="nav-item active">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급
+                                 
+                                  <span class="badge float-right userEmail"><h5></h5></span>
+                                </a>
+                              </li>
+              
+                              <li class="nav-item active">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-phone" aria-hidden="true"></i> 재생시간
+                                 
+                                  <span class="badge float-right userTel"><h5></h5></span>
+                                </a>
+                              </li>
+              
+              
+              
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-user" aria-hidden="true"></i> 개봉일
+                                  <span class="badge float-right userNickname"><h5></h5></span>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-venus-mars" aria-hidden="true"></i> 장르
+                                  <span class="badge float-right userGender"><h5></h5></span>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fa fa-list-alt" aria-hidden="true"></i> 플렛폼
+                                  <span class="badge float-right userloginDate"><h5></h5></span>
+                                </a>
+                              </li>
+              
+                              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                 <i class="fa fa-list-alt" aria-hidden="true"></i> 회원가입 날짜
+                                  <span class="badge float-right userSignupDate"><h5></h5></span>
+                                </a>
+                              </li>
+
+
+              
+                          
+              
+              
+                              
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                       
                     </div>
                 </div>
             </div>
@@ -236,11 +342,11 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>영상제목</th>
+                    <th>장르</th>
+                    <th>연령대</th>
+                    <th>상영시간</th>
+                    <th>개봉일</th>
                     <th>삭제</th>
                   </tr>
                   </thead>

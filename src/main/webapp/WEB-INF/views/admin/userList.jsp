@@ -49,13 +49,18 @@
           dataType : 'json',
           contentType: 'application/json',
           success : function(data){
+            $('.userNumber').text(data.user_number)
+            $('.userName').text(data.user_name)
+            $('.userEmail').text(data.user_email)
+            $('.userTel').text(data.user_tel)
+            $('.userNickname').text(data.user_nickname)
+            $('.userGender').text(data.user_gender)
+            $('.userloginDate').text(data.user_login_date)
+            $('.userSignupDate').text(data.user_signup_date)
+            $('.user_state').text(data.user_state)
             
-            $('.emailUser').text(data.email)
-            $('.nickNameUser').text(data.nickName)
-            $('.genderUser').text(data.gender)
-            $('.loginDateUser').text(data.login_date)
-            $('.sangtaeUser').text(data.user_Sangtae)
              
+            
               
 
 
@@ -155,7 +160,7 @@
           <form action="">
           <div class="card detailUser">
             <div class="card-header">
-              <h3 class="card-title">회원정보</h3>
+              <h3 class="card-title"><i class="fa fa-user-circle" aria-hidden="true"></i> 회원정보</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -168,35 +173,35 @@
 
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 회원번호
+                    <i class="fa fa-address-card" aria-hidden="true"></i> 회원번호
                    
-                    <span class="badge float-right emailUser"><h5></h5></span>
+                    <span class="badge float-right userNumber"><h5></h5></span>
                   </a>
                 </li>
 
 
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 이름
+                    <i class="fa fa-address-book" aria-hidden="true"></i> 이름
                    
-                    <span class="badge float-right emailUser"><h5></h5></span>
+                    <span class="badge float-right userName"><h5></h5></span>
                   </a>
                 </li>
 
 
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 이메일
+                    <i class="fa fa-envelope-open" aria-hidden="true"></i> 이메일
                    
-                    <span class="badge float-right emailUser"><h5></h5></span>
+                    <span class="badge float-right userEmail"><h5></h5></span>
                   </a>
                 </li>
 
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> 전화번호
+                    <i class="fa fa-phone" aria-hidden="true"></i> 전화번호
                    
-                    <span class="badge float-right emailUser"><h5></h5></span>
+                    <span class="badge float-right userTel"><h5></h5></span>
                   </a>
                 </li>
 
@@ -204,36 +209,36 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-envelope"></i> 닉네임
-                    <span class="badge float-right nickNameUser"><h5></h5></span>
+                    <i class="fa fa-user" aria-hidden="true"></i> 닉네임
+                    <span class="badge float-right userNickname"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-file-alt"></i> 성별
-                    <span class="badge float-right genderUser"><h5></h5></span>
+                    <i class="fa fa-venus-mars" aria-hidden="true"></i> 성별
+                    <span class="badge float-right userGender"><h5></h5></span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-filter"></i> 최근 로그인 날짜
-                    <span class="badge float-right loginDateUser"><h5></h5></span>
+                    <i class="fa fa-list-alt" aria-hidden="true"></i> 최근 로그인 날짜
+                    <span class="badge float-right userloginDate"><h5></h5></span>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-filter"></i> 회원가입 날짜
-                    <span class="badge float-right loginDateUser"><h5></h5></span>
+                   <i class="fa fa-list-alt" aria-hidden="true"></i> 회원가입 날짜
+                    <span class="badge float-right userSignupDate"><h5></h5></span>
                   </a>
                 </li>
 
-                <li class="nav-item">
+              <!--   <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-trash-alt"></i> 회원상태
-                    <span class="badge float-right sangtaeUser"><h5></h5></span>
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i> 회원상태
+                    <span class="badge float-right userState"><h5></h5></span>
                   </a>
-                </li>
+                </li> -->
 
 
                 
@@ -301,12 +306,12 @@
               </thead>
               <tbody>
                 <c:forEach items="${userList}" var="test1">
-                  <tr class="userTable" abc="${test1.userNumber}">
-                    <td class="userTable2">${test1.userNumber}</td>
-                    <td class="userTable1">${test1.email}</td>
-                    <td class="userTable1">${test1.nickName }</td>
-                    <td class="userTable1">${test1.gender }</td>
-                    <td class="userTable1">1U</td>
+                  <tr class="userTable" abc="${test1.user_number}">
+                    <td class="userTable2">${test1.user_number}</td>
+                    <td class="userTable1">${test1.user_email}</td>
+                    <td class="userTable1">${test1.user_nickname }</td>
+                    <td class="userTable1">${test1.user_gender }</td>
+                    <td class="userTable1">${test1.user_state }</td>
                     <td><button class="btn btn-outline-danger">삭제</button></td>
                   </tr>
                   </c:forEach>
