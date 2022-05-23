@@ -13,8 +13,9 @@ import javax.persistence.Table;
 public class Genre {
 
     @Id
-    Integer genre_number;
+    @Column(name="genre_number")
+    Integer genreNumber;
 
-    @Column(length = 1000)
-    String genre_name;
+    @Column(length = 1000 ,name = "genre_name")
+    String genreName;
 }

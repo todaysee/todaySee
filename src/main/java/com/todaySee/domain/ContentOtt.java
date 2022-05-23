@@ -13,10 +13,11 @@ public class ContentOtt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer contentott_number;
+    @Column(name="contentott_number")
+    Integer contentottNumber;
 
-    @Column(length = 3000)
-    String contentott_link;
+    @Column(length = 3000,name="contentott_link")
+    String contentottLink;
 
 //    @ManyToOne
 //    @JoinColumn(name="content_number")

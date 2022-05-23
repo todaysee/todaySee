@@ -11,7 +11,8 @@ public class ContentGenre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer contentgenre_number;
+    @Column(name="contentgenre_number")
+    Integer contentgenreNumber;
 
 //    @ManyToOne
 //    @JoinColumn(name="content_number")
