@@ -21,15 +21,12 @@
 		<a href="/homeResettingPwd">홈페이지-homeResettingPwd</a><br/>
 		
 		<hr/>
-		<a href="/myPage">마이페이지-인덱스</a><br/>
-		<a href="/myPage/board">마이페이지-board</a><br/>
-		<a href="/myPage/view">마이페이지-view</a><br/>
+		<a href="/myPage/profile">마이페이지-프로필</a><br/>
 		<a href="/myPage/like">마이페이지-like</a><br/>
-		<a href="/myPage/comments">마이페이지-comments</a><br/>
 		<a href="/myPage/bookMark">마이페이지-bookMark</a><br/>
 		<a href="/myPage/bookMark/list">마이페이지-bookMark 상세보기</a><br/>
-		<a href="/myPage/myPageGrade">마이페이지-myPageGrade</a><br/>
-		<a href="/myPage/list">마이페이지-db테스트</a><br/>
+		<a href="/myPage/review">마이페이지-review</a><br/>
+		<a href="/myPage/list">마이페이지-커뮤니티 작성글 & 게시글보기</a><br/>
 		<hr/>
 		<a href="/community">커뮤니티-인덱스</a><br/>
 		<a href="/community/chatList">커뮤니티-채팅목록</a><br/>

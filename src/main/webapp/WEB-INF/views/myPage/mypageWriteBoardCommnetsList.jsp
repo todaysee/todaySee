@@ -33,9 +33,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="page-banner-box">
-            <h3>Account Setting</h3>
-        </div>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
         <div class="account-setting-list-tabs">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
