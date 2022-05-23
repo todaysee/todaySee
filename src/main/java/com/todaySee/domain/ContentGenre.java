@@ -18,6 +18,7 @@ public class ContentGenre {
 //    private Content content;
 
     @OneToOne
+    @JoinColumn(name = "genre_number")
     private Genre genre;
 
 }

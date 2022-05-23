@@ -23,5 +23,6 @@ public class ContentOtt {
 //    private Content content;
 
     @OneToOne
+    @JoinColumn(name = "ott_number")
     private Ott ott;
 }
