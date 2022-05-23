@@ -12,11 +12,11 @@ public final class AjaxVoDtoConverter {
     public static AjaxDto voToDto(Content content) {
         AjaxDto ajaxDto = new AjaxDto();
 
-        ajaxDto.setContent_number(content.getContent_number());
-        ajaxDto.setContent_title(content.getContent_title());
-        ajaxDto.setContent_main_images_url(content.getContent_main_images_url());
-        ajaxDto.setContent_poster_images_url(content.getContent_poster_images_url());
-        ajaxDto.setContent_release_date(content.getContent_release_date());
+        ajaxDto.setContent_number(content.getContentNumber());
+        ajaxDto.setContent_title(content.getContentTitle());
+        ajaxDto.setContent_main_images_url(content.getContentMainImagesUrl());
+        ajaxDto.setContent_poster_images_url(content.getContentPosterImagesUrl());
+        ajaxDto.setContent_release_date(content.getContentReleaseDate());
 
         return ajaxDto;
     }
@@ -24,11 +24,11 @@ public final class AjaxVoDtoConverter {
     public static Content dtoToVo(AjaxDto ajaxDto) {
         Content content = new Content();
 
-        content.setContent_number(ajaxDto.getContent_number());
-        content.setContent_title(ajaxDto.getContent_title());
-        content.setContent_main_images_url(ajaxDto.getContent_main_images_url());
-        content.setContent_poster_images_url(ajaxDto.getContent_poster_images_url());
-        content.setContent_release_date(ajaxDto.getContent_release_date());
+        content.setContentNumber(ajaxDto.getContent_number());
+        content.setContentTitle(ajaxDto.getContent_title());
+        content.setContentMainImagesUrl(ajaxDto.getContent_main_images_url());
+        content.setContentPosterImagesUrl(ajaxDto.getContent_poster_images_url());
+        content.setContentReleaseDate(ajaxDto.getContent_release_date());
 
         return content;
     }

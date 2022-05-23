@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.todaySee.domain.Content;
+import com.todaySee.domain.ContentGenre;
 import com.todaySee.home.persistence.ContentGenreRepository;
 import com.todaySee.home.persistence.ContentRepository;
 
@@ -18,12 +18,12 @@ public class HomeServiceImpl implements HomeService{
 	@Autowired
 	private ContentGenreRepository contentGenreRepo;
 	
-	/**	장르별 영화 컨텐츠
-	 *
-	 */
-	@Override
-	public List<Content> getGenresContentList(Integer contentgenre_number) {
-		return contentGenreRepo.getGenresContentList(contentgenre_number);
-	}
+//	/**	장르별 영화 컨텐츠
+//	 *
+//	 */
+//	@Override
+//	public List<ContentGenre> getGenresContentList(Integer contentgenre_number) {
+//		return contentGenreRepo.getGenresContentList(contentgenre_number);
+//	}
 
 }
