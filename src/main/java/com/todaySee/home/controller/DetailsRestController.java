@@ -23,7 +23,7 @@ public class DetailsRestController {
     @GetMapping("/details/Ajax")
     public String getContentGenre(Integer contentNumber) {
         Content contentVO = detailsService.getContentById(contentNumber);
-        String youtubeURL = contentVO.getContent_youtube_url();
+        String youtubeURL = contentVO.getContentYoutubeUrl();
         System.out.println("유튜브 링크 =>"+youtubeURL);
         return youtubeURL;
     }
