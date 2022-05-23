@@ -12,7 +12,7 @@
         <div class="contact-search-box">
             <form>
                 <input type="text" class="input-search" placeholder="Search">
-                <button type="submit"><i class="ri-search-line"></i></button>
+                <button type="button"><i class="ri-search-line"></i></button>
             </form>
         </div>
         <div class="contact-body" data-simplebar>
