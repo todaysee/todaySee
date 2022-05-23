@@ -51,25 +51,24 @@
 
 
 
-                    <img class="img-fluid" src="${user.images.}" alt="image">
 
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>닉네임</label>
-                                <input type="text" class="form-control" value="${user.user_nickname}" readonly>
+                                <input type="text" class="form-control" value="${user.userNickname}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>이름</label>
-                                <input type="text" class="form-control" value="${user.user_name}" readonly>
+                                <input type="text" class="form-control" value="${user.userName}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>성별</label>
-                                <input type="text" class="form-control" value="${user.user_gender}" readonly>
+                                <input type="text" class="form-control" value="${user.userGender}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -81,7 +80,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>이메일</label>
-                                <input type="text" class="form-control" placeholder="${user.user_email}" readonly>
+                                <input type="text" class="form-control" placeholder="${user.userEmail}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -144,7 +143,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="/myPage/update/${user.user_number}">
+                                        <a href="/myPage/update/${user.userNumber}">
                                             <button type="button" class="btn btn-primary">확인</button>
                                         </a>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

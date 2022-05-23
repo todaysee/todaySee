@@ -13,6 +13,6 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Override
     public User getUserInfo(User user) {
-        return myPageRepository.findById(user.getUser_number()).get();
+        return myPageRepository.findById(user.getUserNumber()).get();
     }
 }

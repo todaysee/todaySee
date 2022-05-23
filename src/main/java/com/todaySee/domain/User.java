@@ -27,7 +27,7 @@ public class User {
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
     @Column (name = "user_signup_date")
-    Date user_signup_date;
+    Date userSignupDate;
     @Column (name = "user_state")
     Integer userState;
     @Column (name = "user_admin")
@@ -43,8 +43,8 @@ public class User {
     String userName;
     @Column(name = "user_tel",length = 1000)
     String userTel;
-    @Column(name = "userPassword",length = 1000)
-    String user_password;
+    @Column(name = "user_password",length = 1000)
+    String userPassword;
 
     @OneToMany
     @JoinColumn(name="user_number")
