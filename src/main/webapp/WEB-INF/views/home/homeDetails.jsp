@@ -377,7 +377,7 @@
 								<div id="change" class="gen-episode-contain">
 									<div class="gentech-tv-show-img-holder">
 										<div class="gen-episode-img">
-											<img src="${Content.content_main_images_url}" alt="${Content.content_title}">
+											<img src="${Content.contentMainImagesUrl}" alt="${Content.contentTitle}">
 											<div id="noYoutube" class="gen-movie-action">
 												<a href="#" class="gen-button youtube_btn">
 													<i class="fa fa-play"></i>
@@ -390,7 +390,7 @@
 							<div class="gen-single-movie-info">
 								<div class="row">
 									<div class="col-xl-6 col-lg-6 col-md-6">
-										<h2 class="gen-title">${Content.content_title}</h2>
+										<h2 class="gen-title">${Content.contentTitle}</h2>
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 										<div class="gen-movie-action">
@@ -412,7 +412,7 @@
 										</li>
 									</ul>
 								</div>
-								<p>${Content.content_info}
+								<p>${Content.contentInfo}
 								</p>
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
@@ -429,14 +429,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>${Content.content_age}</span>
+												<span>${Content.contentAge}</span>
 											</li>
 											<li><span>영상 시간 :</span>
-												<span>${Content.content_running_time}</span>
+												<span>${Content.contentRunningTime}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>${Content.content_release_date}</span>
+												<span>${Content.contentReleaseDate}</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -1489,11 +1489,11 @@
 <script>
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
-		let contentNum = ${Content.content_number} /* 현재 영상 번호 */
+		let contentNum = ${Content.contentNumber} /* 현재 영상 번호 */
 		$.ajax({
 			type: "GET",
 			url: "http://localhost:8080/details/Ajax",
-			data: {content_number: contentNum}, /* 영상번호를 파라메터로 보내기 */
+			data: {contentNumber: contentNum}, /* 영상번호를 파라메터로 보내기 */
 			success: function(result){ // 돌아오는 데이터가 유튜브 링크
 				// alert('성공');
 				console.log(result);

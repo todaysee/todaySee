@@ -13,16 +13,19 @@ public class Bookmark {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer bookmark_number;
+    @Column(name="bookmark_number")
+    Integer bookmarkNumber;
 
-    Integer bookmark_state;
+    @Column(name="bookmark_state")
+    Integer bookmarkState;
 
-    @Column(length = 1000)
-    String bookmark_name;
+    @Column(length = 1000, name="bookmark_name")
+    String bookmarkName;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date bookmark_date;
+    @Column(name="bookmark_date")
+    Date bookmarkDate;
 
     @ManyToOne
     @JoinColumn(name="user_number")

@@ -13,16 +13,21 @@ public class Report {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer report_number;
+    @Column(name = "report_number")
+    Integer reportNumber;
 
-    String report_target;
-    @Column(length = 3000)
-    String report_content;
+    @Column(name = "report_target")
+    String reportTarget;
 
-    Integer report_state;
+    @Column(length = 3000, name="report_content")
+    String reportContent;
+
+    @Column(name = "report_state")
+    Integer reportState;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date report_date;
+    @Column(name = "report_date")
+    Date reportDate;
 
 }
