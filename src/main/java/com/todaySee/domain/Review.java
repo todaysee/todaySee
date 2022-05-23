@@ -13,16 +13,20 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer review_number;
+    @Column(name = "review_number")
+    Integer reviewNumber;
 
-    @Column(length = 3000)
-    String review_content;
+    @Column(length = 3000, name = "review_content")
+    String reviewContent;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date review_date;
-    Integer review_like;
-    Integer review_spoiler;
+    @Column(name = "review_date")
+    Date reviewDate;
+    @Column(name = "review_like")
+    Integer reviewLike;
+    @Column(name = "review_spoiler")
+    Integer reviewSpoiler;
 
     @ManyToOne
     @JoinColumn(name="user_number")

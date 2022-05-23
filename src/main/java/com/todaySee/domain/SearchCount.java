@@ -14,7 +14,9 @@ public class SearchCount {
     @Id
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date searchcount_date;
+    @Column(name = "searchcount_date")
+    Date searchcountDate;
 
-    Integer searchcount_amount;
+    @Column(name = "searchcount_amount")
+    Integer searchcountAmount;
 }
