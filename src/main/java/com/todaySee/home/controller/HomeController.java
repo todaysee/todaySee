@@ -118,9 +118,11 @@ public class HomeController {
     @GetMapping("/search/genres")
     public String homeList_person(Integer contentgenre_number, Model model) {
     	
-    	if(contentgenre_number == null) contentgenre_number = 1;
+    	System.out.println("장르 파라메터1 : "+contentgenre_number);
+
+    	if(contentgenre_number == null) contentgenre_number = 2;
     	
-    	System.out.println("장르 파라메터 : "+contentgenre_number);
+    	System.out.println("장르 파라메터2 : "+contentgenre_number);
     	
     	List<Content> genresContentList = homeServiceImpl.getGenresContentList(contentgenre_number);
     	
