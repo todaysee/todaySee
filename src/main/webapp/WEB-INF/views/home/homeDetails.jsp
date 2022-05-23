@@ -377,9 +377,8 @@
 								<div id="change" class="gen-episode-contain">
 									<div class="gentech-tv-show-img-holder">
 										<div class="gen-episode-img">
-											<img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri" alt="stream-lab-image">
-<%--											<img src="/images/home/background/asset-15.jpeg" alt="stream-lab-image">--%>
-											<div class="gen-movie-action">
+											<img src="${Content.content_main_images_url}" alt="${Content.content_title}">
+											<div id="noYoutube" class="gen-movie-action">
 												<a href="#" class="gen-button youtube_btn">
 													<i class="fa fa-play"></i>
 												</a>
@@ -391,7 +390,7 @@
 							<div class="gen-single-movie-info">
 								<div class="row">
 									<div class="col-xl-6 col-lg-6 col-md-6">
-										<h2 class="gen-title">영상 제목</h2>
+										<h2 class="gen-title">${Content.content_title}</h2>
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 										<div class="gen-movie-action">
@@ -413,13 +412,7 @@
 										</li>
 									</ul>
 								</div>
-								<p>영상 줄거리 & 설명
-									Streamlab is a long established fact that a reader will be distracted by the
-									readable
-									content of a page when Streamlab at its layout. The point of using Lorem
-									Streamlab
-									is that it has a more-or-less normal distribution of Streamlab as opposed
-									Streamlab.
+								<p>${Content.content_info}
 								</p>
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
@@ -436,14 +429,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>English</span>
+												<span>${Content.content_age}</span>
 											</li>
 											<li><span>영상 시간 :</span>
-												<span>1hr 24 mins</span>
+												<span>${Content.content_running_time}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>14 Aug,2018</span>
+												<span>${Content.content_release_date}</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -1496,12 +1489,33 @@
 <script>
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
-		// alert('ok');
-		$('#change').empty(); /* id가 change 아래 요소를 모두 삭제 */
-		$('#change').attr('class', 'gen-video-holder'); /* id=change에 class 추가  */
-		/* id=change 아래 요소 추가 */
-		$('#change').append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/HOZg-ZdY2tY?autohide=1&autoplay=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fwww.justwatch.com&widgetid=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
-	});
+		let contentNum = ${Content.content_number} /* 현재 영상 번호 */
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/details/Ajax",
+			data: {content_number: contentNum}, /* 영상번호를 파라메터로 보내기 */
+			success: function(result){ // 돌아오는 데이터가 유튜브 링크
+				// alert('성공');
+				console.log(result);
+				if(result != "noYoutubeLink") { /* 유튜브 링크가 있을 경우 */
+					$('#change').empty(); /* id=change 아래 요소를 모두 삭제 */
+					$('#change').attr('class', 'gen-video-holder'); /* id=change에 class 추가  */
+					/* 유튜브 링크를 다음 iframe 보여주기 */
+					$('#change').append('<iframe class="youtube" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+					$('.youtube').attr('src', result);
+				} else { /* 유튜브 링크가 없을 경우 */
+					// alert('유튜브 링크가 없습니다.');
+					$('#noYoutube').empty(); /* id=noYoutube 아래 버튼만 숨김 */
+					/* id=noYoutube 아래에 유튜브 링크가 없음을 1초 보여주고 1초 딜레이 1초 후 사라지게 함*/
+					$('#noYoutube').append('<h3>유튜브 링크가 없습니다.</h3>').fadeIn(1000).delay(1000).fadeOut(1000);
+				}
+			},
+			error: function(err) {
+				alert('실패!!!!');
+				console.log("ERROR", err);
+			}
+		}); // ajax end
+	}); // youtube button function end
 
 	// 리뷰 별점 - plugin 사용
 	$('#input-9').rating({
@@ -1530,7 +1544,7 @@
 	});
 
 	// 즐겨찾기 선택
-	$('input[type=radio]').on('clike', function(){
+	$('input[type=radio]').on('click', function(){
 		alert('ok');
 	});
 
