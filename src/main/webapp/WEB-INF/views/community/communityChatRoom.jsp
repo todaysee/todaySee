@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <!-- js files -->
 <script src = "../js/mypageCommunity/chatRoom.js"></script>
+<!-- js files -->
+<script src="../js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>

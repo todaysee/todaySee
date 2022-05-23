@@ -18,6 +18,8 @@
 
 <!-- js files -->
 <script src="../js/mypageCommunity/communityIndex.js"></script>
+<!-- js files -->
+<script src="../js/mypageCommunity/chatList.js"></script>
 
 <title>Zust - Social Community & Marketplace HTML Template</title>
 
