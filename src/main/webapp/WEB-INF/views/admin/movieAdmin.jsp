@@ -360,10 +360,12 @@
                     </c:forEach>
                     </td>
                     
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td><button class="btn btn-outline-danger" >삭제</button></td>
+                    <td>${contentList.content_age }</td>
+                    <td> ${contentList.content_running_time }</td>
+                    <td>${contentList.content_release_date } </td>
+                    
+                    <td>${contentList.contentGenre }</td>
+                    <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
                   </c:forEach>
                   </tfoot>
