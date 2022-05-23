@@ -33,9 +33,8 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="page-banner-box">
-            <h3>Account Setting</h3>
-        </div>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
+
 
         <div class="row">
             <div class="col-lg-1 col-md-12">
@@ -44,7 +43,20 @@
             <div class="col-lg-10 col-md-12">
                 <div class="account-setting-form">
                     <h3>내 정보 수정</h3>
+                    <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
+                         class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
                     <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
+                                <input class="form-control" type="file" id="formFile2">
+                            </div>
+                        </div>
+                        <hr/>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>닉네임 변경하기</label>

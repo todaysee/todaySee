@@ -14,16 +14,9 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+
     <style>
-        .img_size_profile{
-            width: 250px;
-            height: 250px;
-        }
-        .img_size_background{
-            width: 1920px;
-            height: 250px;
-            background-size: contain;
-        }
+
     </style>
 </head>
 
@@ -44,29 +37,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="my-profile-inner-box">
-            <div class="profile-cover-image">
-                <a href="#">
-                    <img  class="img-fluid" src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri" alt="image">
-                </a>
-                <a href="#" class="edit-cover-btn">Edit Cover</a>
-            </div>
-
-            <div class="profile-info-box">
-                <div class="inner-info-box d-flex justify-content-between align-items-center">
-                    <div class="info-image">
-                            <img class="img-fluid" src="https://images.justwatch.com/poster/272669076/s592/seupai-paemilri" alt="image">
-                        <div class="icon">
-                            <a href="#"><i class="flaticon-photo-camera"></i></a>
-                        </div>
-                    </div>
-                    <div class="info-text ms-3">
-                        <h3>이름 들어감</h3>
-                        <span><a href="mailto:matthew@gmail.com">이메일 주소</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
         <div class="row">
             <div class="col-lg-1 col-md-12">
@@ -74,7 +45,9 @@
 
             <div class="col-lg-10 col-md-12">
                 <div class="account-setting-form">
-                    <h3>내 프로필</h3>
+                    <h3>내 정보</h3>
+                    <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
+                         class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">

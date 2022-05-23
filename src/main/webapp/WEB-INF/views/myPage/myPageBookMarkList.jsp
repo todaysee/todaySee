@@ -185,9 +185,7 @@
 	<!--========== Body ==============-->
 	<div class="content-page-box-area">
 		<div class="content-page-box-area">
-			<div class="page-banner-box bg-7">
-				<h3>즐겨찾기</h3>
-			</div>
+			<%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
 			<div class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
