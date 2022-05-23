@@ -1,6 +1,5 @@
 package com.todaySee.admin.controller;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -16,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaySee.admin.service.AdminService;
+import com.todaySee.admin.service.AdminServiceImpl;
 import com.todaySee.domain.User;
-
 
 @Controller
 public class AdminController {
 
 	
 	@Autowired
-	AdminService s;
+	AdminService adminService;
 	
 	
 	@GetMapping("/admin")
@@ -39,13 +38,19 @@ public class AdminController {
 	
 	@GetMapping("/admin/userList")
 	public String userList(Model m, User user) {
-	m.addAttribute("userList",s.getUserList(user));
+	m.addAttribute("userList",adminService.getUserList(user));
 		
 		return "admin/userList";
 	}
 	
+	/**
+	 * @param Model m : 전체 컨텐츠 영상 리스트 값 전달
+	 * @return view 페이지 movieAdmin페이지로 이동
+	 */
 	@GetMapping("/movieAdmin")
-	public String movieAdmin() {
+	public String movieAdmin(Model m) {
+		m.addAttribute("contentList",adminService.getAllContent());
+		
 		return "admin/movieAdmin";
 	}
 
@@ -59,22 +64,31 @@ public class AdminController {
     public String adminTable() {
     	return "admin/userReport";
     }
+    
+    
+	/**
+	 * @param Modal m
+	 * @param User u
+	 * @param userNumber  회원번호
+	 * @return 회원정보List 리턴
+	 * @throws Exception
+	 */
 	@GetMapping("/admin/userList/{userNumber}")
 	@ResponseBody
 	public User userList2(Model m, User u, @PathVariable Integer userNumber) throws Exception {
 	
-		User addList = s.getUser(userNumber);
+		User addList = adminService.getUser(userNumber);
 
 		return addList;
 	}
 	
     
 
-	@GetMapping("/testReport")
-	public String testReport() {
-		return "/admin/testReport";
-	}
-
+//	@GetMapping("/testReport")
+//	public String testReport() {
+//		return "/admin/testReport";
+//	}
+	
 
 
 

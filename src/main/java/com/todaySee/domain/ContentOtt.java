@@ -2,6 +2,8 @@ package com.todaySee.domain;
 
 import lombok.Data;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Data
@@ -16,11 +18,10 @@ public class ContentOtt {
     @Column(length = 3000)
     String contentott_link;
 
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
+//    @ManyToOne
+//    @JoinColumn(name="content_number")
+//    private Content content;
 
-    @ManyToOne
-    @JoinColumn(name="ott_number")
+    @OneToOne
     private Ott ott;
 }
