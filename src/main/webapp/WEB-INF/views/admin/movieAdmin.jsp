@@ -343,25 +343,31 @@
                   <thead>
                   <tr>
                     <th>영상제목</th>
-                    <th>장르</th>
+                    <th>플랫폼</th>
                     <th>연령대</th>
                     <th>상영시간</th>
                     <th>개봉일</th>
-                    <th>삭제</th>
+                    <th>장르</th>
                   </tr>
                   </thead>
                   <tbody>
+                  <c:forEach items="${contentList}" var="contentList">
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td>${contentList.content_title }</td>
+                    
+                    <td><c:forEach items="${contentList.contentOtt}" var="contentOtt">
+                    ${contentOtt.ott.ott_name} 
+                    </c:forEach>
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td><button class="btn btn-outline-danger" >삭제</button></td>
+                    
+                    <td>${contentList.content_age }</td>
+                    <td> ${contentList.content_running_time }</td>
+                    <td>${contentList.content_release_date } </td>
+                    
+                    <td>${contentList.contentGenre }</td>
+                    <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
-                  
+                  </c:forEach>
                   </tfoot>
                 </table>
               </div>

@@ -24,5 +24,9 @@ public interface AdminContentRepository extends CrudRepository<Content, Integer>
 			+ "							WHERE co.content_number = :word) coO\r\n"
 			+ "ON c.content_number = coO.content_number\r\n"
 			+ "WHERE c.content_number = :word	",nativeQuery = true)
-	List<Object[]> adminContentList(String word);
+	List<Object[]> adminContentDetailList(String word);
+
+
+
+
 }
