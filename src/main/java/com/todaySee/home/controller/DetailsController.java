@@ -21,16 +21,16 @@ public class DetailsController {
 
     /**
      * 컨텐츠 번호에 따른 영화 상세 페이지
-     * @param content_number : 컨텐츠 번호
+     * @param contentNumber : 컨텐츠 번호
      * @param model : 화면으로 값 전달
      * @return "/home/homeDetails" : RESTful이 아닌 본래 View링크
      */
-    @GetMapping("/{content_number}")
-    public String getContentById(@PathVariable Integer content_number, Model model) {
-        System.out.println("===============================> 컨텐츠 번호 : " + content_number);
+    @GetMapping("/{contentNumber}")
+    public String getContentById(@PathVariable Integer contentNumber, Model model) {
+        System.out.println("===============================> 컨텐츠 번호 : " + contentNumber);
 
         /* 컨텐츠 상세 내용 가져오기 */
-        Content contentVO = detailsService.getContentById(content_number);
+        Content contentVO = detailsService.getContentById(contentNumber);
         model.addAttribute("Content", contentVO);
 
         /* 컨텐츠 장르 가져오기 */

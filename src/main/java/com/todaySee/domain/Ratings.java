@@ -11,8 +11,11 @@ public class Ratings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer ratings_number;
-    float ratings_grade;
+    @Column(name="ratings_number")
+    Integer ratingsNumber;
+
+    @Column(name = "ratings_grade")
+    float ratingsGrade;
 
     @ManyToOne
     @JoinColumn(name="user_number")
