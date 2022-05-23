@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래? - ${user.user_nickname}님 정보 수정</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
@@ -48,19 +48,23 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
-                                <input class="form-control" type="file" id="formFile">
+                                <form>
+                                    <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </form>
                             </div>
                             <div class="mb-3">
-                                <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
-                                <input class="form-control" type="file" id="formFile2">
+                                <form>
+                                    <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
+                                    <input class="form-control" type="file" id="formFile2">
+                                </form>
                             </div>
                         </div>
                         <hr/>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>닉네임 변경하기</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" value="${user.user_nickname}">
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-12">

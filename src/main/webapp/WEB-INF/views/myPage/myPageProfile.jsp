@@ -139,7 +139,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <a href="/myPage/update">
+                                        <a href="/myPage/update/${user.user_number}">
                                             <button type="button" class="btn btn-primary">확인</button>
                                         </a>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

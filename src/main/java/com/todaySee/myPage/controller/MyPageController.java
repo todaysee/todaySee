@@ -24,10 +24,13 @@ public class MyPageController {
 
         return "/myPage/myPageProfile";
     }
-    
-    //마이페이지 프로필 수정
-    @GetMapping("/myPage/update")
-    public String myPageUpdateUser(Model m) {
+
+    //마이페이지 프로필 수정페이지로 이동
+    @GetMapping("/myPage/update/{user_number}")
+    public String myPageUpdateUser(User user, Model model) {
+
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
         return "/myPage/myPageUpdateUser";
     }
 
