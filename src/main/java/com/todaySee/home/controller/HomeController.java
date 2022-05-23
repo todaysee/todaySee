@@ -15,7 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.todaySee.domain.Content;
+
+import com.todaySee.domain.ContentGenre;
 import com.todaySee.home.service.HomeServiceImpl;
 
  
@@ -118,14 +119,16 @@ public class HomeController {
     @GetMapping("/search/genres")
     public String homeList_person(Integer contentgenre_number, Model model) {
     	
-    	if(contentgenre_number == null) contentgenre_number = 1;
+    	System.out.println("장르 파라메터1 : "+contentgenre_number);
+
+    	if(contentgenre_number == null) contentgenre_number = 2;
     	
-    	System.out.println("장르 파라메터 : "+contentgenre_number);
+    	System.out.println("장르 파라메터2 : "+contentgenre_number);
+    
     	
-    	List<Content> genresContentList = homeServiceImpl.getGenresContentList(contentgenre_number);
+    	//List<ContentGenre> genresContentList = homeServiceImpl.getGenresContentList((contentgenre_number));
     	
-    	model.addAttribute("genresContentList", genresContentList);
-    	model.addAttribute("contentgenre_number",contentgenre_number);
+    	//model.addAttribute("genresContentList", genresContentList);
     	
 
     	return "/home/homeList_genres";

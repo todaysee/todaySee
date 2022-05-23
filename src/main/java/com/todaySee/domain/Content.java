@@ -14,33 +14,36 @@ public class Content {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer content_number;
+    @Column(name = "content_number")
+    Integer contentNumber;
 
-    @Column(length = 1000)
-    String content_title;
-    @Column(length = 1000)
-    String content_link;
-    @Column(length = 200)
-    String content_age; // 연령등급
-    @Column(length = 200)
-    String content_running_time; // 재생시간
-    @Column(length = 200)
-    String content_release_date; // 등록년도
-    @Column(length = 3000)
-    String content_info; // 컨텐츠 소개글
+    @Column(length = 1000,name = "content_title")
+    String contentTitle;
+    @Column(length = 1000,name = "content_link")
+    String contentLink;
+    @Column(length = 200,name = "content_age")
+    String contentAge; // 연령등급
+    @Column(length = 200,name = "content_running_time")
+    String contentRunningTime; // 재생시간
+    @Column(length = 200,name = "content_release_date")
+    String contentReleaseDate; // 등록년도
+    @Column(length = 3000,name = "content_info")
+    String contentInfo; // 컨텐츠 소개글
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date content_import_date; // 컨텐츠 등록날짜
+    @Column(name = "content_import_date")
+    Date contentImportDate; // 컨텐츠 등록날짜
 
-    @Column(length = 3000)
-    String content_youtube_url; // 컨텐츠 소개영상 주소
+    @Column(length = 3000,name = "content_youtube_url")
+    String contentYoutubeUrl; // 컨텐츠 소개영상 주소
 
-    @Column(length = 3000)
-    String content_poster_images_url; // 컨텐츠 포스터 이미지 주소
+    @Column(length = 3000,name = "content_poster_images_url")
+    String contentPosterImagesUrl; // 컨텐츠 포스터 이미지 주소
 
-    @Column(length = 3000)
-    String content_main_images_url; // 컨텐츠 메인 이미지 주소
+
+    @Column(length = 3000,name = "content_main_images_url")
+    String contentMainImagesUrl; // 컨텐츠 메인 이미지 주소
     
     @OneToMany
     @JoinColumn(name="content_number")
@@ -49,6 +52,7 @@ public class Content {
     @OneToMany
     @JoinColumn(name="content_number")
     List<ContentGenre> contentGenre; 
+
 }
 
 	

@@ -6,12 +6,12 @@ import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
 
 public interface HomeService {
-	
-	/** 장르별 컨테츠 리스트 구하기
-	 * 	- homeList_genres.jsp에 출력할 컨텐츠 selete
-	 * @param content_genres
-	 * @return List<Content>
-	 */
-	List<Content> getGenresContentList(Integer contentgenre_number);
-	
+//	
+//	/** 장르별 컨테츠 리스트 구하기
+//	 * 	- homeList_genres.jsp에 출력할 컨텐츠 selete
+//	 * @param content_genres
+//	 * @return List<Content>
+//	 */
+//	List<ContentGenre> getGenresContentList(Integer contentgenre_number);
+//	
 }
