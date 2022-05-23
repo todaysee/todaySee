@@ -13,8 +13,9 @@ import javax.persistence.Table;
 public class Ott {
 
     @Id
-    Integer ott_number;
+    @Column(name="ott_number")
+    Integer ottNumber;
 
-    @Column(length = 1000)
-    String ott_name;
+    @Column(length = 1000,name="ott_name")
+    String ottName;
 }

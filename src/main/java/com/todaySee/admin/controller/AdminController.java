@@ -1,5 +1,6 @@
 package com.todaySee.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaySee.admin.service.AdminService;
 import com.todaySee.admin.service.AdminServiceImpl;
+import com.todaySee.domain.Content;
 import com.todaySee.domain.User;
 
 @Controller
@@ -75,7 +77,7 @@ public class AdminController {
 	 */
 	@GetMapping("/admin/userList/{userNumber}")
 	@ResponseBody
-	public User userList2(Model m, User u, @PathVariable Integer userNumber) throws Exception {
+	public User userList2( @PathVariable Integer userNumber) throws Exception {
 	
 		User addList = adminService.getUser(userNumber);
 
@@ -89,7 +91,12 @@ public class AdminController {
 //		return "/admin/testReport";
 //	}
 	
-
+//	@GetMapping("/admin/movieAdmin/{contentNumber}")
+//	@ResponseBody
+//	public List<Content> ajaxContent(@PathVariable Integer contentNumber) {
+//		
+//		return ;
+//	}
 
 
 

@@ -228,7 +228,7 @@
                           <a class="nav-link" href="#">수정</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Link</a>
+                          <a class="nav-link" href="#">삭제</a>
                         </li>
                         
                       </ul>
@@ -241,16 +241,18 @@
                           <div class="col-md-6">
                             
                             <div class="col-12">
-                              <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
-                              <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
+                              <!-- <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe> -->
+                              <!-- https://images.justwatch.com/poster/273790105/s592/pacinko -->
+                              <img alt="" width="350" height="300" >
+                             <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
                             </div>
                           </div>
 
 
 
                           <div class="col-md-6">
+                          
                             <ul class="nav nav-pills flex-column">
-
                               <li class="nav-item active">
                                 <a href="#" class="nav-link">
                                   <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호
@@ -352,23 +354,26 @@
                   </thead>
                   <tbody>
                   <c:forEach items="${contentList}" var="contentList">
-                  <tr>
-                    <td>${contentList.content_title }</td>
-                    
-                    <td><c:forEach items="${contentList.contentOtt}" var="contentOtt">
-                    ${contentOtt.ott.ott_name} 
+                  <tr class="contentTable" bca="${contentList.contentNumber}">
+                    <td>${contentList.contentTitle }</td>
+                    <td><c:forEach items="${contentListContentOtt}" var="contentOtt">
+                    ${contentOtt.ott.ottName} 
                     </c:forEach>
                     </td>
                     
-                    <td>${contentList.content_age }</td>
-                    <td> ${contentList.content_running_time }</td>
-                    <td>${contentList.content_release_date } </td>
+                    <td>${contentList.contentAge }</td>
+                    <td> ${contentList.contentRunningTime }</td>
+                    <td>${contentList.contentReleaseDate } </td>
                     
-                    <td>${contentList.contentGenre }</td>
+                    <td>
+                    <c:forEach items="${contentList.contentGenre }" var="contentGenre">
+                    ${contentGenre.genre.genreName }
+                    </c:forEach>
+                    </td>
                     <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
                   </c:forEach>
-                  </tfoot>
+                 
                 </table>
               </div>
               <!-- /.card-body -->
@@ -439,11 +444,47 @@
       "autoWidth": false,
       "responsive": true,
     });
+    
+    $('.contentTable').click(function(){
+    	const contentNumber= $(this).attr('bca')
+		
+    	
+    	
+    	$('#myModal').modal('show');
+      $('#myModal iframe').attr('src', src);
+      $('#myModal img').attr('src', src);
+      
+      $.ajax({
+        url :'/admin/movieAdmin/'+contentNumber,
+        type:'get',
+        dataType:'json',
+        contentType:'application/json',
+        success: function(data){
+          alert(data)
+          console(data)
+        },
+        error: function(e){
+          alert('에러발생')
+          console.log(e)
+        }
 
+      })
+        
+    	
+    	
+    })
+	
+    
+    
+    
     $('#link').click(function () {
         var src = 'https://www.youtube.com/embed/MD-ZeF8zyes?autohide=1&autoplay=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fwww.justwatch.com&widgetid=1';
         $('#myModal').modal('show');
         $('#myModal iframe').attr('src', src);
+        $('#myModal img').attr('src', src);
+        
+        
+        
     });
 
     $('#myModal button').click(function () {
