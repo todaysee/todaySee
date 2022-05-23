@@ -2,6 +2,9 @@ package com.todaySee.myPage.controller;
 
 
 
+import com.todaySee.domain.User;
+import com.todaySee.myPage.service.MyPageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,17 +12,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 
-
+    @Autowired
+    MyPageService myPageService;
     
-    //마이페이지 프로필 화면
-    @GetMapping("/myPage/profile")
-    public String myPageProfile() {
+    /**마이페이지 프로필 화면
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
+    @GetMapping("/myPage/profile/{user_number}")
+    public String myPageProfile(User user, Model model) {
+        
+        //DB값읽어와서 페이지로 전잘
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
         return "/myPage/myPageProfile";
     }
-    
-    //마이페이지 프로필 수정
-    @GetMapping("/myPage/update")
-    public String myPageUpdateUser(Model m) {
+
+   
+    /**마이페이지 프로필 수정페이지로 이동
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
+    @GetMapping("/myPage/update/{user_number}")
+    public String myPageUpdateUser(User user, Model model) {
+
+        //DB값읽어와서 페이지로 전잘
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
         return "/myPage/myPageUpdateUser";
     }
 

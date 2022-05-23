@@ -12,7 +12,7 @@
     <div class="sidemenu-body">
         <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
             <li class="nav-item">
-                <a href="/myPage/profile" class="nav-link">
+                <a href="/myPage/profile/1" class="nav-link">
                     <span class="icon"><i class="flaticon-user"></i></span>
                     <span class="menu-title">내 프로필</span>
                 </a>
