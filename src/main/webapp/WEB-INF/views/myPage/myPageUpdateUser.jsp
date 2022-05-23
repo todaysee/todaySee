@@ -8,12 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래? - ${user.userNickname}님 정보 수정</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+
+
 </head>
 
 <body>
@@ -33,9 +35,8 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="page-banner-box">
-            <h3>Account Setting</h3>
-        </div>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
+
 
         <div class="row">
             <div class="col-lg-1 col-md-12">
@@ -44,11 +45,38 @@
             <div class="col-lg-10 col-md-12">
                 <div class="account-setting-form">
                     <h3>내 정보 수정</h3>
+                    <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
+                         class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
                     <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="mb-3">
+                                <form id="uploadFormProfile">
+                                    <input type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
+                                    <input type="hidden" name="images_type" value="profileImages" > <%--타입--%>
+                                    <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
+                                    <input class="form-control" type="file" name="file" id="formFile">
+                                </form>
+                                <button id="profileImagesBtn" type="button" class="btn btn-primary" style="margin-top: 15px;">
+                                    변경하기
+                                </button>
+                            </div>
+                            <div class="mb-3">
+                                <form id="uploadFormTitleProfile">
+                                    <input type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
+                                    <input type="hidden" name="images_type" value="profileTittleImages" > <%--타입--%>
+                                    <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
+                                    <input class="form-control" type="file" name="file" id="formFile2">
+                                </form>
+                                <button id="profileTittleImagesBtn" type="button" class="btn btn-primary" style="margin-top: 15px;">
+                                    변경하기
+                                </button>
+                            </div>
+                        </div>
+                        <hr/>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>닉네임 변경하기</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" value="${user.userNickname}">
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-12">
@@ -173,13 +201,59 @@
 <!--========== Footer ==============-->
 
 <script src="/js/mypageCommunity/jquery.min.js"></script>
-<script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
 <script src="/js/mypageCommunity/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/simplebar.min.js"></script>
 <script src="/js/mypageCommunity/metismenu.min.js"></script>
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
+<script type="text/javascript" src="/js/flask.js"></script>
+<script>
+
+    $(function () {
+        $('#profileImagesBtn').on('click', function () {
+            alert('전송!')
+            uploadFile(); // 파일전송
+        });
+
+        $('#profileTittleImagesBtn').on('click', function () {
+            alert('전송!')
+            uploadFile2(); // 파일전송
+        });
+    });
+
+
+
+    function uploadFile() {
+        let form = $('#uploadFormProfile')[0];
+        let formData = new FormData(form);
+        $.ajax({
+            url: flaskIp,  //플라스크 아이피주소
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function (data) {
+            callback(data);
+        });
+    }
+
+    function uploadFile2() {
+        let form = $('#uploadFormTitleProfile')[0];
+        let formData = new FormData(form);
+        $.ajax({
+            url: flaskIp,  //플라스크 아이피주소
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function (data) {
+            callback(data);
+        });
+    }
+</script>
 </body>
 </html>

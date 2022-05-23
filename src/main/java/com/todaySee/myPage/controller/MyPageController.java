@@ -2,6 +2,9 @@ package com.todaySee.myPage.controller;
 
 
 
+import com.todaySee.domain.User;
+import com.todaySee.myPage.service.MyPageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,22 +12,63 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 
-    //마이페이지 홈
-    @GetMapping("/myPage")
-    public String myPage(Model m) {
-        return "/myPage/myPage";
+    @Autowired
+    MyPageService myPageService;
+    
+    /**마이페이지 프로필 화면
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
+    @GetMapping("/myPage/profile/{userNumber}")
+    public String myPageProfile(User user, Model model) {
+        
+        //DB값읽어와서 페이지로 전잘
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
+        return "/myPage/myPageProfile";
     }
 
-    //마이페이지 작성 게시글 목록
-    @GetMapping("/myPage/review")
-    public String myPageBoard(Model m) {
-        return "/myPage/myPageReviewList";
+   
+    /**마이페이지 프로필 수정페이지로 이동
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
+    @GetMapping("/myPage/update/{userNumber}")
+    public String myPageUpdateUser(User user, Model model) {
+
+        //DB값읽어와서 페이지로 전잘
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
+        return "/myPage/myPageUpdateUser";
     }
 
+    //마이페이지 나의 취향
     @GetMapping("/myPage/like")
     public String myPageLike(Model m) {
         return "/myPage/myPageLike";
     }
+
+    //마이페이지 나의 커뮤니티 작성글 및 댓글 보기
+    @GetMapping("/myPage/list")
+    public String mypageBoardCommnetsList() {
+        return "/myPage/mypageWriteBoardCommnetsList";
+    }
+
+    //마이페이지 작성 리뷰 목록
+    @GetMapping("/myPage/review")
+    public String myPageBoard(Model m) {
+        return "/myPage/myPageReviewList";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
+
 
     @GetMapping("/myPage/bookMark")
     public String myPageBookMark(Model m) {
@@ -36,30 +80,9 @@ public class MyPageController {
         return "/myPage/myPageBookMarkList";
     }
 
-    @GetMapping("/myPage/myPageGrade")
-    public String myPageGrade(Model m) {
-        return "/myPage/myPageGrade";
-    }
 
-    @GetMapping("/myPage/update")
-    public String myPageUpdateUser(Model m) {
-        return "/myPage/myPageUpdateUser";
-    }
 
-    @GetMapping("/myPage/profile")
-    public String myPageProfile() {
-        return "/myPage/myPageProfile";
-    }
 
-    @GetMapping("/myPage/comments")
-    public String myPageComments() {
-        return "/myPage/myPageCommentsList";
-    }
-
-    @GetMapping("/myPage/list")
-    public String mypageBoardCommnetsList() {
-        return "/myPage/mypageBoardCommnetsList";
-    }
 
     @GetMapping("/myPage/modal")
     public String modal() {

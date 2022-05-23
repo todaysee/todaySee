@@ -12,7 +12,7 @@
     <div class="sidemenu-body">
         <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
             <li class="nav-item">
-                <a href="/myPage/profile" class="nav-link">
+                <a href="/myPage/profile/1" class="nav-link">
                     <span class="icon"><i class="flaticon-user"></i></span>
                     <span class="menu-title">내 프로필</span>
                 </a>
@@ -24,6 +24,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/myPage/bookMark" class="nav-link">
+                    <span class="icon"><i class="flaticon-team"></i></span>
+                    <span class="menu-title">나의 북마크</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/myPage/review" class="nav-link">
                     <span class="icon"><i class="flaticon-star"></i></span>
                     <span class="menu-title">내 리뷰보기</span>
@@ -32,7 +38,7 @@
             <li class="nav-item">
                 <a href="/myPage/list" class="nav-link">
                     <span class="icon"><i class="flaticon-team"></i></span>
-                    <span class="menu-title">글관리</span>
+                    <span class="menu-title">내 글 보기</span>
                 </a>
             </li>
             <li class="nav-item">

@@ -21,6 +21,8 @@
 			font-size: var(--font-size);
 			margin-bottom: 0;
 		}
+
+
 	</style>
 </head>
 
@@ -42,9 +44,7 @@
 	<!--========== Body ==============-->
 	<div class="content-page-box-area">
 		<div class="content-page-box-area">
-			<div class="page-banner-box bg-5">
-				<h3>즐겨찾기</h3>
-			</div>
+			<%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
 			<div class="groups-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
@@ -69,7 +69,7 @@
 											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 										</a>
 										<div class="text ms-3">
-											<h3><a href="#">즐겨찾기 이름</a></h3>
+											<h3><a href="/myPage/bookMark/list">즐겨찾기 이름</a></h3>
 										</div>
 									</div>
 									<div class="join-groups-btn">

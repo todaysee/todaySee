@@ -13,23 +13,21 @@ public class Images {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer images_number;
+    @Column(name = "images_number")
+    Integer imagesNumber;
 
-    @Column(length = 3000)
-    String images_url;
-    @Column(length = 3000)
-    String images_file_name; // 원본 파일명
-    @Column(length = 3000)
-    String images_file_rename; // 수정된 파일명
-    @Column(length = 1000)
-    String images_type; // 파일의 저장위치
+    @Column(name = "images_url", length = 3000)
+    String imagesUrl;
+    @Column(name = "images_file_name", length = 3000)
+    String imagesFileName; // 원본 파일명
+    @Column(name = "images_file_rename", length = 3000)
+    String imagesFileRename; // 수정된 파일명
+    @Column(name = "images_type", length = 1000)
+    String imagesType; // 파일의 저장위치
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date images_upload_date; // 파일 저장날짜
-
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
+    @Column(name = "images_upload_date")
+    Date imagesUploadDate; // 파일 저장날짜
 
 }

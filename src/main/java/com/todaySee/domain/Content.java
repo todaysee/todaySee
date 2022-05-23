@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -40,6 +41,18 @@ public class Content {
     @Column(length = 3000,name = "content_poster_images_url")
     String contentPosterImagesUrl; // 컨텐츠 포스터 이미지 주소
 
+
     @Column(length = 3000,name = "content_main_images_url")
     String contentMainImagesUrl; // 컨텐츠 메인 이미지 주소
+    
+    @OneToMany
+    @JoinColumn(name="content_number")
+    List<ContentOtt> contentOtt;
+    
+    @OneToMany
+    @JoinColumn(name="content_number")
+    List<ContentGenre> contentGenre; 
+
 }
+
+	

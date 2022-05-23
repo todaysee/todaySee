@@ -13,12 +13,12 @@ public class ContentGenre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer contentgenre_number;
 
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
+//    @ManyToOne
+//    @JoinColumn(name="content_number")
+//    private Content content;
 
-    @ManyToOne
-    @JoinColumn(name="genre_number")
+    @OneToOne
+    @JoinColumn(name = "genre_number")
     private Genre genre;
 
 }
