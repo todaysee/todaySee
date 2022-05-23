@@ -33,27 +33,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="my-profile-inner-box">
-            <div class="profile-cover-image">
-                <a href="#">
-                    <img src="/images/mypageCommunity/my-profile-bg.jpg" alt="image">
-                </a>
-            </div>
-
-            <div class="profile-info-box">
-                <div class="inner-info-box d-flex justify-content-between align-items-center">
-                    <div class="info-image">
-                        <a href="#">
-                            <img src="/images/mypageCommunity/my-profile.jpg" alt="image">
-                        </a>
-                    </div>
-                    <div class="info-text ms-3">
-                        <h3>이름 들어감</h3>
-                        <span><a href="mailto:matthew@gmail.com">이메일 주소</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
         <div class="row">
             <div class="col-lg-1 col-md-12">
             </div>

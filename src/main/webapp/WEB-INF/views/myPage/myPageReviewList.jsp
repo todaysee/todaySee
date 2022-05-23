@@ -37,9 +37,9 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <div class="profile-cover-image">
-            <img src="/images/mypageCommunity/my-profile-bg.jpg" alt="image">
-        </div>
+
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
+
         <div class="events-inner-box-style d-flex justify-content-between align-items-center">
             <div class="title">
                 <h3>작성 리뷰 목록</h3>
