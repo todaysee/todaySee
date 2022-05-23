@@ -2,6 +2,9 @@ package com.todaySee.myPage.controller;
 
 
 
+import com.todaySee.domain.User;
+import com.todaySee.myPage.service.MyPageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +12,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MyPageController {
 
+    @Autowired
+    MyPageService myPageService;
 
     
     //마이페이지 프로필 화면
-    @GetMapping("/myPage/profile")
-    public String myPageProfile() {
+    @GetMapping("/myPage/profile/{user_number}")
+    public String myPageProfile(User user, Model model) {
+
+        model.addAttribute("user", myPageService.getUserInfo(user));
+
         return "/myPage/myPageProfile";
     }
     

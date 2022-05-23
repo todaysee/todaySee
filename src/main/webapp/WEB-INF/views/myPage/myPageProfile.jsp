@@ -52,19 +52,19 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>닉네임</label>
-                                <input type="text" class="form-control" value="닉네임" readonly>
+                                <input type="text" class="form-control" value="${user.user_nickname}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>이름</label>
-                                <input type="text" class="form-control" value="이름" readonly>
+                                <input type="text" class="form-control" value="${user.user_name}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>성별</label>
-                                <input type="text" class="form-control" value="성별" readonly>
+                                <input type="text" class="form-control" value="${user.user_gender}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -76,7 +76,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>이메일</label>
-                                <input type="text" class="form-control" placeholder="test@test.com" readonly>
+                                <input type="text" class="form-control" placeholder="${user.user_email}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
