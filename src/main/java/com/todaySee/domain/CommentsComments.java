@@ -13,15 +13,18 @@ public class CommentsComments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer commentscomments_number;
+    @Column(name = "commentscomments_number")
+    Integer commentscommentsNumber;
 
-    @Column(length = 3000)
+    @Column(name = "commentscommentsContent", length = 3000)
     String commentscomments_content;
-    Integer commentscomments_like;
+    @Column(name = "commentscomments_like")
+    Integer commentscommentsLike;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date commentscomments_date;
+    @Column(name = "commentscomments_date")
+    Date commentscommentsDate;
 
     @ManyToOne
     @JoinColumn(name="comments_number")

@@ -16,16 +16,19 @@ public class Comments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer comments_number;
+    @Column(name = "comments_number")
+    Integer commentsNumber;
 
-    @Column(length = 3000)
-    String comments_content;
-    Integer comments_like;
+    @Column(name = "comments_content", length = 3000)
+    String commentsContent;
+    @Column(name = "comments_like")
+    Integer commentsLike;
 
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
-    Date comments_date;
+    @Column(name = "comments_date")
+    Date commentsDate;
 
     @ManyToOne
     @JoinColumn(name="community_number")

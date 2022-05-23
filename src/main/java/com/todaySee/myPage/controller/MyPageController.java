@@ -14,21 +14,29 @@ public class MyPageController {
 
     @Autowired
     MyPageService myPageService;
-
     
-    //마이페이지 프로필 화면
+    /**마이페이지 프로필 화면
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
     @GetMapping("/myPage/profile/{user_number}")
     public String myPageProfile(User user, Model model) {
-
+        
+        //DB값읽어와서 페이지로 전잘
         model.addAttribute("user", myPageService.getUserInfo(user));
 
         return "/myPage/myPageProfile";
     }
 
-    //마이페이지 프로필 수정페이지로 이동
+   
+    /**마이페이지 프로필 수정페이지로 이동
+     * @return
+     * 회원번호로 페이지를 동적생성함
+     */
     @GetMapping("/myPage/update/{user_number}")
     public String myPageUpdateUser(User user, Model model) {
 
+        //DB값읽어와서 페이지로 전잘
         model.addAttribute("user", myPageService.getUserInfo(user));
 
         return "/myPage/myPageUpdateUser";
