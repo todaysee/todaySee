@@ -19,7 +19,7 @@ public class MyPageController {
      * @return
      * 회원번호로 페이지를 동적생성함
      */
-    @GetMapping("/myPage/profile/{user_number}")
+    @GetMapping("/myPage/profile/{userNumber}")
     public String myPageProfile(User user, Model model) {
         
         //DB값읽어와서 페이지로 전잘
@@ -33,7 +33,7 @@ public class MyPageController {
      * @return
      * 회원번호로 페이지를 동적생성함
      */
-    @GetMapping("/myPage/update/{user_number}")
+    @GetMapping("/myPage/update/{userNumber}")
     public String myPageUpdateUser(User user, Model model) {
 
         //DB값읽어와서 페이지로 전잘
