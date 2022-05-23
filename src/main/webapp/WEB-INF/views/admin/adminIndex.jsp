@@ -7,7 +7,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
+<script type="text/javascript">
+	$(function(){
+
+		$('.titleReport').removeClass('active')
+		$('.titleChart').addClass('active')
+		 $('.report2').removeClass('active')
+		 $('.chart1').addClass('active')
+		$('.clickReport').removeClass('menu-open')
+		$('.clickChart').addClass('menu-open')
+
+	})
+
+
+</script>
 	<title>관리자 페이지</title>
 
 	<!-- adminPlugins.css-->

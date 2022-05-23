@@ -1,9 +1,5 @@
 package com.todaySee.home.controller;
 
-
-
-
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,18 +8,22 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.todaySee.domain.Content;
+import com.todaySee.home.service.HomeServiceImpl;
 
+ 
 @Controller
 public class HomeController {
 
-
+	@Autowired
+	private HomeServiceImpl homeServiceImpl;
 
     //테스트 페이지
     @GetMapping("/2")
@@ -78,14 +78,19 @@ public class HomeController {
                 InputStream receiver = client.getInputStream();
                 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(receiver, "UTF-8"));
-                String message = "";
+                
+                String message = "";	// 파이썬에서 보낸 정보를 담을 변수 선언
+                StringTokenizer st;		// 파이썬에서 보낸 정보를 쪼개기 위해 StringTokenizer 선언
                 
                 while((message = reader.readLine()) != null) {
-                	
+                	st = new StringTokenizer(message, "/");		
                 	System.out.println("메시지 확인(1)"+message);
-                	System.out.println("메시지 확인(2)"+message);
                 	
-//                	message = message.trim().replace("", " ");
+                	int count = 0;
+                	while(st.hasMoreTokens()) {
+                		System.out.println(count+"번째"+st.nextToken());
+                		count++;
+                	}
                 }
                 
                 m.addAttribute("test",message);
@@ -110,9 +115,20 @@ public class HomeController {
     /** 검색 결과 페이지 - 인물
      * @return
      */
-    @GetMapping("/search/person")
-    public String homeList_person() {
-    	return "/home/homeList_person";
+    @GetMapping("/search/genres")
+    public String homeList_person(Integer contentgenre_number, Model model) {
+    	
+    	if(contentgenre_number == null) contentgenre_number = 1;
+    	
+    	System.out.println("장르 파라메터 : "+contentgenre_number);
+    	
+    	List<Content> genresContentList = homeServiceImpl.getGenresContentList(contentgenre_number);
+    	
+    	model.addAttribute("genresContentList", genresContentList);
+    	model.addAttribute("contentgenre_number",contentgenre_number);
+    	
+
+    	return "/home/homeList_genres";
     }
 
     /** 검색 결과 페이지 - 즐겨찾기

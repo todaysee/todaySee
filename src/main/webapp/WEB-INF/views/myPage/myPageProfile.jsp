@@ -14,6 +14,17 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+    <style>
+        .img_size_profile{
+            width: 250px;
+            height: 250px;
+        }
+        .img_size_background{
+            width: 1920px;
+            height: 250px;
+            background-size: contain;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +47,7 @@
         <div class="my-profile-inner-box">
             <div class="profile-cover-image">
                 <a href="#">
-                    <img src="/images/mypageCommunity/my-profile-bg.jpg" alt="image">
+                    <img  class="img-fluid" src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri" alt="image">
                 </a>
                 <a href="#" class="edit-cover-btn">Edit Cover</a>
             </div>
@@ -44,9 +55,7 @@
             <div class="profile-info-box">
                 <div class="inner-info-box d-flex justify-content-between align-items-center">
                     <div class="info-image">
-                        <a href="#">
-                            <img src="/images/mypageCommunity/my-profile.jpg" alt="image">
-                        </a>
+                            <img class="img-fluid" src="https://images.justwatch.com/poster/272669076/s592/seupai-paemilri" alt="image">
                         <div class="icon">
                             <a href="#"><i class="flaticon-photo-camera"></i></a>
                         </div>
