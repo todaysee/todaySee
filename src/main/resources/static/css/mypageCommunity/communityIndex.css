@@ -15,7 +15,7 @@
 			width: auto;
 			font-weight: 400;
 			background: var(--black-color);
-			color: var(--white-color);
+			color: black;
 			font-family: var(--title-fonts);
 			font-size: 16px;
 			padding: 12px 30px;
@@ -28,11 +28,11 @@
 			-moz-border-radius: 0px;
 			border-radius: 0px;
 		}
-
+		
 		.gen-button-like:hover,
 		.gen-button-like:focus {
-			color: var(--white-color);
-			background: var(--primarydark-color);
+			color: white;
+			background-color: #FF3E3E;
 		}
 
 		/*============================================
@@ -40,7 +40,7 @@
         ==============================================*/
 
 		.modal-content {
-			background: var(--dark-color);
+			background: white;
 		}
 
 		.close {
@@ -48,7 +48,7 @@
 		}
 
 		.modalSelect {
-			color: var(--white-color)
+			color: black;
 		}
 
 		/*============================================
@@ -62,7 +62,7 @@
 
 		.gen-extra-report ul li {
 			list-style: none;
-			color: var(--secondary-color);
+			color: black;
 			margin: 0 0 5px;
 			font-size: 18px;
 		}
@@ -74,7 +74,7 @@
 		}
 
 		.gen-extra-report ul li span:last-child {
-			color: var(--white-color);
+			color: black;
 		}
 
 		.gen-after-report {
@@ -121,4 +121,25 @@
 			.gen-single-movie-info .gen-after-report .gen-socail-share ul {
 				margin: 15px 0 0 0;
 			}
+		}
+		
+		/* 신고 버튼 css 추가 */
+		.gen-button-like{
+			color: white;
+			background-color: #3644D9;
+			border-radius:10%;
+		}
+		
+		.xxx{
+			color: black;
+		}
+		
+		.modalBtn{
+		border-color : white;
+		background-color : white;
+		}
+		
+		.community_like{
+		background-color : #ffffff;
+		border : #ffffff;
 		}

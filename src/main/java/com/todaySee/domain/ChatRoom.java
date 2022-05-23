@@ -21,7 +21,7 @@ public class ChatRoom {
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
     Date chatroom_date;
-    Integer chatroom_state;
+    Integer chatroom_state; // 채팅 상태
 
     @ManyToOne
     @JoinColumn(name="user_number")

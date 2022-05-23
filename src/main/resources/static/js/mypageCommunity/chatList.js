@@ -30,6 +30,7 @@ var ws;
 		if(res != null){
 			/*var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";*/
 			var tag = ''
+			var tag1 = ''
 			res.forEach(function(d, idx){
 				var rn = d.roomName.trim();
 				var roomNumber = d.roomNumber;
@@ -45,8 +46,15 @@ var ws;
 						'<span>'+ '행복한 시간 보내세요.' +'</span>'+
 					'</div>'+
 				'</div>'
+				
+				tag1 +=
+            '<div class="contact-item">'+
+                '<a href="#">' + '<img src="/images/mypageCommunity/user/user-18.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+'</a>'+
+               '<span class="name"><a>' + rn + '</a></span>'+
+            '</div>'
 			});
 			$('.all-notifications-body').empty().append(tag);
+			$('.contact-body').empty().append(tag1);
 		}
 	}
 
