@@ -69,49 +69,50 @@
                         <div class="register-form">
                             <div style="text-align:center"><h2>회원가입</h2></div>
         
-                            <form>
+                            <form action="/signup" method="post">
                                 <div class="form-group">
-                                    <label>NickName</label>
-                                    <input type="text" class="form-control">
+                                    <label>닉네임</label>
+                                    <input type="text" name="userNickname" class="form-control" value="Gill">
+                                   
                                 </div>
 
 								
 								&nbsp;
 								<div class="row">
                                 <div class="form-group col-md-9" >
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" style="margin-right:0px;">
+                                    <label>이메일</label>
+                                    <input type="email" name="userEmail" class="form-control" value="moon@gmail.com" style="margin-right:0px;">
 									</div>
 									<div class="post-btn col-md-3">
                                   <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; 
                                   padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;">중복확인</button>
                              		</div>
                              		</div>
-                             		
+                             		 
                              		
                                 <div class="form-group">
                                 
-                                    <label>Password</label>
-                                    <input type="password" class="form-control">
+                                    <label>비밀번호</label>
+                                    <input type="password" name="userPassword1" class="form-control">
                                 </div>
 
                                 &nbsp;
                                 <div class="form-group">
-                                    <label>Confirm Password</label>
-                                    <input type="password" class="form-control">
+                                    <label>비밀번호 확인 </label>
+                                    <input type="password" name="userPassword2"  class="form-control">
                                 </div>
                                 
                                 &nbsp;
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="password" class="form-control">
+                                    <label>이름</label>
+                                    <input type="text" name="userName" value="TOMBOY" class="form-control">
                                 </div>
                                 
                                 &nbsp;
                                 <div class="form-group">
-                                    <label>Gender</label>
+                                    <label>성별</label>
                                     
-                                   	<select class="form-control" name="gender" id="gender">
+                                   	<select class="form-control" name="userGender" id="gender">
                                    		<option value="choice">성별을 선택해주세요</option>
                                    		<option value="Woman">여성</option>
                                    		<option value="Man">남성</option>
@@ -121,14 +122,14 @@
                                
                                 &nbsp;
                                 <div class="form-group">
-                                    <label>CellPhone</label>
-                                    <input type="password" class="form-control">
+                                    <label>휴대전화번호</label>
+                                    <input type="text" name="userTel" value="010333" class="form-control">
                                 </div>
         
                                 
                                 <div class="remember-me-wrap">
                                     	 <input type="checkbox" id="test1">
-                                        <label for="test1" style="float: right;">I Accept The <a href="privacy.html">Privacy</a></label>
+                                        <label for="test1" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
                                    

@@ -20,7 +20,7 @@ import com.todaySee.domain.ContentGenre;
 import com.todaySee.home.service.HomeServiceImpl;
 
  
-@Controller
+//@Controller
 public class HomeController {
 
 	@Autowired
@@ -37,9 +37,11 @@ public class HomeController {
      * @param	로그인 세션
      * @return	추천 알고리즘을 통한 추천 영화 출력
      */
+ 
+    
     @GetMapping("/")
     public String homeIndex(Model m) {
-    	
+   	
 		// 소켓을 선언
         try (Socket client = new Socket()) {
         	
@@ -103,8 +105,10 @@ public class HomeController {
         }
     	
         return "/home/homeIndex";
+      
     }
 
+  
     /** 검색 결과 페이지 - 콘텐츠
      * @return
      */
@@ -157,6 +161,7 @@ public class HomeController {
         return "/home/homeDetails";
     }
     
+    /*
     //회원가입방법 선택 
     @GetMapping("/homechooseLogin")
     public String homechooseLogin() {
@@ -206,7 +211,7 @@ public class HomeController {
     }
 
 
-
+*/
 
 
 
