@@ -139,11 +139,11 @@
                 <table id="example2" class="table table-bordered table-striped jqplugin">
                   <thead> 
                   <tr>
-                    <th>2</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>신고번호</th>
+                    <th>신고대상</th>
+                    <th>신고내용</th>
+                    <th>신고날짜</th>
+                    <th>신고상태</th>
                     <th>신고처리</th>
                   </tr>
                   </thead>
