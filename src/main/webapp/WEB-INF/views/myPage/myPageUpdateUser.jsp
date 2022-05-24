@@ -35,6 +35,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
+
         <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
 
@@ -45,8 +46,10 @@
             <div class="col-lg-10 col-md-12">
                 <div class="account-setting-form">
                     <h3>내 정보 수정</h3>
-                    <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
-                         class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
+                    <c:forEach items="${profileImages}" var="img">
+                        <img src="${img.imagesUrl}"
+                             class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
+                    </c:forEach>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="mb-3">
@@ -214,6 +217,7 @@
 <script>
 
     $(function () {
+        //이벤트 실행문
         $('#profileImagesBtn').on('click', function () {
             alert('전송!')
             uploadFile(); // 파일전송
@@ -226,7 +230,7 @@
     });
 
 
-
+    //ajax 비동기 통신을 사용하여 AWS-ec2 flask Server 값전달
     function uploadFile() {
         let form = $('#uploadFormProfile')[0];
         let formData = new FormData(form);
