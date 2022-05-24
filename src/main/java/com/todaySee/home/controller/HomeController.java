@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.todaySee.domain.ContentGenre;
+import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
 
  
@@ -113,24 +113,22 @@ public class HomeController {
         return "/home/homeList_content";
     }
     
-    /** 검색 결과 페이지 - 인물
-     * @return
-     */
+	/** 장르별 컨텐츠 화면에 출력
+	 * @param genreNumber (장르 번호)
+	 * @return List<Content> 
+	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
+	 */
     @GetMapping("/search/genres")
-    public String homeList_person(Integer contentgenre_number, Model model) {
+    public String homeList_person(Integer genreNumber, Model model) {
     	
-    	System.out.println("장르 파라메터1 : "+contentgenre_number);
+    	// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함
+    	if(genreNumber == null) genreNumber = 1;	
+    	
+    	// 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다
+    	List<Content> genresContentList =  homeServiceImpl.getGenresContentList(genreNumber);
 
-    	if(contentgenre_number == null) contentgenre_number = 2;
-    	
-    	System.out.println("장르 파라메터2 : "+contentgenre_number);
-    
-    	
-    	//List<ContentGenre> genresContentList = homeServiceImpl.getGenresContentList((contentgenre_number));
-    	
-    	//model.addAttribute("genresContentList", genresContentList);
-    	
-
+    	model.addAttribute("genresContentList", genresContentList);  // 리스트에 담긴 컨텐츠를 화면에 출력한다
+  
     	return "/home/homeList_genres";
     }
 
