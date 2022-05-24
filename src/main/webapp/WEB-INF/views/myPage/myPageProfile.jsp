@@ -48,10 +48,6 @@
                     <h3>내 정보</h3>
                     <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
                          class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
-
-
-
-
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">

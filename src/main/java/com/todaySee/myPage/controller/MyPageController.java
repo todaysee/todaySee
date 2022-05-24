@@ -14,15 +14,14 @@ public class MyPageController {
 
     @Autowired
     MyPageService myPageService;
-    
+
     /**마이페이지 프로필 화면
      * @return
      * 회원번호로 페이지를 동적생성함
      */
     @GetMapping("/myPage/profile/{userNumber}")
     public String myPageProfile(User user, Model model) {
-        
-        //DB값읽어와서 페이지로 전잘
+        //DB값읽어와서 페이지로 전달
         model.addAttribute("user", myPageService.getUserInfo(user));
 
         return "/myPage/myPageProfile";

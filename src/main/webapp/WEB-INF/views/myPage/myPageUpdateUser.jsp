@@ -214,6 +214,7 @@
 <script>
 
     $(function () {
+        //이벤트 실행문
         $('#profileImagesBtn').on('click', function () {
             alert('전송!')
             uploadFile(); // 파일전송
@@ -226,7 +227,7 @@
     });
 
 
-
+    //ajax 비동기 통신을 사용하여 AWS-ec2 flask Server 값전달
     function uploadFile() {
         let form = $('#uploadFormProfile')[0];
         let formData = new FormData(form);
