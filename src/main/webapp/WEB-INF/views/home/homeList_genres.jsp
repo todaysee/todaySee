@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 
@@ -58,40 +59,40 @@
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
 
-                               <li ><a href="/search/genres?contentgenre_number=1">드라마</a></li>
+                               <li ><a href="/search/genres?genreNumber=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=2">로맨스</a></li>
+                                <li ><a href="/search/genres?genreNumber=2">로맨스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=3">스릴러</a></li>
+                                <li ><a href="/search/genres?genreNumber=3">스릴러</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genrecontentgenre_number=4">SF</a></li>
+                                <li ><a href="/search/genres?genreNumber=4">SF</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=5">가족</a></li>
+                                <li ><a href="/search/genres?genreNumber=5">가족</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=16">코미디</a></li>
+                                <li ><a href="/search/genres?genreNumber=16">코미디</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=7">다큐멘터리</a></li>
+                                <li ><a href="/search/genres?genreNumber=7">다큐멘터리</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=9">스포츠</a></li>
+                                <li ><a href="/search/genres?genreNumber=9">스포츠</a></li>
                             </ol>
                             <ol class="breadcrumb">
-                                <li ><a href="/search/genres?contentgenre_number=8">범죄</a></li>
+                                <li ><a href="/search/genres?genreNumber=8">범죄</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=10">애니메이션</a></li>
+                                <li ><a href="/search/genres?genreNumber=10">애니메이션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=11">예능</a></li>
+                                <li ><a href="/search/genres?genreNumber=11">예능</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=12">액션</a></li>
+                                <li ><a href="/search/genres?genreNumber=12">액션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=13">역사</a></li>
+                                <li ><a href="/search/genres?genreNumber=13">역사</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=14">음악</a></li>
+                                <li ><a href="/search/genres?genreNumber=14">음악</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=15">전쟁</a></li>
+                                <li ><a href="/search/genres?genreNumber=15">전쟁</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=6">공포</a></li>
+                                <li ><a href="/search/genres?genreNumber=6">공포</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?contentgenre_number=17">판타지</a></li>
+                                <li ><a href="/search/genres?genreNumber=17">판타지</a></li>
 
                               </ol>
                         </div>
@@ -111,14 +112,13 @@
                     <div class="row">
                     <!-- start for -->
 
-                     <c:forEach items="${genresContentList}" var="genresContent">
-
+                     <c:forEach items="${genresContentList}" var="content">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gen-carousel-movies-style-3 movie-grid style-3">
                                 <div class="gen-movie-contain">
                                     <div class="gen-movie-img">
 
-                                        <img src="${ genresContent.content_main_images_url}" alt="streamlab-image">
+                                        <img src="${ content.contentMainImagesUrl}" alt="streamlab-image">
                                         <div class="gen-movie-add">
                                             <div class="wpulike wpulike-heart">
                                                 <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -163,13 +163,18 @@
                                     <div class="gen-info-contain">
                                         <div class="gen-movie-info">
 
-                                            <h3><a href="single-movie.html">${genresContent.content_title}</a></h3>
+                                            <h3><a href="${content.contentLink}">${content.contentTitle}</a></h3>
                                         </div>
                                         <div class="gen-movie-meta-holder">
                                             <ul>
-                                                <li>${genresContent.content_running_time}</li>
+                                                <li>${content.contentRunningTime}</li>
                                                 <li>
-                                                    <a href="/search/genres?contentgenre_number=${ contentgenre_number}"><span>Action</span></a>
+                                                <!-- /search/genres?contentgenre_number=${ content.contentGenre} -->
+                                                    <a href="#"><span>
+	                                                    <c:forEach items="${content.contentGenre}" var="genres">
+			                                                    ${genres.genre.genreName}   
+	                                                    </c:forEach>
+                                                    </span></a>
 
                                                 </li>
                                             </ul>

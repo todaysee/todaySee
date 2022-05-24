@@ -35,6 +35,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
+
         <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
 
@@ -45,13 +46,12 @@
             <div class="col-lg-10 col-md-12">
                 <div class="account-setting-form">
                     <h3>내 정보 수정</h3>
-                    <img src="https://www.justwatch.com/images/backdrop/272301461/s1440/seupai-paemilri"
-                         class="rounded-circle img-thumbnail float-start containerMyProfileImg " alt="image">
+                    <%@ include file="../inculde/mypage/myPageProfileImg.jsp"%>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="mb-3">
                                 <form id="uploadFormProfile">
-                                    <input type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
+                                    <input class="user_number1" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileImages" > <%--타입--%>
                                     <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
                                     <input class="form-control" type="file" name="file" id="formFile">
@@ -62,7 +62,7 @@
                             </div>
                             <div class="mb-3">
                                 <form id="uploadFormTitleProfile">
-                                    <input type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
+                                    <input class="user_number2" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileTittleImages" > <%--타입--%>
                                     <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
                                     <input class="form-control" type="file" name="file" id="formFile2">
@@ -214,6 +214,7 @@
 <script>
 
     $(function () {
+        //이벤트 실행문
         $('#profileImagesBtn').on('click', function () {
             alert('전송!')
             uploadFile(); // 파일전송
@@ -226,10 +227,11 @@
     });
 
 
-
+    //ajax 비동기 통신을 사용하여 AWS-ec2 flask Server 값전달
     function uploadFile() {
         let form = $('#uploadFormProfile')[0];
         let formData = new FormData(form);
+        let userNumber = $('.user_number1').val();
         $.ajax({
             url: flaskIp,  //플라스크 아이피주소
             type: 'POST',
@@ -239,11 +241,20 @@
         }).done(function (data) {
             callback(data);
         });
+
+        $.ajax({
+            url : "http://localhost:8080/updateProfileImageAjax",
+            type: 'POST',
+            data: {
+                userNumber:userNumber
+            },
+        });
     }
 
     function uploadFile2() {
         let form = $('#uploadFormTitleProfile')[0];
         let formData = new FormData(form);
+        let userNumber = $('.user_number2').val();
         $.ajax({
             url: flaskIp,  //플라스크 아이피주소
             type: 'POST',
@@ -252,6 +263,14 @@
             contentType: false
         }).done(function (data) {
             callback(data);
+        });
+
+        $.ajax({
+            url : "http://localhost:8080/updateProfileTitleImageAjax",
+            type: 'POST',
+            data: {
+                userNumber:userNumber
+            },
         });
     }
 </script>

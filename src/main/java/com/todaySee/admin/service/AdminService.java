@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.todaySee.domain.Content;
+import com.todaySee.domain.Report;
 import com.todaySee.domain.User;
 
 public interface AdminService {
@@ -15,5 +16,11 @@ public interface AdminService {
 	public User getUser(@PathVariable Integer userNumber);
 	
 	
-	public List<Content> getAllContent() ;
+	public List<Content> getAllContent();
+	
+	public Content getContentDetails(@PathVariable Integer contentNumber);
+	
+	
+	public List<Report> getReportList();
+	
 }
