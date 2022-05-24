@@ -2,7 +2,6 @@ package com.todaySee.myPage.controller;
 
 
 
-import com.todaySee.domain.Images;
 import com.todaySee.domain.User;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.myPage.persistence.MyPageImgRepository;
@@ -14,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -121,22 +118,8 @@ public class MyPageController {
     }
 
 
-    @GetMapping("/myPage/bookMark/{userNumber}")
+    @GetMapping("/myPage/bookMarkList/{userNumber}")
     public String myPageBookMark(@PathVariable Integer userNumber, User user, Model model) {
-
-        //마이페이지 회원정보 불러오기, 이미지 불러오기
-        model.addAttribute("user", myPageService.getUserInfo(user));
-        MyPageImages myPageImages = new MyPageImages();
-        List<Object[]> tittleImages = myPageImgRepository.profileTittleImages(userNumber);
-        model.addAttribute("tittleImages",myPageImages.tittleImages(tittleImages));
-        List<Object[]> profileImages = myPageImgRepository.profileImages(userNumber);
-        model.addAttribute("profileImages",myPageImages.profileImages(profileImages));
-
-        return "/myPage/myPageBookMark";
-    }
-
-    @GetMapping("/myPage/bookMark/list/{userNumber}")
-    public String myPageBookMarkList(@PathVariable Integer userNumber, User user, Model model) {
 
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
@@ -149,8 +132,19 @@ public class MyPageController {
         return "/myPage/myPageBookMarkList";
     }
 
+    @GetMapping("/myPage/bookMark/{userNumber}")
+    public String myPageBookMarkList(@PathVariable Integer userNumber, User user, Model model) {
 
+        //마이페이지 회원정보 불러오기, 이미지 불러오기
+        model.addAttribute("user", myPageService.getUserInfo(user));
+        MyPageImages myPageImages = new MyPageImages();
+        List<Object[]> tittleImages = myPageImgRepository.profileTittleImages(userNumber);
+        model.addAttribute("tittleImages",myPageImages.tittleImages(tittleImages));
+        List<Object[]> profileImages = myPageImgRepository.profileImages(userNumber);
+        model.addAttribute("profileImages",myPageImages.profileImages(profileImages));
 
+        return "/myPage/myPageBookMark";
+    }
 
 
     @GetMapping("/myPage/modal")
