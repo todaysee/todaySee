@@ -49,15 +49,15 @@
           dataType : 'json',
           contentType: 'application/json',
           success : function(data){
-            $('.userNumber').text(data.user_number)
-            $('.userName').text(data.user_name)
-            $('.userEmail').text(data.user_email)
-            $('.userTel').text(data.user_tel)
-            $('.userNickname').text(data.user_nickname)
-            $('.userGender').text(data.user_gender)
-            $('.userloginDate').text(data.user_login_date)
-            $('.userSignupDate').text(data.user_signup_date)
-            $('.user_state').text(data.user_state)
+            $('.userNumber').text(data.userNumber)
+            $('.userName').text(data.userName)
+            $('.userEmail').text(data.userEmail)
+            $('.userTel').text(data.userTel)
+            $('.userNickname').text(data.userNickname)
+            $('.userGender').text(data.userGender)
+            $('.userloginDate').text(data.userLoginDate)
+            $('.userSignupDate').text(data.userSignupDate)
+            $('.user_state').text(data.userState)
             
              
             
@@ -306,12 +306,12 @@
               </thead>
               <tbody>
                 <c:forEach items="${userList}" var="test1">
-                  <tr class="userTable" abc="${test1.user_number}">
-                    <td class="userTable2">${test1.user_number}</td>
-                    <td class="userTable1">${test1.user_email}</td>
-                    <td class="userTable1">${test1.user_nickname }</td>
-                    <td class="userTable1">${test1.user_gender }</td>
-                    <td class="userTable1">${test1.user_state }</td>
+                  <tr class="userTable" abc="${test1.userNumber}">
+                    <td class="userTable2">${test1.userNumber}</td>
+                    <td class="userTable1">${test1.userEmail}</td>
+                    <td class="userTable1">${test1.userNickname }</td>
+                    <td class="userTable1">${test1.userGender }</td>
+                    <td class="userTable1">${test1.userState }</td>
                     <td><button class="btn btn-outline-danger">삭제</button></td>
                   </tr>
                   </c:forEach>

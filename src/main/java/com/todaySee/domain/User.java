@@ -37,7 +37,10 @@ public class User {
     @Column (name = "user_admin")
     Integer userAdmin;
     @Column (name = "user_profile_yn")
-    Integer userProfileYn; //프로필 유무 물어보는 컬럼
+    Integer userProfileYn; //프로필 이미지 유무 물어보는 컬럼
+    @Column (name = "user_title_profile_yn")
+    Integer userTitleProfileYn; //프로필 타이틀 이미지 물어보는 컬럼
+
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
@@ -51,9 +54,10 @@ public class User {
     String userTel;
     @Column(name = "user_password",length = 1000)
     String userPassword;
-    
-    
-    @OneToMany
+
+
+    @OneToMany // 1:다
+
     @JoinColumn(name="user_number")
     private List<Images> images;
 }

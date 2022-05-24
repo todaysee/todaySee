@@ -1,6 +1,7 @@
 package com.todaySee.home.controller;
 
 import com.todaySee.domain.Content;
+import com.todaySee.domain.Images;
 import com.todaySee.home.service.DetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping("/details")
@@ -34,7 +38,12 @@ public class DetailsController {
         model.addAttribute("Content", contentVO);
 
         /* 컨텐츠 장르 가져오기 */
+        List<String> genre = detailsService.getContentGenre(contentNumber);
+        model.addAttribute("Genre", genre);
 
+        /* 컨텐츠 플랫폼 가져오기 */
+        List<HashMap<String, String>> ottList = detailsService.getContentOtt(contentNumber);
+        model.addAttribute("ottList", ottList);
 
         return "/home/homeDetails";
     }
