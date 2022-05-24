@@ -69,7 +69,7 @@
 											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 										</a>
 										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list">즐겨찾기 이름</a></h3>
+											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
 										</div>
 									</div>
 									<div class="join-groups-btn">

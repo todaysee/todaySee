@@ -9,6 +9,4 @@ import java.util.List;
 
 public interface MyPageRepository extends CrudRepository<User, Integer> {
 
-
-
 }
