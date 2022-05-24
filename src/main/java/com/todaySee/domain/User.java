@@ -46,7 +46,7 @@ public class User {
     @Column(name = "user_password",length = 1000)
     String userPassword;
 
-    @OneToMany
+    @OneToMany // 1:다
     @JoinColumn(name="user_number")
     private List<Images> images;
 }

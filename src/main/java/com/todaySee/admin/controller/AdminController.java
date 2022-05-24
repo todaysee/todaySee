@@ -38,12 +38,16 @@ public class AdminController {
 		return "admin/userChart";
 	}
 	
+	
+	
 	@GetMapping("/admin/userList")
 	public String userList(Model m, User user) {
 	m.addAttribute("userList",adminService.getUserList(user));
 		
 		return "admin/userList";
 	}
+	
+	
 	
 	/**
 	 * @param Model m : 전체 컨텐츠 영상 리스트 값 전달
@@ -56,6 +60,8 @@ public class AdminController {
 		return "admin/movieAdmin";
 	}
 
+	
+	
     @GetMapping("/image")
     public String image(Model m) {
         System.out.println("image 페이지 접속");
@@ -63,7 +69,10 @@ public class AdminController {
     }
     
     @GetMapping("/userReport")
-    public String adminTable() {
+    public String adminTable(Model m ) {
+    	
+    	m.addAttribute("reportList", adminService.getReportList());
+    	
     	return "admin/userReport";
     }
     
@@ -84,19 +93,19 @@ public class AdminController {
 		return addList;
 	}
 	
-    
 
-//	@GetMapping("/testReport")
-//	public String testReport() {
-//		return "/admin/testReport";
-//	}
-	
-//	@GetMapping("/admin/movieAdmin/{contentNumber}")
-//	@ResponseBody
-//	public List<Content> ajaxContent(@PathVariable Integer contentNumber) {
-//		
-//		return ;
-//	}
+
+	/**
+	 * @param 클릭시 영상의 number를 보냄
+	 * @return ajax를 통해 content 타입 뷰에 보냄
+	 */
+	@GetMapping("/admin/movieAdmin/{contentNumber}")
+	@ResponseBody
+	public Content ajaxContent(@PathVariable Integer contentNumber) {
+		Content ajaxContent = adminService.getContentDetails(contentNumber);
+		
+		return ajaxContent;
+	}
 
 
 

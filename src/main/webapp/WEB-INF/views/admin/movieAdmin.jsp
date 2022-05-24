@@ -75,7 +75,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+           <!--  <h1>영상정보</h1> -->
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -94,7 +94,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                <h3 class="card-title">영상정보</h3>
               </div>
 
               
@@ -110,7 +110,7 @@
                     </button>
                   </div>
                 </div>
-                <h3 class="card-title">DataTable with default features</h3>
+                <!-- <h3 class="card-title">DataTable with default features</h3> -->
                 
               <div class="col-md-10">
                 <!-- Button trigger modal -->
@@ -212,7 +212,7 @@
 
           <!-- modal -->
 
-          <div id="link">My video</div>
+         <!--  <div id="link">My video</div> -->
           <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -240,23 +240,22 @@
                         <div class="row">
                           <div class="col-md-6">
                             
-                            <div class="col-12">
+                            <div class="col-12" id="contentImages">
                               <!-- <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe> -->
                               <!-- https://images.justwatch.com/poster/273790105/s592/pacinko -->
+                              
                               <img alt="" width="350" height="300" >
-                             <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe>
+                              
+                            <!--  <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe> -->
                             </div>
                           </div>
 
 
-
                           <div class="col-md-6">
-                          
                             <ul class="nav nav-pills flex-column">
                               <li class="nav-item active">
                                 <a href="#" class="nav-link">
                                   <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호
-                                 
                                   <span class="badge float-right userNumber"><h5></h5></span>
                                 </a>
                               </li>
@@ -265,7 +264,6 @@
                               <li class="nav-item active">
                                 <a href="#" class="nav-link">
                                   <i class="fa fa-address-book" aria-hidden="true"></i> 줄거리
-                                 
                                   <span class="badge float-right userName"><h5></h5></span>
                                 </a>
                               </li>
@@ -274,7 +272,6 @@
                               <li class="nav-item active">
                                 <a href="#" class="nav-link">
                                   <i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급
-                                 
                                   <span class="badge float-right userEmail"><h5></h5></span>
                                 </a>
                               </li>
@@ -286,9 +283,6 @@
                                   <span class="badge float-right userTel"><h5></h5></span>
                                 </a>
                               </li>
-              
-              
-              
                               <li class="nav-item">
                                 <a href="#" class="nav-link">
                                   <i class="fa fa-user" aria-hidden="true"></i> 개봉일
@@ -314,21 +308,10 @@
                                   <span class="badge float-right userSignupDate"><h5></h5></span>
                                 </a>
                               </li>
-
-
-              
-                          
-              
-              
-                              
                             </ul>
                           </div>
                         </div>
                       </div>
-
-
-
-                       
                     </div>
                 </div>
             </div>
@@ -356,24 +339,24 @@
                   <c:forEach items="${contentList}" var="contentList">
                   <tr class="contentTable" bca="${contentList.contentNumber}">
                     <td>${contentList.contentTitle }</td>
-                    <td><c:forEach items="${contentListContentOtt}" var="contentOtt">
+                    <td>
+                   <c:forEach items="${contentList.contentOtt}" var="contentOtt">
                     ${contentOtt.ott.ottName} 
-                    </c:forEach>
-                    </td>
+                    </c:forEach> 
                     
                     <td>${contentList.contentAge }</td>
                     <td> ${contentList.contentRunningTime }</td>
                     <td>${contentList.contentReleaseDate } </td>
                     
                     <td>
-                    <c:forEach items="${contentList.contentGenre }" var="contentGenre">
-                    ${contentGenre.genre.genreName }
-                    </c:forEach>
+                     <c:forEach items="${contentList.contentGenre }" var="contentGenre">
+                    ${contentGenre.genre.genreName } 
+                    </c:forEach> 
                     </td>
                     <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
                   </c:forEach>
-                 
+                 </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -445,14 +428,18 @@
       "responsive": true,
     });
     
-    $('.contentTable').click(function(){
+    
+    
+    
+    $(document).on('click','.contentTable',function(){
+    	
+    	
+    
     	const contentNumber= $(this).attr('bca')
 		
     	
     	
-    	$('#myModal').modal('show');
-      $('#myModal iframe').attr('src', src);
-      $('#myModal img').attr('src', src);
+    	
       
       $.ajax({
         url :'/admin/movieAdmin/'+contentNumber,
@@ -460,8 +447,27 @@
         dataType:'json',
         contentType:'application/json',
         success: function(data){
-          alert(data)
-          console(data)
+        
+          let src = data.contentPosterImagesUrl
+          let youtubeUrlsrc = data.contentYoutubeUrl /*  링크가 없으면 */
+          let mainImagesUrl = data.contentMainImagesUrl
+          
+          $("#contentImages>.img22").remove();
+        $('#myModal').modal('show');
+        //$('#myModal iframe').attr('src', youtubeUrlsrc);
+          if (youtubeUrlsrc != 'noYoutubeLink') {
+        		$('#myModal img').attr('src', src);
+        		console.log('아무거나')
+           		$('#contentImages').append("<iframe class='img22' src="+youtubeUrlsrc+" width='350' height='300' frameborder='0' allowfullscreen=''></iframe>");
+		    } else {
+		    	console.log('거나')
+		    	$('#myModal img').attr('src', src);
+         		$('#contentImages').append("<img class='img22' alt='' src="+ mainImagesUrl +" width='350' height='300' >")
+        }
+        
+       /*  $('#myModal img').attr('src', src); */
+
+
         },
         error: function(e){
           alert('에러발생')
@@ -477,19 +483,7 @@
     
     
     
-    $('#link').click(function () {
-        var src = 'https://www.youtube.com/embed/MD-ZeF8zyes?autohide=1&autoplay=0&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0&enablejsapi=1&origin=https%3A%2F%2Fwww.justwatch.com&widgetid=1';
-        $('#myModal').modal('show');
-        $('#myModal iframe').attr('src', src);
-        $('#myModal img').attr('src', src);
-        
-        
-        
-    });
-
-    $('#myModal button').click(function () {
-        $('#myModal iframe').removeAttr('src');
-    });
+ 
 
   });
 </script>
