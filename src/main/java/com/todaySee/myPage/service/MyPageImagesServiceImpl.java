@@ -11,7 +11,18 @@ import org.springframework.stereotype.Service;
 public class MyPageImagesServiceImpl implements MyPageImagesService{
 
     @Autowired
-    MyPageImgRepository myPageImgRepository;
+    MyPageRepository myPageRepository;
 
+    public void updateProfileImageState(Integer userNumber){
+        User user = myPageRepository.findById(userNumber).get();
+        user.setUserProfileYn(2);
+        myPageRepository.save(user);
+    }
+
+    public void updateProfileTitleImageState(Integer userNumber) {
+        User user = myPageRepository.findById(userNumber).get();
+        user.setUserTitleProfileYn(1);
+        myPageRepository.save(user);
+    }
 
 }
