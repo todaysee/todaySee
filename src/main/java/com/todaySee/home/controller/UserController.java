@@ -47,26 +47,7 @@ public class UserController {
         return "/home/homeSignUpComplete";
     }
     
-    /*
-    @PostMapping("/signup")
-    public String homeSignUp(@Valid User user, BindingResult bindingResult) {
-    	System.out.println("postsignup");
-    	if (bindingResult.hasErrors()) {
-    		return "/home/homeSignUp";
-    	}
-    	if (!userCreateForm.getUserPassword1().equals(userCreateForm.getUserPassword2())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect", 
-                    "2개의 패스워드가 일치하지 않습니다.");
-    		return "/home/homeSignUp";
-        }
-       
-    	
-    	userService.create(userCreateForm.getUserName(),userCreateForm.getUserEmail(), userCreateForm.getUserPassword1());
-
-        return "redirect:/";
-}
-*/
- 
+    
     //회원가입 완료 페이지
     @GetMapping("/complete")
     public String homeSignUpComplete() {
