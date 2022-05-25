@@ -17,6 +17,7 @@ public final class AjaxVoDtoConverter {
         ajaxDto.setContent_main_images_url(content.getContentMainImagesUrl());
         ajaxDto.setContent_poster_images_url(content.getContentPosterImagesUrl());
         ajaxDto.setContent_release_date(content.getContentReleaseDate());
+        ajaxDto.setContent_info(content.getContentInfo());
 
         return ajaxDto;
     }
@@ -29,6 +30,7 @@ public final class AjaxVoDtoConverter {
         content.setContentMainImagesUrl(ajaxDto.getContent_main_images_url());
         content.setContentPosterImagesUrl(ajaxDto.getContent_poster_images_url());
         content.setContentReleaseDate(ajaxDto.getContent_release_date());
+        content.setContentInfo(ajaxDto.getContent_info());
 
         return content;
     }
