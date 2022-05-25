@@ -6,7 +6,7 @@ public interface UserService {
 
 	User create(User user);
 	
-	//User login(User user);
+	
 	User login(String userEmail, String userPassword);
 	
 

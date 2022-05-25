@@ -1,4 +1,4 @@
-package com.todaySee.domain;
+	package com.todaySee.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

@@ -56,17 +56,14 @@ public class UserController {
     //로그인 페이지
     @GetMapping("/login")
     public String homeLogin() {
-    	System.out.println("GetMapping");
         return "/home/homeLogin";
     }
     
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model) {
-    	System.out.println("PostMapping");
     	User findUser = userServiceImpl.login(userEmail, userPassword);
     	if (findUser != null
     			&& findUser.getUserPassword().equals(userPassword)) {
-    			
     		model.addAttribute("user", findUser);
     		return "/home/homeIndex";
     	} else {

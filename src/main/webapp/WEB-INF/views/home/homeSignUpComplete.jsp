@@ -72,7 +72,7 @@
                                 
         						
                                 <div class="form-group">
-								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 닉네임님 환영합니다 !  </h2>								 
+								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;">${user.userNickname }님 환영합니다 !  </h2>								 
 								</div>                              
         
                                  
