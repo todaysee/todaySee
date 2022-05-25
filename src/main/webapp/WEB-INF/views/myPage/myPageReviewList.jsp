@@ -1,6 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,437 +14,323 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+
+    <!-- 추가 CSS -->
     <style>
-        .reviewBody { display:none; }
+        .groups-inner-box-style .title h3 {
+            font-size: var(--font-size);
+            margin-bottom: 0;
+        }
+
+        .review_mark_body {
+            display:none;
+        }
         #end {display:none;}
+
     </style>
 </head>
 
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/mypage/preLoader.jsp" %>
+<%@ include file="../inculde/mypage/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->
 <div class="main-content-wrapper d-flex flex-column">
     <!--========== Header Navbar ==============-->
-    <%@ include file="../inculde/mypage/navbar.jsp" %>
+    <%@ include file="../inculde/mypage/navbar.jsp"%>
     <!--========== Header Navbar ==============-->
     <!--========== SideBar ==============-->
-    <%@ include file="../inculde/mypage/sideMenu.jsp" %>
+    <%@ include file="../inculde/mypage/sideMenu.jsp"%>
     <!--========== SideBar ==============-->
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
+        <div class="content-page-box-area">
+            <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
-        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
-
-        <div class="events-inner-box-style d-flex justify-content-between align-items-center">
-            <div class="title">
-                <h3>작성 리뷰 목록</h3>
-            </div>
-
-            <div class="events-search-box">
-                <input type="text" class="input-search" id="search" placeholder="리뷰 검색하기">
-            </div>
-        </div>
-        <div class="row" id="reviewDiv">
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">김김김</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
+            <div class="events-inner-box-style d-flex justify-content-between align-items-center">
+                <div class="title">
+                    <h3>사용자님이 생성한 보고싶어요 리스트</h3>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">김이이</a>
-                        </h3>
-                        <p>Online</p>
 
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">Digital Marketing</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">박박김</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">이이이</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">리리리</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">크크크</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">김이이</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">Digital Marketing</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">박박김</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">이이이</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">리리리</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">크크크</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">김이이</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">Digital Marketing</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">박박김</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">이이이</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">리리리</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">크크크</a>
-                        </h3>
-                        <p>김</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 reviewBody">
-                <div class="single-events-card">
-                    <a href="#">
-                        <img src="/images/mypageCommunity/events/events-1.jpg" alt="image">
-                    </a>
-                    <div class="events-content">
-                        <span>12:30PM to 02:30PM</span>
-                        <h3>
-                            <a href="#">김김김</a>
-                        </h3>
-                        <p>Online</p>
-
-                        <div class="events-footer d-flex justify-content-between align-items-center">
-                            <a href="#" class="default-btn">Attend</a>
-                            <span>July 30, 2021</span>
-                        </div>
-                    </div>
+                <div class="events-search-box">
+                    <input type="text" class="input-search" id="search" placeholder="리뷰 검색하기">
                 </div>
             </div>
 
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="all-groups" role="tabpanel">
+                    <div class="row">
+                        <!-- 리뷰 item -->
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                        <div class="single-groups-card">
+                            <div class="groups-image">
+                                <a href="#">
+                                    <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                </a>
+                            </div>
+                            <div class="groups-content">
+                                <div class="groups-info d-flex justify-content-between align-items-center">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                    </a>
+                                    <div class="text ms-3">
+                                        <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                    </div>
+                                </div>
+                                <div class="join-groups-btn">
+                                    <button type="submit">즐겨찾기 보기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 review_mark_body">
+                            <div class="single-groups-card">
+                                <div class="groups-image">
+                                    <a href="#">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                    </a>
+                                </div>
+                                <div class="groups-content">
+                                    <div class="groups-info d-flex justify-content-between align-items-center">
+                                        <a href="#">
+                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+                                        </a>
+                                        <div class="text ms-3">
+                                            <h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+                                        </div>
+                                    </div>
+                                    <div class="join-groups-btn">
+                                        <button type="submit">즐겨찾기 보기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <a href="#" id="load">Load More</a>
-            <div id="end">마지막 영상입니다.</div>
+                    </div>
+
+
+                    <div class="load-more-posts-btn">
+                        <a href="#"><i class="flaticon-loading" id="load">더 보기</i></a>
+                        <div id="end">마지막 북마크입니다.</div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
     <!--========== Body ==============-->
+
     <!--========== Right SideBar ==============-->
-    <%@ include file="../inculde/mypage/rightSidebar.jsp" %>
+    <%@ include file="../inculde/mypage/rightSidebar.jsp"%>
     <!--========== Right SideBar ==============-->
+
 </div>
 <!--========== Body ==============-->
 
 <!--========== Footer ==============-->
-<%@ include file="../inculde/mypage/footer.jsp" %>
+<%@ include file="../inculde/mypage/footer.jsp"%>
 <!--========== Footer ==============-->
 
 <script src="/js/mypageCommunity/jquery.min.js"></script>
@@ -456,6 +342,37 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
-<script src="/js/searchLoadMore.js"></script>
+<script>
+    $("#search").on("keyup", function () {
+        let value = $(this).val().toLowerCase();
+        if(value === ''){ // 검색칸이 비었을때 창을 다시 세팅함
+            $('.review_mark_body').css('display','none');
+            $('.review_mark_body').slice(0, 4).show();
+            $("#load").show();
+        }else {
+            $(".review_mark_body").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $("#load").css('display','none');
+            });
+        }
+    });
+    plusReview();
+    function plusReview(){
+        $(".review_mark_body").slice(0, 8).show(); // select the first ten
+        if ($(".review_mark_body").length>8){
+            $("#load").click(function(e){ // click event for load more
+                e.preventDefault();
+                $(".review_mark_body:hidden").slice(0, 4).show(); // select next 10 hidden divs and show them
+                if($(".review_mark_body:hidden").length == 0){ // check if any hidden divs still exist
+                    $("#load").css('display','none');
+                    $("#end").show();
+                }
+            });
+        } else {
+            $("#load").css('display','none');
+        }
+
+    }
+</script>
 </body>
 </html>
