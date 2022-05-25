@@ -2,6 +2,7 @@ package com.todaySee.home.controller;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Images;
+import com.todaySee.domain.Review;
 import com.todaySee.home.service.DetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +45,10 @@ public class DetailsController {
         /* 컨텐츠 플랫폼 가져오기 */
         List<HashMap<String, String>> ottList = detailsService.getContentOtt(contentNumber);
         model.addAttribute("ottList", ottList);
+
+        /* 리뷰 데이터 모두 가져오기 */
+        List<HashMap<String, String>> reviewList = detailsService.getReviewList(contentNumber);
+        model.addAttribute("reviewList", reviewList);
 
         return "/home/homeDetails";
     }
