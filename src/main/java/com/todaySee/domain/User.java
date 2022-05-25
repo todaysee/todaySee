@@ -76,5 +76,16 @@ public class User {
     @JoinColumn(name="user_number")
     private List<Bookmark> bookmark;
 
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Comments> comments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<CommentsComments> commentsComments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Report> report;
 
 }
