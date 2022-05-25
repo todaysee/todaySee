@@ -30,7 +30,5 @@ public class ChatRoom {
     @Column(name="chatroom_state")
     Integer chatroomState; // 채팅 상태
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
+
 }

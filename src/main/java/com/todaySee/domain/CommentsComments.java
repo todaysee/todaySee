@@ -26,8 +26,6 @@ public class CommentsComments {
     @Column(name = "commentscomments_date")
     Date commentscommentsDate;
 
-    @ManyToOne
-    @JoinColumn(name="comments_number")
-    private Comments comments;
+
 
 }
