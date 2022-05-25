@@ -34,4 +34,8 @@ public class Comments {
     @JoinColumn(name="comments_number")
     private List<CommentsComments> commentsComments;
 
+    @OneToMany
+    @JoinColumn(name="comments_number")
+    List<Report> report;
+
 }

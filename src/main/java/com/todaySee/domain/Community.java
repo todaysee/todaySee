@@ -34,4 +34,8 @@ public class Community {
     @OneToMany // 1:다
     @JoinColumn(name="community_number")
     private List<Comments> comments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="community_number")
+    private List<Report> report;
 }
