@@ -117,8 +117,8 @@
               <div class="card-header nav">
                 <ul class="tab-ul">
                   
-                  <li class="nav-link active">리뷰&댓글 신고</li>
-                  <li class="nav-link">게시글 신고</li>
+                  <li class="nav-link active">신고 관리</li>
+                  <!-- <li class="nav-link">게시글 신고</li> -->
                </ul>
               </div>
 
@@ -132,31 +132,32 @@
           <div class="tab-content" id="tab-content2">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">리뷰 댓글 관리</h3>
+              <!--   <h3 class="card-title">리뷰 댓글 관리</h3> -->
               </div>
               <!-- /.card-header -->
               <div class="card-body" >
                 <table id="example2" class="table table-bordered table-striped jqplugin">
-                  <thead>
+                  <thead> 
                   <tr>
-                    <th>2</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>신고번호</th>
+                    <th>신고대상</th>
+                    <th>신고내용</th>
+                    <th>신고날짜</th>
+                    <th>신고상태</th>
                     <th>신고처리</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
+					<c:forEach items="${ reportList}" var="reportList">                  
                   <tr>
-                    <td>2</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>${ reportList.reportNumber}</td>
+                    <td>${ reportList.reportTarget}</td>
+                    <td>${ reportList.reportContent}</td>
+                    <td>${ reportList.reportDate}</td>
+                    <td>${reportList.reportState }</td>
                     <th><button class="btn btn-outline-danger">신고처리</button></th>
                   </tr>
+                  </c:forEach>
                   </tbody>
                   
                 </table>
@@ -170,13 +171,13 @@
 
 
 
-
+<!-- 
           <div class="tab-content" id="tab-content3">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">게시글신고 관리</h3>
               </div>
-              <!-- /.card-header -->
+              /.card-header
               <div class="card-body">
                 <table id="example3" class="table table-bordered table-striped jqplugin">
                   <thead>
@@ -203,10 +204,13 @@
                   
                 </table>
               </div>
-              <!-- /.card-body -->
+              /.card-body
             </div>
-            <!-- /.card -->
-          </div>
+            /.card
+          </div> -->
+          
+          
+          
           <!-- /.col -->
 
           <!-- /.col -->

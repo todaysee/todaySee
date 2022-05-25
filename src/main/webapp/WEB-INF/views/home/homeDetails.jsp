@@ -377,7 +377,12 @@
 								<div id="change" class="gen-episode-contain">
 									<div class="gentech-tv-show-img-holder">
 										<div class="gen-episode-img">
-											<img src="${Content.contentMainImagesUrl}" alt="${Content.contentTitle}">
+											<c:if test="${Content.contentMainImagesUrl ne 'none Main img'}">
+												<img src="${Content.contentMainImagesUrl}" alt="${Content.contentTitle}">
+											</c:if>
+											<c:if test="${Content.contentMainImagesUrl eq 'none Main img'}">
+												<img src="/images/home/cat.jpg" alt="none Main img">
+											</c:if>
 											<div id="noYoutube" class="gen-movie-action">
 												<a href="#" class="gen-button youtube_btn">
 													<i class="fa fa-play"></i>
@@ -418,14 +423,12 @@
 									<div class="gen-extra-data">
 										<ul>
 											<li><span>장르 :</span>
+												<c:forEach var="genre" items="${Genre}">
 												<span>
-                                                        <a href="action.html">
-                                                            Action, </a>
-                                                    </span>
-												<span>
-                                                        <a href="adventure.html">
-                                                            Documentary </a>
-                                                    </span>
+                                                        <a href="/${genre}">
+                                                            ${genre} </a>
+												</span>
+												</c:forEach>
 											</li>
 											<li>
 												<span>연령등급 :</span>
@@ -443,12 +446,9 @@
 												<span>
                                                         <div class="gen-socail-share">
                                                             <ul class="ott-inner">
-                                                                <li><a href="#" class="facebook"><img src="/images/home/netflix1.png" alt="netflix"/></a></li>
-                                                                <li><a href="#" class="facebook"><img src="/images/home/watcha.png" alt="watcha"/></a></li>
-                                                                <li><a href="#" class="facebook"><img src="/images/home/wavve.png" alt="wavve"/></a></li>
-																<li><a href="#" class="facebook"><img src="/images/home/disney.png" alt="disney"/></a></li>
-																<li><a href="#" class="facebook"><img src="/images/home/appleTv.png" alt="appleTV"/></a></li>
-																<li><a href="#" class="facebook"><img src="/images/home/amazonPrimeVideo.png" alt="Amazon Prime Video"/></a></li>
+																<c:forEach items="${ottList}" var="ott">
+                                                                		<li><a href="${ott.ottLink}" class="facebook"><img src="/images/home/${ott.ottName}.png" alt="${ott.ottName}"/></a></li>
+																</c:forEach>
                                                             </ul>
                                                         </div>
                                                     </span>
