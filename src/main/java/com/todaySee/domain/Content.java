@@ -51,8 +51,19 @@ public class Content {
     
     @OneToMany
     @JoinColumn(name="content_number")
-    List<ContentGenre> contentGenre; 
+    List<ContentGenre> contentGenre;
 
+    @OneToMany
+    @JoinColumn(name="content_number")
+    List<Review> reviews;
+
+    @OneToMany
+    @JoinColumn(name="content_number")
+    List<Ratings> ratings;
+
+    @OneToMany
+    @JoinColumn(name="content_number")
+    List<Bookmark> bookmark;
 }
 
 	

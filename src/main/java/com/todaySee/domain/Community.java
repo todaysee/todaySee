@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,7 +31,11 @@ public class Community {
     @Column(name="community_hits")
     Integer communityHits; // 게시글 조회수
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
+    @OneToMany // 1:다
+    @JoinColumn(name="community_number")
+    private List<Comments> comments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="community_number")
+    private List<Report> report;
 }

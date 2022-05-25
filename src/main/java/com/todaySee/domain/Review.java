@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,11 +29,7 @@ public class Review {
     @Column(name = "review_spoiler")
     Integer reviewSpoiler;
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
+    @OneToMany // 1:다
+    @JoinColumn(name="review_number")
+    private List<Report> report;
 }
