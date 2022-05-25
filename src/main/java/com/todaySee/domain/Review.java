@@ -28,11 +28,4 @@ public class Review {
     @Column(name = "review_spoiler")
     Integer reviewSpoiler;
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
 }

@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
 
-    List<Review> findByContent(Content content);
+    //List<Review> findByContent(Content content);
 
 }

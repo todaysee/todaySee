@@ -27,11 +27,4 @@ public class Bookmark {
     @Column(name="bookmark_date")
     Date bookmarkDate;
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
 }

@@ -19,10 +19,6 @@ public class ContentOtt {
     @Column(length = 3000,name="contentott_link")
     String contentottLink;
 
-//    @ManyToOne
-//    @JoinColumn(name="content_number")
-//    private Content content;
-
     @OneToOne
     @JoinColumn(name = "ott_number")
     private Ott ott;
