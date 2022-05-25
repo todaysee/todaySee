@@ -1,22 +1,22 @@
-package com.todaySee.home.service;
-
-import com.todaySee.domain.*;
-import com.todaySee.home.persistence.ContentRepository;
-import com.todaySee.home.persistence.ReviewRepository;
-import com.todaySee.home.persistence.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-@Service
-public class DetailsServiceImpl implements DetailsService{
-
+//package com.todaySee.home.service;
+//
+//import com.todaySee.domain.*;
+//import com.todaySee.home.persistence.ContentRepository;
+//import com.todaySee.home.persistence.ReviewRepository;
+//import com.todaySee.home.persistence.UserRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
+//import java.util.ArrayList;
+//import java.util.Date;
+//import java.util.HashMap;
+//import java.util.List;
+//
+//@Service
+//public class DetailsServiceImpl implements DetailsService{
+//
 //    @Autowired
 //    private ContentRepository contentRepo;
 //
@@ -126,5 +126,7 @@ public class DetailsServiceImpl implements DetailsService{
 //        vo.setContent(getContentById(contentNumber));
 //        reviewRepo.save(vo);
 //    }
-
+//
+//}
 }
+

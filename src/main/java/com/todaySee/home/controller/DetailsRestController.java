@@ -1,24 +1,24 @@
-package com.todaySee.home.controller;
-
-import com.todaySee.domain.Content;
-import com.todaySee.domain.Review;
-import com.todaySee.home.service.DetailsService;
-import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-@RestController
-@RequiredArgsConstructor
-public class DetailsRestController {
-
+//package com.todaySee.home.controller;
+//
+//import com.todaySee.domain.Content;
+//import com.todaySee.domain.Review;
+//import com.todaySee.home.service.DetailsService;
+//import lombok.RequiredArgsConstructor;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.time.LocalDate;
+//import java.util.Date;
+//import java.util.HashMap;
+//import java.util.List;
+//
+//@RestController
+//@RequiredArgsConstructor
+//public class DetailsRestController {
+//
 //    @Autowired
 //    private DetailsService detailsService;
 //
@@ -55,5 +55,6 @@ public class DetailsRestController {
 //        model.addAttribute("reviewList", reviewList);
 //        return "OK";
 //    }
+//
+//}
 
-}
