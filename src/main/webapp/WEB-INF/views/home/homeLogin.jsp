@@ -73,12 +73,12 @@
                             <form>
                                 <div class="form-group">
                                     <label> 이메일 </label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="userEmail" class="form-control">
                                 </div>
         
                                 <div class="form-group">
                                     <label> 비밀번호 </label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" name="userPassword" class="form-control">
                                 </div>
         
                                  <!-- <div class="remember-me-wrap d-flex justify-content-between align-items-center" 

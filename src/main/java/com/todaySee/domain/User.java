@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+
+
 import java.util.Date;
 import java.util.List;
 
@@ -42,12 +44,16 @@ public class User {
     @Temporal(TemporalType.DATE)
     @Column(name = "user_login_date")
     Date userLoginDate; // 유저 로그인 날짜
+    
+    
     @Column(name = "user_name", length = 1000)
     String userName;
     @Column(name = "user_tel",length = 1000)
     String userTel;
     @Column(name = "user_password",length = 1000)
     String userPassword;
+
+
 
     @OneToMany // 1:다
     @JoinColumn(name="user_number")
