@@ -1,18 +1,17 @@
 package com.todaySee.home.controller;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.BindingResult;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.todaySee.domain.User;
-import com.todaySee.domain.UserCreateForm;
 import com.todaySee.home.service.UserServiceImpl;
 
 
@@ -39,20 +38,18 @@ public class UserController {
     //회원가입 페이지
     @GetMapping("/signup")
     public String homeSignUp() {
-    	System.out.println("Get");
-        return "/home/homeSignUp";
+    	return "/home/homeSignUp";
     }
     
     @PostMapping("/signup")
     public String signUp(User user) {
-    	System.out.println("Post됐나?");
-    	userServiceImpl.create(user);
-        return "/home/homeSignUp";
+   	userServiceImpl.create(user);
+        return "/home/homeSignUpComplete";
     }
     
     /*
     @PostMapping("/signup")
-    public String homeSignUp(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
+    public String homeSignUp(@Valid User user, BindingResult bindingResult) {
     	System.out.println("postsignup");
     	if (bindingResult.hasErrors()) {
     		return "/home/homeSignUp";
@@ -68,8 +65,8 @@ public class UserController {
 
         return "redirect:/";
 }
-
- */
+*/
+ 
     //회원가입 완료 페이지
     @GetMapping("/complete")
     public String homeSignUpComplete() {

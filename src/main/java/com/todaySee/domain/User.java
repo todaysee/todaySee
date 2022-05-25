@@ -52,7 +52,6 @@ public class User {
     @Column(name = "user_password",length = 1000)
     String userPassword;
     
-    
     @OneToMany
     @JoinColumn(name="user_number")
     private List<Images> images;
