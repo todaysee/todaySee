@@ -102,11 +102,13 @@
                                 
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
-                                        	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
+                                        	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="forgot-password.html" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
-                                        	<a href="forgot-password.html" class="lost-your-password">이메일/비밀번호 찾기 </a>
-                                        	<div style="float:right; color:grey;">
+                                        	<div>
+                                        	<a href="/signup" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
+                                        	<div style="float:right; color:grey;" class="lost-your-password"><a href="/idFind">이메일</a>/<a href="/passwordFind">비밀번호</a> 찾기 
+                                        	</div>	
+                                        	
                                   	 	</div>
                                         	</div>
                                         	<div class="or-text"><span></span></div> 

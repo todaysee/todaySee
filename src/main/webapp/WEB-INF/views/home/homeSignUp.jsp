@@ -144,13 +144,11 @@
 									
 									<div class="lost-your-password-wrap" style="margin-top: 20px;">
                                 		<div style="float:left;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey";>홈으로 가기  </a>
+                                        	<a href="/" class="lost-your-password" style="color:grey;">홈으로 가기  </a>
                                         	</div>
-                                        	<div style="float:right;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey;">이메일/비밀번호 찾기 </a>
-                                        	
+                                       	<div style="float:right; color:grey;" class="lost-your-password"><a href="/idFind">이메일</a>/<a href="/passwordFind">비밀번호</a> 찾기 
+                                        	</div>                                        	
                                   	 	</div>
-                                        	</div>
                                         	
                                         		
                                 
