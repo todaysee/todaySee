@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.UserService;
 
 
@@ -41,7 +41,7 @@ public class UserController {
     }
     
     @PostMapping("/signup")
-    public String signUp(User user) {
+    public String signUp(UserVO user) {
    	userServiceImpl.create(user);
         return "/home/homeSignUpComplete";
     }
@@ -63,7 +63,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model) {
     	System.out.println("PostMapping");
-    	User findUser = userServiceImpl.login(userEmail, userPassword);
+        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
     	if (findUser != null
     			&& findUser.getUserPassword().equals(userPassword)) {
     			

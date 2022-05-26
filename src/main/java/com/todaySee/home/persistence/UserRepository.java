@@ -2,12 +2,12 @@ package com.todaySee.home.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<UserVO, Integer> {
 
-	
-	User findByUserEmail(String userEmail);
+
+	UserVO findByUserEmail(String userEmail);
 
 
 }

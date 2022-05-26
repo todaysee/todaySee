@@ -1,13 +1,13 @@
 package com.todaySee.home.service;
 
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 
 public interface UserService {
 
-	User create(User user);
+	UserVO create(UserVO user);
 	
 	//User login(User user);
-	User login(String userEmail, String userPassword);
+	UserVO login(String userEmail, String userPassword);
 	
 
 

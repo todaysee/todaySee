@@ -2,7 +2,7 @@ package com.todaySee.home.service;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Review;
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 
 import java.util.HashMap;
 import java.util.List;

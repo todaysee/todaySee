@@ -53,38 +53,39 @@
                                 <form id="uploadFormProfile">
                                     <input class="user_number1" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileImages" > <%--타입--%>
-                                    <label for="formFile" class="form-label">프로필 이미지 변경하기</label>
+                                    <label for="formFile" class="form-label">프로필 이미지 바꾸기</label>
                                     <input class="form-control" type="file" name="file" id="formFile">
                                 </form>
                                 <button id="profileImagesBtn" type="button" class="btn btn-primary" style="margin-top: 15px;">
-                                    변경하기
+                                    프로필 이미지 바꾸기
                                 </button>
                             </div>
                             <div class="mb-3">
                                 <form id="uploadFormTitleProfile">
                                     <input class="user_number2" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileTittleImages" > <%--타입--%>
-                                    <label for="formFile2" class="form-label">배경 이미지 변경하기</label>
+                                    <label for="formFile2" class="form-label">배경 이미지 바꾸기</label>
                                     <input class="form-control" type="file" name="file" id="formFile2">
                                 </form>
                                 <button id="profileTittleImagesBtn" type="button" class="btn btn-primary" style="margin-top: 15px;">
-                                    변경하기
+                                    프로필 배경 이미지 바꾸기
                                 </button>
                             </div>
                         </div>
                         <hr/>
-                        <div class="col-lg-12 col-md-12">
-                            <div class="form-group">
-                                <label>닉네임 변경하기</label>
-                                <input type="text" class="form-control" value="${user.userNickname}">
+                        <form id="nickNameChange" action="/myPage/update" method="post">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <label>닉네임 변경하기</label>
+                                    <input type="text" class="form-control" name="userNickname" value="${user.userNickname}">
+                                    <input type="hidden" name="userNumber" value="${user.userNumber}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-2 col-md-12">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" style="margin-bottom: 15px;">
-                                닉네임 변경
-                            </button>
-                        </div>
+                            <div class="col-lg-2 col-md-12">
+                                <!-- Button trigger modal -->
+                                <input type="submit" class="btn btn-primary" value="닉네임 바꾸기" style="margin-bottom: 15px;"/>
+                            </div>
+                        </form>
                         <hr/>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
@@ -216,12 +217,12 @@
     $(function () {
         //이벤트 실행문
         $('#profileImagesBtn').on('click', function () {
-            alert('전송!')
+            confirm('프로필 이미지 수정?')
             uploadFile(); // 파일전송
         });
 
         $('#profileTittleImagesBtn').on('click', function () {
-            alert('전송!')
+            confirm('프로필 배경 이미지 수정?')
             uploadFile2(); // 파일전송
         });
     });
