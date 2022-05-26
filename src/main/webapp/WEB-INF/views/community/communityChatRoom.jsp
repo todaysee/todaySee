@@ -66,47 +66,39 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					
-					
-					
-					
 
-					<div class="chat chat-left">
-						<div class="chat-avatar">
-							<a routerLink="/profile" class="d-inline-block"> <img
-								src="/images/mypageCommunity/user/user-2.jpg" width="50"
-								height="50" class="rounded-circle" alt="image">
-							</a>
-						</div>
+						<div class="chat chat-left">
+							<div class="chat-avatar">
+								<a routerLink="/profile" class="d-inline-block"> <img
+									src="/images/mypageCommunity/user/user-2.jpg" width="50"
+									height="50" class="rounded-circle" alt="image">
+								</a>
+							</div>
 
-						<div class="chat-body">
-							<div class="chat-message">
-								<span></span>
+							<div class="chat-body">
+								<div class="chat-message">
+									<span></span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				
-				
-				<div class="chat-list-footer">
-					<form class="d-flex align-items-center">
-						<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
+					<div class="chat-list-footer">
+						<form class="d-flex align-items-center">
+							<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
 
-						<button type="button" onclick="send()" id="sendBtn"
-							class="send-btn">보내기</button>
-					</form>
+							<button type="button" onclick="send()" id="sendBtn"
+								class="send-btn">보내기</button>
+						</form>
+					</div>
 				</div>
 			</div>
+
 		</div>
+		<!--========== Body ==============-->
 
-	</div>
-	<!--========== Body ==============-->
-
-	<!--========== Right SideBar ==============-->
-	<%@ include file="../inculde/community/rightSidebar.jsp"%>
-	<!--========== Right SideBar ==============-->
+		<!--========== Right SideBar ==============-->
+		<%@ include file="../inculde/community/rightSidebar.jsp"%>
+		<!--========== Right SideBar ==============-->
 
 	</div>
 	<!--========== Body ==============-->
