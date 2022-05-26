@@ -32,21 +32,7 @@ var ws;
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
-						$("#messages-chat-container").append('<div class="chat-content">'+
-						'<div class="chat">'+
-							'<div class="chat-avatar">'+
-		/*						'<a routerLink="/profile" class="d-inline-block">'+ '<img
-									src="/images/mypageCommunity/user/user-11.jpg" width="50"
-									height="50" class="rounded-circle" alt="image">'+
-								'</a>'+
-					*/		'</div>'+
-							'<div class="chat-body">'+
-								'<div class="chat-message">'+
-									'<span>'+ d.msg +'</span>'+
-								'</div>'+
-							'</div>'+
-						'</div>'+
-						'</div>')	
+						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
 					}else{
 						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
 					}
@@ -68,7 +54,7 @@ var ws;
 		});
 	}
 
-	function chatName(){
+	/*function chatName(){
 		var userName = $("#userName").val();
 		if(userName == null || userName.trim() == ""){
 			alert("사용자 이름을 입력해주세요.");
@@ -78,7 +64,7 @@ var ws;
 			$("#yourName").hide();
 			$("#yourMsg").show();
 		}
-	}
+	}*/
 
 	function send() {
 		//alert('확인')
