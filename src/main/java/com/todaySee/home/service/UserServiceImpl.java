@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 import com.todaySee.home.persistence.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,15 +19,15 @@ public class UserServiceImpl implements UserService {
 	//회원가입
 	
 	@Override
-	public  User create(User user) {
+	public  UserVO create(UserVO user) {
 		return userRepository.save(user);
 	}
 	
 	//로그인 
 	
 	@Override
-	public User login(String userEmail, String userPassword){
-		User findUser = userRepository.findByUserEmail(userEmail);
+	public UserVO login(String userEmail, String userPassword){
+		UserVO findUser = userRepository.findByUserEmail(userEmail);
 		//Optional<User> findUser = userRepository.findById(userEmail);
 		
 		if(findUser == null) return findUser;

@@ -1,7 +1,7 @@
 package com.todaySee.myPage.persistence;
 
 import com.todaySee.domain.Images;
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
