@@ -32,7 +32,21 @@ var ws;
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
-						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+						$("#messages-chat-container").append('<div class="chat-content">'+
+						'<div class="chat">'+
+							'<div class="chat-avatar">'+
+		/*						'<a routerLink="/profile" class="d-inline-block">'+ '<img
+									src="/images/mypageCommunity/user/user-11.jpg" width="50"
+									height="50" class="rounded-circle" alt="image">'+
+								'</a>'+
+					*/		'</div>'+
+							'<div class="chat-body">'+
+								'<div class="chat-message">'+
+									'<span>'+ d.msg +'</span>'+
+								'</div>'+
+							'</div>'+
+						'</div>'+
+						'</div>')	
 					}else{
 						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
 					}
