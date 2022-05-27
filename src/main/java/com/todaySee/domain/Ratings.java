@@ -17,11 +17,4 @@ public class Ratings {
     @Column(name = "ratings_grade")
     float ratingsGrade;
 
-    @ManyToOne
-    @JoinColumn(name="user_number")
-    private User user;
-
-    @ManyToOne
-    @JoinColumn(name="content_number")
-    private Content content;
 }

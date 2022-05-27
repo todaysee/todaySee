@@ -3,7 +3,7 @@ package com.todaySee.myPage.controller;
 
 
 
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.service.MyPageImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

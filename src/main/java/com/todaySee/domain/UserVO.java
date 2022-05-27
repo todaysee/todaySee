@@ -4,9 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "user")
-public class User {
+public class UserVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +44,7 @@ public class User {
     @Temporal(TemporalType.DATE)
     @Column(name = "user_login_date")
     Date userLoginDate; // 유저 로그인 날짜
-    
-    
+
     @Column(name = "user_name", length = 1000)
     String userName;
     @Column(name = "user_tel",length = 1000)
@@ -55,9 +52,40 @@ public class User {
     @Column(name = "user_password",length = 1000)
     String userPassword;
 
-
-
     @OneToMany // 1:다
     @JoinColumn(name="user_number")
     private List<Images> images;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Review> reviews;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<ChatRoom> chatRooms;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Ratings> ratings;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Community> communities;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Bookmark> bookmark;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Comments> comments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<CommentsComments> commentsComments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Report> report;
+
 }

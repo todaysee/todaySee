@@ -1,26 +1,25 @@
 package com.todaySee.home.controller;
 
-//import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-//import org.springframework.validation.BindingResult;
-//import org.springframework.validation.annotation.Validated;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.todaySee.domain.User;
-import com.todaySee.home.service.UserServiceImpl;
+import com.todaySee.domain.UserVO;
+import com.todaySee.home.service.UserService;
 
 
-//@RequiredArgsConstructor
+@SessionAttributes("user")
 @Controller
 public class UserController {
 	
 	 @Autowired
-		private UserServiceImpl userServiceImpl;
+		private UserService userServiceImpl;
 	 
 	 
 	 //인덱스페이지
@@ -42,31 +41,12 @@ public class UserController {
     }
     
     @PostMapping("/signup")
-    public String signUp(User user) {
+    public String signUp(UserVO user) {
    	userServiceImpl.create(user);
         return "/home/homeSignUpComplete";
     }
     
-    /*
-    @PostMapping("/signup")
-    public String homeSignUp(@Valid User user, BindingResult bindingResult) {
-    	System.out.println("postsignup");
-    	if (bindingResult.hasErrors()) {
-    		return "/home/homeSignUp";
-    	}
-    	if (!userCreateForm.getUserPassword1().equals(userCreateForm.getUserPassword2())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect", 
-                    "2개의 패스워드가 일치하지 않습니다.");
-    		return "/home/homeSignUp";
-        }
-       
-    	
-    	userService.create(userCreateForm.getUserName(),userCreateForm.getUserEmail(), userCreateForm.getUserPassword1());
-
-        return "redirect:/";
-}
-*/
- 
+    
     //회원가입 완료 페이지
     @GetMapping("/complete")
     public String homeSignUpComplete() {
@@ -76,7 +56,22 @@ public class UserController {
     //로그인 페이지
     @GetMapping("/login")
     public String homeLogin() {
+    	System.out.println("GetMapping");
         return "/home/homeLogin";
+    }
+    
+    @PostMapping("/login")
+    public String login(String userEmail, String userPassword, Model model) {
+    	System.out.println("PostMapping");
+        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
+    	if (findUser != null
+    			&& findUser.getUserPassword().equals(userPassword)) {
+    			
+    		model.addAttribute("user", findUser);
+    		return "/home/homeIndex";
+    	} else {
+    		return "/home/homeLogin";
+    	}
     }
 
     //아이디 찾기 페이지

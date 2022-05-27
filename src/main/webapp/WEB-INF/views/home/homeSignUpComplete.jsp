@@ -79,7 +79,7 @@
                                  <form>
                                  <div class="row" style="margin-left: 40px !important;">
                                  
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color: grey;"> 메인화면 </button>                                
+								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color: grey;  value=""> 메인화면 </button>                                
 								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"> 로그인 </button>  
 								                                
 								                               

@@ -177,6 +177,8 @@
                             '</div>' +
                             '<div class="modal-body">' +
                             '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
+                            '<div>' + content.content_info+
+                            '</div>' +
                             '</div>' +
                             '<div class="modal-footer">' +
                             '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +

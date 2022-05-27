@@ -444,14 +444,14 @@
 											<li>
 												<span>플랫폼 :</span>
 												<span>
-                                                        <div class="gen-socail-share">
-                                                            <ul class="ott-inner">
-																<c:forEach items="${ottList}" var="ott">
-                                                                		<li><a href="${ott.ottLink}" class="facebook"><img src="/images/home/${ott.ottName}.png" alt="${ott.ottName}"/></a></li>
-																</c:forEach>
-                                                            </ul>
-                                                        </div>
-                                                    </span>
+													<div class="gen-socail-share">
+														<ul class="ott-inner">
+															<c:forEach items="${ottList}" var="ott">
+																	<li><a href="${ott.ottLink}" class="facebook"><img src="/images/home/${ott.ottName}.png" alt="${ott.ottName}"/></a></li>
+															</c:forEach>
+														</ul>
+													</div>
+												</span>
 											</li>
 										</ul>
 									</div>
@@ -483,7 +483,7 @@
 										<!-- 리뷰 작성 -->
 										<div class="send-item">
 											<div class="padding-5">
-												<form name="comment" id="comment" method="post" action="#">
+												<form name="comment" id="comment" method="post">
 													<div class="row">
 														<div class="col-xl-1 col-lg-1 col-md-1">
 															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
@@ -492,18 +492,17 @@
 															<h3>
 																<a href="my-profile.html">James Vanwin</a>
 															</h3>
-															<span>10 July, 2021</span>
 															<span>
-                                                                        <input id="input-9" name="input-9" required class="rating-loading">
-                                                                    </span>
+																<input id="input-9" name="input-9" required class="rating-loading">
+															</span>
 														</div>
 														<div class="text col-xl-7 col-lg-7 col-md-7">
-															<textarea rows="3" cols="60" placeholder="Enter Your Comment"></textarea>
+															<textarea class="reviewContent" name="reviewContent" rows="3" cols="60" placeholder="이곳에 감상을 남겨주세요!"></textarea>
 														</div>
 														<div class="col-xl-1 col-lg-1 col-md-1 checkbox">
-															<input type="checkbox" id="spoiler" class="checkbox2"/><label for="spoiler">스포일러</label>
+															<input type="checkbox" id="spoiler" name="reviewSpoiler" class="checkbox2 reviewSpoiler" value="1"/><label for="spoiler">스포일러</label>
 															<div class="gen-btn-container">
-																<input type="submit" value="등록"/>
+																<input type="submit" value="등록" id="submit"/>
 															</div>
 														</div>
 													</div>
@@ -513,111 +512,41 @@
 										<!-- 리뷰 작성 -->
 
 										<!-- 리뷰 item -->
-										<div class="send-item">
-											<div class="padding-4">
-												<div class="row">
-													<div class="col-xl-1 col-lg-1 col-md-1">
-														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
-													</div>
-													<div class="send-content col-xl-3 col-lg-3 col-md-3">
-														<h3>
-															<a href="my-profile.html">James Vanwin</a>
-														</h3>
-														<span>10 July, 2021</span>
-														<span>
-                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
-                                                            </span>
-													</div>
-													<div class="text col-xl-8 col-lg-8 col-md-8">
-														<p>
-															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
-														</p>
-														<div class="text-right">
-															<div class="gen-btn-container">
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
-																</a>
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
-																</a>
+										<c:forEach items="${reviewList}" var="review">
+											<div class="send-item">
+												<div class="padding-4">
+													<div class="row">
+														<div class="col-xl-1 col-lg-1 col-md-1">
+															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+														</div>
+														<div class="send-content col-xl-3 col-lg-3 col-md-3">
+															<h3>
+																<a href="my-profile.html">${review.userNickName}</a>
+															</h3>
+															<span>${review.reviewDate}</span>
+															<span>
+																	<input class="input-4" name="input-4" value="2.5" class="rating-loading">
+																</span>
+														</div>
+														<div class="text col-xl-8 col-lg-8 col-md-8">
+															<p>
+																${review.reviewContent}
+															</p>
+															<div class="text-right">
+																<div class="gen-btn-container">
+																	<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																		<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																	</a>
+																	<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																		<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
+																	</a>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<!-- 리뷰 item -->
-
-										<!-- 리뷰 item -->
-										<div class="send-item">
-											<div class="padding-4">
-												<div class="row">
-													<div class="col-xl-1 col-lg-1 col-md-1">
-														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
-													</div>
-													<div class="send-content col-xl-3 col-lg-3 col-md-3">
-														<h3>
-															<a href="my-profile.html">James Vanwin</a>
-														</h3>
-														<span>10 July, 2021</span>
-														<span>
-                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
-                                                            </span>
-													</div>
-													<div class="text col-xl-8 col-lg-8 col-md-8">
-														<p>
-															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
-														</p>
-														<div class="text-right">
-															<div class="gen-btn-container">
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
-																</a>
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<!-- 리뷰 item -->
-
-										<!-- 리뷰 item -->
-										<div class="send-item">
-											<div class="padding-4">
-												<div class="row">
-													<div class="col-xl-1 col-lg-1 col-md-1">
-														<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
-													</div>
-													<div class="send-content col-xl-3 col-lg-3 col-md-3">
-														<h3>
-															<a href="my-profile.html">James Vanwin</a>
-														</h3>
-														<span>10 July, 2021</span>
-														<span>
-                                                                <input class="input-4" name="input-4" value="2.5" class="rating-loading">
-                                                            </span>
-													</div>
-													<div class="text col-xl-8 col-lg-8 col-md-8">
-														<p>
-															Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
-														</p>
-														<div class="text-right">
-															<div class="gen-btn-container">
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
-																</a>
-																<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																	<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
-																</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
+										</c:forEach>
 										<!-- 리뷰 item -->
 
 										<!-- 더보기 -->
@@ -1546,6 +1475,54 @@
 	// 즐겨찾기 선택
 	$('input[type=radio]').on('click', function(){
 		alert('ok');
+	});
+
+	// 리뷰 submit Ajax
+	$('#submit').on('click', function(e){
+		e.preventDefault();
+		let reviewContent = $('.reviewContent').val();
+		let reviewSpoiler = 0;
+		if($('.reviewSpoiler').is(':checked')) {
+			reviewSpoiler = 1;
+		}
+		let contentNumber = ${Content.contentNumber}
+
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8080/details/reviewAjax",
+			data: {
+				userNumber : 1,
+				reviewContent : reviewContent,
+				reviewSpoiler : reviewSpoiler,
+				contentNumber : contentNumber
+			},
+			success: function(data){
+				alert("리뷰가 등록되었습니다.");
+				console.log(data);
+				$('.reviewContent').val('');
+				$('.reviewSpoiler').prop("checked", false);
+				$.ajax({
+					type: "GET",
+					url: "http://localhost:8080/details/reviewListAjax",
+					data: {contentNumber : contentNumber},
+					success: function(data){
+						alert('ok');
+						console.log(data);
+					},
+					error: function (err){
+						alert('리스트 불러오기 실패');
+						console.log(err);
+					}
+				});
+			},
+			error: function(err){
+				alert("서버 문제로 오류가 발생하였습니다.");
+				console.log(err);
+				$('.reviewContent').val('');
+				$('.reviewSpoiler').prop("checked", false);
+			}
+		});
+
 	});
 
 	// AJAX 즐겨찾기 추가
