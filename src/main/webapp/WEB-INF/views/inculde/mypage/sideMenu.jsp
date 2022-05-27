@@ -42,11 +42,18 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/community/${user.userNumber}" class="nav-link">
+                    <span class="icon"><i class="flaticon-team"></i></span>
+                    <span class="menu-title">커뮤니티이동</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="register.html" class="nav-link">
                     <span class="icon"><i class="flaticon-information"></i></span>
                     <span class="menu-title">로그 아웃</span>
                 </a>
             </li>
+
         </ul>
     </div>
 </div>
