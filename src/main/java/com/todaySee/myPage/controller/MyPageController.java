@@ -144,13 +144,11 @@ public class MyPageController {
     }
 
     @PostMapping("/myPage/update")
-    public String updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
+    public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
 
         System.out.println(userNumber + ":" + userNickname);
         myPageService.updateNickname(userNumber,userNickname);
 
-
-        return "redirect:/myPage/profile/" + userNumber;
     }
 
     @GetMapping("/myPage/modal")

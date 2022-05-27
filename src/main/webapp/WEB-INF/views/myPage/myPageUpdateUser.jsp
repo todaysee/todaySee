@@ -36,27 +36,30 @@
     <!--========== Body ==============-->
     <div class="content-page-box-area">
 
-        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp" %>
 
         <div class="account-setting-list-tabs">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <%--프로필 이미지 변경--%>
                 <li class="nav-item">
-                    <a class="nav-link active" id="profileImagesTab" data-bs-toggle="tab" href="#profileImages" role="tab" aria-controls="profile-information">프로필 이미지 변경</a>
+                    <a class="nav-link active" id="profileImagesTab" data-bs-toggle="tab" href="#profileImages"
+                       role="tab" aria-controls="profile-information">프로필 이미지 변경</a>
                 </li>
                 <%--닉네임 변경--%>
                 <li class="nav-item">
-                    <a class="nav-link" id="userNicknameTab" data-bs-toggle="tab" href="#userNickname" role="tab" aria-controls="account">닉네임 변경</a>
+                    <a class="nav-link" id="userNicknameTab" data-bs-toggle="tab" href="#userNickname" role="tab"
+                       aria-controls="account">닉네임 변경</a>
                 </li>
                 <%--비밀번호 변경--%>
                 <li class="nav-item">
-                    <a class="nav-link" id="userPasswordTab" data-bs-toggle="tab" href="#userPassword" role="tab" aria-controls="privacy">비밀번호 변경</a>
+                    <a class="nav-link" id="userPasswordTab" data-bs-toggle="tab" href="#userPassword" role="tab"
+                       aria-controls="privacy">비밀번호 변경</a>
                 </li>
                 <%--회원탈퇴 변경--%>
                 <li class="nav-item">
-                    <a class="nav-link" id="signOutTab" data-bs-toggle="tab" href="#signOut" role="tab" aria-controls="notification">회원 탈퇴</a>
+                    <a class="nav-link" id="signOutTab" data-bs-toggle="tab" href="#signOut" role="tab"
+                       aria-controls="notification">회원 탈퇴</a>
                 </li>
-
             </ul>
         </div>
 
@@ -69,29 +72,37 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="mb-3">
                                 <form id="uploadFormProfile">
-                                    <input class="user_number1" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
-                                    <input type="hidden" name="images_type" value="profileImages" > <%--타입--%>
+                                    <input class="user_number1" type="hidden" name="user_number"
+                                           value="${user.userNumber}"> <%--아이디--%>
+                                    <input type="hidden" name="images_type" value="profileImages"> <%--타입--%>
                                     <label for="formFile" class="form-label">프로필 이미지 바꾸기</label>
-                                    <input class="form-control" type="file" name="file" id="formFile" accept="image/*">
+                                    <input class="form-control" type="file" name="file" id="formFile"
+                                           accept=".gif, .jpg, .png, .jpeg">
                                     <div class="ProfileViewArea" style="margin-top:10px; display:none;">
-                                        <img class="ProfileArea" style="width:200px; height:100px;" onerror="imgAreaError()"/>
+                                        <img class="ProfileArea" style="width:200px; height:100px;"
+                                             onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileImagesBtn" type="button" class="btn btn-primary" disabled='disabled' style="margin-top: 15px;">
+                                <button id="profileImagesBtn" type="button" class="btn btn-primary" disabled='disabled'
+                                        style="margin-top: 15px;">
                                     프로필 이미지 바꾸기
                                 </button>
                             </div>
                             <div class="mb-3">
                                 <form id="uploadFormTitleProfile">
-                                    <input class="user_number2" type="hidden" name="user_number" value="${user.userNumber}" > <%--아이디--%>
-                                    <input type="hidden" name="images_type" value="profileTittleImages" > <%--타입--%>
+                                    <input class="user_number2" type="hidden" name="user_number"
+                                           value="${user.userNumber}"> <%--아이디--%>
+                                    <input type="hidden" name="images_type" value="profileTittleImages"> <%--타입--%>
                                     <label for="formFile2" class="form-label">배경 이미지 바꾸기</label>
-                                    <input class="form-control" type="file" name="file" id="formFile2" accept="image/*">
+                                    <input class="form-control" type="file" name="file" id="formFile2"
+                                           accept=".gif, .jpg, .png, .jpeg">
                                     <div class="TitleProfileViewArea" style="margin-top:10px; display:none;">
-                                        <img class="TitleProfileArea" style="width:200px; height:100px;" onerror="imgAreaError()"/>
+                                        <img class="TitleProfileArea" style="width:200px; height:100px;"
+                                             onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileTittleImagesBtn" type="button" class="btn btn-primary" disabled='disabled' style="margin-top: 15px;">
+                                <button id="profileTittleImagesBtn" type="button" class="btn btn-primary"
+                                        disabled='disabled' style="margin-top: 15px;">
                                     프로필 배경 이미지 바꾸기
                                 </button>
                             </div>
@@ -103,27 +114,39 @@
             <div class="tab-pane fade" id="userNickname" role="tabpanel">
                 <div class="account-setting-form">
                     <h3>개인 정보 수정하기</h3>
-
-                    <div class="row">
-                        <form id="nickNameChange" action="/myPage/update" method="post">
-                            <div class="col-lg-12 col-md-12">
+                    <br/>
+                    <br/>
+                    <div class="container">
+                        <div class="row justify-content-around">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="form-group">
-                                    <label>닉네임 변경하기</label>
-                                    <input type="text" class="form-control" name="userNickname" value="${user.userNickname}">
-                                    <input type="hidden" name="userNumber" value="${user.userNumber}">
+                                    <label class="text-center">기존 닉네임</label>
+                                    <input type="text" class="form-control" value="${user.userNickname}" readonly>
                                 </div>
                             </div>
-                            <div class="col-lg-2 col-md-12">
-                                <!-- Button trigger modal -->
-                                <input type="submit" class="btn btn-primary" value="닉네임 바꾸기" style="margin-bottom: 15px;"/>
+                            <div class="col-lg-6 col-md-6">
+                                <form id="nickNameChange" action="/myPage/update" method="post" target='blankifr'>
+                                    <div class="form-group">
+                                        <label class="text-center">변경할 닉네임 입력</label>
+                                        <input id="userNinknameTextInput" type="text" class="form-control" name="userNickname">
+                                        <input type="hidden" name="userNumber" value="${user.userNumber}">
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                            <div class="col-md-1 ms-auto" style="margin-right: 33px;">
+                                <!-- Button trigger modal -->
+                                <input type="button" id='userNicknameChangeBtn' disabled='disabled'
+                                       class="btn btn-primary"
+                                       value="닉네임 바꾸기" style="margin-bottom:15px;"/>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="tab-pane fade" id="userPassword" role="tabpanel">
-                <form class="account-setting-form">
+                <div class="account-setting-form">
                     <h3>비밀번호 변경하기</h3>
 
                     <div class="row">
@@ -146,62 +169,149 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
 
             <div class="tab-pane fade" id="signOut" role="tabpanel">
-                <div class="account-setting-notification">
+                <div class="account-setting-form">
+                    <h3>회원님의 탈퇴를 위해서 비밀번호를 확인 합니다.</h3>
                     <div class="row">
-                        <div class="container-fluid">
-                            <div class="">회원님의 탈퇴를 위해서 비밀번호를 확인 합니다.</div>
-                            <br/>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label style="margin-bottom: 10px;">비밀번호</label>
-                                <input type="password" class="form-control" style="margin-bottom: 15px">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>비밀번호</label>
+                                <input type="password" class="form-control">
                             </div>
-                            <br/>
-                            <div class="col-md-12">
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <div style="margin-bottom: 10px;">탈퇴사유</div>
+                                <div class='form-check'>
+                                    <input class="form-check-input" type='radio'
+                                           name='account_Reason' value="영상 컨텐츠 정보 부족"> <label
+                                        class='form-check-label'>상품 다양성/가격품질 불만</label>
+                                </div>
+                                <div class='form-check'>
+                                    <input class="form-check-input" type='radio'
+                                           name='account_Reason' value="교환/환불/품질불만"> <label
+                                        class='form-check-label'>교환/환불/품질불만</label>
+                                </div>
+                                <div class='form-check'>
+                                    <input class="form-check-input" type='radio'
+                                           name='account_Reason' value="배송지연"> <label
+                                        class='form-check-label'>배송지연</label>
+                                </div>
+                                <div class='form-check'>
+                                    <input class="form-check-input" type='radio'
+                                           name='account_Reason' value="이용빈도 낮음"><label
+                                        class='form-check-label'>이용빈도 낮음</label>
+                                </div>
+                                <div class='form-check'>
+                                    <input class="form-check-input" type='radio'
+                                           name='account_Reason' value="etc"> <label
+                                        class='form-check-label'>기타</label>
+                                </div>
                                 <div class="form-group">
-                                    <div style="margin-bottom: 10px;">탈퇴사유</div>
-                                    <div class='form-check'>
-                                        <input class="form-check-input" type='radio'
-                                               name='account_Reason' value="상품 다양성/가격품질 불만"> <label
-                                            class='form-check-label'>상품 다양성/가격품질 불만</label>
-                                    </div>
-                                    <div class='form-check'>
-                                        <input class="form-check-input" type='radio'
-                                               name='account_Reason' value="교환/환불/품질불만"> <label
-                                            class='form-check-label'>교환/환불/품질불만</label>
-                                    </div>
-                                    <div class='form-check'>
-                                        <input class="form-check-input" type='radio'
-                                               name='account_Reason' value="배송지연"> <label
-                                            class='form-check-label'>배송지연</label>
-                                    </div>
-                                    <div class='form-check'>
-                                        <input class="form-check-input" type='radio'
-                                               name='account_Reason' value="이용빈도 낮음"><label
-                                            class='form-check-label'>이용빈도 낮음</label>
-                                    </div>
-                                    <div class='form-check'>
-                                        <input class="form-check-input" type='radio'
-                                               name='account_Reason' value="etc"> <label
-                                            class='form-check-label'>기타</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="textEtc"
-                                               placeholder="입력해주세요." name='account_ReasonText' readonly>
-                                    </div>
+                                    <input type="text" class="form-control" id="textEtc"
+                                           placeholder="입력해주세요." name='account_ReasonText' readonly>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" style="margin-bottom: 15px;">
+                                회원 탈퇴하기
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- 프로필 이미지 업로드 모달 -->
+        <div class="modal fade" id="profileImageSaveModal" tabindex="-1" aria-labelledby="profileImageSaveModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="profileImageSaveModalLabel">프로필 이미지 저장</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        이미지 저장 하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="profileImagesSaveModalBtn"
+                                data-bs-target="#saveImageComplete" data-bs-toggle="modal" data-bs-dismiss="modal">저장하기
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 프로필 메인 이미지 업로드 모달 -->
+        <div class="modal fade" id="profileMainImagesSaveModal" tabindex="-1"
+             aria-labelledby="profileMainImagesSaveModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="profileMainImagesSaveModalLabel">프로필 배경 이미지 저장</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        이미지 저장 하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="profileMainImagesSaveModalBtn"
+                                data-bs-target="#saveImageComplete" data-bs-toggle="modal" data-bs-dismiss="modal">저장하기
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 프로필 닉네임 변경 모달 -->
+        <div class="modal fade" id="profileNicknameChangeModal" tabindex="-1" aria-labelledby="profileNicknameChangeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="profileNicknameChangeModalLabel">프로필 이미지 저장</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        이미지 저장 하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="profileNicknameChangeModalBtn"
+                                data-bs-target="#saveImageComplete" data-bs-toggle="modal" data-bs-dismiss="modal">저장하기
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--수정용 모달--%>
+        <div class="modal fade" id="saveImageComplete" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+             tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">수정</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        수정함
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/myPage/profile/${user.userNumber}">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <!--========== Body ==============-->
 
     <!--========== Right SideBar ==============-->
@@ -209,62 +319,11 @@
     <!--========== Right SideBar ==============-->
 
 </div>
+<!--========== Body ==============-->
+
 <!--========== Footer ==============-->
 <%@ include file="../inculde/mypage/footer.jsp" %>
 <!--========== Footer ==============-->
-    <!-- 프로필 이미지 업로드 모달 -->
-    <div class="modal fade" id="profileImageSaveModal" tabindex="-1" aria-labelledby="profileImageSaveModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="profileImageSaveModalLabel">프로필 이미지 저장</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    이미지 저장 하시겠습니까?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="profileImagesSaveModalBtn" data-bs-target="#saveImageComplete" data-bs-toggle="modal" data-bs-dismiss="modal">저장하기</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 프로필 메인 이미지 업로드 모달 -->
-    <div class="modal fade" id="profileMainImagesSaveModal" tabindex="-1" aria-labelledby="profileMainImagesSaveModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="profileMainImagesSaveModalLabel">프로필 배경 이미지 저장</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    이미지 저장 하시겠습니까?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="profileMainImagesSaveModalBtn" data-bs-target="#saveImageComplete" data-bs-toggle="modal" data-bs-dismiss="modal">저장하기</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <%--저장 완료 모달--%>
-    <div class="modal fade" id="saveImageComplete" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">저장 완료.</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    이미지 저장되었습니다.
-                </div>
-                <div class="modal-footer">
-                    <a href="/myPage/profile/${user.userNumber}"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button></a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
@@ -279,48 +338,60 @@
 <script type="text/javascript" src="/js/flask.js"></script>
 <script>
 
+    //닉네임 변경하면
+    $(function(){
+        $("#userNinknameTextInput").on('input',function(){
+            if($("#userNinknameTextInput").val()=='')
+                $("#userNicknameChangeBtn").attr("disabled",true);
+            else
+                $("#userNicknameChangeBtn").attr("disabled",false);
+        });
+    })
+
     // 콘텐츠 수정 :: 사진 수정 시 이미지 미리보기
     function readURL(input = $('#formFile')) {
         $('#profileImagesBtn').removeAttr('disabled')
         if ($('#formFile') && input.files[0]) {
             let reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 $('.ProfileArea').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
+
     function readURL2(input = $('#formFile2')) {
         $('#profileTittleImagesBtn').removeAttr('disabled')
         if ($('#formFile2') && input.files[0]) {
             let reader2 = new FileReader();
-            reader2.onload = function(e) {
+            reader2.onload = function (e) {
                 $('.TitleProfileArea').attr('src', e.target.result);
             }
             reader2.readAsDataURL(input.files[0]);
         }
     }
-    $('#formFile').change(function() {
-        if( $('#formFile').val() == '' ) {
-            $('.ProfileArea').attr('src' , '');
+
+    $('#formFile').change(function () {
+        if ($('#formFile').val() == '') {
+            $('.ProfileArea').attr('src', '');
         }
-        $('.ProfileViewArea').css({ 'display' : '' });
+        $('.ProfileViewArea').css({'display': ''});
         readURL(this);
     });
-    $('#formFile2').change(function() {
-        if( $('#formFile2').val() == '' ) {
-            $('.TitleProfileArea').attr('src' , '');
+    $('#formFile2').change(function () {
+        if ($('#formFile2').val() == '') {
+            $('.TitleProfileArea').attr('src', '');
         }
-        $('.TitleProfileViewArea').css({ 'display' : '' });
+        $('.TitleProfileViewArea').css({'display': ''});
         readURL2(this);
     });
 
-    function imgAreaError(){
-        $('.ProfileViewArea').css({ 'display' : 'none' });
+    function imgAreaError() {
+        $('.ProfileViewArea').css({'display': 'none'});
     }
 
-    function imgAreaError2(){
-        $('.TitleProfileViewArea').css({ 'display' : 'none' });
+    function imgAreaError2() {
+        $('.TitleProfileViewArea').css({'display': 'none'});
     }
 
     $(function () {
@@ -341,6 +412,11 @@
             uploadFile2(); // 파일전송
             $('#profileMainImagesSaveModal').modal('show');
         });
+
+        $('#userNicknameChangeBtn').on('click', function () {
+            $('#profileNicknameChangeModal').modal('show');
+            $('#nickNameChange').submit();
+        });
     });
 
 
@@ -360,10 +436,10 @@
         });
 
         $.ajax({
-            url : "http://localhost:8080/updateProfileImageAjax",
+            url: "http://localhost:8080/updateProfileImageAjax",
             type: 'POST',
             data: {
-                userNumber:userNumber
+                userNumber: userNumber
             },
         });
     }
@@ -383,13 +459,14 @@
         });
 
         $.ajax({
-            url : "http://localhost:8080/updateProfileTitleImageAjax",
+            url: "http://localhost:8080/updateProfileTitleImageAjax",
             type: 'POST',
             data: {
-                userNumber:userNumber
+                userNumber: userNumber
             },
         });
     }
 </script>
 </body>
+<iframe name='blankifr' style='display:none;'></iframe>
 </html>
