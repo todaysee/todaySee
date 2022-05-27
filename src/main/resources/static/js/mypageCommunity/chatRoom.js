@@ -1,22 +1,16 @@
-
-
-
-
-
-	
-
-
 var ws;
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
 		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		
 		wsEvt();
 	}
 		
 	function wsEvt() {
 		ws.onopen = function(data){
 			//소켓이 열리면 동작
+		
 		}
 		
 		ws.onmessage = function(data) {
@@ -54,7 +48,7 @@ var ws;
 		});
 	}
 
-	/*function chatName(){
+	function chatName(){
 		var userName = $("#userName").val();
 		if(userName == null || userName.trim() == ""){
 			alert("사용자 이름을 입력해주세요.");
@@ -64,10 +58,9 @@ var ws;
 			$("#yourName").hide();
 			$("#yourMsg").show();
 		}
-	}*/
+	}
 
 	function send() {
-		//alert('확인')
 		var option ={
 			type: "message",
 			roomNumber: $("#roomNumber").val(),
@@ -78,6 +71,7 @@ var ws;
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
 	}
+	
 
 	function fileSend(){
 		var file = document.querySelector("#fileUpload").files[0];
