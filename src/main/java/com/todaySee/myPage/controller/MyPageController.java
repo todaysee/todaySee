@@ -1,6 +1,7 @@
 package com.todaySee.myPage.controller;
 
 
+
 import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.myPage.persistence.MyPageImgRepository;
@@ -117,7 +118,6 @@ public class MyPageController {
 
     @GetMapping("/myPage/bookMarkList/{userNumber}")
     public String myPageBookMark(@PathVariable Integer userNumber, UserVO user, Model model) {
-
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();
@@ -146,10 +146,12 @@ public class MyPageController {
     @PostMapping("/myPage/update")
     public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
 
+
         System.out.println(userNumber + ":" + userNickname);
         myPageService.updateNickname(userNumber,userNickname);
 
     }
+
 
     @GetMapping("/myPage/modal")
     public String modal() {
