@@ -17,7 +17,7 @@
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <!-- js files -->
-<script src = "../js/mypageCommunity/chatRoom.js"></script>
+<script src="../js/mypageCommunity/chatRoom.js"></script>
 <!-- js files -->
 <script src="../js/mypageCommunity/chatList.js"></script>
 </head>
@@ -75,18 +75,20 @@
 								</a>
 							</div>
 
-							<div class="chat-body" >
+							<div class="chat-body">
 								<div class="chat-message">
+									<span></span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="chat-list-footer">
-						<form class="d-flex align-items-center"> 
+						<form class="d-flex align-items-center">
 							<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
 
-							<button type="button" onclick="send()" id="sendBtn" class="send-btn">보내기</button>
- 						</form>
+							<button type="button" onclick="send()" id="sendBtn"
+								class="send-btn">보내기</button>
+						</form>
 					</div>
 				</div>
 			</div>

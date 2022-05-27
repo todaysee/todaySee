@@ -54,7 +54,7 @@ var ws;
 		});
 	}
 
-	function chatName(){
+	/*function chatName(){
 		var userName = $("#userName").val();
 		if(userName == null || userName.trim() == ""){
 			alert("사용자 이름을 입력해주세요.");
@@ -64,7 +64,7 @@ var ws;
 			$("#yourName").hide();
 			$("#yourMsg").show();
 		}
-	}
+	}*/
 
 	function send() {
 		//alert('확인')
