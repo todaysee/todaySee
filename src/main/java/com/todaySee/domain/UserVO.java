@@ -4,13 +4,15 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+
+
 import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "user")
-public class User {
+public class UserVO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +35,16 @@ public class User {
     @Column (name = "user_admin")
     Integer userAdmin;
     @Column (name = "user_profile_yn")
-    Integer userProfileYn; //프로필 유무 물어보는 컬럼
+    Integer userProfileYn; //프로필 이미지 유무 물어보는 컬럼
+    @Column (name = "user_title_profile_yn")
+    Integer userTitleProfileYn; //프로필 타이틀 이미지 물어보는 컬럼
+
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
     @Column(name = "user_login_date")
     Date userLoginDate; // 유저 로그인 날짜
+
     @Column(name = "user_name", length = 1000)
     String userName;
     @Column(name = "user_tel",length = 1000)
@@ -49,4 +55,37 @@ public class User {
     @OneToMany // 1:다
     @JoinColumn(name="user_number")
     private List<Images> images;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Review> reviews;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<ChatRoom> chatRooms;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Ratings> ratings;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Community> communities;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Bookmark> bookmark;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Comments> comments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<CommentsComments> commentsComments;
+
+    @OneToMany // 1:다
+    @JoinColumn(name="user_number")
+    private List<Report> report;
+
 }

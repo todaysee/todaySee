@@ -70,15 +70,16 @@
                         <div class="login-form">
                             <div style="text-align:center"><h2>Login</h2></div>
         
-                            <form>
+                            <form action="/login" method="post">
+                            
                                 <div class="form-group">
                                     <label> 이메일 </label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="userEmail"  value="moon@gmail.com" class="form-control">
                                 </div>
         
                                 <div class="form-group">
                                     <label> 비밀번호 </label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" name="userPassword" value="0000" class="form-control">
                                 </div>
         
                                  <!-- <div class="remember-me-wrap d-flex justify-content-between align-items-center" 

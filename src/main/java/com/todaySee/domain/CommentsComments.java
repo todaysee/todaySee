@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,8 +27,11 @@ public class CommentsComments {
     @Column(name = "commentscomments_date")
     Date commentscommentsDate;
 
-    @ManyToOne
-    @JoinColumn(name="comments_number")
-    private Comments comments;
+    @OneToMany
+    @JoinColumn(name="commentscomments_number")
+    List<Report> report;
+
+
+
 
 }
