@@ -26,9 +26,29 @@ var ws;
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
-						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+						$("#chating").append('<div class="chat chat-left">'+
+							'<div class="chat-avatar">'+
+								'<a routerLink="/profile" class="d-inline-block">'+
+								'</a>'+
+							'</div>'+
+							'<div class="chat-body">'+
+								'<div class="chat-message">'+
+									''+'<span class="me">나 :' + d.msg + '</span>'+
+								'</div>'+
+							'</div>'+
+						'</div>')	
 					}else{
-						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+						$("#chating").append('<div class="chat">'+
+							'<div class="chat-avatar">'+
+								'<a routerLink="/profile" class="d-inline-block">'+
+								'</a>'+
+							'</div>'+
+							'<div class="chat-body">'+
+								'<div class="chat-message">'+
+									''+'<span class="others">' + d.userName + ":"+ d.msg + '</span>'+
+								'</div>'+
+							'</div>'+
+						'</div>')	
 					}
 						
 				}else{
@@ -68,6 +88,7 @@ var ws;
 			userName : $("#userName").val(),
 			msg : $("#chatting").val()
 		}
+		/*alert(JSON.stringify(option))*/
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
 	}
