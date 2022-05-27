@@ -6,7 +6,6 @@ public interface UserService {
 
 	UserVO create(UserVO user);
 	
-	//User login(User user);
 	UserVO login(String userEmail, String userPassword);
 	
 
