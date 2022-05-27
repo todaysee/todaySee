@@ -19,7 +19,7 @@ import com.todaySee.home.service.UserService;
 public class UserController {
 	
 	 @Autowired
-		private UserService userServiceImpl;
+		private UserService userService;
 	 
 	 
 	 //인덱스페이지
@@ -42,7 +42,7 @@ public class UserController {
     
     @PostMapping("/signup")
     public String signUp(UserVO user) {
-   	userServiceImpl.create(user);
+    	userService.create(user);
         return "/home/homeSignUpComplete";
     }
     
@@ -63,10 +63,9 @@ public class UserController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model) {
     	System.out.println("PostMapping");
-        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
+        UserVO findUser = userService.login(userEmail, userPassword);
     	if (findUser != null
     			&& findUser.getUserPassword().equals(userPassword)) {
-    			
     		model.addAttribute("user", findUser);
     		return "/home/homeIndex";
     	} else {

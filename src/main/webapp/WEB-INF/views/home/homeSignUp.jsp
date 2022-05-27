@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                 
                                     <label>비밀번호</label>
-                                    <input type="password" name="userPassword1" class="form-control">
+                                    <input type="password" name="userPassword" class="form-control">
                                 </div>
 
                                 &nbsp;
@@ -143,17 +143,14 @@
 									
 									
 									<div class="lost-your-password-wrap" style="margin-top: 20px;">
-                                		<div style="float:left;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey";>홈으로 가기  </a>
-                                        	</div>
+                                        	<a href="/" class="lost-your-password" style="float:left; color:grey;">홈으로 가기  </a>
+                                       
                                         	<div style="float:right;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey;">이메일/비밀번호 찾기 </a>
-                                        	
-                                  	 	</div>
+                                        	<a href="/login" class="lost-your-password" style="color:grey;">로그인하기</a>
                                         	</div>
-                                        	
-                                        		
-                                
+                                        	</div>
+                                        	<div class="or-text"><span></span></div>
+                                        
                             </form>
                         </div>
                     </div>

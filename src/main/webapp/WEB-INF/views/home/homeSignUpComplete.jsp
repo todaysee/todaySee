@@ -72,15 +72,15 @@
                                 
         						
                                 <div class="form-group">
-								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 닉네임님 환영합니다 !  </h2>								 
+								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> ${userVO.userNickname }님 환영합니다 !  </h2>								 
 								</div>                              
         
                                  
                                  <form>
                                  <div class="row" style="margin-left: 40px !important;">
                                  
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color: grey;  value=""> 메인화면 </button>                                
-								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"> 로그인 </button>  
+								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color;"> <a href="/">메인화면</a> </button>                                
+								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"><a href="/login"> 로그인 </a></button>  
 								                                
 								                               
 								</div>
