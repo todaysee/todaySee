@@ -223,13 +223,32 @@
                                             '<input type="checkbox" value="">' +
                                         '</div>' +
                                     '</td>' +
-                                   '<td width="350" class="mailbox-name">' + content.content_title +'</td>' +
+                                   '<td width="350" class="mailbox-name">' + '<a data-bs-toggle="modal" data-bs-target="#staticBackdrop2' + content.content_number + '">' + content.content_title + '</a>' +'</td>' +
                                     '<td width="250"  class="mailbox-subject"><b>' + content.content_number + '</b>' +
                                     '</td>' +
                                     '<td width="100" class="mailbox-date">'+ content.content_release_date +'</td>' +
                                 '</tr>' +
                                 '</tbody>' +
                             '</table>' +
+                        '</div>' +
+                        '<div class="modal fade" id="staticBackdrop2' + content.content_number + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
+                        '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                        '<h5 class="modal-title" id="staticBackdropLabel">' + content.content_title + '</h5>' +
+                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                        '</div>' +
+                        '<div class="modal-body">' +
+                        '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
+                        '<div>' + content.content_info+
+                        '</div>' +
+                        '</div>' +
+                        '<div class="modal-footer">' +
+                        '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+                        '<button type="button" class="btn btn-primary">Understood</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
                         '</div>';
                         $('#pagingCommentsBody').append(reviewRow);
                     });
