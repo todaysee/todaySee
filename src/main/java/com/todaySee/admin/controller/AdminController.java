@@ -22,9 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.todaySee.admin.service.AdminService;
 import com.todaySee.admin.service.AdminServiceImpl;
 import com.todaySee.domain.Content;
+
 import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.Genre;
-import com.todaySee.domain.User;
+
+
+import com.todaySee.domain.UserVO;
+
 
 @Controller
 public class AdminController {
@@ -47,7 +51,7 @@ public class AdminController {
 	
 	
 	@GetMapping("/admin/userList")
-	public String userList(Model m, User user) {
+	public String userList(Model m, UserVO user) {
 	m.addAttribute("userList",adminService.getUserList(user));
 		
 		return "admin/userList";
@@ -81,9 +85,9 @@ public class AdminController {
 	 */
 	@GetMapping("/admin/userList/{userNumber}")
 	@ResponseBody
-	public User userList2( @PathVariable Integer userNumber) throws Exception {
-	
-		User addList = adminService.getUser(userNumber);
+	public UserVO userList2( @PathVariable Integer userNumber) throws Exception {
+
+		UserVO addList = adminService.getUser(userNumber);
 
 		return addList;
 	}

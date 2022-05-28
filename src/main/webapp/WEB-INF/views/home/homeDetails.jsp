@@ -521,7 +521,7 @@
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																<a href="my-profile.html">${review.userNickName}</a>
+																<a href="my-profile.html">${review.userName}</a>
 															</h3>
 															<span>${review.reviewDate}</span>
 															<span>
@@ -1501,25 +1501,26 @@
 				console.log(data);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
-				$.ajax({
-					type: "GET",
-					url: "http://localhost:8080/details/reviewListAjax",
-					data: {contentNumber : contentNumber},
-					success: function(data){
-						alert('ok');
-						console.log(data);
-					},
-					error: function (err){
-						alert('리스트 불러오기 실패');
-						console.log(err);
-					}
-				});
 			},
 			error: function(err){
 				alert("서버 문제로 오류가 발생하였습니다.");
 				console.log(err);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
+			}
+		});
+
+		$.ajax({
+			type: "GET",
+			url: "http://localhost:8080/details/reviewListAjax",
+			data: {contentNumber : contentNumber},
+			success: function(data){
+				alert('ok');
+				console.log(data);
+			},
+			error: function (err){
+				alert('리스트 불러오기 실패');
+				console.log(err);
 			}
 		});
 

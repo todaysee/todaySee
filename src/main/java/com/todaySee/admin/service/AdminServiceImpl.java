@@ -17,7 +17,7 @@ import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Ott;
 import com.todaySee.domain.Report;
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -33,12 +33,12 @@ public class AdminServiceImpl implements AdminService {
 	
 	 
 	
-	public List<User> getUserList(User user){
+	public List<UserVO> getUserList(UserVO user){
 		
-		return (List<User>) adminRepository.findAll();
+		return (List<UserVO>) adminRepository.findAll();
 	}
 	
-	public User getUser(@PathVariable Integer userNumber) {
+	public UserVO getUser(@PathVariable Integer userNumber) {
 		
 		return  adminRepository.findById(userNumber).get();
 	}

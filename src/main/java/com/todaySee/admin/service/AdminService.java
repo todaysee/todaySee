@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Report;
-import com.todaySee.domain.User;
+import com.todaySee.domain.UserVO;
 
 public interface AdminService {
 
 	
-	public List<User> getUserList(User user);
+	public List<UserVO> getUserList(UserVO user);
 	
-	public User getUser(@PathVariable Integer userNumber);
+	public UserVO getUser(@PathVariable Integer userNumber);
 	
 	
 	public  List<Content> getAllContent();
