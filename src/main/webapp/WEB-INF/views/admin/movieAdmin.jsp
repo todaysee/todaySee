@@ -127,90 +127,117 @@
                   </div>
                   <div class="modal-body">
                     <div class="container-fluid">
-                  <form>
+                  <form id="movieAdd" action="/movieAdd" method="post" >
                    
                     <div class="form-group row">
-                      <div class="container col-md-12">
+                    
+                    
+                      <div class="container col-md-6">
                         <label for="colFormLabelSm" class="form-label" >제목</label>
-                        <input type="text" class="form-control form-control-sm " id="colFormLabelSm1" placeholder="제목">
+                        <input type="text" class="form-control " id="colFormLabelSm1" name="contentTitle" placeholder="제목">
                       </div>
-                    </div>
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
-                        <label for="colFormLabelSm" >연령 등급</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm2" placeholder="연령대">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
+                      
+                       <div class="container col-md-6">
                         <label for="colFormLabelSm" >재생시간</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm3" placeholder="시간 분">
+                        <input type="text" class="form-control " id="colFormLabelSm3" name="contentRunningTime" placeholder="시간 분">
                       </div>
                     </div>
+                    
+                    
                     <div class="form-group row">
-                     
-                      <div class="container col-md-12">
+                      <div class="container col-md-6">
+                        <label for="colFormLabelSm" >연령 등급</label>
+                        <input type="text" class="form-control " id="colFormLabelSm2" name="contentAge" placeholder="연령대">
+                      </div>
+                       <div class="container col-md-6">
                         <label for="colFormLabelSm" >등록년도</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm4" placeholder="년도 ex => 2022">
+                        <input type="text" class="form-control " id="colFormLabelSm4" name="contentReleaseDate" placeholder="년도 ex => 2022">
                       </div>
                     </div>
+               
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
                         <label for="colFormLabelSm">내용</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm5" placeholder="줄거리">
+                        <input type="text" class="form-control " id="colFormLabelSm5" name="contentInfo" placeholder="줄거리">
                       </div>
                     </div>
-                    <!-- <div class="form-group row">
-                      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">&nbsp;&nbsp;등록날짜인데 hidden처리</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control form-control-sm" id="colFormLabelSm6" placeholder="col-form-label-sm">
-                      </div>
-                    </div> -->
-                    <input type="hidden" name="등록날짜 now처리하기">
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
-                        <label for="colFormLabelSm" >감독</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm7" placeholder="감독명">
-                      </div>
-                    </div>
+               
+                    <input type="hidden" name="contentImportDate">
+                   
                     <div class="form-group row">
                     
                       <div class="container col-md-12">
                         <label for="colFormLabelSm">유뷰트 영상링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm8" placeholder="">
+                        <input type="text" class="form-control " id="colFormLabelSm8" name="contentYoutubeUrl" placeholder="">
                       </div>
                     </div>
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
                         <label for="colFormLabelSm" >포스터 링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm9" placeholder="">
+                        <input type="text" class="form-control " id="colFormLabelSm9" name="contentPosterImagesUrl" placeholder="">
                       </div>
                     </div>
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
-                        <label for="colFormLabelSm" >메인 링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm10" placeholder="">
+                        <label for="colFormLabelSm" >메인 사진 링크</label>
+                        <input type="text" class="form-control " id="colFormLabelSm10" name="contentMainImagesUrl"  placeholder="">
                       </div>
                     </div>
-                  </form>
-                </div>
-              </div>
-                  <div class="modal-footer">
+                     <div class="form-group row">
+                      <div class="container col-md-12">
+                        <label for="colFormLabelSm" >플랫폼 링크</label>
+                        <input type="text" class="form-control " id="colFormLabelSm11" name="contentottLink"  placeholder="">
+                      </div>
+                    </div>
+                    
+                  		
+					  	<legend>장르</legend>
+					    <label><input type="checkbox" name="genre1" value="1">드라마</label>
+						<label><input type="checkbox" name="genre1" value="2">로맨스</label>
+						<label><input type="checkbox" name="genre1" value="3">스릴러</label>
+						<label><input type="checkbox" name="genre1" value="4">SF</label>
+						<label><input type="checkbox" name="genre1" value="5">가족</label>
+						<label><input type="checkbox" name="genre1" value="6">공포</label>
+						<label><input type="checkbox" name="genre1" value="7">다큐</label>
+						<label><input type="checkbox" name="genre1" value="8">범죄</label>
+						<label><input type="checkbox" name="genre1" value="9">스포츠</label>
+						<label><input type="checkbox" name="genre1" value="10">애니</label>
+						<label><input type="checkbox" name="genre1" value="11">예능</label>
+						<label><input type="checkbox" name="genre1" value="12">액션</label>
+						<label><input type="checkbox" name="genre1" value="13">역사</label>
+						<label><input type="checkbox" name="genre1" value="14">음악</label>
+						<label><input type="checkbox" name="genre1" value="15">전쟁</label>
+						<label><input type="checkbox" name="genre1" value="16">코미디</label>
+						<label><input type="checkbox" name="genre1" value="17">판타지</label>
+						
+						<legend>플랫폼</legend>
+               			<label><input type="checkbox" name="ott1" value="1"> Netfilx</label>
+               			<label><input type="checkbox" name="ott1" value="2"> Disney Plus</label>
+                    	<label><input type="checkbox" name="ott1" value="3"> Apple TV Plus</label>
+                    	<label><input type="checkbox" name="ott1" value="4"> wavve</label>
+                    	<label><input type="checkbox" name="ott1" value="5"> Watcha</label>
+                    
+                    
+                    <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary">저장</button>
-                  </div>
+                    <button type="submit"  class="btn btn-primary">저장</button>
+             		     </div>
+             	     </form>
+             	     	
+             	     
+             	     
+             	   </div>
+             	 </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- modal -->
+          
 
          <!--  <div id="link">My video</div> -->
           <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -422,7 +449,7 @@
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false,
       "responsive": true,
@@ -480,7 +507,8 @@
     	
     })
 	
-    
+ 
+
     
     
  
