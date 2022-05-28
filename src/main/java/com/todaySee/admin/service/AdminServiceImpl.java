@@ -2,20 +2,24 @@ package com.todaySee.admin.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.todaySee.admin.persistence.AdminContentRepository;
 import com.todaySee.admin.persistence.AdminReportRepository;
 import com.todaySee.admin.persistence.AdminUserRepository;
+import com.todaySee.admin.persistence.TransactionalRepository;
 import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.ContentOtt;
-import com.todaySee.domain.Ott;
 import com.todaySee.domain.Report;
 import com.todaySee.domain.UserVO;
 
@@ -30,7 +34,11 @@ public class AdminServiceImpl implements AdminService {
 	 
 	 @Autowired
 	 private AdminReportRepository adminReportRepository;
+	 
+	 @Autowired 
+	 private TransactionalRepository transRepo;
 	
+		
 	 
 	
 	public List<UserVO> getUserList(UserVO user){
@@ -94,24 +102,15 @@ public class AdminServiceImpl implements AdminService {
 		return adminContentRepository.save(co);
 	}
 	
-	public void insertContent(Content co, String[] genre1, String[] ott1, String contentottLink) {
-		adminContentRepository.contentQuery(co);
+	@Transactional
+	public void insertContent(Content co, Integer [] genre1, Integer[] ott1,String contentottLink)  {
 		
-		for (String genre : genre1) {
-			adminContentRepository.genreQuery(genre);
-				
-		}
-		
-		for (String ott : ott1) {
-			adminContentRepository.ottQuery(ott, contentottLink);
-			
-		}
-		
-		
-		
+			adminContentRepository.save(co);
+	    	 for (Integer ott : ott1) {
+	    		 adminContentRepository.ottQuery(ott,contentottLink);
+	    	 }
+	    	 for (Integer genre : genre1) {
+	    		adminContentRepository.genreQuery(genre);
+			}
 	}
-	
-	
-	
-
 }
