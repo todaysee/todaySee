@@ -2,6 +2,7 @@ package com.todaySee.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,8 +31,9 @@ public class Content {
     @Column(length = 3000,name = "content_info")
     String contentInfo; // 컨텐츠 소개글
 
-    @CreationTimestamp
+    @CreationTimestamp()
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy")
     @Column(name = "content_import_date")
     Date contentImportDate; // 컨텐츠 등록날짜
 
@@ -44,6 +46,10 @@ public class Content {
 
     @Column(length = 3000,name = "content_main_images_url")
     String contentMainImagesUrl; // 컨텐츠 메인 이미지 주소
+    
+    @Column (name = "content_state")
+    Integer contentState;
+    
     
     @OneToMany
     @JoinColumn(name="content_number")
