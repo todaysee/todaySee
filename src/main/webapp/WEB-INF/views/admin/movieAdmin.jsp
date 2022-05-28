@@ -18,7 +18,12 @@
           transition: transform 0.3s ease-out;
 }
 
-
+  textarea {
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+  }
 
 
 </style>
@@ -281,59 +286,45 @@
                           <div class="col-md-6">
                             <ul class="nav nav-pills flex-column">
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호
-                                  <span class="badge float-right userNumber"><h5></h5></span>
-                                </a>
+                                   <h5>
+                                 <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호 : 
+                                  <span id="idCard" class="badge float-right contentNumber"></span></h5>
+                                  
+                              </li>
+                               
+      <!--   <span id="idCard2" class="badge float-right userName contentInfo"></span> -->
+                              <li class="nav-item active">
+                                   <h5><i class="fa fa-address-book" aria-hidden="true"></i> 줄거리 
+                                 <textarea id="idCard2"  class="badge float-right contentInfo"></textarea></h5>
+								
                               </li>
               
               
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-address-book" aria-hidden="true"></i> 줄거리
-                                  <span class="badge float-right userName"><h5></h5></span>
-                                </a>
-                              </li>
-              
-              
-                              <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급
-                                  <span class="badge float-right userEmail"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급 : 
+                                  <span id="idCard3" class="badge float-right contentAge"></span></h5>
                               </li>
               
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-phone" aria-hidden="true"></i> 재생시간
-                                 
-                                  <span class="badge float-right userTel"><h5></h5></span>
-                                </a>
+                                  <h5><i class="fa fa-phone" aria-hidden="true"></i> 재생시간 : 
+                                  <span id="idCard4" class="badge float-right contentRunningTime"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-user" aria-hidden="true"></i> 개봉일
-                                  <span class="badge float-right userNickname"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-user" aria-hidden="true"></i> 개봉일 : 
+                                  <span id="idCard5" class="badge float-right contentReleaseDate"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-venus-mars" aria-hidden="true"></i> 장르
-                                  <span class="badge float-right userGender"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-venus-mars" aria-hidden="true"></i> 장르 : 
+                                  <span id="idCard6" class="badge float-right contentGenre"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-list-alt" aria-hidden="true"></i> 플렛폼
-                                  <span class="badge float-right userloginDate"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-list-alt" aria-hidden="true"></i> 플렛폼 : 
+                                  <span id="idCard7" class="badge float-right contentOtt"></span></h5>
                               </li>
               
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                 <i class="fa fa-list-alt" aria-hidden="true"></i> 회원가입 날짜
-                                  <span class="badge float-right userSignupDate"><h5></h5></span>
-                                </a>
+                                  <h5><i class="fa fa-list-alt" aria-hidden="true"></i> 삭제유무 : 
+                                  <span id="idCard8" class="badge float-right contentState"></span></h5>
                               </li>
                             </ul>
                           </div>
@@ -479,6 +470,12 @@
           let youtubeUrlsrc = data.contentYoutubeUrl /*  링크가 없으면 */
           let mainImagesUrl = data.contentMainImagesUrl
           
+        var arrValues = new Array();
+        var arrValues2 = new Array();
+          
+          
+          
+          
           $("#contentImages>.img22").remove();
         $('#myModal').modal('show');
         //$('#myModal iframe').attr('src', youtubeUrlsrc);
@@ -492,13 +489,40 @@
          		$('#contentImages').append("<img class='img22' alt='' src="+ mainImagesUrl +" width='350' height='300' >")
         }
         
-       /*  $('#myModal img').attr('src', src); */
+          
+          $('.contentNumber').text(data.contentNumber);
+          $('.contentInfo').text(data.contentInfo);
+          $('.contentAge').text(data.contentAge);
+          $('.contentRunningTime').text(data.contentRunningTime);
+          $('.contentReleaseDate').text(data.contentReleaseDate);
+          
+          // console.log(JSON.stringify(data.contentGenre[0].genre.genreName))
+            for (let i = 0; i < data.contentGenre.length; i++) {
+            arrValues.push(data.contentGenre[i].genre.genreName);
+        	  $('.contentGenre').text(arrValues) 
+            }
+             console.log(JSON.stringify(data.contentOtt))
+            for (let i = 0; i < data.contentOtt.length ; i++) {
+             arrValues2.push(data.contentOtt[i].ott.ottName);
+             $('.contentOtt').text(arrValues2);
+              
+            }
+            if(data.contentState =="" && data.contentState == 0){
+              $('.contentState').text("삭제완료");
+            } else{
+              $('.contentState').text("삭제처리안됨");
+            }
+            
+            
+           
 
 
-        },
-        error: function(e){
-          alert('에러발생')
-          console.log(e)
+
+
+        }, 
+        error : function(e){
+            alert('에러발생')
+            console.log(e)
         }
 
       })
