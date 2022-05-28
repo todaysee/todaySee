@@ -106,13 +106,17 @@ public class AdminController {
 		return ajaxContent;
 	}
 	
+	/**
+	 * @param co		Input값 Content정보 
+	 * @param genre1	Input값 여러개의 ott장르
+	 * @param ott1		Input값 여러개의 ott플랫폼
+	 * @param contentottLink	Input값 ott플랫폼에 넣을 링크
+	 * @return			viewPage movieAdmin
+	 */
 	@PostMapping("/movieAdd")
-	public String movieAdd(Content co, String[] genre1, String[] ott1 , String contentottLink) { // 
-
-		System.out.println(genre1+"***********************************************************");
-		adminService.insertContent(co, genre1, ott1,contentottLink);
-	
+	public String movieAdd(Content co, Integer [] genre1, Integer [] ott1, String contentottLink ) { // 
 		
+			adminService.insertContent(co, genre1, ott1,contentottLink);
 		
 		return "redirect:movieAdmin";
 	}
@@ -124,7 +128,7 @@ public class AdminController {
 	 */
 	@GetMapping("/movieAdmin")
 	public String movieAdmin(Model m) {
-//		m.addAttribute("contentList",adminService.getAllContent());
+		m.addAttribute("contentList",adminService.getAllContent());
 		return "admin/movieAdmin";
 	}
 
