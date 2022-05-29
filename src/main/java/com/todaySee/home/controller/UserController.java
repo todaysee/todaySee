@@ -1,6 +1,9 @@
 package com.todaySee.home.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +33,7 @@ public class UserController {
     //회원가입 페이지
     @GetMapping("/signUp")
     public String homeSignUp() {
+
     	return "/home/homeSignUp";
     }
     
@@ -54,16 +58,29 @@ public class UserController {
     }
     
     @PostMapping("/login")
-    public String login(String userEmail, String userPassword, Model model) {
+    public String login(String userEmail, String userPassword, Model model,HttpSession session) {
     	System.out.println("PostMapping");
         UserVO findUser = userService.login(userEmail, userPassword);
     	if (findUser != null
     		) {
     		model.addAttribute("user", findUser);
+    		session.setAttribute("userId", findUser.getUserNumber());
+    		session.setMaxInactiveInterval(60*60*24);
+    		System.out.println("세"+session.getAttribute("userId"));
     		return "/home/homeIndex";
     	
     	} else {
     		return "/home/homeLogin";
+    	}
+    }
+    
+    
+    @GetMapping("/userCheck")
+    public String userCheck(HttpSession session) {
+    	if(session.getAttribute("userId")==null) {
+    		return "/home/homeLogin";
+    	}else {
+    		return "redirect:myPage/profile";
     	}
     }
 
