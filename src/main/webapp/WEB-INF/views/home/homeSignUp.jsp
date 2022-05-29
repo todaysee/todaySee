@@ -69,10 +69,10 @@
                         <div class="register-form">
                             <div style="text-align:center"><h2>회원가입</h2></div>
         
-                            <form action="/signup" method="post">
+                            <form action="/signUp" method="post">
                                 <div class="form-group">
                                     <label>닉네임</label>
-                                    <input type="text" name="userNickname" class="form-control" value="Gill">
+                                    <input type="text" name="userNickname" class="form-control" value="ANG">
                                    
                                 </div>
 
@@ -80,11 +80,12 @@
 								&nbsp;
 								<div class="row">
                                 <div class="form-group col-md-9" >
-                                    <label>이메일</label>
-                                    <input type="email" name="userEmail" class="form-control" value="moon@gmail.com" style="margin-right:0px;">
+                                    <label for="userEmail">이메일</label>
+                                    <input type="email"  id="userEmail" name="userEmail" class="form-control" value="moon@gmail.com" style="margin-right:0px;">
 									</div>
 									<div class="post-btn col-md-3">
-                                  <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; 
+									
+                                  <button type="button" id="btn_emailCheck" class="button_h" name="btn_emailCheck" style="border-radius: 13px; 
                                   padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;">중복확인</button>
                              		</div>
                              		</div>
@@ -211,6 +212,11 @@
 <script src="/js/home/slick.min.js"></script>
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
+
+
+<!-- js추가 -->
+ 
+    <script src="/resources/static/js/home/UserLogin.js"></script>
 
 
 </body>

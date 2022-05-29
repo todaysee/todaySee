@@ -3,8 +3,6 @@ package com.todaySee.home.persistence;
 
 import com.todaySee.domain.Review;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 
 import com.todaySee.domain.UserVO;
@@ -12,11 +10,8 @@ import com.todaySee.domain.UserVO;
 public interface UserRepository extends CrudRepository<UserVO, Integer> {
 
 
-	UserVO findByUserEmail(String userEmail);
-
-
-
-
+	UserVO findByUserEmailAndUserPassword(String userEmail, String userPassword);
+	
 	UserVO findByUserEmail(String userEmail);
 
 	UserVO findByReviews(Review review);
@@ -28,6 +23,7 @@ public interface UserRepository extends CrudRepository<UserVO, Integer> {
 	//Optional<UserVO> findByUserEmail(String username);
 	
 	
+
 
 
 }
