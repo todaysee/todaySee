@@ -156,18 +156,6 @@ public class DetailsServiceImpl implements DetailsService{
         return reviewObj;
     }
 
-    @Override
-    public Page<ReviewDto> reviewMore(Pageable pageable) {
-        Page<Review> review = reviewRepo.findAll(pageable);
-
-        Page<ReviewDto> pages = review.map(entity -> {
-            ReviewDto dto = ReviewDtoConverter.reviewToReviewDto(entity);
-            return dto;
-        });
-
-        return pages;
-    }
-
 
 }
 

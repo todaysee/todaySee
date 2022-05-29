@@ -1,23 +1,18 @@
 package com.todaySee.home.controller;
 
 import com.todaySee.domain.Content;
-import com.todaySee.domain.Review;
+
 import com.todaySee.home.dto.ReviewDto;
 import com.todaySee.home.service.DetailsService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -56,12 +51,6 @@ public class DetailsRestController {
     @GetMapping("/details/spoReviewAjax")
     public JSONObject getSpoilerReview(Integer reviewNumber) {
         return detailsService.getReview(reviewNumber);
-    }
-
-    @GetMapping("/details/reviewMore")
-    public Page<ReviewDto> reviewMore(Pageable pageable) {
-        System.out.println("==============================================================================================================================");
-        return detailsService.reviewMore(pageable);
     }
 
 
