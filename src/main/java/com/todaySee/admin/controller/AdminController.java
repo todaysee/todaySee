@@ -4,12 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +22,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.todaySee.admin.service.AdminService;
 import com.todaySee.admin.service.AdminServiceImpl;
 import com.todaySee.domain.Content;
+
+import com.todaySee.domain.ContentGenre;
+import com.todaySee.domain.Genre;
+
+
 import com.todaySee.domain.UserVO;
+
 
 @Controller
 public class AdminController {
@@ -48,25 +58,14 @@ public class AdminController {
 	}
 	
 	
-	
-	/**
-	 * @param Model m : 전체 컨텐츠 영상 리스트 값 전달
-	 * @return view 페이지 movieAdmin페이지로 이동
-	 */
-	@GetMapping("/movieAdmin")
-	public String movieAdmin(Model m) {
-		m.addAttribute("contentList",adminService.getAllContent());
-		
-		return "admin/movieAdmin";
-	}
 
-	
 	
     @GetMapping("/image")
     public String image(Model m) {
         System.out.println("image 페이지 접속");
 		return "admin/image";
     }
+    
     
     @GetMapping("/userReport")
     public String adminTable(Model m ) {
@@ -106,7 +105,34 @@ public class AdminController {
 		
 		return ajaxContent;
 	}
+	
+	/**
+	 * @param co		Input값 Content정보 
+	 * @param genre1	Input값 여러개의 ott장르
+	 * @param ott1		Input값 여러개의 ott플랫폼
+	 * @param contentottLink	Input값 ott플랫폼에 넣을 링크
+	 * @return			viewPage movieAdmin
+	 */
+	@PostMapping("/movieAdd")
+	public String movieAdd(Content co, Integer [] genre1, Integer [] ott1, String contentottLink ) { // 
+		
+			adminService.insertContent(co, genre1, ott1,contentottLink);
+		
+		return "redirect:movieAdmin";
+	}
 
+	
+	/**
+	 * @param Model m : 전체 컨텐츠 영상 리스트 값 전달
+	 * @return view 페이지 movieAdmin페이지로 이동
+	 */
+	@GetMapping("/movieAdmin")
+	public String movieAdmin(Model m) {
+		m.addAttribute("contentList",adminService.getAllContent());
+		return "admin/movieAdmin";
+	}
 
+	
+	
 
 }
