@@ -47,6 +47,7 @@ public class DetailsController {
 
         /* 리뷰 데이터 모두 가져오기 */
         List<HashMap<String, String>> reviewList = detailsService.getReviewList(contentNumber);
+        System.out.println(reviewList);
         model.addAttribute("reviewList", reviewList);
 
         return "/home/homeDetails";

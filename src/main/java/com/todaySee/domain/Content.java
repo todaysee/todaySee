@@ -55,10 +55,6 @@ public class Content {
 
     @OneToMany
     @JoinColumn(name="content_number")
-    List<Review> reviews;
-
-    @OneToMany
-    @JoinColumn(name="content_number")
     List<Ratings> ratings;
 
     @OneToMany
