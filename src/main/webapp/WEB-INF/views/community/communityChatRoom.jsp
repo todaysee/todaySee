@@ -51,8 +51,8 @@
 
 
 				<div class="messages-chat-container">
-					<div class="chat-content">
-						<div class="chat">
+					<div class="chat-content chating" id="chating">
+						<!-- <div class="chat">
 							<div class="chat-avatar">
 								<a routerLink="/profile" class="d-inline-block"> <img
 									src="/images/mypageCommunity/user/user-11.jpg" width="50"
@@ -66,8 +66,8 @@
 								</div>
 							</div>
 						</div>
-
-						<div class="chat chat-left">
+ -->
+						<!-- <div class="chat chat-left">
 							<div class="chat-avatar">
 								<a routerLink="/profile" class="d-inline-block"> <img
 									src="/images/mypageCommunity/user/user-2.jpg" width="50"
@@ -80,11 +80,19 @@
 									<span></span>
 								</div>
 							</div>
-						</div>
+						</div> -->
+					</div>
+					<div class="chat-list-footer yourMsg">
+						<form class="d-flex align-items-center inputTable">
+							<input type="text" id="userName" class="form-control" placeholder="닉네임을 입력하세요.">
+
+							<button type="button" onclick="chatName()" id="startBtn"
+								class="send-btn">등록</button>
+						</form>
 					</div>
 					<div class="chat-list-footer">
 						<form class="d-flex align-items-center">
-							<input type="text" class="form-control" placeholder="메세지를 입력하세요.">
+							<input type="text" id="chatting" class="form-control" placeholder="메세지를 입력하세요.">
 
 							<button type="button" onclick="send()" id="sendBtn"
 								class="send-btn">보내기</button>

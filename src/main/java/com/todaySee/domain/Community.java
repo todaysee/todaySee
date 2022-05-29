@@ -31,6 +31,12 @@ public class Community {
     @Column(name="community_hits")
     Integer communityHits; // 게시글 조회수
 
+    @Column(name="community_state")
+    Integer communityState; // 게시글 상태
+
+    @Column(length = 100, name="community_category")
+    String communityCategory; // 게시글 카테고리
+
     @OneToMany // 1:다
     @JoinColumn(name="community_number")
     private List<Comments> comments;

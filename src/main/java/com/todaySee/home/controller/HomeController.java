@@ -22,7 +22,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
 
- 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
 
@@ -35,13 +38,29 @@ public class HomeController {
         return "/index2";
     }
 
+    //테스트 로그인 세션
+    @GetMapping("/testSessionLogin")
+    public String Login(HttpSession session){
+        session.setAttribute("userNumber", 1);
+        return "redirect:/2";
+    }
+    //테스트 로그아웃 세션
+    @GetMapping("/testSessionLogout")
+    public String Logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/2";
+    }
+
+
+
+
     /** 홈 페이지
      * 	- 로그인 후 회원의 정보를 토대로 추천 알고리즘을 돌리고 예상 평점이 높은 영화를 추려서 홈 페이지에 출력
      * @param	로그인 세션
      * @return	추천 알고리즘을 통한 추천 영화 출력
      */
- 
-    
+
     @GetMapping("/")
     public String homeIndex(Model m) {
    	

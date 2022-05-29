@@ -2,16 +2,35 @@ package com.todaySee.admin.persistence;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.todaySee.domain.Content;
 
+@EnableJpaRepositories
 public interface AdminContentRepository extends CrudRepository<Content, Integer>{
 
 	
+//	@Query(value="INSERT INTO content (content_title,content_running_time,content_age,content_release_date,content_info,content_youtube_url,content_poster_images_url,content_main_images_url  ) VALUES ( values ); ", nativeQuery= true)
+//	List<Object[]> contentQuery(Content c);
+	
+	@Modifying
+	@Query(value="INSERT INTO contentgenre (genre_number,content_number) VALUES (:genre ,(SELECT max(last_insert_id(content_number)) FROM content))",nativeQuery=true)
+	void genreQuery(Integer genre);
+	
+	@Modifying
+	@Query(value="INSERT INTO contentott (ott_number, content_number,contentott_link) VALUES (:ott ,(SELECT max(last_insert_id(content_number)) FROM content),:contentottLink)",nativeQuery=true)
+	void ottQuery(Integer ott, String contentottLink);
 
+	
+	
 
-
-
+	
 }
