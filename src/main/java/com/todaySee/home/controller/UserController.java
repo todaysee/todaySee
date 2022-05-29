@@ -20,6 +20,8 @@ public class UserController {
 	
 	 @Autowired
 		private UserService userServiceImpl;
+
+
 	 
 	 
 	 //인덱스페이지
@@ -27,6 +29,7 @@ public class UserController {
 //	public String homeIndex() {
 //		return "/home/homeIndex";
 //	}
+
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")

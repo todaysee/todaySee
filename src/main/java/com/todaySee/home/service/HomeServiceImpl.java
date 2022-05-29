@@ -1,15 +1,11 @@
 package com.todaySee.home.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
-import com.todaySee.domain.ContentGenre;
-import com.todaySee.domain.Genre;
 import com.todaySee.home.persistence.ContentGenreRepository;
 import com.todaySee.home.persistence.ContentRepository;
 import com.todaySee.home.persistence.GenreRepository;
@@ -33,8 +29,8 @@ public class HomeServiceImpl implements HomeService{
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
 	 */
 	@Override
-	public List<Content> getGenresContentList(Integer genreNumber) {
-		return contentRepo.getGenresContentList(genreNumber);
+	public Page<Content> getGenresContentList(Integer genreNumber, Pageable paging) {
+		return contentRepo.getGenresContentList(genreNumber, paging);
 	}
 
 }
