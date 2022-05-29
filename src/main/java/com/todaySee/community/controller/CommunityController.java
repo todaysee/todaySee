@@ -48,7 +48,7 @@ public class CommunityController {
         model.addAttribute("genreList", genreList);
 
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
-        //마이페이지 회원정보 불러오기, 이미지 불러오기
+
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();
         List<Object[]> tittleImages = myPageImgRepository.profileTittleImages((Integer) session.getAttribute("userNumber"));
@@ -62,7 +62,6 @@ public class CommunityController {
     @GetMapping("/communityOttBoard/{ottNumber}")
     public String communityOttBoardPage(HttpSession session, UserVO user, Model model){
 
-
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
@@ -71,7 +70,6 @@ public class CommunityController {
         model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
-
         return "/community/communityWrite";
     }
 

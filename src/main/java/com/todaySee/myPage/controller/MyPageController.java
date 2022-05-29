@@ -1,6 +1,5 @@
 package com.todaySee.myPage.controller;
 
-
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.javaClass.MyPageImages;
@@ -127,6 +126,7 @@ public class MyPageController {
     }
 
 
+
     @GetMapping("/myPage/bookMarkList")
     public String myPageBookMark(HttpSession session, UserVO user, Model model) {
 
@@ -160,10 +160,12 @@ public class MyPageController {
     @PostMapping("/myPage/update")
     public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
 
+
         System.out.println(userNumber + ":" + userNickname);
         myPageService.updateNickname(userNumber,userNickname);
 
     }
+
 
     @GetMapping("/myPage/modal")
     public String modal() {

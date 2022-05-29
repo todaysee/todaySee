@@ -91,23 +91,19 @@
                                         <label for="test1">이메일 기억하기</label>
                                         
                                         	</div>
-                                       	<!--  
-                                        <a href="forgot-password.html" class="lost-your-password">Forgot password ?</a>
-                                       </div>
-                                		-->
+                                       	
                                 <button type="submit" class="default-btn"> 로그인 </button>
                                  <div class="or-text"><span></span></div> 
-                               
-                                <button type="submit" class="google-btn">Log In with Google</button>
-                                
+                                                               
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
-                                        	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
+                                        	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="forgot-password.html" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
-                                        	<a href="forgot-password.html" class="lost-your-password">이메일/비밀번호 찾기 </a>
-                                        	<div style="float:right; color:grey;">
-                                  	 	</div>
+                                        	<a href="/signup" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
+                                        	<div style="float:right;">
+                                        	<a href="/idFind" class="lost-your-password" style="color:grey;">이메일</a>&nbsp;<a href="/passwordFind" style="color:grey;">비밀번호찾기</a>
+                                        	</div>
+                                        	</div>
                                         	</div>
                                         	<div class="or-text"><span></span></div> 
                                         

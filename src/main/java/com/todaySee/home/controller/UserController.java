@@ -2,6 +2,7 @@ package com.todaySee.home.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,11 @@ import com.todaySee.home.service.UserService;
 public class UserController {
 	
 	 @Autowired
-		private UserService userServiceImpl;
 
+		private UserService userService;
+	 
+	 @Autowired
+		private PasswordEncoder encoder;
 
 	 
 	 
@@ -29,8 +33,7 @@ public class UserController {
 //	public String homeIndex() {
 //		return "/home/homeIndex";
 //	}
-
-
+  
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")
     public String homechooseLogin() {
@@ -45,7 +48,7 @@ public class UserController {
     
     @PostMapping("/signup")
     public String signUp(UserVO user) {
-   	userServiceImpl.create(user);
+    	userService.create(user);
         return "/home/homeSignUpComplete";
     }
     
@@ -66,12 +69,12 @@ public class UserController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model) {
     	System.out.println("PostMapping");
-        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
+        UserVO findUser = userService.login(userEmail, userPassword);
     	if (findUser != null
-    			&& findUser.getUserPassword().equals(userPassword)) {
-    			
+    		) {
     		model.addAttribute("user", findUser);
     		return "/home/homeIndex";
+    	
     	} else {
     		return "/home/homeLogin";
     	}
