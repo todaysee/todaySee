@@ -66,6 +66,10 @@
 			border-bottom: 3px solid var(--primary-color);
 		}
 
+		.padding-9 {
+			padding: 0% 40%;
+		}
+
 		/*============================================
         메인 이미지 - 권소연 추가
         ==============================================*/
@@ -100,6 +104,32 @@
 
 		.gen-button-like:hover,
 		.gen-button-like:focus {
+			color: var(--white-color);
+			background: var(--primarydark-color);
+		}
+
+		.gen-button-spo {
+			text-transform: uppercase;
+			position: relative;
+			width: auto;
+			font-weight: 400;
+			background: var(--black-color);
+			color: var(--white-color);
+			font-family: var(--title-fonts);
+			font-size: 16px;
+			padding: 6px 15px;
+			line-height: 2;
+			vertical-align: middle;
+			border: none;
+			display: inline-block;
+			overflow: hidden;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+
+		.gen-button-spo:hover,
+		.gen-button-spo:focus {
 			color: var(--white-color);
 			background: var(--primarydark-color);
 		}
@@ -350,6 +380,14 @@
 			border-radius: 0;
 		}
 
+		/*============================================
+        리뷰 더보기  - 권소연 추가
+        ==============================================*/
+
+		.review-more {
+			display: none;
+		}
+
 	</style>
 	<!-- 추가 CSS -->
 
@@ -483,14 +521,14 @@
 										<!-- 리뷰 작성 -->
 										<div class="send-item">
 											<div class="padding-5">
-												<form name="comment" id="comment" method="post">
+												<form name="comment" id="comment" action="/details/${Content.contentNumber}" method="post">
 													<div class="row">
 														<div class="col-xl-1 col-lg-1 col-md-1">
 															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																<a href="my-profile.html">James Vanwin</a>
+																유저닉네임구현예정
 															</h3>
 															<span>
 																<input id="input-9" name="input-9" required class="rating-loading">
@@ -512,55 +550,85 @@
 										<!-- 리뷰 작성 -->
 
 										<!-- 리뷰 item -->
-										<c:forEach items="${reviewList}" var="review">
-											<div class="send-item">
-												<div class="padding-4">
-													<div class="row">
-														<div class="col-xl-1 col-lg-1 col-md-1">
-															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+											<c:choose>
+												<c:when test="${empty reviewList}">
+													<div class="send-item">
+														<div class="padding-4">
+															<h3 class="padding-9">리뷰가 없습니다.</h3>
 														</div>
-														<div class="send-content col-xl-3 col-lg-3 col-md-3">
-															<h3>
-																<a href="my-profile.html">${review.userName}</a>
-															</h3>
-															<span>${review.reviewDate}</span>
-															<span>
-																	<input class="input-4" name="input-4" value="2.5" class="rating-loading">
-																</span>
-														</div>
-														<div class="text col-xl-8 col-lg-8 col-md-8">
-															<p>
-																${review.reviewContent}
-															</p>
-															<div class="text-right">
-																<div class="gen-btn-container">
-																	<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																		<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
-																	</a>
-																	<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
-																		<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
-																	</a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${reviewList}" var="review">
+														<div class="send-item review-more">
+															<div class="padding-4 moreReview">
+																<div class="row">
+																	<div class="col-xl-1 col-lg-1 col-md-1">
+																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+																	</div>
+																	<div class="send-content col-xl-3 col-lg-3 col-md-3">
+																		<h3>
+																			${review.userName}
+																		</h3>
+																		<span>${review.reviewDate}</span>
+																		<span>
+																			<input class="input-4" name="input-4" value="2.5" class="rating-loading">
+																		</span>
+																	</div>
+																	<div class="text col-xl-8 col-lg-8 col-md-8">
+																		<c:if test="${review.reviewSpoiler eq 0}">
+																			<p>
+																				${review.reviewContent}
+																			</p>
+																		</c:if>
+																		<c:if test="${review.reviewSpoiler eq 1}">
+																			<p id="${review.reviewNumber}">
+																				스포일러 댓글입니다.
+																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
+																				<a type="button" class="gen-button-spo showSpo" data-bs-toggle="modal" data-bs-target="#modalReport">
+																					<span><i class="fa fa-eye"></i> 스포일러 보기</span>
+																				</a>
+																			</p>
+																		</c:if>
+																		<div class="text-right">
+																			<div class="gen-btn-container">
+																				<a type="button" class="gen-button-like" data-bs-toggle="modal" data-bs-target="#modalReport">
+																					<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
+																				</a>
+																				<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
+																					<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
+																				</a>
+																			</div>
+																		</div>
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-												</div>
-											</div>
-										</c:forEach>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+
 										<!-- 리뷰 item -->
 
 										<!-- 더보기 -->
-										<div class="col-lg-12">
-											<div class="gen-load-more-button">
-												<div class="gen-btn-container">
-													<a class="gen-button gen-button-loadmore" href="#">
-														<span class="button-text">리뷰 더보기</span>
-														<span class="loadmore-icon" style="display: none;"><i
-																class="fa fa-spinner fa-spin"></i></span>
-													</a>
+										<c:choose>
+											<c:when test="${empty reviewList}">
+
+											</c:when>
+											<c:otherwise>
+												<div class="col-lg-12">
+													<div class="gen-load-more-button">
+														<div class="gen-btn-container">
+															<a id="reviewMore" class="gen-button gen-button-loadmore" href="#">
+																<span class="button-text">리뷰 더보기</span>
+																<span class="loadmore-icon" style="display: none;"><i
+																		class="fa fa-spinner fa-spin"></i></span>
+															</a>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
+											</c:otherwise>
+										</c:choose>
 										<!-- 더보기 -->
 
 									</div>
@@ -1486,6 +1554,7 @@
 			reviewSpoiler = 1;
 		}
 		let contentNumber = ${Content.contentNumber}
+		// let rating = $('#input-9').val();
 
 		$.ajax({
 			type: "POST",
@@ -1501,6 +1570,7 @@
 				console.log(data);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
+				location.href="http://localhost:8080/details/${Content.contentNumber}"
 			},
 			error: function(err){
 				alert("서버 문제로 오류가 발생하였습니다.");
@@ -1510,17 +1580,31 @@
 			}
 		});
 
+	});
+
+	// 스포일러보기
+	$('.showSpo').on('click', function(){
+		let reviewNumber = $(this).parent().attr('id');
+		// alert(reviewNumber);
+		let btn = "#" + reviewNumber;
+		// alert(btn);
+
 		$.ajax({
-			type: "GET",
-			url: "http://localhost:8080/details/reviewListAjax",
-			data: {contentNumber : contentNumber},
-			success: function(data){
-				alert('ok');
-				console.log(data);
+			type:"GET",
+			url:"http://localhost:8080/details/spoReviewAjax",
+			data: {
+				reviewNumber : reviewNumber
 			},
-			error: function (err){
-				alert('리스트 불러오기 실패');
-				console.log(err);
+			success: function(data){
+				// alert('스포일러 보이기 성공');
+				console.log(data);
+				// alert(btn);
+				$(btn).html();
+				$(btn).html(data.reviewContent);
+			},
+			error: function(err){
+				alert('스포일러 보이기 오류!');
+				console.log('스포일러 보이기 오류 : ' + err );
 			}
 		});
 
@@ -1530,6 +1614,21 @@
 
 
 	// 리뷰 더보기
+	reviewMore();
+	function reviewMore() {
+		$(".review-more").slice(0, 3).show();
+		if($('.review-more').length>3) {
+			$('#reviewMore').on('click', function(e){
+				e.preventDefault();
+				$('.review-more:hidden').slice(0, 3).show();
+				if($('.review-more:hidden').length == 0) {
+					$('#reviewMore').css('display', 'none');
+				}
+			});
+		} else {
+			$('#reviewMore').css('display', 'none');
+		}
+	}
 
 </script>
 

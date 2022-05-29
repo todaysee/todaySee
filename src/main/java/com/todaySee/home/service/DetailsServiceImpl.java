@@ -1,10 +1,16 @@
 package com.todaySee.home.service;
 
 import com.todaySee.domain.*;
+import com.todaySee.home.converter.ReviewDtoConverter;
+import com.todaySee.home.dto.ReviewDto;
 import com.todaySee.home.persistence.ContentRepository;
+import com.todaySee.home.persistence.RatingRepository;
 import com.todaySee.home.persistence.ReviewRepository;
 import com.todaySee.home.persistence.UserRepository;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -25,6 +31,9 @@ public class DetailsServiceImpl implements DetailsService{
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private RatingRepository ratingRepo;
 
     /**
      * ID(PK)값에 따른 Content 상세정보
@@ -87,14 +96,17 @@ public class DetailsServiceImpl implements DetailsService{
     public List<HashMap<String, String>> getReviewList(Integer contentNumber) {
         List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴 시킬 형태, 변수 */
 
-        Content content = contentRepo.findById(contentNumber).get(); /* 컨텐츠 번호에 따른 컨텐츠 VO 내용 가져오기 */
-        List<Review> reviewList = content.getReviews(); /* content에 담긴 review 리스트 가져오기 */
+//        Content content = contentRepo.findById(contentNumber).get(); /* 컨텐츠 번호에 따른 컨텐츠 VO 내용 가져오기 */
+//        List<Review> reviewList = content.getReviews(); /* content에 담긴 review 리스트 가져오기 */
+
+        List<Review> reviewList = reviewRepo.findByContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 번호에 따른 리뷰 가져오기 */
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
-            UserVO user = userRepo.findByReviews(review); /* 해당 리뷰를 쓴 유저를 찾기 */
-            // 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태
-            map.put("userName", user.getUserNickname()); /* 유저 닉네임 저장 */
+//            UserVO user = userRepo.findByReviews(review); /* 해당 리뷰를 쓴 유저를 찾기 */
+//            // 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태
+            map.put("userName", review.getUser().getUserNickname()); /* 유저 닉네임 저장 */
+            map.put("reviewNumber", Integer.toString(review.getReviewNumber())); /* 리뷰 번호 저장 */
             map.put("reviewContent", review.getReviewContent()); /* 리뷰 내용 저장 */
             DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); /* 리뷰 작성 날짜를 String 형으로 저장하기 위해 Format 함수 가져오기 */
             map.put("reviewDate", df.format(review.getReviewDate())); /* 리뷰 작성 날짜 - String 형으로 변환 */
@@ -106,15 +118,6 @@ public class DetailsServiceImpl implements DetailsService{
         return returnList; /* 리스트 리턴 */
     }
 
-//    /**
-//     * 유저 번호에 따른 유저 정보 가져오기 (아래 insertReview() 함수 사용을 위함)
-//     * @param userNumber : 유저 번호
-//     * @return User : 받아온 유저 정보 리턴
-//     */
-//    public User getUserById(Integer userNumber) {
-//        return userRepo.findById(userNumber).get();
-//    }
-//
     /**
      * 인자로 받은 값과 함께 vo에 저장하여 DB에 INSERT
      * @param userNumber : 해당 리뷰를 쓴 유저 번호
@@ -124,32 +127,33 @@ public class DetailsServiceImpl implements DetailsService{
      */
     public void insertReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber) {
 
-        /**
-         *  Review가 User와 Content VO에 OneToMany로 되어있기 때문에
-         *  Review를 추가하면 User와 Content에도 추가해야 FK가 제대로 잡히게 됨
-         */
+        Date day = new Date();
         Review review = new Review(); /* 값을 저장할 Review 객체 */
         review.setReviewContent(reviewContent); /* 리뷰 내용 저장 */
         review.setReviewSpoiler(reviewSpoiler); /* 리뷰 스포일러 여부 저장 */
         review.setReviewLike(0); /* 리뷰 좋아요 수 0으로 저장 */
-        review.setReviewDate(new Date()); /* 날짜 시간 저장 */
+        review.setReviewDate(day); /* 날짜 시간 저장 */
+        review.setContent(contentRepo.findById(contentNumber).get()); /* 작성된 리뷰의 영상 */
+        review.setUser(userRepo.findById(userNumber).get()); /* 작성한 유저 */
         reviewRepo.save(review); /* Repository 로 DB에 저장 */
 
-        Review reviewSave = reviewRepo.findByReviewContent(reviewContent); /* 리뷰내용에 따른 Review 가져오기 */
+    }
 
-        Content content = contentRepo.findById(contentNumber).get(); /* 영상번호로 Content 가져오기 */
-        List<Review> reviewListContent = content.getReviews(); /* Content안의 Review List 가져오기 */
-        reviewListContent.add(reviewSave); /* 해당 영상의 Review List 안에 가져온 Review 넣기 */
-        content.setReviews(reviewListContent); /* Review를 넣은 List를 Content에 저장 */
-        contentRepo.save(content); /* Content에 저장 */
+    /**
+     * 리뷰 번호에 따른 리뷰 가져오기
+     * @param reviewNumber : 리뷰 번호
+     * @return JSONObject :
+     */
+    @Override
+    public JSONObject getReview(Integer reviewNumber) {
 
-        /* 위 Content와 같음 */
-        UserVO user = userRepo.findById(userNumber).get();
-        List<Review> reviewListUser = user.getReviews();
-        reviewListUser.add(reviewSave);
-        user.setReviews(reviewListUser);
-        userRepo.save(user);
+        Review review = reviewRepo.findById(reviewNumber).get();
 
+        JSONObject reviewObj = new JSONObject();
+        reviewObj.put("reviewNumber", Integer.toString(review.getReviewNumber()));
+        reviewObj.put("reviewContent", review.getReviewContent());
+
+        return reviewObj;
     }
 
 
