@@ -27,7 +27,7 @@
 		<a href="/homeResettingPwd">홈페이지-homeResettingPwd</a><br/>
 		
 		<hr/>
-		<a href="/myPage/profile/1">마이페이지-프로필</a><br/>
+		<a href="/myPage/profile">마이페이지-프로필</a><br/>
 		<a href="/myPage/like">마이페이지-like</a><br/>
 		<a href="/myPage/bookMark">마이페이지-bookMark</a><br/>
 		<a href="/myPage/bookMark/list">마이페이지-bookMark 상세보기</a><br/>

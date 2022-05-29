@@ -45,6 +45,7 @@
 
 		<!-- Start Content Page Box Area -->
 		<div class="content-page-box-area">
+			<%@ include file="../inculde/mypage/myPageTitleImg.jsp" %>
 			<div class="row">
 				<div class="col-lg-6 col-md-12 square">
 					<div class="news-feed-area">
