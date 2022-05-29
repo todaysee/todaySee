@@ -1,5 +1,7 @@
 package com.todaySee.home.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,5 +34,18 @@ public class HomeServiceImpl implements HomeService{
 	public Page<Content> getGenresContentList(Integer genreNumber, Pageable paging) {
 		return contentRepo.getGenresContentList(genreNumber, paging);
 	}
+
+
+	@Override
+	public Content RecommendedContent(Integer contentNumber) {
+		return contentRepo.RecommendedContent(contentNumber);
+	}
+
+
+	@Override
+	public List<Content> newContent() {
+		return contentRepo.newContent();
+	}
+	
 
 }

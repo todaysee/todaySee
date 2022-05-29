@@ -8,6 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -63,6 +64,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String homeIndex(Model m) {
+    	
+    	List<Content> newContent = new ArrayList<Content>();
+    	newContent.addAll(homeServiceImpl.newContent());
+    	
    	
 		// 소켓을 선언
         try (Socket client = new Socket()) {
@@ -105,20 +110,19 @@ public class HomeController {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(receiver, "UTF-8"));
                 
                 String message = "";	// 파이썬에서 보낸 정보를 담을 변수 선언
-                StringTokenizer st;		// 파이썬에서 보낸 정보를 쪼개기 위해 StringTokenizer 선언
                 
+                List<Content> RecommendedList = new ArrayList<Content>();
+                
+                // 영어, 숫자, 한글을 제외한 모든 문자열을 제거
+                String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
                 while((message = reader.readLine()) != null) {
-                	st = new StringTokenizer(message, "/");		
-                	System.out.println("메시지 확인(1)"+message);
+                	message =message.replaceAll(match, "");
+                	RecommendedList.add(homeServiceImpl.RecommendedContent(Integer.valueOf(message)));
                 	
-                	int count = 0;
-                	while(st.hasMoreTokens()) {
-                		System.out.println(count+"번째"+st.nextToken());
-                		count++;
-                	}
                 }
                 
-                m.addAttribute("test",message);
+                m.addAttribute("newContent",newContent);
+                m.addAttribute("RecommendedList",RecommendedList);
                
                 
             }
