@@ -100,7 +100,7 @@
 											</div>
 										</div>
 										<div class="join-groups-btn">
-											<button type="button" class="btn btn-primary">
+											<button type="button" class="btn btn-primary" onclick="location.href='/communityOttBoard/${ott.ottNumber}';">
 												${ott.ottName} 게시판
 											</button>
 										</div>
@@ -141,7 +141,7 @@
 											</div>
 										</div>
 										<div class="join-groups-btn">
-											<button type="button" class="btn btn-primary">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='/communityGenreBoard/${genre.genreNumber}';">
 													${genre.genreName} 게시판
 											</button>
 										</div>

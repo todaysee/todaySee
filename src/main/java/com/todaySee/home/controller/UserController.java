@@ -23,10 +23,10 @@ public class UserController {
 	 
 	 
 	 //인덱스페이지
-	 @GetMapping("/")
-	public String homeIndex() {
-		return "/home/homeIndex";
-	}
+//	 @GetMapping("/")
+//	public String homeIndex() {
+//		return "/home/homeIndex";
+//	}
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")
