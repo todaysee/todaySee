@@ -1,8 +1,5 @@
 package com.todaySee.home.persistence;
 
-
-
-
 import com.todaySee.domain.Review;
 
 import org.springframework.data.repository.CrudRepository;

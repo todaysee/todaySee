@@ -2,12 +2,10 @@ package com.todaySee.home.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -22,15 +20,6 @@ public class UserController {
 	 @Autowired
 		private UserService userService;
 	 
-	 @Autowired
-		private PasswordEncoder encoder;
-	 
-	 
-	 //인덱스페이지
-	 @GetMapping("/")
-	public String homeIndex() {
-		return "/home/homeIndex";
-	}
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")
@@ -39,12 +28,12 @@ public class UserController {
     }
 
     //회원가입 페이지
-    @GetMapping("/signup")
+    @GetMapping("/signUp")
     public String homeSignUp() {
     	return "/home/homeSignUp";
     }
     
-    @PostMapping("/signup")
+    @PostMapping("/signUp")
     public String signUp(UserVO user) {
     	userService.create(user);
         return "/home/homeSignUpComplete";

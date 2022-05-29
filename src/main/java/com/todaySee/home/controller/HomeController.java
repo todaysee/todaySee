@@ -20,7 +20,7 @@ import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
 
  
-//@Controller
+@Controller
 public class HomeController {
 
 	@Autowired
