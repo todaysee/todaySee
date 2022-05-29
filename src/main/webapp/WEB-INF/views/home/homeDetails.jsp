@@ -380,6 +380,14 @@
 			border-radius: 0;
 		}
 
+		/*============================================
+        리뷰 더보기  - 권소연 추가
+        ==============================================*/
+
+		.review-more {
+			display: none;
+		}
+
 	</style>
 	<!-- 추가 CSS -->
 
@@ -520,7 +528,7 @@
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																James Vanwin
+																유저닉네임구현예정
 															</h3>
 															<span>
 																<input id="input-9" name="input-9" required class="rating-loading">
@@ -552,7 +560,7 @@
 												</c:when>
 												<c:otherwise>
 													<c:forEach items="${reviewList}" var="review">
-														<div class="send-item">
+														<div class="send-item review-more">
 															<div class="padding-4 moreReview">
 																<div class="row">
 																	<div class="col-xl-1 col-lg-1 col-md-1">
@@ -1576,9 +1584,9 @@
 
 	// 스포일러보기
 	$('.showSpo').on('click', function(){
-		let reviewNumber = $('.spoReview').val();
+		let reviewNumber = $(this).parent().attr('id');
 		// alert(reviewNumber);
-		let btn = "#" + $(this).parent().attr('id');
+		let btn = "#" + reviewNumber;
 		// alert(btn);
 
 		$.ajax({
@@ -1606,42 +1614,21 @@
 
 
 	// 리뷰 더보기
-	$('#reviewMore').on('click', function(e){
-		e.preventDefault();
-		alert('ok');
-		$.ajax({
-			type : "GET",
-			url : "http://localhost:8080/details/reviewMore",
-			data: {
-				page: startPage,
-				size: 3
-			},
-			success: function(data){
-				alert('ok');
-				console.log(data);
-		// 		// $('.moreReview').empty();
-		// 		console.log(response);
-		// 		// $.each(response, (i, content) => {
-		// 		// 	let noteRow = '<div>' +
-		// 		// 			'<h1>' + content.content_number + '</h1>' +
-		// 		// 			'<h1>' + content.content_title + '</h1>' +
-		// 		// 			'<h1>' + '<a href =' + content.content_main_images_url + '>'  + '이미지링크' + '</a>'  +'</h1>' +
-		// 		// 			'</div>';
-		// 		// 	$('#noteTable tbody').append(noteRow);
-		// 		// });
-		//
-		// 		// if ($('ul.pagination li').length - 2 != response.totalPages){
-		// 		// 	// build pagination list at the first time loading
-		// 		// 	$('ul.pagination').empty();
-		// 		// 	buildPagination(response);
-		// 		// }
-			},
-			error : function(err) {
-				alert("ERROR");
-				console.log("ERROR: ", err);
-			}
-		});
-	});
+	reviewMore();
+	function reviewMore() {
+		$(".review-more").slice(0, 3).show();
+		if($('.review-more').length>3) {
+			$('#reviewMore').on('click', function(e){
+				e.preventDefault();
+				$('.review-more:hidden').slice(0, 3).show();
+				if($('.review-more:hidden').length == 0) {
+					$('#reviewMore').css('display', 'none');
+				}
+			});
+		} else {
+			$('#reviewMore').css('display', 'none');
+		}
+	}
 
 </script>
 
