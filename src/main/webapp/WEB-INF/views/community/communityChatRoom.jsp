@@ -87,7 +87,7 @@
 							<input type="text" id="userName" class="form-control" placeholder="닉네임을 입력하세요.">
 
 							<button type="button" onclick="chatName()" id="startBtn"
-								class="send-btn">등록</button>
+								class="send-btn">등 록</button>
 						</form>
 					</div>
 					<div class="chat-list-footer">
