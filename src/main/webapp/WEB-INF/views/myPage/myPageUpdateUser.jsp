@@ -73,7 +73,7 @@
                             <div class="mb-3">
                                 <form id="uploadFormProfile">
                                     <input class="user_number1" type="hidden" name="user_number"
-                                           value="${user.userNumber}"> <%--아이디--%>
+                                           value="${sessionScope.userNumber}"> <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileImages"> <%--타입--%>
                                     <label for="formFile" class="form-label">프로필 이미지 바꾸기</label>
                                     <input class="form-control" type="file" name="file" id="formFile"
@@ -91,7 +91,7 @@
                             <div class="mb-3">
                                 <form id="uploadFormTitleProfile">
                                     <input class="user_number2" type="hidden" name="user_number"
-                                           value="${user.userNumber}"> <%--아이디--%>
+                                           value="${sessionScope.userNumber}"> <%--아이디--%>
                                     <input type="hidden" name="images_type" value="profileTittleImages"> <%--타입--%>
                                     <label for="formFile2" class="form-label">배경 이미지 바꾸기</label>
                                     <input class="form-control" type="file" name="file" id="formFile2"
@@ -129,7 +129,7 @@
                                     <div class="form-group">
                                         <label class="text-center">변경할 닉네임 입력</label>
                                         <input id="userNinknameTextInput" type="text" class="form-control" name="userNickname">
-                                        <input type="hidden" name="userNumber" value="${user.userNumber}">
+                                        <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
                                     </div>
                                 </form>
                             </div>
@@ -303,7 +303,7 @@
                         수정함
                     </div>
                     <div class="modal-footer">
-                        <a href="/myPage/profile/${user.userNumber}">
+                        <a href="/myPage/profile">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                         </a>
                     </div>
@@ -439,7 +439,7 @@
             url: "http://localhost:8080/updateProfileImageAjax",
             type: 'POST',
             data: {
-                userNumber: userNumber
+                userNumber: ${sessionScope.userNumber}
             },
         });
     }
@@ -462,7 +462,7 @@
             url: "http://localhost:8080/updateProfileTitleImageAjax",
             type: 'POST',
             data: {
-                userNumber: userNumber
+                userNumber: ${sessionScope.userNumber}
             },
         });
     }
