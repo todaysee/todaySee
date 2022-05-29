@@ -34,7 +34,7 @@
 		<%@ include file="../inculde/community/navbar.jsp"%>
 		<!--========== Header Navbar ==============-->
 		<!--========== SideBar ==============-->
-		<%@ include file="../inculde/community/sideMenu.jsp"%>
+		<%@ include file="../inculde/mypage/sideMenu.jsp"%>
 		<!--========== SideBar ==============-->
 
 		<!--========== Body ==============-->
