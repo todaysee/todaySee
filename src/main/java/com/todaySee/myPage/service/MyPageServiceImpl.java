@@ -1,15 +1,26 @@
 package com.todaySee.myPage.service;
 
+import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.home.persistence.ReviewRepository;
+import com.todaySee.home.persistence.UserRepository;
 import com.todaySee.myPage.persistence.MyPageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
     MyPageRepository myPageRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    ReviewRepository repository;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -22,6 +33,11 @@ public class MyPageServiceImpl implements MyPageService{
         UserVO user = myPageRepository.findById(userNumber).get();
         user.setUserNickname(userNickname);
         return myPageRepository.save(user);
+    }
+
+    @Override
+    public List<Review> getReviewList(Integer userNumber) {
+        return repository.findByUser(userRepository.findById(userNumber).get());
     }
 
 }

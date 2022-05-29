@@ -375,14 +375,14 @@
 							</div>
 						</div>
 						<!-- 즐겨찾기 item -->
+
 					</div>
 					<!-- 즐겨찾기 item -->
 
 					<div class="load-more-posts-btn">
 						<a href="#"><i class="flaticon-loading" id="load">더 보기</i></a>
-					</div>
-					<div class="text-center" id="end">마지막 즐겨찾기입니다.</div>
-				</div>
+						<div id="end">마지막 북마크입니다.</div>
+
 
 
 			</div>
@@ -415,18 +415,23 @@
 		let value = $(this).val().toLowerCase();
 		if(value === ''){ // 검색칸이 비었을때 창을 다시 세팅함
 			$('.book_mark_body').css('display','none');
+
 			$('.book_mark_body').slice(0, 8).show();
+
 			$("#load").show();
 		}else {
 			$(".book_mark_body").filter(function () {
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 				$("#load").css('display','none');
+
 				$("#end").css('display','none');
+
 			});
 		}
 	});
 	plusReview();
 	function plusReview(){
+
 		$(".book_mark_body").slice(0, 8).show(); // select the first ten
 		if ($(".book_mark_body").length>8) {
 			$("#load").click(function (e) { // click event for load more
@@ -440,6 +445,7 @@
 		} else {
 			$("#load").css('display', 'none');
 		}
+
 	}
 </script>
 </body>
