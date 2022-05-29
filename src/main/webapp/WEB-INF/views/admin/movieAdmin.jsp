@@ -18,7 +18,12 @@
           transition: transform 0.3s ease-out;
 }
 
-
+  textarea {
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+  }
 
 
 </style>
@@ -127,90 +132,117 @@
                   </div>
                   <div class="modal-body">
                     <div class="container-fluid">
-                  <form>
+                  <form id="movieAdd" action="/movieAdd" method="post" >
                    
                     <div class="form-group row">
-                      <div class="container col-md-12">
+                    
+                    
+                      <div class="container col-md-6">
                         <label for="colFormLabelSm" class="form-label" >제목</label>
-                        <input type="text" class="form-control form-control-sm " id="colFormLabelSm1" placeholder="제목">
+                        <input type="text" class="form-control " id="colFormLabelSm1" name="contentTitle" placeholder="제목">
                       </div>
-                    </div>
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
-                        <label for="colFormLabelSm" >연령 등급</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm2" placeholder="연령대">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
+                      
+                       <div class="container col-md-6">
                         <label for="colFormLabelSm" >재생시간</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm3" placeholder="시간 분">
+                        <input type="text" class="form-control " id="colFormLabelSm3" name="contentRunningTime" placeholder="시간 분">
                       </div>
                     </div>
+                    
+                    
                     <div class="form-group row">
-                     
-                      <div class="container col-md-12">
+                      <div class="container col-md-6">
+                        <label for="colFormLabelSm" >연령 등급</label>
+                        <input type="text" class="form-control " id="colFormLabelSm2" name="contentAge" placeholder="연령대">
+                      </div>
+                       <div class="container col-md-6">
                         <label for="colFormLabelSm" >등록년도</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm4" placeholder="년도 ex => 2022">
+                        <input type="text" class="form-control " id="colFormLabelSm4" name="contentReleaseDate" placeholder="년도 ex => 2022">
                       </div>
                     </div>
+               
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
                         <label for="colFormLabelSm">내용</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm5" placeholder="줄거리">
+                        <input type="text" class="form-control " id="colFormLabelSm5" name="contentInfo" placeholder="줄거리">
                       </div>
                     </div>
-                    <!-- <div class="form-group row">
-                      <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">&nbsp;&nbsp;등록날짜인데 hidden처리</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control form-control-sm" id="colFormLabelSm6" placeholder="col-form-label-sm">
-                      </div>
-                    </div> -->
-                    <input type="hidden" name="등록날짜 now처리하기">
-                    <div class="form-group row">
-                     
-                      <div class="container col-md-12">
-                        <label for="colFormLabelSm" >감독</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm7" placeholder="감독명">
-                      </div>
-                    </div>
+               
+                    <input type="hidden" name="contentImportDate">
+                   
                     <div class="form-group row">
                     
                       <div class="container col-md-12">
                         <label for="colFormLabelSm">유뷰트 영상링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm8" placeholder="">
+                        <input type="text" class="form-control " id="colFormLabelSm8" name="contentYoutubeUrl" placeholder="">
                       </div>
                     </div>
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
                         <label for="colFormLabelSm" >포스터 링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm9" placeholder="">
+                        <input type="text" class="form-control " id="colFormLabelSm9" name="contentPosterImagesUrl" placeholder="">
                       </div>
                     </div>
                     <div class="form-group row">
                      
                       <div class="container col-md-12">
-                        <label for="colFormLabelSm" >메인 링크</label>
-                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm10" placeholder="">
+                        <label for="colFormLabelSm" >메인 사진 링크</label>
+                        <input type="text" class="form-control " id="colFormLabelSm10" name="contentMainImagesUrl"  placeholder="">
                       </div>
                     </div>
-                  </form>
-                </div>
-              </div>
-                  <div class="modal-footer">
+                     <div class="form-group row">
+                      <div class="container col-md-12">
+                        <label for="colFormLabelSm" >플랫폼 링크</label>
+                        <input type="text" class="form-control " id="colFormLabelSm11" name="contentottLink"  placeholder="">
+                      </div>
+                    </div>
+                    
+                  		
+					  	<legend>장르</legend>
+					    <label><input type="checkbox" name="genre1" value="1">드라마</label>
+						<label><input type="checkbox" name="genre1" value="2">로맨스</label>
+						<label><input type="checkbox" name="genre1" value="3">스릴러</label>
+						<label><input type="checkbox" name="genre1" value="4">SF</label>
+						<label><input type="checkbox" name="genre1" value="5">가족</label>
+						<label><input type="checkbox" name="genre1" value="6">공포</label>
+						<label><input type="checkbox" name="genre1" value="7">다큐</label>
+						<label><input type="checkbox" name="genre1" value="8">범죄</label>
+						<label><input type="checkbox" name="genre1" value="9">스포츠</label>
+						<label><input type="checkbox" name="genre1" value="10">애니</label>
+						<label><input type="checkbox" name="genre1" value="11">예능</label>
+						<label><input type="checkbox" name="genre1" value="12">액션</label>
+						<label><input type="checkbox" name="genre1" value="13">역사</label>
+						<label><input type="checkbox" name="genre1" value="14">음악</label>
+						<label><input type="checkbox" name="genre1" value="15">전쟁</label>
+						<label><input type="checkbox" name="genre1" value="16">코미디</label>
+						<label><input type="checkbox" name="genre1" value="17">판타지</label>
+						
+						<legend>플랫폼</legend>
+               			<label><input type="checkbox" name="ott1" value="1"> Netfilx</label>
+               			<label><input type="checkbox" name="ott1" value="2"> Disney Plus</label>
+                    	<label><input type="checkbox" name="ott1" value="3"> Apple TV Plus</label>
+                    	<label><input type="checkbox" name="ott1" value="4"> wavve</label>
+                    	<label><input type="checkbox" name="ott1" value="5"> Watcha</label>
+                    
+                    
+                    <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary">저장</button>
-                  </div>
+                    <button type="submit"  class="btn btn-primary">저장</button>
+             		     </div>
+             	     </form>
+             	     	
+             	     
+             	     
+             	   </div>
+             	 </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- modal -->
+          
 
          <!--  <div id="link">My video</div> -->
           <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -254,59 +286,45 @@
                           <div class="col-md-6">
                             <ul class="nav nav-pills flex-column">
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호
-                                  <span class="badge float-right userNumber"><h5></h5></span>
-                                </a>
+                                   <h5>
+                                 <i class="fa fa-address-card" aria-hidden="true"></i> 영상번호 : 
+                                  <span id="idCard" class="badge float-right contentNumber"></span></h5>
+                                  
+                              </li>
+                               
+      <!--   <span id="idCard2" class="badge float-right userName contentInfo"></span> -->
+                              <li class="nav-item active">
+                                   <h5><i class="fa fa-address-book" aria-hidden="true"></i> 줄거리 
+                                 <textarea id="idCard2"  class="badge float-right contentInfo"></textarea></h5>
+								
                               </li>
               
               
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-address-book" aria-hidden="true"></i> 줄거리
-                                  <span class="badge float-right userName"><h5></h5></span>
-                                </a>
-                              </li>
-              
-              
-                              <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급
-                                  <span class="badge float-right userEmail"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급 : 
+                                  <span id="idCard3" class="badge float-right contentAge"></span></h5>
                               </li>
               
                               <li class="nav-item active">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-phone" aria-hidden="true"></i> 재생시간
-                                 
-                                  <span class="badge float-right userTel"><h5></h5></span>
-                                </a>
+                                  <h5><i class="fa fa-phone" aria-hidden="true"></i> 재생시간 : 
+                                  <span id="idCard4" class="badge float-right contentRunningTime"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-user" aria-hidden="true"></i> 개봉일
-                                  <span class="badge float-right userNickname"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-user" aria-hidden="true"></i> 개봉일 : 
+                                  <span id="idCard5" class="badge float-right contentReleaseDate"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-venus-mars" aria-hidden="true"></i> 장르
-                                  <span class="badge float-right userGender"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-venus-mars" aria-hidden="true"></i> 장르 : 
+                                  <span id="idCard6" class="badge float-right contentGenre"></span></h5>
                               </li>
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                  <i class="fa fa-list-alt" aria-hidden="true"></i> 플렛폼
-                                  <span class="badge float-right userloginDate"><h5></h5></span>
-                                </a>
+                                   <h5><i class="fa fa-list-alt" aria-hidden="true"></i> 플렛폼 : 
+                                  <span id="idCard7" class="badge float-right contentOtt"></span></h5>
                               </li>
               
                               <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                 <i class="fa fa-list-alt" aria-hidden="true"></i> 회원가입 날짜
-                                  <span class="badge float-right userSignupDate"><h5></h5></span>
-                                </a>
+                                  <h5><i class="fa fa-list-alt" aria-hidden="true"></i> 삭제유무 : 
+                                  <span id="idCard8" class="badge float-right contentState"></span></h5>
                               </li>
                             </ul>
                           </div>
@@ -422,7 +440,7 @@
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      "ordering": false,
       "info": true,
       "autoWidth": false,
       "responsive": true,
@@ -452,6 +470,12 @@
           let youtubeUrlsrc = data.contentYoutubeUrl /*  링크가 없으면 */
           let mainImagesUrl = data.contentMainImagesUrl
           
+        var arrValues = new Array();
+        var arrValues2 = new Array();
+          
+          
+          
+          
           $("#contentImages>.img22").remove();
         $('#myModal').modal('show');
         //$('#myModal iframe').attr('src', youtubeUrlsrc);
@@ -465,13 +489,40 @@
          		$('#contentImages').append("<img class='img22' alt='' src="+ mainImagesUrl +" width='350' height='300' >")
         }
         
-       /*  $('#myModal img').attr('src', src); */
+          
+          $('.contentNumber').text(data.contentNumber);
+          $('.contentInfo').text(data.contentInfo);
+          $('.contentAge').text(data.contentAge);
+          $('.contentRunningTime').text(data.contentRunningTime);
+          $('.contentReleaseDate').text(data.contentReleaseDate);
+          
+          // console.log(JSON.stringify(data.contentGenre[0].genre.genreName))
+            for (let i = 0; i < data.contentGenre.length; i++) {
+            arrValues.push(data.contentGenre[i].genre.genreName);
+        	  $('.contentGenre').text(arrValues) 
+            }
+             console.log(JSON.stringify(data.contentOtt))
+            for (let i = 0; i < data.contentOtt.length ; i++) {
+             arrValues2.push(data.contentOtt[i].ott.ottName);
+             $('.contentOtt').text(arrValues2);
+              
+            }
+            if(data.contentState =="" && data.contentState == 0){
+              $('.contentState').text("삭제완료");
+            } else{
+              $('.contentState').text("삭제처리안됨");
+            }
+            
+            
+           
 
 
-        },
-        error: function(e){
-          alert('에러발생')
-          console.log(e)
+
+
+        }, 
+        error : function(e){
+            alert('에러발생')
+            console.log(e)
         }
 
       })
@@ -480,7 +531,8 @@
     	
     })
 	
-    
+ 
+
     
     
  
