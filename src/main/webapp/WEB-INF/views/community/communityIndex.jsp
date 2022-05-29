@@ -81,611 +81,74 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="ott" role="tabpanel">
                     <div class="row">
-                        <!-- 게시판 이동 시작 -->
-                        <div class="col-lg-3 col-md-6 review_mark_body">
-                            <div class="single-groups-card">
-                                <div class="groups-image">
-                                    <a href="#">
-                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-                                    </a>
-                                </div>
-                                <div class="groups-content">
-                                    <div class="groups-info d-flex justify-content-between align-items-center">
-                                        <a href="#">
-                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-                                        </a>
-                                        <div class="text ms-3">
-                                            <h3><a data-bs-toggle="modal" data-bs-target="#staticBackdrop">장르</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="join-groups-btn">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop">
-                                            리뷰 상세보기
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-md-6 review_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+						<c:forEach items="${ottList}" var="ott">
+							<!-- 게시판 이동 시작 -->
+							<div class="col-lg-3 col-md-6 review_mark_body">
+								<div class="single-groups-card">
+									<div class="groups-image">
+										<a href="/communityOttBoard/${ott.ottNumber}">
+											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
 										</a>
-										<div class="text ms-3">
-											<h3><a data-bs-toggle="modal" data-bs-target="#staticBackdrop">장르 </a></h3>
-										</div>
 									</div>
-									<div class="join-groups-btn">
-										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-												data-bs-target="#staticBackdrop">
-											리뷰 상세보기
-										</button>
+									<div class="groups-content">
+										<div class="groups-info d-flex justify-content-between align-items-center">
+											<a href="/communityOttBoard/${ott.ottNumber}">
+												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+											</a>
+											<div class="text ms-3">
+												<h3><a href="/communityOttBoard/${ott.ottNumber}">${ott.ottName}</a></h3>
+											</div>
+										</div>
+										<div class="join-groups-btn">
+											<button type="button" class="btn btn-primary">
+												${ott.ottName} 게시판
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-md-6 review_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a data-bs-toggle="modal" data-bs-target="#staticBackdrop">장르 </a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-												data-bs-target="#staticBackdrop">
-											리뷰 상세보기
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-md-6 review_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a data-bs-toggle="modal" data-bs-target="#staticBackdrop">장르 </a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-												data-bs-target="#staticBackdrop">
-											리뷰 상세보기
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-md-6 review_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a data-bs-toggle="modal" data-bs-target="#staticBackdrop">장르 </a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-												data-bs-target="#staticBackdrop">
-											리뷰 상세보기
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
+						</c:forEach>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="genre" role="tabpanel">
                     <div class="events-inner-box-style d-flex justify-content-between align-items-center">
                         <div class="title">
-                            <h3>장르 카테고리 이동</h3>
+                            <h3>장르 검색하기</h3>
                         </div>
 
                         <div class="events-search-box">
-                            <input type="text" class="input-search" id="searchGenre" placeholder="리뷰 검색하기">
+                            <input type="text" class="input-search" id="searchGenre" placeholder="장르 검색하기">
                         </div>
                     </div>
                     <div class="row">
-                        <!-- 게시판 이동 시작 -->
-                        <div class="col-lg-3 col-sm-6 genre_mark_body">
-                            <div class="single-groups-card">
-                                <div class="groups-image">
-                                    <a href="#">
-                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-                                    </a>
-                                </div>
-                                <div class="groups-content">
-                                    <div class="groups-info d-flex justify-content-between align-items-center">
-                                        <a href="#">
-                                            <img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-                                        </a>
-                                        <div class="text ms-3">
-                                            <h3><a>장르</a></h3>
-                                        </div>
-                                    </div>
-                                    <div class="join-groups-btn">
-                                        <a>
-                                            <button type="button" class="btn btn-primary">
-                                                장르 이동
-                                            </button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+						<c:forEach items="${genreList}" var="genre">
+							<!-- 게시판 이동 시작 -->
+							<div class="col-lg-3 col-md-6 genre_mark_body">
+								<div class="single-groups-card">
+									<div class="groups-image">
+										<a href="/communityGenreBoard/${genre.genreNumber}">
+											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
 										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
 									</div>
-									<div class="join-groups-btn">
-										<a>
+									<div class="groups-content">
+										<div class="groups-info d-flex justify-content-between align-items-center">
+											<a href="/communityGenreBoard/${genre.genreNumber}">
+												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+											</a>
+											<div class="text ms-3">
+												<h3><a href="/communityGenreBoard/${genre.genreNumber}">${genre.genreName}</a></h3>
+											</div>
+										</div>
+										<div class="join-groups-btn">
 											<button type="button" class="btn btn-primary">
-												장르 이동
+													${genre.genreName} 게시판
 											</button>
-										</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 게시판 이동 시작 -->
-						<div class="col-lg-3 col-sm-6 genre_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a>장르</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<a>
-											<button type="button" class="btn btn-primary">
-												장르 이동
-											</button>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
+						</c:forEach>
                     </div>
 
 
@@ -724,38 +187,40 @@
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
 <script>
-    $("#searchGenre").on("keyup", function () {
-        let value = $(this).val().toLowerCase();
-        if (value === '') { // 검색칸이 비었을때 창을 다시 세팅함
-            $('.genre_mark_body').css('display', 'none');
-            $('.genre_mark_body').slice(0, 8).show();
-            $("#load").show();
-        } else {
-            $(".genre_mark_body").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                $("#load").css('display', 'none');
-                $("#end").css('display', 'none');
-            });
-        }
-    });
-    plusReview();
+	window.onload = function(){
+		$("#searchGenre").on("keyup", function () {
+			let value = $(this).val().toLowerCase();
+			if (value === '') { // 검색칸이 비었을때 창을 다시 세팅함
+				$('.genre_mark_body').css('display', 'none');
+				$('.genre_mark_body').slice(0, 8).show();
+				$("#load").show();
+			} else {
+				$(".genre_mark_body").filter(function () {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					$("#load").css('display', 'none');
+					$("#end").css('display', 'none');
+				});
+			}
+		});
+		plusReview();
 
-    function plusReview() {
-        $(".genre_mark_body").slice(0, 8).show(); // select the first ten
-        if ($(".genre_mark_body").length > 8) {
-            $("#load").click(function (e) { // click event for load more
-                e.preventDefault();
-                $(".genre_mark_body:hidden").slice(0, 4).show(); // select next 10 hidden divs and show them
-                if ($(".genre_mark_body:hidden").length == 0) { // check if any hidden divs still exist
-                    $("#load").css('display', 'none');
-                    $("#end").show();
-                }
-            });
-        } else {
-            $("#load").css('display', 'none');
-        }
+		function plusReview() {
+			$(".genre_mark_body").slice(0, 8).show(); // select the first ten
+			if ($(".genre_mark_body").length > 8) {
+				$("#load").click(function (e) { // click event for load more
+					e.preventDefault();
+					$(".genre_mark_body:hidden").slice(0, 4).show(); // select next 10 hidden divs and show them
+					if ($(".genre_mark_body:hidden").length == 0) { // check if any hidden divs still exist
+						$("#load").css('display', 'none');
+						$("#end").show();
+					}
+				});
+			} else {
+				$("#load").css('display', 'none');
+			}
 
-    }
+		}
+	}
 </script>
 
 </body>
