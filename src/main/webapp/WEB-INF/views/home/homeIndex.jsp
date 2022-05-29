@@ -154,13 +154,14 @@
 						 data-loop="true" data-margin="0">
 						 
 						 <!-- start for -->
-						<div class="item" style="background: url('/images/home/background/asset-1.jpeg')">
+					 <c:forEach items="${newContent }" var="content">
+						<div class="item" style="background: url('${content.contentMainImagesUrl}')">
 							<div class="gen-movie-contain-style-2 h-100">
 								<div class="container h-100">
 									<div class="row flex-row-reverse align-items-center h-100">
 										<div class="col-xl-6">
 											<div class="gen-front-image">
-												<img src="/images/home/background/asset-1.jpeg" alt="owl-carousel-banner-image">
+												<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-banner-image">
 												<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="playBut popup-youtube popup-vimeo popup-gmaps">
 													<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
 													<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="213.7px"
@@ -254,6 +255,7 @@
 								</div>
 							</div>
 						</div>
+					</c:forEach>
 						<!-- end of for -->
 
 					</div>
@@ -289,12 +291,14 @@
 						 data-loop="false" data-margin="30">
 					
 				<!-- 인기 영화 for문 시작-->
+				<c:forEach items="${RecommendedList}" var="content">
+				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-5.jpeg" alt="owl-carousel-video-image">
+											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
 													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -331,14 +335,18 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">영화 제목</a>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>영화시간</li>
+													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="/action.html"><span>장르</span></a>
+														<a href="http://localhost:8080/search/genres"><span>
+		                                                    <c:forEach items="${content.contentGenre}" var="genres">
+				                                                    ${genres.genre.genreName}   
+		                                                    </c:forEach>
+                                                    </span></a>
 													</li>
 												</ul>
 											</div>
@@ -348,6 +356,8 @@
 							</div>
 							<!-- #post-## -->
 						</div>
+						</c:if>
+						</c:forEach>
 					<!-- for문 끝-->
 
 					</div>

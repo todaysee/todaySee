@@ -1,5 +1,7 @@
 package com.todaySee.home.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,5 +15,9 @@ public interface HomeService {
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
 	 */
 	Page<Content> getGenresContentList(Integer genreNumber, Pageable paging);
+	
+	Content RecommendedContent(Integer contentNumber);
+	
+	List<Content> newContent();
 	
 }
