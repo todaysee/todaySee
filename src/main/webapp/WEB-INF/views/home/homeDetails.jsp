@@ -528,7 +528,7 @@
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																James Vanwin
+																유저닉네임구현예정
 															</h3>
 															<span>
 																<input id="input-9" name="input-9" required class="rating-loading">
