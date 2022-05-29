@@ -1,22 +1,16 @@
-
-
-
-
-
-	
-
-
 var ws;
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
 		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		
 		wsEvt();
 	}
 		
 	function wsEvt() {
 		ws.onopen = function(data){
 			//소켓이 열리면 동작
+		
 		}
 		
 		ws.onmessage = function(data) {
@@ -32,9 +26,29 @@ var ws;
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
-						$("#chating").append("<p class='me'>나 :" + d.msg + "</p>");	
+						$("#chating").append('<div class="chat chat-left">'+
+							'<div class="chat-avatar">'+
+								'<a routerLink="/profile" class="d-inline-block">'+
+								'</a>'+
+							'</div>'+
+							'<div class="chat-body">'+
+								'<div class="chat-message">'+
+									''+'<span class="me">나 :' + d.msg + '</span>'+
+								'</div>'+
+							'</div>'+
+						'</div>')	
 					}else{
-						$("#chating").append("<p class='others'>" + d.userName + " :" + d.msg + "</p>");
+						$("#chating").append('<div class="chat">'+
+							'<div class="chat-avatar">'+
+								'<a routerLink="/profile" class="d-inline-block">'+
+								'</a>'+
+							'</div>'+
+							'<div class="chat-body">'+
+								'<div class="chat-message">'+
+									''+'<span class="others">' + d.userName + ":"+ d.msg + '</span>'+
+								'</div>'+
+							'</div>'+
+						'</div>')	
 					}
 						
 				}else{
@@ -67,7 +81,6 @@ var ws;
 	}
 
 	function send() {
-		//alert('확인')
 		var option ={
 			type: "message",
 			roomNumber: $("#roomNumber").val(),
@@ -75,9 +88,11 @@ var ws;
 			userName : $("#userName").val(),
 			msg : $("#chatting").val()
 		}
+		/*alert(JSON.stringify(option))*/
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
 	}
+	
 
 	function fileSend(){
 		var file = document.querySelector("#fileUpload").files[0];

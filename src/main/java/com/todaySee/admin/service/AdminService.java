@@ -1,7 +1,11 @@
 package com.todaySee.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.EntityManagerFactory;
+
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.todaySee.domain.Content;
@@ -16,11 +20,17 @@ public interface AdminService {
 	public UserVO getUser(@PathVariable Integer userNumber);
 	
 	
-	public List<Content> getAllContent();
+	public  List<Content> getAllContent();
 	
 	public Content getContentDetails(@PathVariable Integer contentNumber);
 	
 	
 	public List<Report> getReportList();
+	
+	public Content movieSave(Content co);
+	
+	
+	public void insertContent(Content co, Integer [] genre1, Integer [] ott1,String contentottLink);
+	
 	
 }
