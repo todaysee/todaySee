@@ -1,6 +1,9 @@
 package com.todaySee.community.controller;
 
 
+import com.todaySee.community.service.CommunityService;
+import com.todaySee.domain.Genre;
+import com.todaySee.domain.Ott;
 import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.myPage.persistence.MyPageImgRepository;
@@ -27,9 +30,21 @@ public class CommunityController {
     @Autowired
     MyPageImgRepository myPageImgRepository;
 
+    @Autowired
+    CommunityService communityService;
+
     //커뮤니티 메인 페이지
     @GetMapping("/community/{userNumber}")
     public String community(@PathVariable Integer userNumber, UserVO user, Model model){
+
+        //ott 게시판 리스트
+        Ott ott = new Ott();
+        List<Ott> ottList = communityService.getOttList(ott);
+        model.addAttribute("ottList", ottList);
+        //genre 게시판 리스트
+        Genre genre = new Genre();
+        List<Genre> genreList = communityService.getGenreList(genre);
+        model.addAttribute("genreList", genreList);
 
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
@@ -41,12 +56,17 @@ public class CommunityController {
 
         return "/community/communityIndex";
     }
-    //커뮤니티 글쓰기 페이지
-    @GetMapping("/communityWrite")
-    public String communityWrite(){
+    //ott 카테고리 게시판 페이지
+    @GetMapping("/communityOttBoard/{ottNumber}")
+    public String communityOttBoardPage(){
         return "/community/communityWrite";
     }
 
-   
+    //genre 카테고리 게시판 페이지
+    @GetMapping("/communityGenreBoard/{genreNumber}")
+    public String communityGenreBoardPage(){
+        return "/community/communityWrite";
+    }
+
 
 }
