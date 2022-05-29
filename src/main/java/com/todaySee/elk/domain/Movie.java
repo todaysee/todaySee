@@ -11,22 +11,30 @@ public class Movie {
 	
 	private String id;
 	
-	private String title;
+	private String content_title;
 	
- 	private String content;
+ 	private String content_info;
  	
-	private String link;
+	private String contentott_link;
 	
-	private int open;
+	private int content_release_date;
 	
 	
-	private String ageRange;
+	private String content_age;
 	
-	private String runningTime;
+	private String content_running_time;
 	
-	private Object[] gerne;
+	private Object[] genre_name;
 	
-	private Object[] platform;
+	private Object[] ott_name;
+	
+	private String content_poster_images_url;
+	
+	private String content_main_images_url;
+	
+	private String content_youtube_url;
+	
+	
 
 	
 
