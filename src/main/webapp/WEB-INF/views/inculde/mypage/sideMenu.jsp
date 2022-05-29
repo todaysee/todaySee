@@ -48,6 +48,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/admin" class="nav-link">
+                    <span class="icon"><i class="flaticon-information"></i></span>
+                    <span class="menu-title">관리자 페이지</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="register.html" class="nav-link">
                     <span class="icon"><i class="flaticon-information"></i></span>
                     <span class="menu-title">로그 아웃</span>

@@ -170,11 +170,11 @@
                                                 <li>${content.contentRunningTime}</li>
                                                 <li>
                                                 <!-- /search/genres?contentgenre_number=${ content.contentGenre} -->
-                                                    <a href="#"><span>
+                                                    <span>
 	                                                    <c:forEach items="${content.contentGenre}" var="genres">
-			                                                    ${genres.genre.genreName}   
+			                                                    <a href="http://localhost:8080/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 	                                                    </c:forEach>
-                                                    </span></a>
+                                                    </span>
 
                                                 </li>
                                             </ul>
