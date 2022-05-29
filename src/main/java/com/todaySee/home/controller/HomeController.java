@@ -12,13 +12,15 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -132,6 +134,7 @@ public class HomeController {
      */
     @GetMapping("/search/content")
     public String homeList_content() {
+    	System.out.println("content");
         return "/home/homeList_content";
     }
     
@@ -141,16 +144,24 @@ public class HomeController {
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
 	 */
     @GetMapping("/search/genres")
-    public String homeList_person(Integer genreNumber, Model model) {
+    public String homeList_person(Integer genreNumber, Model model, Integer page) {
+    	
+    	
+    	if(page == null) page = 1;
     	
     	// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함
     	if(genreNumber == null) genreNumber = 1;	
     	
+    	PageRequest pageRequest = PageRequest.of(page, 32, Sort.by(Sort.Direction.ASC, "c.content_title"));
+    	
     	// 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다
-    	List<Content> genresContentList =  homeServiceImpl.getGenresContentList(genreNumber);
-
+    	Page<Content> genresContent =  homeServiceImpl.getGenresContentList(genreNumber, pageRequest);
+    	
+    	List<Content> genresContentList = genresContent.getContent();
+    	
     	model.addAttribute("genresContentList", genresContentList);  // 리스트에 담긴 컨텐츠를 화면에 출력한다
-  
+    	model.addAttribute("totalPage",genresContent.getTotalPages()); // 전체 페이지 번호	
+    	
     	return "/home/homeList_genres";
     }
 

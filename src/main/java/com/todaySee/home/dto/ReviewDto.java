@@ -1,5 +1,8 @@
-package com.todaySee.domain;
+package com.todaySee.home.dto;
 
+import com.todaySee.domain.Content;
+import com.todaySee.domain.Report;
+import com.todaySee.domain.UserVO;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "review")
-public class Review {
+public class ReviewDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
