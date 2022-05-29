@@ -27,12 +27,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	//로그인 
-	
+
 	@Override
 	public UserVO login(String userEmail, String userPassword){
-		UserVO findUser = userRepository.findByUserEmailAndUserPassword(userEmail, userPassword);
-		if(findUser != null) return findUser;
-			else return null;
+		UserVO findUser = userRepository.findByUserEmail(userEmail);
+		System.out.println(userPassword);
+		System.out.println(findUser.getUserPassword());
+		if(encoder.matches(userPassword, findUser.getUserPassword())) {
+			return findUser;
+	}
+		return null;
 	}
 	
 }
