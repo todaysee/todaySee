@@ -2,6 +2,7 @@ package com.todaySee.home.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class UserController {
 	
 	 @Autowired
 		private UserService userService;
+	 
+	 @Autowired
+		private PasswordEncoder encoder;
 	 
 	 
 	 //인덱스페이지
@@ -65,9 +69,10 @@ public class UserController {
     	System.out.println("PostMapping");
         UserVO findUser = userService.login(userEmail, userPassword);
     	if (findUser != null
-    			&& findUser.getUserPassword().equals(userPassword)) {
+    		) {
     		model.addAttribute("user", findUser);
     		return "/home/homeIndex";
+    	
     	} else {
     		return "/home/homeLogin";
     	}
