@@ -58,10 +58,6 @@ public class UserVO {
 
     @OneToMany // 1:다
     @JoinColumn(name="user_number")
-    private List<Review> reviews;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
     private List<ChatRoom> chatRooms;
 
     @OneToMany // 1:다

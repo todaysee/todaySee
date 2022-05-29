@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +22,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.todaySee.domain.Content;
 import com.todaySee.home.service.HomeServiceImpl;
 
- 
-//@Controller
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+@Controller
 public class HomeController {
 
 	@Autowired
@@ -32,13 +38,29 @@ public class HomeController {
         return "/index2";
     }
 
+    //테스트 로그인 세션
+    @GetMapping("/testSessionLogin")
+    public String Login(HttpSession session){
+        session.setAttribute("userNumber", 1);
+        return "redirect:/2";
+    }
+    //테스트 로그아웃 세션
+    @GetMapping("/testSessionLogout")
+    public String Logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/2";
+    }
+
+
+
+
     /** 홈 페이지
      * 	- 로그인 후 회원의 정보를 토대로 추천 알고리즘을 돌리고 예상 평점이 높은 영화를 추려서 홈 페이지에 출력
      * @param	로그인 세션
      * @return	추천 알고리즘을 통한 추천 영화 출력
      */
- 
-    
+
     @GetMapping("/")
     public String homeIndex(Model m) {
    	
@@ -114,6 +136,7 @@ public class HomeController {
      */
     @GetMapping("/search/content")
     public String homeList_content() {
+    	System.out.println("content");
         return "/home/homeList_content";
     }
     
@@ -123,16 +146,24 @@ public class HomeController {
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
 	 */
     @GetMapping("/search/genres")
-    public String homeList_person(Integer genreNumber, Model model) {
+    public String homeList_person(Integer genreNumber, Model model, Integer page) {
+    	
+    	
+    	if(page == null) page = 1;
     	
     	// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함
     	if(genreNumber == null) genreNumber = 1;	
     	
+    	PageRequest pageRequest = PageRequest.of(page, 32, Sort.by(Sort.Direction.ASC, "c.content_title"));
+    	
     	// 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다
-    	List<Content> genresContentList =  homeServiceImpl.getGenresContentList(genreNumber);
-
+    	Page<Content> genresContent =  homeServiceImpl.getGenresContentList(genreNumber, pageRequest);
+    	
+    	List<Content> genresContentList = genresContent.getContent();
+    	
     	model.addAttribute("genresContentList", genresContentList);  // 리스트에 담긴 컨텐츠를 화면에 출력한다
-  
+    	model.addAttribute("totalPage",genresContent.getTotalPages()); // 전체 페이지 번호	
+    	
     	return "/home/homeList_genres";
     }
 
