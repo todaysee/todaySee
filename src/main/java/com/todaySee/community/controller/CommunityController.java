@@ -59,6 +59,7 @@ public class CommunityController {
     //ott 카테고리 게시판 페이지
     @GetMapping("/communityOttBoard/{ottNumber}")
     public String communityOttBoardPage(){
+
         return "/community/communityWrite";
     }
 
