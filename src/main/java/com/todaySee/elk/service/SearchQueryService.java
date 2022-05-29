@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.todaySee.domain.Content;
 import com.todaySee.elk.domain.Movie;
 import com.todaySee.elk.helper.Indices;
 
@@ -34,9 +35,9 @@ public class SearchQueryService {
 	
 	public ArrayList<Movie> getByQuery( String query) {
 		try {
-			SearchRequest request = new SearchRequest(Indices.MOVIE_INDEX);
+			SearchRequest request = new SearchRequest(Indices.PROJECT_MOVIE);
 			SearchSourceBuilder ssb = new SearchSourceBuilder();
-			ssb.query(QueryBuilders.multiMatchQuery(query, "title", "content","gerne","platform"));
+			ssb.query(QueryBuilders.multiMatchQuery(query, "content_title", "content_info","genre_name","ott_name"));
 			request.source(ssb);
 			 SearchResponse documentFields = client.search(
 					request,

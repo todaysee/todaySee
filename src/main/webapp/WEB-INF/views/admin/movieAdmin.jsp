@@ -254,7 +254,7 @@
                         
                       <ul class="nav nav-pills">
                         <li class="nav-item">
-                          <a class="nav-link active" href="#">영상정보</a>
+                          <button class="nav-link active">영상정보</button>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">수정</a>
@@ -273,17 +273,15 @@
                           <div class="col-md-6">
                             
                             <div class="col-12" id="contentImages">
-                              <!-- <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe> -->
-                              <!-- https://images.justwatch.com/poster/273790105/s592/pacinko -->
                               
                               <img alt="" width="350" height="300" >
                               
-                            <!--  <iframe width="350" height="300" frameborder="0" allowfullscreen=""></iframe> -->
                             </div>
                           </div>
 
 
                           <div class="col-md-6">
+                          <form>
                             <ul class="nav nav-pills flex-column">
                               <li class="nav-item active">
                                    <h5>
@@ -327,6 +325,8 @@
                                   <span id="idCard8" class="badge float-right contentState"></span></h5>
                               </li>
                             </ul>
+                            
+                            </form>
                           </div>
                         </div>
                       </div>
@@ -455,7 +455,7 @@
     
     	const contentNumber= $(this).attr('bca')
 		
-    	
+    	 
     	
     	
       

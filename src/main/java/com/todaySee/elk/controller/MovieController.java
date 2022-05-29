@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.todaySee.domain.Content;
 import com.todaySee.elk.domain.Movie;
 import com.todaySee.elk.service.SearchQueryService;
 
