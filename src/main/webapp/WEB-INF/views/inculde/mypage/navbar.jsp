@@ -48,7 +48,7 @@
                                                  alt="image">
                                         </c:forEach>
                                     </c:otherwise>
-                                </c:choose>
+                                 </c:choose>
                                 <span class="white_name">${user.userName}</span>
                             </div>
                         </div>
