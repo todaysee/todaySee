@@ -152,7 +152,7 @@
         function fetchNotes(startPage) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/ajaxPaging",
+                url: "/ajaxPaging",
                 data: {
                     page: startPage,
                     size: 8
@@ -206,7 +206,7 @@
         function fetchComments(startPageComments) {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:8080/ajaxPaging",
+                url: "/ajaxPaging",
                 data: {
                     page: startPageComments,
                     size: 8

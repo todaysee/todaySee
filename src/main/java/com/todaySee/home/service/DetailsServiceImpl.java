@@ -1,16 +1,11 @@
 package com.todaySee.home.service;
 
 import com.todaySee.domain.*;
-import com.todaySee.home.converter.ReviewDtoConverter;
-import com.todaySee.home.dto.ReviewDto;
-import com.todaySee.home.persistence.ContentRepository;
-import com.todaySee.home.persistence.RatingRepository;
-import com.todaySee.home.persistence.ReviewRepository;
-import com.todaySee.home.persistence.UserRepository;
+import com.todaySee.persistence.ContentRepository;
+import com.todaySee.persistence.ReviewRepository;
+import com.todaySee.persistence.UserRepository;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
@@ -31,9 +26,6 @@ public class DetailsServiceImpl implements DetailsService{
 
     @Autowired
     private UserRepository userRepo;
-
-    @Autowired
-    private RatingRepository ratingRepo;
 
     /**
      * ID(PK)값에 따른 Content 상세정보

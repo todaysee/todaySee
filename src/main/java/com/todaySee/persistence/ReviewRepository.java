@@ -1,4 +1,4 @@
-package com.todaySee.home.persistence;
+package com.todaySee.persistence;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Review;
@@ -11,5 +11,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findByContent(Content content);
 
-    List<Review> findByUser(UserVO user);
+    List<Review> findByUserOrderByReviewDateDesc(UserVO user);
 }

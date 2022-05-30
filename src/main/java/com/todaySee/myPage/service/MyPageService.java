@@ -1,10 +1,7 @@
 package com.todaySee.myPage.service;
 
-import com.todaySee.domain.Images;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
-import com.todaySee.myPage.persistence.MyPageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
