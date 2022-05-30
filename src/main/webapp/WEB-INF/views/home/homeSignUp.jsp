@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label>닉네임</label>
                                     <input type="text" id="userNickname" name="userNickname" class="form-control">
-                                    <span class="error_box">테스트중</span>
+                                    <span class="error_box"></span>
                                   </div>
 
 								&nbsp;
@@ -83,7 +83,7 @@
                                 <div class="form-group col-md-9" >
                                     <label for="userEmail">이메일</label>
                                     <input type="email"  id="userEmail" name="userEmail" class="form-control" style="margin-right:0px;">
-                             		<span class="error_box">테스트중입니다</span>
+                             		<span class="error_box"></span>
 									</div>
 									<div class="post-btn col-md-3">
 									
@@ -97,7 +97,7 @@
                                 
                                     <label>비밀번호</label>
                                     <input type="password" id="userPassword" name="userPassword" class="form-control">
-                                     <span class="error_box">테스트중</span>
+                                     <span class="error_box"></span>
                                     
                                 </div>
 
@@ -105,14 +105,14 @@
                                 <div class="form-group">
                                     <label>비밀번호 확인 </label>
                                     <input type="password" id="userPassword2" name="userPassword2"  class="form-control">
-                                    <span class="error_box">테스트중</span>
+                                    <span class="error_box"></span>
                                  </div>
                                 
                                 &nbsp;
                                 <div class="form-group">
                                     <label>이름</label>
                                     <input type="text" id="userName" name="userName" class="form-control">
-                                    <span class="error_box">테스트중</span>
+                                    <span class="error_box"></span>
                                    </div>
                                 
                                 &nbsp;
@@ -124,14 +124,14 @@
                                    		<option value="Woman">여성</option>
                                    		<option value="Man">남성</option>
                                    		</select>
-                                   		<span class="error_box">테스트중</span>
+                                   		<span class="error_box"></span>
                                  </div>
                                
                                 &nbsp;
                                 <div class="form-group">
                                     <label>휴대전화번호</label>
                                     <input type="text" id="userTel" name="userTel" class="form-control">
-                                    <span class="error_box">테스트중</span>
+                                    <span class="error_box"></span>
                                 </div>
         
                                 
@@ -139,7 +139,7 @@
                                     	 <input type="checkbox" id="checkbox" name="checkbox">
                                         <label for="checkbox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
                                         <input type="checkbox" id="checkbox" name="checkbox">
-                                        <span class="error_box">테스트중</span>
+                                        <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
                                    
