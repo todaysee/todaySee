@@ -154,13 +154,14 @@
 						 data-loop="true" data-margin="0">
 						 
 						 <!-- start for -->
-						<div class="item" style="background: url('/images/home/background/asset-1.jpeg')">
+					 <c:forEach items="${newContent }" var="content">
+						<div class="item" style="background: url('${content.contentMainImagesUrl}')">
 							<div class="gen-movie-contain-style-2 h-100">
 								<div class="container h-100">
 									<div class="row flex-row-reverse align-items-center h-100">
 										<div class="col-xl-6">
 											<div class="gen-front-image">
-												<img src="/images/home/background/asset-1.jpeg" alt="owl-carousel-banner-image">
+												<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-banner-image">
 												<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="playBut popup-youtube popup-vimeo popup-gmaps">
 													<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
 													<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="213.7px"
@@ -180,73 +181,30 @@
 											</div>
 										</div>
 										<div class="col-xl-6">
-											<div class="gen-tag-line"><span>Most Viewed</span></div>
+											<div class="gen-tag-line"><span>최신 컨텐츠</span></div>
 											<div class="gen-movie-info">
-												<h3>King of Skull</h3>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a></h3>
 											</div>
 											<div class="gen-movie-meta-holder">
-												<ul class="gen-meta-after-title">
-													<li class="gen-sen-rating">
-                                             <span>
-                                                12A</span>
-													</li>
-													<li> <img src="/images/home/asset-2.png" alt="rating-image">
-														<span>
-                                                0 </span>
-													</li>
-												</ul>
-												<p>Streamlab is a long established fact that a reader will be distracted
-													by the readable content of a page The point of using Lorem Streamlab.
-												</p>
+											<ul class="gen-meta-after-title">
+													<li class="gen-sen-rating"><span>${content.contentAge }세</span></li>
+											</ul>
+												<p>${content.contentInfo }</p>
 												<div class="gen-meta-info">
 													<ul class="gen-meta-after-excerpt">
 														<li>
-															<strong>Cast :</strong>
-															Anna Romanson,Robert Romanson
+															<strong>상영날짜 :</strong>
+															${content.contentReleaseDate }
 														</li>
 														<li>
-															<strong>Genre :</strong>
-															<span>
-                                                   <a href="/action.html">
-                                                      Action, </a>
-                                                </span>
-															<span>
-                                                   <a href="/animation.html">
-                                                      Annimation, </a>
-                                                </span>
-															<span>
-                                                   <a href="#">
-                                                      Family </a>
-                                                </span>
-														</li>
-														<li>
-															<strong>Tag :</strong>
-															<span>
-                                                   <a href="#">
-                                                      4K Ultra, </a>
-                                                </span>
-															<span>
-                                                   <a href="#">
-                                                      Brother, </a>
-                                                </span>
-															<span>
-                                                   <a href="#">
-                                                      Dubbing, </a>
-                                                </span>
-															<span>
-                                                   <a href="#">
-                                                      Premieres </a>
-                                                </span>
+															<strong>장르 :</strong>
+                                                    <span>
+	                                                    <c:forEach items="${content.contentGenre}" var="genres">
+			                                                    <a href="http://localhost:8080/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
+	                                                    </c:forEach>
+                                                    </span>
 														</li>
 													</ul>
-												</div>
-											</div>
-											<div class="gen-movie-action">
-												<div class="gen-btn-container">
-													<a href="/single-movie.html" class="gen-button .gen-button-dark">
-														<i aria-hidden="true" class="fas fa-play"></i> <span class="text">Play
-                                                Now</span>
-													</a>
 												</div>
 											</div>
 										</div>
@@ -254,6 +212,7 @@
 								</div>
 							</div>
 						</div>
+					</c:forEach>
 						<!-- end of for -->
 
 					</div>
@@ -289,12 +248,14 @@
 						 data-loop="false" data-margin="30">
 					
 				<!-- 인기 영화 for문 시작-->
+				<c:forEach items="${RecommendedList}" var="content">
+				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-5.jpeg" alt="owl-carousel-video-image">
+											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
 													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -331,14 +292,18 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">영화 제목</a>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>영화시간</li>
+													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="/action.html"><span>장르</span></a>
+														<a href="http://localhost:8080/search/genres"><span>
+		                                                    <c:forEach items="${content.contentGenre}" var="genres">
+				                                                    ${genres.genre.genreName}   
+		                                                    </c:forEach>
+                                                    </span></a>
 													</li>
 												</ul>
 											</div>
@@ -348,6 +313,8 @@
 							</div>
 							<!-- #post-## -->
 						</div>
+						</c:if>
+						</c:forEach>
 					<!-- for문 끝-->
 
 					</div>
@@ -382,13 +349,15 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-						 <!-- start for -->
+				<!-- 인기 영화 for문 시작-->
+				<c:forEach items="${RecommendedList}" var="content">
+				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-14.jpeg" alt="owl-carousel-video-image">
+											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
 													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -411,9 +380,7 @@
 													<div class="dropdown-menu mCustomScrollbar">
 														<div class="mCustomScrollBox">
 															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie
-																	to a
-																	playlist.</a>
+																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
 															</div>
 														</div>
 													</div>
@@ -427,14 +394,18 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">제목</a>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>시즌 또는 시간</li>
+													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="/adventure.html"><span>장르</span></a>
+														<a href="http://localhost:8080/search/genres"><span>
+		                                                    <c:forEach items="${content.contentGenre}" var="genres">
+				                                                    ${genres.genre.genreName}   
+		                                                    </c:forEach>
+                                                    </span></a>
 													</li>
 												</ul>
 											</div>
@@ -444,7 +415,9 @@
 							</div>
 							<!-- #post-## -->
 						</div>
-						<!-- end of for -->
+						</c:if>
+						</c:forEach>
+					<!-- for문 끝-->
 					</div>
 				</div>
 			</div>
@@ -477,13 +450,15 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-						 <!-- start for -->
+				<!-- 인기 영화 for문 시작-->
+				<c:forEach items="${RecommendedList}" var="content">
+				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-14.jpeg" alt="owl-carousel-video-image">
+											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
 													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -506,9 +481,7 @@
 													<div class="dropdown-menu mCustomScrollbar">
 														<div class="mCustomScrollBox">
 															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie
-																	to a
-																	playlist.</a>
+																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
 															</div>
 														</div>
 													</div>
@@ -522,14 +495,18 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">제목</a>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>시즌 또는 시간</li>
+													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="/adventure.html"><span>장르</span></a>
+														<a href="http://localhost:8080/search/genres"><span>
+		                                                    <c:forEach items="${content.contentGenre}" var="genres">
+				                                                    ${genres.genre.genreName}   
+		                                                    </c:forEach>
+                                                    </span></a>
 													</li>
 												</ul>
 											</div>
@@ -539,7 +516,9 @@
 							</div>
 							<!-- #post-## -->
 						</div>
-						<!-- end of for -->
+						</c:if>
+						</c:forEach>
+					<!-- for문 끝-->
 					</div>
 				</div>
 			</div>
@@ -572,13 +551,15 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-						 <!-- start for -->
+				<!-- 인기 영화 for문 시작-->
+				<c:forEach items="${RecommendedList}" var="content">
+				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
-											<img src="/images/home/background/asset-14.jpeg" alt="owl-carousel-video-image">
+											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
 											<div class="gen-movie-add">
 												<div class="wpulike wpulike-heart">
 													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
@@ -601,9 +582,7 @@
 													<div class="dropdown-menu mCustomScrollbar">
 														<div class="mCustomScrollBox">
 															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie
-																	to a
-																	playlist.</a>
+																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
 															</div>
 														</div>
 													</div>
@@ -617,14 +596,18 @@
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="/single-movie.html">제목</a>
+												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
-													<li>시즌 또는 시간</li>
+													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="/adventure.html"><span>장르</span></a>
+														<a href="http://localhost:8080/search/genres"><span>
+		                                                    <c:forEach items="${content.contentGenre}" var="genres">
+				                                                    ${genres.genre.genreName}   
+		                                                    </c:forEach>
+                                                    </span></a>
 													</li>
 												</ul>
 											</div>
@@ -634,7 +617,9 @@
 							</div>
 							<!-- #post-## -->
 						</div>
-						<!-- end of for -->
+						</c:if>
+						</c:forEach>
+					<!-- for문 끝-->
 					</div>
 				</div>
 			</div>
@@ -644,7 +629,7 @@
 <!-- owl-carousel Videos Section-4 End -->
 
 <!-- owl-carousel Videos Section-2 Start -->
-<section class="pt-0 gen-section-padding-2">
+<!-- <section class="pt-0 gen-section-padding-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
@@ -664,11 +649,11 @@
 			<div class="col-12">
 				<div class="gen-style-2">
 			<div class="news-feed-area">
-						 <!-- start for -->
+						 start for
 				 <div class="board">
 				
 				<div class="row">
-				<!-- start for -->
+				start for
 					<div class=" feed_post">
 					<div class="news-feed news-feed-post post_back">
 						<div class="post-header d-flex justify-content-between align-items-center">
@@ -698,16 +683,17 @@
 						</div>
 					</div>
 				</div>
-				<!-- end of for -->
+				end of for
 				</div>
 			</div>
 		</div>
-						<!-- end of for -->
+						end of for
 					</div>
 				</div>
 			</div>
 		</div>
-</section>
+</section> -->
+
 <!-- owl-carousel Videos Section-2 End -->
 
 

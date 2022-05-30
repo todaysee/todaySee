@@ -23,7 +23,6 @@ public class UserController {
 
 
 	 
-	 
 	 //인덱스페이지
 //	 @GetMapping("/")
 //	public String homeIndex() {
