@@ -107,13 +107,10 @@ public class MyPageController {
     //마이페이지 작성 리뷰 목록
     @GetMapping("/myPage/review")
     public String myPageBoard(HttpSession session, UserVO user, Model model) {
-        user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        user.setUserNumber((Integer) session.getAttribute("userNumber")); // 세션 가져오기
 
-        Review review = new Review();
         List<Review> reviewList = myPageService.getReviewList((Integer) session.getAttribute("userNumber"));
         model.addAttribute("reviewList", reviewList);
-
-
 
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));

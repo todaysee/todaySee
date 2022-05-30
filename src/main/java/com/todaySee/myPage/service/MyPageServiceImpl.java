@@ -20,7 +20,7 @@ public class MyPageServiceImpl implements MyPageService{
     UserRepository userRepository;
 
     @Autowired
-    ReviewRepository repository;
+    ReviewRepository reviewRepository;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -37,7 +37,7 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Override
     public List<Review> getReviewList(Integer userNumber) {
-        return repository.findByUser(userRepository.findById(userNumber).get());
+        return reviewRepository.findByUser(userRepository.findById(userNumber).get());
     }
 
 }
