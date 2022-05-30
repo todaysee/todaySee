@@ -1,6 +1,6 @@
 package com.todaySee.Ajax.converter;
 
-import com.todaySee.Ajax.dto.AjaxDto;
+import com.todaySee.dto.AjaxDto;
 import com.todaySee.domain.Content;
 
 

@@ -2,6 +2,9 @@ package com.todaySee.myPage.service;
 
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.dto.CommunityDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -14,5 +17,8 @@ public interface MyPageService {
 
    //리뷰 리스트
    List<Review> getReviewList(Integer userNumber);
+
+   //마이페이지 게시글 목록 페이징
+   Page<CommunityDto> boardPages(Pageable pageable, Integer userNumber);
 
 }

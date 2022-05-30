@@ -1,10 +1,15 @@
 package com.todaySee.myPage.service;
 
+import com.todaySee.domain.Community;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.dto.CommunityDto;
+import com.todaySee.persistence.CommunityRepositroy;
 import com.todaySee.persistence.ReviewRepository;
 import com.todaySee.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +22,9 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    CommunityRepositroy communityRepositroy;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -34,6 +42,13 @@ public class MyPageServiceImpl implements MyPageService{
     @Override
     public List<Review> getReviewList(Integer userNumber) {
         return reviewRepository.findByUserOrderByReviewDateDesc(userRepository.findById(userNumber).get());
+    }
+
+    @Override
+    public Page<CommunityDto> boardPages(Pageable pageable, Integer userNumber) {
+        Page<Community> communities = (Page<Community>) communityRepositroy.findAll(pageable);
+
+        return null;
     }
 
 }
