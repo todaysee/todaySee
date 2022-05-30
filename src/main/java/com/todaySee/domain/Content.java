@@ -37,14 +37,14 @@ public class Content {
     @Column(name = "content_import_date")
     Date contentImportDate; // 컨텐츠 등록날짜
 
-    @Column(length = 3000,name = "content_youtube_url")
+    @Column(length = 3000, name = "content_youtube_url")
     String contentYoutubeUrl; // 컨텐츠 소개영상 주소
 
-    @Column(length = 3000,name = "content_poster_images_url")
+    @Column(length = 3000, name = "content_poster_images_url")
     String contentPosterImagesUrl; // 컨텐츠 포스터 이미지 주소
 
 
-    @Column(length = 3000,name = "content_main_images_url")
+    @Column(length = 3000, name = "content_main_images_url")
     String contentMainImagesUrl; // 컨텐츠 메인 이미지 주소
     
     @Column (name = "content_state")
@@ -58,10 +58,6 @@ public class Content {
     @OneToMany
     @JoinColumn(name="content_number")
     List<ContentGenre> contentGenre;
-
-    @OneToMany
-    @JoinColumn(name="content_number")
-    List<Ratings> ratings;
 
     @OneToMany
     @JoinColumn(name="content_number")

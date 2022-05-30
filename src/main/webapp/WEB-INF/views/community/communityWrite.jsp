@@ -64,15 +64,18 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
-							<form>
+							<form action="/communityOttBoardSave" method="post" >
+								<input type="hidden" name="communityCategory" value="${category}">
+								<input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
 								<div class="form-group">
-									<textarea name="message" class="form-control"
-										placeholder="내용을 적어주세요."></textarea>
+									<textarea class="form-control"
+										placeholder="내용을 적어주세요." name="communityContent"></textarea>
 								</div>
+
 								<ul
 									class="button-group d-flex justify-content-between align-items-center">
 									<li class="photo-btn">
-										<button type="submit">
+										<button type="button">
 											<i class="flaticon-gallery"></i> 사진
 										</button>
 									</li>
@@ -82,65 +85,47 @@
 								</ul>
 							</form>
 						</div>
-
-						<div class="news-feed news-feed-post">
-							<div
-								class="post-header d-flex justify-content-between align-items-center">
-								<div class="image">
-									<a href="my-profile.html"><img
-										src="/images/mypageCommunity/user/user-35.jpg"
-										class="rounded-circle" alt="image"></a>
-								</div>
-								<div class="info ms-3">
-									<span class="name community_title"><a
-										href="my-profile.html">제목</a></span>
-									<div class='row'>
-										<span class="small-text user_name col-md-9"><a href="#">작성자</a></span>
-										<span class="small-text col-md-3 write_date"><a
-											href="#">xxxx.xx.xx</a></span>
+						<c:forEach items="${communityBoardList}" var="board">
+							<div class="news-feed news-feed-post">
+								<div class="post-header d-flex justify-content-between align-items-center">
+									<div class="image">
+										<img src="/images/mypageCommunity/user/user-35.jpg" class="rounded-circle" alt="image">
+									</div>
+									<div class="info ms-3">
+										<span class="name community_title"><a href="my-profile.html">${board.communityCategory}</a></span>
+										<div class="row">
+											<span class="small-text user_name col-md-9"><a href="#">${board.user.userNickname}</a></span>
+											<span class="small-text col-md-3 write_date"><a href="#">${board.communityDate}</a></span>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="post-body">
-								<p>💗</p>
-								<div class="post-image">
-									<img src="/images/mypageCommunity/news-feed-post/post-2.jpg"
-										alt="image">
-								</div>
-								<ul
-									class="post-meta-wrap d-flex justify-content-between align-items-center">
-									<li class="post-react"><button class="community_like">
-											<i class="flaticon-like"></i><span>Like</span> <span
-												class="number">3 </span>
+								<div class="post-body">
+									<p>${board.communityContent}</p>
+									<div class="post-image">
+										<img src="/images/mypageCommunity/news-feed-post/post-2.jpg" alt="image">
+									</div>
+									<ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+										<li class="post-react"><button class="community_like">
+											<i class="flaticon-like"></i><span>Like</span> <span class="number">3 </span>
 										</button></li>
-									<li class="post-comment"><a href="#"><i
-											class="flaticon-comment"></i><span>Comment</span> <span
-											class="number">0 </span></a></li>
-									<li class="post-share"><a href="#"><i
-											class="flaticon-share"></i><span>Share</span> <span
-											class="number">0 </span></a></li>
-									<li><a type="button" class="gen-button-like myModal"
-										data-bs-toggle="modal" data-bs-target="#modalReport"> <span><i
-												class="fa fa-exclamation-triangle"></i>신고</span>
-									</a></li>
-								</ul>
-								<form class="post-footer">
-									<div class="footer-image">
-										<a href="#"><img
-											src="/images/mypageCommunity/user/user-2.jpg"
-											class="rounded-circle" alt="image"></a>
-									</div>
-									<div class="form-group">
-										<textarea name="message" class="form-control"
-											placeholder="내용을 적어주세요."></textarea>
+										<li class="post-comment"><a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span class="number">0 </span></a></li>
+										<li class="post-share"><a href="#"><i class="flaticon-share"></i><span>Share</span> <span class="number">0 </span></a></li>
+										<li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport"> <span><i class="fa fa-exclamation-triangle"></i>신고</span>
+										</a></li>
+									</ul>
+									<form class="post-footer">
+										<div class="footer-image">
+											<a href="#"><img src="/images/mypageCommunity/user/user-2.jpg" class="rounded-circle" alt="image"></a>
+										</div>
+										<div class="form-group">
+											<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
 
-									</div>
-								</form>
+										</div>
+									</form>
+								</div>
 							</div>
-						</div>
-
-
+						</c:forEach>
 						<div class="load-more-posts-btn">
 							<a href="#"><i class="flaticon-loading"></i> Load More Posts</a>
 						</div>
@@ -226,6 +211,147 @@
 	<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 	<script src="/js/mypageCommunity/wow.min.js"></script>
 	<script src="/js/mypageCommunity/main.js"></script>
+	<script>
+		$('#scrollTestBody').scroll(function () { // 무한 스크롤을 더보기 버튼으로 구현함
+			var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
+			var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
+			var contentH = $('.container').height(); //문서 전체 내용을 갖는 div의 높이
+			if (scrollT + scrollH + 1 >= contentH) { // 스크롤바가 아래 쪽에 위치할 때
+				$('#testScrollNext').trigger('click'); // 버튼 클릭하여 페이징 작동
+			}
+		});
 
+
+		let totalPages = 1;
+
+		function fetchNotes(startPage) {
+			$.ajax({
+				type: "GET",
+				url: "/ajaxBoardPaging",
+				data: {
+					page: startPage,
+					size: 5
+				},
+				success: function (response) {
+					$('#testh1').empty();
+					// add table rows
+					$.each(response.content, (i, content) => {
+						let noteRow = '<div>' +
+								'<h1>' + content.content_number + '</h1>' +
+								'<h1>' + content.content_title + '</h1>' +
+								'<img src="' + content.content_main_images_url + '">' +
+								'</div>';
+						$('#noteTable tbody').append(noteRow);
+					});
+
+					if ($('ul.pagination li').length - 2 != response.totalPages) {
+						// build pagination list at the first time loading
+						$('ul.pagination').empty();
+						buildPagination(response);
+					}
+				},
+				error: function (e) {
+					alert("ERROR: ", e);
+					console.log("ERROR: ", e);
+				}
+			});
+		}
+
+		function buildPagination(response) {
+			totalPages = response.totalPages;
+
+			var pageNumber = response.pageable.pageNumber;
+
+			var numLinks = 1;
+
+			// print 'previous' link only if not on page one
+			var first = '';
+			var prev = '';
+
+
+			// print 'next' link only if not on the last page
+			var next = '';
+			var last = '';
+			if (pageNumber < totalPages) {
+				if (pageNumber !== totalPages - 1) {
+					next = '<li class="page-item"><a class="page-link" id="testScrollNext" style="display: none">Next ›</a></li>';
+				}
+			} else {
+				next = ''; // on the last page, don't show 'next' link
+			}
+
+			var start = pageNumber - (pageNumber % numLinks) + 1;
+			var end = start + numLinks - 1;
+			end = Math.min(totalPages, end);
+			var pagingLink = '';
+
+			for (var i = start; i <= end; i++) {
+				if (i == pageNumber + 1) {
+					pagingLink += '<li class="page-item active"><a class="page-link" style="display:none;"> ' + i + ' </a></li>'; // no need to create a link to current page
+				} else {
+					pagingLink += '<li class="page-item"><a class="page-link"> ' + i + ' </a></li>';
+				}
+			}
+
+			// return the page navigation link
+			pagingLink = first + prev + pagingLink + next + last;
+
+			$("ul.pagination").append(pagingLink);
+		}
+
+		$(document).on("click", "ul.pagination li a", function () {
+			var data = $(this).attr('data');
+			let val = $(this).text();
+			console.log('val: ' + val);
+
+			// click on the NEXT tag
+			if (val.toUpperCase() === "« FIRST") {
+				let currentActive = $("li.active");
+				fetchNotes(0);
+				$("li.active").removeClass("active");
+				// add .active to next-pagination li
+				currentActive.next().addClass("active");
+			} else if (val.toUpperCase() === "LAST »") {
+				fetchNotes(totalPages - 1);
+				$("li.active").removeClass("active");
+				// add .active to next-pagination li
+				currentActive.next().addClass("active");
+			} else if (val.toUpperCase() === "NEXT ›") {
+				let activeValue = parseInt($("ul.pagination li.active").text());
+				if (activeValue < totalPages) {
+					let currentActive = $("li.active");
+					startPage = activeValue;
+					fetchNotes(startPage);
+					// remove .active class for the old li tag
+					$("li.active").removeClass("active");
+					// add .active to next-pagination li
+					currentActive.next().addClass("active");
+				}
+			} else if (val.toUpperCase() === "‹ PREV") {
+				let activeValue = parseInt($("ul.pagination li.active").text());
+				if (activeValue > 1) {
+					// get the previous page
+					startPage = activeValue - 2;
+					fetchNotes(startPage);
+					let currentActive = $("li.active");
+					currentActive.removeClass("active");
+					// add .active to previous-pagination li
+					currentActive.prev().addClass("active");
+				}
+			} else {
+				startPage = parseInt(val - 1);
+				fetchNotes(startPage);
+				// add focus to the li tag
+				$("li.active").removeClass("active");
+				$(this).parent().addClass("active");
+				//$(this).addClass("active");
+			}
+		});
+
+		(function () {
+			// get first-page at initial time
+			fetchNotes(0);
+		})();
+	</script>
 </body>
 </html>

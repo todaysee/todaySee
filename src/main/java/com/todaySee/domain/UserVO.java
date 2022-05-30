@@ -62,14 +62,6 @@ public class UserVO {
 
     @OneToMany // 1:다
     @JoinColumn(name="user_number")
-    private List<Ratings> ratings;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<Community> communities;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
     private List<Bookmark> bookmark;
 
     @OneToMany // 1:다

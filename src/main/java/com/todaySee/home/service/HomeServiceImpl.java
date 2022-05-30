@@ -1,14 +1,16 @@
 package com.todaySee.home.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
-import com.todaySee.home.persistence.ContentGenreRepository;
-import com.todaySee.home.persistence.ContentRepository;
-import com.todaySee.home.persistence.GenreRepository;
+import com.todaySee.persistence.ContentGenreRepository;
+import com.todaySee.persistence.ContentRepository;
+import com.todaySee.persistence.GenreRepositroy;
 
 @Service
 public class HomeServiceImpl implements HomeService{
@@ -20,7 +22,7 @@ public class HomeServiceImpl implements HomeService{
 	private ContentGenreRepository contentGenreRepo;
 	
 	@Autowired
-	private GenreRepository genreRepo;
+	private GenreRepositroy genreRepo;
 	
 	
 	/** 장르별 컨텐츠 화면에 출력
@@ -32,5 +34,18 @@ public class HomeServiceImpl implements HomeService{
 	public Page<Content> getGenresContentList(Integer genreNumber, Pageable paging) {
 		return contentRepo.getGenresContentList(genreNumber, paging);
 	}
+
+
+	@Override
+	public Content RecommendedContent(Integer contentNumber) {
+		return contentRepo.RecommendedContent(contentNumber);
+	}
+
+
+	@Override
+	public List<Content> newContent() {
+		return contentRepo.newContent();
+	}
+	
 
 }
