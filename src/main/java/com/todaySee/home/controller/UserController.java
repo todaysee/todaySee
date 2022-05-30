@@ -11,10 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.todaySee.domain.UserVO;
-import com.todaySee.home.service.UserService;
+import com.todaySee.home.service.UserServiceImpl;
 
 
 @SessionAttributes("user")
@@ -22,11 +23,11 @@ import com.todaySee.home.service.UserService;
 public class UserController {
 	
 	 @Autowired
-		private UserService userService;
+		private UserServiceImpl userServiceImpl;
 	 
 	 @Autowired
 		private PasswordEncoder encoder;
-
+	 
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")
@@ -43,7 +44,7 @@ public class UserController {
     
     @PostMapping("/signUp")
     public String signUp(UserVO user) {
-    	userService.create(user);
+    	userServiceImpl.create(user);
         return "/home/homeSignUpComplete";
     }
     
@@ -64,24 +65,37 @@ public class UserController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model,HttpSession session) {
     	System.out.println("PostMapping");
-        UserVO findUser = userService.login(userEmail, userPassword);
+        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
     	if (findUser != null
     		) {
     		model.addAttribute("user", findUser);
-    		session.setAttribute("userId", findUser.getUserNumber());
+    		session.setAttribute("userNumber", findUser.getUserNumber());
     		session.setMaxInactiveInterval(60*60*24);
-    		System.out.println("세"+session.getAttribute("userId"));
-    		return "/home/homeIndex";
+    		System.out.println("세션"+session.getAttribute("userNumber"));
+    		return "redirect:/";
     	
     	} else {
     		return "/home/homeLogin";
     	}
     }
     
-    
+    //Email 중복체크 
+    @PostMapping("/emailCheck")
+    @ResponseBody
+	 public String emailCheck(UserVO user) {
+    	UserVO result = userServiceImpl.emailCheck(user.getUserEmail());
+		 String message = "";
+		 if(result == null) {
+			 message = "Y";
+		 } 
+		 
+		 return message;
+	 }
+	 
+     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
     @GetMapping("/userCheck")
     public String userCheck(HttpSession session) {
-    	if(session.getAttribute("userId")==null) {
+    	if(session.getAttribute("userNumber")==null) {
     		return "/home/homeLogin";
     	}else {
     		return "redirect:myPage/profile";

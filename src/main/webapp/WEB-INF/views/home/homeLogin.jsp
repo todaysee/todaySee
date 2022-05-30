@@ -99,7 +99,7 @@
                                 		<div style="float:left; color:grey;">
                                         	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="/signup" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
+                                        	<a href="/signUp" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
                                         	<div style="float:right;">
                                         	<a href="/idFind" class="lost-your-password" style="color:grey;">이메일</a>&nbsp;<a href="/passwordFind" style="color:grey;">비밀번호찾기</a>
                                         	</div>

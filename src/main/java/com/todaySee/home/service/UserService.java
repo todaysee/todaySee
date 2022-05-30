@@ -8,6 +8,6 @@ public interface UserService {
 	
 	UserVO login(String userEmail, String userPassword);
 	
-
+	UserVO emailCheck(String userEmail);
 
 }
