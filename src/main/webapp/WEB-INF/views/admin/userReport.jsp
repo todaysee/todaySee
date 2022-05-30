@@ -118,7 +118,7 @@
                 <ul class="tab-ul">
                   
                   <li class="nav-link active">신고 관리</li>
-                  <!-- <li class="nav-link">게시글 신고</li> -->
+                   <li class="nav-link">게시글 신고</li>
                </ul>
               </div>
 
@@ -171,22 +171,21 @@
 
 
 
-<!-- 
+
           <div class="tab-content" id="tab-content3">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">게시글신고 관리</h3>
               </div>
-              /.card-header
               <div class="card-body">
                 <table id="example3" class="table table-bordered table-striped jqplugin">
                   <thead>
                   <tr>
-                    <th> 3</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>신고번호</th>
+                    <th>신고대상</th>
+                    <th>신고내용</th>
+                    <th>신고날짜</th>
+                    <th>신고상태</th>
                     <th>신고처리</th>
                   </tr>
                   </thead>
@@ -204,10 +203,8 @@
                   
                 </table>
               </div>
-              /.card-body
             </div>
-            /.card
-          </div> -->
+          </div> 
           
           
           
