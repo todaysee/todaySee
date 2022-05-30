@@ -4,14 +4,13 @@ package com.todaySee.myPage.controller;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.javaClass.MyPageImages;
-import com.todaySee.myPage.persistence.MyPageImgRepository;
+import com.todaySee.persistence.ImagesRepository;
 import com.todaySee.myPage.service.MyPageImagesService;
 import com.todaySee.myPage.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,7 +25,7 @@ public class MyPageController {
     MyPageImagesService myPageImagesService;
 
     @Autowired
-    MyPageImgRepository myPageImgRepository;
+    ImagesRepository myPageImgRepository;
 
     /**
      * 마이페이지 프로필 화면

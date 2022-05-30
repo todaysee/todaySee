@@ -10,7 +10,7 @@ let totalPages = 1;
 function fetchNotes(startPage) {
     $.ajax({
         type : "GET",
-        url : "http://localhost:8080/ajaxPaging", // AjaxRestController 컨트롤러에 요청을 보낸다.
+        url : "/ajaxPaging", // AjaxRestController 컨트롤러에 요청을 보낸다.
         data: {
             page: startPage,
             size: 10

@@ -21,7 +21,7 @@ public class Community {
     String communityTitle;
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="community_date")
     Date communityDate;
     @Column(length = 3000, name="community_content")
@@ -35,7 +35,11 @@ public class Community {
     Integer communityState; // 게시글 상태
 
     @Column(length = 100, name="community_category")
-    String communityCategory; // 게시글 카테고리
+    String communityCategory; // 게시글 카테고리 이름
+
+    @ManyToOne // 1:다
+    @JoinColumn(name="user_number")
+    private UserVO user;
 
     @OneToMany // 1:다
     @JoinColumn(name="community_number")

@@ -64,15 +64,18 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
-							<form>
+							<form action="/communityOttBoardSave" method="post" >
+								<input type="hidden" name="communityCategory" value="${category}">
+								<input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
 								<div class="form-group">
-									<textarea name="message" class="form-control"
-										placeholder="내용을 적어주세요."></textarea>
+									<textarea class="form-control"
+										placeholder="내용을 적어주세요." name="communityContent"></textarea>
 								</div>
+
 								<ul
 									class="button-group d-flex justify-content-between align-items-center">
 									<li class="photo-btn">
-										<button type="submit">
+										<button type="button">
 											<i class="flaticon-gallery"></i> 사진
 										</button>
 									</li>
@@ -82,7 +85,10 @@
 								</ul>
 							</form>
 						</div>
-
+						<c:forEach items="${communityBoardList}" var="test">
+							<div>${test.communityCategory}</div>
+							<div>${test.communityDate}</div>
+						</c:forEach>
 						<div class="news-feed news-feed-post">
 							<div
 								class="post-header d-flex justify-content-between align-items-center">

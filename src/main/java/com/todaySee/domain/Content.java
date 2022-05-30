@@ -61,10 +61,6 @@ public class Content {
 
     @OneToMany
     @JoinColumn(name="content_number")
-    List<Ratings> ratings;
-
-    @OneToMany
-    @JoinColumn(name="content_number")
     List<Bookmark> bookmark;
 }
 
