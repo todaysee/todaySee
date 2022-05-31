@@ -27,6 +27,8 @@ var ws;
 					}
 				}else if(d.type == "message"){
 					if(d.sessionId == $("#sessionId").val()){
+						$(".chating").append('1111')
+						
 						$("#chating").append('<div class="chat chat-left">'+
 							'<div class="chat-avatar">'+
 								'<a routerLink="/profile" class="d-inline-block">'+
