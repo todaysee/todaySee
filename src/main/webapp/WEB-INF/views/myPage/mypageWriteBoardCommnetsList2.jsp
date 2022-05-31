@@ -14,22 +14,6 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
-    <!-- 추가 CSS -->
-    <style>
-        .groups-inner-box-style .title h3 {
-            font-size: var(--font-size);
-            margin-bottom: 0;
-        }
-
-        .review_mark_body {
-            display: none;
-        }
-
-        #end {
-            display: none;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -49,7 +33,7 @@
 
     <!--========== Body ==============-->
     <div class="content-page-box-area">
-        <%@ include file="../inculde/mypage/myPageTitleImg.jsp" %>
+        <%@ include file="../inculde/mypage/myPageTitleImg.jsp"%>
 
         <div class="account-setting-list-tabs">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -68,73 +52,13 @@
 
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="profile-information" role="tabpanel">
-                <div class="events-inner-box-style d-flex justify-content-between align-items-center">
-                    <div class="title">
-                        <h3>${user.userNickname} 님의 게시글 목록</h3>
-                    </div>
+                <div class="row" id="boardBody">
 
-                    <div class="events-search-box">
-                        <input type="text" class="input-search" id="search" placeholder="작성 카테고리 검색">
-                    </div>
-                </div>
-                <div class="row">
-                    <c:forEach items="${userBoardList}" var="board">
-                        <!-- 리뷰 item 시작 -->
-                        <div class="col-lg-3 col-sm-6 review_mark_body">
-                            <div class="single-groups-card">
-                                <div class="groups-image">
-                                    <a href="#">
-                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-                                    </a>
-                                </div>
-                                <div class="groups-content">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="text ms-3">
-                                            <h3><a data-bs-toggle="modal"
-                                                   data-bs-target="#reviewModal"></a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="text-center">카테고리 : ${board.communityCategory}</div>
-                                        <div class="text-center">작성 시간 : ${board.communityDate}</div>
-                                        <input type="hidden" value="${board.communityContent}">
-                                    </div>
-                                    <div class="join-groups-btn">
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal${board.communityNumber}">
-                                            게시글 상세보기
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="reviewModal${board.communityNumber}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">${board.communityCategory}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                            ${board.communityContent}
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" onclick="location.href='/community/${board.communityCategory}'">게시판이동</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
                 </div>
 
-
-                <div class="load-more-posts-btn">
-                    <a href="#"><i class="flaticon-loading" id="load">더 보기</i></a>
-                </div>
-                <div class="text-center" id="end">마지막 즐겨찾기입니다.</div>
-
+                <ul id="paginationBoard" class="pagination justify-content-center"
+                    style="margin:20px 0; cursor: pointer;">
+                </ul>
             </div>
 
             <div class="tab-pane fade" id="account" role="tabpanel">
@@ -147,8 +71,7 @@
                             <div class="card card-primary card-outline">
                                 <div class="card-body p-0">
                                     <div>
-                                        <button id="btnAllSelect" class="btn btn-primary btn-block" type="button">전체선택
-                                        </button>
+                                        <button id="btnAllSelect" class="btn btn-primary btn-block" type="button">전체선택</button>
                                     </div>
                                     <div id="pagingCommentsBody">
                                     </div>
@@ -163,6 +86,7 @@
                     <div class="col-lg-1 col-md-12">
                     </div>
                 </div>
+
 
 
             </div>
@@ -207,36 +131,6 @@
 
 <script>
     window.onload = function () {
-        $("#search").on("keyup", function () {
-            let value = $(this).val().toLowerCase();
-            if(value === ''){ // 검색칸이 비었을때 창을 다시 세팅함
-                $('.review_mark_body').css('display','none');
-                $('.review_mark_body').slice(0, 8).show();
-                $("#load").show();
-            }else {
-                $(".review_mark_body").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    $("#load").css('display','none');
-                    $("#end").css('display','none');
-                });
-            }
-        });
-        plusReview();
-        function plusReview(){
-            $(".review_mark_body").slice(0, 8).show(); // select the first ten
-            if ($(".review_mark_body").length>8){
-                $("#load").click(function(e){ // click event for load more
-                    e.preventDefault();
-                    $(".review_mark_body:hidden").slice(0, 4).show(); // select next 10 hidden divs and show them
-                    if($(".review_mark_body:hidden").length == 0){ // check if any hidden divs still exist
-                        $("#load").css('display','none');
-                        $("#end").show();
-                    }
-                });
-            } else {
-                $("#load").css('display','none');
-            }
-        }
 
         $('#btnAllSelect').click(function () {
             var clicks = $(this).data('clicks')
@@ -283,7 +177,7 @@
                             '</div>' +
                             '<div class="modal-body">' +
                             '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
-                            '<div>' + content.content_info +
+                            '<div>' + content.content_info+
                             '</div>' +
                             '</div>' +
                             '<div class="modal-footer">' +
@@ -322,47 +216,47 @@
                     $.each(response.content, (i, content) => {
                         let reviewRow = '<div class="table-responsive mailbox-messages">' +
                             '<table class="table table-hover table-striped">' +
-                            '<tbody>' +
-                            '<tr>' +
-                            '<td width="50">' +
-                            '<div class="icheck-primary">' +
-                            '<input type="checkbox" value="">' +
-                            '</div>' +
-                            '</td>' +
-                            '<td width="350" class="mailbox-name">' + '<a data-bs-toggle="modal" data-bs-target="#staticBackdrop2' + content.content_number + '">' + content.content_title + '</a>' + '</td>' +
-                            '<td width="250"  class="mailbox-subject"><b>' + content.content_number + '</b>' +
-                            '</td>' +
-                            '<td width="100" class="mailbox-date">' + content.content_release_date + '</td>' +
-                            '</tr>' +
-                            '</tbody>' +
+                                '<tbody>' +
+                                '<tr>' +
+                                    '<td width="50">' +
+                                        '<div class="icheck-primary">' +
+                                            '<input type="checkbox" value="">' +
+                                        '</div>' +
+                                    '</td>' +
+                                   '<td width="350" class="mailbox-name">' + '<a data-bs-toggle="modal" data-bs-target="#staticBackdrop2' + content.content_number + '">' + content.content_title + '</a>' +'</td>' +
+                                    '<td width="250"  class="mailbox-subject"><b>' + content.content_number + '</b>' +
+                                    '</td>' +
+                                    '<td width="100" class="mailbox-date">'+ content.content_release_date +'</td>' +
+                                '</tr>' +
+                                '</tbody>' +
                             '</table>' +
-                            '</div>' +
-                            '<div class="modal fade" id="staticBackdrop2' + content.content_number + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
-                            '<div class="modal-dialog">' +
-                            '<div class="modal-content">' +
-                            '<div class="modal-header">' +
-                            '<h5 class="modal-title" id="staticBackdropLabel">' + content.content_title + '</h5>' +
-                            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                            '</div>' +
-                            '<div class="modal-body">' +
-                            '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
-                            '<div>' + content.content_info +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                            '<button type="button" class="btn btn-primary">Understood</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
+                        '</div>' +
+                        '<div class="modal fade" id="staticBackdrop2' + content.content_number + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
+                        '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                        '<h5 class="modal-title" id="staticBackdropLabel">' + content.content_title + '</h5>' +
+                        '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                        '</div>' +
+                        '<div class="modal-body">' +
+                        '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
+                        '<div>' + content.content_info+
+                        '</div>' +
+                        '</div>' +
+                        '<div class="modal-footer">' +
+                        '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
+                        '<button type="button" class="btn btn-primary">Understood</button>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                         $('#pagingCommentsBody').append(reviewRow);
                     });
 
                     if ($('ul#paginationComments li').length - 2 != response.totalPages) {
                         // build pagination list at the first time loading
                         $('ul#paginationComments').empty();
-                        buildPaginationComments(response);
+						buildPaginationComments(response);
                     }
                 },
                 error: function (e) {
@@ -424,57 +318,57 @@
             $("ul#paginationBoard").append(pagingLink);
         }
 
-        function buildPaginationComments(response) {
-            totalCommentsPages = response.totalCommentsPages;
+		function buildPaginationComments(response) {
+			totalCommentsPages = response.totalCommentsPages;
 
-            var pageNumber = response.pageable.pageNumber;
+			var pageNumber = response.pageable.pageNumber;
 
-            var numLinks = 10;
+			var numLinks = 10;
 
-            // print 'previous' link only if not on page one
-            var first = '';
-            var prev = '';
-            if (pageNumber > 0) {
-                if (pageNumber !== 0) {
-                    first = '<li class="page-item"><a class="page-link">« First</a></li>';
-                }
-                prev = '<li class="page-item"><a class="page-link">‹ Prev</a></li>';
-            } else {
-                prev = '<li class="page-item disabled"><a class="page-link">‹ Prev</a></li>'; // on the page one, don't show 'previous' link
-                first = '<li class="page-item disabled"><a class="page-link">« First</a></li>'; // nor 'first page' link
-            }
+			// print 'previous' link only if not on page one
+			var first = '';
+			var prev = '';
+			if (pageNumber > 0) {
+				if (pageNumber !== 0) {
+					first = '<li class="page-item"><a class="page-link">« First</a></li>';
+				}
+				prev = '<li class="page-item"><a class="page-link">‹ Prev</a></li>';
+			} else {
+				prev = '<li class="page-item disabled"><a class="page-link">‹ Prev</a></li>'; // on the page one, don't show 'previous' link
+				first = '<li class="page-item disabled"><a class="page-link">« First</a></li>'; // nor 'first page' link
+			}
 
-            // print 'next' link only if not on the last page
-            var next = '';
-            var last = '';
-            if (pageNumber < totalPages) {
-                if (pageNumber !== totalPages - 1) {
-                    next = '<li class="page-item"><a class="page-link">Next ›</a></li>';
-                    last = '<li class="page-item"><a class="page-link">Last »</a></li>';
-                }
-            } else {
-                next = ''; // on the last page, don't show 'next' link
-                last = ''; // nor 'last page' link
-            }
+			// print 'next' link only if not on the last page
+			var next = '';
+			var last = '';
+			if (pageNumber < totalPages) {
+				if (pageNumber !== totalPages - 1) {
+					next = '<li class="page-item"><a class="page-link">Next ›</a></li>';
+					last = '<li class="page-item"><a class="page-link">Last »</a></li>';
+				}
+			} else {
+				next = ''; // on the last page, don't show 'next' link
+				last = ''; // nor 'last page' link
+			}
 
-            var start = pageNumber - (pageNumber % numLinks) + 1;
-            var end = start + numLinks - 1;
-            end = Math.min(totalPages, end);
-            var pagingLink = '';
+			var start = pageNumber - (pageNumber % numLinks) + 1;
+			var end = start + numLinks - 1;
+			end = Math.min(totalPages, end);
+			var pagingLink = '';
 
-            for (var i = start; i <= end; i++) {
-                if (i == pageNumber + 1) {
-                    pagingLink += '<li class="page-item active"><a class="page-link"> ' + i + ' </a></li>'; // no need to create a link to current page
-                } else {
-                    pagingLink += '<li class="page-item"><a class="page-link"> ' + i + ' </a></li>';
-                }
-            }
+			for (var i = start; i <= end; i++) {
+				if (i == pageNumber + 1) {
+					pagingLink += '<li class="page-item active"><a class="page-link"> ' + i + ' </a></li>'; // no need to create a link to current page
+				} else {
+					pagingLink += '<li class="page-item"><a class="page-link"> ' + i + ' </a></li>';
+				}
+			}
 
-            // return the page navigation link
-            pagingLink = first + prev + pagingLink + next + last;
+			// return the page navigation link
+			pagingLink = first + prev + pagingLink + next + last;
 
-            $("ul#paginationComments").append(pagingLink);
-        }
+			$("ul#paginationComments").append(pagingLink);
+		}
 
         $(document).on("click", "ul#paginationBoard li a", function () {
             var data = $(this).attr('data');
@@ -525,60 +419,60 @@
             }
         });
 
-        $(document).on("click", "ul#paginationComments li a", function () {
-            var data = $(this).attr('data');
-            let val = $(this).text();
-            console.log('val: ' + val);
+		$(document).on("click", "ul#paginationComments li a", function () {
+			var data = $(this).attr('data');
+			let val = $(this).text();
+			console.log('val: ' + val);
 
-            // click on the NEXT tag
-            if (val.toUpperCase() === "« FIRST") {
-                let currentActive = $("li.active");
-                fetchComments(0);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "LAST »") {
-                fetchComments(totalPages - 1);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "NEXT ›") {
-                let activeValue = parseInt($("ul#paginationComments li.active").text());
-                if (activeValue < totalPages) {
-                    let currentActive = $("li.active");
-                    startPage = activeValue;
-                    fetchComments(startPage);
-                    // remove .active class for the old li tag
-                    $("li.active").removeClass("active");
-                    // add .active to next-pagination li
-                    currentActive.next().addClass("active");
-                }
-            } else if (val.toUpperCase() === "‹ PREV") {
-                let activeValue = parseInt($("ul#paginationComments li.active").text());
-                if (activeValue > 1) {
-                    // get the previous page
-                    startPage = activeValue - 2;
-                    fetchComments(startPage);
-                    let currentActive = $("li.active");
-                    currentActive.removeClass("active");
-                    // add .active to previous-pagination li
-                    currentActive.prev().addClass("active");
-                }
-            } else {
-                startPage = parseInt(val - 1);
-                fetchComments(startPage);
-                // add focus to the li tag
-                $("li.active").removeClass("active");
-                $(this).parent().addClass("active");
-                //$(this).addClass("active");
-            }
-        });
+			// click on the NEXT tag
+			if (val.toUpperCase() === "« FIRST") {
+				let currentActive = $("li.active");
+				fetchComments(0);
+				$("li.active").removeClass("active");
+				// add .active to next-pagination li
+				currentActive.next().addClass("active");
+			} else if (val.toUpperCase() === "LAST »") {
+				fetchComments(totalPages - 1);
+				$("li.active").removeClass("active");
+				// add .active to next-pagination li
+				currentActive.next().addClass("active");
+			} else if (val.toUpperCase() === "NEXT ›") {
+				let activeValue = parseInt($("ul#paginationComments li.active").text());
+				if (activeValue < totalPages) {
+					let currentActive = $("li.active");
+					startPage = activeValue;
+					fetchComments(startPage);
+					// remove .active class for the old li tag
+					$("li.active").removeClass("active");
+					// add .active to next-pagination li
+					currentActive.next().addClass("active");
+				}
+			} else if (val.toUpperCase() === "‹ PREV") {
+				let activeValue = parseInt($("ul#paginationComments li.active").text());
+				if (activeValue > 1) {
+					// get the previous page
+					startPage = activeValue - 2;
+					fetchComments(startPage);
+					let currentActive = $("li.active");
+					currentActive.removeClass("active");
+					// add .active to previous-pagination li
+					currentActive.prev().addClass("active");
+				}
+			} else {
+				startPage = parseInt(val - 1);
+				fetchComments(startPage);
+				// add focus to the li tag
+				$("li.active").removeClass("active");
+				$(this).parent().addClass("active");
+				//$(this).addClass("active");
+			}
+		});
 
 
-        (function () {
+		(function () {
             // get first-page at initial time
             fetchNotes(0);
-            fetchComments(0);
+			fetchComments(0);
         })();
     };
 

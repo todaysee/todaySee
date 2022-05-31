@@ -91,6 +91,7 @@ public class MyPageController {
     public String mypageBoardCommnetsList(HttpSession session, UserVO user, Model model) {
 
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("userBoardList", myPageService.getUserBoardList((Integer) session.getAttribute("userNumber")));
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();
@@ -164,6 +165,15 @@ public class MyPageController {
     @GetMapping("/myPage/modal")
     public String modal() {
         return "/myPage/test2";
+    }
+
+    @GetMapping("/myPage/test")
+    public String test(HttpSession session, Model model) {
+
+        model.addAttribute("userBoardList", myPageService.getUserBoardList((Integer) session.getAttribute("userNumber")));
+
+
+        return "/myPage/test";
     }
 
 }

@@ -1,9 +1,11 @@
 package com.todaySee.myPage.service;
 
+import com.todaySee.Converter.CommunityConverter;
 import com.todaySee.domain.Community;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.dto.CommunityDto;
+import com.todaySee.persistence.CommunityJpaRepositroy;
 import com.todaySee.persistence.CommunityRepositroy;
 import com.todaySee.persistence.ReviewRepository;
 import com.todaySee.persistence.UserRepository;
@@ -25,6 +27,9 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
     CommunityRepositroy communityRepositroy;
+
+    @Autowired
+    CommunityJpaRepositroy communityJpaRepositroy;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -45,10 +50,20 @@ public class MyPageServiceImpl implements MyPageService{
     }
 
     @Override
-    public Page<CommunityDto> boardPages(Pageable pageable, Integer userNumber) {
-        Page<Community> communities = (Page<Community>) communityRepositroy.findAll(pageable);
+    public Page<CommunityDto> boardPages(Pageable pageable) {
+        Page<Community> communities = communityJpaRepositroy.findAll(pageable);
 
-        return null;
+        Page<CommunityDto> communityDtos = communities.map(entity -> {
+            CommunityDto communityDto = CommunityConverter.communityToCommunityDto(entity);
+            return communityDto;
+        });
+
+        return communityDtos;
+    }
+
+    @Override
+    public List<Community> getUserBoardList(Integer userNumber) {
+        return communityRepositroy.findByUser_UserNumberOrderByCommunityDateDesc(userNumber);
     }
 
 }

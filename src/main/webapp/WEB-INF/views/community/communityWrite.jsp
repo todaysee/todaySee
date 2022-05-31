@@ -64,7 +64,7 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
-							<form action="/communityOttBoardSave" method="post" >
+							<form action="/communityBoardSave" method="post" >
 								<input type="hidden" name="communityCategory" value="${category}">
 								<input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
 								<div class="form-group">

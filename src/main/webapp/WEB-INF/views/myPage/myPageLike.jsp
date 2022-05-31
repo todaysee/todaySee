@@ -47,42 +47,7 @@
                             <canvas id="myChart"></canvas>
                         </div>
                         <hr/>
-                        <h1>선호 태그</h1>
-                        <div class="col-md-8 container">
 
-                        </div>
-                        <hr/>
-                        <h1>추천 영상</h1>
-                        <div class="col-md-4">
-                            <div class="info-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/269926103/s592/nayi-haebangilji"
-                                         class="img-thumbnail" alt="...">
-                                </a>
-                            </div>
-                            <br/>
-                            <h3 class="text-center">제목 들어감</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/273790105/s592/pacinko"
-                                         class="img-thumbnail" alt="image">
-                                </a>
-                            </div>
-							<br/>
-							<h3 class="text-center">제목 들어감</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/272669076/s592/seupai-paemilri"
-                                         class="img-thumbnail" alt="image">
-                                </a>
-                            </div>
-							<br/>
-							<h3 class="text-center">제목 들어감</h3>
-                        </div>
                         <hr/>
                     </div>
                 </div>

@@ -35,9 +35,9 @@ public class MyPageRestController {
     }
 
     @GetMapping("/ajaxBoardPaging")
-    public Page<CommunityDto> ajaxBoardPaging(Pageable pageable, Integer userNumber) {
+    public Page<CommunityDto> ajaxBoardPaging(Pageable pageable) {
 
-        return myPageService.boardPages(pageable, userNumber);
+        return myPageService.boardPages(pageable);
     }
 
 

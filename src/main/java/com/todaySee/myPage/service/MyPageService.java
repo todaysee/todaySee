@@ -1,5 +1,6 @@
 package com.todaySee.myPage.service;
 
+import com.todaySee.domain.Community;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.dto.CommunityDto;
@@ -19,6 +20,9 @@ public interface MyPageService {
    List<Review> getReviewList(Integer userNumber);
 
    //마이페이지 게시글 목록 페이징
-   Page<CommunityDto> boardPages(Pageable pageable, Integer userNumber);
+   Page<CommunityDto> boardPages(Pageable pageable);
+
+   //마이페이지 작성글 목록 보여주기
+   List<Community> getUserBoardList(Integer userNumber);
 
 }
