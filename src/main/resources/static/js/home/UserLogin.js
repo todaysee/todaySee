@@ -59,8 +59,8 @@ $('#btn_emailCheck').click(function(){
 			alert('실패');
     		console.log(err);
     	}
-    }); //end of ajax
-}); // end of $('#btn_emailCheck').click
+    }); 
+}); 
 
 
 // 회원가입 버튼 클릭했을 때 필수 입력사항 + 유효성 검사 
@@ -73,7 +73,7 @@ $('#btn_register').click(function(){
 	let userPassword = $("#userPassword").val();
 	let userPassword2 = $("#userPassword2").val();
 	let userName = $("#userName").val();
-	let userGender = $("#userGender").val();
+	let userGender = $("select[name=userGender]").val();
 	let userTel = $("#userTel").val();
 	
 	// 닉네임 유효성검사 
@@ -143,7 +143,10 @@ $('#btn_register').click(function(){
 			$('#userPassword2 ~ .error_box').html("비밀번호가 일치하지 않습니다.");
 			$('#userPassword2').focus();
 			return false;
-		}
+			}else{
+				$('#usePassword2 ~ .error_box').html("")
+			}
+		
 		
 		//이름 유효성 검사  
 		if(userName == ''){
@@ -162,15 +165,15 @@ $('#btn_register').click(function(){
 			$('#userName ~ .error_box').html("");
 		}
 
-	/* 성별 유효성검사 
+	// 성별 유효성검사 
 		if(userGender == ''){
 			$('#userGender ~ .error_box').html(blank);
 			$('#userGender').focus();
 			return false;
 		}else{
-			
+			$('#userGender ~ .error_box').html("");
 		}
-*/
+
 	
 	//휴대전화 유효성검사 
 	if(userTel == ''){
@@ -183,6 +186,7 @@ $('#btn_register').click(function(){
 	
 	if( !RegexTel.test(userTel) ){
 		$('#userTel ~ .error_box').html("전화번호 형식 불일치 ex)010-1234-5678");
+		$('#userTel ~ .error_box').focus();
 		return false;
 	}else{
 		$('#userTel ~ .error_box').html("");
@@ -191,11 +195,42 @@ $('#btn_register').click(function(){
 	// 이메일 중복체크 했는지 확인 
 	if( !emailCheck ){
 		$('#userEmail ~ .error_box').html("이메일 중복여부를 확인해주세요");
+		$('#userEmail ~ .error_box').focus();
 		return false;
 	}else {
 		$('#userEmail ~ .error_box').html("");
 	}
-
-
-		})
 	
+	//이용약관 체크했는지 확인 
+	   if( !$("#checkBox").is(':checked')){
+		$('#checkBox').next().html("이용약관에 동의해주세요");
+		$('#checkBox ~ .error_box').focus();
+		alert("이용약관에 동의해주세요")
+		return false;
+	}else{
+		$('#checkBox').next().html("");
+		$.ajax({
+					type : 'post',
+					url : "/emailCheck",
+					data : { UserEmail : $('#UserEmail').val() },
+					contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+					success : function(result){
+						if(result == 'Y'){
+							$('#userEmail ~ .error_box').html("");
+							document.signUp_frm.submit();
+							alert("회원가입이 되었습니다");
+						}else{
+							$('#userEmail ~ .error_box').html("이메일 중복 여부 확인해주세요");
+							$('#userEmail ~ .error_box').focus();
+							emailCheck = false;
+							return false;
+							}
+						},
+						//error : function(err){
+											//	alert('실패');
+									//console.log(err);
+									
+								//}
+			    }); //end of ajax	
+			    }
+			   });

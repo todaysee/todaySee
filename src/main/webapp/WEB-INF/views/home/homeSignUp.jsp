@@ -71,7 +71,7 @@
                         <div class="register-form">
                             <div style="text-align:center"><h2>회원가입</h2></div>
         
-                            <form action="/signUp" method="post">
+                            <form id="signUp_frm"action="/signUp" method="post">
                                 <div class="form-group">
                                     <label>닉네임</label>
                                     <input type="text" id="userNickname" name="userNickname" class="form-control">
@@ -120,7 +120,7 @@
                                     <label>성별</label>
                                     
                                    	<select class="form-control" id="userGender" name="userGender" id="gender">
-                                   		<option value="choice">성별을 선택해주세요</option>
+                                   		<option value="">성별을 선택해주세요</option>
                                    		<option value="Woman">여성</option>
                                    		<option value="Man">남성</option>
                                    		</select>
@@ -136,9 +136,9 @@
         
                                 
                                 <div class="remember-me-wrap">
-                                    	 <input type="checkbox" id="checkbox" name="checkbox">
-                                        <label for="checkbox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
-                                        <input type="checkbox" id="checkbox" name="checkbox">
+                                   		<input type="checkbox" id="checkBox" name="checkBox">
+                                   		
+                                        <label for="checkBox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
                                         <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
