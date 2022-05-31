@@ -2,7 +2,7 @@ var ws;
 
 	function wsOpen(){
 		//웹소켓 전송시 현재 방의 번호를 넘겨서 보낸다.
-		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#roomNumber").val());
+		ws = new WebSocket("ws://" + location.host + "/chating/"+$("#chatroomNumber").val());
 		
 		wsEvt();
 	}
@@ -19,6 +19,7 @@ var ws;
 			if(msg != null && msg.type != ''){
 				//파일 업로드가 아닌 경우 메시지를 뿌려준다.
 				var d = JSON.parse(msg);
+				console.log(d)
 				if(d.type == "getId"){
 					var si = d.sessionId != null ? d.sessionId : "";
 					if(si != ''){
@@ -81,6 +82,7 @@ var ws;
 	}
 
 	function send() {
+		/*alert($("#roomNumber").val())*/
 		var option ={
 			type: "message",
 			roomNumber: $("#roomNumber").val(),
@@ -88,7 +90,7 @@ var ws;
 			userName : $("#userName").val(),
 			msg : $("#chatting").val()
 		}
-		/*alert(JSON.stringify(option))*/
+		alert(JSON.stringify(option))
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
 	}

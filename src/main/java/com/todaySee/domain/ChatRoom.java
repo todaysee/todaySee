@@ -29,6 +29,11 @@ public class ChatRoom {
     Date chatroomDate;
     @Column(name="chatroom_state")
     Integer chatroomState; // 채팅 상태
+    
+    @Override
+	public String toString() {
+		return "Room [roomNumber=" + chatroomNumber + ", roomName=" + chatroomName + "]";
+	}	
 
 
 }
