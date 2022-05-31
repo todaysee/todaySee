@@ -5,15 +5,14 @@ import com.todaySee.domain.Community;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.dto.CommunityDto;
-import com.todaySee.persistence.CommunityJpaRepositroy;
-import com.todaySee.persistence.CommunityRepositroy;
-import com.todaySee.persistence.ReviewRepository;
-import com.todaySee.persistence.UserRepository;
+import com.todaySee.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -24,6 +23,9 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
     ReviewRepository reviewRepository;
+
+    @Autowired
+    ReviewJpaRepository reviewJpaRepository;
 
     @Autowired
     CommunityRepositroy communityRepositroy;
@@ -46,7 +48,7 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Override
     public List<Review> getReviewList(Integer userNumber) {
-        return reviewRepository.findByUserOrderByReviewDateDesc(userRepository.findById(userNumber).get());
+        return reviewJpaRepository.findByUserOrderByReviewDateDesc(userRepository.findById(userNumber).get());
     }
 
     @Override
@@ -64,6 +66,20 @@ public class MyPageServiceImpl implements MyPageService{
     @Override
     public List<Community> getUserBoardList(Integer userNumber) {
         return communityRepositroy.findByUser_UserNumberOrderByCommunityDateDesc(userNumber);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> chartReviewRating(Integer userNumber) {
+        List<HashMap<String, Object>> rList = new ArrayList<HashMap<String,Object>>();
+
+        for(Object[] o : reviewRepository.chartReviewRating(userNumber)) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            hm.put("ratingCount",o[0]);
+            hm.put("rating",o[1]);
+            rList.add(hm);
+        }
+
+        return rList ;
     }
 
 }
