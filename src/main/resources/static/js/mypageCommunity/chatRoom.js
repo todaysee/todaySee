@@ -14,20 +14,27 @@ var ws;
 		}
 		
 		ws.onmessage = function(data) {
+			
+			alert('확인')
+			
 			//메시지를 받으면 동작
 			var msg = data.data;
 			if(msg != null && msg.type != ''){
 				//파일 업로드가 아닌 경우 메시지를 뿌려준다.
 				var d = JSON.parse(msg);
 				console.log(d)
+				alert(d.type)
 				if(d.type == "getId"){
 					var si = d.sessionId != null ? d.sessionId : "";
 					if(si != ''){
 						$("#sessionId").val(si); 
 					}
+					
 				}else if(d.type == "message"){
+					alert(d.sessionId)
+					alert($("#sessionId").val())
 					if(d.sessionId == $("#sessionId").val()){
-						$(".chating").append('1111')
+						
 						
 						$("#chating").append('<div class="chat chat-left">'+
 							'<div class="chat-avatar">'+
@@ -36,7 +43,7 @@ var ws;
 							'</div>'+
 							'<div class="chat-body">'+
 								'<div class="chat-message">'+
-									''+'<span class="me">나 :' + d.msg + '</span>'+
+									''+'<span class="me">나:' + d.msg + '</span>'+
 								'</div>'+
 							'</div>'+
 						'</div>')	
@@ -56,6 +63,7 @@ var ws;
 						
 				}else{
 					console.warn("unknown type!")
+					alert(d.type)
 				}
 			}else{
 				//파일 업로드한 경우 업로드한 파일을 채팅방에 뿌려준다.
@@ -95,6 +103,7 @@ var ws;
 		alert(JSON.stringify(option))
 		ws.send(JSON.stringify(option))
 		$('#chatting').val("");
+		wsOpen();
 	}
 	
 
