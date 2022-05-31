@@ -12,4 +12,6 @@ public interface CommunityRepositroy extends CrudRepository<Community, Integer> 
 
     List<Community> findByCommunityCategoryOrderByCommunityDateDesc(String category);
 
+    List<Community> findByUser_UserNumberOrderByCommunityDateDesc(Integer userNumber);
+
 }
