@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
 
-    @Query(value = "select count(review_grade), review_grade from review where user_number = :userNumber group by review_grade", nativeQuery = true)
+    @Query(value = "select count(review_grade), review_grade from review where user_number = :userNumber group by review_grade order by review_grade", nativeQuery = true)
     public List<Object[]>chartReviewRating(Integer userNumber);
 }
 

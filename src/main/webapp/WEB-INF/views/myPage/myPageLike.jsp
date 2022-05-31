@@ -47,7 +47,42 @@
                             <canvas id="reviewRatingBarChart"></canvas>
                         </div>
                         <hr/>
+                        <h1>선호 태그</h1>
+                        <div class="col-md-8 container">
 
+                        </div>
+                        <hr/>
+                        <h1>추천 영상</h1>
+                        <div class="col-md-4">
+                            <div class="info-image">
+                                <a href="#">
+                                    <img src="https://images.justwatch.com/poster/269926103/s592/nayi-haebangilji"
+                                         class="img-thumbnail" alt="...">
+                                </a>
+                            </div>
+                            <br/>
+                            <h3 class="text-center">제목 들어감</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="-image">
+                                <a href="#">
+                                    <img src="https://images.justwatch.com/poster/273790105/s592/pacinko"
+                                         class="img-thumbnail" alt="image">
+                                </a>
+                            </div>
+                            <br/>
+                            <h3 class="text-center">제목 들어감</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info-image">
+                                <a href="#">
+                                    <img src="https://images.justwatch.com/poster/272669076/s592/seupai-paemilri"
+                                         class="img-thumbnail" alt="image">
+                                </a>
+                            </div>
+                            <br/>
+                            <h3 class="text-center">제목 들어감</h3>
+                        </div>
                         <hr/>
                     </div>
                 </div>
@@ -90,26 +125,28 @@
         return color;
     }
 
-    let jsonDataAgency = ${agency};
-    let jsonObjectAgency = JSON.stringify(jsonDataAgency);
-    let jDataAgency = JSON.parse(jsonObjectAgency);
 
-    let labelListAgency = []; // 배열생성
-    let valueListAgency = [];
+    let jsonDataReview = ${chartReview};
+    let jsonObjectReview = JSON.stringify(jsonDataReview);
+
+    let jDataReview = JSON.parse(jsonObjectReview);
+    let labelListReview = []; // 배열생성
+    let valueListReview = [];
     let colorList = [];
 
-    for (let i = 0; i < jDataAgency.length; i++) {
-        let dAgency = jDataAgency[i];
-        labelListAgency.push(dAgency.agencyCategoryNum);
-        valueListAgency.push(dAgency.agencyChartCount);
+    for (let i = 0; i < jDataReview.length; i++) {
+        let dReview = jDataReview[i];
+        labelListReview.push(dReview.chartReviewNum);
+        valueListReview.push(dReview.chartReviewChartCount);
         colorList.push(colorize());
     }
 
+
     let data = {
-        labels: labelListAgency,
+        labels: labelListReview,
         datasets: [{
             backgroundColor: colorList,
-            data: valueListAgency
+            data: valueListReview
         }],
     };
 

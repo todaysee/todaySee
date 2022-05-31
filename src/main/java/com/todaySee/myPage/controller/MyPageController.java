@@ -79,26 +79,27 @@ public class MyPageController {
     public String myPageLike(HttpSession session, UserVO user, Model model){
 
        user.setUserNumber((Integer) session.getAttribute("userNumber"));
-//
-//        //리스트 담기
-//        List<HashMap<String, Object>> list = myPageService.chartReviewRating((Integer) session.getAttribute("userNumber"));//서비스 리턴
-//        Gson chartReviewGson = new Gson();
-//        JsonArray chartReviewJArray = new JsonArray();
-//
-//        Iterator<HashMap<String, Object>> chartReviewIterator = list.iterator();
-//        while (chartReviewIterator.hasNext()) {
-//            HashMap chartReview = chartReviewIterator.next();
-//            JsonObject object = new JsonObject();
-//            String chartReviewChartCount = String.valueOf(chartReview.get("ratingCount"));
-//            Integer chartReviewNum = (Integer) chartReview.get("rating");
-//
-//            object.addProperty("agencyChartCount", chartReviewChartCount);
-//            object.addProperty("agencyCategoryNum", chartReviewNum);
-//            chartReviewJArray.add(object);
-//        }
-//
-//        String chartReviewJson = chartReviewGson.toJson(chartReviewJArray);
-//        model.addAttribute("chartReview", chartReviewJson);
+
+        //리스트 담기
+        List<HashMap<String, Object>> list = myPageService.chartReviewRating((Integer) session.getAttribute("userNumber"));//서비스 리턴
+        Gson chartReviewGson = new Gson();
+        JsonArray chartReviewJArray = new JsonArray();
+
+        Iterator<HashMap<String, Object>> chartReviewIterator = list.iterator();
+        while (chartReviewIterator.hasNext()) {
+            HashMap chartReview = chartReviewIterator.next();
+            JsonObject object = new JsonObject();
+            Integer chartReviewChartCount = Integer.parseInt(String.valueOf(chartReview.get("ratingCount")));
+            String chartReviewNum = String.valueOf(chartReview.get("rating"));
+
+            object.addProperty("chartReviewChartCount", chartReviewChartCount);
+            object.addProperty("chartReviewNum", chartReviewNum);
+            chartReviewJArray.add(object);
+        }
+
+        String chartReviewJson = chartReviewGson.toJson(chartReviewJArray);
+        model.addAttribute("chartReview", chartReviewJson);
+        System.out.println(model.addAttribute("chartReview", chartReviewJson));
 
 
         //마이페이지 회원정보 불러오기, 이미지 불러오기

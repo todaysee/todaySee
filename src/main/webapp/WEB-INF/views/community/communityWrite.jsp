@@ -211,6 +211,9 @@
 	<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 	<script src="/js/mypageCommunity/wow.min.js"></script>
 	<script src="/js/mypageCommunity/main.js"></script>
-	<script></script>
+	<script type="text/javascript" src="/js/qrcode.js"></script>
+	<script type="text/javascript">
+
+	</script>
 </body>
 </html>
