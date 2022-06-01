@@ -17,9 +17,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
-import com.todaySee.home.persistence.ContentGenreRepository;
-import com.todaySee.home.persistence.ContentRepository;
-import com.todaySee.home.persistence.GenreRepository;
+import com.todaySee.persistence.ContentGenreRepository;
+import com.todaySee.persistence.ContentRepository;
+import com.todaySee.persistence.GenreRepositroy;
 
 @Service
 public class HomeServiceImpl implements HomeService{
@@ -31,7 +31,7 @@ public class HomeServiceImpl implements HomeService{
 	private ContentGenreRepository contentGenreRepo;
 	
 	@Autowired
-	private GenreRepository genreRepo;
+	private GenreRepositroy genreRepo;
 	
 	
 	/** 장르별 컨텐츠 화면에 출력

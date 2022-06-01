@@ -86,22 +86,22 @@
 							<div class="col-lg-3 col-md-6 review_mark_body">
 								<div class="single-groups-card">
 									<div class="groups-image">
-										<a href="/communityOttBoard/${ott.ottNumber}">
+										<a href="/community/${ott.ottName}">
 											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">
 										<div class="groups-info d-flex justify-content-between align-items-center">
-											<a href="/communityOttBoard/${ott.ottNumber}">
+											<a href="/community/${ott.ottName}">
 												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 											</a>
 											<div class="text ms-3">
-												<h3><a href="/communityOttBoard/${ott.ottNumber}">${ott.ottName}</a></h3>
+												<h3><a href="/community/${ott.ottName}">${ott.ottName}</a></h3>
 											</div>
 										</div>
 										<div class="join-groups-btn">
-											<button type="button" class="btn btn-primary" onclick="location.href='/communityOttBoard/${ott.ottNumber}';">
-												${ott.ottName} 게시판
+											<button type="button" class="btn btn-primary" onclick="location.href='/community/${ott.ottName}';">
+												${ott.ottName} 게시판 이동
 											</button>
 										</div>
 									</div>
@@ -127,22 +127,22 @@
 							<div class="col-lg-3 col-md-6 genre_mark_body">
 								<div class="single-groups-card">
 									<div class="groups-image">
-										<a href="/communityGenreBoard/${genre.genreNumber}">
+										<a href="/community/${genre.genreName}">
 											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">
 										<div class="groups-info d-flex justify-content-between align-items-center">
-											<a href="/communityGenreBoard/${genre.genreNumber}">
+											<a href="/community/${genre.genreName}">
 												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 											</a>
 											<div class="text ms-3">
-												<h3><a href="/communityGenreBoard/${genre.genreNumber}">${genre.genreName}</a></h3>
+												<h3><a href="/community/${genre.genreName}">${genre.genreName}</a></h3>
 											</div>
 										</div>
 										<div class="join-groups-btn">
-                                            <button type="button" class="btn btn-primary" onclick="location.href='/communityGenreBoard/${genre.genreNumber}';">
-													${genre.genreName} 게시판
+                                            <button type="button" class="btn btn-primary" onclick="location.href='/community/${genre.genreName}';">
+													${genre.genreName} 게시판 이동
 											</button>
 										</div>
 									</div>

@@ -501,6 +501,8 @@
 											<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
 											</li>
 											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+											<input id="text" type="hidden" value="http://192.168.0.1:8080/details/${Content.contentNumber}" style="width:80%" />
+											<li><div id="qrcode" style="width:50px; height:50px;"></div></li>
 										</ul>
 									</div>
 								</div>
@@ -528,7 +530,7 @@
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																유저닉네임구현예정
+																${sessionScope.userNumber}
 															</h3>
 															<span>
 																<input id="input-9" name="input-9" required class="rating-loading">
@@ -1481,9 +1483,40 @@
 <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
 <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
 <!--========== Star Rating ==============-->
-
+<%-- qr 코드 생성기--%>
+<script type="text/javascript" src="/js/qrcode.js"></script>
 <!-- 추가 js -->
 <script>
+	//qr코드 사진의 크기
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 600,
+		height : 600
+	});
+	//qr 코드 생성할 글자
+	function makeCode () {
+		var elText = document.getElementById("text");
+		//값이 없으면 에러
+		if (!elText.value) {
+			alert("Input a text");
+			elText.focus();
+			return;
+		}
+
+		qrcode.makeCode(elText.value);
+	}
+	//qr코드 생성
+	makeCode();
+
+	$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
 		let contentNum = ${Content.contentNumber} /* 현재 영상 번호 */

@@ -30,12 +30,16 @@ public class Comments {
     @Column(name = "comments_date")
     Date commentsDate;
 
-    @OneToMany // 1:다
-    @JoinColumn(name="comments_number")
-    private List<CommentsComments> commentsComments;
+    @ManyToOne
+    @JoinColumn(name = "user_number")
+    private UserVO userVO;
 
-    @OneToMany
-    @JoinColumn(name="comments_number")
-    List<Report> report;
+    @ManyToOne // 1:다
+    @JoinColumn(name="community_number")
+    private Community community;
+
+
+
+
 
 }
