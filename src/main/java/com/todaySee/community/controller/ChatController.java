@@ -12,15 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.todaySee.community.domain.RoomVO;
+import com.todaySee.domain.ChatRoom;
+
+
 
 
 
 @Controller
 public class ChatController {
 	
-	List<RoomVO> roomList = new ArrayList<RoomVO>();
-	static int roomNumber = 0;
+	List<ChatRoom> roomList = new ArrayList<ChatRoom>();
+	static Integer chatroomNumber = 0; // 여기가 문제 
+	// static int roomNumber = 0;
 	
 
 	@GetMapping("/community/chatRoom")
@@ -48,12 +51,13 @@ public class ChatController {
 	 * @return
 	 */
 	@RequestMapping("/createRoom")
-	public @ResponseBody List<RoomVO> createRoom(@RequestParam HashMap<Object, Object> params){
+	public @ResponseBody List<ChatRoom> createRoom(@RequestParam HashMap<Object, Object> params){
 		String roomName = (String) params.get("roomName");
+		//Integer roomNumber = (Integer) params.get("roomNumber");
 		if(roomName != null && !roomName.trim().equals("")) {
-			RoomVO room = new RoomVO();
-			room.setRoomNumber(++roomNumber);
-			room.setRoomName(roomName);
+			ChatRoom room = new ChatRoom();
+			room.setChatroomNumber(++chatroomNumber);
+			room.setChatroomName(roomName);
 			roomList.add(room);
 		}
 		return roomList;
@@ -65,7 +69,7 @@ public class ChatController {
 	 * @return
 	 */
 	@RequestMapping("/getRoom")
-	public @ResponseBody List<RoomVO> getRoom(@RequestParam HashMap<Object, Object> params){
+	public @ResponseBody List<ChatRoom> getRoom(@RequestParam HashMap<Object, Object> params){
 		return roomList;
 	}
 	
@@ -78,7 +82,7 @@ public class ChatController {
 		ModelAndView mv = new ModelAndView();
 		int roomNumber = Integer.parseInt((String) params.get("roomNumber"));
 		
-		List<RoomVO> new_list = roomList.stream().filter(o->o.getRoomNumber()==roomNumber).collect(Collectors.toList());
+		List<ChatRoom> new_list = roomList.stream().filter(o->o.getChatroomNumber()==roomNumber).collect(Collectors.toList());
 		if(new_list != null && new_list.size() > 0) {
 			mv.addObject("roomName", params.get("roomName"));
 			mv.addObject("roomNumber", params.get("roomNumber"));
