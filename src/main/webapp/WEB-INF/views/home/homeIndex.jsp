@@ -143,7 +143,7 @@
 <%@ include file="../inculde/home/navbar.jsp"%>
 <!--========== Header ==============-->
 
-<!-- owl-carousel Banner Start -->
+<!-- 최신 컨텐츠 Start -->
 <section class="pt-0 pb-0">
 	<div class="container-fluid px-0">
 		<div class="row no-gutters">
@@ -162,9 +162,9 @@
 										<div class="col-xl-6">
 											<div class="gen-front-image">
 												<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-banner-image">
-												<a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="playBut popup-youtube popup-vimeo popup-gmaps">
+												<a href="/details/${content.contentNumber }" class="">
 													<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In  -->
-													<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="213.7px"
+													<svg version="1.1" xmlns="/details/${content.contentNumber }"
 														 height="213.7px" viewBox="0 0 213.7 213.7"
 														 enable-background="new 0 0 213.7 213.7" xml:space="preserve">
                                              <polygon class="triangle" id="XMLID_17_" fill="none" stroke-width="7"
@@ -176,14 +176,13 @@
 																cx="106.8" cy="106.8" r="103.3">
 														</circle>
                                           </svg>
-													<span>Watch Trailer</span>
 												</a>
 											</div>
 										</div>
 										<div class="col-xl-6">
 											<div class="gen-tag-line"><span>최신 컨텐츠</span></div>
 											<div class="gen-movie-info">
-												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a></h3>
+												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a></h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 											<ul class="gen-meta-after-title">
@@ -200,7 +199,7 @@
 															<strong>장르 :</strong>
                                                     <span>
 	                                                    <c:forEach items="${content.contentGenre}" var="genres">
-			                                                    <a href="http://localhost:8080/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 	                                                    </c:forEach>
                                                     </span>
 														</li>
@@ -221,14 +220,14 @@
 		</div>
 	</div>
 </section>
-<!-- owl-carousel Banner End -->
+<!-- 최신 컨텐츠 End -->
 
 <!-- owl-carousel Videos Section-1 Start -->
 <section class="gen-section-padding-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">인기 영화</h4>
+				<h4 class="gen-heading-title">${sessionScope.userNumber}님을 위한 추천 콘텐츠 </h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -247,54 +246,26 @@
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
 											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
-											<div class="gen-movie-add">
-												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-												</div>
-												<ul class="menu bottomRight">
-													<li class="share top">
-														<i class="fa fa-share-alt"></i>
-														<ul class="submenu">
-															<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-														</ul>
-													</li>
-												</ul>
-												<div class="movie-actions--link_add-to-playlist dropdown">
-													<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-															class="fa fa-plus"></i></a>
-													<div class="dropdown-menu mCustomScrollbar">
-														<div class="mCustomScrollBox">
-															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
 											<div class="gen-movie-action">
-												<a href="/single-movie.html" class="gen-button">
+												<a href="/details/${content.contentNumber }" class="gen-button">
 													<i class="fa fa-play"></i>
 												</a>
 											</div>
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
+												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
 													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="http://localhost:8080/search/genres"><span>
+														<span>
 		                                                    <c:forEach items="${content.contentGenre}" var="genres">
-				                                                    ${genres.genre.genreName}   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 		                                                    </c:forEach>
-                                                    </span></a>
+                                                   		 </span>
 													</li>
 												</ul>
 											</div>
@@ -321,7 +292,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
+				<h4 class="gen-heading-title">인기 콘텐츠</h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -340,54 +311,26 @@
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
 											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
-											<div class="gen-movie-add">
-												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-												</div>
-												<ul class="menu bottomRight">
-													<li class="share top">
-														<i class="fa fa-share-alt"></i>
-														<ul class="submenu">
-															<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-														</ul>
-													</li>
-												</ul>
-												<div class="movie-actions--link_add-to-playlist dropdown">
-													<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-															class="fa fa-plus"></i></a>
-													<div class="dropdown-menu mCustomScrollbar">
-														<div class="mCustomScrollBox">
-															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
 											<div class="gen-movie-action">
-												<a href="/single-movie.html" class="gen-button">
+												<a href="/details/${content.contentNumber }" class="gen-button">
 													<i class="fa fa-play"></i>
 												</a>
 											</div>
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
+												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
 													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="http://localhost:8080/search/genres"><span>
+														<span>
 		                                                    <c:forEach items="${content.contentGenre}" var="genres">
-				                                                    ${genres.genre.genreName}   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 		                                                    </c:forEach>
-                                                    </span></a>
+                                                   		 </span>
 													</li>
 												</ul>
 											</div>
@@ -413,7 +356,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
+				<h4 class="gen-heading-title">장르 추천 콘텐츠 </h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -432,54 +375,26 @@
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
 											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
-											<div class="gen-movie-add">
-												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-												</div>
-												<ul class="menu bottomRight">
-													<li class="share top">
-														<i class="fa fa-share-alt"></i>
-														<ul class="submenu">
-															<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-														</ul>
-													</li>
-												</ul>
-												<div class="movie-actions--link_add-to-playlist dropdown">
-													<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-															class="fa fa-plus"></i></a>
-													<div class="dropdown-menu mCustomScrollbar">
-														<div class="mCustomScrollBox">
-															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
 											<div class="gen-movie-action">
-												<a href="/single-movie.html" class="gen-button">
+												<a href="/details/${content.contentNumber }" class="gen-button">
 													<i class="fa fa-play"></i>
 												</a>
 											</div>
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
+												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
 													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="http://localhost:8080/search/genres"><span>
+														<span>
 		                                                    <c:forEach items="${content.contentGenre}" var="genres">
-				                                                    ${genres.genre.genreName}   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 		                                                    </c:forEach>
-                                                    </span></a>
+                                                   		 </span>
 													</li>
 												</ul>
 											</div>
@@ -533,54 +448,26 @@
 									<div class="gen-movie-contain">
 										<div class="gen-movie-img">
 											<img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image">
-											<div class="gen-movie-add">
-												<div class="wpulike wpulike-heart">
-													<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-												</div>
-												<ul class="menu bottomRight">
-													<li class="share top">
-														<i class="fa fa-share-alt"></i>
-														<ul class="submenu">
-															<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-															</li>
-															<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-														</ul>
-													</li>
-												</ul>
-												<div class="movie-actions--link_add-to-playlist dropdown">
-													<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-															class="fa fa-plus"></i></a>
-													<div class="dropdown-menu mCustomScrollbar">
-														<div class="mCustomScrollBox">
-															<div class="mCSB_container">
-																<a class="login-link" href="/register.html">Sign in to add this movie to a playlist.</a>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
 											<div class="gen-movie-action">
-												<a href="/single-movie.html" class="gen-button">
+												<a href="/details/${content.contentNumber }" class="gen-button">
 													<i class="fa fa-play"></i>
 												</a>
 											</div>
 										</div>
 										<div class="gen-info-contain">
 											<div class="gen-movie-info">
-												<h3><a href="http://localhost:8080/details/${content.contentNumber }">${content.contentTitle}</a>
+												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a>
 												</h3>
 											</div>
 											<div class="gen-movie-meta-holder">
 												<ul>
 													<li>${content.contentRunningTime}</li>
 													<li>
-														<a href="http://localhost:8080/search/genres"><span>
+														<span>
 		                                                    <c:forEach items="${content.contentGenre}" var="genres">
-				                                                    ${genres.genre.genreName}   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 		                                                    </c:forEach>
-                                                    </span></a>
+                                                   		 </span>
 													</li>
 												</ul>
 											</div>
