@@ -20,7 +20,7 @@ public interface AdminService {
 	public UserVO getUser(@PathVariable Integer userNumber);
 	
 	
-	public  List<Content> getAllContent();
+	public List<Content> getAllContent();
 	
 	public Content getContentDetails(@PathVariable Integer contentNumber);
 	

@@ -133,8 +133,9 @@ public class AdminServiceImpl implements AdminService {
 		preContent.setContentReleaseDate(content.getContentReleaseDate());
 		
 		
-		
 		adminContentRepository.save(content);
+		
+		
 	}
 	
 	

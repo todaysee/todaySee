@@ -31,7 +31,7 @@
 	}
 	
 	#titleMovieModal{
-		width: 400px;
+		width: 350px;
 	}
 	
 
@@ -356,11 +356,11 @@
         </div>
           <!-- modal end -->
           
-        <c:forEach items="${contentList}" var="contentList">
+    <%--     <c:forEach items="${contentList}" var="contentList">
 
+		
 
-
-        </c:forEach>
+        </c:forEach> --%>
 
 
 
@@ -378,23 +378,25 @@
                   </tr>
                   </thead>
                   <tbody>
+                  
+                  
                    <c:forEach items="${contentList}" var="contentList">
                   <c:if test="${contentList.contentState == null }">
                   <tr class="contentTable" bca="${contentList.contentNumber}">
                     <td>${contentList.contentTitle }</td>
                     <td>
-                   <%--  <c:forEach items="${contentList.contentOtt}" var="contentOtt">
+                     <c:forEach items="${contentList.contentOtt}" var="contentOtt">
                     ${contentOtt.ott.ottName} 
-                    </c:forEach>  --%>
-                    
+                    </c:forEach>  
+                    </td>
                     <td>${contentList.contentAge }</td>
                     <td> ${contentList.contentRunningTime }</td>
                     <td>${contentList.contentReleaseDate } </td>
                     
                     <td>
-                    <%--   <c:forEach items="${contentList.contentGenre }" var="contentGenre">
+                      <c:forEach items="${contentList.contentGenre }" var="contentGenre">
                     ${contentGenre.genre.genreName } 
-                    </c:forEach>   --%>
+                    </c:forEach>  
                     </td>
                     <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
