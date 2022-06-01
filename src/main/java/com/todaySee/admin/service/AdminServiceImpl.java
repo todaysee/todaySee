@@ -55,12 +55,14 @@ public class AdminServiceImpl implements AdminService {
 	public List<Content> getAllContent(){
 		
 		
-//		List<HashMap<String,Object>> returnList = new ArrayList<HashMap<String,Object>>();
+//		List<HashMap<String,Object>> returnList = new ArrayList<HashMap<String,Object>>();		
 //		/* content = Content(~~ =~~, contentOtt=ContentOtt(~~=~~)) */
 //		for (  Content content : (List<Content>) adminContentRepository.findAll() ) {
 //			List<ContentOtt> contentOtt = content.getContentOtt();
+//			HashMap<String, Object> map = new HashMap<String,Object>();
+//			HashMap<String, Object> map2 = new HashMap<String,Object>();
 //			for( ContentOtt ott : contentOtt ) {
-//				HashMap<String, Object> map = new HashMap<String,Object>();
+//				
 //				String resultOtt= ott.getOtt().getOttName();
 //				
 //				map.put("ott", resultOtt);
@@ -76,7 +78,7 @@ public class AdminServiceImpl implements AdminService {
 //			for (Content content2 : (List<Content>) adminContentRepository.findAll() ) {
 //				List<ContentGenre> contentGenre = content2.getContentGenre();
 //				for (ContentGenre genre : contentGenre) {
-//					HashMap<String, Object> map2 = new HashMap<String,Object>();
+//					
 //					String genre2 = genre.getGenre().getGenreName();
 //					
 //					map2.put("genre", genre2);
@@ -113,4 +115,27 @@ public class AdminServiceImpl implements AdminService {
 	    		adminContentRepository.genreQuery(genre);
 			}
 	}
+	
+	public void contentDeleteUpdate( Integer contentNumber) {
+		Content content = adminContentRepository.findById(contentNumber).get();
+		
+		content.setContentState(1);
+		System.out.println(content.getContentState());
+		System.out.println("*************"+content.toString());
+		adminContentRepository.save(content);
+	}
+	
+	public void contentUpdate(Content content, Integer contentNumber) {
+		
+		Content preContent = adminContentRepository.findById(contentNumber).get();
+		preContent.setContentInfo(content.getContentInfo());
+		preContent.setContentAge(content.getContentAge());
+		preContent.setContentReleaseDate(content.getContentReleaseDate());
+		
+		
+		
+		adminContentRepository.save(content);
+	}
+	
+	
 }

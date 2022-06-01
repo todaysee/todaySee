@@ -32,5 +32,8 @@ public interface AdminService {
 	
 	public void insertContent(Content co, Integer [] genre1, Integer [] ott1,String contentottLink);
 	
+	public void contentDeleteUpdate( Integer contentNumber);
+	
+	public void contentUpdate(Content content, Integer contentNumber);
 	
 }

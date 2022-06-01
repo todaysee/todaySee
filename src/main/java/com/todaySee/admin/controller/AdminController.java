@@ -11,11 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -118,7 +121,7 @@ public class AdminController {
 		
 			adminService.insertContent(co, genre1, ott1,contentottLink);
 		
-		return "redirect:movieAdmin";
+		return "redirect:/movieAdmin";
 	}
 
 	
@@ -131,7 +134,23 @@ public class AdminController {
 		m.addAttribute("contentList",adminService.getAllContent());
 		return "admin/movieAdmin";
 	}
-
+	//@RequestMapping(value="/contentDeleteUpdate/{contentNumber}",method = RequestMethod.PUT )
+	@PutMapping("admin/contentDeleteUpdate")	// 넘어가는 값이 폼태그 안에 있는 값으로 넘어가기 때문에 어쩔수 없이 url 주소가아니라 변수로 받아야함
+	public String contentDeleteUpdate( Integer contentNumber) {
+		System.out.println("**********************"+contentNumber);
+		adminService.contentDeleteUpdate(contentNumber);
+		
+		return "redirect:/movieAdmin";
+	}
+	
+	@PutMapping("admin/contentUpdate")
+	public String contentUpdate(Content content, Integer contentNumber) {
+		System.out.println(content.getContentAge()+"****************************************");
+		System.out.println(contentNumber+"****************************************");
+		
+		adminService.contentUpdate(content, contentNumber);
+		return "redirect:/movieAdmin";
+	}
 	
 	
 

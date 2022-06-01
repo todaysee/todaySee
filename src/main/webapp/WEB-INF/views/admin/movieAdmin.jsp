@@ -24,7 +24,16 @@
     border: none;
     resize: none;
   }
-
+	
+	.updateValue{
+	 text-align: right;
+	 border:0 solid black
+	}
+	
+	#titleMovieModal{
+		width: 400px;
+	}
+	
 
 </style>
 
@@ -248,22 +257,27 @@
           <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
+                  <form method="post" id="frmBtn" >
                     <div class="modal-header">
                        
-                      영화제목 쓸거  
-                        
+                      <!--  <h5><span id="titleMovieModal" class="badge float-right contentTitle"></span></h5> -->
+                       <h5><input id="titleMovieModal" class="float-right updateValue contentTitle" name="contentTitle"/></h5>
+                      
+                       <input type='hidden'	name='_method'	value='put'/>
+                       <input type='hidden' name= 'contentNumber' id="deleteContentNumber">
                       <ul class="nav nav-pills">
                         <li class="nav-item">
                           <button class="nav-link active">영상정보</button>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">수정</a>
+                           <button class="nav-link contentNumber3">수정</button>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">삭제</a>
+                           <button class="nav-link contentNumber2">삭제</button>
                         </li>
-                        
+                         
                       </ul>
+                      
                     </div>
 
                     <div class="modal-body">
@@ -281,7 +295,7 @@
 
 
                           <div class="col-md-6">
-                          <form>
+                         
                             <ul class="nav nav-pills flex-column">
                               <li class="nav-item active">
                                    <h5>
@@ -293,23 +307,27 @@
       <!--   <span id="idCard2" class="badge float-right userName contentInfo"></span> -->
                               <li class="nav-item active">
                                    <h5><i class="fa fa-address-book" aria-hidden="true"></i> 줄거리 
-                                 <textarea id="idCard2"  class="badge float-right contentInfo"></textarea></h5>
+                                 <textarea id="idCard2"  class="badge float-right contentInfo" name="contentInfo"></textarea></h5>
 								
                               </li>
               
-              
+              <!-- <span id="idCard3" class="badge float-right contentAge"></span> -->
                               <li class="nav-item active">
                                    <h5><i class="fa fa-envelope-open" aria-hidden="true"></i> 연령등급 : 
-                                  <span id="idCard3" class="badge float-right contentAge"></span></h5>
+                                    <input  id="idCard3"  class="float-right contentAge updateValue" name="contentAge"/></h5>
+                                  
                               </li>
-              
+                              <!--  <span id="idCard4" class="badge float-right contentRunningTime"></span> -->
                               <li class="nav-item active">
                                   <h5><i class="fa fa-phone" aria-hidden="true"></i> 재생시간 : 
-                                  <span id="idCard4" class="badge float-right contentRunningTime"></span></h5>
+                                    <input  id="idCard4"  class="float-right contentRunningTime updateValue" name="contentRunningTime"/></h5>
                               </li>
+
+                              <!-- <span id="idCard5" class="badge float-right contentReleaseDate"></span> -->
                               <li class="nav-item">
                                    <h5><i class="fa fa-user" aria-hidden="true"></i> 개봉일 : 
-                                  <span id="idCard5" class="badge float-right contentReleaseDate"></span></h5>
+                                    <input id="idCard5"  class="float-right contentReleaseDate updateValue" name="contentReleaseDate"/></h5>
+                                  
                               </li>
                               <li class="nav-item">
                                    <h5><i class="fa fa-venus-mars" aria-hidden="true"></i> 장르 : 
@@ -326,17 +344,23 @@
                               </li>
                             </ul>
                             
-                            </form>
+                           
                           </div>
                         </div>
                       </div>
                     </div>
+                  </form>
                 </div>
+
             </div>
         </div>
           <!-- modal end -->
           
+        <c:forEach items="${contentList}" var="contentList">
 
+
+
+        </c:forEach>
 
 
 
@@ -354,26 +378,28 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach items="${contentList}" var="contentList">
+                   <c:forEach items="${contentList}" var="contentList">
+                  <c:if test="${contentList.contentState == null }">
                   <tr class="contentTable" bca="${contentList.contentNumber}">
                     <td>${contentList.contentTitle }</td>
                     <td>
-                   <c:forEach items="${contentList.contentOtt}" var="contentOtt">
+                   <%--  <c:forEach items="${contentList.contentOtt}" var="contentOtt">
                     ${contentOtt.ott.ottName} 
-                    </c:forEach> 
+                    </c:forEach>  --%>
                     
                     <td>${contentList.contentAge }</td>
                     <td> ${contentList.contentRunningTime }</td>
                     <td>${contentList.contentReleaseDate } </td>
                     
                     <td>
-                     <c:forEach items="${contentList.contentGenre }" var="contentGenre">
+                    <%--   <c:forEach items="${contentList.contentGenre }" var="contentGenre">
                     ${contentGenre.genre.genreName } 
-                    </c:forEach> 
+                    </c:forEach>   --%>
                     </td>
                     <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
-                  </c:forEach>
+                  </c:if>
+                  </c:forEach> 
                  </tbody>
                 </table>
               </div>
@@ -481,10 +507,10 @@
         //$('#myModal iframe').attr('src', youtubeUrlsrc);
           if (youtubeUrlsrc != 'noYoutubeLink') {
         		$('#myModal img').attr('src', src);
-        		console.log('아무거나')
+        	
            		$('#contentImages').append("<iframe class='img22' src="+youtubeUrlsrc+" width='350' height='300' frameborder='0' allowfullscreen=''></iframe>");
 		    } else {
-		    	console.log('거나')
+		    
 		    	$('#myModal img').attr('src', src);
          		$('#contentImages').append("<img class='img22' alt='' src="+ mainImagesUrl +" width='350' height='300' >")
         }
@@ -492,9 +518,11 @@
           
           $('.contentNumber').text(data.contentNumber);
           $('.contentInfo').text(data.contentInfo);
-          $('.contentAge').text(data.contentAge);
-          $('.contentRunningTime').text(data.contentRunningTime);
-          $('.contentReleaseDate').text(data.contentReleaseDate);
+          $('.contentAge').val(data.contentAge);
+          $('.contentRunningTime').val(data.contentRunningTime);
+          $('.contentReleaseDate').val(data.contentReleaseDate);
+          $('.contentTitle').val(data.contentTitle);
+          
           
           // console.log(JSON.stringify(data.contentGenre[0].genre.genreName))
             for (let i = 0; i < data.contentGenre.length; i++) {
@@ -507,35 +535,43 @@
              $('.contentOtt').text(arrValues2);
               
             }
-            if(data.contentState =="" && data.contentState == 0){
+            if(data.contentState ==" " || data.contentState == 0){
               $('.contentState').text("삭제완료");
             } else{
               $('.contentState').text("삭제처리안됨");
             }
-            
-            
-           
 
-
-
+        $('#deleteContentNumber').val(data.contentNumber)
 
         }, 
         error : function(e){
-            alert('에러발생')
+            
             console.log(e)
         }
 
       })
-        
-    	
-    	
+      
+      
     })
-	
- 
+
+    const frmBtn= $('#frmBtn');
+    
+	$('.contentNumber2').click(function(e) {
+		e.preventDefault(); // 바로 submit하는거 방지 이벤트를 잠시 씹음
+    frmBtn.attr("action","/admin/contentDeleteUpdate");
+    frmBtn.submit();
+	})
+
+  $('.contentNumber3').click(function(e){
+    e.preventDefault();
+    frmBtn.attr('action',"/admin/contentUpdate");
+    frmBtn.submit();
+
+  })
+
+
 
     
-    
- 
 
   });
 </script>
