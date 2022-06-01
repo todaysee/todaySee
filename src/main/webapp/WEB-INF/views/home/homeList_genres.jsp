@@ -119,41 +119,6 @@
                                     <div class="gen-movie-img">
 
                                         <img src="${ content.contentMainImagesUrl}" alt="streamlab-image">
-                                        <div class="gen-movie-add">
-                                            <div class="wpulike wpulike-heart">
-                                                <div class="wp_ulike_general_class wp_ulike_is_not_liked"><button type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-
-
-                                            </div>
-                                            <ul class="menu bottomRight">
-                                                <li class="share top">
-                                                    <i class="fa fa-share-alt"></i>
-                                                    <ul class="submenu">
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-facebook-f"></i></a>
-                                                        </li>
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-instagram"></i></a>
-                                                        </li>
-                                                        <li><a href="#" class="facebook"><i
-                                                                    class="fab fa-twitter"></i></a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <div class="movie-actions--link_add-to-playlist dropdown">
-                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                                        class="fa fa-plus"></i></a>
-                                                <div class="dropdown-menu mCustomScrollbar">
-                                                    <div class="mCustomScrollBox">
-                                                        <div class="mCSB_container">
-                                                            <a class="login-link" href="#">Sign in to add this movie to
-                                                                a
-                                                                playlist.</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="gen-movie-action">
                                             <a href="single-movie.html" class="gen-button">
                                                 <i class="fa fa-play"></i>
@@ -163,16 +128,15 @@
                                     <div class="gen-info-contain">
                                         <div class="gen-movie-info">
 
-                                            <h3><a href="${content.contentLink}">${content.contentTitle}</a></h3>
+                                            <h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a></h3>
                                         </div>
                                         <div class="gen-movie-meta-holder">
                                             <ul>
                                                 <li>${content.contentRunningTime}</li>
                                                 <li>
-                                                <!-- /search/genres?contentgenre_number=${ content.contentGenre} -->
                                                     <span>
 	                                                    <c:forEach items="${content.contentGenre}" var="genres">
-			                                                    <a href="http://localhost:8080/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
 	                                                    </c:forEach>
                                                     </span>
 
