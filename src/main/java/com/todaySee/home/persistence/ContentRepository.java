@@ -35,7 +35,7 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 * @return List<Content> 
 	 */
 	@Query(nativeQuery = true
-			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number ORDER BY c.content_import_date DESC LIMIT 5;")
+			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number ORDER BY c.content_import_date DESC LIMIT 5,10")
 	List<Content> newContent();
 	
 

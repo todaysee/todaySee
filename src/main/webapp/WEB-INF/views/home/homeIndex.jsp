@@ -230,15 +230,6 @@
 			<div class="col-xl-6 col-lg-6 col-md-6">
 				<h4 class="gen-heading-title">인기 영화</h4>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-				<div class="gen-movie-action">
-					<div class="gen-btn-container text-right">
-						<a href="/tv-shows-pagination.html" class="gen-button gen-button-flat">
-							<span class="text">More Videos</span>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="row mt-3">
 			<div class="col-12">
@@ -248,7 +239,7 @@
 						 data-loop="false" data-margin="30">
 					
 				<!-- 인기 영화 for문 시작-->
-				<c:forEach items="${RecommendedList}" var="content">
+				<c:forEach items="${RecommendedContentList}" var="content">
 				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
@@ -331,15 +322,6 @@
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
 				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-				<div class="gen-movie-action">
-					<div class="gen-btn-container text-right">
-						<a href="/tv-shows-pagination.html" class="gen-button gen-button-flat">
-							<span class="text">More Videos</span>
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -432,15 +414,6 @@
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
 				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-				<div class="gen-movie-action">
-					<div class="gen-btn-container text-right">
-						<a href="/tv-shows-pagination.html" class="gen-button gen-button-flat">
-							<span class="text">More Videos</span>
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="row mt-3">

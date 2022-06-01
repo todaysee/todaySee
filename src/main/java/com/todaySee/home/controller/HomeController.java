@@ -67,68 +67,10 @@ public class HomeController {
     	
     	List<Content> newContent = new ArrayList<Content>();
     	newContent.addAll(homeServiceImpl.newContent());
+    	m.addAttribute("newContent",newContent);
     	
-   	
-		// 소켓을 선언
-        try (Socket client = new Socket()) {
-        	
-        	// 소켓에 접속하기 위한 접속 정보를 선언한다.
-            InetSocketAddress ipep = new InetSocketAddress("localhost", 9001);
-            
-            // 소켓 접속
-            client.connect(ipep);
-            
-            // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
-            try (OutputStream sender = client.getOutputStream();) {
-            	System.out.println("전송시작");
-            	
-            	// 회원의 아이디를 보낼거니까 int -> String으로 형변환
-                String msg = String.valueOf(7);
-                
-                // string -> byte 배열 형변환
-                byte[] data = msg.getBytes();
-                
-                // ByteBuffer를 통해 데이터 길이를 byte형식으로 변환한다.
-                ByteBuffer b = ByteBuffer.allocate(4);
-                
-                // byte포멧은 little 엔디언이다.
-                b.order(ByteOrder.LITTLE_ENDIAN);
-                
-                b.putInt(data.length);
- 
-                // 데이터 길이 전송
-                sender.write(b.array(), 0, 4);
-              
-                // 데이터 전송
-                sender.write(data);
-                data = new byte[4];
-
-                
-                // 한글깨짐 방지를 위해 BufferedReader로 받아줌
-                InputStream receiver = client.getInputStream();
-                
-                BufferedReader reader = new BufferedReader(new InputStreamReader(receiver, "UTF-8"));
-                
-                String message = "";	// 파이썬에서 보낸 정보를 담을 변수 선언
-                
-                List<Content> RecommendedList = new ArrayList<Content>();
-                
-                // 영어, 숫자, 한글을 제외한 모든 문자열을 제거
-                String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
-                while((message = reader.readLine()) != null) {
-                	message =message.replaceAll(match, "");
-                	RecommendedList.add(homeServiceImpl.RecommendedContent(Integer.valueOf(message)));
-                	
-                }
-                
-                m.addAttribute("newContent",newContent);
-                m.addAttribute("RecommendedList",RecommendedList);
-               
-                
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+    	List<Content> RecommendedContentList = homeServiceImpl.RecommendedContentList();
+    	m.addAttribute("RecommendedContentList",RecommendedContentList);
     	
         return "/home/homeIndex";
       
