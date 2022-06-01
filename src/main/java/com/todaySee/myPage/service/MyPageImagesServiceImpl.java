@@ -1,9 +1,7 @@
 package com.todaySee.myPage.service;
 
-import com.todaySee.domain.Images;
 import com.todaySee.domain.UserVO;
-import com.todaySee.myPage.persistence.MyPageImgRepository;
-import com.todaySee.myPage.persistence.MyPageRepository;
+import com.todaySee.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +9,18 @@ import org.springframework.stereotype.Service;
 public class MyPageImagesServiceImpl implements MyPageImagesService{
 
     @Autowired
-    MyPageRepository myPageRepository;
+    UserRepository userRepository;
 
     public void updateProfileImageState(Integer userNumber){
-        UserVO user = myPageRepository.findById(userNumber).get();
-        user.setUserProfileYn(2);
-        myPageRepository.save(user);
+        UserVO user = userRepository.findById(userNumber).get();
+        user.setUserProfileYn(1);
+        userRepository.save(user);
     }
 
     public void updateProfileTitleImageState(Integer userNumber) {
-        UserVO user = myPageRepository.findById(userNumber).get();
+        UserVO user = userRepository.findById(userNumber).get();
         user.setUserTitleProfileYn(1);
-        myPageRepository.save(user);
+        userRepository.save(user);
     }
 
 }

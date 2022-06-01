@@ -1,9 +1,6 @@
 package com.todaySee.myPage.javaClass;
 
 import com.todaySee.domain.Images;
-import com.todaySee.myPage.persistence.MyPageImgRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;

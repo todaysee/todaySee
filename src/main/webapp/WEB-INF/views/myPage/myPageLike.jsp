@@ -44,7 +44,7 @@
                         <h1 class="">별점 분포</h1>
                         <div class="col-md-12 container-fluid">
                             <!--차트가 그려질 부분-->
-                            <canvas id="myChart"></canvas>
+                            <canvas id="reviewRatingBarChart"></canvas>
                         </div>
                         <hr/>
                         <h1>선호 태그</h1>
@@ -70,8 +70,8 @@
                                          class="img-thumbnail" alt="image">
                                 </a>
                             </div>
-							<br/>
-							<h3 class="text-center">제목 들어감</h3>
+                            <br/>
+                            <h3 class="text-center">제목 들어감</h3>
                         </div>
                         <div class="col-md-4">
                             <div class="info-image">
@@ -80,8 +80,8 @@
                                          class="img-thumbnail" alt="image">
                                 </a>
                             </div>
-							<br/>
-							<h3 class="text-center">제목 들어감</h3>
+                            <br/>
+                            <h3 class="text-center">제목 들어감</h3>
                         </div>
                         <hr/>
                     </div>
@@ -114,7 +114,47 @@
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
 <%--차트파일--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script src="/js/chart/bar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+    function colorize() {
+        let r = Math.floor(Math.random() * 200);
+        let g = Math.floor(Math.random() * 200);
+        let b = Math.floor(Math.random() * 200);
+        let color = 'rgba(' + r + ', ' + g + ', ' + b + ', 0.7)';
+        return color;
+    }
+
+
+    let jsonDataReview = ${chartReview};
+    let jsonObjectReview = JSON.stringify(jsonDataReview);
+
+    let jDataReview = JSON.parse(jsonObjectReview);
+    let labelListReview = []; // 배열생성
+    let valueListReview = [];
+    let colorList = [];
+
+    for (let i = 0; i < jDataReview.length; i++) {
+        let dReview = jDataReview[i];
+        labelListReview.push(dReview.chartReviewNum);
+        valueListReview.push(dReview.chartReviewChartCount);
+        colorList.push(colorize());
+    }
+
+
+    let data = {
+        labels: labelListReview,
+        datasets: [{
+            backgroundColor: colorList,
+            data: valueListReview
+        }],
+    };
+
+    let barChart = document.getElementById('reviewRatingBarChart').getContext('2d');
+    new Chart(barChart, {
+        type: 'bar',
+        data: data
+    });
+</script>
 </body>
 </html>
