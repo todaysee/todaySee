@@ -45,6 +45,12 @@ public class HomeController {
         session.setAttribute("userNumber", 1);
         return "redirect:/2";
     }
+    //테스트 로그인 세션
+    @GetMapping("/testSessionLogin2")
+    public String Login2(HttpSession session){
+        session.setAttribute("userNumber", 2);
+        return "redirect:/2";
+    }
     //테스트 로그아웃 세션
     @GetMapping("/testSessionLogout")
     public String Logout(HttpServletRequest request){
@@ -52,6 +58,8 @@ public class HomeController {
         session.invalidate();
         return "redirect:/2";
     }
+
+
 
 
 

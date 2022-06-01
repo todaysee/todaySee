@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,7 +62,7 @@ public class CommunityController {
 
         return "/community/communityIndex";
     }
-    //ott 카테고리 게시판 페이지
+    //카테고리 별 게시판 페이지
     @GetMapping("/community/{categoryName}")
     public String communityBoardPage(HttpSession session, UserVO user, Model model, @PathVariable String categoryName){
 
@@ -86,11 +88,15 @@ public class CommunityController {
     }
 
     //게시글 작성
-    @PostMapping("/communityOttBoardSave")
-    public String communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent){
+    @PostMapping("/communityBoardSave")
+    public String communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent) throws UnsupportedEncodingException {
+        //한글 파라메터를 인코딩
+        String encodedParam = URLEncoder.encode(communityCategory, "UTF-8");
         communityService.communityOttBoardSave(userNumber, communityCategory, communityContent);
-
-        return "redirect:/community/"+communityCategory;
+        System.out.println("작성한 카테고리 : "+communityCategory);
+        //리다이렉트시 한글을 인식하지 못하는 오류 발생함 
+        //해결을 위해서 받은 인자를 URLEncoder로 인코딩
+        return "redirect:/community/"+encodedParam;
     }
 
 }
