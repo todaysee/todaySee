@@ -18,17 +18,21 @@ public class ChatRoom {
     
     @Column(name="chatroom_number")
     Integer chatroomNumber;
-    @Column(name="chatroom_name")
+    @Column(name="chatroom_name", length = 2000)
     String chatroomName;
-    @Column(name="chatroom_img")
+    @Column(name="chatroom_img", length = 2000)
     String chatroomImg; // 확인요망
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="chatroom_date")
     Date chatroomDate;
     @Column(name="chatroom_state")
     Integer chatroomState; // 채팅 상태
+
+    @ManyToOne
+    @JoinColumn(name = "user_number")
+    UserVO userVO;
 
 
 }

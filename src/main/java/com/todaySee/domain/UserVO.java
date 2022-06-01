@@ -17,63 +17,45 @@ public class UserVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_number")
-    Integer userNumber;
+    Integer userNumber; //유저번호
 
     @Column(name = "user_email", length = 1000, unique = true)
-    String userEmail;
+    String userEmail; // 유저 이메일
     @Column(name = "user_nickname", length = 1000)
-    String userNickname;
+    String userNickname; // 유저 닉네임
     @Column(name = "user_gender")
-    String userGender;
+    String userGender; // 유저 성별
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column (name = "user_signup_date")
-    Date userSignupDate;
+    Date userSignupDate; // 유저 회원가입 날짜
+
     @Column (name = "user_state")
-    Integer userState;
+    Integer userState; // 유저 상태 0.기본 1.휴면 2.회원탈퇴 3.신고계정
     @Column (name = "user_admin")
-    Integer userAdmin;
+    Integer userAdmin; // 유저 관리자 여부 0.일반회원 1.관리자
     @Column (name = "user_profile_yn")
-    Integer userProfileYn; //프로필 이미지 유무 물어보는 컬럼
+    Integer userProfileYn; //프로필 이미지 유무 물어보는 컬럼 
     @Column (name = "user_title_profile_yn")
     Integer userTitleProfileYn; //프로필 타이틀 이미지 물어보는 컬럼
 
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "user_login_date")
     Date userLoginDate; // 유저 로그인 날짜
 
+
+    // 아이디 찾기, 비밀번호 찾기 관련 컬럼
     @Column(name = "user_name", length = 1000)
-    String userName;
+    String userName; // 유저 이름
     @Column(name = "user_tel",length = 1000)
-    String userTel;
+    String userTel; // 유저 전화 번호
     @Column(name = "user_password",length = 1000)
-    String userPassword;
+    String userPassword; // 유저 비밀 번호
 
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<Images> images;
 
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<ChatRoom> chatRooms;
 
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<Bookmark> bookmark;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<Comments> comments;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<CommentsComments> commentsComments;
-
-    @OneToMany // 1:다
-    @JoinColumn(name="user_number")
-    private List<Report> report;
 
 }
