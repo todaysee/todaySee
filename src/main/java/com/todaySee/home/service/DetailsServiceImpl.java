@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class DetailsServiceImpl implements DetailsService{
 
     @Autowired
     private UserRepository userRepo;
+
 
     /**
      * ID(PK)값에 따른 Content 상세정보
@@ -134,7 +136,7 @@ public class DetailsServiceImpl implements DetailsService{
     /**
      * 리뷰 번호에 따른 리뷰 가져오기
      * @param reviewNumber : 리뷰 번호
-     * @return JSONObject :
+     * @return JSONObject : JSON 객체로 변환시킨 데이터
      */
     @Override
     public JSONObject getReview(Integer reviewNumber) {
@@ -142,10 +144,19 @@ public class DetailsServiceImpl implements DetailsService{
         Review review = reviewRepo.findById(reviewNumber).get();
 
         JSONObject reviewObj = new JSONObject();
+        reviewObj.put("userNickname", review.getUser().getUserNickname());
         reviewObj.put("reviewNumber", Integer.toString(review.getReviewNumber()));
         reviewObj.put("reviewContent", review.getReviewContent());
 
         return reviewObj;
+    }
+
+    @Override
+    public void insertReportReview(String reportContent) {
+        Report report = new Report();
+        report.setReportContent(reportContent);
+        report.setReportDate(new Date());
+        
     }
 
 

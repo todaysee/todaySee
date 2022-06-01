@@ -31,4 +31,7 @@ public interface DetailsService {
     // 리뷰 번호에 따른 리뷰
     public JSONObject getReview(Integer reviewNumber);
 
+    // 리뷰 신고 입력
+    public void insertReportReview(String reportContent);
+
 }

@@ -48,9 +48,20 @@ public class DetailsRestController {
         return "OK";
     }
 
+    /**
+     * 리뷰 번호에 따른 리뷰 정보 가져오기
+     * @param reviewNumber
+     * @return Service에서 받아온 JSON을 View으로 보내줌
+     */
     @GetMapping("/details/spoReviewAjax")
     public JSONObject getSpoilerReview(Integer reviewNumber) {
         return detailsService.getReview(reviewNumber);
+    }
+
+    @PostMapping("/details/reportInsert")
+    public String insertReportReview(String reportContent) {
+        detailsService.insertReportReview(reportContent);
+        return "ok";
     }
 
 

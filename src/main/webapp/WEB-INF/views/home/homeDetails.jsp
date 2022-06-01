@@ -167,7 +167,7 @@
 		}
 
 		.gen-extra-report ul li span:first-child {
-			display: inline-block;
+			/*display: inline-block;*/
 			width: 25%;
 			font-weight: 500;
 		}
@@ -595,6 +595,7 @@
 																				<a type="button" class="gen-button-like" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
 																				</a>
+																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
 																				<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																				</a>
@@ -1356,11 +1357,11 @@
 								<ul>
 									<li>
 										<span>리뷰 작성자 :</span>
-										<span>English</span>
+										<span id="reportUser">English</span>
 									</li>
 									<li>
 										<span>리뷰 내용 :</span>
-										<p>Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+										<p id="reportReview">Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
 										</p>
 									</li>
 								</ul>
@@ -1369,21 +1370,21 @@
 						<div class="padding-7">
 							<div class="form-group">
 								<label for="message-text" class="col-form-label">사유 선택:</label>
-								<select class="modalSelect" id="message-text">
-									<option>스팸홍보/도배글입니다.</option>
-									<option>음란물입니다.</option>
-									<option>불법정보를 포함하고 있습니다.</option>
-									<option>청소년에게 유해한 내용입니다.</option>
-									<option>욕설/생명경시/혐오/차별적 표현입니다.</option>
-									<option>개인정보 노출 게시물입니다.</option>
-									<option>불쾌한 표현이 있습니다.</option>
+								<select class="modalSelect reportContent" id="message-text">
+									<option value="스팸홍보/도배글입니다.">스팸홍보/도배글입니다.</option>
+									<option value="음란물입니다.">음란물입니다.</option>
+									<option value="불법정보를 포함하고 있습니다.">불법정보를 포함하고 있습니다.</option>
+									<option value="청소년에게 유해한 내용입니다.">청소년에게 유해한 내용입니다.</option>
+									<option value="욕설/생명경시/혐오/차별적 표현입니다.">욕설/생명경시/혐오/차별적 표현입니다.</option>
+									<option value="개인정보 노출 게시물입니다.">개인정보 노출 게시물입니다.</option>
+									<option value="불쾌한 표현이 있습니다.">불쾌한 표현이 있습니다.</option>
 								</select>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 ml-auto">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger">등록</button>
+						<button type="button" id="reportInsertReview" class="btn btn-danger">등록</button>
 					</div>
 				</form>
 			</div>
@@ -1489,7 +1490,7 @@
 		let contentNum = ${Content.contentNumber} /* 현재 영상 번호 */
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:8080/details/Ajax",
+			url: "/details/Ajax",
 			data: {contentNumber: contentNum}, /* 영상번호를 파라메터로 보내기 */
 			success: function(result){ // 돌아오는 데이터가 유튜브 링크
 				// alert('성공');
@@ -1532,8 +1533,49 @@
 
 	// 신고 모달 띄우기
 	$('.myModal').on('click', function () {
-		$('#modalReport').modal('show');
-	})
+		//$('#modalReport').modal('show');
+		let reviewNumber = $(this).prev().val();
+		// 해당 댓글 내용, 유저 이름 불러오기 - AJAX
+		$.ajax({
+			type: "GET",
+			url: "/details/spoReviewAjax",
+			data: {reviewNumber : reviewNumber},
+			success: function(data) {
+				// alert("성공!!!");
+				console.log(data);
+				$('#reportUser').html(data.userNickname);
+				$('#reportReview').html(data.reviewContent);
+				$('#modalReport').modal('show');
+			},
+			error: function(err) {
+				alert("에러 발생!!!!");
+				console.log("에러 : ", err);
+			}
+		});
+	});
+
+	// 신고 등록
+	$('#reportInsertReview').on('click', function(){
+		// alert('ok');
+		let reportContent = $('.reportContent option:selected').val();
+		// console.log(reportContent);
+		$.ajax({
+			type: "POST",
+			url: "/details/reportInsert",
+			data: {
+				reportContent : reportContent
+			},
+			success: function (value){
+				alert('신고 등록 성공!');
+				console.log(value);
+			},
+			error: function(err) {
+				alert('신고 등록 오류!!');
+				console.log("신고 등록 오류 : ", err);
+			}
+		});
+
+	});
 
 	// 즐겨찾기 모달 띄우기
 	$('.myModalLike').on('click', function(){
@@ -1558,7 +1600,7 @@
 
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8080/details/reviewAjax",
+			url: "/details/reviewAjax",
 			data: {
 				userNumber : 1,
 				reviewContent : reviewContent,
@@ -1570,7 +1612,7 @@
 				console.log(data);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
-				location.href="http://localhost:8080/details/${Content.contentNumber}"
+				location.href="/details/${Content.contentNumber}"
 			},
 			error: function(err){
 				alert("서버 문제로 오류가 발생하였습니다.");
@@ -1591,7 +1633,7 @@
 
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8080/details/spoReviewAjax",
+			url:"/details/spoReviewAjax",
 			data: {
 				reviewNumber : reviewNumber
 			},
