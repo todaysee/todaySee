@@ -30,4 +30,8 @@ public class Images {
     @Column(name = "images_upload_date")
     Date imagesUploadDate; // 파일 저장날짜
 
+    @ManyToOne // 다:1
+    @JoinColumn(name="user_number")
+    private UserVO user;
+
 }

@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="text-center">작성 시간 : ${review.reviewDate}</div>
+                                            <div class="text-center">작성 시간 : ${review.user.userNickname}</div>
                                         </div>
                                         <div class="join-groups-btn">
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal${review.reviewNumber}">

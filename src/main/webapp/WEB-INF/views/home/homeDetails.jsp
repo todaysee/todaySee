@@ -530,7 +530,7 @@
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																유저닉네임구현예정
+																${sessionScope.userNumber}
 															</h3>
 															<span>
 																<input id="input-9" name="input-9" required class="rating-loading">

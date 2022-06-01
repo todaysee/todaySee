@@ -23,8 +23,15 @@ public class Bookmark {
     String bookmarkName;
 
     @CreationTimestamp
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="bookmark_date")
     Date bookmarkDate;
 
+    @ManyToOne // 다:1
+    @JoinColumn(name="user_number")
+    private UserVO user;
+
+    @ManyToOne // 다:1
+    @JoinColumn(name="content_number")
+    private Content content;
 }
