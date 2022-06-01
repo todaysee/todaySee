@@ -83,13 +83,7 @@ public class UserController {
     @PostMapping("/emailCheck")
     @ResponseBody
 	 public String emailCheck(UserVO user) {
-    	UserVO result = userServiceImpl.emailCheck(user.getUserEmail());
-		 String message = "";
-		 if(result == null) {
-			 message = "Y";
-		 } 
-		 
-		 return message;
+    	return userServiceImpl.emailCheck(user.getUserEmail());
 	 }
 	 
      // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 

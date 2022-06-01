@@ -1,9 +1,11 @@
 package com.todaySee.home.service;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.persistence.UserRepository;
@@ -35,16 +37,16 @@ public class UserServiceImpl implements UserService {
 	}
 		return null;
 	}
-
+	
 	//email 중복체크 
 	@Override
-	public UserVO emailCheck(String userEmail) {
-			return userRepository.findByUserEmail(userEmail);
+	public String emailCheck(String userEmail) {
+		UserVO result = userRepository.findByUserEmail(userEmail);
+		String message = "";
+		if(result == null) {
+			 message = "Y";
+		 } 
+		return message;
+	}
 	}
 
-	
-	
-	
-	
-	
-}
