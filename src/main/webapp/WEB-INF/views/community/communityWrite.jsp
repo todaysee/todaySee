@@ -64,10 +64,15 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
+							
 							<form>
+							<div class="form-group">
+									<textarea name="title" class="form-control titlebox input-search" id="titlebox"
+										placeholder="제목을 입력하세요."></textarea>
+								</div>
 								<div class="form-group">
-									<textarea name="message" class="form-control"
-										placeholder="내용을 적어주세요."></textarea>
+									<textarea name="content" class="form-control"
+										placeholder="내용을 입력하세요."></textarea>
 								</div>
 								<ul
 									class="button-group d-flex justify-content-between align-items-center">
