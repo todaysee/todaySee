@@ -157,7 +157,13 @@ public class DetailsServiceImpl implements DetailsService{
         Report report = new Report();
         report.setReportContent(reportContent);
         report.setReportDate(new Date());
-        
+        System.out.println(report);
+    }
+
+    @Override
+    public List<HashMap<String, String>> getBookmarkList(Integer userNumber) {
+
+        return null;
     }
 
 

@@ -34,4 +34,7 @@ public interface DetailsService {
     // 리뷰 신고 입력
     public void insertReportReview(String reportContent);
 
+    // 유저 번호에 따른 즐겨찾기 가져오기
+    public List<HashMap<String,String>> getBookmarkList(Integer userNumber);
+
 }

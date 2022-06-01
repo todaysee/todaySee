@@ -50,6 +50,10 @@ public class DetailsController {
         System.out.println(reviewList);
         model.addAttribute("reviewList", reviewList);
 
+        /* 현재 로그인 중인 유저의 즐겨찾기 모두 가져오기 */
+        Integer userNumber = 1;
+        detailsService.getBookmarkList(userNumber);
+
         return "/home/homeDetails";
     }
 
