@@ -17,7 +17,7 @@ public class ReviewDtoConverter {
         reviewDto.setReviewSpoiler(review.getReviewSpoiler());
         reviewDto.setContent(review.getContent());
         reviewDto.setUser(review.getUser());
-        reviewDto.setReport(review.getReport());
+        //reviewDto.setReport(review.getReport());
 
         return reviewDto;
     }
