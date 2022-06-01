@@ -52,11 +52,11 @@
 
             <div class="events-inner-box-style d-flex justify-content-between align-items-center">
                 <div class="title">
-                    <h3>사용자님이 생성한 보고싶어요 리스트</h3>
+                    <h3>${user.userNickname} 님의 리뷰 목록</h3>
                 </div>
 
                 <div class="events-search-box">
-                    <input type="text" class="input-search" id="search" placeholder="리뷰 검색하기">
+                    <input type="text" class="input-search" id="search" placeholder="영상 제목 검색">
                 </div>
             </div>
 

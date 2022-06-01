@@ -10,7 +10,8 @@
 </head>
 <body>
 		<hr/>
-		<a href="testSessionLogin">로그인</a>
+		<a href="testSessionLogin">1번 로그인</a>
+		<a href="testSessionLogin2">2번 로그인</a>
 		<a href="testSessionLogout">로그아웃</a>
 		<h1>세션로그인 : ${sessionScope.userNumber}</h1>
 		<hr/>

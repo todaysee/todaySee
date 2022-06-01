@@ -2,6 +2,7 @@ package com.todaySee.home.service;
 
 import com.todaySee.domain.*;
 import com.todaySee.persistence.ContentRepository;
+import com.todaySee.persistence.ReviewJpaRepository;
 import com.todaySee.persistence.ReviewRepository;
 import com.todaySee.persistence.UserRepository;
 import org.json.simple.JSONObject;
@@ -23,7 +24,7 @@ public class DetailsServiceImpl implements DetailsService{
     private ContentRepository contentRepo;
 
     @Autowired
-    private ReviewRepository reviewRepo;
+    private ReviewJpaRepository reviewJpaRepo;
 
     @Autowired
     private UserRepository userRepo;
@@ -93,7 +94,7 @@ public class DetailsServiceImpl implements DetailsService{
 //        Content content = contentRepo.findById(contentNumber).get(); /* 컨텐츠 번호에 따른 컨텐츠 VO 내용 가져오기 */
 //        List<Review> reviewList = content.getReviews(); /* content에 담긴 review 리스트 가져오기 */
 
-        List<Review> reviewList = reviewRepo.findByContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 번호에 따른 리뷰 가져오기 */
+        List<Review> reviewList = reviewJpaRepo.findByContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 번호에 따른 리뷰 가져오기 */
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
@@ -129,7 +130,7 @@ public class DetailsServiceImpl implements DetailsService{
         review.setReviewDate(day); /* 날짜 시간 저장 */
         review.setContent(contentRepo.findById(contentNumber).get()); /* 작성된 리뷰의 영상 */
         review.setUser(userRepo.findById(userNumber).get()); /* 작성한 유저 */
-        reviewRepo.save(review); /* Repository 로 DB에 저장 */
+        reviewJpaRepo.save(review); /* Repository 로 DB에 저장 */
 
     }
 
@@ -141,7 +142,7 @@ public class DetailsServiceImpl implements DetailsService{
     @Override
     public JSONObject getReview(Integer reviewNumber) {
 
-        Review review = reviewRepo.findById(reviewNumber).get();
+        Review review = reviewJpaRepo.findById(reviewNumber).get();
 
         JSONObject reviewObj = new JSONObject();
         reviewObj.put("userNickname", review.getUser().getUserNickname());
