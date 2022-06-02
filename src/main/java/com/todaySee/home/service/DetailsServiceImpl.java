@@ -1,14 +1,13 @@
 package com.todaySee.home.service;
 
 import com.todaySee.domain.*;
-import com.todaySee.persistence.ContentRepository;
-import com.todaySee.persistence.ReviewJpaRepository;
-import com.todaySee.persistence.ReviewRepository;
-import com.todaySee.persistence.UserRepository;
+import com.todaySee.persistence.*;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +26,13 @@ public class DetailsServiceImpl implements DetailsService{
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private ReviewReportRepository reviewReportRepo;
+
+    @Autowired
+    private BookmarkRepository bookmarkRepo;
+
 
     /**
      * ID(PK)값에 따른 Content 상세정보
@@ -89,15 +95,11 @@ public class DetailsServiceImpl implements DetailsService{
     public List<HashMap<String, String>> getReviewList(Integer contentNumber) {
         List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴 시킬 형태, 변수 */
 
-//        Content content = contentRepo.findById(contentNumber).get(); /* 컨텐츠 번호에 따른 컨텐츠 VO 내용 가져오기 */
-//        List<Review> reviewList = content.getReviews(); /* content에 담긴 review 리스트 가져오기 */
-
         List<Review> reviewList = reviewJpaRepo.findByContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 번호에 따른 리뷰 가져오기 */
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
-//            UserVO user = userRepo.findByReviews(review); /* 해당 리뷰를 쓴 유저를 찾기 */
-//            // 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태
+            // 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
             map.put("userName", review.getUser().getUserNickname()); /* 유저 닉네임 저장 */
             map.put("reviewNumber", Integer.toString(review.getReviewNumber())); /* 리뷰 번호 저장 */
             map.put("reviewContent", review.getReviewContent()); /* 리뷰 내용 저장 */
@@ -105,6 +107,7 @@ public class DetailsServiceImpl implements DetailsService{
             map.put("reviewDate", df.format(review.getReviewDate())); /* 리뷰 작성 날짜 - String 형으로 변환 */
             map.put("reviewLike", Integer.toString(review.getReviewLike())); /* 리뷰 좋아요 = String 형으로 변환 */
             map.put("reviewSpoiler", Integer.toString(review.getReviewSpoiler())); /* 리뷰 스포일러 상태 - String 형으로 변환 */
+            map.put("reviewRating", Float.toString(review.getReviewGrade())); /* 리뷰 평점 - String 형으로 변환 */
             returnList.add(map); /* 값을 모두 담은 HashMap를 List에 담기 */
         }
 
@@ -118,7 +121,7 @@ public class DetailsServiceImpl implements DetailsService{
      * @param reviewSpoiler : 스포일러 여부 (스포일러체크하면 1, 체크안하면 0)
      * @param contentNumber : 해당 리뷰를 쓴 컨텐츠 번호
      */
-    public void insertReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber) {
+    public void insertReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber, float reviewRating) {
 
         Date day = new Date();
         Review review = new Review(); /* 값을 저장할 Review 객체 */
@@ -126,6 +129,7 @@ public class DetailsServiceImpl implements DetailsService{
         review.setReviewSpoiler(reviewSpoiler); /* 리뷰 스포일러 여부 저장 */
         review.setReviewLike(0); /* 리뷰 좋아요 수 0으로 저장 */
         review.setReviewDate(day); /* 날짜 시간 저장 */
+        review.setReviewGrade(reviewRating); /* 리뷰 별점 저장 */
         review.setContent(contentRepo.findById(contentNumber).get()); /* 작성된 리뷰의 영상 */
         review.setUser(userRepo.findById(userNumber).get()); /* 작성한 유저 */
         reviewJpaRepo.save(review); /* Repository 로 DB에 저장 */
@@ -135,7 +139,7 @@ public class DetailsServiceImpl implements DetailsService{
     /**
      * 리뷰 번호에 따른 리뷰 가져오기
      * @param reviewNumber : 리뷰 번호
-     * @return JSONObject :
+     * @return JSONObject : JSON 객체로 변환시킨 데이터
      */
     @Override
     public JSONObject getReview(Integer reviewNumber) {
@@ -143,12 +147,65 @@ public class DetailsServiceImpl implements DetailsService{
         Review review = reviewJpaRepo.findById(reviewNumber).get();
 
         JSONObject reviewObj = new JSONObject();
+        reviewObj.put("userNickname", review.getUser().getUserNickname());
         reviewObj.put("reviewNumber", Integer.toString(review.getReviewNumber()));
         reviewObj.put("reviewContent", review.getReviewContent());
 
         return reviewObj;
     }
 
+    /**
+     * 리뷰를 신고한 이유, 신고받은 리뷰번호를 리뷰신고 테이블에 저장
+     * @param reviewReportContent : 리뷰를 신고한 이유
+     * @param reportReviewNumber : 신고받은 리뷰 번호
+     */
+    @Override
+    public void insertReviewReport(String reviewReportContent, Integer reportReviewNumber) {
+        Review review = reviewJpaRepo.getById(reportReviewNumber); /* 리뷰 번호로 리뷰 가져오기 */
+
+        ReviewReport reviewReport = new ReviewReport(); /* 저장할 리뷰신고 객체(VO) 가져오기 */
+        // 신고대상, 신고내용, 신고날짜, 신고상태, 리뷰번호
+        reviewReport.setUser(review.getUser()); /* 신고한 리뷰를 작성한 유저 */
+        reviewReport.setReviewReportContent(reviewReportContent); /* 리뷰를 신고한 이유 */
+        reviewReport.setReviewReportDate(new Date()); /* 신고 날짜 */
+        reviewReport.setReviewReportState(0); /* 신고 상태 (0. 신고접수, 1. 신고처리중, 2. 신고처리완료) */
+        reviewReport.setReview(review); /* 신고받은 리뷰 */
+        reviewReportRepo.save(reviewReport); /* 저장 */
+    }
+
+    /**
+     * 유저 번호에 따른 즐겨찾기 리스트 가져오기
+     * @param userNumber : 유저 번호
+     * @return List<HashMap<String, String>> : 리스트에 key 값으로 value 를 저장해 담아 리턴
+     */
+    @Override
+    public List<HashMap<String, String>> getBookmarkList(Integer userNumber) {
+        List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴할 리스트 생성 */
+
+        List<Bookmark> bookmarkList = bookmarkRepo.findByUser(userRepo.findById(userNumber).get()); /* 유저번호에 따른 즐겨찾기 가져오기 */
+        for(Bookmark bookmark : bookmarkList) { /* 즐겨찾기 갯수만큼 반복 */
+            HashMap<String, String> map = new HashMap<String, String>(); /* 리스트 안에 담을 HashMap 생성 */
+            map.put("bookmarkName", bookmark.getBookmarkName()); /* 즐겨찾기 이름 저장 */
+            returnList.add(map); /* 리스트에 저장 */
+        }
+
+        return returnList;
+    }
+
+    /**
+     * 유저번호와 즐겨찾기 이름을 즐겨찾기 추가
+     * @param bookmarkName : 즐겨찾기 이름
+     * @param userNumber : 유저 번호
+     */
+    @Override
+    public void insertBookmark(String bookmarkName, Integer userNumber){
+        Bookmark bookmark = new Bookmark();
+        bookmark.setBookmarkName(bookmarkName);
+        bookmark.setBookmarkDate(new Date());
+        bookmark.setBookmarkState(0);
+        bookmark.setUser(userRepo.findById(userNumber).get());
+        bookmarkRepo.save(bookmark);
+    }
 
 }
 
