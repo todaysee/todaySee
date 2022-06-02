@@ -64,9 +64,14 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
+
 							<form action="/communityBoardSave" method="post" >
 								<input type="hidden" name="communityCategory" value="${category}">
 								<input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
+                <div class="form-group">
+									<textarea name="title" class="form-control titlebox input-search" id="titlebox"
+										placeholder="제목을 입력하세요."></textarea>
+								</div>
 								<div class="form-group">
 									<textarea class="form-control"
 										placeholder="내용을 적어주세요." name="communityContent"></textarea>

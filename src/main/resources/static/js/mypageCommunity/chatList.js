@@ -27,13 +27,16 @@ var ws;
 	}
 
 	function createChatingRoom(res){
+		console.log(res)
 		if(res != null){
 			/*var tag = "<tr><th class='num'>순서</th><th class='room'>방 이름</th><th class='go'></th></tr>";*/
 			var tag = ''
 			var tag1 = ''
 			res.forEach(function(d, idx){
-				var rn = d.roomName.trim();
-				var roomNumber = d.roomNumber;
+				console.log(d)
+				
+				var rn = d.chatroomName.trim();
+				var roomNumber = d.chatroomNumber;
 				tag += '<div class="item d-flex justify-content-between align-items-center cricle">'+
 					'<div class="figure">'+
 						'<img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+

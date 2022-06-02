@@ -4,10 +4,12 @@ import com.todaySee.domain.Content;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.dto.ReviewDto;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,9 +28,18 @@ public interface DetailsService {
     public List<HashMap<String, String>> getReviewList(Integer contentNumber);
 
     // 리뷰 정보를 DB에 저장
-    public void insertReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber);
+    public void insertReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber, float reviewRating);
 
     // 리뷰 번호에 따른 리뷰
     public JSONObject getReview(Integer reviewNumber);
+
+    // 리뷰 신고 입력
+    public void insertReviewReport(String reviewReportContent, Integer reportReviewNumber);
+
+    // 유저 번호에 따른 즐겨찾기 가져오기
+    public List<HashMap<String, String>> getBookmarkList(Integer userNumber);
+
+    // 즐겨찾기 추가
+    public void insertBookmark(String bookmarkName, Integer userNumber);
 
 }
