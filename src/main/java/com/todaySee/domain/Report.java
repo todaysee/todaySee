@@ -29,5 +29,5 @@ public class Report {
     @Temporal(TemporalType.DATE)
     @Column(name = "report_date")
     Date reportDate;
-
+    
 }

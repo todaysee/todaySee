@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/adminlte.min.css">
 
 
 </head>
@@ -96,11 +96,11 @@
             <div class="card">
               <div class="card-header nav">
                 <ul class="tab-ul">
-                  
-                        <li class="nav-link active"><a href="/userReport">게시글 신고</a></li> 
-                   <li class="nav-link"><a href="/admin/communityReport">리뷰 신고</a></li>
-                   <li class="nav-link"><a href="/admin/reviewReport">댓글 신고</a></li>
-                   <li class="nav-link"><a href="/admin/commentsReport">대댓글 신고</a></li>
+
+                   <li class="nav-link active"><a href="/admin/communityReport">게시글 신고</a></li> 
+                   <li class="nav-link"><a href="/admin/reviewReport">리뷰 신고</a></li>
+                   <li class="nav-link"><a href="/admin/commentsReport">댓글 신고</a></li>
+                   <li class="nav-link"><a href="/admin/commentsCommentsReport">대댓글 신고</a></li>
                    
                    
                </ul>
@@ -126,16 +126,14 @@
                   </tr>
                   </thead>
                   <tbody>
-					<c:forEach items="${ reportList}" var="reportList">                  
                   <tr>
-                    <td>${ reportList.reportNumber}</td>
-                    <td>${ reportList.reportTarget}</td>
-                    <td>${ reportList.reportContent}</td>
-                    <td>${ reportList.reportDate}</td>
-                    <td>${reportList.reportState }</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <th><button class="btn btn-outline-danger">신고처리</button></th>
                   </tr>
-                  </c:forEach>
                   </tbody>
                   
                 </table>

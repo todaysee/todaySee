@@ -19,18 +19,18 @@
   <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/adminlte.min.css">
 
 
 </head>
 
       <style>
-        ul{
+        ul{				/*  tab 키 */
           list-style: none;
           margin: 0px;
           padding: 0px;
         }
-        li{				/* tab키 li 마우스 포인터 and margin처리 */
+        li{			/* tab키 li 마우스 포인터 and margin처리 */
           margin: 0px;
           margin-right: 20px;
           padding: 0px;
@@ -40,7 +40,6 @@
       </style>
 
 
-    
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -97,10 +96,12 @@
               <div class="card-header nav">
                 <ul class="tab-ul">
                   
-                        <li class="nav-link active"><a href="/userReport">게시글 신고</a></li> 
-                   <li class="nav-link"><a href="/admin/communityReport">리뷰 신고</a></li>
-                   <li class="nav-link"><a href="/admin/reviewReport">댓글 신고</a></li>
-                   <li class="nav-link"><a href="/admin/commentsReport">대댓글 신고</a></li>
+                       <li class="nav-link active"><a href="/admin/communityReport">게시글 신고</a></li> 
+                   <li class="nav-link"><a href="/admin/reviewReport">리뷰 신고</a></li>
+                   <li class="nav-link"><a href="/admin/commentsReport">댓글 신고</a></li>
+                   <li class="nav-link"><a href="/admin/commentsCommentsReport">대댓글 신고</a></li>
+                   
+                   
                    
                    
                </ul>
@@ -118,21 +119,21 @@
                   <thead> 
                   <tr>
                     <th>신고번호</th>
-                    <th>신고대상</th>
+                    <th>신고자</th>
                     <th>신고내용</th>
                     <th>신고날짜</th>
-                    <th>신고상태</th>
+                    <th>게시물제목</th>
                     <th>신고처리</th>
                   </tr>
                   </thead>
                   <tbody>
-					<c:forEach items="${ reportList}" var="reportList">                  
+                  <c:forEach items="${communityReport }" var="report">
                   <tr>
-                    <td>${ reportList.reportNumber}</td>
-                    <td>${ reportList.reportTarget}</td>
-                    <td>${ reportList.reportContent}</td>
-                    <td>${ reportList.reportDate}</td>
-                    <td>${reportList.reportState }</td>
+                    <td>${report.communityReportNumber }</td>
+                   <td>${report.user.userName }</td> 
+                    <td>${report.communityReportContent }</td>
+                    <td>${report.communityReportDate }</td>
+                    <td>${report.community.communityTitle }</td>
                     <th><button class="btn btn-outline-danger">신고처리</button></th>
                   </tr>
                   </c:forEach>

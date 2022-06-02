@@ -65,7 +65,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/userReport" class="nav-link" id="admin">
+                <a href="/admin/communityReport" class="nav-link" id="admin">
                   <i class="far fa-circle nav-icon"></i>
                   <p>신고관리</p>
                 </a>
