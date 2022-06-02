@@ -16,7 +16,7 @@ public interface HomeService {
 	 */
 	Page<Content> getGenresContentList(Integer genreNumber, Pageable paging);
 	
-	Content RecommendedContent(Integer contentNumber);
+	List<Content> RecommendedContentList();
 	
 	List<Content> newContent();
 	
