@@ -1,6 +1,8 @@
 package com.todaySee.admin.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,11 +19,20 @@ import com.todaySee.admin.persistence.AdminContentRepository;
 import com.todaySee.admin.persistence.AdminReportRepository;
 import com.todaySee.admin.persistence.AdminUserRepository;
 import com.todaySee.admin.persistence.TransactionalRepository;
+import com.todaySee.domain.CommentsCommentsReport;
+import com.todaySee.domain.CommentsReport;
+import com.todaySee.domain.CommunityReport;
 import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Report;
+import com.todaySee.domain.ReviewReport;
 import com.todaySee.domain.UserVO;
+import com.todaySee.persistence.CommentsCommentsReportRepository;
+import com.todaySee.persistence.CommentsReportRepository;
+import com.todaySee.persistence.CommentsRepository;
+import com.todaySee.persistence.CommunityReportRepository;
+import com.todaySee.persistence.ReviewReportRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -35,11 +46,22 @@ public class AdminServiceImpl implements AdminService {
 	 @Autowired
 	 private AdminReportRepository adminReportRepository;
 	 
-	 @Autowired 
-	 private TransactionalRepository transRepo;
+//	신고 Repo
+	@Autowired
+	private CommentsCommentsReportRepository coCommentReportRepo;
 	
+	@Autowired
+	private CommentsReportRepository commentReportRepo;
 		
-	 
+	@Autowired
+	private ReviewReportRepository reviewReportRepo;
+	
+	@Autowired
+	private CommunityReportRepository communityReportRepo; 
+	
+//	신고 Repo
+	
+	
 	
 	public List<UserVO> getUserList(UserVO user){
 		
@@ -52,42 +74,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	public List<Content> getAllContent(){
+	public List<Object[]> getAllContent(){
 		
-		
-//		List<HashMap<String,Object>> returnList = new ArrayList<HashMap<String,Object>>();		
-//		/* content = Content(~~ =~~, contentOtt=ContentOtt(~~=~~)) */
-//		for (  Content content : (List<Content>) adminContentRepository.findAll() ) {
-//			List<ContentOtt> contentOtt = content.getContentOtt();
-//			HashMap<String, Object> map = new HashMap<String,Object>();
-//			HashMap<String, Object> map2 = new HashMap<String,Object>();
-//			for( ContentOtt ott : contentOtt ) {
-//				
-//				String resultOtt= ott.getOtt().getOttName();
-//				
-//				map.put("ott", resultOtt);
-//				map.put("contentTitle",content.getContentTitle());
-//				map.put("contentAge", content.getContentAge());
-//				map.put("contentRunningTime", content.getContentRunningTime());
-//				map.put("contentReleaseDate", content.getContentReleaseDate());
-//				map.put("contentNumber", content.getContentNumber());
-//				
-//				returnList.add(map);
-//			}
-//			
-//			for (Content content2 : (List<Content>) adminContentRepository.findAll() ) {
-//				List<ContentGenre> contentGenre = content2.getContentGenre();
-//				for (ContentGenre genre : contentGenre) {
-//					
-//					String genre2 = genre.getGenre().getGenreName();
-//					
-//					map2.put("genre", genre2);
-//					
-//					returnList.add(map2);
-//				}
-//			}
-//		}
-		return (List<Content>) adminContentRepository.findAll();
+		return adminContentRepository.getContent();
 		
 	}
 	public Content getContentDetails(@PathVariable Integer contentNumber){
@@ -134,9 +123,39 @@ public class AdminServiceImpl implements AdminService {
 		
 		
 		adminContentRepository.save(content);
+	}
+	
+	public List<CommunityReport> getCommunityreport(){
+		List<CommunityReport> list = (List<CommunityReport>) communityReportRepo.findAll();
+		
+		
+		
+		
+		return list;
 		
 		
 	}
+	
+	public List<CommentsReport> getCommentsReport(){
+		
+		
+		return (List<CommentsReport>) commentReportRepo.findAll();
+	}
+	
+	public List<CommentsCommentsReport> getCommentsCommentsReport(){
+		
+		return (List<CommentsCommentsReport>) coCommentReportRepo.findAll();
+		
+	}
+	
+	public List<ReviewReport> getReviewReport(){
+		return (List<ReviewReport>) reviewReportRepo.findAll();
+		
+	}
+	
+	
+	
+	
 	
 	
 }

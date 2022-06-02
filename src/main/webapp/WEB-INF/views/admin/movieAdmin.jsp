@@ -381,26 +381,19 @@
                   
                   
                    <c:forEach items="${contentList}" var="contentList">
-                  <c:if test="${contentList.contentState == null }">
-                  <tr class="contentTable" bca="${contentList.contentNumber}">
-                    <td>${contentList.contentTitle }</td>
+                  <tr class="contentTable" bca="${contentList[0]}">
+                    <td>${contentList[8]}</td>
                     <td>
-                     <c:forEach items="${contentList.contentOtt}" var="contentOtt">
-                    ${contentOtt.ott.ottName} 
-                    </c:forEach>  
+                    ${contentList[11]} 
                     </td>
-                    <td>${contentList.contentAge }</td>
-                    <td> ${contentList.contentRunningTime }</td>
-                    <td>${contentList.contentReleaseDate } </td>
+                    <td>${contentList[1] }</td>
+                    <td> ${contentList[7] }</td>
+                    <td>${contentList[6] } </td>
                     
                     <td>
-                      <c:forEach items="${contentList.contentGenre }" var="contentGenre">
-                    ${contentGenre.genre.genreName } 
-                    </c:forEach>  
+                    ${contentList[10] } 
                     </td>
-                    <!-- <button class="btn btn-outline-danger" >삭제</button> -->
                   </tr>
-                  </c:if>
                   </c:forEach> 
                  </tbody>
                 </table>

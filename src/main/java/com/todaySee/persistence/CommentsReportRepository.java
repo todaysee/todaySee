@@ -2,5 +2,8 @@ package com.todaySee.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CommentsReportRepository extends CrudRepository<CommunityReportRepository, Integer> {
+import com.todaySee.domain.CommentsReport;
+import com.todaySee.domain.CommunityReport;
+
+public interface CommentsReportRepository extends CrudRepository<CommentsReport, Integer> {
 }

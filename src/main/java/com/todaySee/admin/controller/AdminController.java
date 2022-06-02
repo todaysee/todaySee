@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.todaySee.admin.service.AdminService;
 import com.todaySee.admin.service.AdminServiceImpl;
+import com.todaySee.domain.Community;
+import com.todaySee.domain.CommunityReport;
 import com.todaySee.domain.Content;
 
 import com.todaySee.domain.ContentGenre;
@@ -70,13 +72,13 @@ public class AdminController {
     }
     
     
-    @GetMapping("/userReport")
-    public String adminTable(Model m ) {
-    	
-    	m.addAttribute("reportList", adminService.getReportList());
-    	
-    	return "admin/userReport";
-    }
+//    @GetMapping("/userReport")
+//    public String adminTable(Model m ) {
+//    	
+//    	m.addAttribute("reportList", adminService.getReportList());
+//    	
+//    	return "admin/userReport";
+//    }
     
     
 	/**
@@ -125,6 +127,7 @@ public class AdminController {
 	}
 
 	
+	
 	/**
 	 * @param Model m : 전체 컨텐츠 영상 리스트 값 전달
 	 * @return view 페이지 movieAdmin페이지로 이동
@@ -132,8 +135,13 @@ public class AdminController {
 	@GetMapping("/movieAdmin")
 	public String movieAdmin(Model m) {
 		m.addAttribute("contentList",adminService.getAllContent());
+		
 		return "admin/movieAdmin";
 	}
+	
+	
+	
+	
 	//@RequestMapping(value="/contentDeleteUpdate/{contentNumber}",method = RequestMethod.PUT )
 	@PutMapping("admin/contentDeleteUpdate")	// 넘어가는 값이 폼태그 안에 있는 값으로 넘어가기 때문에 어쩔수 없이 url 주소가아니라 변수로 받아야함
 	public String contentDeleteUpdate( Integer contentNumber) {
@@ -153,5 +161,40 @@ public class AdminController {
 	}
 	
 	
+	
+	@GetMapping("/admin/communityReport")
+	public String adminCommunityReport(Model m) {
+		m.addAttribute("communityReport",adminService.getCommunityreport());
+		
+		
+		return "/admin/communityReport";
+	}
+	
+	
+	
+	@GetMapping("/admin/reviewReport")
+	public String adminReviewReport(Model m) {
+		m.addAttribute("reviewReport",adminService.getReviewReport());
+		
+		return "/admin/reviewReport";
+	}
+	
+	
+	
+	@GetMapping("/admin/commentsReport")
+	public String adminCommentsReport(Model m) {
+		m.addAttribute("commentsReport",adminService.getCommentsReport());
+		
+		return "/admin/commentsReport";
+	}
+	
+	
+	
+	@GetMapping("/admin/commentsCommentsReport")
+	public String adminCommentsCommentsReport(Model m) {
+		m.addAttribute("commentsCommentsReport",adminService.getCommentsCommentsReport());
+		
+		return "/admin/commentsCommentsReport";
+	}
 
 }

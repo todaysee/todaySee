@@ -28,7 +28,7 @@ $(function(){
 		}
 
 
-		if('유저 신고관리' == page){
+		if('신고관리' == page){
 			$('#clickChart').addClass('menu-open')
 			$('#clickAdmin').addClass('menu-open')
 			$('#titleAdmin').addClass('active')
