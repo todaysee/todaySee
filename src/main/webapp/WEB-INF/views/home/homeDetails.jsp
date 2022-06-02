@@ -415,10 +415,10 @@
 								<div id="change" class="gen-episode-contain">
 									<div class="gentech-tv-show-img-holder">
 										<div class="gen-episode-img">
-											<c:if test="${Content.contentMainImagesUrl ne 'none Main img'}">
-												<img src="${Content.contentMainImagesUrl}" alt="${Content.contentTitle}">
+											<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
+												<img src="${content.contentMainImagesUrl}" alt="${content.contentTitle}">
 											</c:if>
-											<c:if test="${Content.contentMainImagesUrl eq 'none Main img'}">
+											<c:if test="${content.contentMainImagesUrl eq 'none Main img'}">
 												<img src="/images/home/cat.jpg" alt="none Main img">
 											</c:if>
 											<div id="noYoutube" class="gen-movie-action">
@@ -433,7 +433,7 @@
 							<div class="gen-single-movie-info">
 								<div class="row">
 									<div class="col-xl-6 col-lg-6 col-md-6">
-										<h2 class="gen-title">${Content.contentTitle}</h2>
+										<h2 class="gen-title">${content.contentTitle}</h2>
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 										<div class="gen-movie-action">
@@ -447,15 +447,10 @@
 								</div>
 								<div class="gen-single-meta-holder">
 									<ul>
-										<li class="gen-sen-rating">카테고리</li>
-										<li>
-											<i class="fas fa-eye">
-											</i>
-											<span>237 Views</span>
-										</li>
+										<li></li>
 									</ul>
 								</div>
-								<p>${Content.contentInfo}
+								<p>${content.contentInfo}
 								</p>
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
@@ -470,14 +465,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>${Content.contentAge}</span>
+												<span>${content.contentAge}</span>
 											</li>
 											<li><span>영상 시간 :</span>
-												<span>${Content.contentRunningTime}</span>
+												<span>${content.contentRunningTime}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>${Content.contentReleaseDate}</span>
+												<span>${content.contentReleaseDate}</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -501,7 +496,7 @@
 											<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
 											</li>
 											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-											<input id="text" type="hidden" value="http://192.168.0.1:8080/details/${Content.contentNumber}" style="width:80%" />
+											<input id="text" type="hidden" value="http://192.168.0.1:8080/details/${content.contentNumber}" style="width:80%" />
 											<li><div id="qrcode" style="width:50px; height:50px;"></div></li>
 										</ul>
 									</div>
@@ -523,7 +518,7 @@
 										<!-- 리뷰 작성 -->
 										<div class="send-item">
 											<div class="padding-5">
-												<form name="comment" id="comment" action="/details/${Content.contentNumber}" method="post">
+												<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
 													<div class="row">
 														<div class="col-xl-1 col-lg-1 col-md-1">
 															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
@@ -533,7 +528,7 @@
 																${sessionScope.userNumber}
 															</h3>
 															<span>
-																<input id="input-9" name="input-9" required class="rating-loading">
+																<input id="reviewRating" name="reviewRating" required class="rating-loading">
 															</span>
 														</div>
 														<div class="text col-xl-7 col-lg-7 col-md-7">
@@ -574,7 +569,7 @@
 																		</h3>
 																		<span>${review.reviewDate}</span>
 																		<span>
-																			<input class="input-4" name="input-4" value="2.5" class="rating-loading">
+																			<input class="review_rating" name="reviewRating" value="${review.reviewRating}" class="rating-loading">
 																		</span>
 																	</div>
 																	<div class="text col-xl-8 col-lg-8 col-md-8">
@@ -1353,6 +1348,7 @@
 			</div>
 			<div class="modal-body">
 				<form>
+					<input type="hidden" id="reportReviewNumber" />
 					<div class="padding-6">
 						<div class="gen-after-report">
 							<div class="gen-extra-report">
@@ -1398,7 +1394,7 @@
 
 <!--========== Like Modal ==============-->
 <div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalBookmarkLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="modalBookmarkLabel" >추가할 즐겨찾기 선택</h5>
@@ -1415,37 +1411,27 @@
 							</div>
 							<div class="col-xl-7 col-lg-7 col-md-7">
 								<p class="comment-form-author">
-									<input type="text" placeholder="새 즐겨찾기 이름">
+									<input type="text" id="insertBookmarkName" placeholder="새 즐겨찾기 이름" required />
 								</p>
 							</div>
 							<div class="col-xl-2 col-lg-2 col-md-2 gen-movie-like">
-								<a class="gen-btn-new"><i class="fa fa-plus"></i></a>
+								<a id="bookmarkInsert" class="gen-btn-new"><i class="fa fa-plus"></i></a>
 							</div>
 						</div>
 					</form>
 				</div>
 				<form>
 					<div class="padding-2">
-						<div class="gen-movie-action">
+						<div id="appendBookmark" class="gen-movie-action">
+							<c:forEach items="${bookmarkList}" var="bookmark">
 							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check1" value="2" class="checkbox2">
-								<label for="check1">디자인체크박스1</label>
+								<input type="checkbox" name="check2" id="${bookmark.bookmarkName}" value="${bookmark.bookmarkName}" class="checkbox2">
+								<label for="${bookmark.bookmarkName}">${bookmark.bookmarkName}</label>
 							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check2" value="2" class="checkbox2">
-								<label for="check2">디자인체크박스2</label>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check3" value="2" class="checkbox2">
-								<label for="check3">디자인체크박스3</label>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check4" value="2" class="checkbox2">
-								<label for="check4">디자인체크박스4</label>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
-					<div class="col-md-4 ml-auto">
+					<div class="col-md-5 ml-auto">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 						<button type="button" class="btn btn-danger">추가</button>
 					</div>
@@ -1520,7 +1506,7 @@
 
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
-		let contentNum = ${Content.contentNumber} /* 현재 영상 번호 */
+		let contentNum = ${content.contentNumber} /* 현재 영상 번호 */
 		$.ajax({
 			type: "GET",
 			url: "/details/Ajax",
@@ -1549,13 +1535,13 @@
 	}); // youtube button function end
 
 	// 리뷰 별점 - plugin 사용
-	$('#input-9').rating({
+	$('#reviewRating').rating({
 		step: 0.5,
 		starCaptions: {0.5: '0.5', 1: '1.0', 1.5: '1.5', 2: '2.0', 2.5: '2.5', 3:'3.0', 3.5: '3.5', 4:'4.0', 4.5: '4.5', 5:'5.0'}
 	});
 
 	// 작성된 리뷰 별점 - plugin 사용
-	$('.input-4').rating("refresh", {
+	$('.review_rating').rating("refresh", {
 		disabled: true,
 		showClear: false,
 		displayOnly: true,
@@ -1576,6 +1562,7 @@
 			success: function(data) {
 				// alert("성공!!!");
 				console.log(data);
+				$('#reportReviewNumber').val(data.reviewNumber);
 				$('#reportUser').html(data.userNickname);
 				$('#reportReview').html(data.reviewContent);
 				$('#modalReport').modal('show');
@@ -1590,13 +1577,16 @@
 	// 신고 등록
 	$('#reportInsertReview').on('click', function(){
 		// alert('ok');
-		let reportContent = $('.reportContent option:selected').val();
-		// console.log(reportContent);
+		let reviewReportContent = $('.reportContent option:selected').val();
+		let reportReviewNumber = $('#reportReviewNumber').val();
+
+		console.log(reviewReportContent);
 		$.ajax({
 			type: "POST",
 			url: "/details/reportInsert",
 			data: {
-				reportContent : reportContent
+				reviewReportContent : reviewReportContent,
+				reportReviewNumber : reportReviewNumber
 			},
 			success: function (value){
 				alert('신고 등록 성공!');
@@ -1615,10 +1605,51 @@
 		$('#modalLike').modal('show');
 	});
 
-	// 즐겨찾기 선택
-	$('input[type=radio]').on('click', function(){
-		alert('ok');
+	// AJAX 새로운 즐겨찾기 추가
+	$('#bookmarkInsert').on('click', function(){
+		// alert('ok');
+		let bookmarkName;
+		if($('#insertBookmarkName').val() === "") {
+			alert("즐겨찾기 이름을 입력해주세요!");
+			$('#insertBookmarkName').focus();
+			return false;
+		} else {
+			bookmarkName = $('#insertBookmarkName').val();
+			$.ajax({
+				type: "POST",
+				url: "/details/bookmarkInsert",
+				data: {
+					bookmarkName: bookmarkName
+				},
+				datatype: "json",
+				success: function (data) {
+					alert("즐겨찾기 추가 성공!");
+					$('#insertBookmarkName').val("");
+					let jsonObj = JSON.stringify(data);
+					let jsondata = JSON.parse(jsonObj);
+					$('#appendBookmark').empty();
+					$.each(jsondata, function(k, v){
+						console.log(k, v.bookmarkName);
+						let checkbox = "<div class='checkbox'>" +
+											"<input type='checkbox' name='check2' id=" + v.bookmarkName + " value=" + v.bookmarkName + " class='checkbox2'>" +
+											"<label for=" + v.bookmarkName + ">" + v.bookmarkName + "</label>" +
+										"</div>";
+						// console.log(checkbox);
+						$('#appendBookmark').append(checkbox);
+					});
+				},
+				error: function (err) {
+					alert("즐겨찾기 추가 오류!!!");
+					console.log("즐겨찾기 추가 에러 : ", err);
+				}
+			});
+		}
 	});
+
+	// 즐겨찾기 선택
+	// $('input.checkbox2[name=]').on('click', function(){
+	// 	alert('ok');
+	// });
 
 	// 리뷰 submit Ajax
 	$('#submit').on('click', function(e){
@@ -1628,8 +1659,8 @@
 		if($('.reviewSpoiler').is(':checked')) {
 			reviewSpoiler = 1;
 		}
-		let contentNumber = ${Content.contentNumber}
-		// let rating = $('#input-9').val();
+		let contentNumber = ${content.contentNumber}
+		let reviewRating = $('#reviewRating').val();
 
 		$.ajax({
 			type: "POST",
@@ -1638,14 +1669,15 @@
 				userNumber : 1,
 				reviewContent : reviewContent,
 				reviewSpoiler : reviewSpoiler,
-				contentNumber : contentNumber
+				contentNumber : contentNumber,
+				reviewRating : reviewRating
 			},
 			success: function(data){
 				alert("리뷰가 등록되었습니다.");
 				console.log(data);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
-				location.href="/details/${Content.contentNumber}"
+				location.href="/details/${content.contentNumber}"
 			},
 			error: function(err){
 				alert("서버 문제로 오류가 발생하였습니다.");
@@ -1674,7 +1706,6 @@
 				// alert('스포일러 보이기 성공');
 				console.log(data);
 				// alert(btn);
-				$(btn).html();
 				$(btn).html(data.reviewContent);
 			},
 			error: function(err){
@@ -1684,9 +1715,6 @@
 		});
 
 	});
-
-	// AJAX 즐겨찾기 추가
-
 
 	// 리뷰 더보기
 	reviewMore();

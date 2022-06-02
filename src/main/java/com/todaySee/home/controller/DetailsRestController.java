@@ -5,6 +5,7 @@ import com.todaySee.domain.Content;
 import com.todaySee.home.dto.ReviewDto;
 import com.todaySee.home.service.DetailsService;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -43,8 +47,8 @@ public class DetailsRestController {
      * @return String 호출한 AJAX쪽으로 보낼 데이터
      */
     @PostMapping("/details/reviewAjax")
-    public String getReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber) {
-        detailsService.insertReview(userNumber, reviewContent, reviewSpoiler, contentNumber);
+    public String getReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber, float reviewRating) {
+        detailsService.insertReview(userNumber, reviewContent, reviewSpoiler, contentNumber, reviewRating);
         return "OK";
     }
 
@@ -58,12 +62,36 @@ public class DetailsRestController {
         return detailsService.getReview(reviewNumber);
     }
 
+    /**
+     * 리뷰 신고 Modal안에서 신고 등록 버튼을 클릭 시 호출
+     * 해당 리뷰 신고 INSERT
+     * @param reviewReportContent : 신고 내용
+     * @param reportReviewNumber : 신고하는 리뷰의 번호
+     * @return String : 성공 여부
+     */
     @PostMapping("/details/reportInsert")
-    public String insertReportReview(String reportContent) {
-        detailsService.insertReportReview(reportContent);
+    public String insertReviewReport(String reviewReportContent, Integer reportReviewNumber) {
+//        System.out.println(reviewReportContent);
+        detailsService.insertReviewReport(reviewReportContent, reportReviewNumber);
         return "ok";
     }
 
+    @PostMapping("/details/bookmarkInsert")
+    public JSONArray insertBookmark(String bookmarkName) {
+        /* 유저 번호는 세션처리해야함 */
+        Integer userNumber = 1;
+        detailsService.insertBookmark(bookmarkName, userNumber);
+
+        JSONArray array = new JSONArray();
+
+        List<HashMap<String, String>> list = detailsService.getBookmarkList(userNumber);
+        for(HashMap<String, String> map : list) {
+            JSONObject obj = new JSONObject(map);
+            array.add(obj);
+        }
+
+        return array;
+    }
 
 }
 

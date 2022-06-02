@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class DetailsController {
 
         /* 컨텐츠 상세 내용 가져오기 */
         Content contentVO = detailsService.getContentById(contentNumber);
-        model.addAttribute("Content", contentVO);
+        model.addAttribute("content", contentVO);
 
         /* 컨텐츠 장르 가져오기 */
         List<String> genre = detailsService.getContentGenre(contentNumber);
@@ -50,11 +51,12 @@ public class DetailsController {
         System.out.println(reviewList);
         model.addAttribute("reviewList", reviewList);
 
-        /* 현재 로그인 중인 유저의 즐겨찾기 모두 가져오기 */
-        Integer userNumber = 1;
-        detailsService.getBookmarkList(userNumber);
+        /* 즐겨찾기 불러오기 */
+        Integer userNumber = 1; /* Session으로 불러올 것 */
+        List<HashMap<String, String>> bookmarkList = detailsService.getBookmarkList(userNumber);
+        model.addAttribute("bookmarkList", bookmarkList);
 
-        return "/home/homeDetails";
+       return "/home/homeDetails";
     }
 
 }
