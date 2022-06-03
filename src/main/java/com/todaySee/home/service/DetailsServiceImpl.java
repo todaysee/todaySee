@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.awt.print.Book;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +34,10 @@ public class DetailsServiceImpl implements DetailsService{
     @Autowired
     private BookmarkRepository bookmarkRepo;
 
+    @Override
+    public UserVO getUser(Integer userNumber) {
+        return userRepo.findById(userNumber).get();
+    }
 
     /**
      * ID(PK)값에 따른 Content 상세정보
@@ -182,9 +187,10 @@ public class DetailsServiceImpl implements DetailsService{
     public List<HashMap<String, String>> getBookmarkList(Integer userNumber) {
         List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴할 리스트 생성 */
 
-        List<Bookmark> bookmarkList = bookmarkRepo.findByUser(userRepo.findById(userNumber).get()); /* 유저번호에 따른 즐겨찾기 가져오기 */
+        List<Bookmark> bookmarkList = bookmarkRepo.findByUserAndBookmarkStateNotAndContentIsNull(userRepo.findById(userNumber).get(), 2); /* 유저번호에 따른 즐겨찾기 가져오기 */
         for(Bookmark bookmark : bookmarkList) { /* 즐겨찾기 갯수만큼 반복 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 리스트 안에 담을 HashMap 생성 */
+            map.put("bookmarkNumber", Integer.toString(bookmark.getBookmarkNumber())); /* 즐겨찾기 번호 저장 */
             map.put("bookmarkName", bookmark.getBookmarkName()); /* 즐겨찾기 이름 저장 */
             returnList.add(map); /* 리스트에 저장 */
         }
@@ -193,18 +199,49 @@ public class DetailsServiceImpl implements DetailsService{
     }
 
     /**
-     * 유저번호와 즐겨찾기 이름을 즐겨찾기 추가
-     * @param bookmarkName : 즐겨찾기 이름
-     * @param userNumber : 유저 번호
+     * 즐겨찾기 생성
+     * @param bookmarkName : 생성할 즐겨찾기 이름
+     * @param userNumber : 생성한 유저
+     * @param contentNumber : 추가할 컨텐츠 번호호
+    */
+    @Override
+    public void insertBookmark(String bookmarkName, Integer userNumber, Integer contentNumber){
+        Bookmark bookmark = new Bookmark(); /* Bookmark 객체 생성 */
+        bookmark.setBookmarkName(bookmarkName); /* 즐겨찾기 이름 저장 */
+        bookmark.setBookmarkDate(new Date()); /* 생성날짜 저장 */
+        if(contentNumber == null) {
+            bookmark.setBookmarkState(0); /* 즐겨찾기 상태 (0. 비공개, 1. 공개, 2. 컨텐츠 저장) */
+        } else {
+            bookmark.setBookmarkState(2);
+        }
+        bookmark.setUser(userRepo.findById(userNumber).get()); /* 생성한 유저 정보 저장 */
+        if(contentNumber != null) { /* 컨텐츠 번호가 null이 아닐경우 */
+            bookmark.setContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 저장 */
+        }
+        bookmarkRepo.save(bookmark); /* 실제 DB 저장 */
+    }
+
+    /**
+     * 리뷰 좋아요 증가
+     * @param reviewNumber : 좋아요를 증가시킬 리뷰번호
+     * @return JSONObject : 화면에 증가된 좋아요 출력하기 위한 object
      */
     @Override
-    public void insertBookmark(String bookmarkName, Integer userNumber){
-        Bookmark bookmark = new Bookmark();
-        bookmark.setBookmarkName(bookmarkName);
-        bookmark.setBookmarkDate(new Date());
-        bookmark.setBookmarkState(0);
-        bookmark.setUser(userRepo.findById(userNumber).get());
-        bookmarkRepo.save(bookmark);
+    public JSONObject updateReviewLikeUp(Integer reviewNumber) {
+        Review review = reviewJpaRepo.findById(reviewNumber).get(); /* 리뷰번호에 따른 리뷰 가져오기 */
+
+        Integer beforeLike = review.getReviewLike(); /* 원래 저장되있던 좋아요 */
+        Integer afterLike = beforeLike + 1; /* 1 증가시킨 좋아요 */
+
+        review.setReviewLike(afterLike); /* 증가시킨 좋아요를 저장 */
+        reviewJpaRepo.save(review); /* update */
+
+        Review rvo = reviewJpaRepo.findById(reviewNumber).get(); /* 증가된 해당 리뷰 다시 가져오기 */
+        JSONObject returnObj = new JSONObject(); /* AJAX 로 리턴시키기 위해 JSON 객체 생성 */
+        returnObj.put("reviewNumber", rvo.getReviewNumber()); /* 리뷰 번호 저장 */
+        returnObj.put("reviewLike", rvo.getReviewLike()); /* 리뷰 좋아요 저장 */
+
+        return returnObj;
     }
 
 }

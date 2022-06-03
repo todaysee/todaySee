@@ -27,6 +27,19 @@
 		}
 		#end {display:none;}
 
+		.single-groups-card .groups-content .groups-info .text h2 {
+			font-size: 20px;
+			margin-bottom: 0;
+		}
+
+		.single-groups-card .groups-content .groups-info .text h2 a {
+			color: var(--black-color);
+		}
+
+		.single-groups-card .groups-content .groups-info .text h2 a:hover {
+			color: var(--main-color);
+		}
+
 	</style>
 </head>
 
@@ -54,329 +67,42 @@
 				<div class="title">
 					<h3>사용자님이 생성한 보고싶어요 리스트</h3>
 				</div>
-
-				<div class="events-search-box">
-					<input type="text" class="input-search" id="search" placeholder="리뷰 검색하기">
-				</div>
 			</div>
 
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="all-groups" role="tabpanel">
 					<div class="row">
 						<!-- 즐겨찾기 item -->
+						<c:forEach items="${bookmarkList}" var="bookmark">
 						<div class="col-lg-3 col-sm-6 book_mark_body">
 							<div class="single-groups-card">
 								<div class="groups-image">
 									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+										<c:if test="${empty bookmark.contentMainImg}">
+											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="defaultImage">
+										</c:if>
+										<c:if test="${not empty bookmark.contentMainImg}">
+											<img src="${bookmark.contentMainImg}" alt="${bookmark.bookmarkName}">
+										</c:if>
 									</a>
 								</div>
 								<div class="groups-content">
 									<div class="groups-info d-flex justify-content-between align-items-center">
 										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 										</a>
 										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
+											<h2><a href="/myPage/bookMark/${bookmark.bookmarkNumber}">${bookmark.bookmarkName}</a></h2>
 										</div>
 									</div>
 									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
+										<a href="/myPage/bookMark/${bookmark.bookmarkNumber}"><button type="button">즐겨찾기 보기</button></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- 즐겨찾기 item -->
-						<!-- 즐겨찾기 item -->
-						<div class="col-lg-3 col-sm-6 book_mark_body">
-							<div class="single-groups-card">
-								<div class="groups-image">
-									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-									</a>
-								</div>
-								<div class="groups-content">
-									<div class="groups-info d-flex justify-content-between align-items-center">
-										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
-										</a>
-										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/list/1">즐겨찾기 이름</a></h3>
-										</div>
-									</div>
-									<div class="join-groups-btn">
-										<button type="submit">즐겨찾기 보기</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 						<!-- 즐겨찾기 item -->
 					</div>
-					<!-- 즐겨찾기 item -->
 
 					<div class="load-more-posts-btn">
 						<a href="#"><i class="flaticon-loading" id="load">더 보기</i></a>
