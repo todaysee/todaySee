@@ -438,9 +438,11 @@
 									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 										<div class="gen-movie-action">
 											<div class="gen-btn-container text-right">
-												<a type="button" class="gen-button-like gen-button-flat myModalLike" data-bs-toggle="modal" data-bs-target="#modalLike">
-													<span class="text"><i class="fa fa-heart"></i> 보고싶어요</span>
-												</a>
+												<c:if test="${not empty sessionScope.userNumber}">
+													<a type="button" class="gen-button-like gen-button-flat myModalLike" data-bs-toggle="modal" data-bs-target="#modalLike">
+														<span class="text"><i class="fa fa-heart"></i> 보고싶어요</span>
+													</a>
+												</c:if>
 											</div>
 										</div>
 									</div>
@@ -516,34 +518,36 @@
 										</div>
 
 										<!-- 리뷰 작성 -->
-										<div class="send-item">
-											<div class="padding-5">
-												<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
-													<div class="row">
-														<div class="col-xl-1 col-lg-1 col-md-1">
-															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
-														</div>
-														<div class="send-content col-xl-3 col-lg-3 col-md-3">
-															<h3>
-																${sessionScope.userNumber}
-															</h3>
-															<span>
-																<input id="reviewRating" name="reviewRating" required class="rating-loading">
-															</span>
-														</div>
-														<div class="text col-xl-7 col-lg-7 col-md-7">
-															<textarea class="reviewContent" name="reviewContent" rows="3" cols="60" placeholder="이곳에 감상을 남겨주세요!"></textarea>
-														</div>
-														<div class="col-xl-1 col-lg-1 col-md-1 checkbox">
-															<input type="checkbox" id="spoiler" name="reviewSpoiler" class="checkbox2 reviewSpoiler" value="1"/><label for="spoiler">스포일러</label>
-															<div class="gen-btn-container">
-																<input type="submit" value="등록" id="submit"/>
+										<c:if test="${not empty sessionScope.userNumber}">
+											<div class="send-item">
+												<div class="padding-5">
+													<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
+														<div class="row">
+															<div class="col-xl-1 col-lg-1 col-md-1">
+																<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+															</div>
+															<div class="send-content col-xl-3 col-lg-3 col-md-3">
+																<h3>
+																	${sessionScope.userNumber}
+																</h3>
+																<span>
+																	<input id="reviewRating" name="reviewRating" required class="rating-loading">
+																</span>
+															</div>
+															<div class="text col-xl-7 col-lg-7 col-md-7">
+																<textarea class="reviewContent" name="reviewContent" rows="3" cols="60" placeholder="이곳에 감상을 남겨주세요!"></textarea>
+															</div>
+															<div class="col-xl-1 col-lg-1 col-md-1 checkbox">
+																<input type="checkbox" id="spoiler" name="reviewSpoiler" class="checkbox2 reviewSpoiler" value="1"/><label for="spoiler">스포일러</label>
+																<div class="gen-btn-container">
+																	<input type="submit" value="등록" id="submit"/>
+																</div>
 															</div>
 														</div>
-													</div>
-												</form>
+													</form>
+												</div>
 											</div>
-										</div>
+										</c:if>
 										<!-- 리뷰 작성 -->
 
 										<!-- 리뷰 item -->
@@ -568,6 +572,10 @@
 																			${review.userName}
 																		</h3>
 																		<span>${review.reviewDate}</span>
+																		&nbsp&nbsp&nbsp&nbsp&nbsp
+																		<i class="fa fa-thumbs-up">
+																		</i>
+																		<span class="like${review.reviewNumber}">${review.reviewLike}</span>
 																		<span>
 																			<input class="review_rating" name="reviewRating" value="${review.reviewRating}" class="rating-loading">
 																		</span>
@@ -589,7 +597,7 @@
 																		</c:if>
 																		<div class="text-right">
 																			<div class="gen-btn-container">
-																				<a type="button" class="gen-button-like" data-bs-toggle="modal" data-bs-target="#modalReport">
+																				<a type="button" class="gen-button-like reviewLikeUp" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
 																				</a>
 																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
@@ -1425,15 +1433,15 @@
 						<div id="appendBookmark" class="gen-movie-action">
 							<c:forEach items="${bookmarkList}" var="bookmark">
 							<div class="checkbox">
-								<input type="checkbox" name="check2" id="${bookmark.bookmarkName}" value="${bookmark.bookmarkName}" class="checkbox2">
-								<label for="${bookmark.bookmarkName}">${bookmark.bookmarkName}</label>
+								<input type="checkbox" name="check2" id="bookmark${bookmark.bookmarkNumber}" value="${bookmark.bookmarkName}" class="checkbox2 bookmark_check">
+								<label for="bookmark${bookmark.bookmarkNumber}">${bookmark.bookmarkName}</label>
 							</div>
 							</c:forEach>
 						</div>
 					</div>
 					<div class="col-md-5 ml-auto">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger">추가</button>
+						<button type="button" id="insertBookmarkContent" class="btn btn-danger">추가</button>
 					</div>
 				</form>
 			</div>
@@ -1623,16 +1631,16 @@
 				},
 				datatype: "json",
 				success: function (data) {
-					alert("즐겨찾기 추가 성공!");
+					// alert("즐겨찾기 추가 성공!");
 					$('#insertBookmarkName').val("");
 					let jsonObj = JSON.stringify(data);
 					let jsondata = JSON.parse(jsonObj);
 					$('#appendBookmark').empty();
 					$.each(jsondata, function(k, v){
-						console.log(k, v.bookmarkName);
+						console.log(k, v.bookmarkName, v.bookmarkNumber);
 						let checkbox = "<div class='checkbox'>" +
-											"<input type='checkbox' name='check2' id=" + v.bookmarkName + " value=" + v.bookmarkName + " class='checkbox2'>" +
-											"<label for=" + v.bookmarkName + ">" + v.bookmarkName + "</label>" +
+											"<input type='checkbox' name='check2' id=bookmark" + v.bookmarkNumber + " value=" + v.bookmarkName + " class='checkbox2 bookmark_check'>" +
+											"<label for=bookmark" + v.bookmarkNumber + ">" + v.bookmarkName + "</label>" +
 										"</div>";
 						// console.log(checkbox);
 						$('#appendBookmark').append(checkbox);
@@ -1647,9 +1655,32 @@
 	});
 
 	// 즐겨찾기 선택
-	// $('input.checkbox2[name=]').on('click', function(){
-	// 	alert('ok');
-	// });
+	$('#insertBookmarkContent').on('click', function(){
+		// alert('ok');
+		let bookmarkName = $('.bookmark_check:checked').val();
+		let bookmarkNumber = $('.bookmark_check:checked').attr('id');
+		bookmarkNumber = bookmarkNumber.replace("bookmark", "");
+		let contentNumber = ${content.contentNumber}
+
+		$.ajax({
+			type: "POST",
+			url: "/details/bookmarkContentInsert",
+			data: {
+				bookmarkNumber : bookmarkNumber,
+				bookmarkName : bookmarkName,
+				contentNumber : contentNumber
+			},
+			success: function (data) {
+				alert('컨텐츠 즐겨찾기 추가 성공!');
+				console.log(data);
+				$('#modalLike').modal('hide');
+			},
+			error: function (err) {
+				alert("컨텐츠 즐겨찾기 추가 실패!!!");
+				console.log("컨텐츠 즐겨찾기 추가 에러 : ", err);
+			}
+		});
+	});
 
 	// 리뷰 submit Ajax
 	$('#submit').on('click', function(e){
@@ -1732,6 +1763,31 @@
 			$('#reviewMore').css('display', 'none');
 		}
 	}
+
+	// 리뷰 마음에들어요 (좋아요 숫자 올리기)
+	$('.reviewLikeUp').on('click', function(){
+		// alert('ok');
+		let reviewNumber = $(this).next().val();
+		// alert(reviewNumber + " ::::: " + reviewLike);
+
+		$.ajax({
+			type: "POST",
+			url: "/details/reviewLikeUp",
+			data: {
+				reviewNumber : reviewNumber
+			},
+			success: function (data) {
+				// alert('마음에들어요 성공');
+				console.log(data.reviewNumber + "::::" + data.reviewLike);
+				let str = '.like' + data.reviewNumber;
+				$(str).text(data.reviewLike);
+			},
+			error: function (err) {
+				alert('마음에들어요 오류!!!!');
+				console.log("마음에들어요 오류 : ", err);
+			}
+		});
+	});
 
 </script>
 

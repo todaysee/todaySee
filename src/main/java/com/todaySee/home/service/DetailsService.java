@@ -15,7 +15,7 @@ import java.util.List;
 
 public interface DetailsService {
 
-   // ID(PK)값에 따른 Content 상세정보
+    // ID(PK)값에 따른 Content 상세정보
     public Content getContentById(Integer contentNumber);
 
     // ID(PK)값에 따른 genre 가져오기
@@ -40,6 +40,9 @@ public interface DetailsService {
     public List<HashMap<String, String>> getBookmarkList(Integer userNumber);
 
     // 즐겨찾기 추가
-    public void insertBookmark(String bookmarkName, Integer userNumber);
+    public void insertBookmark(String bookmarkName, Integer userNumber, Integer contentNumber);
+
+    // 리뷰 마음에들어요(좋아요) 증가
+    public JSONObject updateReviewLikeUp(Integer reviewNumber);
 
 }
