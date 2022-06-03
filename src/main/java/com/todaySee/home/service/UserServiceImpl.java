@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.todaySee.domain.UserVO;
-import com.todaySee.home.persistence.UserRepository;
+import com.todaySee.persistence.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

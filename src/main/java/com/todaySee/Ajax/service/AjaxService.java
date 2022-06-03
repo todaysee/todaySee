@@ -1,6 +1,6 @@
 package com.todaySee.Ajax.service;
 
-import com.todaySee.Ajax.dto.AjaxDto;
+import com.todaySee.dto.AjaxDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

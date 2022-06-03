@@ -29,6 +29,8 @@ public class Review {
     @Column(name = "review_spoiler")
     Integer reviewSpoiler;
 
+    @Column(name = "review_grade")
+    float reviewGrade;
 
     @ManyToOne // 다:1
     @JoinColumn(name="user_number")
@@ -37,11 +39,5 @@ public class Review {
     @ManyToOne // 다:1
     @JoinColumn(name="content_number")
     private Content content;
-
-
-
-    @OneToMany // 1:다
-    @JoinColumn(name="review_number")
-    private List<Report> report;
 
 }

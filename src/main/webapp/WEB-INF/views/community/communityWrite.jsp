@@ -64,15 +64,23 @@
 						</div>
 						<div class="news-feed news-feed-form">
 							<h3 class="news-feed-title">글쓰기</h3>
-							<form>
-								<div class="form-group">
-									<textarea name="message" class="form-control"
-										placeholder="내용을 적어주세요."></textarea>
+
+							<form action="/communityBoardSave" method="post" >
+								<input type="hidden" name="communityCategory" value="${category}">
+								<input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
+                <div class="form-group">
+									<textarea name="title" class="form-control titlebox input-search" id="titlebox"
+										placeholder="제목을 입력하세요."></textarea>
 								</div>
+								<div class="form-group">
+									<textarea class="form-control"
+										placeholder="내용을 적어주세요." name="communityContent"></textarea>
+								</div>
+
 								<ul
 									class="button-group d-flex justify-content-between align-items-center">
 									<li class="photo-btn">
-										<button type="submit">
+										<button type="button">
 											<i class="flaticon-gallery"></i> 사진
 										</button>
 									</li>
@@ -82,65 +90,47 @@
 								</ul>
 							</form>
 						</div>
-
-						<div class="news-feed news-feed-post">
-							<div
-								class="post-header d-flex justify-content-between align-items-center">
-								<div class="image">
-									<a href="my-profile.html"><img
-										src="/images/mypageCommunity/user/user-35.jpg"
-										class="rounded-circle" alt="image"></a>
-								</div>
-								<div class="info ms-3">
-									<span class="name community_title"><a
-										href="my-profile.html">제목</a></span>
-									<div class='row'>
-										<span class="small-text user_name col-md-9"><a href="#">작성자</a></span>
-										<span class="small-text col-md-3 write_date"><a
-											href="#">xxxx.xx.xx</a></span>
+						<c:forEach items="${communityBoardList}" var="board">
+							<div class="news-feed news-feed-post">
+								<div class="post-header d-flex justify-content-between align-items-center">
+									<div class="image">
+										<img src="/images/mypageCommunity/user/user-35.jpg" class="rounded-circle" alt="image">
+									</div>
+									<div class="info ms-3">
+										<span class="name community_title"><a href="my-profile.html">${board.communityCategory}</a></span>
+										<div class="row">
+											<span class="small-text user_name col-md-9"><a href="#">${board.user.userNickname}</a></span>
+											<span class="small-text col-md-3 write_date"><a href="#">${board.communityDate}</a></span>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="post-body">
-								<p>💗</p>
-								<div class="post-image">
-									<img src="/images/mypageCommunity/news-feed-post/post-2.jpg"
-										alt="image">
-								</div>
-								<ul
-									class="post-meta-wrap d-flex justify-content-between align-items-center">
-									<li class="post-react"><button class="community_like">
-											<i class="flaticon-like"></i><span>Like</span> <span
-												class="number">3 </span>
+								<div class="post-body">
+									<p>${board.communityContent}</p>
+									<div class="post-image">
+										<img src="/images/mypageCommunity/news-feed-post/post-2.jpg" alt="image">
+									</div>
+									<ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+										<li class="post-react"><button class="community_like">
+											<i class="flaticon-like"></i><span>Like</span> <span class="number">3 </span>
 										</button></li>
-									<li class="post-comment"><a href="#"><i
-											class="flaticon-comment"></i><span>Comment</span> <span
-											class="number">0 </span></a></li>
-									<li class="post-share"><a href="#"><i
-											class="flaticon-share"></i><span>Share</span> <span
-											class="number">0 </span></a></li>
-									<li><a type="button" class="gen-button-like myModal"
-										data-bs-toggle="modal" data-bs-target="#modalReport"> <span><i
-												class="fa fa-exclamation-triangle"></i>신고</span>
-									</a></li>
-								</ul>
-								<form class="post-footer">
-									<div class="footer-image">
-										<a href="#"><img
-											src="/images/mypageCommunity/user/user-2.jpg"
-											class="rounded-circle" alt="image"></a>
-									</div>
-									<div class="form-group">
-										<textarea name="message" class="form-control"
-											placeholder="내용을 적어주세요."></textarea>
+										<li class="post-comment"><a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span class="number">0 </span></a></li>
+										<li class="post-share"><a href="#"><i class="flaticon-share"></i><span>Share</span> <span class="number">0 </span></a></li>
+										<li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport"> <span><i class="fa fa-exclamation-triangle"></i>신고</span>
+										</a></li>
+									</ul>
+									<form class="post-footer">
+										<div class="footer-image">
+											<a href="#"><img src="/images/mypageCommunity/user/user-2.jpg" class="rounded-circle" alt="image"></a>
+										</div>
+										<div class="form-group">
+											<textarea name="message" class="form-control" placeholder="내용을 적어주세요."></textarea>
 
-									</div>
-								</form>
+										</div>
+									</form>
+								</div>
 							</div>
-						</div>
-
-
+						</c:forEach>
 						<div class="load-more-posts-btn">
 							<a href="#"><i class="flaticon-loading"></i> Load More Posts</a>
 						</div>
@@ -226,6 +216,9 @@
 	<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 	<script src="/js/mypageCommunity/wow.min.js"></script>
 	<script src="/js/mypageCommunity/main.js"></script>
+	<script type="text/javascript" src="/js/qrcode.js"></script>
+	<script type="text/javascript">
 
+	</script>
 </body>
 </html>

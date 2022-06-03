@@ -18,14 +18,13 @@
         <th bgcolor="orange" width="350">장르</th>
         <th bgcolor="orange" width="800">컨텐츠링크</th>
     </tr>
-    <c:forEach items="${contentList }" var="content">
+    <c:forEach items="${userBoardList }" var="board">
         <tr>
-            <td>${content.contentNumber }</td>
-            <td>${content.contentTitle }</td>
-            <td>${content.contentAge }</td>
-            <td>${content.contentGenre }</td>
-            <td>${content.contentLink }</td>
-
+            <td>${board.user.userNumber }</td>
+            <td>${board.user.userNickname }</td>
+            <td>${board.communityCategory }</td>
+            <td>${board.communityContent }</td>
+            <td>${board.communityDate }</td>
         </tr>
     </c:forEach>
 </table>

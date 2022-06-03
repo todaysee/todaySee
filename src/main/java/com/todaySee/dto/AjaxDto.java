@@ -1,4 +1,4 @@
-package com.todaySee.Ajax.dto;
+package com.todaySee.dto;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

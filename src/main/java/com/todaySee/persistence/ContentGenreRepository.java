@@ -1,4 +1,4 @@
-package com.todaySee.home.persistence;
+package com.todaySee.persistence;
 
 import java.util.List;
 

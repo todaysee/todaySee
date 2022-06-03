@@ -8,6 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -42,6 +43,12 @@ public class HomeController {
         session.setAttribute("userNumber", 1);
         return "redirect:/2";
     }
+    //테스트 로그인 세션
+    @GetMapping("/testSessionLogin2")
+    public String Login2(HttpSession session){
+        session.setAttribute("userNumber", 2);
+        return "redirect:/2";
+    }
     //테스트 로그아웃 세션
     @GetMapping("/testSessionLogout")
     public String Logout(HttpServletRequest request){
@@ -49,6 +56,8 @@ public class HomeController {
         session.invalidate();
         return "redirect:/2";
     }
+
+
 
 
 
@@ -61,68 +70,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String homeIndex(Model m) {
-   	
-		// 소켓을 선언
-        try (Socket client = new Socket()) {
-        	
-        	// 소켓에 접속하기 위한 접속 정보를 선언한다.
-            InetSocketAddress ipep = new InetSocketAddress("localhost", 9001);
-            
-            // 소켓 접속
-            client.connect(ipep);
-            
-            // 소켓이 접속이 완료되면 inputstream과 outputstream을 받는다.
-            try (OutputStream sender = client.getOutputStream();) {
-            	System.out.println("전송시작");
-            	
-            	// 회원의 아이디를 보낼거니까 int -> String으로 형변환
-                String msg = String.valueOf(7);
-                
-                // string -> byte 배열 형변환
-                byte[] data = msg.getBytes();
-                
-                // ByteBuffer를 통해 데이터 길이를 byte형식으로 변환한다.
-                ByteBuffer b = ByteBuffer.allocate(4);
-                
-                // byte포멧은 little 엔디언이다.
-                b.order(ByteOrder.LITTLE_ENDIAN);
-                
-                b.putInt(data.length);
- 
-                // 데이터 길이 전송
-                sender.write(b.array(), 0, 4);
-              
-                // 데이터 전송
-                sender.write(data);
-                data = new byte[4];
-
-                
-                // 한글깨짐 방지를 위해 BufferedReader로 받아줌
-                InputStream receiver = client.getInputStream();
-                
-                BufferedReader reader = new BufferedReader(new InputStreamReader(receiver, "UTF-8"));
-                
-                String message = "";	// 파이썬에서 보낸 정보를 담을 변수 선언
-                StringTokenizer st;		// 파이썬에서 보낸 정보를 쪼개기 위해 StringTokenizer 선언
-                
-                while((message = reader.readLine()) != null) {
-                	st = new StringTokenizer(message, "/");		
-                	System.out.println("메시지 확인(1)"+message);
-                	
-                	int count = 0;
-                	while(st.hasMoreTokens()) {
-                		System.out.println(count+"번째"+st.nextToken());
-                		count++;
-                	}
-                }
-                
-                m.addAttribute("test",message);
-               
-                
-            }
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
+    	
+    	List<Content> newContent = new ArrayList<Content>();
+    	newContent.addAll(homeServiceImpl.newContent());
+    	m.addAttribute("newContent",newContent);
+    	
+    	List<Content> RecommendedContentList = homeServiceImpl.RecommendedContentList();
+    	m.addAttribute("RecommendedContentList",RecommendedContentList);
     	
         return "/home/homeIndex";
       

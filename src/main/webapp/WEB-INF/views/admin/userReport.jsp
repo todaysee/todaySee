@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <title>유저 신고관리</title>
+  <title>신고관리</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,7 +30,7 @@
           margin: 0px;
           padding: 0px;
         }
-        li{
+        li{				/* tab키 li 마우스 포인터 and margin처리 */
           margin: 0px;
           margin-right: 20px;
           padding: 0px;
@@ -39,27 +39,7 @@
         }
       </style>
 
-      <script type="text/javascript">
 
-        
-
-
-            $(function ($) {
-            	$('#tab-content2').hide()
-                $('#tab-content3').hide() 	
-            	
-            	
-        $(".tab-content").eq(0).show(0);
-        $(".tab-ul li").click(function () {
-          var idx = $(this).index();
-          $(".tab-content").hide();
-          $(".tab-content").eq(idx).show();
-          $(".tab-ul li").removeClass("active");
-          $(this).addClass("active");
-        });
-      });
-    </script>
-    
     
 
 <body class="hold-transition sidebar-mini">
@@ -96,7 +76,7 @@
             
           </div>
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h3>신고관리</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -117,16 +97,14 @@
               <div class="card-header nav">
                 <ul class="tab-ul">
                   
-                  <li class="nav-link active">신고 관리</li>
-                  <!-- <li class="nav-link">게시글 신고</li> -->
+                        <li class="nav-link active"><a href="/userReport">게시글 신고</a></li> 
+                   <li class="nav-link"><a href="/admin/communityReport">리뷰 신고</a></li>
+                   <li class="nav-link"><a href="/admin/reviewReport">댓글 신고</a></li>
+                   <li class="nav-link"><a href="/admin/commentsReport">대댓글 신고</a></li>
+                   
+                   
                </ul>
               </div>
-
-              
-
-              
-
-
 
 
           <div class="tab-content" id="tab-content2">
@@ -168,49 +146,6 @@
           </div>
           <!-- /.col -->
 
-
-
-
-<!-- 
-          <div class="tab-content" id="tab-content3">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">게시글신고 관리</h3>
-              </div>
-              /.card-header
-              <div class="card-body">
-                <table id="example3" class="table table-bordered table-striped jqplugin">
-                  <thead>
-                  <tr>
-                    <th> 3</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                    <th>신고처리</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  
-                  <tr>
-                    <td>3</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                    <th><button class="btn btn-outline-danger">신고처리</button></th>
-                  </tr>
-                  </tbody>
-                  
-                </table>
-              </div>
-              /.card-body
-            </div>
-            /.card
-          </div> -->
-          
-          
-          
           <!-- /.col -->
 
           <!-- /.col -->

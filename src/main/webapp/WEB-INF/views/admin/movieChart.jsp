@@ -23,7 +23,12 @@
 	})
  -->
 
-</script>
+<style>
+	#kibana{
+		height: 100vw;
+	}
+</style>
+
 	<title>관리자 영화차트</title>
 
 	<!-- adminPlugins.css-->
@@ -139,8 +144,7 @@
 					<!-- right col (We are only adding the ID to make the widgets sortable)-->
 					
 					
-					<iframe src="http://54.180.160.241:5601/app/kibana#/dashboard?embed=true&_g=(refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:14,i:'449316ac-05ed-4078-90a3-cb4fe953017e',w:24,x:0,y:0),id:fa7e7400-d1c0-11ec-aceb-45d965d0d1a3,panelIndex:'449316ac-05ed-4078-90a3-cb4fe953017e',type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:14,i:'08789270-6a19-4a9b-8fe1-f7d0b0d305c1',w:23,x:24,y:0),id:'16ad75a0-d19d-11ec-aceb-45d965d0d1a3',panelIndex:'08789270-6a19-4a9b-8fe1-f7d0b0d305c1',type:visualization,version:'7.6.1')),query:(language:kuery,query:''),timeRestore:!f,title:'',viewMode:edit)" height="1000" width="100%"></iframe> 
-					
+					<iframe id="kibana" src="http://54.180.160.241:5601/app/kibana#/dashboard?embed=true&_g=(refreshInterval:(pause:!t,value:0),time:(from:now-15m,to:now))&_a=(description:'',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),panels:!((embeddableConfig:(),gridData:(h:14,i:'449316ac-05ed-4078-90a3-cb4fe953017e',w:24,x:0,y:0),id:fa7e7400-d1c0-11ec-aceb-45d965d0d1a3,panelIndex:'449316ac-05ed-4078-90a3-cb4fe953017e',type:visualization,version:'7.6.1'),(embeddableConfig:(),gridData:(h:14,i:'08789270-6a19-4a9b-8fe1-f7d0b0d305c1',w:23,x:24,y:0),id:'16ad75a0-d19d-11ec-aceb-45d965d0d1a3',panelIndex:'08789270-6a19-4a9b-8fe1-f7d0b0d305c1',type:visualization,version:'7.6.1')),query:(language:kuery,query:''),timeRestore:!f,title:'',viewMode:edit)"  width="100%"></iframe> 
 					
 					
 					

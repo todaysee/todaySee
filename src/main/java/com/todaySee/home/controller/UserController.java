@@ -28,7 +28,6 @@ public class UserController {
 	 
 	 @Autowired
 		private PasswordEncoder encoder;
-	 
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")

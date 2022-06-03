@@ -27,9 +27,13 @@ public class CommentsComments {
     @Column(name = "commentscomments_date")
     Date commentscommentsDate;
 
-    @OneToMany
-    @JoinColumn(name="commentscomments_number")
-    List<Report> report;
+    @ManyToOne
+    @JoinColumn(name = "user_number")
+    private UserVO userVO;
+
+    @ManyToOne
+    @JoinColumn(name = "comments_number")
+    private Comments comments;
 
 
 

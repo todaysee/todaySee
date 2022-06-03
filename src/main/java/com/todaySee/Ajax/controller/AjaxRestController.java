@@ -1,6 +1,6 @@
 package com.todaySee.Ajax.controller;
 
-import com.todaySee.Ajax.dto.AjaxDto;
+import com.todaySee.dto.AjaxDto;
 import com.todaySee.Ajax.service.AjaxService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

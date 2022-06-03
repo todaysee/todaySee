@@ -167,7 +167,7 @@
 		}
 
 		.gen-extra-report ul li span:first-child {
-			display: inline-block;
+			/*display: inline-block;*/
 			width: 25%;
 			font-weight: 500;
 		}
@@ -415,10 +415,10 @@
 								<div id="change" class="gen-episode-contain">
 									<div class="gentech-tv-show-img-holder">
 										<div class="gen-episode-img">
-											<c:if test="${Content.contentMainImagesUrl ne 'none Main img'}">
-												<img src="${Content.contentMainImagesUrl}" alt="${Content.contentTitle}">
+											<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
+												<img src="${content.contentMainImagesUrl}" alt="${content.contentTitle}">
 											</c:if>
-											<c:if test="${Content.contentMainImagesUrl eq 'none Main img'}">
+											<c:if test="${content.contentMainImagesUrl eq 'none Main img'}">
 												<img src="/images/home/cat.jpg" alt="none Main img">
 											</c:if>
 											<div id="noYoutube" class="gen-movie-action">
@@ -433,7 +433,7 @@
 							<div class="gen-single-movie-info">
 								<div class="row">
 									<div class="col-xl-6 col-lg-6 col-md-6">
-										<h2 class="gen-title">${Content.contentTitle}</h2>
+										<h2 class="gen-title">${content.contentTitle}</h2>
 									</div>
 									<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
 										<div class="gen-movie-action">
@@ -447,15 +447,10 @@
 								</div>
 								<div class="gen-single-meta-holder">
 									<ul>
-										<li class="gen-sen-rating">카테고리</li>
-										<li>
-											<i class="fas fa-eye">
-											</i>
-											<span>237 Views</span>
-										</li>
+										<li></li>
 									</ul>
 								</div>
-								<p>${Content.contentInfo}
+								<p>${content.contentInfo}
 								</p>
 								<div class="gen-after-excerpt">
 									<div class="gen-extra-data">
@@ -470,14 +465,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>${Content.contentAge}</span>
+												<span>${content.contentAge}</span>
 											</li>
 											<li><span>영상 시간 :</span>
-												<span>${Content.contentRunningTime}</span>
+												<span>${content.contentRunningTime}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>${Content.contentReleaseDate}</span>
+												<span>${content.contentReleaseDate}</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -501,6 +496,8 @@
 											<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
 											</li>
 											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
+											<input id="text" type="hidden" value="http://192.168.0.1:8080/details/${content.contentNumber}" style="width:80%" />
+											<li><div id="qrcode" style="width:50px; height:50px;"></div></li>
 										</ul>
 									</div>
 								</div>
@@ -521,17 +518,17 @@
 										<!-- 리뷰 작성 -->
 										<div class="send-item">
 											<div class="padding-5">
-												<form name="comment" id="comment" action="/details/${Content.contentNumber}" method="post">
+												<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
 													<div class="row">
 														<div class="col-xl-1 col-lg-1 col-md-1">
 															<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
 														</div>
 														<div class="send-content col-xl-3 col-lg-3 col-md-3">
 															<h3>
-																유저닉네임구현예정
+																${sessionScope.userNumber}
 															</h3>
 															<span>
-																<input id="input-9" name="input-9" required class="rating-loading">
+																<input id="reviewRating" name="reviewRating" required class="rating-loading">
 															</span>
 														</div>
 														<div class="text col-xl-7 col-lg-7 col-md-7">
@@ -572,7 +569,7 @@
 																		</h3>
 																		<span>${review.reviewDate}</span>
 																		<span>
-																			<input class="input-4" name="input-4" value="2.5" class="rating-loading">
+																			<input class="review_rating" name="reviewRating" value="${review.reviewRating}" class="rating-loading">
 																		</span>
 																	</div>
 																	<div class="text col-xl-8 col-lg-8 col-md-8">
@@ -595,6 +592,7 @@
 																				<a type="button" class="gen-button-like" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
 																				</a>
+																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
 																				<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																				</a>
@@ -1350,17 +1348,18 @@
 			</div>
 			<div class="modal-body">
 				<form>
+					<input type="hidden" id="reportReviewNumber" />
 					<div class="padding-6">
 						<div class="gen-after-report">
 							<div class="gen-extra-report">
 								<ul>
 									<li>
 										<span>리뷰 작성자 :</span>
-										<span>English</span>
+										<span id="reportUser">English</span>
 									</li>
 									<li>
 										<span>리뷰 내용 :</span>
-										<p>Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
+										<p id="reportReview">Streamlab is a long established fact that a reader will be distracted by the readable content of a page when Streamlab at its layout. The point of using Lorem Streamlab is that it has a more-or-less normal distribution of Streamlab as opposed Streamlab.
 										</p>
 									</li>
 								</ul>
@@ -1369,21 +1368,21 @@
 						<div class="padding-7">
 							<div class="form-group">
 								<label for="message-text" class="col-form-label">사유 선택:</label>
-								<select class="modalSelect" id="message-text">
-									<option>스팸홍보/도배글입니다.</option>
-									<option>음란물입니다.</option>
-									<option>불법정보를 포함하고 있습니다.</option>
-									<option>청소년에게 유해한 내용입니다.</option>
-									<option>욕설/생명경시/혐오/차별적 표현입니다.</option>
-									<option>개인정보 노출 게시물입니다.</option>
-									<option>불쾌한 표현이 있습니다.</option>
+								<select class="modalSelect reportContent" id="message-text">
+									<option value="스팸홍보/도배글입니다.">스팸홍보/도배글입니다.</option>
+									<option value="음란물입니다.">음란물입니다.</option>
+									<option value="불법정보를 포함하고 있습니다.">불법정보를 포함하고 있습니다.</option>
+									<option value="청소년에게 유해한 내용입니다.">청소년에게 유해한 내용입니다.</option>
+									<option value="욕설/생명경시/혐오/차별적 표현입니다.">욕설/생명경시/혐오/차별적 표현입니다.</option>
+									<option value="개인정보 노출 게시물입니다.">개인정보 노출 게시물입니다.</option>
+									<option value="불쾌한 표현이 있습니다.">불쾌한 표현이 있습니다.</option>
 								</select>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 ml-auto">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-danger">등록</button>
+						<button type="button" id="reportInsertReview" class="btn btn-danger">등록</button>
 					</div>
 				</form>
 			</div>
@@ -1395,7 +1394,7 @@
 
 <!--========== Like Modal ==============-->
 <div class="modal fade" id="modalLike" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modalBookmarkLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="modalBookmarkLabel" >추가할 즐겨찾기 선택</h5>
@@ -1412,37 +1411,27 @@
 							</div>
 							<div class="col-xl-7 col-lg-7 col-md-7">
 								<p class="comment-form-author">
-									<input type="text" placeholder="새 즐겨찾기 이름">
+									<input type="text" id="insertBookmarkName" placeholder="새 즐겨찾기 이름" required />
 								</p>
 							</div>
 							<div class="col-xl-2 col-lg-2 col-md-2 gen-movie-like">
-								<a class="gen-btn-new"><i class="fa fa-plus"></i></a>
+								<a id="bookmarkInsert" class="gen-btn-new"><i class="fa fa-plus"></i></a>
 							</div>
 						</div>
 					</form>
 				</div>
 				<form>
 					<div class="padding-2">
-						<div class="gen-movie-action">
+						<div id="appendBookmark" class="gen-movie-action">
+							<c:forEach items="${bookmarkList}" var="bookmark">
 							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check1" value="2" class="checkbox2">
-								<label for="check1">디자인체크박스1</label>
+								<input type="checkbox" name="check2" id="${bookmark.bookmarkName}" value="${bookmark.bookmarkName}" class="checkbox2">
+								<label for="${bookmark.bookmarkName}">${bookmark.bookmarkName}</label>
 							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check2" value="2" class="checkbox2">
-								<label for="check2">디자인체크박스2</label>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check3" value="2" class="checkbox2">
-								<label for="check3">디자인체크박스3</label>
-							</div>
-							<div class="checkbox">
-								<input type="checkbox" name="check2" id="check4" value="2" class="checkbox2">
-								<label for="check4">디자인체크박스4</label>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
-					<div class="col-md-4 ml-auto">
+					<div class="col-md-5 ml-auto">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 						<button type="button" class="btn btn-danger">추가</button>
 					</div>
@@ -1481,15 +1470,46 @@
 <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
 <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
 <!--========== Star Rating ==============-->
-
+<%-- qr 코드 생성기--%>
+<script type="text/javascript" src="/js/qrcode.js"></script>
 <!-- 추가 js -->
 <script>
+	//qr코드 사진의 크기
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 600,
+		height : 600
+	});
+	//qr 코드 생성할 글자
+	function makeCode () {
+		var elText = document.getElementById("text");
+		//값이 없으면 에러
+		if (!elText.value) {
+			alert("Input a text");
+			elText.focus();
+			return;
+		}
+
+		qrcode.makeCode(elText.value);
+	}
+	//qr코드 생성
+	makeCode();
+
+	$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
+	});
+
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
-		let contentNum = ${Content.contentNumber} /* 현재 영상 번호 */
+		let contentNum = ${content.contentNumber} /* 현재 영상 번호 */
 		$.ajax({
 			type: "GET",
-			url: "http://localhost:8080/details/Ajax",
+			url: "/details/Ajax",
 			data: {contentNumber: contentNum}, /* 영상번호를 파라메터로 보내기 */
 			success: function(result){ // 돌아오는 데이터가 유튜브 링크
 				// alert('성공');
@@ -1515,13 +1535,13 @@
 	}); // youtube button function end
 
 	// 리뷰 별점 - plugin 사용
-	$('#input-9').rating({
+	$('#reviewRating').rating({
 		step: 0.5,
 		starCaptions: {0.5: '0.5', 1: '1.0', 1.5: '1.5', 2: '2.0', 2.5: '2.5', 3:'3.0', 3.5: '3.5', 4:'4.0', 4.5: '4.5', 5:'5.0'}
 	});
 
 	// 작성된 리뷰 별점 - plugin 사용
-	$('.input-4').rating("refresh", {
+	$('.review_rating').rating("refresh", {
 		disabled: true,
 		showClear: false,
 		displayOnly: true,
@@ -1532,18 +1552,104 @@
 
 	// 신고 모달 띄우기
 	$('.myModal').on('click', function () {
-		$('#modalReport').modal('show');
-	})
+		//$('#modalReport').modal('show');
+		let reviewNumber = $(this).prev().val();
+		// 해당 댓글 내용, 유저 이름 불러오기 - AJAX
+		$.ajax({
+			type: "GET",
+			url: "/details/spoReviewAjax",
+			data: {reviewNumber : reviewNumber},
+			success: function(data) {
+				// alert("성공!!!");
+				console.log(data);
+				$('#reportReviewNumber').val(data.reviewNumber);
+				$('#reportUser').html(data.userNickname);
+				$('#reportReview').html(data.reviewContent);
+				$('#modalReport').modal('show');
+			},
+			error: function(err) {
+				alert("에러 발생!!!!");
+				console.log("에러 : ", err);
+			}
+		});
+	});
+
+	// 신고 등록
+	$('#reportInsertReview').on('click', function(){
+		// alert('ok');
+		let reviewReportContent = $('.reportContent option:selected').val();
+		let reportReviewNumber = $('#reportReviewNumber').val();
+
+		console.log(reviewReportContent);
+		$.ajax({
+			type: "POST",
+			url: "/details/reportInsert",
+			data: {
+				reviewReportContent : reviewReportContent,
+				reportReviewNumber : reportReviewNumber
+			},
+			success: function (value){
+				alert('신고 등록 성공!');
+				console.log(value);
+			},
+			error: function(err) {
+				alert('신고 등록 오류!!');
+				console.log("신고 등록 오류 : ", err);
+			}
+		});
+
+	});
 
 	// 즐겨찾기 모달 띄우기
 	$('.myModalLike').on('click', function(){
 		$('#modalLike').modal('show');
 	});
 
-	// 즐겨찾기 선택
-	$('input[type=radio]').on('click', function(){
-		alert('ok');
+	// AJAX 새로운 즐겨찾기 추가
+	$('#bookmarkInsert').on('click', function(){
+		// alert('ok');
+		let bookmarkName;
+		if($('#insertBookmarkName').val() === "") {
+			alert("즐겨찾기 이름을 입력해주세요!");
+			$('#insertBookmarkName').focus();
+			return false;
+		} else {
+			bookmarkName = $('#insertBookmarkName').val();
+			$.ajax({
+				type: "POST",
+				url: "/details/bookmarkInsert",
+				data: {
+					bookmarkName: bookmarkName
+				},
+				datatype: "json",
+				success: function (data) {
+					alert("즐겨찾기 추가 성공!");
+					$('#insertBookmarkName').val("");
+					let jsonObj = JSON.stringify(data);
+					let jsondata = JSON.parse(jsonObj);
+					$('#appendBookmark').empty();
+					$.each(jsondata, function(k, v){
+						console.log(k, v.bookmarkName);
+						let checkbox = "<div class='checkbox'>" +
+											"<input type='checkbox' name='check2' id=" + v.bookmarkName + " value=" + v.bookmarkName + " class='checkbox2'>" +
+											"<label for=" + v.bookmarkName + ">" + v.bookmarkName + "</label>" +
+										"</div>";
+						// console.log(checkbox);
+						$('#appendBookmark').append(checkbox);
+					});
+				},
+				error: function (err) {
+					alert("즐겨찾기 추가 오류!!!");
+					console.log("즐겨찾기 추가 에러 : ", err);
+				}
+			});
+		}
 	});
+
+	// 즐겨찾기 선택
+	// $('input.checkbox2[name=]').on('click', function(){
+	// 	alert('ok');
+	// });
 
 	// 리뷰 submit Ajax
 	$('#submit').on('click', function(e){
@@ -1553,24 +1659,25 @@
 		if($('.reviewSpoiler').is(':checked')) {
 			reviewSpoiler = 1;
 		}
-		let contentNumber = ${Content.contentNumber}
-		// let rating = $('#input-9').val();
+		let contentNumber = ${content.contentNumber}
+		let reviewRating = $('#reviewRating').val();
 
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8080/details/reviewAjax",
+			url: "/details/reviewAjax",
 			data: {
 				userNumber : 1,
 				reviewContent : reviewContent,
 				reviewSpoiler : reviewSpoiler,
-				contentNumber : contentNumber
+				contentNumber : contentNumber,
+				reviewRating : reviewRating
 			},
 			success: function(data){
 				alert("리뷰가 등록되었습니다.");
 				console.log(data);
 				$('.reviewContent').val('');
 				$('.reviewSpoiler').prop("checked", false);
-				location.href="http://localhost:8080/details/${Content.contentNumber}"
+				location.href="/details/${content.contentNumber}"
 			},
 			error: function(err){
 				alert("서버 문제로 오류가 발생하였습니다.");
@@ -1591,7 +1698,7 @@
 
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8080/details/spoReviewAjax",
+			url:"/details/spoReviewAjax",
 			data: {
 				reviewNumber : reviewNumber
 			},
@@ -1599,7 +1706,6 @@
 				// alert('스포일러 보이기 성공');
 				console.log(data);
 				// alert(btn);
-				$(btn).html();
 				$(btn).html(data.reviewContent);
 			},
 			error: function(err){
@@ -1609,9 +1715,6 @@
 		});
 
 	});
-
-	// AJAX 즐겨찾기 추가
-
 
 	// 리뷰 더보기
 	reviewMore();
