@@ -27,6 +27,19 @@
 		}
 		#end {display:none;}
 
+		.single-groups-card .groups-content .groups-info .text h2 {
+			font-size: 20px;
+			margin-bottom: 0;
+		}
+
+		.single-groups-card .groups-content .groups-info .text h2 a {
+			color: var(--black-color);
+		}
+
+		.single-groups-card .groups-content .groups-info .text h2 a:hover {
+			color: var(--main-color);
+		}
+
 	</style>
 </head>
 
@@ -65,16 +78,20 @@
 							<div class="single-groups-card">
 								<div class="groups-image">
 									<a href="#">
-										<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+										<c:if test="${empty bookmark.contentMainImg}">
+											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="defaultImage">
+										</c:if>
+										<c:if test="${not empty bookmark.contentMainImg}">
+											<img src="${bookmark.contentMainImg}" alt="${bookmark.bookmarkName}">
+										</c:if>
 									</a>
 								</div>
 								<div class="groups-content">
 									<div class="groups-info d-flex justify-content-between align-items-center">
 										<a href="#">
-											<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
 										</a>
 										<div class="text ms-3">
-											<h3><a href="/myPage/bookMark/${bookmark.bookmarkNumber}">${bookmark.bookmarkName}</a></h3>
+											<h2><a href="/myPage/bookMark/${bookmark.bookmarkNumber}">${bookmark.bookmarkName}</a></h2>
 										</div>
 									</div>
 									<div class="join-groups-btn">
