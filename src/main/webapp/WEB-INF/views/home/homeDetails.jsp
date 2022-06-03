@@ -528,7 +528,7 @@
 															</div>
 															<div class="send-content col-xl-3 col-lg-3 col-md-3">
 																<h3>
-																	${sessionScope.userNumber}
+																	${user.userNickname}
 																</h3>
 																<span>
 																	<input id="reviewRating" name="reviewRating" required class="rating-loading">

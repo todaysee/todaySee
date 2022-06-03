@@ -17,7 +17,7 @@
 		<hr/>
 		<a href="/">홈페이지-인덱스</a><br/>
 		<a href="/list">홈페이지-list</a><br/>
-		<a href="/details">홈페이지-details</a><br/>
+		<a href="/details/1">홈페이지-details</a><br/>
 		<a href="/signUp">홈페이지-signUp</a><br/>
 		<a href="/complete">홈페이지-complete</a><br/>
 		<a href="/homechooseLogin">홈페이지-homechooseLogin</a><br/>
@@ -31,7 +31,7 @@
 		<a href="/myPage/profile">마이페이지-프로필</a><br/>
 		<a href="/myPage/like">마이페이지-like</a><br/>
 		<a href="/myPage/bookMark">마이페이지-bookMark</a><br/>
-		<a href="/myPage/bookMark/list">마이페이지-bookMark 상세보기</a><br/>
+		<a href="/myPage/bookMark/1">마이페이지-bookMark 상세보기</a><br/>
 		<a href="/myPage/review">마이페이지-review</a><br/>
 		<a href="/myPage/list">마이페이지-커뮤니티 작성글 & 게시글보기</a><br/>
 		<hr/>

@@ -34,6 +34,10 @@ public class DetailsServiceImpl implements DetailsService{
     @Autowired
     private BookmarkRepository bookmarkRepo;
 
+    @Override
+    public UserVO getUser(Integer userNumber) {
+        return userRepo.findById(userNumber).get();
+    }
 
     /**
      * ID(PK)값에 따른 Content 상세정보

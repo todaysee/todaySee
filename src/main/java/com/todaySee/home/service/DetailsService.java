@@ -15,6 +15,9 @@ import java.util.List;
 
 public interface DetailsService {
 
+    // 유저번호에 따른 유저 정보 가져오기
+    public UserVO getUser(Integer userNumber);
+
     // ID(PK)값에 따른 Content 상세정보
     public Content getContentById(Integer contentNumber);
 
