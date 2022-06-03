@@ -233,4 +233,35 @@ $('#btn_register').click(function(){
 								//}
 			    }); //end of ajax	
 			    }
-			   });
+			    
+			   /* 이메일 찾기 */
+			   
+			   
+			   
+			   })
+	$('#btn_findEmail').click(function(){
+			   
+			   $.ajax({
+					type : 'post',
+					url : "/emailFind",
+					data : {
+						 UserName : $('#user_Name').val() ,
+						userTel : $('#user_Cellphone').val()
+					},
+			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			success : function(result){
+				alert(result);
+				if(result == "N"){
+					$('#user_Cellphone ~ .error_message.').html("존재하는 회원이 아닙니다.");
+				}else{
+					document.emailFind_frm.submit();
+				}
+			},
+			error : function(err){
+						alert(err);
+						console.log(err);
+			}
+			});//end of Ajax 
+			    
+			   }); //end of #btnfindEmail
+			  

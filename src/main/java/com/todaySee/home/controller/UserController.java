@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -97,15 +98,24 @@ public class UserController {
     }
 
     //아이디 찾기 페이지
-    @GetMapping("/idFind")
-    public String homeIdFind() {
-        return "/home/homeIdFind";
+    @GetMapping("/emailFind")
+    public String emailFind() {
+        return "/home/emailFind";
+    }
+    
+    @PostMapping("/emailFind")
+    @ResponseBody
+    public String emailFind(UserVO user) {
+    	System.out.println("컨트롤러 "+userServiceImpl.emailFind(user));
+    	return userServiceImpl.emailFind(user);
     }
     
     //아이디 찾기 이메일 목록 리스트 페이지 
-    @GetMapping("/homeIdFindList")
-    public String homeIdFindList() {
-    	return "/home/homeIdFindList";
+   @RequestMapping("/homeEmailFindList")
+    public String homeEmailFindList(UserVO user, Model m) {
+	  System.out.println(user.getUserName()+"말해줘");
+    	m.addAttribute("userEmailList", userServiceImpl.homeEmailFindList(user));
+    	return "/home/homeEmailFindList";
     }
 
     //비밀번호 찾기 페이지

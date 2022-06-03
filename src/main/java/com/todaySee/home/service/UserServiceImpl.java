@@ -2,6 +2,8 @@ package com.todaySee.home.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,6 @@ public class UserServiceImpl implements UserService {
 	private PasswordEncoder encoder;
 	
 	//회원가입
-	
 	@Override
 	public  UserVO create(UserVO user) {
 		user.setUserPassword(encoder.encode(user.getUserPassword()));
@@ -48,5 +49,26 @@ public class UserServiceImpl implements UserService {
 		 } 
 		return message;
 	}
+
+	// email찾기 
+	@Override
+	public String emailFind(UserVO user) {
+		//UserVO result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
+		List<UserVO> result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
+		String message="Y";
+		if(result == null) {
+			message = "N";
+			}
+		System.out.println("서비스 "+message);
+		return message;
 	}
+
+	// email 목록 불러오기
+	@Override
+	public List<UserVO> homeEmailFindList(UserVO user) {
+		List<UserVO> result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
+			return result;
+	}
+
+}
 

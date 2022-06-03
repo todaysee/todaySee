@@ -21,8 +21,8 @@
 		<a href="/complete">홈페이지-complete</a><br/>
 		<a href="/homechooseLogin">홈페이지-homechooseLogin</a><br/>
 		<a href="/login">홈페이지-login</a><br/>
-		<a href="/idFind">홈페이지-idFind</a><br/>
-		<a href="/homeIdFindList">홈페이지-homeIdFindList</a><br/>
+		<a href="/emailFind">홈페이지-emailFind</a><br/>
+		<a href="/homeEmailFindList">홈페이지-homeEmailFindList</a><br/>
 		<a href="/passwordFind">홈페이지-passwordFind</a><br/>
 		<a href="/homeResettingPwd">홈페이지-homeResettingPwd</a><br/>
 		

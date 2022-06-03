@@ -71,7 +71,7 @@
                         <div class="register-form">
                             <div style="text-align:center"><h2>회원가입</h2></div>
         
-                            <form id="signUp_frm"action="/signUp" method="post">
+                            <form id="signUp_frm" action="/signUp" method="post">
                                 <div class="form-group">
                                     <label>닉네임</label>
                                     <input type="text" id="userNickname" name="userNickname" class="form-control">
