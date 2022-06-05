@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.todaySee.domain.UserVO;
-import com.todaySee.home.service.UserServiceImpl;
+import com.todaySee.home.service.UserService;
 
 
 @SessionAttributes("user")
@@ -24,15 +24,15 @@ import com.todaySee.home.service.UserServiceImpl;
 public class UserController {
 	
 	 @Autowired
-		private UserServiceImpl userServiceImpl;
+		private UserService userService;
 	 
 	 @Autowired
 		private PasswordEncoder encoder;
 
 	//회원가입방법 선택 
-    @GetMapping("/homechooseLogin")
-    public String homechooseLogin() {
-    	return "/home/homechooseLogin";
+    @GetMapping("/homeChooseLogin")
+    public String homeChooseLogin() {
+    	return "/home/homeChooseLogin";
     }
 
     //회원가입 페이지
@@ -44,14 +44,15 @@ public class UserController {
     
     @PostMapping("/signUp")
     public String signUp(UserVO user) {
-    	userServiceImpl.create(user);
-        return "/home/homeSignUpComplete";
+    	userService.create(user);
+        return "redirect:/complete?userNickname="+user.getUserNickname();
     }
     
     
     //회원가입 완료 페이지
     @GetMapping("/complete")
-    public String homeSignUpComplete() {
+    public String homeSignUpComplete(String userNickname, Model m) {
+    	m.addAttribute("userNickname", userNickname);
         return "/home/homeSignUpComplete";
     }
 
@@ -65,11 +66,12 @@ public class UserController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword, Model model,HttpSession session) {
     	System.out.println("PostMapping");
-        UserVO findUser = userServiceImpl.login(userEmail, userPassword);
+        UserVO findUser = userService.login(userEmail, userPassword);
     	if (findUser != null
     		) {
     		model.addAttribute("user", findUser);
     		session.setAttribute("userNumber", findUser.getUserNumber());
+    		session.setAttribute("userNickname", findUser.getUserNickname());
     		session.setMaxInactiveInterval(60*60*24);
     		System.out.println("세션"+session.getAttribute("userNumber"));
     		return "redirect:/";
@@ -89,6 +91,16 @@ public class UserController {
     		return "redirect:myPage/profile";
     	}
     }
+    
+  // 로그아웃
+    @GetMapping("/userLogout")
+    public String Logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    
 
     //아이디 찾기 페이지
     @GetMapping("/emailFind")
@@ -101,7 +113,7 @@ public class UserController {
    @RequestMapping("/homeEmailFindList")
     public String homeEmailFindList(UserVO user, Model m) {
 	  System.out.println(user.getUserName()+"말해줘");
-    	m.addAttribute("userEmailList", userServiceImpl.homeEmailFindList(user));
+    	m.addAttribute("userEmailList", userService.homeEmailFindList(user));
     	return "/home/homeEmailFindList";
     }
 
