@@ -108,7 +108,9 @@
 			padding: 3% 0% 1% 3%
 		}
 		
-		
+		.gen-carousel-movies-style-2 .gen-movie-contain .gen-movie-meta-holder ul li{
+			font-size : 16px;
+		}
 		<!-- 커뮤니티 인기글 css --> 
 		.post_like{
 			color: #ffffff;
@@ -222,7 +224,10 @@
 </section>
 <!-- 최신 컨텐츠 End -->
 
-<!-- owl-carousel Videos Section-1 Start -->
+<!-- 세션값이 있을 때만 출력 -->
+<c:choose>
+<c:when test="${sessionScope.userNumber ne null}">
+<!-- 사용자 추천 콘텐츠 Start -->
 <section class="gen-section-padding-2">
 	<div class="container">
 		<div class="row">
@@ -285,14 +290,23 @@
 		</div>
 	</div>
 </section>
-<!-- owl-carousel Videos Section-1 End -->
+<!-- 사용자 추천 콘텐츠 End -->
+</c:when>
+</c:choose>
 
-<!-- owl-carousel Videos Section-2 Start -->
-<section class="pt-0 gen-section-padding-2">
+<!-- 장르별 콘텐츠 -->
+<c:choose>
+	<c:when test="${sessionScope.userNumber eq null}">
+	<section class="gen-section-padding-2">
+	</c:when>
+	 <c:otherwise>
+	<section class="pt-0 gen-section-padding-2">
+	 </c:otherwise>
+</c:choose>
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">인기 콘텐츠</h4>
+				<h4 class="gen-heading-title">#${genre_1.genreName }</h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -302,8 +316,8 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-				<!-- 인기 영화 for문 시작-->
-				<c:forEach items="${RecommendedList}" var="content">
+				<!-- 장르 콘텐츠 for문 시작-->
+				<c:forEach items="${genresContentList_1}" var="content">
 				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
@@ -356,7 +370,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">장르 추천 콘텐츠 </h4>
+				<h4 class="gen-heading-title">#${genre_2.genreName } </h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -366,8 +380,8 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-				<!-- 인기 영화 for문 시작-->
-				<c:forEach items="${RecommendedList}" var="content">
+				<!-- 장르 콘텐츠 for문 시작-->
+				<c:forEach items="${genresContentList_2}" var="content">
 				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
