@@ -75,7 +75,7 @@
             
           </div>
           <div class="col-sm-6">
-            <h3>신고관리</h3>
+            <h3>게시글 신고</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -119,23 +119,23 @@
                   <thead> 
                   <tr>
                     <th>신고번호</th>
-                    <th>신고자</th>
+                    <th>신고대상</th>
                     <th>신고내용</th>
                     <th>신고날짜</th>
                     <th>게시물제목</th>
-                    <th>신고처리</th>
                   </tr>
                   </thead>
                   <tbody>
                   <c:forEach items="${communityReport }" var="report">
-                  <tr>
+                   <c:if test="${report.communityReportState == 0 }">
+                  <tr class="communityReport" reportValue="${report.communityReportNumber }">
                     <td>${report.communityReportNumber }</td>
                    <td>${report.user.userName }</td> 
                     <td>${report.communityReportContent }</td>
                     <td>${report.communityReportDate }</td>
                     <td>${report.community.communityTitle }</td>
-                    <th><button class="btn btn-outline-danger">신고처리</button></th>
                   </tr>
+                  </c:if>
                   </c:forEach>
                   </tbody>
                   
@@ -220,6 +220,18 @@
       "responsive": true,
       "destroy":true,
     }); 
+
+    $(document).on('click','.communityReport',function(){
+
+      const reportNumber= $(this).attr('reportValue')
+
+      location.href="/admin/CommunityReport/"+reportNumber;
+
+
+
+    });
+
+
   });
 
 
