@@ -22,9 +22,9 @@ public class MovieController {
 	private  SearchQueryService SearchSer;
 	
 	
-	@GetMapping("/search/{query}")
+	@GetMapping("/search")
 	public ModelAndView getAllMovieSearch(
-			@PathVariable final String query) {
+			 final String query) {
 
 		
 		List<Movie> movieList = SearchSer.getByQuery(query);

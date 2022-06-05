@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -76,6 +77,19 @@
                                     <a href="#">
                                         <img src="/images/home/asset-36.png" class="gen-appstore-logo" alt="appstore">
                                     </a>
+                                    
+                                    	<c:if test="${empty sessionScope.userNumber}">
+		 								<div style="color: red;">
+                                    	<a href="/login"> 로그인</a>
+                                    	</div>
+										
+										</c:if>
+										<c:if test="${!empty sessionScope.userNumber}">
+										<div style="color: red;">
+                                    	<a href="/userLogout">로그아웃</a>
+                                    	</div>  
+                                    	</c:if>                                	
+                                    
                                 </div>
                             </div>
                         </div>

@@ -37,7 +37,8 @@ public class SearchQueryService {
 		try {
 			SearchRequest request = new SearchRequest(Indices.PROJECT_MOVIE);
 			SearchSourceBuilder ssb = new SearchSourceBuilder();
-			ssb.query(QueryBuilders.multiMatchQuery(query, "content_title", "content_info","genre_name","ott_name"));
+			ssb.query(QueryBuilders.multiMatchQuery(query, "content_title", "content_info","genre_name","ott_name").field("content_title",
+					3).field("content_info", 2)).size(30);		//검색시 가중치 부여 및 검색량 30개로 늘리기
 			request.source(ssb);
 			 SearchResponse documentFields = client.search(
 					request,
