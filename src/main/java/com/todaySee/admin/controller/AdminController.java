@@ -55,6 +55,11 @@ public class AdminController {
 	
 	
 	
+	/**
+	 * @param m 유저리스트를 보냄
+	 * @param user 
+	 * @return view page
+	 */
 	@GetMapping("/admin/userList")
 	public String userList(Model m, UserVO user) {
 	m.addAttribute("userList",adminService.getUserList(user));
@@ -142,7 +147,10 @@ public class AdminController {
 	
 	
 	
-	//@RequestMapping(value="/contentDeleteUpdate/{contentNumber}",method = RequestMethod.PUT )
+	/**
+	 * @param contentNumber findbyid를 통해서 상태를 1로 바꿈
+	 * @return viewpage
+	 */
 	@PutMapping("admin/contentDeleteUpdate")	// 넘어가는 값이 폼태그 안에 있는 값으로 넘어가기 때문에 어쩔수 없이 url 주소가아니라 변수로 받아야함
 	public String contentDeleteUpdate( Integer contentNumber) {
 		System.out.println("**********************"+contentNumber);
@@ -151,10 +159,13 @@ public class AdminController {
 		return "redirect:/movieAdmin";
 	}
 	
+	/**
+	 * @param content : input 값
+	 * @param contentNumber : findbyid로 정보 찾은뒤 기존의 데이터에 수정된 값을 교체하기 위해 
+	 * @return view page
+	 */
 	@PutMapping("admin/contentUpdate")
 	public String contentUpdate(Content content, Integer contentNumber) {
-		System.out.println(content.getContentAge()+"****************************************");
-		System.out.println(contentNumber+"****************************************");
 		
 		adminService.contentUpdate(content, contentNumber);
 		return "redirect:/movieAdmin";
@@ -162,6 +173,10 @@ public class AdminController {
 	
 	
 	
+	/**
+	 * @param 커뮤니티 신고 리스트를 보냅니다.
+	 * @return 뷰페이지 지정
+	 */
 	@GetMapping("/admin/communityReport")
 	public String adminCommunityReport(Model m) {
 		m.addAttribute("communityReport",adminService.getCommunityreport());
@@ -172,6 +187,10 @@ public class AdminController {
 	
 	
 	
+	/**
+	 * @param 리뷰 신고 리스트르 보냅니다.
+	 * @return view페이지 
+	 */
 	@GetMapping("/admin/reviewReport")
 	public String adminReviewReport(Model m) {
 		m.addAttribute("reviewReport",adminService.getReviewReport());
@@ -181,6 +200,10 @@ public class AdminController {
 	
 	
 	
+	/**
+	 * @param 댓글의 신고 리스트를 보냅니다
+	 * @return view 페이지
+	 */
 	@GetMapping("/admin/commentsReport")
 	public String adminCommentsReport(Model m) {
 		m.addAttribute("commentsReport",adminService.getCommentsReport());
@@ -190,6 +213,10 @@ public class AdminController {
 	
 	
 	
+	/**
+	 * @param m 대댓글의 신고 리스트를 보냅니다.
+	 * @return view페이지
+	 */
 	@GetMapping("/admin/commentsCommentsReport")
 	public String adminCommentsCommentsReport(Model m) {
 		m.addAttribute("commentsCommentsReport",adminService.getCommentsCommentsReport());
@@ -197,4 +224,96 @@ public class AdminController {
 		return "/admin/commentsCommentsReport";
 	}
 
+	/**
+	 * @param m  reportnumber를 받아서 communityReport vo정보를 가져옵니다.
+	 * @param reportNumber 인거를 잘못 적었습니다. 
+	 * @return view page
+	 */
+	@GetMapping("/admin/CommunityReport/{contentNumber}")
+	public String reportDetails(Model m , @PathVariable Integer contentNumber ) {
+		m.addAttribute("communityReport",adminService.getFindById(contentNumber));
+		
+		
+		m.addAttribute("count",adminService.getCommunityReportCount(contentNumber));
+		return "/admin/communityDetails";
+	}
+	
+	/**
+	 * @param communityReportNumber 커뮤니티신고번호 를 받아서 신고처리 누르면 삭제상태처리를 1로 변경
+	 * @return view page
+	 */
+	@PutMapping("/admin/communityReportWork/{communityReportNumber}")
+	public String communityReportWork(@PathVariable Integer communityReportNumber) {
+		adminService.communityReportWork(communityReportNumber);
+		return "redirect:/admin/communityReport";
+	}
+	
+	/**
+	 * @param m 리뷰신고번호를 찾아 view단으로 보냅니다.
+	 * @param reportNumber 리뷰 신고번호를 받아 정보를 찾는다
+	 * @return view page
+	 */
+	@GetMapping("/admin/reviewReport/{reportNumber}")
+	public String reviewDetails(Model m, @PathVariable Integer reportNumber) {
+		
+		m.addAttribute("reviewReport", adminService.getReviewFindById(reportNumber));
+		m.addAttribute("count",adminService.getReviewReportCount(reportNumber));
+		return "/admin/reviewDetails";
+		
+	}
+	
+	/**
+	 * @param reportNumber 신고번호로 정보를 찾고 신고처리 누르면 신고상태 변경
+	 * @return view page
+	 */
+	@PutMapping("/admin/reviewReportWork/{reportNumber}")
+	public String reviewReportWork(@PathVariable Integer reportNumber) {
+		
+		adminService.reviewReportWork(reportNumber);
+		
+		return "redirect:/admin/reviewReport";
+		
+	}
+	
+	
+	/**
+	 * @param m 정보를 view단으로 보냅니다.
+	 * @param reportNumber 신고번호를 받아 정보를 찾는다
+	 * @return view page
+	 */
+	@GetMapping("/admin/commentsReport/{reportNumber}")
+	public String commentsReport(Model m,@PathVariable Integer reportNumber) {
+		m.addAttribute("commentsReport",adminService.getCommentFindById(reportNumber));
+		m.addAttribute("count",adminService.getCommentReportCount(reportNumber));
+		return "/admin/commentsDetails";
+	}
+	
+	/**
+	 * @param reportNumber받아 신고처리 누르면 신고상태 변경
+	 * @return view page
+	 */
+	@PutMapping("/admin/commentsReportWork/{reportNumber}")
+	public String commentsReportWork(@PathVariable Integer reportNumber) {
+		adminService.commentsReportWork(reportNumber);
+		
+		return "redirect:/admin/commentsReport";
+	}
+	
+	
+	@GetMapping("/admin/commentsCommentsReport/{reportNumber}")
+	public String commentsCommentsReport(Model m,@PathVariable Integer reportNumber) {
+		m.addAttribute("commentsCommentsReport",adminService.getCommentsCommentsFindById(reportNumber));
+		m.addAttribute("count",adminService.getCoCommentsReportCount(reportNumber));
+		
+		
+		return "/admin/commentsCommentsDetails";
+	}
+	
+	@PutMapping("/admin/commentsCommentsReportWork/{reportNumber}")
+	public String commentsCommentsReportWork(@PathVariable Integer reportNumber) {
+		adminService.commentsCommentsReportWork(reportNumber);
+		return "redirect:/admin/commentsCommentsReport";
+	}
+	
+	
 }

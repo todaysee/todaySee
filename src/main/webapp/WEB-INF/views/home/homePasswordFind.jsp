@@ -73,7 +73,7 @@
                                 <div class="row">
                                 <div class="form-group col-md-9" >
                                     <label>Email</label>
-                                    <input type="email" class="form-control" style="margin-right:0px;">
+                                    <input type="email" name="user_Email" id="user_Email" class="form-control" style="margin-right:0px;">
 									</div>
 									<div class="post-btn col-md-3">
                                  <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
@@ -83,25 +83,20 @@
         
                                 <div class="form-group">
                                     <label> 인증번호 확인 </label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" name="checkPwd" id="checkPwd" class="form-control">
                                 </div>
         
                                  
-                                 <button type="submit" class="google-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
+                                 <button type="button" name="btn_findPwd" id="btn_findPwd" class="google-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
                                 padding-left: 20px !important; padding-right: 20px !important; margin-bottom: 20px !important;">
                                  비밀번호 찾기 </button>
                                  
-                                 <!-- 
-                                <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; width: 100%; 
-                                padding-left: 20px !important; padding-right: 20px !important; margin-bottom: 20px !important;">비밀번호 찾기 </button>
-                                 -->
-                                
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
-                                		<a href="forgot-password.html" class="lost-your-password" style="margin-left: 5px !important;">홈으로 가기  </a>
+                                		<a href="/" class="lost-your-password" style="margin-left: 5px !important;">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="forgot-password.html" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
-                                        	<a href="forgot-password.html" class="lost-your-password">이메일/비밀번호 찾기 </a>
+                                        	<a href="/login" class="lost-your-password">로그인하기  </a> &nbsp;&nbsp;&nbsp;
+                                        	<a href="/emailFind" class="lost-your-password">이메일 찾기 </a>
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>
@@ -170,6 +165,9 @@
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
 
+<!-- js추가 -->
+ 
+    <script src="/js/home/UserLogin.js"></script>
 
 </body>
 

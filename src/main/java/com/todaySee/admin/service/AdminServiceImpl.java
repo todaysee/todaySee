@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,10 @@ import com.todaySee.admin.persistence.AdminContentRepository;
 import com.todaySee.admin.persistence.AdminReportRepository;
 import com.todaySee.admin.persistence.AdminUserRepository;
 import com.todaySee.admin.persistence.TransactionalRepository;
+import com.todaySee.domain.CommentsComments;
 import com.todaySee.domain.CommentsCommentsReport;
 import com.todaySee.domain.CommentsReport;
+import com.todaySee.domain.Community;
 import com.todaySee.domain.CommunityReport;
 import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
@@ -149,7 +152,81 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	public List<ReviewReport> getReviewReport(){
+		
+		
 		return (List<ReviewReport>) reviewReportRepo.findAll();
+		
+	}
+	
+	public CommunityReport getFindById( @PathVariable Integer contentNumber) {
+		
+		
+		return communityReportRepo.findById(contentNumber).get();
+	}
+	
+
+	public int getCommunityReportCount(@PathVariable Integer reportNumber) {
+		CommunityReport c= communityReportRepo.findById(reportNumber).get();
+		
+		Integer userNumber = c.getUser().getUserNumber();
+		
+		
+		return communityReportRepo.communityCount(userNumber);
+	}
+	
+	
+	
+	public void communityReportWork(@PathVariable Integer communityReportNumber) {
+		
+		CommunityReport c = communityReportRepo.findById(communityReportNumber).get();
+		
+		c.setCommunityReportState(1);
+		communityReportRepo.save(c);
+	}
+	
+	
+	
+	public ReviewReport getReviewFindById(@PathVariable Integer reportNumber) {
+		
+		return reviewReportRepo.findById(reportNumber).get();
+	}
+	
+	public int getReviewReportCount(@PathVariable Integer reportNumber) {
+		ReviewReport r = reviewReportRepo.findById(reportNumber).get();
+		Integer userNumber = r.getUser().getUserNumber();
+		
+		return reviewReportRepo.reviewCount(userNumber);
+	}
+	
+	public void reviewReportWork(@PathVariable Integer reportNumber) {
+		ReviewReport r = reviewReportRepo.findById(reportNumber).get();
+		
+		r.setReviewReportState(1);
+		reviewReportRepo.save(r);
+		
+	}
+	
+	
+	
+	
+	public CommentsReport getCommentFindById(@PathVariable Integer reportNumber) {
+		
+		return commentReportRepo.findById(reportNumber).get();
+	}
+	
+	public int getCommentReportCount(@PathVariable Integer reportNumber) {
+		CommentsReport c = commentReportRepo.findById(reportNumber).get();
+		Integer userNumber = c.getUser().getUserNumber();
+		
+		return commentReportRepo.commentsCount(userNumber);
+		
+	}
+	public void commentsReportWork(@PathVariable Integer reportNumber) {
+		
+		CommentsReport c = commentReportRepo.findById(reportNumber).get();
+		c.setCommentsReportState(1);
+		
+		commentReportRepo.save(c);
 		
 	}
 	
@@ -157,5 +234,23 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	
+	
+	public CommentsCommentsReport getCommentsCommentsFindById(@PathVariable Integer reportNumber) {
+		return coCommentReportRepo.findById(reportNumber).get();
+	}
+	
+	public int getCoCommentsReportCount(@PathVariable Integer reportNumber) {
+		CommentsCommentsReport c = coCommentReportRepo.findById(reportNumber).get();
+		Integer userNumber = c.getUser().getUserNumber();
+		
+		return coCommentReportRepo.coCommentsCount(userNumber);
+	}
+	
+	public void commentsCommentsReportWork(@PathVariable Integer reportNumber) {
+		CommentsCommentsReport c = coCommentReportRepo.findById(reportNumber).get();
+		c.setCommentsCommentsReportState(1);
+		coCommentReportRepo.save(c);
+		
+	}
 	
 }

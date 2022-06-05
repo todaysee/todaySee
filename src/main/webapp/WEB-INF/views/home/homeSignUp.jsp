@@ -19,6 +19,8 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/home.css"/>
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	<!-- 문혜진 CSS  -->
+    <link rel="stylesheet" href="/css/home/homeStyle.css">
 </head>
 
 <body>
@@ -69,23 +71,24 @@
                         <div class="register-form">
                             <div style="text-align:center"><h2>회원가입</h2></div>
         
-                            <form action="/signup" method="post">
+                            <form id="signUp_frm" action="/signUp" method="post">
                                 <div class="form-group">
                                     <label>닉네임</label>
-                                    <input type="text" name="userNickname" class="form-control" value="Gill">
-                                   
-                                </div>
+                                    <input type="text" id="userNickname" name="userNickname" class="form-control">
+                                    <span class="error_box"></span>
+                                  </div>
 
-								
 								&nbsp;
 								<div class="row">
                                 <div class="form-group col-md-9" >
-                                    <label>이메일</label>
-                                    <input type="email" name="userEmail" class="form-control" value="moon@gmail.com" style="margin-right:0px;">
+                                    <label for="userEmail">이메일</label>
+                                    <input type="email"  id="userEmail" name="userEmail" class="form-control" style="margin-right:0px;">
+                             		<span class="error_box"></span>
 									</div>
 									<div class="post-btn col-md-3">
-                                  <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; 
-                                  padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;">중복확인</button>
+									
+                                  <input type="button" id="btn_emailCheck" class="button_h" name="btn_emailCheck" style="border-radius: 13px; 
+                                  padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;" value="중복확인"/>
                              		</div>
                              		</div>
                              		 
@@ -93,43 +96,50 @@
                                 <div class="form-group">
                                 
                                     <label>비밀번호</label>
-                                    <input type="password" name="userPassword1" class="form-control">
+                                    <input type="password" id="userPassword" name="userPassword" class="form-control">
+                                     <span class="error_box"></span>
+                                    
                                 </div>
 
                                 &nbsp;
                                 <div class="form-group">
                                     <label>비밀번호 확인 </label>
-                                    <input type="password" name="userPassword2"  class="form-control">
-                                </div>
+                                    <input type="password" id="userPassword2" name="userPassword2"  class="form-control">
+                                    <span class="error_box"></span>
+                                 </div>
                                 
                                 &nbsp;
                                 <div class="form-group">
                                     <label>이름</label>
-                                    <input type="text" name="userName" value="TOMBOY" class="form-control">
-                                </div>
+                                    <input type="text" id="userName" name="userName" class="form-control">
+                                    <span class="error_box"></span>
+                                   </div>
                                 
                                 &nbsp;
                                 <div class="form-group">
                                     <label>성별</label>
                                     
-                                   	<select class="form-control" name="userGender" id="gender">
-                                   		<option value="choice">성별을 선택해주세요</option>
+                                   	<select class="form-control" id="userGender" name="userGender" id="gender">
+                                   		<option value="">성별을 선택해주세요</option>
                                    		<option value="Woman">여성</option>
                                    		<option value="Man">남성</option>
                                    		</select>
-                                   	
-                                </div>
+                                   		<span class="error_box"></span>
+                                 </div>
                                
                                 &nbsp;
                                 <div class="form-group">
                                     <label>휴대전화번호</label>
-                                    <input type="text" name="userTel" value="010333" class="form-control">
+                                    <input type="text" id="userTel" name="userTel" class="form-control">
+                                    <span class="error_box"></span>
                                 </div>
         
                                 
                                 <div class="remember-me-wrap">
-                                    	 <input type="checkbox" id="test1">
-                                        <label for="test1" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
+                                   		<input type="checkbox" id="checkBox" name="checkBox">
+                                   		
+                                        <label for="checkBox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
+                                        <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
                                    
@@ -137,23 +147,20 @@
                                 <div class="or-text"><span></span></div>  
                                 
                                 <div class="post-btn">
-								<button type="submit" name="register" style="border-radius: 13px; 
-											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">Register</button>	
+								<button type="submit" id="btn_register" name="btn_register" style="border-radius: 13px; 
+											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">회원가입</button>	
 											</div>
 									
 									
 									<div class="lost-your-password-wrap" style="margin-top: 20px;">
-                                		<div style="float:left;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey";>홈으로 가기  </a>
-                                        	</div>
+                                        	<a href="/" class="lost-your-password" style="float:left; color:grey;">홈으로 가기  </a>
+                                       
                                         	<div style="float:right;">
-                                        	<a href="forgot-password.html" class="lost-your-password" style="color:grey;">이메일/비밀번호 찾기 </a>
-                                        	
-                                  	 	</div>
+                                        	<a href="/login" class="lost-your-password" style="color:grey;">로그인하기</a>
                                         	</div>
-                                        	
-                                        		
-                                
+                                        	</div>
+                                        	<div class="or-text"><span></span></div>
+                                        
                             </form>
                         </div>
                     </div>
@@ -214,6 +221,11 @@
 <script src="/js/home/slick.min.js"></script>
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
+
+
+<!-- js추가 -->
+ 
+    <script src="/js/home/UserLogin.js"></script>
 
 
 </body>

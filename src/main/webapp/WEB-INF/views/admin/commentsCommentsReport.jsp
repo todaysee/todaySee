@@ -76,7 +76,7 @@
             
           </div>
           <div class="col-sm-6">
-            <h3>신고관리</h3>
+            <h3>대댓글 신고관리</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -122,19 +122,21 @@
                     <th>신고대상</th>
                     <th>신고내용</th>
                     <th>신고날짜</th>
-                    <th>신고상태</th>
-                    <th>신고처리</th>
+                    <th>좋아요수</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <th><button class="btn btn-outline-danger">신고처리</button></th>
+                  <c:forEach items="${commentsCommentsReport }" var="report">
+                  <c:if test="${report.commentsCommentsReportState == 0 }">
+                  <tr class="cocoReport" reportValue="${report.commentsCommentsReportNumber }">
+                    <td>${report.commentsCommentsReportNumber }</td>
+                    <td>${report.user.userName }</td>
+                    <td>${report.commentsCommentsReportContent }</td>
+                    <td>${report.commentsCommentsReportDate }</td>
+                    <td>${report.commentsComments.commentscommentsLike }</td>
                   </tr>
+                  </c:if>
+                  </c:forEach>
                   </tbody>
                   
                 </table>
@@ -218,6 +220,19 @@
       "responsive": true,
       "destroy":true,
     }); 
+    
+    
+    $(document).on('click','.cocoReport',function(){
+
+        const reportNumber= $(this).attr('reportValue')
+
+        location.href="/admin/commentsCommentsReport/"+reportNumber;
+
+
+
+      });
+    
+    
   });
 
 

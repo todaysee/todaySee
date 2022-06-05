@@ -76,7 +76,7 @@
             
           </div>
           <div class="col-sm-6">
-            <h3>신고관리</h3>
+            <h3>리뷰 신고관리</h3>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -121,19 +121,21 @@
                     <th>신고대상</th>
                     <th>신고내용</th>
                     <th>신고날짜</th>
-                    <th>신고상태</th>
-                    <th>신고처리</th>
+                    <th>리뷰평점</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <th><button class="btn btn-outline-danger">신고처리</button></th>
+                  <c:forEach items="${reviewReport}" var="report">
+                  <c:if test="${report.reviewReportState == 0 }">
+                  <tr class="reivewReport" reportValue="${report.reviewReportNumber }">
+                    <td>${report.reviewReportNumber }</td>
+                    <td>${report.user.userName }</td>
+                    <td>${report.reviewReportContent }</td>
+                    <td>${report.reviewReportDate }</td>
+                    <td>${report.review.reviewGrade }</td>
                   </tr>
+                  </c:if>
+                  </c:forEach>
                   </tbody>
                   
                 </table>
@@ -217,6 +219,17 @@
       "responsive": true,
       "destroy":true,
     }); 
+    
+    $(document).on('click','.reivewReport',function(){
+
+        const reportNumber= $(this).attr('reportValue')
+
+        location.href="/admin/reviewReport/"+reportNumber;
+
+
+
+      });
+    
   });
 
 

@@ -1,17 +1,22 @@
 package com.todaySee.home.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.todaySee.domain.UserVO;
-import com.todaySee.home.service.UserService;
+import com.todaySee.home.service.UserServiceImpl;
 
 
 @SessionAttributes("user")
@@ -19,16 +24,10 @@ import com.todaySee.home.service.UserService;
 public class UserController {
 	
 	 @Autowired
-		private UserService userServiceImpl;
-
-
+		private UserServiceImpl userServiceImpl;
 	 
-	 //인덱스페이지
-//	 @GetMapping("/")
-//	public String homeIndex() {
-//		return "/home/homeIndex";
-//	}
-
+	 @Autowired
+		private PasswordEncoder encoder;
 
 	//회원가입방법 선택 
     @GetMapping("/homechooseLogin")
@@ -37,14 +36,15 @@ public class UserController {
     }
 
     //회원가입 페이지
-    @GetMapping("/signup")
+    @GetMapping("/signUp")
     public String homeSignUp() {
+
     	return "/home/homeSignUp";
     }
     
-    @PostMapping("/signup")
+    @PostMapping("/signUp")
     public String signUp(UserVO user) {
-   	userServiceImpl.create(user);
+    	userServiceImpl.create(user);
         return "/home/homeSignUpComplete";
     }
     
@@ -63,29 +63,46 @@ public class UserController {
     }
     
     @PostMapping("/login")
-    public String login(String userEmail, String userPassword, Model model) {
+    public String login(String userEmail, String userPassword, Model model,HttpSession session) {
     	System.out.println("PostMapping");
         UserVO findUser = userServiceImpl.login(userEmail, userPassword);
     	if (findUser != null
-    			&& findUser.getUserPassword().equals(userPassword)) {
-    			
+    		) {
     		model.addAttribute("user", findUser);
-    		return "/home/homeIndex";
+    		session.setAttribute("userNumber", findUser.getUserNumber());
+    		session.setMaxInactiveInterval(60*60*24);
+    		System.out.println("세션"+session.getAttribute("userNumber"));
+    		return "redirect:/";
+    	
     	} else {
     		return "/home/homeLogin";
     	}
     }
+    
+ 
+     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
+    @GetMapping("/userCheck")
+    public String userCheck(HttpSession session) {
+    	if(session.getAttribute("userNumber")==null) {
+    		return "/home/homeLogin";
+    	}else {
+    		return "redirect:myPage/profile";
+    	}
+    }
 
     //아이디 찾기 페이지
-    @GetMapping("/idFind")
-    public String homeIdFind() {
-        return "/home/homeIdFind";
+    @GetMapping("/emailFind")
+    public String emailFind() {
+        return "/home/emailFind";
     }
     
+    
     //아이디 찾기 이메일 목록 리스트 페이지 
-    @GetMapping("/homeIdFindList")
-    public String homeIdFindList() {
-    	return "/home/homeIdFindList";
+   @RequestMapping("/homeEmailFindList")
+    public String homeEmailFindList(UserVO user, Model m) {
+	  System.out.println(user.getUserName()+"말해줘");
+    	m.addAttribute("userEmailList", userServiceImpl.homeEmailFindList(user));
+    	return "/home/homeEmailFindList";
     }
 
     //비밀번호 찾기 페이지
