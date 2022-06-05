@@ -29,6 +29,9 @@
 		.search_result{
 			padding: 3% 0% 1% 3%
 		}
+		.loadMoreBtn{
+			text-align: center;
+		}
 	</style>
 
 </head>
@@ -156,23 +159,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="gen-pagination">
-                        <nav aria-label="Page navigation">
-                            <ul class="page-numbers">
-                            <c:if test="${param.page > 1 }">
-                            	<li><a class="prev page-numbers" href="/search/genres?genreNumber=${param.genreNumber }&page=${param.page-1}"></a></li>
-                            </c:if>
-                            <c:forEach begin="1" end="${totalPage  }" var="pageNum">
-                                <li><a aria-current="page" class="page-numbers" href="/search/genres?genreNumber=${param.genreNumber }&page=${pageNum}">${pageNum}</a></li>
-                            </c:forEach>
-                            <c:if test="${param.page < totalPage }">
-                                <li><a class="next page-numbers" href="/search/genres?genreNumber=${param.genreNumber }&page=${param.page+1}">Next page</a></li>
-                            </c:if>
-                            </ul>
-                        </nav>
+				<div class="col-lg-12">
+	                    <div class="gen-load-more-button">
+	                        <div class="gen-btn-container loadMoreBtn">
+	                            <button type="button" id="genresLoadMoreBtn" class="gen-button gen-button-loadmore">
+	                                <span class="button-text">Load More</span>
+	                                <span class="loadmore-icon" style="display: none;"><i
+	                                        class="fa fa-spinner fa-spin"></i></span>
+	                            </button>
+                        </div>
                     </div>
-                </div>
+             	</div>
 			</div>
     </section>
     <!-- Section-1 End -->
@@ -201,7 +198,7 @@
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
 
-<!-- 무한 스크롤 js -->
+<!-- 안정은 js -->
 <script src="/js/homeList/homeList.js"></script>
 
 </body>
