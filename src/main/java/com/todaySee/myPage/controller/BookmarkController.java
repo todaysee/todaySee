@@ -29,7 +29,7 @@ public class BookmarkController {
     @Autowired
     private BookmarkService bookmarkService;
 
-    @GetMapping("/myPage/bookMark")
+  //  @GetMapping("/myPage/bookMark")
     public String myPageBookMarkList(HttpSession session, UserVO user, Model model) {
 
         user.setUserNumber((Integer) session.getAttribute("userNumber"));

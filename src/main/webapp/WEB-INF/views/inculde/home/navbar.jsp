@@ -220,7 +220,9 @@ $(function(){
                                 </div>
                             </div>
                             <div class="gen-account-holder">
-                                <a href="/myPage/profile" id="gen-user-btn"><i class="fa fa-user"></i></a>
+
+                                <a href="/userCheck" id="gen-user-btn"><i class="fa fa-user"></i></a>
+
                                 <div class="gen-account-menu">
                                     <ul class="gen-account-menu">
                                         <!-- Pms Menu -->
