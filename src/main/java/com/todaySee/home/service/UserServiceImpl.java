@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
 	//회원가입
 	@Override
 	public  UserVO create(UserVO user) {
+		user.setUserAdmin(0);
 		user.setUserPassword(encoder.encode(user.getUserPassword()));
 		return userRepository.save(user);
 	}
