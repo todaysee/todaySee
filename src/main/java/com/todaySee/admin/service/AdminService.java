@@ -48,4 +48,20 @@ public interface AdminService {
 	
 	public List<ReviewReport> getReviewReport();
 	
+	public CommunityReport getFindById(@PathVariable Integer contentNumber);
+	public int getCommunityReportCount(@PathVariable Integer contentNumber);
+	public void communityReportWork(@PathVariable Integer communityReportNumber);
+	
+	public ReviewReport getReviewFindById(@PathVariable Integer reportNumber);
+	public int getReviewReportCount(@PathVariable Integer contentNumber);
+	public void reviewReportWork(@PathVariable Integer reportNumber);
+	
+	
+	public CommentsReport getCommentFindById(@PathVariable Integer reportNumber);
+	public int getCommentReportCount(@PathVariable Integer reportNumber);
+	public void commentsReportWork(@PathVariable Integer reportNumber);
+	
+	public CommentsCommentsReport getCommentsCommentsFindById(@PathVariable Integer reportNumber);
+	public int getCoCommentsReportCount(@PathVariable Integer reportNumber);
+	public void commentsCommentsReportWork(@PathVariable Integer reportNumber);
 }

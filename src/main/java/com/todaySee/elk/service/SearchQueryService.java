@@ -37,7 +37,7 @@ public class SearchQueryService {
 		try {
 			SearchRequest request = new SearchRequest(Indices.PROJECT_MOVIE);
 			SearchSourceBuilder ssb = new SearchSourceBuilder();
-			ssb.query(QueryBuilders.multiMatchQuery(query, "content_title", "content_info","genre_name","ott_name"));
+			ssb.query(QueryBuilders.multiMatchQuery(query, "content_title", "content_info","genre_name","ott_name")).size(20);
 			request.source(ssb);
 			 SearchResponse documentFields = client.search(
 					request,
