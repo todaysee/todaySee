@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.todaySee.domain.Content;
-import com.todaySee.home.service.HomeServiceImpl;
+import com.todaySee.home.service.HomeService;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
 	@Autowired
-	private HomeServiceImpl homeServiceImpl;
+	private HomeService homeService;
 
     //테스트 페이지
     @GetMapping("/2")
@@ -67,18 +68,48 @@ public class HomeController {
 
     /** 홈 페이지
      * 	- 로그인 후 회원의 정보를 토대로 추천 알고리즘을 돌리고 예상 평점이 높은 영화를 추려서 홈 페이지에 출력
-     * @param	로그인 세션
+     * @param	세션값 얻어오기
+     * 				- 세션 O	: 사용자 추천 알고리즘을 통해 나온 콘텐츠 리스트 출력
+     * 				- 세션 X	: 출력 X
      * @return	추천 알고리즘을 통한 추천 영화 출력
      */
-
     @GetMapping("/")
-    public String homeIndex(Model m) {
+    public String homeIndex(Model m, HttpSession session) {
     	
     	// 최신 콘텐츠 출력
-    	m.addAttribute("newContent",homeServiceImpl.newContent());
+    	m.addAttribute("newContent",homeService.newContent());
+    	
+		// 랜덤으로 장르별 번호 뽑기
+		Random random = new Random(System.currentTimeMillis());
+		Integer randomNumber_1 = random.nextInt(17)+1;
+		Integer randomNumber_2 = random.nextInt(17)+1;
+		
+		// 동일한 숫자가 나온다면 다시 뽑기
+		while(randomNumber_1 == randomNumber_2) {
+			randomNumber_2 = random.nextInt(17)+1;
+		}// end of while
+		
+		System.out.println("randomNumber_1 : "+randomNumber_1);
+		System.out.println("randomNumber_2 : "+randomNumber_2);
+		
+		// 랜덤 번호에 따른 genrsName 구하기 
+		m.addAttribute("genre_1", homeService.findByGenreNumber(randomNumber_1));
+		m.addAttribute("genre_2", homeService.findByGenreNumber(randomNumber_2));
+		
+    	// 장르별 콘텐츠 출력
+    	m.addAttribute("genresContentList_1", homeService.genresContentList(randomNumber_1));
+    	m.addAttribute("genresContentList_2", homeService.genresContentList(randomNumber_2));
     	 
-    	// 사용자 추천 콘텐츠 출력
-    	m.addAttribute("RecommendedContentList",homeServiceImpl.RecommendedContentList());
+    	// 사용자가 로그인 했는지 확인
+    	Integer userNumber = (Integer) session.getAttribute("userNumber");
+    	
+    	// 로그인을 한 상태일 때
+    	if(userNumber != null) {
+    		// 사용자 추천 콘텐츠 출력
+    		m.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
+    		// 사용자의 닉네임 검색 후 출력
+    		m.addAttribute("userNickname", homeService.findByUserNumber(userNumber).getUserNickname());
+    	}// end of if
     	
         return "/home/homeIndex";
       
@@ -103,15 +134,8 @@ public class HomeController {
 	  @GetMapping("/search/genres") 
 	  public String homeList_person(Integer genreNumber, Model model, Integer page) {
 	  
-		  if(page == null) page = 1;
-		  
-		  // genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함 
-		  if(genreNumber == null) genreNumber = 1;
-		  
-		  PageRequest pageRequest = PageRequest.of(page, 32,Sort.by(Sort.Direction.ASC, "c.content_title"));
-		  
 		  // 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다  
-		  Page<Content> genresContent = homeServiceImpl.getGenresContentList(genreNumber, pageRequest);
+		  Page<Content> genresContent = homeService.getGenresContentList(genreNumber, page);
 		  
 		  List<Content> genresContentList = genresContent.getContent();
 		  
