@@ -4,6 +4,7 @@ package com.todaySee.home.controller;
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Images;
 import com.todaySee.domain.Review;
+import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.DetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +32,15 @@ public class DetailsController {
      * @return "/home/homeDetails" : RESTful이 아닌 본래 View링크
      */
     @GetMapping("/{contentNumber}")
-    public String getContentById(@PathVariable Integer contentNumber, Model model) {
+    public String getContentById(@PathVariable Integer contentNumber, Model model, HttpSession session) {
         System.out.println("===============================> 컨텐츠 번호 : " + contentNumber);
+
+        /* 세션을 통해 유저 번호 가져오기 */
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
+
+        /* 유저 닉네임 가져오기 */
+        UserVO user = detailsService.getUser(userNumber);
+        model.addAttribute("user", user);
 
         /* 컨텐츠 상세 내용 가져오기 */
         Content contentVO = detailsService.getContentById(contentNumber);
@@ -52,7 +60,6 @@ public class DetailsController {
         model.addAttribute("reviewList", reviewList);
 
         /* 즐겨찾기 불러오기 */
-        Integer userNumber = 1; /* Session으로 불러올 것 */
         List<HashMap<String, String>> bookmarkList = detailsService.getBookmarkList(userNumber);
         model.addAttribute("bookmarkList", bookmarkList);
 

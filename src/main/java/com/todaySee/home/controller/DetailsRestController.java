@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -80,9 +81,9 @@ public class DetailsRestController {
     public JSONArray insertBookmark(String bookmarkName) {
         /* 유저 번호는 세션처리해야함 */
         Integer userNumber = 1;
-        detailsService.insertBookmark(bookmarkName, userNumber);
+        detailsService.insertBookmark(bookmarkName, userNumber, null); /* insert */
 
-        JSONArray array = new JSONArray();
+        JSONArray array = new JSONArray(); /* AJAX 로 리턴하기 위한 값 */
 
         List<HashMap<String, String>> list = detailsService.getBookmarkList(userNumber);
         for(HashMap<String, String> map : list) {
@@ -91,6 +92,20 @@ public class DetailsRestController {
         }
 
         return array;
+    }
+
+    @PostMapping("/details/bookmarkContentInsert")
+    public String insertBookmarkContent(Integer contentNumber, String bookmarkName) {
+        /* 유저 번호는 세션처리해야함 */
+        Integer userNumber = 1;
+        detailsService.insertBookmark(bookmarkName, userNumber, contentNumber);
+        return null;
+    }
+
+    @PostMapping("/details/reviewLikeUp")
+    public JSONObject reviewLikeUp(Integer reviewNumber) {
+        JSONObject obj = detailsService.updateReviewLikeUp(reviewNumber);
+        return obj;
     }
 
 }
