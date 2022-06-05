@@ -1,14 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
+<script type="text/javascript">
+$(function(){
+    $('#search_title').click(function(){
+        
+        const query = $("#query").val()
+        location.href = '/api/vehicle/search/'+query
+    })
+    
+});
+	
+</script>
 <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
     <div class="gen-bottom-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/">
                             <img class="img-fluid logo" src="/images/home/logo-1.png" alt="streamlab-image">
                         </a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -199,10 +209,10 @@
                                 <a href="#" id="gen-seacrh-btn"><i class="fa fa-search"></i></a>
 <%--                                <a href="/javascript:void(0)" id="gen-seacrh-btn"><i class="fa fa-search"></i></a>--%>
                                 <div class="gen-search-form">
-                                    <form role="search" method="get" class="search-form" action="#">
+                                    <form role="search" method="get" class="search-form" action="/api/movie/search">
                                         <label>
                                             <span class="screen-reader-text"></span>
-                                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                                            <input type="search" name="query" class="search-field" placeholder="Search …">
                                         </label>
                                         <button type="submit" class="search-submit"><span
                                                 class="screen-reader-text"></span></button>

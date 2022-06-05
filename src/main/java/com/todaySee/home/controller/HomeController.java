@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,12 +74,11 @@ public class HomeController {
     @GetMapping("/")
     public String homeIndex(Model m) {
     	
-    	List<Content> newContent = new ArrayList<Content>();
-    	newContent.addAll(homeServiceImpl.newContent());
-    	m.addAttribute("newContent",newContent);
-    	
-    	List<Content> RecommendedContentList = homeServiceImpl.RecommendedContentList();
-    	m.addAttribute("RecommendedContentList",RecommendedContentList);
+    	// 최신 콘텐츠 출력
+    	m.addAttribute("newContent",homeServiceImpl.newContent());
+    	 
+    	// 사용자 추천 콘텐츠 출력
+    	m.addAttribute("RecommendedContentList",homeServiceImpl.RecommendedContentList());
     	
         return "/home/homeIndex";
       
@@ -94,32 +94,33 @@ public class HomeController {
         return "/home/homeList_content";
     }
     
-	/** 장르별 컨텐츠 화면에 출력
-	 * @param genreNumber (장르 번호)
-	 * @return List<Content> 
-	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
-	 */
-    @GetMapping("/search/genres")
-    public String homeList_person(Integer genreNumber, Model model, Integer page) {
-    	
-    	
-    	if(page == null) page = 1;
-    	
-    	// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함
-    	if(genreNumber == null) genreNumber = 1;	
-    	
-    	PageRequest pageRequest = PageRequest.of(page, 32, Sort.by(Sort.Direction.ASC, "c.content_title"));
-    	
-    	// 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다
-    	Page<Content> genresContent =  homeServiceImpl.getGenresContentList(genreNumber, pageRequest);
-    	
-    	List<Content> genresContentList = genresContent.getContent();
-    	
-    	model.addAttribute("genresContentList", genresContentList);  // 리스트에 담긴 컨텐츠를 화면에 출력한다
-    	model.addAttribute("totalPage",genresContent.getTotalPages()); // 전체 페이지 번호	
-    	
-    	return "/home/homeList_genres";
-    }
+    /** 장르별 컨텐츠 화면에 출력
+     * @param genreNumber (장르 번호)
+     * @return List<Content> 
+     * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
+     */
+	
+	  @GetMapping("/search/genres") 
+	  public String homeList_person(Integer genreNumber, Model model, Integer page) {
+	  
+		  if(page == null) page = 1;
+		  
+		  // genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함 
+		  if(genreNumber == null) genreNumber = 1;
+		  
+		  PageRequest pageRequest = PageRequest.of(page, 32,Sort.by(Sort.Direction.ASC, "c.content_title"));
+		  
+		  // 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다  
+		  Page<Content> genresContent = homeServiceImpl.getGenresContentList(genreNumber, pageRequest);
+		  
+		  List<Content> genresContentList = genresContent.getContent();
+		  
+		  model.addAttribute("genresContentList", genresContentList); // 리스트에 담긴 컨텐츠를 화면에 출력한다 
+		  model.addAttribute("totalPage",genresContent.getTotalPages()); // 전체 페이지 번호
+		  
+		  return "/home/homeList_genres"; 
+	  }// end of homeList_person()
+	 
 
     /** 검색 결과 페이지 - 즐겨찾기
      * @return
