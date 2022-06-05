@@ -232,7 +232,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">${userNickname}님을 위한 추천 콘텐츠 </h4>
+				<h4 class="gen-heading-title">${sessionScope.userNickname}님을 위한 추천 콘텐츠 </h4>
 			</div>
 		</div>
 		<div class="row mt-3">
