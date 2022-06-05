@@ -11,7 +11,16 @@ public interface BookmarkService {
     // 유저번호에 따른 즐겨찾기 리스트 가져오기
     public List<HashMap<String, String>> getBookmarkList(Integer userNumber);
 
-    // 유저번호와 즐겨찾기 번호에 따른 컨텐츠 가져오기
-    public List<HashMap<String, String>> getBookmark(Integer userNumber, Integer bookmarkNumber);
+    // 즐겨찾기 번호에 따른 해당 즐겨찾기 상세정보
+    public Bookmark getBookmark(Integer bookmarkNumber);
+
+    // 유저번호와 즐겨찾기 번호에 따른 해당 즐겨찾기 내의 컨텐츠 가져오기
+    public List<HashMap<String, String>> getBookmarkContentList(Integer userNumber, Integer bookmarkNumber);
+
+    // 즐겨찾기 번호에 따른 해당 즐겨찾기 수정
+    public void updateBookmark(Integer bookmarkNumber, String bookmarkName, Integer bookmarkState, Integer userNumber);
+
+    // 즐겨찾기 번호에 따른 해당 즐겨찾기 삭제
+    public void deleteBookmark(Integer bookmarkNumber, Integer userNumber);
 
 }
