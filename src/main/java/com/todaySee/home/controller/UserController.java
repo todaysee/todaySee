@@ -79,13 +79,7 @@ public class UserController {
     	}
     }
     
-    //Email 중복체크 
-    @PostMapping("/emailCheck")
-    @ResponseBody
-	 public String emailCheck(UserVO user) {
-    	return userServiceImpl.emailCheck(user.getUserEmail());
-	 }
-	 
+ 
      // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
     @GetMapping("/userCheck")
     public String userCheck(HttpSession session) {
@@ -102,12 +96,6 @@ public class UserController {
         return "/home/emailFind";
     }
     
-    @PostMapping("/emailFind")
-    @ResponseBody
-    public String emailFind(UserVO user) {
-    	System.out.println("컨트롤러 "+userServiceImpl.emailFind(user));
-    	return userServiceImpl.emailFind(user);
-    }
     
     //아이디 찾기 이메일 목록 리스트 페이지 
    @RequestMapping("/homeEmailFindList")

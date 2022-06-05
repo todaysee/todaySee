@@ -110,7 +110,7 @@
         <script src="assets/js/main.js"></script>
          
          
-          <script src="/js/mypageCommunity/jquery.min.js"></script>
+<script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
 <script src="/js/mypageCommunity/jquery-ui.min.js"></script>

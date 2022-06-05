@@ -79,7 +79,7 @@
         
                                 <div class="form-group">
                                     <label> 비밀번호 </label>
-                                    <input type="password" name="userPassword" value="0000" class="form-control">
+                                    <input type="password" name="userPassword" class="form-control">
                                 </div>
         
                                  <!-- <div class="remember-me-wrap d-flex justify-content-between align-items-center" 
@@ -87,12 +87,12 @@
                               		
                                         	<div class="lost-your-password-wrap">
                                         	<div style="float:left; color:grey;">
-                                        	<input type="checkbox" id="test1">
-                                        <label for="test1">이메일 기억하기</label>
+                                        	<input type="checkbox" id="chekcBox" name="checkBox">
+                                        <label for="chekcBox">이메일 기억하기</label>
                                         
                                         	</div>
                                        	
-                                <button type="submit" class="default-btn"> 로그인 </button>
+                                <button type="button" class="default-btn" name="btn_Login" id="btn_"> 로그인 </button>
                                  <div class="or-text"><span></span></div> 
                                                                
                                 		<div class="lost-your-password-wrap">
@@ -101,7 +101,7 @@
                                         	</div>
                                         	<a href="/signUp" class="lost-your-password">회원가입하기  </a> &nbsp;&nbsp;&nbsp;
                                         	<div style="float:right;">
-                                        	<a href="/idFind" class="lost-your-password" style="color:grey;">이메일</a>&nbsp;<a href="/passwordFind" style="color:grey;">비밀번호찾기</a>
+                                        	<a href="/idFind" class="lost-your-password" style="color:grey;">이메일찾기</a>&nbsp;<a href="/passwordFind" style="color:grey;">비밀번호찾기</a>
                                         	</div>
                                         	</div>
                                         	</div>

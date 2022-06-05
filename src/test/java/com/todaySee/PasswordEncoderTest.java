@@ -9,7 +9,7 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.todaySee.domain.UserVO;
-import com.todaySee.home.persistence.UserRepository;
+import com.todaySee.persistence.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

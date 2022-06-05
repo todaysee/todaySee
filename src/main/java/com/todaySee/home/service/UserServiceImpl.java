@@ -56,7 +56,8 @@ public class UserServiceImpl implements UserService {
 		//UserVO result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
 		List<UserVO> result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
 		String message="Y";
-		if(result == null) {
+		System.out.println("String message 값 " + result);
+		if(result.isEmpty()) {
 			message = "N";
 			}
 		System.out.println("서비스 "+message);

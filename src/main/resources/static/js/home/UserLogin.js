@@ -233,12 +233,13 @@ $('#btn_register').click(function(){
 								//}
 			    }); //end of ajax	
 			    }
-			    
-			   /* 이메일 찾기 */
-			   
-			   
-			   
-			   })
+			     })
+			     
+			     
+//**** 로그인  */
+
+			     
+	/* 이메일 찾기 */
 	$('#btn_findEmail').click(function(){
 			   
 			   $.ajax({
@@ -250,9 +251,9 @@ $('#btn_register').click(function(){
 					},
 			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
 			success : function(result){
-				alert(result);
-				if(result == "N"){
-					$('#user_Cellphone ~ .error_message.').html("존재하는 회원이 아닙니다.");
+				//alert(result);
+				if(result =="N"){
+					$('#user_Cellphone ~ .error_message').html("존재하는 회원이 아닙니다.");
 				}else{
 					document.emailFind_frm.submit();
 				}
@@ -265,3 +266,7 @@ $('#btn_register').click(function(){
 			    
 			   }); //end of #btnfindEmail
 			  
+			  
+	/*비밀번호 찾기 */ 
+	
+	
