@@ -73,8 +73,12 @@
                             <form>
                             	<div class="loginimages" style="width: 100%; margin-top: 60px !important; margin-left: 15% !important;">
                                 <div class="naverImage">
-                              		<img src="images/home/login/naverLogin.png" alt="naver" style=" width:70%;">
+                              		<img src="images/home/login/naverLogin.png" alt="naver" style=" width:75%;">
                               		</div>
+                              	<div class="login_test">
+                              	<button type="button" name="login_test" style="width:70%; height:100%;" ></button>
+                              	
+                              	</div>
                                 <div class="kakaoImage" style="margin:auto;">
                               		<img src="images/home/login/kakaoLogin.png" alt="kakao" style="width: 70%; margin-top: 10px !important;">
                               		</div><br>

@@ -72,28 +72,30 @@
                         
                             <div style="text-align:center"><h2> 아이디(이메일) 찾기 </h2></div>
         
-                            <form>
+                            <form action="/homeEmailFindList" method="post" id="emailFind_frm" name="emailFind_frm">
                                 <div class="form-group">
                                     <label> 이름  </label>
-                                <input type="text" class="form-control" style="margin-bottom: 30px !important;">
+                                <input type="text" class="form-control" name="userName" id="user_Name" style="margin-bottom: 30px !important;">
+                                <span class="error_message"></span>
                                 </div>
                                 
         
                                 <div class="form-group">
                                     <label> 휴대전화 </label>
-                                    <input type="password" class="form-control">
+                                    <input type="text"  name="userTel" id ="user_Cellphone" class="form-control">
+                                	<span class="error_message"></span>
                                 </div>
         
                                  
                                  <div class="or-text"><span></span></div> 
                                
-							<button type="submit" class="google-btn" style="margin-top: 40px !important; margin-bottom: 30px !important;">이메일 찾기 </button>                                
+							<button type="button" class="google-btn" name="btn_findEmail" id="btn_findEmail" style="margin-top: 40px !important; margin-bottom: 30px !important;">이메일 찾기 </button>                                
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
-                                        	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
+                                        	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="forgot-password.html" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
-                                        	<a href="forgot-password.html" class="lost-your-password">비밀번호 찾기 </a>
+                                        	<a href="/login" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
+                                        	<a href="/passwordFind" class="lost-your-password">비밀번호 찾기 </a>
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>
@@ -163,6 +165,10 @@
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
 
+
+<!-- js추가 -->
+ 
+    <script src="/js/home/UserLogin.js"></script>
 
 </body>
 

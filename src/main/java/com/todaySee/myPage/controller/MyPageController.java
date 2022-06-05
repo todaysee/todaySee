@@ -1,9 +1,9 @@
 package com.todaySee.myPage.controller;
 
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.myPage.javaClass.MyPageImages;
@@ -151,13 +151,47 @@ public class MyPageController {
         return "/myPage/myPageReviewList";
     }
 
+
+
+    @GetMapping("/myPage/bookMarkList")
+    public String myPageBookMark(HttpSession session, UserVO user, Model model) {
+
+        user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        //마이페이지 회원정보 불러오기, 이미지 불러오기
+        model.addAttribute("user", myPageService.getUserInfo(user));
+        MyPageImages myPageImages = new MyPageImages();
+        List<Object[]> tittleImages = myPageImgRepository.profileTittleImages((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
+        List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
+
+        return "/myPage/myPageBookMarkList";
+    }
+
+//    @GetMapping("/myPage/bookMark")
+//    public String myPageBookMarkList(HttpSession session, UserVO user, Model model) {
+//
+//        user.setUserNumber((Integer) session.getAttribute("userNumber"));
+//        //마이페이지 회원정보 불러오기, 이미지 불러오기
+//        model.addAttribute("user", myPageService.getUserInfo(user));
+//        MyPageImages myPageImages = new MyPageImages();
+//        List<Object[]> tittleImages = myPageImgRepository.profileTittleImages((Integer) session.getAttribute("userNumber"));
+//        model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
+//        List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
+//        model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
+//
+//        return "/myPage/myPageBookMark";
+//    }
+
     @PostMapping("/myPage/update")
     public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
+
 
         System.out.println(userNumber + ":" + userNickname);
         myPageService.updateNickname(userNumber,userNickname);
 
     }
+
 
     @GetMapping("/myPage/modal")
     public String modal() {
