@@ -22,16 +22,17 @@ public class MovieController {
 	private  SearchQueryService SearchSer;
 	
 	
-	@GetMapping("/search/{query}")
+	@GetMapping("/search")
 	public ModelAndView getAllMovieSearch(
-			@PathVariable final String query) {
+			 final String query) {
 
 		
 		List<Movie> movieList = SearchSer.getByQuery(query);
 	
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/detail");
+		mv.setViewName("home/homeList_content");
 		mv.addObject("movie", movieList);
+		mv.addObject("search_result", query);
 		return mv;
 	}
 	

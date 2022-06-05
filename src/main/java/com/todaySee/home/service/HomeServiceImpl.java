@@ -4,22 +4,26 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
-import com.todaySee.persistence.ContentGenreRepository;
+import com.todaySee.domain.Genre;
+import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.ContentRepository;
 import com.todaySee.persistence.GenreRepositroy;
+import com.todaySee.persistence.UserRepository;
 
 @Service
 public class HomeServiceImpl implements HomeService{
@@ -28,10 +32,10 @@ public class HomeServiceImpl implements HomeService{
 	private ContentRepository contentRepo;
 	
 	@Autowired
-	private ContentGenreRepository contentGenreRepo;
+	private UserRepository userRepository;
 	
 	@Autowired
-	private GenreRepositroy genreRepo;
+	private GenreRepositroy genreRepository;
 	
 	
 	/** 장르별 컨텐츠 화면에 출력
@@ -40,15 +44,24 @@ public class HomeServiceImpl implements HomeService{
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
 	 */
 	@Override
-	public Page<Content> getGenresContentList(Integer genreNumber, Pageable paging) {
-		return contentRepo.getGenresContentList(genreNumber, paging);
-	}
+	public Page<Content> getGenresContentList(Integer genreNumber, Integer page) {
+		
+		if(page == null) page = 1;
+		  
+		// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함 
+		if(genreNumber == null) genreNumber = 1;
+		  
+		PageRequest pageRequest = PageRequest.of(page, 32,Sort.by(Sort.Direction.ASC, "c.content_title"));
+		  
+		return contentRepo.getGenresContentList(genreNumber, pageRequest);
+	}// end of getGenresContentList()
 
 
 	@Override
-	public List<Content> RecommendedContentList() {
+	public List<Content> recommendedContentList(Integer userNumber) {
 		
-		List<Content> RecommendedContentList = new ArrayList<Content>();
+		// 검색한 콘텐츠 정보를 담을 리스트 생성
+		List<Content> recommendedContentList = new ArrayList<Content>();
 		
 		// 소켓을 선언과 접속
         try (Socket client = new Socket("localhost", 9001)) {
@@ -58,7 +71,7 @@ public class HomeServiceImpl implements HomeService{
             	System.out.println("전송시작");
             	
             	// 회원의 아이디를 보낼거니까 int -> String으로 형변환
-                String msg = String.valueOf(7);
+                String msg = String.valueOf(userNumber);
                 
                 // string -> byte 배열 형변환
                 byte[] data = msg.getBytes();
@@ -88,9 +101,13 @@ public class HomeServiceImpl implements HomeService{
                 
                 // 영어, 숫자, 한글을 제외한 모든 문자열을 제거
                 String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
+                
+                // 메시지가 넘어올 때까지 while문
                 while((message = reader.readLine()) != null) {
                 	message =message.replaceAll(match, "");
-                	RecommendedContentList.add(contentRepo.RecommendedContent(Integer.valueOf(message)));
+                	
+                	// 넘어온 contentNumber를 통해 해당 콘텐츠 정보 검색하여 리스트에 담기
+                	recommendedContentList.add(contentRepo.recommendedContent(Integer.valueOf(message)));
                 	
                 }// end of while
                 
@@ -99,13 +116,46 @@ public class HomeServiceImpl implements HomeService{
             e.printStackTrace();
         }//end of try~catch
 		
-		return RecommendedContentList;
+		return recommendedContentList;
 	}//end of RecommendedContentList()
 
 
+	/**	신작 콘텐츠 출력
+	 * 		- homeIndex에 출력할 최신 콘텐츠 검색하여 리스트에 담기
+	 * 		- contentReleaseDate의 내림차순으로 상위 5개 출력
+	 * @return List<Content>
+	 */
 	@Override
 	public List<Content> newContent() {
 		return contentRepo.newContent();
+	}
+
+
+	/**	사용자 세션에 따른 userNickname 찾기
+	 *		- 세션에 저장된 userNumber를 통해 닉네임 찾기
+	 * @param userNumber : 세션에 저장됨
+	 * @return	userNickname
+	 */
+	@Override
+	public UserVO findByUserNumber(Integer userNumber) {
+		return userRepository.findByUserNumber(userNumber);
+	}
+
+	
+	/**	장르별 콘텐츠 출력
+	 * 		- homeIndex에 출력할 장르 콘텐츠 검색하여 리스트에 담기
+	 * 		- 장르별 콘텐츠 10개 출력
+	 * @return List<Content>
+	 */
+	@Override
+	public List<Content> genresContentList(Integer randomNumber) {
+		return contentRepo.genresContentList(randomNumber);
+	}
+
+
+	@Override
+	public Genre findByGenreNumber(Integer genreNumber) {
+		return genreRepository.findByGenreNumber(genreNumber);
 	}
 	
 

@@ -29,14 +29,21 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 */
 	@Query(nativeQuery = true
 			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_number =?1")
-	Content RecommendedContent(Integer contentNumber);
+	Content recommendedContent(Integer contentNumber);
 	
-	/** 신작 영화 출력
-	 * @return List<Content> 
+	/**	신작 콘텐츠 출력
+	 * 		- homeIndex에 출력할 최신 콘텐츠 검색하여 리스트에 담기
+	 * 		- contentReleaseDate의 내림차순으로 상위 5개 출력
+	 * @return List<Content>
 	 */
 	@Query(nativeQuery = true
-			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number ORDER BY c.content_release_date DESC LIMIT 10,5")
+			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number ORDER BY c.content_release_date DESC LIMIT 30,5")
 	List<Content> newContent();
+
+	@Query(nativeQuery = true
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1 LIMIT 10")
+	List<Content> genresContentList(Integer genreNumber);
 	
+
 
 }
