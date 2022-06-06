@@ -16,14 +16,14 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 * @param genreNumber (장르 번호)
 	 * @return Page<Content>
 	 * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
-	 * 			- 페이징을 추가
+	 * 			- 페이징 추가
 	 */
 	@Query(nativeQuery = true
-			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1"
-			,countQuery = "SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1")
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1 AND c.content_main_images_url <> 'none Main img'"
+			,countQuery = "SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1 AND c.content_main_images_url <> 'none Main img'")
 	Page<Content> getGenresContentList(Integer genreNumber, Pageable paging);
 	
-	/** 사용자 추천 컨텐츠 화면에 출력
+	/** 사용자 추천 콘텐츠 화면에 출력
 	 * @param contentNumber (컨텐츠 번호)
 	 * @return List<Content> 
 	 */
@@ -40,10 +40,12 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number ORDER BY c.content_release_date DESC LIMIT 30,5")
 	List<Content> newContent();
 
+	/** 장르별 콘텐츠 10개씩 출력
+	 * 		- homeIndex에 출력할 장르별 콘텐츠 검색하여 리스트에 담기
+	 * @param genreNumber
+	 * @return List<Content>
+	 */
 	@Query(nativeQuery = true
-			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1 LIMIT 10")
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_main_images_url<>'none Main img' AND cg.genre_number =?1 LIMIT 10")
 	List<Content> genresContentList(Integer genreNumber);
-	
-
-
 }

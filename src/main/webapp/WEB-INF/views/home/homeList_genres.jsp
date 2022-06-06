@@ -32,6 +32,9 @@
 		.loadMoreBtn{
 			text-align: center;
 		}
+		.gen-carousel-movies-style-3 .gen-movie-contain .gen-movie-meta-holder ul li{
+			font-size : 16px;
+		}
 	</style>
 
 </head>
@@ -61,40 +64,40 @@
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
 
-                               <li ><a href="/search/genres?genreNumber=1&page=1">드라마</a></li>
+                               <li value="1"><a href="/search/genres?genreNumber=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=2&page=1">로맨스</a></li>
+                                <li value="2"><a href="/search/genres?genreNumber=2">로맨스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=3&page=1">스릴러</a></li>
+                                <li value="3"><a href="/search/genres?genreNumber=3">스릴러</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=4&page=1">SF</a></li>
+                                <li value="4"><a href="/search/genres?genreNumber=4">SF</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=5&page=1">가족</a></li>
+                                <li value="5"><a href="/search/genres?genreNumber=5">가족</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=16&page=1">코미디</a></li>
+                                <li value="16"><a href="/search/genres?genreNumber=16">코미디</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=7&page=1">다큐멘터리</a></li>
+                                <li value="7"><a href="/search/genres?genreNumber=7">다큐멘터리</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=9&page=1">스포츠</a></li>
+                                <li value="9"><a href="/search/genres?genreNumber=9">스포츠</a></li>
                             </ol>
                             <ol class="breadcrumb">
-                                <li ><a href="/search/genres?genreNumber=8&page=1">범죄</a></li>
+                                <li value="8"><a href="/search/genres?genreNumber=8">범죄</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=10&page=1">애니메이션</a></li>
+                                <li value="10"><a href="/search/genres?genreNumber=10">애니메이션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=11&page=1">예능</a></li>
+                                <li value="11"><a href="/search/genres?genreNumber=11">예능</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=12&page=1">액션</a></li>
+                                <li value="12"><a href="/search/genres?genreNumber=12">액션</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=13&page=1">역사</a></li>
+                                <li value="13"><a href="/search/genres?genreNumber=13">역사</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=14&page=1">음악</a></li>
+                                <li value="14"><a href="/search/genres?genreNumber=14">음악</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=15&page=1">전쟁</a></li>
+                                <li value="15"><a href="/search/genres?genreNumber=15">전쟁</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=6&page=1">공포</a></li>
+                                <li value="6"><a href="/search/genres?genreNumber=6">공포</a></li>
                                 <li><span>&#124;</span></li>
-                                <li ><a href="/search/genres?genreNumber=17&page=1">판타지</a></li>
+                                <li value="17"><a href="/search/genres?genreNumber=17">판타지</a></li>
 
                               </ol>
                         </div>
@@ -112,7 +115,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
+                    <div class="row contentList">
                     <!-- start for -->
                      <c:forEach items="${genresContentList}" var="content">
 					<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
@@ -159,6 +162,7 @@
                         </div>
                     </div>
                 </div>
+                <c:if test="${totalPage ne 2 }">
 				<div class="col-lg-12">
 	                    <div class="gen-load-more-button">
 	                        <div class="gen-btn-container loadMoreBtn">
@@ -170,6 +174,7 @@
                         </div>
                     </div>
              	</div>
+                </c:if>
 			</div>
     </section>
     <!-- Section-1 End -->
