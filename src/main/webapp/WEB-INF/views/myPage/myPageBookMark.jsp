@@ -334,8 +334,8 @@
 					<div class="events-footer d-flex justify-content-between align-items-center">
 						<a href="#" class="default-btn btnListUpdate" data-bs-toggle="modal" data-bs-target="#modalListUpdate">현재 리스트 수정</a>&nbsp
 						<a href="#" class="default-btn delete-btn">현재 리스트 삭제</a>&nbsp
-						<a href="#" class="default-btn">선택 영상을 리스트에서 삭제</a>&nbsp
-						<a href="#" class="default-btn" data-bs-toggle="modal" data-bs-target="#modalListMove">선택 영상을 다른 리스트로 이동</a>&nbsp
+						<a href="#" class="default-btn btnContentDelete">선택 영상을 리스트에서 삭제</a>&nbsp
+						<a href="#" class="default-btn btnContentUpdate" data-bs-toggle="modal" data-bs-target="#modalListMove">선택 영상을 다른 리스트로 이동</a>&nbsp
 					</div>
 				</div>
 			</div>
@@ -359,7 +359,7 @@
 									<span>${content.contentAge}</span>
 								</div>
 								<div class="col-md-2 ms-auto movie-checkbox">
-									<input type="checkbox" id="movie${content.contentNumber}" class="checkbox2" value="${content.contentNumber}"/><label for="movie${content.contentNumber}"></label>
+									<input type="checkbox" id="movie${content.bookmarkNumber}" class="checkbox2" value="${content.bookmarkNumber}"/><label for="movie${content.bookmarkNumber}"></label>
 								</div>
 							</div>
 							<h3>
@@ -444,14 +444,14 @@
                 <div class="padding-8">
                     <ul class="like-list">
                         <c:forEach items="${bookmarkList}" var="list">
-                            <li><div class="movie-checkbox"><input type="radio" name="bookmark" id="list${list.bookmarkNumber}" value="${list.bookmarkNumber}"/><label for="list${list.bookmarkNumber}">${list.bookmarkName}</label></div></li>
+                            <li><div class="movie-checkbox"><input type="radio" name="bookmark" class="bookmark" id="list${list.bookmarkNumber}" value="${list.bookmarkNumber}"/><label for="list${list.bookmarkNumber}">${list.bookmarkName}</label></div></li>
                         </c:forEach>
                     </ul>
                 </div>
                 <hr>
                 <div class="col-md-5 ms-auto padding-8">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">이동하기</button>
+                    <button type="button" id="btnMoveContent" class="btn btn-primary">이동하기</button>
                 </div>
             </div>
         </div>
@@ -473,7 +473,7 @@
 <script>
     // 즐겨찾기 삭제
     $('.delete-btn').on('click', function () {
-        if (confirm('정말 삭제하시겠습니까?') == true) {
+        if (confirm('정말 삭제하시겠습니까?')) {
 
             let bookmarkNum = ${bookmark.bookmarkNumber}
 
@@ -508,6 +508,72 @@
         if(bookmarkState == 1) {
             $('#bookmarkState').prop('checked', true);
         }
+    });
+
+    // 선택영상을 즐겨찾기에서 삭제
+    $('.btnContentDelete').on('click', function(){
+        let checkNum = [];
+        $('.checkbox2:checked').each(function(){
+            checkNum.push($(this).val());
+        });
+        // alert(checkNum);
+
+        let bookmarkNum = ${bookmark.bookmarkNumber}
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $.ajax({
+                type:"POST",
+                url: "/myPage/bookMarkDeleteContent",
+                traditional : true, // 배열을 전송할 때 데이터 직렬화하는 옵션 (default : false)
+                data: {
+                    contentList : checkNum,
+                    bookmarkNumber : bookmarkNum
+                },
+                success: function(data){
+                    location.href = "/myPage/bookMark/" + bookmarkNum;
+                    alert('삭제되었습니다.');
+                },
+                error: function(err){
+                    alert('삭제 실패!');
+                    console.log('선택영상 삭제 실패 : ', err);
+                }
+            });
+
+        } else {
+            alert('취소되었습니다.');
+        }
+    });
+
+    // 선택영상을 다른 리스트로 이동
+    $('#btnMoveContent').on('click', function(){
+        let checkNum = [];
+        $('.checkbox2:checked').each(function(){
+            checkNum.push($(this).val());
+        });
+        alert(checkNum);
+
+        let bookmark = $('.bookmark:checked').val();
+        alert(bookmark);
+
+        let bookmarkNum = ${bookmark.bookmarkNumber}
+
+        $.ajax({
+            type: "POST",
+            url: "/myPage/bookMarkUpdateContent",
+            traditional : true, // 배열을 전송할 때 데이터 직렬화하는 옵션 (default : false)
+            data: {
+                bookmarkContentNumber : checkNum,
+                bookmarkNumber : bookmark
+            },
+            success: function(data){
+                location.href = "/myPage/bookMark/" + bookmarkNum;
+                alert('이동 되었습니다.');
+            },
+            error: function(err){
+                alert('이동 실패!!');
+                console.log('영상 이동 실패 : ', err);
+            }
+        });
     });
 
 </script>

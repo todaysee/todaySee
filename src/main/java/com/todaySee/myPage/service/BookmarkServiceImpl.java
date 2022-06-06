@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.awt.print.Book;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -84,6 +85,7 @@ public class BookmarkServiceImpl implements BookmarkService{
         for(Bookmark b : bookmarkList) {
             HashMap<String, String> map = new HashMap<String, String>(); /* 리턴할 리스트에 담을 HashMap 생성  */
 
+            map.put("bookmarkNumber", Integer.toString(b.getBookmarkNumber()));
             map.put("contentNumber", Integer.toString(b.getContent().getContentNumber())); /* 즐겨찾기에 담긴 영상 번호 */
             map.put("contentTitle", b.getContent().getContentTitle()); /* 즐겨찾기에 담긴 영상제목 */
             map.put("contentAge", b.getContent().getContentAge()); /* 즐겨찾기에 담긴 영상 연령등급 */
@@ -161,5 +163,29 @@ public class BookmarkServiceImpl implements BookmarkService{
         bookmark.setBookmarkState(4);
         bookmarkRepo.save(bookmark);
     }
+
+    public void deleteBookmarkContent(String[] bookmarkList, Integer bookmarkNumber, Integer userNumber) {
+        for(int i=0; i<bookmarkList.length; i++) {
+            // 즐겨찾기 번호로 즐겨찾기 찾아오기
+            Bookmark bookmark = bookmarkRepo.findById(Integer.parseInt(bookmarkList[i])).get();
+            // 해당 즐겨찾기의 상태를 4로 변경
+            bookmark.setBookmarkState(4);
+            // 즐겨찾기 수정
+            bookmarkRepo.save(bookmark);
+        }
+    }
+
+    public void updateBookmarkContent(String[] bookmarkContentList, Integer bookmarkNumber, Integer userNumber) {
+        for(int i=0; i<bookmarkContentList.length; i++) {
+            // 이동할 즐겨찾기 번호에 따른 즐겨찾기 가져오기
+            Bookmark afterBookmark = bookmarkRepo.findById(bookmarkNumber).get();
+            // 이동할 컨텐츠가 담긴 즐겨찾기 번호에 따른 즐겨찾기 가져오기
+            Bookmark contentBookmark = bookmarkRepo.findById(Integer.parseInt(bookmarkContentList[i])).get();
+            contentBookmark.setBookmarkName(afterBookmark.getBookmarkName());
+            contentBookmark.setBookmarkDate(new Date());
+            bookmarkRepo.save(contentBookmark);
+        }
+    }
+
 
 }
