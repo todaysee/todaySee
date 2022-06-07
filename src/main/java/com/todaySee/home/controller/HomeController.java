@@ -127,18 +127,19 @@ public class HomeController {
         return "/home/homeList_content";
     }
     
-    /** 장르별 컨텐츠 화면에 출력
+    /** 장르별 콘텐츠 화면에 출력
      * @param genreNumber (장르 번호)
      * @return List<Content> 
-     * 			- 장르 번호에 따른 컨텐츠 정보를 List로 담음
+     * 			- 장르 번호에 따른 콘텐츠 정보를 List로 담음
      */
 	
 	  @GetMapping("/search/genres") 
 	  public String homeList_person(Integer genreNumber, Model model, Integer page) {
 	  
-		  // 장르 번호에 따른 컨텐츠 정보들이 List로 담긴다  
+		  // 장르 번호에 따른 콘텐츠 정보들이 List로 담긴다  
 		  Page<Content> genresContent = homeService.getGenresContentList(genreNumber, page);
 		  
+		  // 위에서 얻어온 리스트에서 콘텐츠만 리스트에 다시 담는다
 		  List<Content> genresContentList = genresContent.getContent();
 		  
 		  model.addAttribute("genresContentList", genresContentList); // 리스트에 담긴 컨텐츠를 화면에 출력한다 

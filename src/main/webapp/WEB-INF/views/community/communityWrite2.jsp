@@ -69,7 +69,7 @@
                     <div class="news-feed news-feed-form">
                         <h3 class="news-feed-title">글쓰기</h3>
 
-                        <form action="/communityBoardSave" method="post" enctype="multipart/form-data">
+                        <form action="/communityBoardSave" method="post">
                             <input type="hidden" name="communityCategory" value="${category}">
                             <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
                             <div class="form-group">
@@ -90,7 +90,9 @@
                                     <div id="fileName">
                                         첨부파일 없음
                                     </div>
+                                    <form id="imagesCommunityFileUploadForm">
                                         <input type="file" id="imagesCommunityFile" name="imagesCommunityFile" onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg"/>
+                                    </form>
                                 </li>
                                 <li class="post-btn">
 									<div class="form-check">
@@ -99,7 +101,7 @@
 											사진 업로드
 										</label>
 									</div>
-                                    <input  type="submit" value="작성">
+                                    <button type="submit">작성</button>
                                 </li>
                             </ul>
                         </form>

@@ -14,24 +14,16 @@
                             <div id="gen-menu-contain" class="gen-menu-contain">
                                 <ul id="gen-main-menu" class="navbar-nav ml-auto">
                                     <li class="menu-item active">
-                                        <a href="#" aria-current="page">홈</a>
-                                        &nbsp;
-                                        &#124;
+                                        <a href="/" aria-current="page">홈</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="/search/genres">콘텐츠</a>
-                                        &nbsp;
-                                        &#124;
                                     </li>
                                     <li class="menu-item">
                                         <a href="/community">커뮤니티</a>
-                                        &nbsp;
-                                        &#124;
                                     </li>
                                     <li class="menu-item">
                                         <a href="/community/chatList">채팅</a>
-                                        &nbsp;
-                                        &#124;
                                     </li>
                                 </ul>
                             </div>
