@@ -1,19 +1,15 @@
 package com.todaySee.community.service;
 
-import com.todaySee.persistence.GenreRepositroy;
-import com.todaySee.persistence.CommunityRepositroy;
-import com.todaySee.persistence.UserRepository;
-import com.todaySee.persistence.OttRepositroy;
+import com.todaySee.domain.CommunityImages;
+import com.todaySee.persistence.*;
 import com.todaySee.domain.Community;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CommunityServiceImpl implements CommunityService{
@@ -58,6 +54,16 @@ public class CommunityServiceImpl implements CommunityService{
     public List<Community> getCommunityBoardList(String communityCategory) {
 
         return communityRepositroy.findByCommunityCategoryOrderByCommunityDateDesc(communityCategory);
+    }
+
+    @Override
+    public void saveImagesFiles(MultipartFile files) {
+
+        // 원래 파일 이름 추출
+        String origName = files.getOriginalFilename();
+        System.out.println(origName+"@@@@@@@@테스트");
+        // 파일 이름으로 쓸 uuid 생성
+        String uuid = UUID.randomUUID().toString();
     }
 }
 
