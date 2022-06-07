@@ -4,9 +4,10 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="/admin" class="brand-link">
+        <!-- <img src="/images/home/logo-1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span> -->
+    	<img class="img-fluid logo" src="/images/home/logo-1.png" alt="streamlab-image">
     </a>
 
     <!-- Sidebar -->
@@ -28,15 +29,15 @@
                <li class="nav-item">
                 <a href="/admin" class="nav-link" id="chart1">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>차트1 </p>
+                  <p>영상&회원 차트 </p>
                 </a>
               </li> 
-               <li class="nav-item">
+           <!--     <li class="nav-item">
                 <a href="/admin/userChart" class="nav-link" id="chart2">
                   <i class="far fa-circle nav-icon"></i>
                   <p>차트2 </p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">

@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,13 +26,10 @@
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
+  
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  
-  
-  	<%@ include file="../inculde/admin/preLoader.jsp"%>
+	<%@ include file="../inculde/admin/preLoader.jsp"%>
 
 	<!-- Navbar -->
 	<%@ include file="../inculde/admin/navbar.jsp"%>
@@ -40,6 +37,12 @@
 
 	<!-- Main Sidebar Container -->
 	<%@ include file="../inculde/admin/sidebar.jsp"%>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  
+  
+  
      
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -48,101 +51,6 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item" id="clickChart">
-            <a href="#" class="nav-link" id="titleChart">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                차트
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-               <li class="nav-item">
-                <a href="/admin" class="nav-link" id="chart1">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>차트1 </p>
-                </a>
-              </li> 
-               <li class="nav-item">
-                <a href="/admin/userChart" class="nav-link" id="chart2">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>차트2 </p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <ul class="nav nav-treeview">
-            </ul>
-          </li>
-          <li class="nav-item">
-            <ul class="nav nav-treeview">
-            </ul>
-          </li>
-          <li class="nav-item">
-            <ul class="nav nav-treeview">
-            </ul>
-          </li>
-          <li class="nav-item">
-            <ul class="nav nav-treeview">
-            </ul>
-          </li>
-          <li class="nav-item" id="clickAdmin">
-            <a href="#" class="nav-link" id="titleAdmin">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                관리
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/admin/communityReport" class="nav-link" id="admin">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>신고관리</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/movieAdmin" class="nav-link" id="movieAdmin">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>영상관리</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-            <li class="nav-item" id="clickUserList">
-            <a href="/admin/userList" class="nav-link" id="titleUserList">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
-                회원관리
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-           
-          </li>
-        </ul>
-      </nav>
-       
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-</aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -326,6 +234,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
 <script src="/dist/admin/admin.js"></script>
+<script src="/dist/admin/choi_admin.js"></script>
 <script>
 const page = document.title;
 if('신고관리' == page){

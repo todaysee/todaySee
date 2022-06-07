@@ -8,13 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<UserVO, Integer> {
 
 
-    UserVO findByUserEmail(String userEmail);
-    
-    
-    
-    
-    
-    
     
     
 	/**	사용자 세션에 따른 userNickname 찾기
