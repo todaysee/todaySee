@@ -21,7 +21,7 @@
     <div class="main-navbar">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a href="/" class="navbar-brand d-flex align-items-center">
-                <img src="/images/mypageCommunity/logo.png" alt="image">
+                <img src="/images/home/logo-1.png" style="height: 50px" alt="image">
             </a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
