@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="form-group">
                                         <textarea name="message" class="form-control"
-                                                  placeholder="내용을 적어주세요."></textarea>
+                                                  placeholder="댓글을 적어주세요."></textarea>
 
                                     </div>
                                 </form>

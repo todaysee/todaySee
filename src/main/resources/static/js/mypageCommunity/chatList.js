@@ -39,20 +39,20 @@ var ws;
 				var roomNumber = d.chatroomNumber;
 				tag += '<div class="item d-flex justify-content-between align-items-center cricle">'+
 					'<div class="figure">'+
-						'<img src="../images/mypageCommunity/user/user-55.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
+						'<img src="../images/mypageCommunity/user/lol.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
 					'</div>'+
 					'<div class="text">'+
 						'<h4>'+
 						/*'<a>'+ "<"+(idx+1)+">" +'</a>'+*/
 						'<a>'+ rn +'</a>'+
 						'</h4>'+
-						'<span>'+ '행복한 시간 보내세요.' +'</span>'+
+						'<span>'+ '행복한 시간 보내세요.' +'</span>'+ /* 시간  */
 					'</div>'+
 				'</div>'
 				
 				tag1 +=
             '<div class="contact-item">'+
-                '<a href="#">' + '<img src="/images/mypageCommunity/user/user-18.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+'</a>'+
+                '<a href="#">' + '<img src="/images/mypageCommunity/user/lol.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+'</a>'+
                '<span class="name"><a>' + rn + '</a></span>'+
             '</div>'
 			});
