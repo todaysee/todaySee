@@ -103,7 +103,7 @@
                                     <div class="gen-info-contain">
                                         <div class="gen-movie-info">
 
-                                            <h3><a href="/details/${content.id }">${content.content_title}</a></h3>
+                                            <h3><a href="/details/${content.content_number }">${content.content_title}</a></h3>
                                         </div>
                                         <div class="gen-movie-meta-holder">
                                             <ul>
