@@ -15,6 +15,8 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
     <link rel="stylesheet" href="/css/mypageCommunity/jqcloud.css">
+    <!-- js files -->
+    <script src="../js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>
@@ -96,7 +98,7 @@
 
 
     <!--========== Right SideBar ==============-->
-    <%@ include file="../inculde/mypage/rightSidebar.jsp" %>
+    <%@ include file="../inculde/community/rightSidebar.jsp" %>
     <!--========== Right SideBar ==============-->
 </div>
 <!--========== Body ==============-->
