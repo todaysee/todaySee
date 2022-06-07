@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
@@ -87,7 +89,11 @@ public class CommunityController {
 
     //게시글 작성
     @PostMapping("/communityBoardSave")
-    public String communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent) throws UnsupportedEncodingException {
+    public String communityOttBoardSave(@RequestParam("imagesCommunityFile") MultipartFile file, Integer userNumber, String communityCategory, String communityContent) throws UnsupportedEncodingException {
+
+
+        communityService.saveImagesFiles(file);
+
         //한글 파라메터를 인코딩
         String encodedParam = URLEncoder.encode(communityCategory, "UTF-8");
         communityService.communityOttBoardSave(userNumber, communityCategory, communityContent);

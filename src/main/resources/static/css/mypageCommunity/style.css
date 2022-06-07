@@ -42,7 +42,8 @@ Default CSS
 :root {
     --main-font-family: 'Open Sans', sans-serif;
     --heading-font-family: 'Montserrat', sans-serif;
-    --main-color: #3644D9;
+    --main-color: #221f1f;
+    --main-color-red: #b81d24;
     --optional-color: #2E3AB8;
     --white-color: #ffffff;
     --black-color: #515355;
@@ -2454,7 +2455,7 @@ Sidemenu Area CSS
     height: 45px;
     width: 45px;
     line-height: 50px;
-    background-color: #737ef5;
+    background-color: #b81d24;
     color: var(--white-color);
     font-size: 20px;
     position: relative;
