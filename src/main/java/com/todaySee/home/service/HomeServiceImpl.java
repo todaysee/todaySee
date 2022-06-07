@@ -130,17 +130,6 @@ public class HomeServiceImpl implements HomeService{
 		return contentRepo.newContent();
 	}
 
-
-	/**	사용자 세션에 따른 userNickname 찾기
-	 *		- 세션에 저장된 userNumber를 통해 닉네임 찾기
-	 * @param userNumber : 세션에 저장됨
-	 * @return	userNickname
-	 */
-	@Override
-	public UserVO findByUserNumber(Integer userNumber) {
-		return userRepository.findByUserNumber(userNumber);
-	}
-
 	
 	/**	장르별 콘텐츠 출력
 	 * 		- homeIndex에 출력할 장르 콘텐츠 검색하여 리스트에 담기

@@ -109,8 +109,6 @@ public class HomeController {
     	if(userNumber != null) {
     		// 사용자 추천 콘텐츠 출력
     		m.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
-    		// 사용자의 닉네임 검색 후 출력
-    		m.addAttribute("userNickname", homeService.findByUserNumber(userNumber).getUserNickname());
     	}// end of if
     	
         return "/home/homeIndex";

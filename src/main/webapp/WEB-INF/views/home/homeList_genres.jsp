@@ -62,7 +62,7 @@
                             </h1>
                         </div>
                         <div class="gen-breadcrumb-container">
-                            <ol class="breadcrumb">
+                            <ol class="breadcrumb genreList">
 
                                <li value="1"><a href="/search/genres?genreNumber=1">드라마</a></li>
                                 <li><span>&#124;</span></li>
@@ -205,7 +205,18 @@
 
 <!-- 안정은 js -->
 <script src="/js/homeList/homeList.js"></script>
+<script type="text/javascript">
+// each문으로 돌려서
+//alert($('.genreList > li').val())
+//let urlParams = new URL(location.href).searchParams;
+//let genreNumber = urlParams.get('genreNumber');
+//alert(genreNumber)
+//if(genresNumber == $('.genreList > li').val()){
+//	$('').css();
+//	$('').css();
+//}
 
+</script>
 </body>
 
 </html>
