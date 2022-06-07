@@ -84,7 +84,7 @@
 					</div>
 					<div class="chat-list-footer yourMsg">
 						<form class="d-flex align-items-center inputTable">
-							<input type="text" id="userName" class="form-control" placeholder="닉네임을 입력하세요.">
+							<input type="text" name="userName" id="userName" class="form-control" placeholder="닉네임을 입력하세요.">
 
 							<button type="button" onclick="chatName()" id="startBtn"
 								class="send-btn">등 록</button>
