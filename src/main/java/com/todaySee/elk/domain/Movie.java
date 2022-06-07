@@ -19,6 +19,7 @@ public class Movie {
 	
 	private int content_release_date;
 	
+	private Integer content_number;
 	
 	private String content_age;
 	
