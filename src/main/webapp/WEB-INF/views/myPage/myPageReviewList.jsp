@@ -25,6 +25,7 @@
         .review_mark_body {
             display:none;
         }
+
         #end {display:none;}
 
     </style>
