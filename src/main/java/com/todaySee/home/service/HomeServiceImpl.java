@@ -51,7 +51,7 @@ public class HomeServiceImpl implements HomeService{
 		// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함 
 		if(genreNumber == null) genreNumber = 1;
 		  
-		PageRequest pageRequest = PageRequest.of(page, 32,Sort.by(Sort.Direction.ASC, "c.content_title"));
+		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "c.content_title"));
 		  
 		return contentRepo.getGenresContentList(genreNumber, pageRequest);
 	}// end of getGenresContentList()
@@ -109,8 +109,8 @@ public class HomeServiceImpl implements HomeService{
                 	// 넘어온 contentNumber를 통해 해당 콘텐츠 정보 검색하여 리스트에 담기
                 	recommendedContentList.add(contentRepo.recommendedContent(Integer.valueOf(message)));
                 	
+                	System.out.println("파이썬에서 넘어옴 : "+message);
                 }// end of while
-                
             }// end of try
         } catch (Throwable e) {
             e.printStackTrace();

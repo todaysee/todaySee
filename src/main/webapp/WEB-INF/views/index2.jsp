@@ -15,6 +15,7 @@
 		<a href="testSessionLogout">로그아웃</a>
 		<h1>세션로그인 : ${sessionScope.userNumber}</h1>
 		<hr/>
+		<a href="/3">워드클라우드 테스트 페이지</a><br/>
 		<a href="/">홈페이지-인덱스</a><br/>
 		<a href="/list">홈페이지-list</a><br/>
 		<a href="/details/1">홈페이지-details</a><br/>

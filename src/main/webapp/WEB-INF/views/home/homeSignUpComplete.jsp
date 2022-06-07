@@ -72,7 +72,11 @@
                                 
         						
                                 <div class="form-group">
-								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> ${userVO.userNickname }님 환영합니다 !  </h2>								 
+								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 
+								${userNickname}님 환영합니다 !  
+								</h2>
+								
+											 
 								</div>                              
         
                                  
@@ -93,22 +97,11 @@
             </div>
 
             <div class="home-btn-icon">
-                <a href="index.html"><i class="flaticon-home"></i></a>
+                <a href="/"><i class="flaticon-home"></i></a>
             </div>
         </div>
         <!-- End Preloader Area -->
         
-        <!-- Links of JS files -->
-         <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/jquery-ui.min.js"></script>
-        <script src="assets/js/simplebar.min.js"></script>
-        <script src="assets/js/metismenu.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/main.js"></script>
-         
          
 <script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
@@ -130,16 +123,11 @@
 <!-- js-min -->
 <script src="/js/home/jquery-3.6.0.min.js"></script>
 <script src="/js/home/asyncloader.min.js"></script>
-<!-- JS bootstrap -->
-<script src="/js/home/bootstrap.min.js"></script>
 <!-- owl-carousel -->
 <script src="/js/home/owl.carousel.min.js"></script>
 <!-- counter-js -->
 <script src="/js/home/jquery.waypoints.min.js"></script>
 <script src="/js/home/jquery.counterup.min.js"></script>
-<!-- popper-js -->
-<script src="/js/home/popper.min.js"></script>
-<script src="/js/home/swiper-bundle.min.js"></script>
 <!-- Iscotop -->
 <script src="/js/home/isotope.pkgd.min.js"></script>
 <script src="/js/home/jquery.magnific-popup.min.js"></script>
