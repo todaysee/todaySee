@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" type="text/css" href="/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
+  
 
 
 </head>
@@ -153,6 +155,8 @@
         </div>
         <!-- /.row -->
       </div>
+	</div>
+</div>
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -175,7 +179,6 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -204,6 +207,7 @@
 <script src="/dist/admin/admin.js"></script>
 
 <script src="/dist/admin/choi_admin.js"></script>
+
 <script>  
   $(function () {
     $("#jqpluginMom.jqplugin").DataTable({

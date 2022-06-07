@@ -55,6 +55,8 @@
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
+  
 </head>
 
     
@@ -366,7 +368,7 @@
 
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped jqplugin1">
                   <thead>
                   <tr>
                     <th>영상제목</th>
@@ -406,6 +408,8 @@
         </div>
         <!-- /.row -->
       </div>
+      </div>
+      </div>
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -427,7 +431,11 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
+
 <script src="/plugins/jquery/jquery.min.js"></script>
+
+<script src="/dist/admin/choi_admin.js"></script>
+
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -448,16 +456,17 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
 <!-- Page specific script -->
-
 <script src="/dist/admin/admin.js"></script>
+
+
 
 <script>
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+    $("#jqplugin1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false, 
       /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
+    $('#jqplugin1').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -465,6 +474,7 @@
       "info": true,
       "autoWidth": false,
       "responsive": true,
+      "destroy":true,
     });
     
     
@@ -570,5 +580,8 @@
 
   });
 </script>
+
+
 </body>
+
 </html>

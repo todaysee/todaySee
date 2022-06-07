@@ -17,27 +17,23 @@ import com.todaySee.persistence.UserRepository;
  */
 
 @Service
-public class HomeUserDetailsService implements UserDetailsService {
-	@Autowired
-	private UserRepository userRepo;
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-		// UserRepository로 회원정보를 조회하며
-		// UserDetails 타입의 객체로 리턴한다. 
-				
-		//	Optional<UserVO> optional = userRepo.findByUserEmail(username);
-
-		Optional<UserVO> optional = Optional.ofNullable(userRepo.findByUserEmail(username));
-		if(!optional.isPresent()) {
-			throw new UsernameNotFoundException(username + "사용자 없음");
-		} else {
-			UserVO user = optional.get();
-			return new SecurityUser(user);
-		}
-	}
-	
+public class HomeUserDetailsService  {
+	/*
+	 * @Autowired private UserRepository userRepo;
+	 * 
+	 * @Override public UserDetails loadUserByUsername(String username) throws
+	 * UsernameNotFoundException {
+	 * 
+	 * // UserRepository로 회원정보를 조회하며 // UserDetails 타입의 객체로 리턴한다.
+	 * 
+	 * // Optional<UserVO> optional = userRepo.findByUserEmail(username);
+	 * 
+	 * Optional<UserVO> optional =
+	 * Optional.ofNullable(userRepo.findByUserEmail(username));
+	 * if(!optional.isPresent()) { throw new UsernameNotFoundException(username +
+	 * "사용자 없음"); } else { UserVO user = optional.get(); return new
+	 * SecurityUser(user); } }
+	 */
 	
 
 }

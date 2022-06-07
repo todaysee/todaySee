@@ -59,9 +59,11 @@ public class UserVO {
      * EnumType.STRING : 권한에 해당하는 값이 문자열로 저장. 
      */
     
-    @Column(name = "user_role")
-    @Enumerated(EnumType.STRING)
-    Role role;
+	/*
+	 * @Column(name = "user_role")
+	 * 
+	 * @Enumerated(EnumType.STRING) Role role;
+	 */
     
 
    
