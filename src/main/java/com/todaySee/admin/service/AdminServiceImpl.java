@@ -20,6 +20,7 @@ import com.todaySee.admin.persistence.AdminContentRepository;
 import com.todaySee.admin.persistence.AdminReportRepository;
 import com.todaySee.admin.persistence.AdminUserRepository;
 import com.todaySee.admin.persistence.TransactionalRepository;
+import com.todaySee.domain.Comments;
 import com.todaySee.domain.CommentsComments;
 import com.todaySee.domain.CommentsCommentsReport;
 import com.todaySee.domain.CommentsReport;
@@ -29,13 +30,17 @@ import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Report;
+import com.todaySee.domain.Review;
 import com.todaySee.domain.ReviewReport;
 import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.CommentsCommentsReportRepository;
+import com.todaySee.persistence.CommentsCommentsRepository;
 import com.todaySee.persistence.CommentsReportRepository;
 import com.todaySee.persistence.CommentsRepository;
 import com.todaySee.persistence.CommunityReportRepository;
+import com.todaySee.persistence.CommunityRepositroy;
 import com.todaySee.persistence.ReviewReportRepository;
+import com.todaySee.persistence.ReviewRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -48,6 +53,24 @@ public class AdminServiceImpl implements AdminService {
 	 
 	 @Autowired
 	 private AdminReportRepository adminReportRepository;
+	 
+	 //신고 
+	 @Autowired
+	 private CommunityRepositroy communityRepo;
+	 
+	 @Autowired
+	 private ReviewRepository reviewRepo;
+	 
+	 @Autowired
+	 private CommentsRepository commentsRepo;
+	 
+	 @Autowired
+	 private CommentsCommentsRepository commentsCommentsRepo;
+	 
+	 
+	 
+	 //신고
+	 
 	 
 //	신고 Repo
 	@Autowired
@@ -192,6 +215,13 @@ public class AdminServiceImpl implements AdminService {
 		
 		c.setCommunityReportState(1);
 		communityReportRepo.save(c);
+		
+		Community commu= communityRepo.findById(c.getCommunity().getCommunityNumber()).get();
+		
+		commu.setCommunityState(1);
+		communityRepo.save(commu);
+		
+		
 	}
 	
 	
@@ -213,6 +243,11 @@ public class AdminServiceImpl implements AdminService {
 		
 		r.setReviewReportState(1);
 		reviewReportRepo.save(r);
+		
+		/*
+		 * Review review = reviewRepo.findById(r.getReview().getReviewNumber()).get();
+		 * review.set
+		 */
 		
 	}
 	
@@ -238,6 +273,12 @@ public class AdminServiceImpl implements AdminService {
 		
 		commentReportRepo.save(c);
 		
+		Comments comments = commentsRepo.findById(c.getComments().getCommentsNumber()).get();
+		
+		comments.setCommentsState(1);
+		commentsRepo.save(comments);
+		
+		
 	}
 	
 	
@@ -260,6 +301,11 @@ public class AdminServiceImpl implements AdminService {
 		CommentsCommentsReport c = coCommentReportRepo.findById(reportNumber).get();
 		c.setCommentsCommentsReportState(1);
 		coCommentReportRepo.save(c);
+		
+		CommentsComments coCo= commentsCommentsRepo.findById(c.getCommentsCommentsReportState()).get();
+		coCo.setCommentsCommentsState(1);
+		commentsCommentsRepo.save(coCo);
+		
 		
 	}
 	

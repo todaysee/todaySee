@@ -26,7 +26,11 @@ public class CommentsComments {
     @Temporal(TemporalType.DATE)
     @Column(name = "commentscomments_date")
     Date commentscommentsDate;
-
+    
+    @Column(name="comments_comments_state")
+    Integer commentsCommentsState;
+    
+    
     @ManyToOne
     @JoinColumn(name = "user_number")
     private UserVO userVO;

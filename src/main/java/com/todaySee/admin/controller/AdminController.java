@@ -252,6 +252,7 @@ public class AdminController {
 	@PutMapping("/admin/communityReportWork/{communityReportNumber}")
 	public String communityReportWork(@PathVariable Integer communityReportNumber) {
 		adminService.communityReportWork(communityReportNumber);
+		
 		return "redirect:/admin/communityReport";
 	}
 	
@@ -321,6 +322,8 @@ public class AdminController {
 		adminService.commentsCommentsReportWork(reportNumber);
 		return "redirect:/admin/commentsCommentsReport";
 	}
+	
+	
 	
 	
 }
