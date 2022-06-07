@@ -16,9 +16,7 @@ $('#genresLoadMoreBtn').click(function(){
 				},
 		contentType : 'application/x-www-form-urlencoded;charset=utf-8',
 		success : function(contentList){
-			alert(page)
-			alert(contentList.totalPages)
-				totalPages = contentList.totalPages
+			totalPages = contentList.totalPages
 			$.each(contentList.content, (i, content) => {
 				let contentRow = '<div class="col-xl-3 col-lg-4 col-md-6">'
 					+ ' <div class="gen-carousel-movies-style-3 movie-grid style-3">'
