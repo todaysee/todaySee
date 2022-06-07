@@ -72,11 +72,11 @@
                             <form>
                                 <div class="row">
                                 <div class="form-group col-md-9" >
-                                    <label>Email</label>
+                                    <label>이메일</label>
                                     <input type="email" name="user_Email" id="user_Email" class="form-control" style="margin-right:0px;">
 									</div>
 									<div class="post-btn col-md-3">
-                                 <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
+                                 <button type="submit" class="button_h" id="btn_sendingMail" name="btn_sendingMail" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
                                  padding-left: 10px !important; padding-right: 10px !important; background-color: grey;">인증번호 전송</button>
                              		</div>
                              		</div>
@@ -149,8 +149,7 @@
 <script src="/js/home/script.js"></script>
 
 <!-- js추가 -->
- 
-    <script src="/js/home/UserLogin.js"></script>
+ <script src="/js/home/UserLogin.js"></script>
 
 </body>
 

@@ -209,7 +209,7 @@
 
 <!-- js추가 -->
  
-    <script src="/js/home/UserLogin.js"></script>
+<script src="/js/home/UserLogin.js"></script>
 
 
 </body>

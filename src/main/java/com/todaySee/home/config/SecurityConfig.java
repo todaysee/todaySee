@@ -1,4 +1,5 @@
 
+
 package com.todaySee.home.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	
 	@Autowired
 	private HomeUserDetailsService homeUserDetailsService;
@@ -23,11 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.userDetailsService(homeUserDetailsService);
 	}
-	
+		
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
 }
+
 

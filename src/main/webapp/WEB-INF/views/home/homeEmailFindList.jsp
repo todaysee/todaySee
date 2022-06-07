@@ -100,6 +100,7 @@
 														</td>
 														<td>${vo.userEmail }</td>
 														<td>${vo.userSignupDate }</td>
+														<td>${vo.userLoginDate }</td>
 
 													</tr>
 

@@ -73,7 +73,7 @@
         						
                                 <div class="form-group">
 								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 
-								${userNickname}님 환영합니다 !  
+								${ sessionScope.userNickname}님 환영합니다 !  
 								</h2>
 								
 											 

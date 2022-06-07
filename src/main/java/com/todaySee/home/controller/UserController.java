@@ -63,25 +63,16 @@ public class UserController {
         return "/home/homeLogin";
     }
     
-    @PostMapping("/login")
+    
+    @PostMapping("/successLogin")
     public String login(String userEmail, String userPassword, Model model,HttpSession session) {
-    	System.out.println("PostMapping");
-        UserVO findUser = userService.login(userEmail, userPassword);
-    	if (findUser != null
-    		) {
-    		model.addAttribute("user", findUser);
-    		session.setAttribute("userNumber", findUser.getUserNumber());
-    		session.setAttribute("userNickname", findUser.getUserNickname());
-    		session.setMaxInactiveInterval(60*60*24);
-    		System.out.println("세션"+session.getAttribute("userNumber"));
+    	System.out.println("PostMapping"+session.getAttribute("userNumber"));
+
     		return "redirect:/";
     	
-    	} else {
-    		return "/home/homeLogin";
-    	}
     }
-    
- 
+
+
      // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
     @GetMapping("/userCheck")
     public String userCheck(HttpSession session) {
@@ -91,6 +82,8 @@ public class UserController {
     		return "redirect:myPage/profile";
     	}
     }
+    
+    
     
   // 로그아웃
     @GetMapping("/userLogout")

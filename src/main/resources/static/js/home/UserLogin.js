@@ -236,9 +236,61 @@ $('#btn_register').click(function(){
 			     })
 			     
 			     
-//**** 로그인  */
+//**** 로그인 */
+$('#btn_Login').click(function(){
 
-
+			let userEmail = $("#userEmail").val();
+			let userPassword = $("#userPassword").val();
+			let emailCheckBox = false;
+			
+			/*이메일*/
+			if(userEmail == ''){
+				$('#userEmail ~ .error_message').html(blank);
+				$('#userEmail').focus();
+				return;
+			}else{
+				$('#userEmail ~ .error_message').html("");
+				}
+				
+			/*비밀번호*/
+			if(userPassword == ''){
+				$("#userPassword ~ .error_message").html(blank);
+				$('#userPassword').focus();
+				return;
+			}else{
+				$("#userPassword ~ .error_message").html("");
+			}
+			
+			/*이메일기억하는 체크박스 */
+			if($("#emailCheckBox").is(':checked') ){
+					emailCheckBox = true;
+			}
+			
+		$.ajax({
+			 type : 'post',
+			 url : '/login',
+			 data : { userEmail : $("#userEmail").val(),
+			 			  userPassword : $("#userPassword").val(),
+			 			  emailCheckBox : emailCheckBox
+			 			   },
+			 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			 success : function(result){
+				
+				if(result == "N"){
+					$("#userPassword ~ .error_message").html("존재하는 회원이 아니거나 비밀번호가 일치하지 않습니다.");
+					
+				}else{
+					document.loginFrm.submit();
+				}
+			},
+			error : function(err){
+					alert(err);
+					console.log(err);
+			}
+		}); // end of Ajax
+	
+}); // end of btn_Login
+ 
 
 
 			     
@@ -271,5 +323,9 @@ $('#btn_register').click(function(){
 			  
 			  
 	/*비밀번호 찾기 */ 
+	
+	$('#btn_findPwd').click(function(){
+		
+	})
 	
 	
