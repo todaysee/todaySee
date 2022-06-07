@@ -29,4 +29,7 @@ public interface MyPageService {
    //마이페이지 평점 차트 보기
    public List<HashMap<String, Object>> chartReviewRating(Integer userNumber);
 
+   //마이페이지 평점 기입 한거 카테고리 워드클라우드
+   public List<HashMap<String, Object>> reviewRatingCategoryWordCloud(Integer userNumber);
+
 }

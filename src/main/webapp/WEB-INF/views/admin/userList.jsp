@@ -10,13 +10,14 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
 
 <style>
   #example1_filter{
     float: right !important;
   }
-
+	
   	
 	#example1{
 		cursor:pointer
@@ -49,14 +50,26 @@
           dataType : 'json',
           contentType: 'application/json',
           success : function(data){
+        	  
+        	  const userLoginDate = new Date(data.userLoginDate);
+        	  let month = userLoginDate.getMonth()+1;
+        	  let day = userLoginDate.getDate();
+        	  let year = userLoginDate.getFullYear();
+        	  
+        	  const userSignupDate = new Date(data.userSignupDate);
+        	  let userSignupDateMonth = userSignupDate.getMonth()+1;
+        	  let userSignupDateDay = userSignupDate.getDate();
+        	  let userSignupDateYear = userSignupDate.getFullYear();
+        	  
+        	  
             $('.userNumber').text(data.userNumber)
             $('.userName').text(data.userName)
             $('.userEmail').text(data.userEmail)
             $('.userTel').text(data.userTel)
             $('.userNickname').text(data.userNickname)
             $('.userGender').text(data.userGender)
-            $('.userloginDate').text(data.userLoginDate)
-            $('.userSignupDate').text(data.userSignupDate)
+            $('.userloginDate').text(year+"년-"+month+"월-"+day+"일")
+            $('.userSignupDate').text(userSignupDateYear+"년-"+userSignupDateMonth+"월-"+userSignupDateDay+"일")
             $('.user_state').text(data.userState)
             
              
@@ -72,6 +85,9 @@
         })
 
       })
+      
+      
+      
       
       const searchEl = document.querySelector('.search')
       const searchInputEl = searchEl.querySelector('input')
@@ -94,10 +110,42 @@
     $('#example').DataTable();
 });
    
-
-
+   
 
     })
+    
+       $(document).on('click','.deleteBtn',function(){
+			
+          const userNumber= $(this).attr('cba')
+          alert("유저번호는 : "+userNumber)
+          
+          
+          $.ajax({
+            url:"/admin/user/delete/"+userNumber,
+            type:"PUT",
+            success: function(data){
+              alert(data)
+              location.href = "/admin/userList"
+              
+            },
+            error:function(error){
+              alert('삭제가 실패되었습니다.')
+              console.log(error)
+            }
+
+
+
+          })
+          
+          
+          
+          
+          /* location.href="/admin/commentsCommentsReport/"+reportNumber; */
+
+
+
+        });
+
 
         
   </script>
@@ -109,6 +157,8 @@
   <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
+  
 
   <!-- 추가 -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -293,10 +343,10 @@
            
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped table-hover">
+            <table id="example1" class="table table-bordered table-striped table-hover jqplugin2">
               <thead>
               <tr>
-                <th>Rendering engine</th>
+                <th>유저번호</th>
                 <th>Browser</th>
                 <th>Platform(s)</th>
                 <th>Engine version</th>
@@ -306,14 +356,16 @@
               </thead>
               <tbody>
                 <c:forEach items="${userList}" var="test1">
+                <c:if test="${test1.userState eq 0 }">
                   <tr class="userTable" abc="${test1.userNumber}">
                     <td class="userTable2">${test1.userNumber}</td>
                     <td class="userTable1">${test1.userEmail}</td>
                     <td class="userTable1">${test1.userNickname }</td>
                     <td class="userTable1">${test1.userGender }</td>
                     <td class="userTable1">${test1.userState }</td>
-                    <td><button class="btn btn-outline-danger">삭제</button></td>
+                    <td><button class="btn btn-outline-danger deleteBtn" cba="${test1.userNumber}">삭제</button></td>
                   </tr>
+                  </c:if>
                   </c:forEach>
               
               </tbody>
@@ -351,11 +403,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
 <!-- Page specific script -->
-
+<script src="/dist/admin/choi_admin.js"></script>
 
 
 <!-- 추가 -->
-<script src="/dist/admin/admin.js"></script>
+
+
 <!-- DataTables  & Plugins -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -370,16 +423,16 @@
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-
+<script src="/dist/admin/admin.js"></script>
 
 <script>  
 
   $(function () {
-    $("#example1").DataTable({
+    $("#jqplugin2").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false, "destroy":true,
       /* "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"] */
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example1').DataTable({
+    $('#jqplugin2').DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": true,
@@ -392,5 +445,6 @@
   });
 
 </script>
+
 </body>
 </html>

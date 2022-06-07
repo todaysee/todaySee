@@ -12,12 +12,13 @@ import com.todaySee.domain.UserVO;
  * User 클래스의 생성자를 호출할 때, 검색결과로 얻은 UserVO 객체의 값 전달. 
  */
 
-public class SecurityUser extends User {
-	private static final long serialVersionUID = 1L;
-	
-	public SecurityUser(UserVO uservo) {
-		super(uservo.getUserEmail(), uservo.getUserPassword(),
-				AuthorityUtils.createAuthorityList(uservo.getRole().toString()));
-	}
-
-}
+/*
+ * public class SecurityUser extends User { private static final long
+ * serialVersionUID = 1L;
+ * 
+ * public SecurityUser(UserVO uservo) { super(uservo.getUserEmail(),
+ * uservo.getUserPassword(),
+ * AuthorityUtils.createAuthorityList(uservo.getRole().toString())); }
+ * 
+ * }
+ */
