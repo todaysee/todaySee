@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" type="text/css" href="/dist/css/adminlte.min.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
 
 
 </head>

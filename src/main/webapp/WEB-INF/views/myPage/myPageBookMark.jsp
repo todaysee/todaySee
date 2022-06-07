@@ -14,6 +14,8 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+    <!-- js files -->
+    <script src="../js/mypageCommunity/chatList.js"></script>
 
     <!-- 추가 CSS -->
     <style>
@@ -328,14 +330,14 @@
 
 			<div class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
-					<h3>즐겨찾기 이름</h3>
+					<h3>${bookmark.bookmarkName}</h3>
 				</div>
 				<div class="bookmarkDateils-box">
 					<div class="events-footer d-flex justify-content-between align-items-center">
-						<a href="#" class="default-btn" data-bs-toggle="modal" data-bs-target="#modalListUpdate">현재 리스트 수정</a>&nbsp
+						<a href="#" class="default-btn btnListUpdate" data-bs-toggle="modal" data-bs-target="#modalListUpdate">현재 리스트 수정</a>&nbsp
 						<a href="#" class="default-btn delete-btn">현재 리스트 삭제</a>&nbsp
-						<a href="#" class="default-btn">선택 영상을 리스트에서 삭제</a>&nbsp
-						<a href="#" class="default-btn" data-bs-toggle="modal" data-bs-target="#modalListMove">선택 영상을 다른 리스트로 이동</a>&nbsp
+						<a href="#" class="default-btn btnContentDelete">선택 영상을 리스트에서 삭제</a>&nbsp
+						<a href="#" class="default-btn btnContentUpdate" data-bs-toggle="modal" data-bs-target="#modalListMove">선택 영상을 다른 리스트로 이동</a>&nbsp
 					</div>
 				</div>
 			</div>
@@ -346,7 +348,12 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="single-events-card">
 						<a href="#">
-							<img src="${content.contentMainImg}" alt="${content.contentTitle}">
+                            <c:if test="${empty content.contentMainImg}">
+                                <img src="/images/home/cat.jpg" alt="defaultImage">
+                            </c:if>
+                            <c:if test="${not empty content.contentMainImg}">
+							    <img src="${content.contentMainImg}" alt="${content.contentTitle}">
+                            </c:if>
 						</a>
 						<div class="events-content">
 							<div class="row">
@@ -354,7 +361,7 @@
 									<span>${content.contentAge}</span>
 								</div>
 								<div class="col-md-2 ms-auto movie-checkbox">
-									<input type="checkbox" id="movie${content.contentNumber}" class="checkbox2"/><label for="movie${content.contentNumber}"></label>
+									<input type="checkbox" id="movie${content.bookmarkNumber}" class="checkbox2" value="${content.bookmarkNumber}"/><label for="movie${content.bookmarkNumber}"></label>
 								</div>
 							</div>
 							<h3>
@@ -379,7 +386,7 @@
 	<!--========== Body ==============-->
 
 	<!--========== Right SideBar ==============-->
-	<%@ include file="../inculde/mypage/rightSidebar.jsp"%>
+	<%@ include file="../inculde/community/rightSidebar.jsp" %>
 	<!--========== Right SideBar ==============-->
 
 
@@ -400,22 +407,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="bookmarkUpdateForm" action="/myPage/bookMark/${bookmark.bookmarkNumber}" method="post">
                     <div class="form-group col-md-12 padding-8">
                         <label>즐겨찾기 이름</label>
-                        <input type="text" class="form-control" value="즐겨찾기 이름"/>
+                        <input type="text" class="form-control" name="bookmarkName" value="${bookmark.bookmarkName}"/>
                     </div>
                     <div class="col-md-6 padding-8">
                         즐겨찾기 공개
                         <div class="toggle">
-                            <input type="checkbox" name="toggle1" id="toggle1" value="1">
-                            <label for="toggle1"></label>
+                            <input type="checkbox" name="bookmarkState" id="bookmarkState" value="1">
+                            <label for="bookmarkState"></label>
                         </div>
                     </div>
                     <hr>
                     <div class="col-md-5 ms-auto padding-8">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                        <button type="submit" class="btn btn-primary">수정하기</button>
+                        <button type="submit" id="bookmarkUpdate" class="btn btn-primary">수정하기</button>
                     </div>
 
                 </form>
@@ -435,21 +442,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="padding-8 padding-9">현재 리스트 : 리스트 이름</div>
+                <div class="padding-8 padding-9">현재 리스트 : ${bookmark.bookmarkName}</div>
                 <div class="padding-8">
                     <ul class="like-list">
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list1"/><label for="list1">리스트1</label></div></li>
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list2"/><label for="list2">리스트2</label></div></li>
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list3"/><label for="list3">리스트3</label></div></li>
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list4"/><label for="list4">리스트4</label></div></li>
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list5"/><label for="list5">리스트5</label></div></li>
-                        <li><div class="movie-checkbox"><input type="radio" name="list" id="list6"/><label for="list6">리스트6</label></div></li>
+                        <c:forEach items="${bookmarkList}" var="list">
+                            <li><div class="movie-checkbox"><input type="radio" name="bookmark" class="bookmark" id="list${list.bookmarkNumber}" value="${list.bookmarkNumber}"/><label for="list${list.bookmarkNumber}">${list.bookmarkName}</label></div></li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <hr>
                 <div class="col-md-5 ms-auto padding-8">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                    <button type="button" class="btn btn-primary">이동하기</button>
+                    <button type="button" id="btnMoveContent" class="btn btn-primary">이동하기</button>
                 </div>
             </div>
         </div>
@@ -469,13 +473,111 @@
 
 <!-- 추가 script -->
 <script>
+    // 즐겨찾기 삭제
     $('.delete-btn').on('click', function () {
-        if (confirm('정말 삭제하시겠습니까?') == true) {
-            alert('삭제되었습니다.');
+        if (confirm('정말 삭제하시겠습니까?')) {
+
+            let bookmarkNum = ${bookmark.bookmarkNumber}
+
+            $.ajax({
+                type: "POST",
+                url: "/myPage/bookMarkDelete",
+                data: {
+                    bookmarkNumber : bookmarkNum
+                },
+                success: function(data){
+                    alert('삭제되었습니다.');
+                    location.href = "/myPage/bookMark";
+                },
+                error: function(err){
+                    alert('삭제 실패!');
+                    console.log("삭제실패 : ", err);
+                }
+            });
+
         } else {
             alert('취소되었습니다.');
         }
     });
+
+    // 즐겨찾기 클릭할 경우 즐겨찾기 상태에 따라 체크박스 상태 변경
+    $('.btnListUpdate').on('click', function(){
+        // alert('ok');
+        let bookmarkState = ${bookmark.bookmarkState}
+
+        /* 즐겨찾기 상태가 1일 경우 공개, 0일경우 비공개
+        * 즐겨찾기 상태가 1일 경우 체크된 상태여야하고, 0일경우 체크해제된 상태여야함 */
+        if(bookmarkState == 1) {
+            $('#bookmarkState').prop('checked', true);
+        }
+    });
+
+    // 선택영상을 즐겨찾기에서 삭제
+    $('.btnContentDelete').on('click', function(){
+        let checkNum = [];
+        $('.checkbox2:checked').each(function(){
+            checkNum.push($(this).val());
+        });
+        // alert(checkNum);
+
+        let bookmarkNum = ${bookmark.bookmarkNumber}
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $.ajax({
+                type:"POST",
+                url: "/myPage/bookMarkDeleteContent",
+                traditional : true, // 배열을 전송할 때 데이터 직렬화하는 옵션 (default : false)
+                data: {
+                    contentList : checkNum,
+                    bookmarkNumber : bookmarkNum
+                },
+                success: function(data){
+                    location.href = "/myPage/bookMark/" + bookmarkNum;
+                    alert('삭제되었습니다.');
+                },
+                error: function(err){
+                    alert('삭제 실패!');
+                    console.log('선택영상 삭제 실패 : ', err);
+                }
+            });
+
+        } else {
+            alert('취소되었습니다.');
+        }
+    });
+
+    // 선택영상을 다른 리스트로 이동
+    $('#btnMoveContent').on('click', function(){
+        let checkNum = [];
+        $('.checkbox2:checked').each(function(){
+            checkNum.push($(this).val());
+        });
+        alert(checkNum);
+
+        let bookmark = $('.bookmark:checked').val();
+        alert(bookmark);
+
+        let bookmarkNum = ${bookmark.bookmarkNumber}
+
+        $.ajax({
+            type: "POST",
+            url: "/myPage/bookMarkUpdateContent",
+            traditional : true, // 배열을 전송할 때 데이터 직렬화하는 옵션 (default : false)
+            data: {
+                bookmarkContentNumber : checkNum,
+                bookmarkNumber : bookmark
+            },
+            success: function(data){
+                location.href = "/myPage/bookMark/" + bookmarkNum;
+                alert('이동 되었습니다.');
+            },
+            error: function(err){
+                alert('이동 실패!!');
+                console.log('영상 이동 실패 : ', err);
+            }
+        });
+    });
+
 </script>
 </body>
 </html>

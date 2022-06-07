@@ -35,12 +35,6 @@ public interface HomeService {
 	 */
 	List<Content> genresContentList(Integer randomNumber);
 	
-	/**	사용자 세션에 따른 userNickname 찾기
-	 *		- 세션에 저장된 userNumber를 통해 닉네임 찾기
-	 * @param userNumber : 세션에 저장됨
-	 * @return	userVO
-	 */
-	UserVO findByUserNumber(Integer userNumber);
 	
 	Genre findByGenreNumber(Integer genreNumber);
 	

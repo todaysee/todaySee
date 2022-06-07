@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="/plugins/adminPlugins.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="/dist/css/adminlte.min.css">
+	  <link rel="stylesheet" type="text/css" href="/dist/css/choi-nav.css">
+	
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

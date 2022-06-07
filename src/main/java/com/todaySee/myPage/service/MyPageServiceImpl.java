@@ -82,4 +82,17 @@ public class MyPageServiceImpl implements MyPageService{
         return rList ;
     }
 
+    public List<HashMap<String, Object>> reviewRatingCategoryWordCloud(Integer userNumber){
+        List<HashMap<String, Object>> categoryList = new ArrayList<HashMap<String,Object>>();
+
+        for(Object[] o : reviewRepository.reviewRatingCategoryWordCloud(userNumber)) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            hm.put("genreName",o[0]);
+            hm.put("genreCount",o[1]);
+            categoryList.add(hm);
+        }
+
+        return categoryList;
+    }
+
 }

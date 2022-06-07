@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/myPage/bookMarkList" class="nav-link">
+                <a href="/myPage/bookMark" class="nav-link">
                     <span class="icon"><i class="flaticon-team"></i></span>
                     <span class="menu-title">나의 북마크</span>
                 </a>

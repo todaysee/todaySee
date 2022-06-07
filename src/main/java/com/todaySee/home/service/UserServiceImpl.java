@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
 	//회원가입
 	@Override
 	public  UserVO create(UserVO user) {
+
 		user.setUserProfileYn(0);
 		user.setUserAdmin(0);
 		user.setUserState(0);

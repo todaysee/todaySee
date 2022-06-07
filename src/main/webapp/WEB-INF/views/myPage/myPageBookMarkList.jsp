@@ -14,6 +14,8 @@
 	<link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
 	<!-- CSS files -->
 	<link rel="stylesheet" href="/css/mypageCommunity.css">
+	<!-- js files -->
+    <script src="../js/mypageCommunity/chatList.js"></script>
 
 	<!-- 추가 CSS -->
 	<style>
@@ -65,7 +67,7 @@
 
 			<div class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
-					<h3>사용자님이 생성한 보고싶어요 리스트</h3>
+					<h3>${user.userNickname}님이 생성한 보고싶어요 리스트</h3>
 				</div>
 			</div>
 
@@ -79,7 +81,7 @@
 								<div class="groups-image">
 									<a href="#">
 										<c:if test="${empty bookmark.contentMainImg}">
-											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="defaultImage">
+											<img src="/images/home/cat.jpg" alt="defaultImage">
 										</c:if>
 										<c:if test="${not empty bookmark.contentMainImg}">
 											<img src="${bookmark.contentMainImg}" alt="${bookmark.bookmarkName}">
@@ -117,7 +119,7 @@
 	<!--========== Body ==============-->
 
 	<!--========== Right SideBar ==============-->
-	<%@ include file="../inculde/mypage/rightSidebar.jsp"%>
+<%@ include file="../inculde/community/rightSidebar.jsp" %>
 	<!--========== Right SideBar ==============-->
 
 </div>

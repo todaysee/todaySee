@@ -14,6 +14,9 @@
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
+    <link rel="stylesheet" href="/css/mypageCommunity/jqcloud.css">
+    <!-- js files -->
+    <script src="../js/mypageCommunity/chatList.js"></script>
 </head>
 
 <body>
@@ -49,7 +52,7 @@
                         <hr/>
                         <h1>선호 태그</h1>
                         <div class="col-md-8 container">
-
+                        <div id="example" style="width: 550px; height: 350px;"></div>
                         </div>
                         <hr/>
                         <h1>추천 영상</h1>
@@ -95,7 +98,7 @@
 
 
     <!--========== Right SideBar ==============-->
-    <%@ include file="../inculde/mypage/rightSidebar.jsp" %>
+    <%@ include file="../inculde/community/rightSidebar.jsp" %>
     <!--========== Right SideBar ==============-->
 </div>
 <!--========== Body ==============-->
@@ -116,6 +119,8 @@
 <%--차트파일--%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<%--워드클라우드--%>
+<script src="/js/mypageCommunity/jqcloud.js"></script>
 <script>
     function colorize() {
         let r = Math.floor(Math.random() * 200);
@@ -149,12 +154,52 @@
             data: valueListReview
         }],
     };
-
+    console.log(labelListReview)
     let barChart = document.getElementById('reviewRatingBarChart').getContext('2d');
     new Chart(barChart, {
         type: 'bar',
-        data: data
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
     });
+
+    let jsonDataCategory = ${categoryList};
+    let jsonObjectCategory = JSON.stringify(jsonDataCategory);
+
+    let jDataCategory = JSON.parse(jsonObjectCategory);
+    let CategoryListName = []; // 배열생성
+    let CategoryListValue = [];
+
+
+    for (let i = 0; i < jDataCategory.length; i++) {
+        let dCategory = jDataCategory[i];
+        CategoryListName.push(dCategory.genreName);
+        CategoryListValue.push(dCategory.genreCount);
+    }
+
+    var word_array = [];
+
+    for (var i = 0; i < CategoryListName.length; i++){
+        console.log(CategoryListName[i])
+        console.log(CategoryListValue[i])
+        word_array.push ({text: CategoryListName[i], weight: CategoryListValue[i]})
+        console.log(word_array)
+    }
+
+    console.log(word_array)
+
+
+
+    $(function() {
+        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
+        $("#example").jQCloud(word_array);
+    });
+
 </script>
 </body>
 </html>

@@ -40,7 +40,7 @@ public class MyPageController {
     @GetMapping("/myPage/profile")
     public String myPageProfile(HttpSession session, UserVO user, Model model) {
 
-        System.out.println("테스트 세션 : "+session.getAttribute("userNumber"));
+        System.out.println("테스트 세션 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
@@ -76,9 +76,9 @@ public class MyPageController {
 
     //마이페이지 나의 취향
     @GetMapping("/myPage/like")
-    public String myPageLike(HttpSession session, UserVO user, Model model){
+    public String myPageLike(HttpSession session, UserVO user, Model model) {
 
-       user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        user.setUserNumber((Integer) session.getAttribute("userNumber"));
 
         //리스트 담기
         List<HashMap<String, Object>> list = myPageService.chartReviewRating((Integer) session.getAttribute("userNumber"));//서비스 리턴
@@ -100,7 +100,27 @@ public class MyPageController {
         String chartReviewJson = chartReviewGson.toJson(chartReviewJArray);
         model.addAttribute("chartReview", chartReviewJson);
         System.out.println(model.addAttribute("chartReview", chartReviewJson));
+        
+        //회원별 카테고리 목록
+        List<HashMap<String, Object>> categoryList = myPageService.reviewRatingCategoryWordCloud((Integer) session.getAttribute("userNumber"));//서비스 리턴
+        Gson categoryGson = new Gson();
+        JsonArray categoryJArray = new JsonArray();
 
+        Iterator<HashMap<String, Object>> categoryIterator = categoryList.iterator();
+        while (categoryIterator.hasNext()) {
+            HashMap categoryHashMap = categoryIterator.next();
+            JsonObject object = new JsonObject();
+            Integer categoryCount = Integer.parseInt(String.valueOf(categoryHashMap.get("genreCount")));
+            String categoryName = String.valueOf(categoryHashMap.get("genreName"));
+
+            object.addProperty("genreName", categoryName);
+            object.addProperty("genreCount", categoryCount);
+            categoryJArray.add(object);
+        }
+
+        String categoryJson = categoryGson.toJson(categoryJArray);
+        model.addAttribute("categoryList", categoryJson);
+        System.out.println(model.addAttribute("categoryList", categoryJson));
 
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
@@ -152,7 +172,6 @@ public class MyPageController {
     }
 
 
-
     @GetMapping("/myPage/bookMarkList")
     public String myPageBookMark(HttpSession session, UserVO user, Model model) {
 
@@ -168,27 +187,12 @@ public class MyPageController {
         return "/myPage/myPageBookMarkList";
     }
 
-//    @GetMapping("/myPage/bookMark")
-//    public String myPageBookMarkList(HttpSession session, UserVO user, Model model) {
-//
-//        user.setUserNumber((Integer) session.getAttribute("userNumber"));
-//        //마이페이지 회원정보 불러오기, 이미지 불러오기
-//        model.addAttribute("user", myPageService.getUserInfo(user));
-//        MyPageImages myPageImages = new MyPageImages();
-//        List<Object[]> tittleImages = myPageImgRepository.profileTittleImages((Integer) session.getAttribute("userNumber"));
-//        model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
-//        List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
-//        model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
-//
-//        return "/myPage/myPageBookMark";
-//    }
-
     @PostMapping("/myPage/update")
     public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
 
 
         System.out.println(userNumber + ":" + userNickname);
-        myPageService.updateNickname(userNumber,userNickname);
+        myPageService.updateNickname(userNumber, userNickname);
 
     }
 
@@ -205,6 +209,12 @@ public class MyPageController {
 
 
         return "/myPage/test";
+    }
+
+    @GetMapping("/3")
+    public String word() {
+        System.out.println("워드클라우드 접속");
+        return "/myPage/word";
     }
 
 }

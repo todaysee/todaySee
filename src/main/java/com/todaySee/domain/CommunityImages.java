@@ -22,6 +22,8 @@ public class CommunityImages {
     String imagesCommunityFileName; // 원본 파일명
     @Column(name = "images_community_file_rename", length = 3000)
     String imagesCommunityFileRename; // 수정된 파일명
+    @Column
+    Integer imagesCommunityState; // 0 표시하지 않음, 1 표시함
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

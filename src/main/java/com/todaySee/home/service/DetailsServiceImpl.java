@@ -187,7 +187,7 @@ public class DetailsServiceImpl implements DetailsService{
     public List<HashMap<String, String>> getBookmarkList(Integer userNumber) {
         List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴할 리스트 생성 */
 
-        List<Bookmark> bookmarkList = bookmarkRepo.findByUserAndBookmarkStateNotAndContentIsNull(userRepo.findById(userNumber).get(), 2); /* 유저번호에 따른 즐겨찾기 가져오기 */
+        List<Bookmark> bookmarkList = bookmarkRepo.findByUserAndBookmarkStateBetweenAndContentIsNull(userRepo.findById(userNumber).get(), 0, 1); /* 유저번호에 따른 즐겨찾기 가져오기 */
         for(Bookmark bookmark : bookmarkList) { /* 즐겨찾기 갯수만큼 반복 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 리스트 안에 담을 HashMap 생성 */
             map.put("bookmarkNumber", Integer.toString(bookmark.getBookmarkNumber())); /* 즐겨찾기 번호 저장 */
