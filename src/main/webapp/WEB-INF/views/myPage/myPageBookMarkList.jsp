@@ -97,7 +97,7 @@
 										</div>
 									</div>
 									<div class="join-groups-btn">
-										<a href="/myPage/bookMark/${bookmark.bookmarkNumber}"><button type="button">즐겨찾기 보기</button></a>
+										<button type="button" onclick="location.href='/myPage/bookMark/${bookmark.bookmarkNumber}'">즐겨찾기 보기</button>
 									</div>
 								</div>
 							</div>
