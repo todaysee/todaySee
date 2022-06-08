@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>오늘 이거 볼래? - ${user.userNickname}님 정보 수정</title>
+    <title>오늘 이거 볼래? | ${user.userNickname}님의 정보 수정</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">

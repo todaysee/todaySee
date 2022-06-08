@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Zust - Social Community & Marketplace HTML Template</title>
+	<title>오늘 이거 볼래? | ${user.userNickname}님의 보고싶어요 목록</title>
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
@@ -67,7 +67,7 @@
 
 			<div class="events-inner-box-style d-flex justify-content-between align-items-center">
 				<div class="title">
-					<h3>${user.userNickname}님이 생성한 보고싶어요 리스트</h3>
+					<h3>${user.userNickname}님이 생성한 보고싶어요 목록</h3>
 				</div>
 			</div>
 

@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Streamlab - Video Streaming HTML5 Template</title>
+	<title>오늘 뭐볼래 ? | 검색 상세 페이지</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">

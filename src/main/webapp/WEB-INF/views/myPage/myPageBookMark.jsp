@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래? | ${user.userNickname}님의 보고싶어요 ${bookmark.bookmarkName}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">

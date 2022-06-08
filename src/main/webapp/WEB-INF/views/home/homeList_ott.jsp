@@ -13,7 +13,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>오늘 뭐볼래 ? | 장르 콘텐츠</title>
+	<title>오늘 뭐볼래 ? | OTT 콘텐츠</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -58,48 +58,21 @@
                     <nav aria-label="breadcrumb">
                         <div class="gen-breadcrumb-title">
                             <h1>
-                                장르
+                                플랫폼
                             </h1>
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb genreList">
-
-                               <li value="1"><a href="/search/genres?genreNumber=1">드라마</a></li>
+                               <li value="1"><a href="/search/ott?ottNumber=1">넷플릭스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li value="2"><a href="/search/genres?genreNumber=2">로맨스</a></li>
+                                <li value="2"><a href="/search/ott?ottNumber=2">디지니플러스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li value="3"><a href="/search/genres?genreNumber=3">스릴러</a></li>
+                                <li value="3"><a href="/search/ott?ottNumber=3">애플티비</a></li>
                                 <li><span>&#124;</span></li>
-                                <li value="4"><a href="/search/genres?genreNumber=4">SF</a></li>
+                                <li value="4"><a href="/search/ott?ottNumber=4">웨이브</a></li>
                                 <li><span>&#124;</span></li>
-                                <li value="5"><a href="/search/genres?genreNumber=5">가족</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="16"><a href="/search/genres?genreNumber=16">코미디</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="7"><a href="/search/genres?genreNumber=7">다큐멘터리</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="9"><a href="/search/genres?genreNumber=9">스포츠</a></li>
+                                <li value="5"><a href="/search/ott?ottNumber=5">왓챠</a></li>
                             </ol>
-                            <ol class="breadcrumb">
-                                <li value="8"><a href="/search/genres?genreNumber=8">범죄</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="10"><a href="/search/genres?genreNumber=10">애니메이션</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="11"><a href="/search/genres?genreNumber=11">예능</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="12"><a href="/search/genres?genreNumber=12">액션</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="13"><a href="/search/genres?genreNumber=13">역사</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="14"><a href="/search/genres?genreNumber=14">음악</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="15"><a href="/search/genres?genreNumber=15">전쟁</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="6"><a href="/search/genres?genreNumber=6">공포</a></li>
-                                <li><span>&#124;</span></li>
-                                <li value="17"><a href="/search/genres?genreNumber=17">판타지</a></li>
-
-                              </ol>
                         </div>
                     </nav>
                 </div>
@@ -117,7 +90,7 @@
                 <div class="col-lg-12">
                     <div class="row contentList">
                     <!-- start for -->
-                     <c:forEach items="${genresContentList}" var="content">
+                     <c:forEach items="${ottContentList}" var="content">
 					<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
                         <div class="col-xl-3 col-lg-4 col-md-6">
                             <div class="gen-carousel-movies-style-3 movie-grid style-3">

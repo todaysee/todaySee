@@ -76,10 +76,10 @@ public class HomeController {
      * @return	추천 알고리즘을 통한 추천 영화 출력
      */
     @GetMapping("/")
-    public String homeIndex(Model m, HttpSession session) {
+    public String homeIndex(Model model, HttpSession session) {
     	
     	// 최신 콘텐츠 출력
-    	m.addAttribute("newContent",homeService.newContent());
+    	model.addAttribute("newContent",homeService.newContent());
     	
 		// 랜덤으로 장르별 번호 뽑기
 		Random random = new Random(System.currentTimeMillis());
@@ -92,20 +92,20 @@ public class HomeController {
 		}// end of while
 		
 		// 랜덤 번호에 따른 genrsName 구하기 
-		m.addAttribute("genre_1", homeService.findByGenreNumber(genreNumber_1));
-		m.addAttribute("genre_2", homeService.findByGenreNumber(genreNumber_2));
+		model.addAttribute("genre_1", homeService.findByGenreNumber(genreNumber_1));
+		model.addAttribute("genre_2", homeService.findByGenreNumber(genreNumber_2));
 		
     	// 장르별 콘텐츠 출력
-    	m.addAttribute("genresContentList_1", homeService.genresContentList(genreNumber_1));
-    	m.addAttribute("genresContentList_2", homeService.genresContentList(genreNumber_2));
+		model.addAttribute("genresContentList_1", homeService.genresContentList(genreNumber_1));
+		model.addAttribute("genresContentList_2", homeService.genresContentList(genreNumber_2));
     	
     	// 랜덤 ott 번호 뽑기
     	Integer ottNumber = random.nextInt(5)+1;
     	
     	// 랜덤 번호에 따른 콘텐츠 구하기
-    	m.addAttribute("ott", homeService.findByOttNumber(ottNumber));
+    	model.addAttribute("ott", homeService.findByOttNumber(ottNumber));
     	
-    	m.addAttribute("ottContentList", homeService.ottContentList(ottNumber));
+    	model.addAttribute("ottContentList", homeService.mainOttContentList(ottNumber));
     	
     	// 사용자가 로그인 했는지 확인
     	Integer userNumber = (Integer) session.getAttribute("userNumber");
@@ -113,7 +113,7 @@ public class HomeController {
     	// 로그인을 한 상태일 때
     	if(userNumber != null) {
     		// 사용자 추천 콘텐츠 출력
-    		m.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
+    		model.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
     	}// end of if
     	
         return "/home/homeIndex";
@@ -152,6 +152,22 @@ public class HomeController {
 	  }// end of homeList_person()
 	 
 
+	  /** ott별 상세 페이지
+	   * @return
+	   */
+	  @GetMapping("/search/ott")
+	  public String homeList_ott(Integer ottNumber, Integer page, Model model) {
+		  
+		  Page<Content> content = homeService.ottContentList(ottNumber, page);
+		  
+		  // 위에서 얻어온 리스트에서 콘텐츠만 리스트에 다시 담는다
+		  List<Content> ottContentList = content.getContent();
+		  
+		  model.addAttribute("ottContentList", ottContentList);
+		  model.addAttribute("totalPage",content.getTotalPages()); // 전체 페이지 번호
+		  return "/home/homeList_ott";
+	  }
+	  
     /** 검색 결과 페이지 - 즐겨찾기
      * @return
      */
