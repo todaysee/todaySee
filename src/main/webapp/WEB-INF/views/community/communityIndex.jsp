@@ -15,6 +15,7 @@
     <!-- Links of CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
     <link rel="stylesheet" href="../css/mypageCommunity/communityIndex.css">
+    
     <!-- 추가 CSS -->
     <style>
         .groups-inner-box-style .title h3 {

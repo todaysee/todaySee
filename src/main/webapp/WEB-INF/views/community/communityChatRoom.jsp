@@ -31,7 +31,7 @@
 	<!--========== Body ==============-->
 	<div class="main-content-wrapper d-flex flex-column">
 		<!--========== Header Navbar ==============-->
-		<%@ include file="../inculde/community/navbar.jsp"%>
+		<%@ include file="../inculde/mypage/navbar.jsp"%>
 		<!--========== Header Navbar ==============-->
 		<!--========== SideBar ==============-->
 		<%@ include file="../inculde/mypage/sideMenu.jsp"%>

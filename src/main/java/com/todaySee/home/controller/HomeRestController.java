@@ -29,4 +29,9 @@ public class HomeRestController {
 		return homeService.getGenresContentList(genreNumber, page);
 	}// end of genresPaging()
 	
+	@GetMapping("/search/ott/paging")
+	public Page<Content> ottPaging(Integer ottNumber, Integer page){
+		return homeService.ottContentList(ottNumber, page);
+	}
+	
 }// end of HomeRestController()
