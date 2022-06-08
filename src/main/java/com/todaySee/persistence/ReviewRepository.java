@@ -26,6 +26,14 @@ public interface ReviewRepository extends CrudRepository<Review, Integer> {
             " group by r.content_number) " +
             " group by g.genre_name ", nativeQuery = true)
     public List<Object[]>reviewRatingCategoryWordCloud(Integer userNumber);
+
+    @Query(value = "SELECT count(*) FROM review WHERE user_number = :userNumber", nativeQuery = true)
+    Integer reviewCount(Integer userNumber);
+
+    @Query(value = "SELECT sum(review_like) FROM review WHERE user_number = :userNumber", nativeQuery = true)
+    Integer reviewLikeSum(Integer userNumber);
+
+
 }
 
 
