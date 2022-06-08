@@ -48,6 +48,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/community/chatList" class="nav-link">
+                    <span class="icon"><i class="flaticon-team"></i></span>
+                    <span class="menu-title">채팅방 리스트</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/admin" class="nav-link">
                     <span class="icon"><i class="flaticon-information"></i></span>
                     <span class="menu-title">관리자 페이지</span>
