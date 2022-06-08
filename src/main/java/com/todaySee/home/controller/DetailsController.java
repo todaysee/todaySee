@@ -53,8 +53,8 @@ public class DetailsController {
         model.addAttribute("content", contentVO);
 
         /* 컨텐츠 장르 가져오기 */
-        List<String> genre = detailsService.getContentGenre(contentNumber);
-        model.addAttribute("Genre", genre);
+        List<HashMap<String, String>> genreList = detailsService.getContentGenre(contentNumber);
+        model.addAttribute("genreList", genreList);
 
         /* 컨텐츠 플랫폼 가져오기 */
         List<HashMap<String, String>> ottList = detailsService.getContentOtt(contentNumber);
