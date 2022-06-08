@@ -100,12 +100,13 @@ public class DetailsServiceImpl implements DetailsService{
     public List<HashMap<String, String>> getReviewList(Integer contentNumber) {
         List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>(); /* 리턴 시킬 형태, 변수 */
 
-        List<Review> reviewList = reviewJpaRepo.findByContent(contentRepo.findById(contentNumber).get()); /* 컨텐츠 번호에 따른 리뷰 가져오기 */
+        /* 컨텐츠 번호와 리뷰 상태가 0인 리뷰 가져오기 */
+        List<Review> reviewList = reviewJpaRepo.findByContentAndReviewStateOrderByReviewDateDesc(contentRepo.findById(contentNumber).get(), 0);
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
             // 유저번호, 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
-            map.put("userNumber", Integer.toString(review.getUser().getUserNumber())); /* 유저 번호 저장 */
+            map.put("userNumber", Integer.toString(review.getUser().getUserNumber())); /* 유저 번호 저장 - String 형으로 변환 */
             map.put("userName", review.getUser().getUserNickname()); /* 유저 닉네임 저장 */
             map.put("reviewNumber", Integer.toString(review.getReviewNumber())); /* 리뷰 번호 저장 */
             map.put("reviewContent", review.getReviewContent()); /* 리뷰 내용 저장 */
@@ -114,6 +115,7 @@ public class DetailsServiceImpl implements DetailsService{
             map.put("reviewLike", Integer.toString(review.getReviewLike())); /* 리뷰 좋아요 = String 형으로 변환 */
             map.put("reviewSpoiler", Integer.toString(review.getReviewSpoiler())); /* 리뷰 스포일러 상태 - String 형으로 변환 */
             map.put("reviewRating", Float.toString(review.getReviewGrade())); /* 리뷰 평점 - String 형으로 변환 */
+            map.put("reviewState", Integer.toString(review.getReviewState())); /* 리뷰 상태 - String 형으로 변환 */
             returnList.add(map); /* 값을 모두 담은 HashMap를 List에 담기 */
         }
 
@@ -136,6 +138,7 @@ public class DetailsServiceImpl implements DetailsService{
         review.setReviewLike(0); /* 리뷰 좋아요 수 0으로 저장 */
         review.setReviewDate(day); /* 날짜 시간 저장 */
         review.setReviewGrade(reviewRating); /* 리뷰 별점 저장 */
+        review.setReviewState(0); /* 리뷰 상태 저장 - 0. 기본 , 1. 삭제 */
         review.setContent(contentRepo.findById(contentNumber).get()); /* 작성된 리뷰의 영상 */
         review.setUser(userRepo.findById(userNumber).get()); /* 작성한 유저 */
         reviewJpaRepo.save(review); /* Repository 로 DB에 저장 */
@@ -243,6 +246,17 @@ public class DetailsServiceImpl implements DetailsService{
         returnObj.put("reviewLike", rvo.getReviewLike()); /* 리뷰 좋아요 저장 */
 
         return returnObj;
+    }
+
+    /**
+     * 리뷰 번호에 따른 해당 리뷰의 상태를 1(삭제)로 변경
+     * @param reviewNumber : 리뷰 번호
+     */
+    @Override
+    public void reviewDelete(Integer reviewNumber) {
+        Review review = reviewJpaRepo.findById(reviewNumber).get();
+        review.setReviewState(1);
+        reviewJpaRepo.save(review);
     }
 
 }

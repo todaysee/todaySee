@@ -35,7 +35,7 @@ public class DetailsController {
     public String getContentById(@PathVariable Integer contentNumber, Model model, HttpSession session) {
         System.out.println("===============================> 컨텐츠 번호 : " + contentNumber);
 
-        /* 세션을 통해 유저 번호 가져오기 */
+        /* 유저번호 세션 */
         Integer userNumber = (Integer) session.getAttribute("userNumber");
 
         if(userNumber != null) {
