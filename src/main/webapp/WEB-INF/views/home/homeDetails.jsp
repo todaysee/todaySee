@@ -600,7 +600,7 @@
 																		<div class="text-right">
 																			<div class="gen-btn-container">
 																				<c:if test="${review.userNumber eq sessionScope.userNumber}">
-																					<a type="button" class="gen-button-like reviewLikeUp" data-bs-toggle="modal" data-bs-target="#modalReport">
+																					<a type="button" class="gen-button-like reviewDeleteBtn">
 																						<span><i class="fa fa-trash"></i> 삭제</span>
 																					</a>
 																				</c:if>
