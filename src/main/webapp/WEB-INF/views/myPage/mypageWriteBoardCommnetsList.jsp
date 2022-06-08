@@ -8,10 +8,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래? | ${user.userNickname}님의 게시글 및 댓글보기</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/mypageCommunity/favicon.png">
+    <link rel="shortcut icon" href="/images/home/favicon.png">
     <!-- CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
     <!-- js files -->

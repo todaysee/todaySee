@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Streamlab - Video Streaming HTML5 Template</title>
+	<title>오늘 이거 볼래? | ${content.contentTitle}</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -604,6 +604,7 @@
 																						<span><i class="fa fa-trash"></i> 삭제</span>
 																					</a>
 																				</c:if>
+																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
 																				<c:if test="${not empty sessionScope.userNumber}">
 																					<a type="button" class="gen-button-like reviewLikeUp" data-bs-toggle="modal" data-bs-target="#modalReport">
 																						<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
@@ -1051,7 +1052,6 @@
 				},
 				datatype: "json",
 				success: function (data) {
-					// alert("즐겨찾기 추가 성공!");
 					$('#insertBookmarkName').val("");
 					let jsonObj = JSON.stringify(data);
 					let jsondata = JSON.parse(jsonObj);
@@ -1062,7 +1062,6 @@
 											"<input type='checkbox' name='check2' id=bookmark" + v.bookmarkNumber + " value=" + v.bookmarkName + " class='checkbox2 bookmark_check'>" +
 											"<label for=bookmark" + v.bookmarkNumber + ">" + v.bookmarkName + "</label>" +
 										"</div>";
-						// console.log(checkbox);
 						$('#appendBookmark').append(checkbox);
 					});
 				},
@@ -1105,6 +1104,7 @@
 	// 리뷰 submit Ajax
 	$('#submit').on('click', function(e){
 		e.preventDefault();
+		let user = ${sessionScope.userNumber}
 		let reviewContent = $('.reviewContent').val();
 		let reviewSpoiler = 0;
 		if($('.reviewSpoiler').is(':checked')) {
@@ -1113,31 +1113,34 @@
 		let contentNumber = ${content.contentNumber}
 		let reviewRating = $('#reviewRating').val();
 
-		$.ajax({
-			type: "POST",
-			url: "/details/reviewAjax",
-			data: {
-				userNumber : 1,
-				reviewContent : reviewContent,
-				reviewSpoiler : reviewSpoiler,
-				contentNumber : contentNumber,
-				reviewRating : reviewRating
-			},
-			success: function(data){
-				alert("리뷰가 등록되었습니다.");
-				console.log(data);
-				$('.reviewContent').val('');
-				$('.reviewSpoiler').prop("checked", false);
-				location.href="/details/${content.contentNumber}"
-			},
-			error: function(err){
-				alert("서버 문제로 오류가 발생하였습니다.");
-				console.log(err);
-				$('.reviewContent').val('');
-				$('.reviewSpoiler').prop("checked", false);
-			}
-		});
-
+		if(reviewRating != "") {
+			$.ajax({
+				type: "POST",
+				url: "/details/reviewAjax",
+				data: {
+					userNumber : user,
+					reviewContent : reviewContent,
+					reviewSpoiler : reviewSpoiler,
+					contentNumber : contentNumber,
+					reviewRating : reviewRating
+				},
+				success: function(data){
+					alert("리뷰가 등록되었습니다.");
+					console.log(data);
+					$('.reviewContent').val('');
+					$('.reviewSpoiler').prop("checked", false);
+					location.href="/details/${content.contentNumber}"
+				},
+				error: function(err){
+					alert("서버 문제로 오류가 발생하였습니다.");
+					console.log(err);
+					$('.reviewContent').val('');
+					$('.reviewSpoiler').prop("checked", false);
+				}
+			});
+		} else {
+			alert('평점을 남겨주세요!');
+		}
 	});
 
 	// 스포일러보기
@@ -1207,6 +1210,31 @@
 				console.log("마음에들어요 오류 : ", err);
 			}
 		});
+	});
+
+	// 리뷰 삭제
+	$('.reviewDeleteBtn').on('click', function(){
+		let reviewNum = $(this).next().val();
+
+		let contentNum = ${content.contentNumber}
+
+		if(confirm("리뷰를 삭제하시겠습니까?")) {
+			$.ajax({
+				type: "POST",
+				url: "/details/reviewDelete",
+				data: {reviewNumber: reviewNum},
+				success: function () {
+					alert('리뷰 삭제 성공!');
+					location.href = "/details/" + contentNum;
+				},
+				error: function (err) {
+					alert('리뷰 삭제 실패!');
+					console.log('리뷰 삭제 에러 : ', err);
+				}
+			});
+		} else {
+			alert('취소되었습니다.');
+		}
 	});
 
 </script>
