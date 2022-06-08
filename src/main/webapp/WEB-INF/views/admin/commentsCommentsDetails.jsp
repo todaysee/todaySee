@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -99,7 +100,7 @@
                   <li class="nav-item active">
                     <a href="#" class="nav-link">
                       <i class="fas fa-inbox"></i> 누적 신고수
-                      <span class="badge bg-primary float-right">${count }</span>
+                      <span class="bg-primary float-right">${count }</span>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -117,7 +118,8 @@
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="fas fa-filter"></i> 신고 날짜
-                      <span class="badge bg-warning float-right">${commentsCommentsReport.commentsCommentsReportDate }</span>
+                      <span class="bg-warning float-right"><fmt:formatDate value="${commentsCommentsReport.commentsCommentsReportDate}" pattern="yyyy-MM-dd"/></span>
+                      
                     </a>
                   </li>
                   
