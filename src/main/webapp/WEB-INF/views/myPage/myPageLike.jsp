@@ -51,7 +51,7 @@
                         </div>
                         <hr/>
                         <h1>선호 태그</h1>
-                        <div class="col-md-8 container">
+                        <div class="col-md-6 container">
                         <div id="example" style="width: 550px; height: 350px;"></div>
                         </div>
                         <hr/>

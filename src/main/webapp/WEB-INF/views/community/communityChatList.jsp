@@ -47,7 +47,7 @@
 				</div>
 				<form name="signform" method="POST" ENCTYPE="multipart/form-data"
 					action="./design_update.htm">
-					<img src="../images/mypageCommunity/user/user-55.jpg"
+					<img src="../images/mypageCommunity/user/chat-icon.png"
 						class="rounded-circle" id="target_img" alt="image"> <input
 						type="file" id="file" name="file" style="display: none;"
 						onchange="changeValue(this)"/> <input type="hidden"
