@@ -1,5 +1,6 @@
 package com.todaySee.community.service;
 
+import com.todaySee.domain.Comments;
 import com.todaySee.domain.Community;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
@@ -19,4 +20,6 @@ public interface CommunityService {
     List<Community> getCommunityBoardList(String communityCategory);
 
     void saveImagesFiles(MultipartFile files);
+    
+    Comments communityCommentsInsert(Comments comments);
 }

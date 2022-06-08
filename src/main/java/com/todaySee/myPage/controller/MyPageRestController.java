@@ -3,6 +3,7 @@ package com.todaySee.myPage.controller;
 
 
 
+import com.todaySee.domain.Comments;
 import com.todaySee.dto.CommunityDto;
 import com.todaySee.myPage.service.MyPageImagesService;
 import com.todaySee.myPage.service.MyPageService;
@@ -40,6 +41,6 @@ public class MyPageRestController {
         return myPageService.boardPages(pageable);
     }
 
-
+    
 
 }
