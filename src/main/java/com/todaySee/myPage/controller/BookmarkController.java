@@ -77,6 +77,9 @@ public class BookmarkController {
          /* 유저번호 */
         Integer userNumber = (Integer) session.getAttribute("userNumber");
 
+        /* 유저 번호에 따른 유저 닉네임 가져오기 */
+        model.addAttribute("user", detailsService.getUser(userNumber));
+
         /* 즐겨찾기 번호에 맞는 즐겨찾기 상세정보 가져오기 */
         model.addAttribute("bookmark", bookmarkService.getBookmark(bookmarkNumber));
 
