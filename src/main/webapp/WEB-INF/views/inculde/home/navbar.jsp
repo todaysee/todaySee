@@ -17,7 +17,10 @@
                                         <a href="/" aria-current="page">홈</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="/search/genres">콘텐츠</a>
+                                        <a href="/search/genres">장르</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/search/ott">OTT</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="/community">커뮤니티</a>
