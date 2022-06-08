@@ -14,4 +14,5 @@ public interface ReviewJpaRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findByUserOrderByReviewDateDesc(UserVO user);
 
+
 }
