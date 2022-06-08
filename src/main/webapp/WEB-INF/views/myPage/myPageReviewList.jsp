@@ -82,7 +82,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="text-center">작성 시간 : ${review.user.userNickname}</div>
+                                            <div class="text-center">작성 시간 : ${review.reviewDate}</div>
                                         </div>
                                         <div class="join-groups-btn">
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal${review.reviewNumber}">
@@ -97,58 +97,18 @@
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">${review.content.contentTitle} 리뷰</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">${review.content.contentTitle}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                                ${review.reviewContent}
+                                            평점 : ${review.reviewGrade}
+                                            <hr/>
+                                            내가 받은 좋아요 :  ${review.reviewLike}
+                                            <hr/>
+                                            ${review.reviewContent}
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                            <button class="btn btn-primary" data-bs-target="#reviewModalUpdate${review.reviewNumber}" data-bs-toggle="modal" data-bs-dismiss="modal">수정하기</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="reviewModalUpdate${review.reviewNumber}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalToggleLabel2">비밀번호 입력</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <div class="">회원님의 정보 수정을 위해 비밀번호를 확인 합니다.</div>
-                                                <br/>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label>비밀번호</label>
-                                                    <input type="password" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                            <button class="btn btn-primary" data-bs-target="#reviewModalUpdateCheck${review.reviewNumber}" data-bs-toggle="modal" data-bs-dismiss="modal">비밀번호 확인하기</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal fade" id="reviewModalUpdateCheck${review.reviewNumber}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalToggleLabel3">리뷰 수정하기</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            수정창
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                            <button class="btn btn-primary">수정</button>
                                         </div>
                                     </div>
                                 </div>
