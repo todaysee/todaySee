@@ -459,10 +459,10 @@
 									<div class="gen-extra-data">
 										<ul>
 											<li><span>장르 :</span>
-												<c:forEach var="genre" items="${Genre}">
+												<c:forEach var="genre" items="${genreList}">
 												<span>
-                                                        <a href="/${genre}">
-                                                            ${genre} </a>
+                                                        <a href="/search/genres?genreNumber=${genre.genreNumber}">
+                                                            ${genre.genreName} </a>
 												</span>
 												</c:forEach>
 											</li>

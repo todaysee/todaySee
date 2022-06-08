@@ -55,16 +55,19 @@ public class DetailsServiceImpl implements DetailsService{
      * @return List <String> : 불러온 데이터의 잔처리 후, List에 담아 리턴
      */
     @Override
-    public List<String> getContentGenre(Integer contentNumber) {
+    public List<HashMap<String, String>> getContentGenre(Integer contentNumber) {
         Content cVO = contentRepo.findById(contentNumber).get(); /* PK(ID)로 데이터 불러오기
         데이터 형태 => ['key'=Key('DetailKey'='value')] 와 같이 되어있음 (무슨 데이터인지 모르겠다 Object 데이터인가 확인 해봐야 함! )
         key값의 getter로 값을 불러올 수 있음 */
         List<ContentGenre> genreList = cVO.getContentGenre(); /* ContentGenre가 Content안에 OneToMany로 리스트에 담겨지도록 설정되어있어, getter를 할 경우 리스트 형태가 리턴됨 */
-        List<String> genre = new ArrayList<String>(); /* 해당 데이터 중에서 장르명(genre_name)만 뽑아 담을 리스트 생성 */
+        List<HashMap<String, String>> genre = new ArrayList<HashMap<String, String>>(); /* 해당 데이터 중에서 장르명(genre_name)만 뽑아 담을 리스트 생성 */
         for(ContentGenre cg : genreList) { /* ContentGenre에 담긴 리스트를 ContentGenre에 하나씩 담아 반복 */
+            HashMap<String, String> map = new HashMap<String, String>();
             Genre gVO = cg.getGenre(); /* 해당 ContentGenre안의 Genre를 getter로 불러와 저장 */
             System.out.println("=>" + gVO.getGenreName()); /* Genre내의 장르명(genre_name)이 잘 불려지는지 확인 */
-            genre.add(gVO.getGenreName()); /* 장르명을 리스트에 담음 */
+            map.put("genreNumber", Integer.toString(gVO.getGenreNumber())); /* 장르 번호 저장 */
+            map.put("genreName", gVO.getGenreName()); /* 장르명 저장 */
+            genre.add(map);
         }
         return genre; /* 담긴 장르명 리스트를 리턴 */
     }

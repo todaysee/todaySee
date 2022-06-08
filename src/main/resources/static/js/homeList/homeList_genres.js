@@ -24,7 +24,7 @@ $('#genresLoadMoreBtn').click(function(){
 					+ ' <div class="gen-movie-img">'
 					+ ' <img src="'+content.contentMainImagesUrl+'" alt="streamlab-image">'
 					+ ' <div class="gen-movie-action">'
-					+ ' <a href="single-movie.html" class="gen-button">'
+					+ ' <a href="/details/'+content.contentNumber+'" class="gen-button">'
 					+ ' <i class="fa fa-play"></i>'
 					+ ' </a>'
 					+ ' </div>'

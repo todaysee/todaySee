@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +39,10 @@
           padding: 0px;
           float: left;
           cursor: pointer;
+        }
+        
+        .reivewReport:hover{
+        cursor: pointer;
         }
       </style>
 
@@ -133,7 +138,7 @@
                     <td>${report.reviewReportNumber }</td>
                     <td>${report.user.userName }</td>
                     <td>${report.reviewReportContent }</td>
-                    <td>${report.reviewReportDate }</td>
+                    <td><fmt:formatDate value="${report.reviewReportDate}" pattern="yyyy-MM-dd"/></td>
                     <td>${report.review.reviewGrade }</td>
                   </tr>
                   </c:if>
