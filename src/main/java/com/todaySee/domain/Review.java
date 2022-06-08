@@ -32,6 +32,9 @@ public class Review {
     @Column(name = "review_grade")
     float reviewGrade;
 
+    @Column(name = "review_state")
+    Integer reviewState;
+
     @ManyToOne // 다:1
     @JoinColumn(name="user_number")
     private UserVO user;

@@ -22,6 +22,7 @@ public interface AdminService {
 	public List<UserVO> getUserList(UserVO user);
 	
 	public UserVO getUser(@PathVariable Integer userNumber);
+	public void userDelete(Integer userNumber);
 	
 	
 	public List<Object[]> getAllContent();

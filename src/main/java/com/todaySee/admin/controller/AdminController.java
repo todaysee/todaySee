@@ -67,6 +67,13 @@ public class AdminController {
 		return "admin/userList";
 	}
 	
+	@PutMapping("/admin/user/delete/{userNumber}")
+	@ResponseBody
+	public String userDelete( @PathVariable Integer userNumber) {
+		adminService.userDelete(userNumber);
+		
+		return "삭제가 되었습니다.";
+	}
 	
 
 	

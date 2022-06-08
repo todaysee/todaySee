@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Genre;
+import com.todaySee.domain.Ott;
 import com.todaySee.domain.UserVO;
 
 public interface HomeService {
@@ -31,17 +32,18 @@ public interface HomeService {
 	/**	장르별 콘텐츠 출력
 	 * 		- homeIndex에 출력할 장르 콘텐츠 검색하여 리스트에 담기
 	 * 		- 장르별 콘텐츠 10개 출력
+	 * @param genreNumber
 	 * @return List<Content>
 	 */
-	List<Content> genresContentList(Integer randomNumber);
+	List<Content> genresContentList(Integer genreNumber);
 	
-	/**	사용자 세션에 따른 userNickname 찾기
-	 *		- 세션에 저장된 userNumber를 통해 닉네임 찾기
-	 * @param userNumber : 세션에 저장됨
-	 * @return	userVO
+	/**
+	 * @param genreNumber
+	 * @return
 	 */
-	UserVO findByUserNumber(Integer userNumber);
-	
 	Genre findByGenreNumber(Integer genreNumber);
+
+	List<Content> ottContentList(Integer ottNumber);
 	
+	Ott findByOttNumber(Integer ottNumber);
 }

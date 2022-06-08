@@ -40,8 +40,15 @@ public class MyPageController {
     @GetMapping("/myPage/profile")
     public String myPageProfile(HttpSession session, UserVO user, Model model) {
 
-        System.out.println("테스트 세션 : " + session.getAttribute("userNumber"));
+        System.out.println("로그인 세션 테스트 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        
+        //리뷰 카운트
+        model.addAttribute("userReview", myPageService.reviewCount((Integer) session.getAttribute("userNumber")));
+        //커뮤니티 작성글 카운트
+        model.addAttribute("userCommunity", myPageService.communityCount((Integer) session.getAttribute("userNumber")));
+        //리뷰 좋아요 수
+        model.addAttribute("userReviewLikeSum", myPageService.userReviewLikeSum((Integer) session.getAttribute("userNumber")));
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();

@@ -1,0 +1,21 @@
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+	background-color: #e50916 !important;
+	}
+	
+	
+	.btn-primary{
+	background-color: #e50916 !important;
+	    border-color: #e50916 !important;
+	    color: #fff !important;
+	}
+	.btn-primary:hover {
+	color: #fff;
+	}
+	
+	
+	.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #e50916 !important;
+    border-color: #e50916 !important;
+	}

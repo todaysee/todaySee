@@ -23,7 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.todaySee.domain.Content;
-
+import com.todaySee.domain.Ott;
 import com.todaySee.home.service.HomeService;
 
 import com.todaySee.home.service.HomeServiceImpl;
@@ -83,25 +83,30 @@ public class HomeController {
     	
 		// 랜덤으로 장르별 번호 뽑기
 		Random random = new Random(System.currentTimeMillis());
-		Integer randomNumber_1 = random.nextInt(17)+1;
-		Integer randomNumber_2 = random.nextInt(17)+1;
+		Integer genreNumber_1 = random.nextInt(17)+1;
+		Integer genreNumber_2 = random.nextInt(17)+1;
 		
 		// 동일한 숫자가 나온다면 다시 뽑기
-		while(randomNumber_1 == randomNumber_2) {
-			randomNumber_2 = random.nextInt(17)+1;
+		while(genreNumber_1 == genreNumber_2) {
+			genreNumber_2 = random.nextInt(17)+1;
 		}// end of while
 		
-		System.out.println("randomNumber_1 : "+randomNumber_1);
-		System.out.println("randomNumber_2 : "+randomNumber_2);
-		
 		// 랜덤 번호에 따른 genrsName 구하기 
-		m.addAttribute("genre_1", homeService.findByGenreNumber(randomNumber_1));
-		m.addAttribute("genre_2", homeService.findByGenreNumber(randomNumber_2));
+		m.addAttribute("genre_1", homeService.findByGenreNumber(genreNumber_1));
+		m.addAttribute("genre_2", homeService.findByGenreNumber(genreNumber_2));
 		
     	// 장르별 콘텐츠 출력
-    	m.addAttribute("genresContentList_1", homeService.genresContentList(randomNumber_1));
-    	m.addAttribute("genresContentList_2", homeService.genresContentList(randomNumber_2));
-    	 
+    	m.addAttribute("genresContentList_1", homeService.genresContentList(genreNumber_1));
+    	m.addAttribute("genresContentList_2", homeService.genresContentList(genreNumber_2));
+    	
+    	// 랜덤 ott 번호 뽑기
+    	Integer ottNumber = random.nextInt(5)+1;
+    	
+    	// 랜덤 번호에 따른 콘텐츠 구하기
+    	m.addAttribute("ott", homeService.findByOttNumber(ottNumber));
+    	
+    	m.addAttribute("ottContentList", homeService.ottContentList(ottNumber));
+    	
     	// 사용자가 로그인 했는지 확인
     	Integer userNumber = (Integer) session.getAttribute("userNumber");
     	
@@ -109,8 +114,6 @@ public class HomeController {
     	if(userNumber != null) {
     		// 사용자 추천 콘텐츠 출력
     		m.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
-    		// 사용자의 닉네임 검색 후 출력
-    		m.addAttribute("userNickname", homeService.findByUserNumber(userNumber).getUserNickname());
     	}// end of if
     	
         return "/home/homeIndex";

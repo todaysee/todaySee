@@ -71,6 +71,14 @@ public class AdminServiceImpl implements AdminService {
 		return (List<UserVO>) adminRepository.findAll();
 	}
 	
+	public void userDelete(Integer userNumber) {
+		
+		UserVO vo = adminRepository.findById(userNumber).get();
+		vo.setUserState(1);
+		adminRepository.save(vo);
+	}
+	
+	
 	public UserVO getUser(@PathVariable Integer userNumber) {
 		
 		return  adminRepository.findById(userNumber).get();
@@ -91,6 +99,8 @@ public class AdminServiceImpl implements AdminService {
 		
 		return  (List<Report>) adminReportRepository.findAll();
 	}
+	
+	
 	public Content movieSave(Content co) {
 		
 		return adminContentRepository.save(co);

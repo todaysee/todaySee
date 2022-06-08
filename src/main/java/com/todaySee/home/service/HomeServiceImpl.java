@@ -20,22 +20,28 @@ import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
 import com.todaySee.domain.Genre;
+import com.todaySee.domain.Ott;
 import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.ContentRepository;
 import com.todaySee.persistence.GenreRepositroy;
+import com.todaySee.persistence.OttRepositroy;
 import com.todaySee.persistence.UserRepository;
 
 @Service
 public class HomeServiceImpl implements HomeService{
 	
 	@Autowired
-	private ContentRepository contentRepo;
+	private ContentRepository contentRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
-	
+	 	
 	@Autowired
 	private GenreRepositroy genreRepository;
+	
+	
+	@Autowired
+	private OttRepositroy ottRepository;
 	
 	
 	/** 장르별 컨텐츠 화면에 출력
@@ -53,7 +59,7 @@ public class HomeServiceImpl implements HomeService{
 		  
 		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "c.content_title"));
 		  
-		return contentRepo.getGenresContentList(genreNumber, pageRequest);
+		return contentRepository.getGenresContentList(genreNumber, pageRequest);
 	}// end of getGenresContentList()
 
 
@@ -107,7 +113,7 @@ public class HomeServiceImpl implements HomeService{
                 	message =message.replaceAll(match, "");
                 	
                 	// 넘어온 contentNumber를 통해 해당 콘텐츠 정보 검색하여 리스트에 담기
-                	recommendedContentList.add(contentRepo.recommendedContent(Integer.valueOf(message)));
+                	recommendedContentList.add(contentRepository.selectContent(Integer.valueOf(message)));
                 	
                 	System.out.println("파이썬에서 넘어옴 : "+message);
                 }// end of while
@@ -127,18 +133,7 @@ public class HomeServiceImpl implements HomeService{
 	 */
 	@Override
 	public List<Content> newContent() {
-		return contentRepo.newContent();
-	}
-
-
-	/**	사용자 세션에 따른 userNickname 찾기
-	 *		- 세션에 저장된 userNumber를 통해 닉네임 찾기
-	 * @param userNumber : 세션에 저장됨
-	 * @return	userNickname
-	 */
-	@Override
-	public UserVO findByUserNumber(Integer userNumber) {
-		return userRepository.findByUserNumber(userNumber);
+		return contentRepository.newContent();
 	}
 
 	
@@ -148,14 +143,34 @@ public class HomeServiceImpl implements HomeService{
 	 * @return List<Content>
 	 */
 	@Override
-	public List<Content> genresContentList(Integer randomNumber) {
-		return contentRepo.genresContentList(randomNumber);
+	public List<Content> genresContentList(Integer genreNumber) {
+		return contentRepository.genresContentList(genreNumber);
 	}
 
 
 	@Override
 	public Genre findByGenreNumber(Integer genreNumber) {
 		return genreRepository.findByGenreNumber(genreNumber);
+	}
+
+
+	@Override
+	public List<Content> ottContentList(Integer ottNumber) {
+			
+		// 검색한 콘텐츠 정보를 담을 리스트 생성
+		List<Content> ottContentList = new ArrayList<Content>();
+		
+		for(Content contentNumber : contentRepository.ottContentList(ottNumber)) {
+			ottContentList.add(contentRepository.selectContent(contentNumber.getContentNumber()));
+		}// end of for
+		
+		return ottContentList;
+	}
+
+
+	@Override
+	public Ott findByOttNumber(Integer ottNumber) {
+		return ottRepository.findByOttNumber(ottNumber);
 	}
 	
 
