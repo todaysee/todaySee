@@ -29,6 +29,9 @@ public class Comments {
     @Temporal(TemporalType.DATE)
     @Column(name = "comments_date")
     Date commentsDate;
+    
+    @Column(name="comments_state")
+    Integer commentsState;
 
     @ManyToOne
     @JoinColumn(name = "user_number")
