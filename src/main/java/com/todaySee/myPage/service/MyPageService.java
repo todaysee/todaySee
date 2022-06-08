@@ -32,4 +32,13 @@ public interface MyPageService {
    //마이페이지 평점 기입 한거 카테고리 워드클라우드
    public List<HashMap<String, Object>> reviewRatingCategoryWordCloud(Integer userNumber);
 
+   //리뷰 카운트
+   public Integer reviewCount(Integer userNumber);
+
+   //커뮤니티 작성글 카운트
+   public Integer communityCount(Integer userNumber);
+
+   //받은 리뷰 좋아요 수
+   public Integer userReviewLikeSum(Integer userNumber);
+
 }
