@@ -95,4 +95,19 @@ public class MyPageServiceImpl implements MyPageService{
         return categoryList;
     }
 
+    @Override
+    public Integer reviewCount(Integer userNumber) {
+        return reviewRepository.reviewCount(userNumber);
+    }
+
+    @Override
+    public Integer communityCount(Integer userNumber) {
+        return communityRepositroy.communityCount(userNumber);
+    }
+
+    @Override
+    public Integer userReviewLikeSum(Integer userNumber) {
+        return reviewRepository.reviewLikeSum(userNumber);
+    }
+
 }

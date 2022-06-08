@@ -15,6 +15,7 @@
     <!-- Links of CSS files -->
     <link rel="stylesheet" href="/css/mypageCommunity.css">
     <link rel="stylesheet" href="../css/mypageCommunity/communityIndex.css">
+    
     <!-- 추가 CSS -->
     <style>
         .groups-inner-box-style .title h3 {
@@ -37,7 +38,7 @@
     <!-- js files -->
     <script src="../js/mypageCommunity/chatList.js"></script>
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래 ? | 커뮤니티 </title>
 
     <link rel="icon" type="image/png"
           href="/images/mypageCommunity/favicon.png">

@@ -25,7 +25,7 @@
 		#imagesCommunityFile { display:none; }
 	</style>
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래 ? | 커뮤니티 글쓰기 </title>
 
     <link rel="icon" type="image/png"
           href="/images/mypageCommunity/favicon.png">
@@ -152,7 +152,7 @@
                                     </div>
                                     <div class="form-group">
                                         <textarea name="message" class="form-control"
-                                                  placeholder="내용을 적어주세요."></textarea>
+                                                  placeholder="댓글을 적어주세요."></textarea>
 
                                     </div>
                                 </form>

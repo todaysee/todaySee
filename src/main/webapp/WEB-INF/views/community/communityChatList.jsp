@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Zust - Social Community & Marketplace HTML Template</title>
+<title>오늘 이거 볼래 ? | 채팅방 리스트</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png"
@@ -31,7 +31,7 @@
 	<!--========== Body ==============-->
 	<div class="main-content-wrapper d-flex flex-column">
 		<!--========== Header Navbar ==============-->
-		<%@ include file="../inculde/community/navbar.jsp"%>
+		<%@ include file="../inculde/mypage/navbar.jsp"%>
 		<!--========== Header Navbar ==============-->
 		<!--========== SideBar ==============-->
 		<%@ include file="../inculde/mypage/sideMenu.jsp"%>
@@ -47,7 +47,7 @@
 				</div>
 				<form name="signform" method="POST" ENCTYPE="multipart/form-data"
 					action="./design_update.htm">
-					<img src="../images/mypageCommunity/user/user-55.jpg"
+					<img src="../images/mypageCommunity/user/chat-icon.png"
 						class="rounded-circle" id="target_img" alt="image"> <input
 						type="file" id="file" name="file" style="display: none;"
 						onchange="changeValue(this)"/> <input type="hidden"
