@@ -12,8 +12,7 @@
 <title>오늘 이거 볼래? | ${user.userNickname}님의 개인 정보</title>
 
 <!-- Favicon -->
-<link rel="icon" type="image/png"
-	href="/images/mypageCommunity/favicon.png">
+	<link rel="shortcut icon" href="/images/home/favicon.png">
 <!-- CSS files -->
 <link rel="stylesheet" href="/css/mypageCommunity.css">
 <!-- js files -->
