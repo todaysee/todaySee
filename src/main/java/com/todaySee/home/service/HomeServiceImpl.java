@@ -9,19 +9,18 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
+import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
-import com.todaySee.domain.UserVO;
+import com.todaySee.persistence.ContentOttRepository;
 import com.todaySee.persistence.ContentRepository;
 import com.todaySee.persistence.GenreRepositroy;
 import com.todaySee.persistence.OttRepositroy;
@@ -39,6 +38,8 @@ public class HomeServiceImpl implements HomeService{
 	@Autowired
 	private GenreRepositroy genreRepository;
 	
+	@Autowired
+	private ContentOttRepository contentOttRepository;
 	
 	@Autowired
 	private OttRepositroy ottRepository;
@@ -154,23 +155,33 @@ public class HomeServiceImpl implements HomeService{
 	}
 
 
+	/** homeIndex
+	 *
+	 */
 	@Override
-	public List<Content> ottContentList(Integer ottNumber) {
-			
-		// 검색한 콘텐츠 정보를 담을 리스트 생성
-		List<Content> ottContentList = new ArrayList<Content>();
+	public List<Content> mainOttContentList(Integer ottNumber) {
 		
-		for(Content contentNumber : contentRepository.ottContentList(ottNumber)) {
-			ottContentList.add(contentRepository.selectContent(contentNumber.getContentNumber()));
-		}// end of for
-		
-		return ottContentList;
+		return contentRepository.mainOttContentList(ottNumber);
 	}
 
 
 	@Override
 	public Ott findByOttNumber(Integer ottNumber) {
 		return ottRepository.findByOttNumber(ottNumber);
+	}
+
+
+	@Override
+	public Page<Content> ottContentList(Integer ottNumber, Integer page) {
+		
+		if(page == null) page = 1;
+		  
+		// ottNumber 값이 null일 경우 1(넷플릭스)가 출력되도록 함 
+		if(ottNumber == null) ottNumber = 1;
+		  
+		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "content_number"));
+		
+		return contentRepository.ottContentList(ottNumber, pageRequest);
 	}
 	
 

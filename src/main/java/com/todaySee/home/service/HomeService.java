@@ -43,7 +43,9 @@ public interface HomeService {
 	 */
 	Genre findByGenreNumber(Integer genreNumber);
 
-	List<Content> ottContentList(Integer ottNumber);
+	List<Content> mainOttContentList(Integer ottNumber);
 	
 	Ott findByOttNumber(Integer ottNumber);
+	
+	Page<Content> ottContentList(Integer ottNumber, Integer page);
 }
