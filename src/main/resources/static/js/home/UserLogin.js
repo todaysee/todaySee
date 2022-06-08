@@ -324,8 +324,34 @@ $('#btn_Login').click(function(){
 			  
 	/*비밀번호 찾기 */ 
 	
-	$('#btn_findPwd').click(function(){
+	$('#btn_sendingMail').click(function(){
+		let userEmail = $("user_Email").val();
 		
+		$.ajax({
+			Type: "GET",
+			url: "/findPassword",
+			data: { 
+				"userEmail" : userEmail,
+			},
+			success: function(res){
+				if(res['check']){
+					swal("발송완료!", "입력하신 이메일로 임시비밀번호가 발송되었습니다.", "success").then((OK) => {
+						if(OK){
+							$.ajax({
+								type: "POST",
+								url: "/findPassword/sendEmail",
+								data: {
+									"userEmail": userEmail
+								}
+							})
+							window.location="/login";
+						}
+					})
+				}
+				$('')
+			} 
+			
+		})
 	})
 	
 	

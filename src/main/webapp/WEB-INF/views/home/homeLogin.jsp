@@ -13,7 +13,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Login</title>
+	<title>오늘 뭐볼래 ? | 로그인 </title>
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -112,10 +112,12 @@
                                         	
                                         	<!-- 이미지 링크 -->
                                         	<p>
+                                       	
                                         	<div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
-                                     <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 250px;">
-                                     <img src="images/home/login/naver-login.png" alt="naver" style="width: 225px;">
-                              		</div>
+										<img src="images/home/login/googleLogin.png" alt="google" style="text-align: center; border-right-style: solid !important; 
+										border-right-width: 0px !important; margin-left: 50px !important; margin-top: 30px !important;">
+                                     	</div>
+                                     	
                                        
                             </form>
                         </div>

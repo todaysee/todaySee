@@ -2,6 +2,7 @@ package com.todaySee.home.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,11 +76,13 @@ public class UserController {
 
      // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
     @GetMapping("/userCheck")
-    public String userCheck(HttpSession session) {
+    public String userCheck(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
     	if(session.getAttribute("userNumber")==null) {
     		return "/home/homeLogin";
-    	}else {
+    	}else if(Integer.valueOf(session.getAttribute("admin").toString()) == 0) {
     		return "redirect:myPage/profile";
+    	}else {
+    		return "redirect:/admin";
     	}
     }
     
@@ -121,4 +124,6 @@ public class UserController {
     public String homeResettingPwd() {
     	return "/home/homeResettingPwd";
     }
+    
+ 
 }

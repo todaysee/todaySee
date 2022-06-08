@@ -54,6 +54,7 @@ public class UserRestController {
     		 System.out.println("********로그인 성공******");
     		 session.setAttribute("userNumber", user.getUserNumber());
     		 session.setAttribute("userNickname", user.getUserNickname());
+    		 session.setAttribute("admin", user.getUserAdmin());
     		 session.setMaxInactiveInterval(60*60*24);
     		 
     		 if(emailCheckBox) {
