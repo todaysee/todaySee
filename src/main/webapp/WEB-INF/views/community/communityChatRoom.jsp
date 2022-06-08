@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>오늘 뭐볼래 ? | 채팅방</title>
+<title>오늘 이거 볼래 ? | 채팅방</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png"
