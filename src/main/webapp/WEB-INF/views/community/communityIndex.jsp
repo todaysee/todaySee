@@ -37,7 +37,7 @@
     <!-- js files -->
     <script src="../js/mypageCommunity/chatList.js"></script>
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 뭐볼래 ? | 커뮤니티 </title>
 
     <link rel="icon" type="image/png"
           href="/images/mypageCommunity/favicon.png">
