@@ -33,6 +33,9 @@
 	#titleMovieModal{
 		width: 350px;
 	}
+	.contentNumber2, .contentNumber3:hover{
+		cursor: pointer;	
+	}
 	
 
 </style>
@@ -269,13 +272,13 @@
                        <input type='hidden' name= 'contentNumber' id="deleteContentNumber">
                       <ul class="nav nav-pills">
                         <li class="nav-item">
-                          <button class="nav-link active">영상정보</button>
+                          <label class="nav-link active contentDetailsAdmin">영상정보</label>
                         </li>
                         <li class="nav-item">
-                           <button class="nav-link contentNumber3">수정</button>
+                           <label class="nav-link contentNumber3">수정</label>
                         </li>
                         <li class="nav-item">
-                           <button class="nav-link contentNumber2">삭제</button>
+                           <label class="nav-link contentNumber2">삭제</label>
                         </li>
                          
                       </ul>
@@ -383,19 +386,21 @@
                   
                   
                    <c:forEach items="${contentList}" var="contentList">
+                   <c:if test="${ empty contentList[3] or contentList[3] eq 0 }">
                   <tr class="contentTable" bca="${contentList[0]}">
-                    <td>${contentList[8]}</td>
+                    <td>${contentList[9]}</td>
                     <td>
-                    ${contentList[11]} 
+                    ${contentList[12]} 
                     </td>
-                    <td>${contentList[1] }</td>
-                    <td> ${contentList[7] }</td>
-                    <td>${contentList[6] } </td>
+                    <td>${contentList[2] }</td>
+                    <td> ${contentList[8] }</td>
+                    <td>${contentList[7] } </td>
                     
                     <td>
-                    ${contentList[10] } 
+                    ${contentList[11] } 
                     </td>
                   </tr>
+                  </c:if>
                   </c:forEach> 
                  </tbody>
                 </table>

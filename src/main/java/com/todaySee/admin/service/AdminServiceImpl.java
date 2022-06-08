@@ -20,6 +20,7 @@ import com.todaySee.admin.persistence.AdminContentRepository;
 import com.todaySee.admin.persistence.AdminReportRepository;
 import com.todaySee.admin.persistence.AdminUserRepository;
 import com.todaySee.admin.persistence.TransactionalRepository;
+import com.todaySee.domain.Comments;
 import com.todaySee.domain.CommentsComments;
 import com.todaySee.domain.CommentsCommentsReport;
 import com.todaySee.domain.CommentsReport;
@@ -29,13 +30,19 @@ import com.todaySee.domain.Content;
 import com.todaySee.domain.ContentGenre;
 import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Report;
+import com.todaySee.domain.Review;
 import com.todaySee.domain.ReviewReport;
 import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.CommentsCommentsReportRepository;
+import com.todaySee.persistence.CommentsCommentsRepository;
 import com.todaySee.persistence.CommentsReportRepository;
 import com.todaySee.persistence.CommentsRepository;
 import com.todaySee.persistence.CommunityReportRepository;
+import com.todaySee.persistence.CommunityRepositroy;
+import com.todaySee.persistence.ContentGenreRepository;
+import com.todaySee.persistence.ContentOttRepository;
 import com.todaySee.persistence.ReviewReportRepository;
+import com.todaySee.persistence.ReviewRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -48,6 +55,36 @@ public class AdminServiceImpl implements AdminService {
 	 
 	 @Autowired
 	 private AdminReportRepository adminReportRepository;
+	 
+	 //신고 
+	 @Autowired
+	 private CommunityRepositroy communityRepo;
+	 
+	 @Autowired
+	 private ReviewRepository reviewRepo;
+	 
+	 @Autowired
+	 private CommentsRepository commentsRepo;
+	 
+	 @Autowired
+	 private CommentsCommentsRepository commentsCommentsRepo;
+	 
+	 
+	 
+	 //insert
+	 @Autowired
+	 private ContentGenreRepository contentGenreRepository;
+	 
+	 @Autowired 
+	 private ContentOttRepository contentOttRepository; 
+	 
+	 
+	 //insert
+	 
+	 
+	 
+	 //신고
+	 
 	 
 //	신고 Repo
 	@Autowired
@@ -121,11 +158,10 @@ public class AdminServiceImpl implements AdminService {
 	public void contentDeleteUpdate( Integer contentNumber) {
 		Content content = adminContentRepository.findById(contentNumber).get();
 		
+		
 		content.setContentState(1);
-		System.out.println(content.getContentState());
-		System.out.println("*************"+content.toString());
 		adminContentRepository.save(content);
-	}
+		}
 	
 	public void contentUpdate(Content content, Integer contentNumber) {
 		
@@ -135,7 +171,7 @@ public class AdminServiceImpl implements AdminService {
 		preContent.setContentReleaseDate(content.getContentReleaseDate());
 		
 		
-		adminContentRepository.save(content);
+		adminContentRepository.save(preContent);
 	}
 	
 	public List<CommunityReport> getCommunityreport(){
@@ -185,13 +221,20 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	
-	
+	@Transactional
 	public void communityReportWork(@PathVariable Integer communityReportNumber) {
 		
 		CommunityReport c = communityReportRepo.findById(communityReportNumber).get();
 		
 		c.setCommunityReportState(1);
 		communityReportRepo.save(c);
+		
+		Community commu= communityRepo.findById(c.getCommunity().getCommunityNumber()).get();
+		
+		commu.setCommunityState(1);
+		communityRepo.save(commu);
+		
+		
 	}
 	
 	
@@ -208,11 +251,18 @@ public class AdminServiceImpl implements AdminService {
 		return reviewReportRepo.reviewCount(userNumber);
 	}
 	
+	@Transactional
 	public void reviewReportWork(@PathVariable Integer reportNumber) {
 		ReviewReport r = reviewReportRepo.findById(reportNumber).get();
 		
 		r.setReviewReportState(1);
 		reviewReportRepo.save(r);
+		
+		
+		  Review review = reviewRepo.findById(r.getReview().getReviewNumber()).get();
+		  review.setReviewSpoiler(1);
+		
+		  reviewRepo.save(review);
 		
 	}
 	
@@ -231,12 +281,15 @@ public class AdminServiceImpl implements AdminService {
 		return commentReportRepo.commentsCount(userNumber);
 		
 	}
+	@Transactional
 	public void commentsReportWork(@PathVariable Integer reportNumber) {
 		
 		CommentsReport c = commentReportRepo.findById(reportNumber).get();
 		c.setCommentsReportState(1);
-		
 		commentReportRepo.save(c);
+		Comments comments = commentsRepo.findById(c.getComments().getCommentsNumber()).get();
+		comments.setCommentsState(1);
+		commentsRepo.save(comments);
 		
 	}
 	
@@ -252,14 +305,18 @@ public class AdminServiceImpl implements AdminService {
 	public int getCoCommentsReportCount(@PathVariable Integer reportNumber) {
 		CommentsCommentsReport c = coCommentReportRepo.findById(reportNumber).get();
 		Integer userNumber = c.getUser().getUserNumber();
-		
 		return coCommentReportRepo.coCommentsCount(userNumber);
 	}
 	
+	@Transactional
 	public void commentsCommentsReportWork(@PathVariable Integer reportNumber) {
 		CommentsCommentsReport c = coCommentReportRepo.findById(reportNumber).get();
 		c.setCommentsCommentsReportState(1);
 		coCommentReportRepo.save(c);
+		CommentsComments coCo= commentsCommentsRepo.findById(c.getCommentsCommentsReportState()).get();
+		coCo.setCommentsCommentsState(1);
+		commentsCommentsRepo.save(coCo);
+		
 		
 	}
 	
