@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,15 +73,21 @@ public class DetailsRestController {
      */
     @PostMapping("/details/reportInsert")
     public String insertReviewReport(String reviewReportContent, Integer reportReviewNumber) {
-//        System.out.println(reviewReportContent);
         detailsService.insertReviewReport(reviewReportContent, reportReviewNumber);
         return "ok";
     }
 
+    /**
+     * 즐겨찾기 Modal 안의 즐겨찾기 추가할 경우 호출
+     * @param bookmarkName : 즐겨찾기 이름
+     * @param session : 유저 번호를 불러오기 위한 세션
+     * @return JSONArray : AJAX 로 즐겨찾기 리스트 값들을 리턴
+     */
     @PostMapping("/details/bookmarkInsert")
-    public JSONArray insertBookmark(String bookmarkName) {
-        /* 유저 번호는 세션처리해야함 */
-        Integer userNumber = 1;
+    public JSONArray insertBookmark(String bookmarkName, HttpSession session) {
+
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
+
         detailsService.insertBookmark(bookmarkName, userNumber, null); /* insert */
 
         JSONArray array = new JSONArray(); /* AJAX 로 리턴하기 위한 값 */
@@ -94,18 +101,40 @@ public class DetailsRestController {
         return array;
     }
 
+    /**
+     * 즐겨찾기에 영상 번호에 따른 영상 추가
+     * @param contentNumber : 영상 번호
+     * @param bookmarkName : 즐겨찾기 이름
+     * @param session : 유저 번호가 담긴 세션
+     * @return
+     */
     @PostMapping("/details/bookmarkContentInsert")
-    public String insertBookmarkContent(Integer contentNumber, String bookmarkName) {
-        /* 유저 번호는 세션처리해야함 */
-        Integer userNumber = 1;
+    public String insertBookmarkContent(Integer contentNumber, String bookmarkName, HttpSession session) {
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
         detailsService.insertBookmark(bookmarkName, userNumber, contentNumber);
         return null;
     }
 
+    /**
+     * 리뷰의 좋아요를 클릭할 경우 숫자 증가하고, 해당 리뷰의 좋아요 수를 불러오기
+     * @param reviewNumber : 리뷰 번호
+     * @return JSONObject : 리뷰 좋아요 수를 AJAX 로 돌려보내기
+     */
     @PostMapping("/details/reviewLikeUp")
     public JSONObject reviewLikeUp(Integer reviewNumber) {
         JSONObject obj = detailsService.updateReviewLikeUp(reviewNumber);
         return obj;
+    }
+
+    /**
+     * 리뷰 번호에 따른 해당 리뷰 삭제
+     * @param reviewNumber : 리뷰 번호
+     * @return
+     */
+    @PostMapping("/details/reviewDelete")
+    public String reviewDelete(Integer reviewNumber) {
+        detailsService.reviewDelete(reviewNumber);
+        return "";
     }
 
 }

@@ -48,4 +48,7 @@ public interface DetailsService {
     // 리뷰 마음에들어요(좋아요) 증가
     public JSONObject updateReviewLikeUp(Integer reviewNumber);
 
+    // 리뷰 삭제
+    public void reviewDelete(Integer reviewNumber);
+
 }

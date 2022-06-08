@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ReviewJpaRepository extends JpaRepository<Review, Integer> {
 
-    List<Review> findByContent(Content content);
+    List<Review> findByContentAndReviewStateOrderByReviewDateDesc(Content content, Integer reviewState);
 
     List<Review> findByUserOrderByReviewDateDesc(UserVO user);
 
