@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>오늘 뭐볼래 ? | 가입완료</title>
+	<title>오늘 이거 볼래 ? | 가입완료</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -73,7 +73,7 @@
         						
                                 <div class="form-group">
 								<h2 style="text-align: center; vertical-align: middle; margin-top: 10% !important; margin-bottom: 100px !important;"> 
-								${ sessionScope.userNickname}님 환영합니다 !  
+								${sessionScope.userNickname}님 환영합니다 !  
 								</h2>
 								
 											 

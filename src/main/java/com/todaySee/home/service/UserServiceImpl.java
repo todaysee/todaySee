@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.UserRepository;
 
@@ -83,6 +82,19 @@ public class UserServiceImpl implements UserService {
 		
 		return null;
 	}
+
+	@Override
+	public void updatingPwd(UserVO user) {
+		UserVO updateUser = userRepository.findByUserEmail(user.getUserEmail());
+		updateUser.setUserPassword(encoder.encode(user.getUserPassword()));
+		userRepository.save(updateUser);
+		
+	}
+
+	
+	
+	
+	
 
 	
 

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.UserService;
@@ -121,9 +123,18 @@ public class UserController {
 
     //비밀번호 재설정 페이지
     @GetMapping("/homeResettingPwd")
-    public String homeResettingPwd() {
+    public String homeResettingPwd(UserVO user, Model m, HttpSession session) {
+    	m.addAttribute("userEmail", user.getUserEmail());
     	return "/home/homeResettingPwd";
+    	
     }
     
+    @PostMapping("/updatingPwd")
+    public String updatingPwd(UserVO user) {
+    	userService.updatingPwd(user);
+    	return "redirect:/login";
+    }
+    
+    }
  
-}
+ 

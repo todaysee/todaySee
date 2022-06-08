@@ -1,6 +1,7 @@
 package com.todaySee.home.controller;
 
 import java.util.Properties;
+import java.util.Random;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,11 @@ import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +27,11 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 public class UserRestController {
+	
+	private final JavaMailSender mailSender;
+	
+	@Value("${spring.mail.username}")
+    private String sender;
 	
 	@Autowired
 	private UserService userService;
@@ -95,26 +105,33 @@ public class UserRestController {
     	 } 
     }
     
-    /* 비밀번호 찾기 
-    @PostMapping
-    public String findPassword(UserVO user) {
-    
-    	final String userId = "munnemiroh@naver.com";
-    	final String password = "";
-    	StringBuffer sb = new StringBuffer();
-    	
-    	Properties prop = new Properties();
-    	prop.put("mail.smtp.host", "smtp.naver.com");
-    	prop.put("mail.smtp.port", 587);
-    	prop.put("mail.smtp.auth", "true");
-    	prop.put("mail.smtp.ssl.enable", "false");
-    	prop.put("mail.smtp.ssl.trust", "smtp.naver.com");
-    	
-       
-    	
+        @PostMapping("/sendEmail")
+    	public String sendForgotPassword(String userEmail) {
+        	System.out.println(userEmail + "메일을 보내야되는 이메일 주소 ");
+        	StringBuffer sb = new StringBuffer(); //인증번호를 담을 변수
+            
+         char[] cert = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
+                    'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 
+                    'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+        		
+            Random random = new Random(System.currentTimeMillis());
+            
+            for(int i=0; i<10; i++) {	// 인증번호는 10자리
+            sb.append(cert[random.nextInt(cert.length)]);
+             }	
+            
+            
+          //메세지를 생성하고 보낼 메일 설정 저장
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(userEmail);
+            message.setFrom(sender);
+            message.setSubject(" [오늘 이거 볼래?] New Temporary Password is here!");
+            message.setText("Hello!.  We send your temporary password here. =====> " + sb.toString() + "  <==========But this is not secured so please change password once you sign into our site. ");
+            mailSender.send(message);
+            
+            return sb.toString();
+        } //end of sendForgotPassword() 
+        
+
     }
-    }
-    
-    
-    */
-}
+

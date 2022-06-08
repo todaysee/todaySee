@@ -324,34 +324,80 @@ $('#btn_Login').click(function(){
 			  
 	/*비밀번호 찾기 */ 
 	
+	let random;
 	$('#btn_sendingMail').click(function(){
-		let userEmail = $("user_Email").val();
+		alert("인증번호가 발송되었습니다 ! ")
 		
 		$.ajax({
-			Type: "GET",
-			url: "/findPassword",
+			type: "POST",
+			url: "/sendEmail",
 			data: { 
-				"userEmail" : userEmail,
+				userEmail : $("#userEmail").val(),
 			},
-			success: function(res){
-				if(res['check']){
-					swal("발송완료!", "입력하신 이메일로 임시비밀번호가 발송되었습니다.", "success").then((OK) => {
-						if(OK){
-							$.ajax({
-								type: "POST",
-								url: "/findPassword/sendEmail",
-								data: {
-									"userEmail": userEmail
-								}
-							})
-							window.location="/login";
-						}
-					})
-				}
-				$('')
-			} 
+			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			success: function(result){
+							random = result;
+							},
+				error: function(err){
+					alert('실패');
+				console.log(err);
+			}
+			}); //end of Ajax 
+			})
 			
-		})
-	})
+	$('#btn_findPwd').click(function(){
+	
+		let checkAuthenticNumber = $("#checkAuthenticNumber").val();
+		
+		if(random == checkAuthenticNumber){
+			alert("크레파스")
+			document.sendEmail_Frm.submit();
+		}else{
+			$('#checkAuthenticNumber ~ .error_message').html("인증번호가 일치하지 않습니다.");
+
+		}
+	}) //end of #btn_findPwd
+				
+// 비밀번호 재설정 				
+	$('#btnResetting').click(function(){
+		alert("크레파스")
+		let userPassword = $("#userPassword").val();
+		let userPassword2 = $("#rePassword").val();
+		
+		if(userPassword == ''){
+			$('#password ~ .error_message').html(blank);
+			$('#password').focus();
+			return;
+		}else{
+			$('#password ~ .error_message').html("");
+		}
+		
+		if(!RegexPW.test(userPassword) ){
+			$('#password ~ .error_message').html("비밀번호는 영문자와 숫자를 사용하여 6~15자로 작성해 주세요.");
+			return;
+		}else{
+			$('#password ~ .error_message').html("");
+		}
+		
+		//비밀번호 재확인 
+		if(userPassword2 == ''){
+			$('#rePassword ~ .error_message').html("필수 입력 사항입니다");
+			$('#rePassword').focus();
+			return;
+		}else{
+			$('#rePassword ~ .error_message').html("");
+		}
+		
+		//비밀번호 일치 여부 확인 ! 
+		if(userPassword != userPassword2){
+			$('#rePassword ~ .error_message').html("비밀번호가 일치하지 않습니다")
+			$('#rePassword').focus();
+			return;
+		}
+		document.resettingPwd.submit();
+		alert("비밀번호가 변경되었습니다 ! ");
+		
+	}); // End of #btnResetting
+			
 	
 	

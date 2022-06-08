@@ -21,4 +21,7 @@ public interface UserService {
 	// 로그인 : DB에 입력된 이메일과 비밀번호가 일치하는 레코드 검색 
 	UserVO loginCheckEmail(UserVO user, HttpSession session);
 	
+	void updatingPwd(UserVO user);
+	
+	
 }
