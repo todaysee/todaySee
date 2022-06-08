@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<title>Zust - Social Community & Marketplace HTML Template</title>
+<title>오늘 이거 볼래 ? | 채팅방 리스트</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png"
