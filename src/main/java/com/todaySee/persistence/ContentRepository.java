@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.todaySee.domain.Content;
+import com.todaySee.domain.ContentOtt;
 
 public interface ContentRepository extends CrudRepository<Content, Integer>{
 	
@@ -46,7 +47,7 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 * @return List<Content>
 	 */
 	@Query(nativeQuery = true
-			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_main_images_url<>'none Main img' AND cg.genre_number =?1 order by rand() LIMIT 10")
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_poster_images_url<>'none Main img' AND cg.genre_number =?1 order by rand() LIMIT 10")
 	List<Content> genresContentList(Integer genreNumber);
 	
 	/** 랜덤 ott 10개씩 출력
@@ -55,6 +56,22 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 * @return List<Content>
 	 */
 	@Query(nativeQuery = true
-			,value="select c.* from contentott ct inner join content c on c.content_number = ct.content_number inner join ott o on o.ott_number = ct.ott_number where c.content_main_images_url<>'none Main img' AND ct.ott_number =?1 order by rand() limit 10")
-	List<Content> ottContentList(Integer ottNumber);
+			,value="select c.* from content c "
+					+ "		inner join contentott ct on c.content_number = ct.content_number "
+					+ "		inner join contentgenre cg on c.content_number = cg.content_number "
+					+ "     inner join genre g on cg.genre_number = g.genre_number "
+					+ "     where c.content_poster_images_url<>'none Main img' AND ct.ott_number =?1 order by rand() limit 10")
+	List<Content> mainOttContentList(Integer ottNumber);
+	
+	//List<Content> findByContentOtt(ContentOtt contentOtt);
+	
+	/** ott별 상세 페이지
+	 * 		- homeList_ott에 출력할 ott별 콘텐츠 검색하여 리스트에 담기
+	 * @param ottNumber
+	 * @return List<Content>
+	 */
+	@Query(nativeQuery = true
+			,value="select distinct c.* from content c inner join contentott ct on c.content_number = ct.content_number inner join contentgenre cg on c.content_number = cg.content_number inner join genre g on cg.genre_number = g.genre_number where c.content_main_images_url<>'none Main img' AND ct.ott_number =?1 "
+			,countQuery="select distinct c.* from content c inner join contentott ct on c.content_number = ct.content_number inner join contentgenre cg on c.content_number = cg.content_number inner join genre g on cg.genre_number = g.genre_number where c.content_main_images_url<>'none Main img' AND ct.ott_number =?1 ")
+	Page<Content> ottContentList(Integer ottNumber, Pageable paging);
 }

@@ -182,7 +182,7 @@
 											</div>
 										</div>
 										<div class="col-xl-6">
-											<div class="gen-tag-line"><span>최신 컨텐츠</span></div>
+											<div class="gen-tag-line"><span>최신 콘텐츠</span></div>
 											<div class="gen-movie-info">
 												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a></h3>
 											</div>
@@ -446,7 +446,7 @@
 						 
 				<!-- 장르 콘텐츠 for문 시작-->
 				<c:forEach items="${ottContentList}" var="content">
-				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
+				<c:if test="${content.contentPosterImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
