@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>오늘 뭐볼래 ? | 검색 상세 페이지</title>
+	<title>오늘 이거 볼래 ? | 검색 상세 페이지</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -95,7 +95,7 @@
 
                                         <img src="${ content.content_poster_images_url}" alt="streamlab-image">
                                         <div class="gen-movie-action">
-                                            <a href="single-movie.html" class="gen-button">
+                                            <a href="/details/${content.contentNumber }" class="gen-button">
                                                 <i class="fa fa-play"></i>
                                             </a>
                                         </div>

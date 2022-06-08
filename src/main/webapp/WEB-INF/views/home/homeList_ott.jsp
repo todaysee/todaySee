@@ -13,7 +13,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>오늘 뭐볼래 ? | OTT 콘텐츠</title>
+	<title>오늘 이거 볼래 ? | OTT 콘텐츠</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -62,10 +62,10 @@
                             </h1>
                         </div>
                         <div class="gen-breadcrumb-container">
-                            <ol class="breadcrumb genreList">
+                            <ol class="breadcrumb">
                                <li value="1"><a href="/search/ott?ottNumber=1">넷플릭스</a></li>
                                 <li><span>&#124;</span></li>
-                                <li value="2"><a href="/search/ott?ottNumber=2">디지니플러스</a></li>
+                                <li value="2"><a href="/search/ott?ottNumber=2">디즈니플러스</a></li>
                                 <li><span>&#124;</span></li>
                                 <li value="3"><a href="/search/ott?ottNumber=3">애플티비</a></li>
                                 <li><span>&#124;</span></li>
@@ -99,7 +99,7 @@
 
                                         <img src="${ content.contentMainImagesUrl}" alt="streamlab-image">
                                         <div class="gen-movie-action">
-                                            <a href="single-movie.html" class="gen-button">
+                                            <a href="/details/${content.contentNumber }" class="gen-button">
                                                 <i class="fa fa-play"></i>
                                             </a>
                                         </div>
@@ -177,17 +177,15 @@
 <script src="/js/home/script.js"></script>
 
 <!-- 안정은 js -->
-<script src="/js/homeList/homeList.js"></script>
+<script src="/js/homeList/homeList_ott.js"></script>
 <script type="text/javascript">
-// each문으로 돌려서
-//alert($('.genreList > li').val())
-//let urlParams = new URL(location.href).searchParams;
-//let genreNumber = urlParams.get('genreNumber');
-//alert(genreNumber)
-//if(genresNumber == $('.genreList > li').val()){
-//	$('').css();
-//	$('').css();
-//}
+let urlParams = new URL(location.href).searchParams;
+let ottNumber = urlParams.get('ottNumber');
+$('.breadcrumb > li').each(function(index, element){
+	if($(this).val() == ottNumber){
+		$(this).children('a').css('color','red');
+	}//end of if
+})
 
 </script>
 </body>
