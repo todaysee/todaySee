@@ -104,7 +104,8 @@ public class DetailsServiceImpl implements DetailsService{
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
-            // 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
+            // 유저번호, 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
+            map.put("userNumber", Integer.toString(review.getUser().getUserNumber())); /* 유저 번호 저장 */
             map.put("userName", review.getUser().getUserNickname()); /* 유저 닉네임 저장 */
             map.put("reviewNumber", Integer.toString(review.getReviewNumber())); /* 리뷰 번호 저장 */
             map.put("reviewContent", review.getReviewContent()); /* 리뷰 내용 저장 */
