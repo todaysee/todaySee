@@ -3,6 +3,8 @@ package com.todaySee.domain;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -65,7 +67,8 @@ public class UserVO {
 	 * @Enumerated(EnumType.STRING) Role role;
 	 */
     
-
+    @JsonIgnore
+    String kakao;
    
 
 
