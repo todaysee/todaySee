@@ -1,6 +1,6 @@
 /* homeList_ott.jsp */
 
-let page = 1;
+let page = 0;
 let totalPages;
 $('#genresLoadMoreBtn').click(function(){
 	page = page+1;

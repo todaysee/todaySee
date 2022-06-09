@@ -74,4 +74,14 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 			,value="select distinct c.* from content c inner join contentott ct on c.content_number = ct.content_number inner join contentgenre cg on c.content_number = cg.content_number inner join genre g on cg.genre_number = g.genre_number where c.content_main_images_url<>'none Main img' AND ct.ott_number =?1 "
 			,countQuery="select distinct c.* from content c inner join contentott ct on c.content_number = ct.content_number inner join contentgenre cg on c.content_number = cg.content_number inner join genre g on cg.genre_number = g.genre_number where c.content_main_images_url<>'none Main img' AND ct.ott_number =?1 ")
 	Page<Content> ottContentList(Integer ottNumber, Pageable paging);
+	
+	/** 마이페이지 나의 취향 - 장르 콘텐츠
+	 * 		- 사용자가 선호하는 장르의 콘텐츠를 화면에 출력
+	 * 		- /myPage/myPageLike에 출력할 장르 콘텐츠 검색하여 리스트에 담기
+	 * @param genreNumber
+	 * @return List<Content>
+	 */
+	@Query(nativeQuery = true
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_poster_images_url<>'none Main img' AND cg.genre_number =?1 order by rand() LIMIT 3")
+	List<Content> myPageLikeContentList(Integer genreNumber);
 }

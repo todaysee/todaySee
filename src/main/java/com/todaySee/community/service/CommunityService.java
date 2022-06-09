@@ -4,6 +4,8 @@ import com.todaySee.domain.Comments;
 import com.todaySee.domain.Community;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
+import com.todaySee.domain.UserVO;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -21,5 +23,5 @@ public interface CommunityService {
 
     void saveImagesFiles(MultipartFile files);
     
-    Comments communityCommentsInsert(Comments comments);
+    Comments communityCommentsInsert(Comments comments, UserVO user, Community community);
 }

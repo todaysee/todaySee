@@ -57,17 +57,13 @@
                 <div class="col-lg-12">
                     <nav aria-label="breadcrumb">
                         <div class="gen-breadcrumb-title">
+                            <br/>
                             <h1>
-                                콘텐츠
+                               "${search_result}"의 검색 결과
                             </h1>
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                                <li id="click_page" ><a href="/search/content">콘텐츠</a></li>
-                               	<li><span>&#124;</span></li>	
-                                <li ><a href="/search/bookmark">즐겨찾기</a></li>
-                               	<li><span>&#124;</span></li>	
-                                <li ><a href="/search/community">커뮤니티</a></li>
                             </ol>
                         </div>
                     </nav>
@@ -77,9 +73,6 @@
     </div>
     <!-- breadcrumb -->
 	
-	<div class="search_result">
-		<h4>"${search_result}"의 검색 결과</h4>
-	</div>
    <!-- Section-1 Start -->
     <section class="gen-section-padding-3">
     <div id="scrollGenres">
@@ -135,17 +128,7 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-lg-12">
-	                    <div class="gen-load-more-button">
-	                        <div class="gen-btn-container loadMoreBtn">
-	                            <button type="button" class="gen-button gen-button-loadmore">
-	                                <span class="button-text">Load More</span>
-	                                <span class="loadmore-icon" style="display: none;"><i
-	                                        class="fa fa-spinner fa-spin"></i></span>
-	                            </button>
-                        </div>
-                    </div>
-             	</div>
+	
 			</div>
     </section>
     <!-- Section-1 End -->
