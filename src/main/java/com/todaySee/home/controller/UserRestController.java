@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,9 @@ import lombok.RequiredArgsConstructor;
 public class UserRestController {
 	
 	private final JavaMailSender mailSender;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	@Value("${spring.mail.username}")
     private String sender;
@@ -54,8 +58,7 @@ public class UserRestController {
     public String login(String userEmail, String userPassword,boolean emailCheckBox, Model model, 
     		HttpSession session, HttpServletRequest request, HttpServletResponse response) {
     	//로그인 할 때 마다 날짜 업데이트 
-    	//
-    	System.out.println("PostMapping"+emailCheckBox);
+    	//System.out.println("PostMapping"+emailCheckBox);
     	UserVO user = userService.login(userEmail, userPassword);
     	 String message = "";
     	 if(user == null) {
@@ -63,7 +66,7 @@ public class UserRestController {
     		 message = "N";
     		 return message;
     	 }else {
-    		 System.out.println("********로그인 성공******");
+    		 System.out.println(userEmail + " 로그인");
     		 session.setAttribute("userNumber", user.getUserNumber());
     		 session.setAttribute("userNickname", user.getUserNickname());
     		 session.setAttribute("admin", user.getUserAdmin());
@@ -98,10 +101,9 @@ public class UserRestController {
     				 Cookie deleteEmail = new Cookie("checkEmail", null);
     				 deleteEmail.setMaxAge(0);
     				 response.addCookie(deleteEmail);
-    			 } // End of if ( 체크박스에 체크가 안되어 있을 때)
+    			 } 
     			 
-    		} //End of if (체크박스에 체크가 되어있는지)
-    		 System.out.println(session.getAttribute(message) + "확인");
+    		} 
     		 
     		 userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
     		 
@@ -136,6 +138,26 @@ public class UserRestController {
             return sb.toString();
         } //end of sendForgotPassword() 
         
+        @PostMapping("/mypageCheckPwd")
+        public String checkMypagePassword(HttpSession session, String userPassword)  {
+        	//System.out.println("비밀번호 확인 "+userPassword);
+        	//System.out.println("세션  확인 "+session.getAttribute("userNumber"));
+        	UserVO user = userService.checkMypagePassword((Integer) session.getAttribute("userNumber"));
+        	if( encoder.matches(userPassword, user.getUserPassword())) {
+        		return "Y";
+        	}
+        	return "N";
+        	
+        }
+        
+        @PostMapping("/mypageSignOut")
+        public String mypagSignOut(HttpSession session, String userPassword) {
+        	UserVO user = userService.checkMypagePassword((Integer) session.getAttribute("userNumber"));
+        	if( encoder.matches(userPassword, user.getUserPassword())) {
+        		return "Y";
+        	}
+        	return "N";
+        }
 
     }
 

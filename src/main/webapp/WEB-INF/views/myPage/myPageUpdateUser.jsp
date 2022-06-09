@@ -174,14 +174,17 @@
                 </div>
             </div>
 
+			
             <div class="tab-pane fade" id="signOut" role="tabpanel">
                 <div class="account-setting-form">
                     <h3>회원님의 탈퇴를 위해서 비밀번호를 확인 합니다.</h3>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
+                            <form action="/completeSignOut" method="post" name="signOutFrm" id="signOutFrm">
                                 <label>비밀번호</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" id="SignOutPwd" name="SignOutPwd">
+                                	<span class="error_message"></span>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12">
@@ -215,18 +218,21 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="textEtc"
                                            placeholder="입력해주세요." name='account_ReasonText' readonly>
+                                           	<span class="error_message"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-12">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-danger" name ="btnSignOut" id="btnSignOut" style="margin-bottom: 15px;">
                                 회원 탈퇴하기
                             </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
 
         <!-- 프로필 이미지 업로드 모달 -->
@@ -338,6 +344,8 @@
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
 <script type="text/javascript" src="/js/flask.js"></script>
+<!-- JS 추가 !  -->
+<script src="/js/mypageCommunity/password.js"></script>
 <script>
 
     //닉네임 변경하면

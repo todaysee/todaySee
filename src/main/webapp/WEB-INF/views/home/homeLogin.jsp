@@ -85,13 +85,13 @@
                                 </div>
                               		
                                         	<div class="lost-your-password-wrap">
-                                        	<userEmail:if test="${not empty cookie.emailCheckBox.value }">
+                                        	 <div style="float:left; color:grey;">
+                                       <userEmail:if test="${not empty cookie.checkEmail.value }">
                                         					<userEmail:set value="checked" var="checked"/>
                                         	</userEmail:if>
-                                        	<div style="float:left; color:grey;">
-                                        	<input type="checkbox" id="emailCheckBox" name="emailCheckBox" value="true" ${checked }/>
-                                        <label for="chekcBox">이메일 기억하기</label>
-                                        	
+                                        		<input type="checkbox" id="emailCheckBox" name="emailCheckBox" value="true" ${checked }/>
+                                        		 	<label for="emailCheckBox">이메일 기억하기</label>
+                                       	
                                         	</div>
                                        	
                                 <button type="button" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
