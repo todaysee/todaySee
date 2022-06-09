@@ -92,10 +92,10 @@
 							<button type="button" class="google-btn" name="btnResetting" id="btnResetting" style="margin-top: 40px !important; margin-bottom: 30px !important;">비밀번호 재설정</button>                                
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
-                                        	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
+                                        	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
-                                        	<a href="forgot-password.html" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
-                                        	<a href="forgot-password.html" class="lost-your-password">비밀번호 찾기 </a>
+                                        	<a href="/login" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
+                                        	<a href="/homePasswordFind" class="lost-your-password">비밀번호 찾기 </a>
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>
