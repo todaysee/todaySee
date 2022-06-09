@@ -53,6 +53,8 @@ public class UserRestController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword,boolean emailCheckBox, Model model, 
     		HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    	//로그인 할 때 마다 날짜 업데이트 
+    	//
     	System.out.println("PostMapping"+emailCheckBox);
     	UserVO user = userService.login(userEmail, userPassword);
     	 String message = "";
@@ -66,7 +68,7 @@ public class UserRestController {
     		 session.setAttribute("userNickname", user.getUserNickname());
     		 session.setAttribute("admin", user.getUserAdmin());
     		 session.setMaxInactiveInterval(60*60*24);
-    		 
+    		 //로그인 할때 마다 가입일짜 업데이트
     		 if(emailCheckBox) {
     			 // 체크박스에 체크가 되어있다면 
     			Cookie[] getCookie = request.getCookies();
@@ -100,6 +102,8 @@ public class UserRestController {
     			 
     		} //End of if (체크박스에 체크가 되어있는지)
     		 System.out.println(session.getAttribute(message) + "확인");
+    		 
+    		 userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
     		 
     		 return message;
     	 } 
