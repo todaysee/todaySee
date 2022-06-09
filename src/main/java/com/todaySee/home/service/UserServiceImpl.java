@@ -101,5 +101,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+	@Override
+	public UserVO checkMypagePassword(Integer userNumber) {		
+		return userRepository.findById(userNumber).get();
+	}
+
+
 }
 

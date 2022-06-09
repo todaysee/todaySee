@@ -22,5 +22,6 @@ public interface UserRepository extends CrudRepository<UserVO, Integer> {
 	List<UserVO> findByUserNameAndUserTel(String userName, String userTel);
 	
 	
+	
 
 }

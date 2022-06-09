@@ -26,4 +26,6 @@ public interface UserService {
 	// 로그인 할때마다 날짜 업데이트
 	UserVO updateUserLoginDate(Integer userNumber);
 	
+	UserVO checkMypagePassword(Integer userNumber);
+	
 }

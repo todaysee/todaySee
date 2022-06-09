@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.UserService;
@@ -46,15 +46,16 @@ public class UserController {
     }
     
     @PostMapping("/signUp")
-    public String signUp(UserVO user) {
+    public String signUp(UserVO user, RedirectAttributes re) {
     	userService.create(user);
-        return "redirect:/complete?userNickname="+user.getUserNickname();
+    	re.addAttribute("userNickname", user.getUserNickname());
+        return "redirect:/complete";
     }
     
     
     //회원가입 완료 페이지
     @GetMapping("/complete")
-    public String homeSignUpComplete(String userNickname, Model m) {
+    public String homeSignUpComplete(@RequestParam("userNickname") String userNickname, Model m) {
     	m.addAttribute("userNickname", userNickname);
         return "/home/homeSignUpComplete";
     }
@@ -87,7 +88,6 @@ public class UserController {
     		return "redirect:/admin";
     	}
     }
-    
     
     
   // 로그아웃
