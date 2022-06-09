@@ -23,15 +23,22 @@
 
 	<style type="text/css">
 		#imagesCommunityFile { display:none; }
+		.nickname {font-weight: bold;}
+		.comments {padding: 1%;}
+		.commentsbox{width:90%;}
+		.commentsbtn{background-color:#3644D9; color:white; border-radius:20%; height:50%;}
+		
 	</style>
 
-    <title>Zust - Social Community & Marketplace HTML Template</title>
+    <title>오늘 이거 볼래 ? | 커뮤니티 글쓰기 </title>
 
     <link rel="icon" type="image/png"
           href="/images/mypageCommunity/favicon.png">
 </head>
 
+
 <body>
+
 
 <!-- Start Preloader Area -->
 <%@ include file="../inculde/community/preLoader.jsp" %>
@@ -72,10 +79,10 @@
                         <form action="/communityBoardSave" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="communityCategory" value="${category}">
                             <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
 									<textarea name="title" class="form-control titlebox input-search" id="titlebox"
                                               placeholder="제목을 입력하세요."></textarea>
-                            </div>
+                            </div> -->
                             <div class="form-group">
 									<textarea class="form-control"
                                               placeholder="내용을 적어주세요." name="communityContent"></textarea>
@@ -145,17 +152,32 @@
                                             class="fa fa-exclamation-triangle"></i>신고</span>
                                     </a></li>
                                 </ul>
+  								<div class="comments">
+  									<div class="nickname">닉네임</div>
+  									<div class="comments_content">댓글내용</div>
+  								</div>
+  								
+  								
                                 <form class="post-footer">
-                                    <div class="footer-image">
+                                    <!-- <div class="footer-image">
                                         <a href="#"><img src="/images/mypageCommunity/user/user-2.jpg"
                                                          class="rounded-circle" alt="image"></a>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message" class="form-control"
-                                                  placeholder="내용을 적어주세요."></textarea>
+                                    </div> -->
+                                    <!-- <div class="form-group">
+                                        <textarea name="message" class="form-control comments_keypress" id="comments_keypress"
+                                                  placeholder="댓글을 적어주세요."></textarea>
+                                                  <button type="submit" class="send-btn d-inline-block">Send</button>
 
-                                    </div>
+                                    </div> -->
                                 </form>
+                                <form class="d-flex align-items-center">
+                                    <input type="hidden" class="communityNumber" value="${board.communityNumber }"/>
+                                    <input type="hidden" class="userNumber" value="${sessionScope.userNumber }"/> 
+                                    <input type="hidden" class="userNickname" value="${sessionScope.userNickname}"/>
+                                    <input type="text" class="form-control commentsbox" id="commentsbox" placeholder="댓글을 적어주세요.">
+                                    <button type="button" class="send-btn d-inline-block commentsbtn">작성</button>
+                                </form>
+                                
                             </div>
                         </div>
                     </c:forEach>
@@ -251,6 +273,39 @@
             e.preventDefault();
             $('#imagesCommunityFile').click();
         });
+
+        
+        $('.commentsbtn').click(function(){
+            
+        	alert($(this).siblings('.userNumber').val())
+        	alert($(this).siblings('.communityNumber').val())
+        	alert($(this).siblings('.commentsbox').val())
+        	let b = $(this).siblings('.userNickname').val()
+        	alert(b)
+        	let a = $(this).siblings('#commentsbox').val()
+        	const list = $(this).parent().siblings('.comments')
+        	$.ajax({
+            	type:'post',
+            	url:"/communityCommentsInsert",
+            	data:{
+                	userNumber : $(this).siblings('.userNumber').val(),
+                	communityNumber : $(this).siblings('.communityNumber').val(),
+                	commentsContent : a
+                	},
+                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+                success : function(commentsList){
+                    alert(commentsList)
+                    let content =  ' <div class="nickname">'+ b + '</div>'
+                        + ' <div class="comments_content">' + a + '</div>'
+                        list.append(content);
+						
+                    },
+                error : function(e){
+                        console.log("ERROR: ", e);
+                        alert('실패')
+                     }
+            	})
+            })
     });
     //파일 업로드여부 체크박스
     $("#imagesCommunityFileUploadCheck").change(function(){
@@ -279,6 +334,11 @@
             callback(data);
         });
     }
+ o
+            	
+
+
+    
 
 </script>
 

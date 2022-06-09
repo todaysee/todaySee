@@ -23,10 +23,13 @@ public interface BookmarkService {
     // 즐겨찾기 번호에 따른 해당 즐겨찾기 삭제
     public void deleteBookmark(Integer bookmarkNumber, Integer userNumber);
 
-    // 컨텐츠가 담긴 즐겨찾기 번호에 따른 즐겨찾기 삭제
+    // 컨텐츠가 담긴 즐겨찾기 번호에 따른 즐겨찾기 삭제 - 리스트형
     public void deleteBookmarkContent(String[] bookmarkList, Integer bookmarkNumber, Integer userNumber);
 
     // 컨텐츠가 담긴 즐겨찾기 번호에 따른 즐겨찾기 수정
     public void updateBookmarkContent(String[] bookmarkContentList, Integer bookmarkNumber, Integer userNumber);
+
+    // 컨텐츠가 담긴 즐겨찾기 번호에 따른 즐겨찾기 삭제 - 하나만
+    public void delBookmarkContent(Integer contentBookmarkNumber, Integer bookmarkNumber, Integer userNumber);
 
 }

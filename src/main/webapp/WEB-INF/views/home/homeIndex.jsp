@@ -108,7 +108,7 @@
 			padding: 3% 0% 1% 3%
 		}
 		
-		.gen-carousel-movies-style-2 .gen-movie-contain .gen-movie-meta-holder ul li{
+		.gen-carousel-movies-style-3 .gen-movie-contain .gen-movie-meta-holder ul li{
 			font-size : 16px;
 		}
 		<!-- 커뮤니티 인기글 css --> 
@@ -182,7 +182,7 @@
 											</div>
 										</div>
 										<div class="col-xl-6">
-											<div class="gen-tag-line"><span>최신 컨텐츠</span></div>
+											<div class="gen-tag-line"><span>최신 콘텐츠</span></div>
 											<div class="gen-movie-info">
 												<h3><a href="/details/${content.contentNumber }">${content.contentTitle}</a></h3>
 											</div>
@@ -430,21 +430,12 @@
 </section>
 <!-- owl-carousel Videos Section-3 End -->
 
-<!-- owl-carousel Videos Section-4 Start -->
+<!-- 랜덤 ott Start -->
 <section class="pt-0 gen-section-padding-2">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6">
-				<h4 class="gen-heading-title">사용자 추천 인기 영화</h4>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-				<div class="gen-movie-action">
-					<div class="gen-btn-container text-right">
-						<a href="/tv-shows-pagination.html" class="gen-button gen-button-flat">
-							<span class="text">More Videos</span>
-						</a>
-					</div>
-				</div>
+				<h4 class="gen-heading-title">지금, ${ott.ottName } </h4>
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -454,9 +445,9 @@
 						 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 						 data-loop="false" data-margin="30">
 						 
-				<!-- 인기 영화 for문 시작-->
-				<c:forEach items="${RecommendedList}" var="content">
-				<c:if test="${content.contentMainImagesUrl ne 'none Main img'}">
+				<!-- 장르 콘텐츠 for문 시작-->
+				<c:forEach items="${ottContentList}" var="content">
+				<c:if test="${content.contentPosterImagesUrl ne 'none Main img'}">
 						<div class="item">
 							<div class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 								<div class="gen-carousel-movies-style-2 movie-grid style-2">
@@ -501,7 +492,8 @@
 		</div>
 	</div>
 </section>
-<!-- owl-carousel Videos Section-4 End -->
+<!-- owl-carousel Videos Section-3 End -->
+
 
 <!-- owl-carousel Videos Section-2 Start -->
 <!-- <section class="pt-0 gen-section-padding-2">

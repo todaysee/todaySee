@@ -2,6 +2,7 @@ package com.todaySee.home.service;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -91,12 +92,14 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	
-	
-	
-	
+	@Override
+	public UserVO updateUserLoginDate(Integer userNumber) {
+		Date date = new Date();
+		UserVO userVO = userRepository.findById(userNumber).get();
+		userVO.setUserLoginDate(date);
+		return userRepository.save(userVO);
+	}
 
-	
 
 }
 

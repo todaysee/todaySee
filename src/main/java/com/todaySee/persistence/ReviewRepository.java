@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Integer> {
 
-    @Query(value = "select count(review_grade), review_grade from review where user_number = :userNumber group by review_grade order by review_grade", nativeQuery = true)
+    @Query(value = "select count(review_grade), review_grade from review where user_number = :userNumber and review_state = 0 group by review_grade order by review_grade", nativeQuery = true)
     public List<Object[]>chartReviewRating(Integer userNumber);
 
     @Query(value = " SELECT g.genre_name, count(g.genre_name) " +
@@ -22,10 +22,18 @@ public interface ReviewRepository extends CrudRepository<Review, Integer> {
             " FROM review r " +
             " join content c " +
             " on r.content_number = c.content_number " +
-            " WHERE user_number = :userNumber " +
+            " WHERE user_number = :userNumber and r.review_state = 0" +
             " group by r.content_number) " +
             " group by g.genre_name ", nativeQuery = true)
     public List<Object[]>reviewRatingCategoryWordCloud(Integer userNumber);
+
+    @Query(value = "SELECT count(*) FROM review WHERE user_number = :userNumber and review_state = 0", nativeQuery = true)
+    Integer reviewCount(Integer userNumber);
+
+    @Query(value = "SELECT sum(review_like) FROM review WHERE user_number = :userNumber and review_state = 0", nativeQuery = true)
+    Integer reviewLikeSum(Integer userNumber);
+
+
 }
 
 

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.home.service.UserService;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.persistence.ImagesRepository;
 import com.todaySee.myPage.service.MyPageImagesService;
@@ -27,6 +28,9 @@ public class MyPageController {
     MyPageService myPageService;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     MyPageImagesService myPageImagesService;
 
     @Autowired
@@ -40,8 +44,16 @@ public class MyPageController {
     @GetMapping("/myPage/profile")
     public String myPageProfile(HttpSession session, UserVO user, Model model) {
 
-        System.out.println("테스트 세션 : " + session.getAttribute("userNumber"));
+        System.out.println("로그인 세션 테스트 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
+        //마이페이지 오면
+        userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
+        //리뷰 카운트
+        model.addAttribute("userReview", myPageService.reviewCount((Integer) session.getAttribute("userNumber")));
+        //커뮤니티 작성글 카운트
+        model.addAttribute("userCommunity", myPageService.communityCount((Integer) session.getAttribute("userNumber")));
+        //리뷰 좋아요 수
+        model.addAttribute("userReviewLikeSum", myPageService.userReviewLikeSum((Integer) session.getAttribute("userNumber")));
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();
@@ -130,7 +142,9 @@ public class MyPageController {
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
 
-
+        // 마이페이지 - 추천 영상 출력
+        
+        
         return "/myPage/myPageLike";
     }
 

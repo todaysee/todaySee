@@ -35,20 +35,26 @@ public class DetailsController {
     public String getContentById(@PathVariable Integer contentNumber, Model model, HttpSession session) {
         System.out.println("===============================> 컨텐츠 번호 : " + contentNumber);
 
-        /* 세션을 통해 유저 번호 가져오기 */
+        /* 유저번호 세션 */
         Integer userNumber = (Integer) session.getAttribute("userNumber");
 
-        /* 유저 닉네임 가져오기 */
-        UserVO user = detailsService.getUser(userNumber);
-        model.addAttribute("user", user);
+        if(userNumber != null) {
+            /* 유저 닉네임 가져오기 */
+            UserVO user = detailsService.getUser(userNumber);
+            model.addAttribute("user", user);
+
+            /* 즐겨찾기 불러오기 */
+            List<HashMap<String, String>> bookmarkList = detailsService.getBookmarkList(userNumber);
+            model.addAttribute("bookmarkList", bookmarkList);
+        }
 
         /* 컨텐츠 상세 내용 가져오기 */
         Content contentVO = detailsService.getContentById(contentNumber);
         model.addAttribute("content", contentVO);
 
         /* 컨텐츠 장르 가져오기 */
-        List<String> genre = detailsService.getContentGenre(contentNumber);
-        model.addAttribute("Genre", genre);
+        List<HashMap<String, String>> genreList = detailsService.getContentGenre(contentNumber);
+        model.addAttribute("genreList", genreList);
 
         /* 컨텐츠 플랫폼 가져오기 */
         List<HashMap<String, String>> ottList = detailsService.getContentOtt(contentNumber);
@@ -56,12 +62,7 @@ public class DetailsController {
 
         /* 리뷰 데이터 모두 가져오기 */
         List<HashMap<String, String>> reviewList = detailsService.getReviewList(contentNumber);
-        System.out.println(reviewList);
         model.addAttribute("reviewList", reviewList);
-
-        /* 즐겨찾기 불러오기 */
-        List<HashMap<String, String>> bookmarkList = detailsService.getBookmarkList(userNumber);
-        model.addAttribute("bookmarkList", bookmarkList);
 
        return "/home/homeDetails";
     }

@@ -23,7 +23,9 @@ public class Comments {
     String commentsContent;
     @Column(name = "comments_like")
     Integer commentsLike;
-
+    
+    @Column(name="comments_state")
+    Integer commentsState;
 
     @CreationTimestamp
     @Temporal(TemporalType.DATE)
@@ -37,7 +39,7 @@ public class Comments {
     @ManyToOne // 1:다
     @JoinColumn(name="community_number")
     private Community community;
-
+    
 
 
 

@@ -22,7 +22,7 @@ public interface DetailsService {
     public Content getContentById(Integer contentNumber);
 
     // ID(PK)값에 따른 genre 가져오기
-    public List<String> getContentGenre(Integer contentNumber);
+    public List<HashMap<String, String>> getContentGenre(Integer contentNumber);
 
     // ID(PK)값에 따른 ott 가져오기
     public List<HashMap<String, String>> getContentOtt(Integer contentNumber);
@@ -47,5 +47,8 @@ public interface DetailsService {
 
     // 리뷰 마음에들어요(좋아요) 증가
     public JSONObject updateReviewLikeUp(Integer reviewNumber);
+
+    // 리뷰 삭제
+    public void reviewDelete(Integer reviewNumber);
 
 }

@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Zust - Social Community & Marketplace HTML Template</title>
+<title>오늘 이거 볼래 ? | 채팅방</title>
 
 <!-- Favicon -->
 <link rel="icon" type="image/png"
@@ -31,7 +31,7 @@
 	<!--========== Body ==============-->
 	<div class="main-content-wrapper d-flex flex-column">
 		<!--========== Header Navbar ==============-->
-		<%@ include file="../inculde/community/navbar.jsp"%>
+		<%@ include file="../inculde/mypage/navbar.jsp"%>
 		<!--========== Header Navbar ==============-->
 		<!--========== SideBar ==============-->
 		<%@ include file="../inculde/mypage/sideMenu.jsp"%>

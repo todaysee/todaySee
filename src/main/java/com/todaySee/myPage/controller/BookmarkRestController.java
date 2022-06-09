@@ -47,5 +47,14 @@ public class BookmarkRestController {
         return "";
     }
 
+    @PostMapping("/myPage/bookMarkDelContent")
+    public String delBookmarkContent(Integer contentBookmarkNumber, Integer bookmarkNumber, HttpSession session) {
+        /* 유저 번호 */
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
+
+        bookmarkService.delBookmarkContent(contentBookmarkNumber, bookmarkNumber, userNumber);
+        return null;
+    }
+
 
 }

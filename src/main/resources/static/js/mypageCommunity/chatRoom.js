@@ -59,11 +59,11 @@
 			}
 		}
 
-		document.addEventListener("keypress", function(e){
+		/*document.addEventListener("keypress", function(e){
 			if(e.keyCode == 13){ //enter press
-				send();
+				send(); 엔터쳤을 때 방이 이동하면서 에러페이지를 띄움.
 			}
-		});
+		});*/
 	}
 
 	function chatName(){

@@ -9,33 +9,40 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.domain.Content;
+import com.todaySee.domain.ContentOtt;
 import com.todaySee.domain.Genre;
-import com.todaySee.domain.UserVO;
+import com.todaySee.domain.Ott;
+import com.todaySee.persistence.ContentOttRepository;
 import com.todaySee.persistence.ContentRepository;
 import com.todaySee.persistence.GenreRepositroy;
+import com.todaySee.persistence.OttRepositroy;
 import com.todaySee.persistence.UserRepository;
 
 @Service
 public class HomeServiceImpl implements HomeService{
 	
 	@Autowired
-	private ContentRepository contentRepo;
+	private ContentRepository contentRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
-	
+	 	
 	@Autowired
 	private GenreRepositroy genreRepository;
+	
+	@Autowired
+	private ContentOttRepository contentOttRepository;
+	
+	@Autowired
+	private OttRepositroy ottRepository;
 	
 	
 	/** 장르별 컨텐츠 화면에 출력
@@ -53,7 +60,7 @@ public class HomeServiceImpl implements HomeService{
 		  
 		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "c.content_title"));
 		  
-		return contentRepo.getGenresContentList(genreNumber, pageRequest);
+		return contentRepository.getGenresContentList(genreNumber, pageRequest);
 	}// end of getGenresContentList()
 
 
@@ -107,7 +114,7 @@ public class HomeServiceImpl implements HomeService{
                 	message =message.replaceAll(match, "");
                 	
                 	// 넘어온 contentNumber를 통해 해당 콘텐츠 정보 검색하여 리스트에 담기
-                	recommendedContentList.add(contentRepo.recommendedContent(Integer.valueOf(message)));
+                	recommendedContentList.add(contentRepository.selectContent(Integer.valueOf(message)));
                 	
                 	System.out.println("파이썬에서 넘어옴 : "+message);
                 }// end of while
@@ -127,7 +134,7 @@ public class HomeServiceImpl implements HomeService{
 	 */
 	@Override
 	public List<Content> newContent() {
-		return contentRepo.newContent();
+		return contentRepository.newContent();
 	}
 
 	
@@ -137,14 +144,44 @@ public class HomeServiceImpl implements HomeService{
 	 * @return List<Content>
 	 */
 	@Override
-	public List<Content> genresContentList(Integer randomNumber) {
-		return contentRepo.genresContentList(randomNumber);
+	public List<Content> genresContentList(Integer genreNumber) {
+		return contentRepository.genresContentList(genreNumber);
 	}
 
 
 	@Override
 	public Genre findByGenreNumber(Integer genreNumber) {
 		return genreRepository.findByGenreNumber(genreNumber);
+	}
+
+
+	/** homeIndex
+	 *
+	 */
+	@Override
+	public List<Content> mainOttContentList(Integer ottNumber) {
+		
+		return contentRepository.mainOttContentList(ottNumber);
+	}
+
+
+	@Override
+	public Ott findByOttNumber(Integer ottNumber) {
+		return ottRepository.findByOttNumber(ottNumber);
+	}
+
+
+	@Override
+	public Page<Content> ottContentList(Integer ottNumber, Integer page) {
+		
+		if(page == null) page = 1;
+		  
+		// ottNumber 값이 null일 경우 1(넷플릭스)가 출력되도록 함 
+		if(ottNumber == null) ottNumber = 1;
+		  
+		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "content_number"));
+		
+		return contentRepository.ottContentList(ottNumber, pageRequest);
 	}
 	
 
