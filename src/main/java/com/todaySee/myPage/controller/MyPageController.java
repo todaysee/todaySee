@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.home.service.UserService;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.persistence.ImagesRepository;
 import com.todaySee.myPage.service.MyPageImagesService;
@@ -27,6 +28,9 @@ public class MyPageController {
     MyPageService myPageService;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     MyPageImagesService myPageImagesService;
 
     @Autowired
@@ -42,7 +46,8 @@ public class MyPageController {
 
         System.out.println("로그인 세션 테스트 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
-        
+        //마이페이지 오면
+        userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
         //리뷰 카운트
         model.addAttribute("userReview", myPageService.reviewCount((Integer) session.getAttribute("userNumber")));
         //커뮤니티 작성글 카운트

@@ -22,6 +22,8 @@ public interface UserService {
 	UserVO loginCheckEmail(UserVO user, HttpSession session);
 	
 	void updatingPwd(UserVO user);
-	
+
+	// 로그인 할때마다 날짜 업데이트
+	UserVO updateUserLoginDate(Integer userNumber);
 	
 }
