@@ -39,7 +39,8 @@ public class MyPageRestController {
     public Page<CommunityDto> ajaxBoardPaging(Pageable pageable) {
 
         return myPageService.boardPages(pageable);
-    }
+        
+        }
 
     
 

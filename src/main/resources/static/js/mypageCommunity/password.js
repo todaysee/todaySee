@@ -34,5 +34,36 @@ $("#btnCheckPwd").click(function(){
 		console.log(err);
 	}
 	});
+	});
 	
-})
+	
+	$('#btnSignOut').click(function(){
+		alert("어젯밤에 우리 아빠가")
+	
+	let SignOutPwd = $('#SignOutPwd').val();
+	
+	if(userPassword ==''){
+		$('#SignOutPwd ~ .error_message').html(warning);
+		return false;
+	}
+	$.ajax({
+		type:"POST",
+		url: "/mypageSignOut",
+		data:{ SignOutPwd : $('#SignOutPwd').val() },
+		contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+		success:function(result){
+			if(result=='N'){
+				$('#SignOutPwd ~ .error_message').html("비밀번호가 일치하지않아요");
+				pwdCheck=false;
+				}else{
+					alert("탈퇴가 완료되었습니다")
+					document.signOutFrm.submit();
+				}
+			},
+			error:function(err){
+				alert('실패');
+				console.log(err);
+			}
+		
+	});
+	});

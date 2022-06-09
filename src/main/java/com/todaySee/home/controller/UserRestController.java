@@ -66,7 +66,7 @@ public class UserRestController {
     		 message = "N";
     		 return message;
     	 }else {
-    		 System.out.println("********로그인 성공******");
+    		 System.out.println(userEmail + " 로그인");
     		 session.setAttribute("userNumber", user.getUserNumber());
     		 session.setAttribute("userNickname", user.getUserNickname());
     		 session.setAttribute("admin", user.getUserAdmin());
@@ -101,10 +101,9 @@ public class UserRestController {
     				 Cookie deleteEmail = new Cookie("checkEmail", null);
     				 deleteEmail.setMaxAge(0);
     				 response.addCookie(deleteEmail);
-    			 } // End of if ( 체크박스에 체크가 안되어 있을 때)
+    			 } 
     			 
-    		} //End of if (체크박스에 체크가 되어있는지)
-    		 System.out.println(session.getAttribute(message) + "확인");
+    		} 
     		 
     		 userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
     		 
@@ -149,6 +148,15 @@ public class UserRestController {
         	}
         	return "N";
         	
+        }
+        
+        @PostMapping("/mypageSignOut")
+        public String mypagSignOut(HttpSession session, String userPassword) {
+        	UserVO user = userService.checkMypagePassword((Integer) session.getAttribute("userNumber"));
+        	if( encoder.matches(userPassword, user.getUserPassword())) {
+        		return "Y";
+        	}
+        	return "N";
         }
 
     }

@@ -2,6 +2,8 @@ package com.todaySee.home.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.todaySee.domain.UserVO;
@@ -27,5 +29,10 @@ public interface UserService {
 	UserVO updateUserLoginDate(Integer userNumber);
 	
 	UserVO checkMypagePassword(Integer userNumber);
+	
+	//회원탈퇴
+	//UserVO removalEmail(HttpSession session);
+
+	UserVO removalEmail(Integer userNumber);
 	
 }

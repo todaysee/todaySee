@@ -1,6 +1,7 @@
 package com.todaySee.home.controller;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -63,8 +64,7 @@ public class UserController {
     //로그인 페이지
     @GetMapping("/login")
     public String homeLogin() {
-    	System.out.println("GetMapping");
-        return "/home/homeLogin";
+    	 return "/home/homeLogin";
     }
     
     
@@ -129,11 +129,42 @@ public class UserController {
     	
     }
     
+ 
     @PostMapping("/updatingPwd")
     public String updatingPwd(UserVO user) {
     	userService.updatingPwd(user);
     	return "redirect:/login";
     }
+    
+    //회원탈퇴 
+    @PostMapping("/completeSignOut")
+    public String completeSignOut(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+    	userService.removalEmail((Integer)session.getAttribute("userNumber"));
+    	
+    	// 쿠키 삭제 
+		Cookie[] getCookie = request.getCookies();
+		if(getCookie != null) {
+			for(Cookie c : getCookie) {
+				String value=c.getValue();
+				
+				if(value.equals(session.getAttribute("userNumber"))) {
+					Cookie deleteEmail=new Cookie("userEmail", null);
+					deleteEmail.setMaxAge(0);
+					response.addCookie(deleteEmail);
+				} 
+			} 
+		} 
+		
+		System.out.println(session.getAttribute("userNumber") + "님 회원 탈퇴 성공");
+		HttpSession ses = request.getSession();
+		
+		ses.invalidate();
+		
+    	
+    		return "redirect:/";
+    }
+
+
     
     }
  
