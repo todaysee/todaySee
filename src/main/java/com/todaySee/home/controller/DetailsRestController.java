@@ -42,14 +42,14 @@ public class DetailsRestController {
 
     /**
      * 작성한 리뷰를 DB에 INSERT
-     * @param userNumber : 해당 리뷰를 쓴 유저 번호
      * @param reviewContent : 리뷰 내용
      * @param reviewSpoiler : 스포일러 여부 (스포일러체크하면 1, 체크안하면 0)
      * @param contentNumber : 해당 리뷰를 쓴 컨텐츠 번호
      * @return String 호출한 AJAX쪽으로 보낼 데이터
      */
     @PostMapping("/details/reviewAjax")
-    public String getReview(Integer userNumber, String reviewContent, Integer reviewSpoiler, Integer contentNumber, float reviewRating) {
+    public String getReview(HttpSession session, String reviewContent, Integer reviewSpoiler, Integer contentNumber, float reviewRating) {
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
         detailsService.insertReview(userNumber, reviewContent, reviewSpoiler, contentNumber, reviewRating);
         return "OK";
     }

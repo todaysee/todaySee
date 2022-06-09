@@ -32,8 +32,7 @@
 
     <title>오늘 이거 볼래 ? | 커뮤니티 글쓰기 </title>
 
-    <link rel="icon" type="image/png"
-          href="/images/mypageCommunity/favicon.png">
+    <link rel="shortcut icon" href="/images/home/favicon.png">
 </head>
 
 
@@ -41,7 +40,7 @@
 
 
 <!-- Start Preloader Area -->
-<%@ include file="../inculde/community/preLoader.jsp" %>
+<%@ include file="../inculde/home/preLoader.jsp"%>
 
 
 <!-- Start Main Content Wrapper Area -->
@@ -276,27 +275,22 @@
 
         
         $('.commentsbtn').click(function(){
-            
-        	alert($(this).siblings('.userNumber').val())
-        	alert($(this).siblings('.communityNumber').val())
-        	alert($(this).siblings('.commentsbox').val())
-        	let b = $(this).siblings('.userNickname').val()
-        	alert(b)
-        	let a = $(this).siblings('#commentsbox').val()
+        	let nickname = $(this).siblings('.userNickname').val()
+        	let commentsContent = $(this).siblings('#commentsbox').val()
         	const list = $(this).parent().siblings('.comments')
         	$.ajax({
             	type:'post',
             	url:"/communityCommentsInsert",
             	data:{
-                	userNumber : $(this).siblings('.userNumber').val(),
-                	communityNumber : $(this).siblings('.communityNumber').val(),
-                	commentsContent : a
+            		user : $(this).siblings('.userNumber').val(),
+            		community : $(this).siblings('.communityNumber').val(),
+            		comments : commentsContent,
                 	},
                 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
                 success : function(commentsList){
                     alert(commentsList)
-                    let content =  ' <div class="nickname">'+ b + '</div>'
-                        + ' <div class="comments_content">' + a + '</div>'
+                    let content =  ' <div class="nickname">'+ nickname + '</div>'
+                        + ' <div class="comments_content">' + commentsContent + '</div>'
                         list.append(content);
 						
                     },
@@ -334,10 +328,6 @@
             callback(data);
         });
     }
- o
-            	
-
-
     
 
 </script>

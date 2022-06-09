@@ -311,7 +311,7 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/mypage/preLoader.jsp" %>
+<%@ include file="../inculde/home/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->
@@ -422,7 +422,7 @@
                     </div>
                     <hr>
                     <div class="col-md-5 ms-auto padding-8">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                         <button type="submit" id="bookmarkUpdate" class="btn btn-primary">수정하기</button>
                     </div>
 
