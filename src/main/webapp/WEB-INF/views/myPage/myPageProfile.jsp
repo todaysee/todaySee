@@ -69,7 +69,7 @@
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label>로그인 날짜</label> <input type="text" class="form-control"
-										value="2022-05-15" readonly>
+										value="${user.userLoginDate}" readonly>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">

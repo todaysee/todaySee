@@ -170,7 +170,6 @@
 
     let jsonDataCategory = ${categoryList};
     let jsonObjectCategory = JSON.stringify(jsonDataCategory);
-
     let jDataCategory = JSON.parse(jsonObjectCategory);
     let CategoryListName = []; // 배열생성
     let CategoryListValue = [];
