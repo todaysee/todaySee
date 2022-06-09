@@ -97,7 +97,7 @@
 
                                         <img src="${ content.content_poster_images_url}" alt="streamlab-image">
                                         <div class="gen-movie-action">
-                                            <a href="/details/${content.contentNumber }" class="gen-button">
+                                            <a href="/details/${content.content_number }" class="gen-button">
                                                 <i class="fa fa-play"></i>
                                             </a>
                                         </div>
