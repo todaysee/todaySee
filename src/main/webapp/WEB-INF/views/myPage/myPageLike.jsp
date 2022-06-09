@@ -56,36 +56,17 @@
                         </div>
                         <hr/>
                         <h1>추천 영상</h1>
+                        <!-- for문 시작 -->
+                        <c:forEach items="${myPageLikeContentList }" var="content">
                         <div class="col-md-4">
-                            <div class="info-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/269926103/s592/nayi-haebangilji"
-                                         class="img-thumbnail" alt="...">
-                                </a>
+                            <div class="gen-movie-img">
+                                <a href="/details/${content.contentNumber }"><img src="${ content.contentPosterImagesUrl}" alt="owl-carousel-video-image"></a>
                             </div>
                             <br/>
-                            <h3 class="text-center">제목 들어감</h3>
+                            <h3 class="text-center"><a href="/details/${content.contentNumber }">${content.contentTitle}</a></h3>
                         </div>
-                        <div class="col-md-4">
-                            <div class="-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/273790105/s592/pacinko"
-                                         class="img-thumbnail" alt="image">
-                                </a>
-                            </div>
-                            <br/>
-                            <h3 class="text-center">제목 들어감</h3>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-image">
-                                <a href="#">
-                                    <img src="https://images.justwatch.com/poster/272669076/s592/seupai-paemilri"
-                                         class="img-thumbnail" alt="image">
-                                </a>
-                            </div>
-                            <br/>
-                            <h3 class="text-center">제목 들어감</h3>
-                        </div>
+                        <!-- for문 끝 -->
+						</c:forEach>
                         <hr/>
                     </div>
                 </div>

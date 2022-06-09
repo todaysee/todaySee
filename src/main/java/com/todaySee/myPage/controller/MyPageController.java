@@ -91,7 +91,7 @@ public class MyPageController {
     public String myPageLike(HttpSession session, UserVO user, Model model) {
 
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
-
+        
         //리스트 담기
         List<HashMap<String, Object>> list = myPageService.chartReviewRating((Integer) session.getAttribute("userNumber"));//서비스 리턴
         Gson chartReviewGson = new Gson();
@@ -141,9 +141,10 @@ public class MyPageController {
         model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
-
-        // 마이페이지 - 추천 영상 출력
         
+        
+        // 마이페이지 - 추천 영상 출력
+        model.addAttribute("myPageLikeContentList", myPageService.userPreference((Integer) session.getAttribute("userNumber")));
         
         return "/myPage/myPageLike";
     }
@@ -162,7 +163,7 @@ public class MyPageController {
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
 
-
+        
         return "/myPage/mypageWriteBoardCommnetsList";
     }
 

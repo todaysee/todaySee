@@ -275,27 +275,22 @@
 
         
         $('.commentsbtn').click(function(){
-            
-        	alert($(this).siblings('.userNumber').val())
-        	alert($(this).siblings('.communityNumber').val())
-        	alert($(this).siblings('.commentsbox').val())
-        	let b = $(this).siblings('.userNickname').val()
-        	alert(b)
-        	let a = $(this).siblings('#commentsbox').val()
+        	let nickname = $(this).siblings('.userNickname').val()
+        	let commentsContent = $(this).siblings('#commentsbox').val()
         	const list = $(this).parent().siblings('.comments')
         	$.ajax({
             	type:'post',
             	url:"/communityCommentsInsert",
             	data:{
-                	userNumber : $(this).siblings('.userNumber').val(),
-                	communityNumber : $(this).siblings('.communityNumber').val(),
-                	commentsContent : a
+            		user : $(this).siblings('.userNumber').val(),
+            		community : $(this).siblings('.communityNumber').val(),
+            		comments : commentsContent,
                 	},
                 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
                 success : function(commentsList){
                     alert(commentsList)
-                    let content =  ' <div class="nickname">'+ b + '</div>'
-                        + ' <div class="comments_content">' + a + '</div>'
+                    let content =  ' <div class="nickname">'+ nickname + '</div>'
+                        + ' <div class="comments_content">' + commentsContent + '</div>'
                         list.append(content);
 						
                     },
@@ -333,10 +328,6 @@
             callback(data);
         });
     }
- o
-            	
-
-
     
 
 </script>
