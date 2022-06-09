@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title> 비밀번호 재설정 </title>
+	<title>오늘 이거 볼래 ? | 비밀번호 재설정 </title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -71,22 +71,25 @@
                         
                             <div style="text-align:center"><h2> 비밀번호 재설정 </h2></div>
         
-                            <form>
+                            <form action="/updatingPwd" method="post" name="resettingPwd">
+                               <input type="hidden" name="userEmail" value="${ userEmail}"/>
                                 <div class="form-group">
                                     <label> 비밀번호  </label>
-                                <input type="password" class="form-control" style="margin-bottom: 30px !important;">
+                                <input type="password" class="form-control"  name="userPassword" id="userPassword" style="margin-bottom: 30px !important;">
+                                <span class="error_message"></span>
                                 </div>
                                 
         
                                 <div class="form-group">
                                     <label> 비밀번호 재설정 </label>
-                                    <input type="password" class="form-control">
+                                    <input type="password" class="form-control" name="rePassword" id="rePassword">
+                                	<span class="error_message"></span>
                                 </div>
         
                                  
                                  <div class="or-text"><span></span></div> 
                                
-							<button type="submit" class="google-btn" style="margin-top: 40px !important; margin-bottom: 30px !important;">비밀번호 재설정</button>                                
+							<button type="button" class="google-btn" name="btnResetting" id="btnResetting" style="margin-top: 40px !important; margin-bottom: 30px !important;">비밀번호 재설정</button>                                
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
                                         	<a href="forgot-password.html" class="lost-your-password">홈으로 가기  </a>
@@ -146,6 +149,10 @@
 <script src="/js/home/slick.min.js"></script>
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
+
+
+<!-- js추가 -->
+ <script src="/js/home/UserLogin.js"></script>
 
 
 </body>

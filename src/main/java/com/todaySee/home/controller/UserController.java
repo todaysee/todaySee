@@ -2,6 +2,7 @@ package com.todaySee.home.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.UserService;
@@ -63,34 +66,29 @@ public class UserController {
         return "/home/homeLogin";
     }
     
-    @PostMapping("/login")
+    
+    @PostMapping("/successLogin")
     public String login(String userEmail, String userPassword, Model model,HttpSession session) {
-    	System.out.println("PostMapping");
-        UserVO findUser = userService.login(userEmail, userPassword);
-    	if (findUser != null
-    		) {
-    		model.addAttribute("user", findUser);
-    		session.setAttribute("userNumber", findUser.getUserNumber());
-    		session.setAttribute("userNickname", findUser.getUserNickname());
-    		session.setMaxInactiveInterval(60*60*24);
-    		System.out.println("세션"+session.getAttribute("userNumber"));
+    	System.out.println("PostMapping"+session.getAttribute("userNumber"));
+
     		return "redirect:/";
     	
-    	} else {
+    }
+
+
+     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
+    @GetMapping("/userCheck")
+    public String userCheck(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+    	if(session.getAttribute("userNumber")==null) {
     		return "/home/homeLogin";
+    	}else if(Integer.valueOf(session.getAttribute("admin").toString()) == 0) {
+    		return "redirect:myPage/profile";
+    	}else {
+    		return "redirect:/admin";
     	}
     }
     
- 
-     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
-    @GetMapping("/userCheck")
-    public String userCheck(HttpSession session) {
-    	if(session.getAttribute("userNumber")==null) {
-    		return "/home/homeLogin";
-    	}else {
-    		return "redirect:myPage/profile";
-    	}
-    }
+    
     
   // 로그아웃
     @GetMapping("/userLogout")
@@ -125,7 +123,18 @@ public class UserController {
 
     //비밀번호 재설정 페이지
     @GetMapping("/homeResettingPwd")
-    public String homeResettingPwd() {
+    public String homeResettingPwd(UserVO user, Model m, HttpSession session) {
+    	m.addAttribute("userEmail", user.getUserEmail());
     	return "/home/homeResettingPwd";
+    	
     }
-}
+    
+    @PostMapping("/updatingPwd")
+    public String updatingPwd(UserVO user) {
+    	userService.updatingPwd(user);
+    	return "redirect:/login";
+    }
+    
+    }
+ 
+ 

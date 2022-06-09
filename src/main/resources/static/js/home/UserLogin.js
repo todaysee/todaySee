@@ -236,9 +236,61 @@ $('#btn_register').click(function(){
 			     })
 			     
 			     
-//**** 로그인  */
+//**** 로그인 */
+$('#btn_Login').click(function(){
 
-
+			let userEmail = $("#userEmail").val();
+			let userPassword = $("#userPassword").val();
+			let emailCheckBox = false;
+			
+			/*이메일*/
+			if(userEmail == ''){
+				$('#userEmail ~ .error_message').html(blank);
+				$('#userEmail').focus();
+				return;
+			}else{
+				$('#userEmail ~ .error_message').html("");
+				}
+				
+			/*비밀번호*/
+			if(userPassword == ''){
+				$("#userPassword ~ .error_message").html(blank);
+				$('#userPassword').focus();
+				return;
+			}else{
+				$("#userPassword ~ .error_message").html("");
+			}
+			
+			/*이메일기억하는 체크박스 */
+			if($("#emailCheckBox").is(':checked') ){
+					emailCheckBox = true;
+			}
+			
+		$.ajax({
+			 type : 'post',
+			 url : '/login',
+			 data : { userEmail : $("#userEmail").val(),
+			 			  userPassword : $("#userPassword").val(),
+			 			  emailCheckBox : emailCheckBox
+			 			   },
+			 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			 success : function(result){
+				
+				if(result == "N"){
+					$("#userPassword ~ .error_message").html("존재하는 회원이 아니거나 비밀번호가 일치하지 않습니다.");
+					
+				}else{
+					document.loginFrm.submit();
+				}
+			},
+			error : function(err){
+					alert(err);
+					console.log(err);
+			}
+		}); // end of Ajax
+	
+}); // end of btn_Login
+ 
 
 
 			     
@@ -271,5 +323,81 @@ $('#btn_register').click(function(){
 			  
 			  
 	/*비밀번호 찾기 */ 
+	
+	let random;
+	$('#btn_sendingMail').click(function(){
+		alert("인증번호가 발송되었습니다 ! ")
+		
+		$.ajax({
+			type: "POST",
+			url: "/sendEmail",
+			data: { 
+				userEmail : $("#userEmail").val(),
+			},
+			contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+			success: function(result){
+							random = result;
+							},
+				error: function(err){
+					alert('실패');
+				console.log(err);
+			}
+			}); //end of Ajax 
+			})
+			
+	$('#btn_findPwd').click(function(){
+	
+		let checkAuthenticNumber = $("#checkAuthenticNumber").val();
+		
+		if(random == checkAuthenticNumber){
+			alert("크레파스")
+			document.sendEmail_Frm.submit();
+		}else{
+			$('#checkAuthenticNumber ~ .error_message').html("인증번호가 일치하지 않습니다.");
+
+		}
+	}) //end of #btn_findPwd
+				
+// 비밀번호 재설정 				
+	$('#btnResetting').click(function(){
+		alert("크레파스")
+		let userPassword = $("#userPassword").val();
+		let userPassword2 = $("#rePassword").val();
+		
+		if(userPassword == ''){
+			$('#password ~ .error_message').html(blank);
+			$('#password').focus();
+			return;
+		}else{
+			$('#password ~ .error_message').html("");
+		}
+		
+		if(!RegexPW.test(userPassword) ){
+			$('#password ~ .error_message').html("비밀번호는 영문자와 숫자를 사용하여 6~15자로 작성해 주세요.");
+			return;
+		}else{
+			$('#password ~ .error_message').html("");
+		}
+		
+		//비밀번호 재확인 
+		if(userPassword2 == ''){
+			$('#rePassword ~ .error_message').html("필수 입력 사항입니다");
+			$('#rePassword').focus();
+			return;
+		}else{
+			$('#rePassword ~ .error_message').html("");
+		}
+		
+		//비밀번호 일치 여부 확인 ! 
+		if(userPassword != userPassword2){
+			$('#rePassword ~ .error_message').html("비밀번호가 일치하지 않습니다")
+			$('#rePassword').focus();
+			return;
+		}
+		document.resettingPwd.submit();
+		alert("비밀번호가 변경되었습니다 ! ");
+		
+	}); // End of #btnResetting
+			
 	
 	

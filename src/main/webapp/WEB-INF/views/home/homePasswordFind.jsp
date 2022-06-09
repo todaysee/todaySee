@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title> 비밀번호 찾기 </title>
+	<title> 오늘 이거 볼래 ? | 비밀번호 찾기 </title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -69,21 +69,27 @@
                         <div class="login-form" style="float:center;">
                             <div style="text-align:center"><h2>비밀번호 찾기 </h2></div>
         
-                            <form>
+                            <form action="/homeResettingPwd" method="get" name="sendEmail_Frm"  Id="sendEmail_Frm">
                                 <div class="row">
                                 <div class="form-group col-md-9" >
-                                    <label>Email</label>
-                                    <input type="email" name="user_Email" id="user_Email" class="form-control" style="margin-right:0px;">
+                                    <label>이메일</label>
+                                    <input type="email" name="userEmail" id="userEmail" class="form-control" style="margin-right:0px;">
+                                    	<span class="error_message"></span>
 									</div>
 									<div class="post-btn col-md-3">
-                                 <button type="submit" class="button_h" name="emailcheck" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
+									<input type="button" id="btn_sendingMail" class="button_h" name="btn_sendingMail" style="border-radius: 13px; 
+                                  padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;" value="인증번호 전송"/>
+									</div>
+                             		</div>
+                                 <!--
+                                 <button type="button" class="button_h" id="btn_sendingMail" name="btn_sendingMail" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
                                  padding-left: 10px !important; padding-right: 10px !important; background-color: grey;">인증번호 전송</button>
-                             		</div>
-                             		</div>
+                             		-->
         
                                 <div class="form-group">
                                     <label> 인증번호 확인 </label>
-                                    <input type="password" name="checkPwd" id="checkPwd" class="form-control">
+                                    <input type="password" name="checkAuthenticNumber" id="checkAuthenticNumber" class="form-control">
+                                    <span class="error_message"></span>
                                 </div>
         
                                  
@@ -114,7 +120,7 @@
         </div>
         <!-- End Preloader Area -->
 
-          <script src="/js/mypageCommunity/jquery.min.js"></script>
+<script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
 <script src="/js/mypageCommunity/jquery-ui.min.js"></script>
@@ -149,8 +155,7 @@
 <script src="/js/home/script.js"></script>
 
 <!-- js추가 -->
- 
-    <script src="/js/home/UserLogin.js"></script>
+ <script src="/js/home/UserLogin.js"></script>
 
 </body>
 

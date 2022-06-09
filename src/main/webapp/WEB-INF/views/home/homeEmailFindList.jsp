@@ -16,7 +16,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Email 찾기</title>
+<title>오늘 이거 볼래 ? | 이메일 찾기</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/images/home/favicon.png">
@@ -100,6 +100,7 @@
 														</td>
 														<td>${vo.userEmail }</td>
 														<td>${vo.userSignupDate }</td>
+														<td>${vo.userLoginDate }</td>
 
 													</tr>
 
