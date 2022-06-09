@@ -57,17 +57,18 @@ public class UserVO {
     @Column(name = "user_password",length = 1000)
     String userPassword; // 유저 비밀 번호
     
+    
+    
+    
     /*
      * 문혜진 추가 role : 권한부여 
      * EnumType.STRING : 권한에 해당하는 값이 문자열로 저장. 
-	 */
+	 
      
-    
-    
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     Role role;
-
+*/
   
     
 	

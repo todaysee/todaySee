@@ -19,8 +19,10 @@ public class SecurityUser extends User {
 	
 	public SecurityUser(UserVO uservo) {
 		super(uservo.getUserEmail(), uservo.getUserPassword(),
-				AuthorityUtils.createAuthorityList(uservo.getRole().toString())
+				AuthorityUtils.createAuthorityList(uservo.getUserAdmin().toString())
 				);
+		
+		
 	}
 
 }
