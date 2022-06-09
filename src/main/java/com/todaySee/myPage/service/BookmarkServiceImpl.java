@@ -118,6 +118,13 @@ public class BookmarkServiceImpl implements BookmarkService{
         return returnList;
     }
 
+    /**
+     * 즐겨찾기 이름, 즐겨찾기 공개/비공개 설정 변경
+     * @param bookmarkNumber : 즐겨찾기 번호
+     * @param bookmarkName : 수정한 즐겨찾기 이름
+     * @param bookmarkState : 수정한 즐겨찾기 상태
+     * @param userNumber : 즐겨찾기한 유저
+     */
     public void updateBookmark(Integer bookmarkNumber, String bookmarkName, Integer bookmarkState, Integer userNumber) {
         Bookmark bookmark = bookmarkRepo.findById(bookmarkNumber).get();
 
@@ -146,6 +153,11 @@ public class BookmarkServiceImpl implements BookmarkService{
         bookmarkRepo.save(bookmark);
     }
 
+    /**
+     * 즐겨찾기 삭제
+     * @param bookmarkNumber : 즐겨찾기 번호
+     * @param userNumber : 즐겨찾기 생성한 유저
+     */
     @Override
     public void deleteBookmark(Integer bookmarkNumber, Integer userNumber) {
         // 즐겨찾기 번호에 따른 해당 즐겨찾기 가져오기
@@ -164,6 +176,12 @@ public class BookmarkServiceImpl implements BookmarkService{
         bookmarkRepo.save(bookmark);
     }
 
+    /**
+     * 컨텐츠가 담긴 즐겨찾기의 컨텐츠리스트를 모두 삭제
+     * @param bookmarkList : 컨텐츠가 담긴 즐겨찾기 번호 배열
+     * @param bookmarkNumber : 즐겨찾기 번호
+     * @param userNumber : 유저 번호
+     */
     public void deleteBookmarkContent(String[] bookmarkList, Integer bookmarkNumber, Integer userNumber) {
         for(int i=0; i<bookmarkList.length; i++) {
             // 즐겨찾기 번호로 즐겨찾기 찾아오기
@@ -175,6 +193,12 @@ public class BookmarkServiceImpl implements BookmarkService{
         }
     }
 
+    /**
+     * 즐겨찾기 내에 담긴 컨텐츠를 다른 즐겨찾기로 이동
+     * @param bookmarkContentList : 이동할 컨텐츠가 담긴 즐겨찾기 번호
+     * @param bookmarkNumber : 이동할 즐겨찾기 번호
+     * @param userNumber : 유저번호
+     */
     public void updateBookmarkContent(String[] bookmarkContentList, Integer bookmarkNumber, Integer userNumber) {
         for(int i=0; i<bookmarkContentList.length; i++) {
             // 이동할 즐겨찾기 번호에 따른 즐겨찾기 가져오기
@@ -185,6 +209,22 @@ public class BookmarkServiceImpl implements BookmarkService{
             contentBookmark.setBookmarkDate(new Date());
             bookmarkRepo.save(contentBookmark);
         }
+    }
+
+    /**
+     * 버튼을 누른 해당 컨텐츠를 현재 즐겨찾기에서 삭제
+     * @param contentBookmarkNumber : 버튼을 누른 해당 컨텐츠가 담긴 즐겨찾기 번호
+     * @param bookmarkNumber : 즐겨찾기 번호
+     * @param userNumber : 유저번호
+     */
+    @Override
+    public void delBookmarkContent(Integer contentBookmarkNumber, Integer bookmarkNumber, Integer userNumber) {
+        // 즐겨찾기 번호로 즐겨찾기 찾아오기
+        Bookmark bookmark = bookmarkRepo.findById(contentBookmarkNumber).get();
+        // 해당 즐겨찾기의 상태를 4로 변경
+        bookmark.setBookmarkState(4);
+        // 즐겨찾기 수정
+        bookmarkRepo.save(bookmark);
     }
 
 

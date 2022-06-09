@@ -4,10 +4,11 @@ package com.todaySee.home.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.persistence.UserRepository;
@@ -30,7 +31,6 @@ public class UserServiceImpl implements UserService {
 		user.setUserAdmin(0);
 		user.setUserState(0);
 		user.setUserTitleProfileYn(0);
-
 		user.setUserPassword(encoder.encode(user.getUserPassword()));
 		return userRepository.save(user);
 	}
@@ -76,6 +76,27 @@ public class UserServiceImpl implements UserService {
 		List<UserVO> result = userRepository.findByUserNameAndUserTel(user.getUserName(), user.getUserTel());
 			return result;
 	}
+
+	@Override
+	public UserVO loginCheckEmail(UserVO user, HttpSession session) {
+		
+		return null;
+	}
+
+	@Override
+	public void updatingPwd(UserVO user) {
+		UserVO updateUser = userRepository.findByUserEmail(user.getUserEmail());
+		updateUser.setUserPassword(encoder.encode(user.getUserPassword()));
+		userRepository.save(updateUser);
+		
+	}
+
+	
+	
+	
+	
+
+	
 
 }
 

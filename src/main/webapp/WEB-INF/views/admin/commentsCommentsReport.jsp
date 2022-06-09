@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,6 +38,10 @@
           padding: 0px;
           float: left;
           cursor: pointer;
+        }
+        
+        .cocoReport:hover{
+        cursor: pointer;
         }
       </style>
 
@@ -133,7 +138,8 @@
                     <td>${report.commentsCommentsReportNumber }</td>
                     <td>${report.user.userName }</td>
                     <td>${report.commentsCommentsReportContent }</td>
-                    <td>${report.commentsCommentsReportDate }</td>
+                    <td> <fmt:formatDate value="${report.commentsCommentsReportDate}" pattern="yyyy-MM-dd"/></td>
+                   
                     <td>${report.commentsComments.commentscommentsLike }</td>
                   </tr>
                   </c:if>

@@ -31,7 +31,7 @@ public interface AdminContentRepository extends CrudRepository<Content, Integer>
 	void ottQuery(Integer ott, String contentottLink);
 
 	
-	@Query(value="SELECT   c.content_number content_number , c.content_age content_age , c.content_import_date content_import_date\r\n"
+	@Query(value="SELECT   c.content_number content_number , c.content_age content_age , c.content_import_date content_import_date , c.content_state  content_state    \r\n"
 			+ "        , c.content_info content_info , c.content_main_images_url content_main_images_url, c.content_poster_images_url content_poster_images_url\r\n"
 			+ "         , c.content_release_date content_release_date , c.content_running_time content_running_time , c.content_title content_title\r\n"
 			+ "         , c.content_youtube_url content_youtube_url, group_concat( distinct cgG.genre_name separator ',') genre_name , GROUP_CONCAT( distinct coO.ott_name separator ',') ott_name, GROUP_CONCAT( distinct coO.contentott_link separator ',') contentott_link\r\n"

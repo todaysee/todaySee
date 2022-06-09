@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>회원가입</title>
+	<title>오늘 이거 볼래 ? | 회원가입</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -209,7 +209,7 @@
 
 <!-- js추가 -->
  
-    <script src="/js/home/UserLogin.js"></script>
+<script src="/js/home/UserLogin.js"></script>
 
 
 </body>

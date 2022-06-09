@@ -2,6 +2,7 @@ package com.todaySee.community.service;
 
 import com.todaySee.domain.CommunityImages;
 import com.todaySee.persistence.*;
+import com.todaySee.domain.Comments;
 import com.todaySee.domain.Community;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
@@ -22,6 +23,9 @@ public class CommunityServiceImpl implements CommunityService{
 
     @Autowired
     CommunityRepositroy communityRepositroy;
+    
+    @Autowired
+    CommentsRepository commentsRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -65,5 +69,14 @@ public class CommunityServiceImpl implements CommunityService{
         // 파일 이름으로 쓸 uuid 생성
         String uuid = UUID.randomUUID().toString();
     }
+
+	@Override
+	public Comments communityCommentsInsert(Comments comments) {
+		comments.setCommentsLike(0);
+		comments.setCommentsState(0);
+		
+		return commentsRepository.save(comments);
+		
+	}
 }
 
