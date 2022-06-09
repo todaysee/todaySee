@@ -47,7 +47,7 @@ public class MyPageController {
         System.out.println("로그인 세션 테스트 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
         //마이페이지 오면
-        userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
+        //userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
         //리뷰 카운트
         model.addAttribute("userReview", myPageService.reviewCount((Integer) session.getAttribute("userNumber")));
         //커뮤니티 작성글 카운트
