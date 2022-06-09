@@ -75,8 +75,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 align-self-center">
-                     <span class="gen-copyright"><a target="_blank" href="#"> Copyright 2021 stremlab All Rights
-                           Reserved.</a></span>
+                     <span class="gen-copyright"><a target="_blank" href="#"> 마지막입니다. 위로 올라가기</a></span>
                     </div>
                 </div>
             </div>

@@ -33,13 +33,7 @@ public class HomeServiceImpl implements HomeService{
 	private ContentRepository contentRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
-	 	
-	@Autowired
 	private GenreRepositroy genreRepository;
-	
-	@Autowired
-	private ContentOttRepository contentOttRepository;
 	
 	@Autowired
 	private OttRepositroy ottRepository;
@@ -53,7 +47,7 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public Page<Content> getGenresContentList(Integer genreNumber, Integer page) {
 		
-		if(page == null) page = 1;
+		if(page == null) page = 0;
 		  
 		// genreNumber 값이 null일 경우 1(드라마)가 출력되도록 함 
 		if(genreNumber == null) genreNumber = 1;
@@ -174,7 +168,7 @@ public class HomeServiceImpl implements HomeService{
 	@Override
 	public Page<Content> ottContentList(Integer ottNumber, Integer page) {
 		
-		if(page == null) page = 1;
+		if(page == null) page = 0;
 		  
 		// ottNumber 값이 null일 경우 1(넷플릭스)가 출력되도록 함 
 		if(ottNumber == null) ottNumber = 1;
