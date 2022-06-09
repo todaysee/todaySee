@@ -14,82 +14,56 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <img src="/images/home/logo-1.png" class="gen-footer-logo" alt="gen-footer-logo">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                    <ul class="social-link">
-                                        <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#" class="facebook"><i class="fab fa-skype"></i></a></li>
-                                        <li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-                                    </ul>
                                 </div>
+                                 <ul class="menu">
+                                	<li class="menu-item">이메일 : ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ</li>
+                                    <li class="menu-item"></li>
+                                	<li class="menu-item">이메일 : ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ</li>
+                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="widget">
-                            <h4 class="footer-title">Explore</h4>
+                            <h4 class="footer-title">콘텐츠</h4>
                             <div class="menu-explore-container">
                                 <ul class="menu">
-                                    <li class="menu-item">
-                                        <a href="/index.html" aria-current="page">Home</a>
-                                    </li>
-                                    <li class="menu-item"><a href="/movies-pagination.html">Movies</a></li>
-                                    <li class="menu-item"><a href="/tv-shows-pagination.html">Tv Shows</a></li>
-                                    <li class="menu-item"><a href="/video-pagination.html">Videos</a></li>
-                                    <li class="menu-item"><a href="#">Actors</a></li>
-                                    <li class="menu-item"><a href="#">Basketball</a></li>
-                                    <li class="menu-item"><a href="#">Celebrity</a></li>
-                                    <li class="menu-item"><a href="#">Cross</a></li>
+                                    <li class="menu-item"><a href="/search/genres" aria-current="page">장르</a></li>
+                                    <li class="menu-item"></li>
+                                    <li class="menu-item"><a href="/search/ott">OTT</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="widget">
-                            <h4 class="footer-title">Company</h4>
-                            <div class="menu-about-container">
-                                <ul class="menu">
-                                    <li class="menu-item"><a href="/contact-us.html">Company</a>
-                                    </li>
-                                    <li class="menu-item"><a href="/contact-us.html">Privacy
-                                        Policy</a></li>
-                                    <li class="menu-item"><a href="/contact-us.html">Terms Of
-                                        Use</a></li>
-                                    <li class="menu-item"><a href="/contact-us.html">Help
-                                        Center</a></li>
-                                    <li class="menu-item"><a href="/contact-us.html">contact us</a></li>
-                                    <li class="menu-item"><a href="/pricing-style-1.html">Subscribe</a></li>
-                                    <li class="menu-item"><a href="#">Our Team</a></li>
-                                    <li class="menu-item"><a href="/contact-us.html">Faq</a></li>
-                                </ul>
-                            </div>
+		                    <c:if test="${!empty sessionScope.userNumber}">
+        	                    <h4 class="footer-title">커뮤니티</h4>
+            	                <div class="menu-about-container">
+                	                <ul class="menu">
+                    	                <li class="menu-item"><a href="/community/genre">장르 카테고리</a></li>
+                        	            <li class="menu-item"></li>
+                            	        <li class="menu-item"><a href="/community/ott">OTT 카테고리</a></li>
+                                	</ul>
+                            	</div>	
+		                    </c:if>
                         </div>
                     </div>
-                    <div class="col-xl-3  col-md-6">
+                    <div class="col-xl-2  col-md-6">
                         <div class="widget">
-                            <h4 class="footer-title">Downlaod App</h4>
+                            <h4 class="footer-title"></h4>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                    <a href="#">
-                                        <img src="/images/home/asset-35.png" class="gen-playstore-logo" alt="playstore">
-                                    </a>
-                                    <a href="#">
-                                        <img src="/images/home/asset-36.png" class="gen-appstore-logo" alt="appstore">
-                                    </a>
-                                    
+                                    <ul class="menu">
                                     	<c:if test="${empty sessionScope.userNumber}">
-		 								<div style="color: red;">
-                                    	<a href="/login"> 로그인</a>
-                                    	</div>
-										
+                                    		<li class="menu-item"><a href="/login"> 로그인</a></li>
 										</c:if>
 										<c:if test="${!empty sessionScope.userNumber}">
-										<div style="color: red;">
-                                    	<a href="/userLogout">로그아웃</a>
-                                    	</div>  
-                                    	</c:if>                                	
-                                    
+                                    		<li class="menu-item"><a href="/myPage/profile">마이페이지</a></li>
+		                                    <li class="menu-item"></li>
+                                    		<li class="menu-item"><a href="/userLogout">로그아웃</a></li>
+                                    	</c:if>	
+                                	</ul> 
                                 </div>
                             </div>
                         </div>

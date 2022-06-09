@@ -65,7 +65,7 @@
                         </div>
                         <div class="gen-breadcrumb-container">
                             <ol class="breadcrumb">
-                               <li value="1"><a href="/search/genres?genreNumber=1">드라마</a></li>
+                               <li value="1"><a href="/search/genres?genreNumber=1" class="firstGenre">드라마</a></li>
                                 <li><span>&#124;</span></li>
                                 <li value="2"><a href="/search/genres?genreNumber=2">로맨스</a></li>
                                 <li><span>&#124;</span></li>
@@ -154,7 +154,6 @@
                                 </div>
                             </div>
                         </div>
-
 					</c:if>
                       </c:forEach>
 
@@ -207,13 +206,21 @@
 <!-- 안정은 js -->
 <script src="/js/homeList/homeList_genres.js"></script>
 <script type="text/javascript">
+
+//url에 따라서 카테고리 색 변경
 let urlParams = new URL(location.href).searchParams;
 let genreNumber = urlParams.get('genreNumber');
 $('.breadcrumb > li').each(function(index, element){
 	if($(this).val() == genreNumber){
 		$(this).children('a').css('color','red');
 	}//end of if
-})
+})// end of $('.breadcrumb > li').each()
+
+// url에 장르번호가 없을 때 첫번째 카테고리에 색변경
+if(genreNumber == null){
+	$('.firstGenre').css('color','red');
+}// end of if
+
 
 </script>
 </body>

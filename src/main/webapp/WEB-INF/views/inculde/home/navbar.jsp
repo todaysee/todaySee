@@ -22,12 +22,18 @@
                                     <li class="menu-item">
                                         <a href="/search/ott">OTT</a>
                                     </li>
+                                  <c:choose>
+									<c:when test="${sessionScope.userNumber eq null}">
+									</c:when>
+									 <c:otherwise>
                                     <li class="menu-item">
                                         <a href="/community">커뮤니티</a>
                                     </li>
                                     <li class="menu-item">
                                         <a href="/community/chatList">채팅</a>
                                     </li>
+									 </c:otherwise>
+								</c:choose>
                                 </ul>
                             </div>
                         </div>
@@ -46,46 +52,32 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="gen-account-holder">
-
-                                <a href="/userCheck" id="gen-user-btn"><i class="fa fa-user"></i></a>
-
-                                <div class="gen-account-menu">
-                                    <ul class="gen-account-menu">
-                                        <!-- Pms Menu -->
-                                        <li>
-                                            <a href="/log-in.html"><i class="fas fa-sign-in-alt"></i>
-                                                login </a>
-                                        </li>
-                                        <li>
-                                            <a href="/register.html"><i class="fa fa-user"></i>
-                                                Register </a>
-                                        </li>
-                                        <!-- Library Menu -->
-                                        <li>
-                                            <a href="/library.html">
-                                                <i class="fa fa-indent"></i>
-                                                Library </a>
-                                        </li>
-                                        <li>
-                                            <a href="/library.html"><i class="fa fa-list"></i>
-                                                Movie Playlist </a>
-                                        </li>
-                                        <li>
-                                            <a href="/library.html"><i class="fa fa-list"></i>
-                                                Tv Show Playlist </a>
-                                        </li>
-                                        <li>
-                                            <a href="/library.html"><i class="fa fa-list"></i>
-                                                Video Playlist </a>
-                                        </li>
-                                        <li>
-                                            <a href="/upload-video.html"> <i class="fa fa-upload"></i>
-                                                Upload Video </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
+                         <ul id="gen-main-menu" class="navbar-nav ml-auto">
+                          <c:choose>
+							<c:when test="${sessionScope.userNumber eq null}">
+								 <li class="menu-item">
+                                        <a href="/login">로그인</a>
+                                   </li>
+								<li class="menu-item">
+                                        <a href="/signUp">회원가입</a>
+                                </li>
+							</c:when>
+							 <c:otherwise>
+	                            <div class="gen-account-holder">
+	                                <a href="/userCheck" id="gen-user-btn"><i class="fa fa-user"></i></a>
+	                            </div>
+	                            <c:if test="${sessionScope.admin == 1}">
+									<li class="menu-item">
+	                                        <a href="/admin">관리페이지</a>
+	                                </li>
+	                            </c:if>
+								<li class="menu-item">
+                                        <a href="/userLogout">로그아웃</a>
+                                </li>
+							 </c:otherwise>
+						</c:choose>
+						</ul>
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

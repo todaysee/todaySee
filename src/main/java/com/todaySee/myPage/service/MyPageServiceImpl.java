@@ -2,6 +2,8 @@ package com.todaySee.myPage.service;
 
 import com.todaySee.Converter.CommunityConverter;
 import com.todaySee.domain.Community;
+import com.todaySee.domain.Content;
+import com.todaySee.domain.Genre;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.dto.CommunityDto;
@@ -32,6 +34,9 @@ public class MyPageServiceImpl implements MyPageService{
 
     @Autowired
     CommunityJpaRepositroy communityJpaRepositroy;
+    
+	@Autowired
+	private GenreRepositroy genreRepository;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -109,5 +114,16 @@ public class MyPageServiceImpl implements MyPageService{
     public Integer userReviewLikeSum(Integer userNumber) {
         return reviewRepository.reviewLikeSum(userNumber);
     }
+
+	@Override
+	public List<Content> userPreference(Integer userNumber) {
+		
+		// 유저가 선호하는 장르 top3가 나옴
+		List<Genre> genre = genreRepository.userPreference(userNumber);
+		
+		
+		
+		return null;
+	}
 
 }

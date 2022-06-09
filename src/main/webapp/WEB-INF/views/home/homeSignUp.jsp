@@ -138,7 +138,7 @@
                                 <div class="remember-me-wrap">
                                    		<input type="checkbox" id="checkBox" name="checkBox">
                                    		
-                                        <label for="checkBox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
+                                        <label for="checkBox" style="float: right;">이용약관에 동의합니다.</label>
                                         <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
