@@ -142,7 +142,9 @@ public class MyPageController {
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
 
-
+        // 마이페이지 - 추천 영상 출력
+        
+        
         return "/myPage/myPageLike";
     }
 
