@@ -36,7 +36,7 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/mypage/preLoader.jsp"%>
+<%@ include file="../inculde/home/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->

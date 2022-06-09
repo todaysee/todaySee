@@ -54,18 +54,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/admin" class="nav-link">
-                    <span class="icon"><i class="fi fi-rr-settings"></i></span>
-                    <span class="menu-title">관리자 페이지</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="/userLogout" class="nav-link">
                     <span class="icon"><i class="fi fi-rr-cross"></i></span>
                     <span class="menu-title">로그 아웃</span>
                 </a>
             </li>
-
+            <c:if test="${user.userAdmin eq '1'}">
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link">
+                        <span class="icon"><i class="fi fi-rr-settings"></i></span>
+                        <span class="menu-title">관리자 페이지</span>
+                    </a>
+                </li>
+            </c:if>
         </ul>
     </div>
 </div>

@@ -113,7 +113,7 @@ public class MyPageController {
         model.addAttribute("chartReview", chartReviewJson);
         System.out.println(model.addAttribute("chartReview", chartReviewJson));
         
-        //회원별 카테고리 목록
+        //회원별 리뷰 기반하여 카테고리 추출해서 워드클라우드 만들기
         List<HashMap<String, Object>> categoryList = myPageService.reviewRatingCategoryWordCloud((Integer) session.getAttribute("userNumber"));//서비스 리턴
         Gson categoryGson = new Gson();
         JsonArray categoryJArray = new JsonArray();
