@@ -48,13 +48,14 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
     @Override
-    public void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent) {
+    public void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent, String fileNameText) {
 
         Date day = new Date();
         Community community = new Community();
         community.setUser(userRepository.findById(userNumber).get());
         community.setCommunityCategory(communityCategory);
         community.setCommunityContent(communityContent);
+        community.setImagesCommunityFileName(fileNameText);
         community.setCommunityState(1);
         community.setCommunityDate(day);
 
