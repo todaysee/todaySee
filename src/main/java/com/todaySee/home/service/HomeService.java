@@ -48,4 +48,6 @@ public interface HomeService {
 	Ott findByOttNumber(Integer ottNumber);
 	
 	Page<Content> ottContentList(Integer ottNumber, Integer page);
-}
+	
+	List<Content> mainContentList();
+}// end of interface
