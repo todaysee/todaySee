@@ -54,12 +54,9 @@
                         <div class="profile-authentication-image">
                             <div class="content-image">
                             
-                            	<!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
-                                </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
+                                <!-- 이미지 링크 -->
+                             	  <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 100px !important;">
                                 </div>
                                 
                             </div>
@@ -88,7 +85,7 @@
                                  
                                  <div class="or-text"><span></span></div> 
                                
-							<button type="button" class="google-btn" name="btn_findEmail" id="btn_findEmail" style="margin-top: 40px !important; margin-bottom: 30px !important;">이메일 찾기 </button>                                
+							<button type="button" class="default-btn" name="btn_findEmail" id="btn_findEmail" style="margin-top: 40px !important; margin-bottom: 30px !important;">이메일 찾기 </button>                                
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
                                         	<a href="/" class="lost-your-password">홈으로 가기  </a>
@@ -113,7 +110,7 @@
         </div>
         <!-- End Preloader Area -->
          
-          <script src="/js/mypageCommunity/jquery.min.js"></script>
+<script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
 <script src="/js/mypageCommunity/jquery-ui.min.js"></script>
@@ -150,7 +147,7 @@
 
 <!-- js추가 -->
  
-    <script src="/js/home/UserLogin.js"></script>
+<script src="/js/home/UserLogin.js"></script>
 
 </body>
 

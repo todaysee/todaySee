@@ -46,4 +46,6 @@ public interface MyPageService {
    // 마이페이지 나의 취향 추천 영상
    public List<Content> userPreference(Integer userNumber);
 
+   // 유저 회원가입 날짜로 부터 몇일인지?
+   public Integer userJoinDate(Integer userNumber);
 }

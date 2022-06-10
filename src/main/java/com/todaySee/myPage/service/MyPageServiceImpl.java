@@ -142,4 +142,9 @@ public class MyPageServiceImpl implements MyPageService{
 		return contentRepository.myPageLikeContentList(genreNumber);
 	}// end of userPreference()
 
+    @Override
+    public Integer userJoinDate(Integer userNumber) {
+        return userRepository.userJoinDate(userNumber);
+    }
+
 }
