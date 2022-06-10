@@ -22,7 +22,7 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/mypage/preLoader.jsp" %>
+<%@ include file="../inculde/home/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->
@@ -151,7 +151,6 @@
 
     let jsonDataCategory = ${categoryList};
     let jsonObjectCategory = JSON.stringify(jsonDataCategory);
-
     let jDataCategory = JSON.parse(jsonObjectCategory);
     let CategoryListName = []; // 배열생성
     let CategoryListValue = [];

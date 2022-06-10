@@ -31,7 +31,6 @@ $('#btn_emailCheck').click(function(){
 	}
 	// 형식에 맞지 않을 때 나오는 문구 
 	if( !RegexEmail.test(userEmail) ){
-		//$('label[for="userEmail"] .error_box').css('color','#ED7A64');
 		$('#userEmail ~ .error_box').html("올바른 이메일 형식이 아닙니다.");
 		return;
 	}
@@ -50,7 +49,6 @@ $('#btn_emailCheck').click(function(){
 	        		$('#userEmail ~ .error_box').html("사용 가능한 이메일입니다.");
 	        		emailCheck = true;
 				}else{
-	        		//$('label[for="memberEmail"] .error_box').css('color','#ED7A64');
 	        		$('#userEmail ~ .error_box').html("사용할 수 없는 이메일입니다.");
 	        		emailCheck = false;
 				}

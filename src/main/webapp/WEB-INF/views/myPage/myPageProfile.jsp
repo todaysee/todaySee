@@ -25,7 +25,7 @@
 <body>
 
 	<!--=========== Loader =============-->
-	<%@ include file="../inculde/mypage/preLoader.jsp"%>
+	<%@ include file="../inculde/home/preLoader.jsp"%>
 	<!--=========== Loader =============-->
 
 	<!--========== Body ==============-->
@@ -69,7 +69,7 @@
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
 									<label>로그인 날짜</label> <input type="text" class="form-control"
-										value="2022-05-15" readonly>
+										value="${user.userLoginDate}" readonly>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">
@@ -129,19 +129,23 @@
 												<div class="">회원님의 정보 수정을 위해 비밀번호를 확인 합니다.</div>
 												<br />
 											</div>
+											 <form id="checkPwd" name="checkPwd" action="/myPage/update" method="get">
 											<div class="row">
 												<div class="col-md-12">
-													<label>비밀번호</label> <input type="password"
+													<label>비밀번호</label> <input type="password" name="myPagePassword" id="myPagePassword"
 														class="form-control">
+														<span class="error_message"></span>
 												</div>
 											</div>
 										</div>
+									
 										<div class="modal-footer">
-											<a href="/myPage/update">
-												<button type="button" class="btn btn-primary">확인</button>
-											</a>
+											
+												<button type="button" name = "btnCheckPwd" id="btnCheckPwd" class="btn btn-primary">확인</button>
+										
 											<button type="button" class="btn btn-secondary"
 												data-bs-dismiss="modal">닫기</button>
+													</form>
 										</div>
 									</div>
 								</div>
@@ -176,5 +180,10 @@
 	<script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 	<script src="/js/mypageCommunity/wow.min.js"></script>
 	<script src="/js/mypageCommunity/main.js"></script>
+	
+	<!-- JS 추가 !  -->
+	<script src="/js/mypageCommunity/password.js"></script>
+	
+	
 </body>
 </html>

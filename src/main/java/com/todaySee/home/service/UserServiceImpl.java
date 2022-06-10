@@ -5,6 +5,9 @@ package com.todaySee.home.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +103,27 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(userVO);
 	}
 
+ // 마이페이지 비밀번호 확인한 후에 정보수정 
+	@Override
+	public UserVO checkMypagePassword(Integer userNumber) {		
+		return userRepository.findById(userNumber).get();
+	}
+
+	//회원탈퇴 
+	@Override
+	public UserVO removalEmail(Integer userNumber) {
+		//회원의 세션 정보로 레코드 검색 
+		UserVO userVO = userRepository.findById(userNumber).get();
+		
+		// 검색한 레코드에 칼럼값을 수정 - 회원의 상태
+		userVO.setUserState(1);
+		
+	
+	return userRepository.save(userVO);
+}
+
+	
+	
 
 }
 

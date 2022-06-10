@@ -16,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -113,7 +116,7 @@ public class MyPageController {
         model.addAttribute("chartReview", chartReviewJson);
         System.out.println(model.addAttribute("chartReview", chartReviewJson));
         
-        //회원별 카테고리 목록
+        //회원별 리뷰 기반하여 카테고리 추출해서 워드클라우드 만들기
         List<HashMap<String, Object>> categoryList = myPageService.reviewRatingCategoryWordCloud((Integer) session.getAttribute("userNumber"));//서비스 리턴
         Gson categoryGson = new Gson();
         JsonArray categoryJArray = new JsonArray();
@@ -231,7 +234,7 @@ public class MyPageController {
         System.out.println("워드클라우드 접속");
         return "/myPage/word";
     }
-
+    
 }
 
 
