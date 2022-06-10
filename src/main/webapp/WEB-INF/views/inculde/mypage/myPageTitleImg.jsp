@@ -8,7 +8,7 @@
         <div class="my-profile-inner-box">
             <div class="profile-cover-image">
                 <div class="containerMyProfileTitleImg">
-                    <img class="img-fluid" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F261F214E565C2E72262FD6" alt="image">
+                    <img class="img-fluid" src="https://mblogthumb-phinf.pstatic.net/MjAxNzExMzBfMTc4/MDAxNTEyMDIxMTMxOTc2.UmV53rFQUZZV3PXRjyabcxG5yVRsH0BUm70TGYUzVrsg.5JLII34U-W5b_ngN_MCx_xNyBAZ3AJW1vCv6Lq9lh8cg.JPEG.allthat_art/windows_xp_bliss-wide.jpg?type=w800" alt="image">
                 </div>
             </div>
         </div>
