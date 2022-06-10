@@ -22,9 +22,15 @@ public interface UserRepository extends CrudRepository<UserVO, Integer> {
 
 	List<UserVO> findByUserNameAndUserTel(String userName, String userTel);
 
+	
+
+	UserVO findByKakao(String id);
+
+
 	@Query(value = "SELECT TIMESTAMPDIFF(day, user_signup_date, now()) FROM user WHERE user_number = :userNumber", nativeQuery = true)
 	Integer userJoinDate(Integer userNumber);
 	
 	
+
 
 }

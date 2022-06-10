@@ -71,7 +71,7 @@ public class HomeServiceImpl implements HomeService{
             try (OutputStream sender = client.getOutputStream();) {
             	System.out.println("전송시작");
             	
-            	// 회원의 아이디를 보낼거니까 int -> String으로 형변환
+            	// 회원의 아이디를 보낼거니까 Integer -> String으로 형변환
                 String msg = String.valueOf(userNumber);
                 
                 // string -> byte 배열 형변환
@@ -176,6 +176,15 @@ public class HomeServiceImpl implements HomeService{
 		PageRequest pageRequest = PageRequest.of(page, 16,Sort.by(Sort.Direction.ASC, "content_number"));
 		
 		return contentRepository.ottContentList(ottNumber, pageRequest);
+	}
+
+	/** 콘텐츠 리스트 랜덤으로 10개 출력
+	 * 		 - 파이썬 연결이 안되어 있을 때 임시로 출력할 콘텐츠 리스트
+	 * @return List<Content>
+	 */
+	@Override
+	public List<Content> mainContentList() {
+		return contentRepository.mainContentList();
 	}
 	
 

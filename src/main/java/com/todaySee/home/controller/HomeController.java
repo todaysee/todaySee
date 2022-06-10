@@ -109,16 +109,24 @@ public class HomeController {
     	
     	// 사용자가 로그인 했는지 확인
     	Integer userNumber = (Integer) session.getAttribute("userNumber");
-    	
+  	
     	// 로그인을 한 상태일 때
     	if(userNumber != null) {
-    		// 사용자 추천 콘텐츠 출력
-    		model.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
+    		
+    		// 파이썬 소켓 연결 유무
+    		if(!homeService.recommendedContentList(userNumber).isEmpty()) {
+    			// 연결이 되어 있을 때 사용자 추천 콘텐츠 출력
+    			model.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
+    		}else {
+    			// 연결이 안됐으면 랜덤 영상 10개 출력
+    			model.addAttribute("RecommendedContentList",homeService.mainContentList());
+    		}
+    	
     	}// end of if
     	
-        return "/home/homeIndex";
+		        return "/home/homeIndex";
       
-    }
+    }//end of homeIndex
 
   
     /** 검색 결과 페이지 - 콘텐츠

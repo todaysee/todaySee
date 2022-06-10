@@ -38,7 +38,7 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 	 * @return List<Content>
 	 */
 	@Query(nativeQuery = true
-			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_poster_images_url<>'none Main img' ORDER BY c.content_release_date DESC LIMIT 50,5")
+			,value="SELECT DISTINCT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_poster_images_url<>'none Main img' ORDER BY c.content_release_date DESC LIMIT 44,5")
 	List<Content> newContent();
 
 	/** 랜덤 장르 콘텐츠 10개씩 출력
@@ -63,7 +63,13 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 					+ "     where c.content_poster_images_url<>'none Main img' AND ct.ott_number =?1 order by rand() limit 10")
 	List<Content> mainOttContentList(Integer ottNumber);
 	
-	//List<Content> findByContentOtt(ContentOtt contentOtt);
+	/** 콘텐츠 리스트 랜덤으로 10개 출력
+	 * 		 - 파이썬 연결이 안되어 있을 때 임시로 출력할 콘텐츠 리스트
+	 * @return List<Content>
+	 */
+	@Query(nativeQuery = true
+			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_poster_images_url<>'none Main img' order by rand() LIMIT 10")
+	List<Content> mainContentList();
 	
 	/** ott별 상세 페이지
 	 * 		- homeList_ott에 출력할 ott별 콘텐츠 검색하여 리스트에 담기
