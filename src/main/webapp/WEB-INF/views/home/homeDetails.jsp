@@ -468,14 +468,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>${content.contentAge}</span>
+												<span>${content.contentAge}세</span>
 											</li>
 											<li><span>영상 시간 :</span>
 												<span>${content.contentRunningTime}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>${content.contentReleaseDate}</span>
+												<span>${content.contentReleaseDate}년</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -489,18 +489,6 @@
 													</div>
 												</span>
 											</li>
-										</ul>
-									</div>
-									<div class="gen-socail-share">
-										<h4 class="align-self-center">공유 :</h4>
-										<ul class="social-inner">
-											<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-											</li>
-											<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-											</li>
-											<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-											<input id="text" type="hidden" value="http://192.168.0.1:8080/details/${content.contentNumber}" style="width:80%" />
-											<li><div id="qrcode" style="width:50px; height:50px;"></div></li>
 										</ul>
 									</div>
 								</div>
@@ -658,15 +646,6 @@
 												<div class="col-xl-6 col-lg-6 col-md-6">
 													<h5 class="gen-more-title">재미있게 보신 작품과 비슷해요</h5>
 												</div>
-												<div class="col-xl-6 col-lg-6 col-md-6 d-none d-md-inline-block">
-													<div class="gen-movie-action">
-														<div class="gen-btn-container text-right">
-															<a href="tv-shows-pagination.html" class="gen-button gen-button-flat">
-																<span class="text">더보기</span>
-															</a>
-														</div>
-													</div>
-												</div>
 											</div>
 											<div class="row">
 												<div class="col-12">
@@ -674,62 +653,32 @@
 														<div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="4"
 															 data-lap_num="3" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
 															 data-loop="false" data-margin="30">
-
+														<c:forEach items="${RecommendedContentList}" var="list">
 															<div class="item">
 																<div
 																		class="movie type-movie status-publish has-post-thumbnail hentry movie_genre-action movie_genre-adventure movie_genre-drama">
 																	<div class="gen-carousel-movies-style-2 movie-grid style-2">
 																		<div class="gen-movie-contain">
 																			<div class="gen-movie-img">
-																				<img src="/images/home/background/asset-5.jpeg" alt="owl-carousel-video-image">
-																				<div class="gen-movie-add">
-																					<div class="wpulike wpulike-heart">
-																						<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-																								type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-																					</div>
-																					<ul class="menu bottomRight">
-																						<li class="share top">
-																							<i class="fa fa-share-alt"></i>
-																							<ul class="submenu">
-																								<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-																								</li>
-																								<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-																								</li>
-																								<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-																							</ul>
-																						</li>
-																					</ul>
-																					<div class="movie-actions--link_add-to-playlist dropdown">
-																						<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-																								class="fa fa-plus"></i></a>
-																						<div class="dropdown-menu mCustomScrollbar">
-																							<div class="mCustomScrollBox">
-																								<div class="mCSB_container">
-																									<a class="login-link" href="register.html">Sign in to add this movie
-																										to a
-																										playlist.</a>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
+																				<img src="${list.contentMainImagesUrl}" alt="${list.contentTitle}">
 																				<div class="gen-movie-action">
-																					<a href="single-movie.html" class="gen-button">
+																					<a href="/details/${list.contentNumber}" class="gen-button">
 																						<i class="fa fa-play"></i>
 																					</a>
 																				</div>
 																			</div>
 																			<div class="gen-info-contain">
 																				<div class="gen-movie-info">
-																					<h3><a href="single-movie.html">The
-																						warrior life</a>
+																					<h3><a href="single-movie.html">${list.contentTitle}</a>
 																					</h3>
 																				</div>
 																				<div class="gen-movie-meta-holder">
 																					<ul>
-																						<li>2hr 00mins</li>
+																						<li>${list.contentRunningTime}</li>
 																						<li>
-																							<a href="action.html"><span>Action</span></a>
+																							<c:forEach items="${list.contentGenre}" var="genre">
+																							<a href="/search/genres?genreNumber=${genre.genre.genreNumber}"><span>${genre.genre.genreName}</span></a>
+																							</c:forEach>
 																						</li>
 																					</ul>
 																				</div>
@@ -739,7 +688,7 @@
 																</div>
 																<!-- #post-## -->
 															</div>
-
+														</c:forEach>
 														</div>
 													</div>
 												</div>
@@ -903,35 +852,6 @@
 <script type="text/javascript" src="/js/qrcode.js"></script>
 <!-- 추가 js -->
 <script>
-	//qr코드 사진의 크기
-	var qrcode = new QRCode(document.getElementById("qrcode"), {
-		width : 600,
-		height : 600
-	});
-	//qr 코드 생성할 글자
-	function makeCode () {
-		var elText = document.getElementById("text");
-		//값이 없으면 에러
-		if (!elText.value) {
-			alert("Input a text");
-			elText.focus();
-			return;
-		}
-
-		qrcode.makeCode(elText.value);
-	}
-	//qr코드 생성
-	makeCode();
-
-	$("#text").
-	on("blur", function () {
-		makeCode();
-	}).
-	on("keydown", function (e) {
-		if (e.keyCode == 13) {
-			makeCode();
-		}
-	});
 
 	// 상단 이미지 유튜브 링크로 변경
 	$('.youtube_btn').click(function(){
@@ -1188,9 +1108,7 @@
 
 	// 리뷰 마음에들어요 (좋아요 숫자 올리기)
 	$('.reviewLikeUp').on('click', function(){
-		// alert('ok');
 		let reviewNumber = $(this).next().val();
-		// alert(reviewNumber + " ::::: " + reviewLike);
 
 		$.ajax({
 			type: "POST",
@@ -1235,6 +1153,7 @@
 			alert('취소되었습니다.');
 		}
 	});
+
 
 </script>
 
