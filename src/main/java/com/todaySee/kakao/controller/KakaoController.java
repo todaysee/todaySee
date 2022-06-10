@@ -51,7 +51,6 @@ public class KakaoController {
 				
 				if (ks.findByKakao(id) == null) {
 					redirect.addFlashAttribute("id",id);
-					redirect.addFlashAttribute("code",code);
 					redirect.addFlashAttribute("email",email);
 					
 					
