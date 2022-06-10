@@ -59,6 +59,10 @@ public class UserVO {
     @Column(name = "user_password",length = 1000)
     String userPassword; // 유저 비밀 번호
     
+    // 마이페이지 
+    @Column(name="user_sign_out", length=1000)
+    String userSignOut; //유저탈퇴 사유 
+    
     
     
     
