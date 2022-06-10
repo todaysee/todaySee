@@ -105,7 +105,28 @@
                                         	</div>
                                         	<div class="or-text"><span></span></div> 
                                         
-                               
+
+                                        	
+                                        	<!-- 이미지 링크 -->
+                                        	<p>
+                                       	
+                                        	<div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
+
+                                  <!--       	<a id="btn-kakao-login" href="kakao/login">
+                                     <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 250px;">
+                                     </a> -->
+                                     
+                                     
+                                     <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e7b755dd375b2a88db6fd8313155c72c&redirect_uri=http://localhost:8080/kakao/login&response_type=code">
+                                     <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 450px; height: 70px">
+                                     </a>
+                                     
+                                    <!--  
+                                     <img src="images/home/login/naver-login.png" alt="naver" style="width: 225px;">
+                              		</div> -->
+
+                                       
+
                             </form>
                         </div>
                     </div>
