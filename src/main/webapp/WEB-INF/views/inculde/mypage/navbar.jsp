@@ -49,7 +49,7 @@
                                         </c:forEach>
                                     </c:otherwise>
                                  </c:choose>
-                                <span class="white_name">${user.userName}</span>
+                                <span class="white_name">${user.userNickname}</span>
                             </div>
                         </div>
                     </div>

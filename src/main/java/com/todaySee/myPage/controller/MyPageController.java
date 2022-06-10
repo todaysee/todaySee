@@ -57,6 +57,9 @@ public class MyPageController {
         model.addAttribute("userCommunity", myPageService.communityCount((Integer) session.getAttribute("userNumber")));
         //리뷰 좋아요 수
         model.addAttribute("userReviewLikeSum", myPageService.userReviewLikeSum((Integer) session.getAttribute("userNumber")));
+        //가입일로 부터 몇 일인지
+        model.addAttribute("userJoinDate", myPageService.userJoinDate((Integer) session.getAttribute("userNumber")));
+        System.out.println(model.getAttribute("userJoinDate")+"날짜");
         //마이페이지 회원정보 불러오기, 이미지 불러오기
         model.addAttribute("user", myPageService.getUserInfo(user));
         MyPageImages myPageImages = new MyPageImages();
