@@ -81,24 +81,34 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
 	@Override
-	public Community communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
+	public Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
 		
+		/*
+		 * Community community = communityRepositroy.findById(communityNumber).get();
+		 * 
+		 * Comments comments = new Comments();
+		 * comments.setCommentsContent(commentsContent); comments.setCommentsLike(0);
+		 * comments.setCommentsState(0);
+		 * 
+		 * UserVO user = new UserVO(); user.setUserNumber(userNumber);
+		 * 
+		 * comments.setUserVO(user); community.setComments((List<Comments>) comments);
+		 * 
+		 * return communityRepositroy.save(community);
+		 */
 		Community community = communityRepositroy.findById(communityNumber).get();
 		
-		List<Comments> c = new ArrayList<Comments>();
+		
 		Comments comments = new Comments();
-		comments.setCommentsContent(commentsContent);
-		comments.setCommentsLike(0);
+		comments.setCommentsContent(commentsContent); comments.setCommentsLike(0);
 		comments.setCommentsState(0);
-		
-		UserVO user = new UserVO();
+		UserVO user = new UserVO(); 
 		user.setUserNumber(userNumber);
+		comments.setUserVO(user); 
+		comments.setCommunity(community);
 		
-		comments.setUserVO(user);
-		c.add(comments);
-		community.setComments(c);
-		
-		return communityRepositroy.save(community);
+		 
+		return commentsRepository.save(comments);
 	}
 }
 

@@ -105,7 +105,7 @@
                                                 <li>${content.content_running_time}</li>
                                                 <li>
                                                     <span>
-                                                    	<a href="/search/genres?genreNumber=1&page=1">
+                                                    	<a href="/search/genres?genreNumber=1">
 		                                                    <c:forEach items="${content.genre_name}" var="genres">
 				                                                    ${genres} 
 		                                                    </c:forEach>
