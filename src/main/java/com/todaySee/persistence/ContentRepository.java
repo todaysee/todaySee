@@ -24,13 +24,6 @@ public interface ContentRepository extends CrudRepository<Content, Integer>{
 			,countQuery = "SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE cg.genre_number =?1 AND c.content_main_images_url <> 'none Main img'")
 	Page<Content> getGenresContentList(Integer genreNumber, Pageable paging);
 	
-	/** 사용자 추천 콘텐츠 화면에 출력
-	 * @param contentNumber (컨텐츠 번호)
-	 * @return List<Content> 
-	 */
-	@Query(nativeQuery = true
-			,value="SELECT c.* FROM contentgenre cg INNER JOIN content c ON c.content_number = cg.content_number INNER JOIN genre g ON g.genre_number = cg.genre_number WHERE c.content_number =?1")
-	Content selectContent(Integer contentNumber);
 	
 	/**	신작 콘텐츠 출력
 	 * 		- homeIndex에 출력할 최신 콘텐츠 검색하여 리스트에 담기

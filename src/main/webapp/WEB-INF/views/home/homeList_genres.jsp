@@ -143,7 +143,7 @@
                                                 <li>
                                                     <span>
 	                                                    <c:forEach items="${content.contentGenre}" var="genres">
-			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}&page=1">${genres.genre.genreName}</a>   
+			                                                    <a href="/search/genres?genreNumber=${genres.genre.genreNumber}">${genres.genre.genreName}</a>   
 	                                                    </c:forEach>
                                                     </span>
 
