@@ -2,6 +2,7 @@ package com.todaySee.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -43,6 +44,7 @@ public class UserVO {
     Integer userTitleProfileYn; //프로필 타이틀 이미지 물어보는 컬럼
 
 
+    //@UpdateTimestamp
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "user_login_date")
@@ -56,11 +58,22 @@ public class UserVO {
     String userTel; // 유저 전화 번호
     @Column(name = "user_password",length = 1000)
     String userPassword; // 유저 비밀 번호
+    
+    
+    
+    
     /*
      * 문혜진 추가 role : 권한부여 
      * EnumType.STRING : 권한에 해당하는 값이 문자열로 저장. 
-     */
+	 
+     
+    @Column(name = "user_role")
+    @Enumerated(EnumType.STRING)
+    Role role;
+*/
+  
     
+
 	/*
 	 * @Column(name = "user_role")
 	 * 

@@ -459,10 +459,10 @@
 									<div class="gen-extra-data">
 										<ul>
 											<li><span>장르 :</span>
-												<c:forEach var="genre" items="${Genre}">
+												<c:forEach var="genre" items="${genreList}">
 												<span>
-                                                        <a href="/${genre}">
-                                                            ${genre} </a>
+                                                        <a href="/search/genres?genreNumber=${genre.genreNumber}">
+                                                            ${genre.genreName} </a>
 												</span>
 												</c:forEach>
 											</li>
@@ -1104,7 +1104,7 @@
 	// 리뷰 submit Ajax
 	$('#submit').on('click', function(e){
 		e.preventDefault();
-		let user = ${sessionScope.userNumber}
+
 		let reviewContent = $('.reviewContent').val();
 		let reviewSpoiler = 0;
 		if($('.reviewSpoiler').is(':checked')) {
@@ -1118,7 +1118,6 @@
 				type: "POST",
 				url: "/details/reviewAjax",
 				data: {
-					userNumber : user,
 					reviewContent : reviewContent,
 					reviewSpoiler : reviewSpoiler,
 					contentNumber : contentNumber,

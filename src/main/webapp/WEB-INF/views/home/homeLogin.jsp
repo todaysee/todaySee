@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="userEmail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 
@@ -12,7 +13,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Login</title>
+	<title>오늘 이거 볼래 ? | 로그인 </title>
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -69,26 +70,31 @@
                         <div class="login-form">
                             <div style="text-align:center"><h2>Login</h2></div>
         
-                            <form action="/login" method="post">
+                            <form action="/successLogin" method="post" id="loginFrm" name="loginFrm">
                             
                                 <div class="form-group">
                                     <label> 이메일 </label>
-                                    <input type="text" name="userEmail"  value="moon@gmail.com" class="form-control">
+                                    <input type="text" name="userEmail"  id="userEmail"  value="${ cookie.checkEmail.value}"class="form-control">
+                                	<span class="error_message"></span>
                                 </div>
         
                                 <div class="form-group">
                                     <label> 비밀번호 </label>
-                                    <input type="password" name="userPassword" class="form-control">
+                                    <input type="password" name="userPassword" id="userPassword" class="form-control">
+                                	<span class="error_message"></span>
                                 </div>
                               		
                                         	<div class="lost-your-password-wrap">
-                                        	<div style="float:left; color:grey;">
-                                        	<input type="checkbox" id="chekcBox" name="checkBox">
-                                        <label for="chekcBox">이메일 기억하기</label>
-                                        
+                                        	 <div style="float:left; color:grey;">
+                                       <userEmail:if test="${not empty cookie.checkEmail.value }">
+                                        					<userEmail:set value="checked" var="checked"/>
+                                        	</userEmail:if>
+                                        		<input type="checkbox" id="emailCheckBox" name="emailCheckBox" value="true" ${checked }/>
+                                        		 	<label for="emailCheckBox">이메일 기억하기</label>
+                                       	
                                         	</div>
                                        	
-                                <button type="submit" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
+                                <button type="button" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
                                  <div class="or-text"><span></span></div> 
                                                                
                                 		<div class="lost-your-password-wrap">
@@ -106,7 +112,9 @@
                                         	
                                         	<!-- 이미지 링크 -->
                                         	<p>
+                                       	
                                         	<div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
+
                                   <!--       	<a id="btn-kakao-login" href="kakao/login">
                                      <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 250px;">
                                      </a> -->
@@ -119,6 +127,7 @@
                                     <!--  
                                      <img src="images/home/login/naver-login.png" alt="naver" style="width: 225px;">
                               		</div> -->
+
                                        
                             </form>
                         </div>
@@ -164,6 +173,10 @@
 <script src="/js/home/slick.min.js"></script>
 <script src="/js/home/streamlab-core.js"></script>
 <script src="/js/home/script.js"></script>
+
+<!-- js추가 -->
+ 
+<script src="/js/home/UserLogin.js"></script>
 
 
 </body>

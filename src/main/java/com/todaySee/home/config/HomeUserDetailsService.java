@@ -1,3 +1,4 @@
+
 package com.todaySee.home.config;
 
 import java.util.Optional;
@@ -14,7 +15,7 @@ import com.todaySee.persistence.UserRepository;
 /*
  *  작성자 : 문혜진
  *  역할 : UserDetails 객체에 실제 데이터베이스에서 검색한 사용자 정보를 저장.
- */
+*/
 
 @Service
 public class HomeUserDetailsService  {
@@ -37,3 +38,4 @@ public class HomeUserDetailsService  {
 	
 
 }
+ 

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
+import com.todaySee.home.service.UserService;
 import com.todaySee.myPage.javaClass.MyPageImages;
 import com.todaySee.persistence.ImagesRepository;
 import com.todaySee.myPage.service.MyPageImagesService;
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,6 +29,9 @@ public class MyPageController {
 
     @Autowired
     MyPageService myPageService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     MyPageImagesService myPageImagesService;
@@ -42,7 +49,8 @@ public class MyPageController {
 
         System.out.println("로그인 세션 테스트 : " + session.getAttribute("userNumber"));
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
-        
+        //마이페이지 오면
+        //userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
         //리뷰 카운트
         model.addAttribute("userReview", myPageService.reviewCount((Integer) session.getAttribute("userNumber")));
         //커뮤니티 작성글 카운트
@@ -86,7 +94,7 @@ public class MyPageController {
     public String myPageLike(HttpSession session, UserVO user, Model model) {
 
         user.setUserNumber((Integer) session.getAttribute("userNumber"));
-
+        
         //리스트 담기
         List<HashMap<String, Object>> list = myPageService.chartReviewRating((Integer) session.getAttribute("userNumber"));//서비스 리턴
         Gson chartReviewGson = new Gson();
@@ -108,7 +116,7 @@ public class MyPageController {
         model.addAttribute("chartReview", chartReviewJson);
         System.out.println(model.addAttribute("chartReview", chartReviewJson));
         
-        //회원별 카테고리 목록
+        //회원별 리뷰 기반하여 카테고리 추출해서 워드클라우드 만들기
         List<HashMap<String, Object>> categoryList = myPageService.reviewRatingCategoryWordCloud((Integer) session.getAttribute("userNumber"));//서비스 리턴
         Gson categoryGson = new Gson();
         JsonArray categoryJArray = new JsonArray();
@@ -136,8 +144,11 @@ public class MyPageController {
         model.addAttribute("tittleImages", myPageImages.tittleImages(tittleImages));
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
-
-
+        
+        
+        // 마이페이지 - 추천 영상 출력
+        model.addAttribute("myPageLikeContentList", myPageService.userPreference((Integer) session.getAttribute("userNumber")));
+        
         return "/myPage/myPageLike";
     }
 
@@ -155,7 +166,7 @@ public class MyPageController {
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
 
-
+        
         return "/myPage/mypageWriteBoardCommnetsList";
     }
 
@@ -223,7 +234,7 @@ public class MyPageController {
         System.out.println("워드클라우드 접속");
         return "/myPage/word";
     }
-
+    
 }
 
 

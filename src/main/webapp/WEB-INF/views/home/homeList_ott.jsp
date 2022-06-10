@@ -66,7 +66,7 @@
                         <div class="gen-breadcrumb-container">
 
                             <ol class="breadcrumb">
-                               <li value="1"><a href="/search/ott?ottNumber=1">넷플릭스</a></li>
+                               <li value="1"><a href="/search/ott?ottNumber=1" class="firstOtt">넷플릭스</a></li>
                                 <li><span>&#124;</span></li>
                                 <li value="2"><a href="/search/ott?ottNumber=2">디즈니플러스</a></li>
                                 <li><span>&#124;</span></li>
@@ -145,7 +145,7 @@
 	                    <div class="gen-load-more-button">
 	                        <div class="gen-btn-container loadMoreBtn">
 	                            <button type="button" id="genresLoadMoreBtn" class="gen-button gen-button-loadmore">
-	                                <span class="button-text">Load More</span>
+	                                <span class="button-text">더 보기</span>
 	                                <span class="loadmore-icon" style="display: none;"><i
 	                                        class="fa fa-spinner fa-spin"></i></span>
 	                            </button>
@@ -185,13 +185,23 @@
 
 <script src="/js/homeList/homeList_ott.js"></script>
 <script type="text/javascript">
+
+// url에 따라서 카테고리 색 변경
 let urlParams = new URL(location.href).searchParams;
 let ottNumber = urlParams.get('ottNumber');
 $('.breadcrumb > li').each(function(index, element){
 	if($(this).val() == ottNumber){
 		$(this).children('a').css('color','red');
 	}//end of if
-})
+})// end of $('.breadcrumb > li').each()
+
+// url에 ott번호가 없을 때 첫번째 카테고리에 색변경
+if(ottNumber == null){
+	$('.firstOtt').css('color','red');
+}// end of if
+
+
+
 
 
 </script>

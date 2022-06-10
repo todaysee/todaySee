@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title> ID 찾기 </title>
+	<title> 오늘 이거 볼래 ? | 이메일 찾기 </title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">

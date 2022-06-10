@@ -1,7 +1,9 @@
 package com.todaySee.home.controller;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.UserService;
@@ -43,15 +47,16 @@ public class UserController {
     }
     
     @PostMapping("/signUp")
-    public String signUp(UserVO user) {
+    public String signUp(UserVO user, RedirectAttributes re) {
     	userService.create(user);
-        return "redirect:/complete?userNickname="+user.getUserNickname();
+    	re.addAttribute("userNickname", user.getUserNickname());
+        return "redirect:/complete";
     }
     
     
     //회원가입 완료 페이지
     @GetMapping("/complete")
-    public String homeSignUpComplete(String userNickname, Model m) {
+    public String homeSignUpComplete(@RequestParam("userNickname") String userNickname, Model m) {
     	m.addAttribute("userNickname", userNickname);
         return "/home/homeSignUpComplete";
     }
@@ -59,38 +64,31 @@ public class UserController {
     //로그인 페이지
     @GetMapping("/login")
     public String homeLogin() {
-    	System.out.println("GetMapping");
-        return "/home/homeLogin";
+    	 return "/home/homeLogin";
     }
     
-    @PostMapping("/login")
+    
+    @PostMapping("/successLogin")
     public String login(String userEmail, String userPassword, Model model,HttpSession session) {
-    	System.out.println("PostMapping");
-        UserVO findUser = userService.login(userEmail, userPassword);
-    	if (findUser != null
-    		) {
-    		model.addAttribute("user", findUser);
-    		session.setAttribute("userNumber", findUser.getUserNumber());
-    		session.setAttribute("userNickname", findUser.getUserNickname());
-    		session.setMaxInactiveInterval(60*60*24);
-    		System.out.println("세션"+session.getAttribute("userNumber"));
+    	System.out.println("PostMapping"+session.getAttribute("userNumber"));
+
     		return "redirect:/";
     	
-    	} else {
+    }
+
+
+     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
+    @GetMapping("/userCheck")
+    public String userCheck(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+    	if(session.getAttribute("userNumber")==null) {
     		return "/home/homeLogin";
+    	}else if(Integer.valueOf(session.getAttribute("admin").toString()) == 0) {
+    		return "redirect:myPage/profile";
+    	}else {
+    		return "redirect:/admin";
     	}
     }
     
- 
-     // 로그인 성공 후에  Index Page에서 session값을 받아 myPage Profile로 이동 
-    @GetMapping("/userCheck")
-    public String userCheck(HttpSession session) {
-    	if(session.getAttribute("userNumber")==null) {
-    		return "/home/homeLogin";
-    	}else {
-    		return "redirect:myPage/profile";
-    	}
-    }
     
   // 로그아웃
     @GetMapping("/userLogout")
@@ -125,7 +123,49 @@ public class UserController {
 
     //비밀번호 재설정 페이지
     @GetMapping("/homeResettingPwd")
-    public String homeResettingPwd() {
+    public String homeResettingPwd(UserVO user, Model m, HttpSession session) {
+    	m.addAttribute("userEmail", user.getUserEmail());
     	return "/home/homeResettingPwd";
+    	
     }
-}
+    
+ 
+    @PostMapping("/updatingPwd")
+    public String updatingPwd(UserVO user) {
+    	userService.updatingPwd(user);
+    	return "redirect:/login";
+    }
+    
+    //회원탈퇴 
+    @PostMapping("/completeSignOut")
+    public String completeSignOut(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
+    	userService.removalEmail((Integer)session.getAttribute("userNumber"));
+    	
+    	// 쿠키 삭제 
+		Cookie[] getCookie = request.getCookies();
+		if(getCookie != null) {
+			for(Cookie c : getCookie) {
+				String value=c.getValue();
+				
+				if(value.equals(session.getAttribute("userNumber"))) {
+					Cookie deleteEmail=new Cookie("userEmail", null);
+					deleteEmail.setMaxAge(0);
+					response.addCookie(deleteEmail);
+				} 
+			} 
+		} 
+		
+		System.out.println(session.getAttribute("userNumber") + "님 회원 탈퇴 성공");
+		HttpSession ses = request.getSession();
+		
+		ses.invalidate();
+		
+    	
+    		return "redirect:/";
+    }
+
+
+    
+    }
+ 
+ 

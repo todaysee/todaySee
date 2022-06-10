@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>회원가입</title>
+	<title>오늘 이거 볼래 ? | 회원가입</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -138,7 +138,7 @@
                                 <div class="remember-me-wrap">
                                    		<input type="checkbox" id="checkBox" name="checkBox">
                                    		
-                                        <label for="checkBox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
+                                        <label for="checkBox" style="float: right;">이용약관에 동의합니다.</label>
                                         <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
@@ -209,7 +209,7 @@
 
 <!-- js추가 -->
  
-    <script src="/js/home/UserLogin.js"></script>
+<script src="/js/home/UserLogin.js"></script>
 
 
 </body>

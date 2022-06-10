@@ -311,7 +311,7 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/mypage/preLoader.jsp" %>
+<%@ include file="../inculde/home/preLoader.jsp"%>
 <!--=========== Loader =============-->
 
 <!--========== Body ==============-->
@@ -370,7 +370,8 @@
 							<p>${content.contentGenre}</p>
 
 							<div class="events-footer d-flex justify-content-between align-items-center">
-								<a href="#" class="default-btn delete-btn">리스트에서 삭제</a>
+                                <input type="hidden" value="${content.bookmarkNumber}">
+								<a class="default-btn btnContentDel">리스트에서 삭제</a>
 								<span>${content.contentOtt}</span>
 							</div>
 						</div>
@@ -421,7 +422,7 @@
                     </div>
                     <hr>
                     <div class="col-md-5 ms-auto padding-8">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                         <button type="submit" id="bookmarkUpdate" class="btn btn-primary">수정하기</button>
                     </div>
 
@@ -509,6 +510,35 @@
         * 즐겨찾기 상태가 1일 경우 체크된 상태여야하고, 0일경우 체크해제된 상태여야함 */
         if(bookmarkState == 1) {
             $('#bookmarkState').prop('checked', true);
+        }
+    });
+
+    // 해당 영상을 즐겨찾기에서 삭제
+    $('.btnContentDel').on('click', function(){
+        let num = $(this).prev().val();
+
+        let bookmarkNum = ${bookmark.bookmarkNumber}
+
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $.ajax({
+                type:"POST",
+                url: "/myPage/bookMarkDelContent",
+                data: {
+                    contentBookmarkNumber : num,
+                    bookmarkNumber : bookmarkNum
+                },
+                success: function(data){
+                    location.href = "/myPage/bookMark/" + bookmarkNum;
+                    alert('삭제되었습니다.');
+                },
+                error: function(err){
+                    alert('삭제 실패!');
+                    console.log('선택영상 삭제 실패 : ', err);
+                }
+            });
+
+        } else {
+            alert('취소되었습니다.');
         }
     });
 

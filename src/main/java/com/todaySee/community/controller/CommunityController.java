@@ -102,5 +102,7 @@ public class CommunityController {
         //해결을 위해서 받은 인자를 URLEncoder로 인코딩
         return "redirect:/community/"+encodedParam;
     }
+    
+
 
 }
