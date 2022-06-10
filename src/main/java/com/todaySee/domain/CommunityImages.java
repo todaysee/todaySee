@@ -30,8 +30,4 @@ public class CommunityImages {
     @Column(name = "images_community_upload_date")
     Date imagesCommunityUploadDate; // 파일 저장날짜
 
-    @ManyToOne // 다:1
-    @JoinColumn(name="community_number")
-    private Community community;
-
 }
