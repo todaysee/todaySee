@@ -7,7 +7,6 @@ let warning = "비밀번호를 입력해주세요";
 
 let pwdCheck = false;
 $("#btnCheckPwd").click(function(){
-	alert("어젯밤에 우리 아빠가")
 	let userPassword = $('#myPagePassword').val();
 	
 	if(userPassword ==''){
@@ -38,8 +37,6 @@ $("#btnCheckPwd").click(function(){
 	
 	
 	$('#btnSignOut').click(function(){
-		alert("어젯밤에 우리 아빠가")
-	
 	let SignOutPwd = $('#SignOutPwd').val();
 	
 	if(userPassword ==''){

@@ -72,6 +72,7 @@ public class UserRestController {
     		 session.setAttribute("admin", user.getUserAdmin());
     		 session.setMaxInactiveInterval(60*60*24);
     		 //로그인 할때 마다 가입일짜 업데이트
+    		 
     		 if(emailCheckBox) {
     			 // 체크박스에 체크가 되어있다면 
     			Cookie[] getCookie = request.getCookies();

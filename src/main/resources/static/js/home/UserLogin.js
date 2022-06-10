@@ -26,6 +26,7 @@ $('#btn_emailCheck').click(function(){
 	if(userEmail == ''){
 
 		$('#userEmail ~ .error_box').html(blank);
+		$('#userEmail').focus();
 		return false;
 
 	}
@@ -45,7 +46,6 @@ $('#btn_emailCheck').click(function(){
     		
     		// 중복 검사 후 나오는 결과 에러박스에 출력
     		if(result == 'Y'){
-	        		//$('label[for="memberEmail"] .error_box').css('color','#4ABA99');
 	        		$('#userEmail ~ .error_box').html("사용 가능한 이메일입니다.");
 	        		emailCheck = true;
 				}else{

@@ -43,10 +43,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO login(String userEmail, String userPassword){
 		UserVO findUser = userRepository.findByUserEmail(userEmail);
-		if(encoder.matches(userPassword, findUser.getUserPassword())) {
-			return findUser;
+		if(findUser == null) {
+			return null;
+		}else if(!encoder.matches(userPassword, findUser.getUserPassword())) {
+			return null;
+	}else {
+		return findUser;
 	}
-		return null;
 	}
 	
 	//email 중복체크 
