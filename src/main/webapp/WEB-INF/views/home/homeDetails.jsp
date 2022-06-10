@@ -468,14 +468,14 @@
 											</li>
 											<li>
 												<span>연령등급 :</span>
-												<span>${content.contentAge}</span>
+												<span>${content.contentAge}세</span>
 											</li>
 											<li><span>영상 시간 :</span>
 												<span>${content.contentRunningTime}</span>
 											</li>
 											<li>
 												<span>영상 등록 년도 :</span>
-												<span>${content.contentReleaseDate}</span>
+												<span>${content.contentReleaseDate}년</span>
 											</li>
 											<li>
 												<span>플랫폼 :</span>
@@ -682,37 +682,6 @@
 																		<div class="gen-movie-contain">
 																			<div class="gen-movie-img">
 																				<img src="/images/home/background/asset-5.jpeg" alt="owl-carousel-video-image">
-																				<div class="gen-movie-add">
-																					<div class="wpulike wpulike-heart">
-																						<div class="wp_ulike_general_class wp_ulike_is_not_liked"><button
-																								type="button" class="wp_ulike_btn wp_ulike_put_image"></button></div>
-																					</div>
-																					<ul class="menu bottomRight">
-																						<li class="share top">
-																							<i class="fa fa-share-alt"></i>
-																							<ul class="submenu">
-																								<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-																								</li>
-																								<li><a href="#" class="facebook"><i class="fab fa-instagram"></i></a>
-																								</li>
-																								<li><a href="#" class="facebook"><i class="fab fa-twitter"></i></a></li>
-																							</ul>
-																						</li>
-																					</ul>
-																					<div class="movie-actions--link_add-to-playlist dropdown">
-																						<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-																								class="fa fa-plus"></i></a>
-																						<div class="dropdown-menu mCustomScrollbar">
-																							<div class="mCustomScrollBox">
-																								<div class="mCSB_container">
-																									<a class="login-link" href="register.html">Sign in to add this movie
-																										to a
-																										playlist.</a>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
 																				<div class="gen-movie-action">
 																					<a href="single-movie.html" class="gen-button">
 																						<i class="fa fa-play"></i>
@@ -1188,9 +1157,7 @@
 
 	// 리뷰 마음에들어요 (좋아요 숫자 올리기)
 	$('.reviewLikeUp').on('click', function(){
-		// alert('ok');
 		let reviewNumber = $(this).next().val();
-		// alert(reviewNumber + " ::::: " + reviewLike);
 
 		$.ajax({
 			type: "POST",
@@ -1235,6 +1202,7 @@
 			alert('취소되었습니다.');
 		}
 	});
+
 
 </script>
 
