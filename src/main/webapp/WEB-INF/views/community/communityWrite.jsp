@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -138,18 +139,16 @@
                             <div class="post-body">
                                 <p>${board.communityContent}</p>
                                 <div class="post-image">
-                                    <img src="/images/mypageCommunity/news-feed-post/post-2.jpg" alt="image">
+                                    <img src="${board.imagesCommunityUrl }" alt="image">
                                 </div>
-                                <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+                                <ul class="post-meta-wrap d-flex justify-content-between align-items-center ulTag">
                                     <li class="post-react">
                                         <button class="community_like">
-                                            <i class="flaticon-like"></i><span>Like</span> <span
-                                                class="number">3 </span>
+                                            <i class="flaticon-like"></i><span>Like</span> <span class="number LikeCount">${board.communityLike } </span>
                                         </button>
                                     </li>
-                                    <li class="post-comment"><a href="#"><i
-                                            class="flaticon-comment"></i><span>Comment</span> <span
-                                            class="number">0 </span></a></li>
+                                    <li class="post-comment"><i
+                                            class="flaticon-comment"></i><span>Comment</span> <span class="number commentCount">${fn:length(board.comments)} </span></li>
                                     <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>Share</span>
                                         <span class="number">0 </span></a></li>
                                     <li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal"
@@ -158,23 +157,12 @@
                                     </a></li>
                                 </ul>
                                 <div class="comments">
-                                    <div class="nickname">닉네임</div>
-                                    <div class="comments_content">댓글내용</div>
+	                                <c:forEach items="${board.comments }" var="comment">
+	                                    <div class="nickname">${comment.userVO.userNickname}</div>
+	                                    <div class="comments_content">${comment.commentsContent }</div>
+	                                </c:forEach>
                                 </div>
 
-
-                                <form class="post-footer">
-                                    <!-- <div class="footer-image">
-                                        <a href="#"><img src="/images/mypageCommunity/user/user-2.jpg"
-                                                         class="rounded-circle" alt="image"></a>
-                                    </div> -->
-                                    <!-- <div class="form-group">
-                                        <textarea name="message" class="form-control comments_keypress" id="comments_keypress"
-                                                  placeholder="댓글을 적어주세요."></textarea>
-                                                  <button type="submit" class="send-btn d-inline-block">Send</button>
-
-                                    </div> -->
-                                </form>
                                 <form class="d-flex align-items-center">
                                     <input type="hidden" class="communityNumber" value="${board.communityNumber }"/>
                                     <input type="hidden" class="userNumber" value="${sessionScope.userNumber }"/>
@@ -284,11 +272,48 @@
 
 
         $('#uploadBtn').click(function () {
-            alert('전송!')
             uploadFile();
+           	location.reload();
         });
-
-
+	
+        // 좋아요 클릭 이벤트
+		$('.community_like').click(function(){
+			 
+			// 좋아요를 클릭한 유저의 번호
+			let userNumber = $(this).parents().siblings('.d-flex.align-items-center').children('.userNumber').val()
+			
+			// 좋아요 클릭한 게시글의 번호
+			let communityNumber = $(this).parents().siblings('.d-flex.align-items-center').children('.communityNumber').val()
+			
+			// 현재 좋아요 개수
+			let LikeCountInteger = parseInt($(this).children('.LikeCount').html())
+			let LikeCount = $(this).children('.LikeCount')
+			
+			$.ajax({
+	                type:'get',
+	                url:"/communityCommunityLike",
+	                data:{
+	                    communityNumber : communityNumber
+	                },
+	                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+	                success : function(result){
+	                	if(result == 'N'){
+	                		console.log("좋아요 이벤트 실패")
+	                	}else{
+	                		console.log("좋아요 이벤트 성공")
+	                		console.log(LikeCountInteger)
+	                		LikeCount.html(LikeCountInteger+1)
+	                		
+	                	}//end of if
+	                },
+	                error : function(e){
+	                    console.log("ERROR: ", e);
+	                    alert('실패')
+	                }
+	            });// end of Ajax
+			
+		});// end of $('.community_like').click()
+		
         // 댓글 작성 버튼을 클릭 시 DB 입력 + 화면에 출력
         $('.commentsbtn').click(function(){
 
@@ -300,10 +325,15 @@
 
             // 댓글 내용
             let commentsContent = $(this).siblings('#commentsbox').val()
+            let commentsContent2 = $(this).siblings('#commentsbox')
 
             // 댓글을 작성한 게시글의 communityNumber
             let communityNumber = $(this).siblings('.communityNumber').val()
 
+            // 댓글 작성 시 개수 늘리기
+            let commentCountInteger = parseInt($(this).parent().siblings('.ulTag').children('.post-comment').children('.commentCount').html())
+            let commentCount = $(this).parent().siblings('.ulTag').children('.post-comment').children('.commentCount')
+            
             // 작성한 댓글을 화면에 출력할 위치
             const list = $(this).parent().siblings('.comments')
 
@@ -321,6 +351,10 @@
                     let content =  ' <div class="nickname">'+ nickname + '</div>'
                         + ' <div class="comments_content">' + commentsContent + '</div>'
                     list.append(content);
+                    commentsContent2.val("")
+                    
+                    // 댓글 작성 시 개수 +1 해주기
+                    commentCount.html(commentCountInteger+1)
                 },
                 error : function(e){
                     console.log("ERROR: ", e);
