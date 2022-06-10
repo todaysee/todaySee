@@ -7,6 +7,8 @@ import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.DetailsService;
 import com.todaySee.home.service.HomeService;
+import com.todaySee.myPage.javaClass.MyPageImages;
+import com.todaySee.persistence.ImagesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class DetailsController {
 
     @Autowired
     private HomeService homeService;
+
+    @Autowired
+    private ImagesRepository myPageImgRepository;
 
     /**
      * 컨텐츠 번호에 따른 영화 상세 페이지
@@ -59,6 +64,10 @@ public class DetailsController {
                 // 연결이 안됐으면 랜덤 영상 10개 출력
                 model.addAttribute("RecommendedContentList",homeService.mainContentList());
             }
+
+            MyPageImages myPageImages = new MyPageImages();
+            List<Object[]> profileImages = myPageImgRepository.profileImages(userNumber);
+            model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
         }
 
         /* 컨텐츠 상세 내용 가져오기 */

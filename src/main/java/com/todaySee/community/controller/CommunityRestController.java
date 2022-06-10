@@ -20,7 +20,7 @@ public class CommunityRestController {
 	// 댓글 작성
     @PostMapping("/communityCommentsInsert")
     public String communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
-    Community co = communityService.communityCommentsInsert(commentsContent, userNumber, communityNumber);
+    Comments co = communityService.communityCommentsInsert(commentsContent, userNumber, communityNumber);
     
     if(co==null) {
     	System.out.println("댓글입력실패");
