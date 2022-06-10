@@ -37,9 +37,19 @@ public class Community {
     @Column(length = 100, name="community_category")
     String communityCategory; // 게시글 카테고리 이름
 
+    @Column(name = "images_community_url", length = 3000)
+    String imagesCommunityUrl;
+    @Column(name = "images_community_file_name", length = 3000)
+    String imagesCommunityFileName; // 원본 파일명
+    @Column(name = "images_community_file_rename", length = 3000)
+    String imagesCommunityFileRename; // 수정된 파일명
+
     @ManyToOne // 1:다
     @JoinColumn(name="user_number")
     private UserVO user;
     
+    @OneToMany
+    @JoinColumn(name="community_number")
+    List<Comments> comments;
 
 }

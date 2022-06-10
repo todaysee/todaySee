@@ -17,11 +17,11 @@ public interface CommunityService {
 
     List<Genre> getGenreList(Genre genre);
 
-    void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent);
+    void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent, String fileNameText);
 
     List<Community> getCommunityBoardList(String communityCategory);
 
     void saveImagesFiles(MultipartFile files);
     
-    Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber);
+    Community communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber);
 }
