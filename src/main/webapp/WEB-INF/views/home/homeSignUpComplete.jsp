@@ -55,12 +55,12 @@
                             <div class="content-image">
                             
                             	<!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
+                                <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 45px !important; 
+                                border-bottom-style: solid !important; border-bottom-width: 0px !important; margin-bottom: 50px !important;">
                                 </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
-                                </div>
+                                
+                                 
                                 
                             </div>
                         </div>
@@ -81,16 +81,14 @@
         
                                  
                                  <form>
-                                 <div class="row" style="margin-left: 40px !important;">
+                                  <div class="row" style="margin-left: 40px !important; color: white;"> 
                                  
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; background-color;"> <a href="/">메인화면</a> </button>                                
+								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; color: white;"> <a href="/">메인화면</a> </button>                                
 								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"><a href="/login"> 로그인 </a></button>  
-								                                
+								                   
 								                               
-								</div>
-                                 
-           
-                            </form>
+								 </div>
+                            </form>  
                         </div>
                     </div>
                 </div>
