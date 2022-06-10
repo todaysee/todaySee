@@ -514,7 +514,17 @@
 													<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
 														<div class="row">
 															<div class="col-xl-1 col-lg-1 col-md-1">
-																<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+																<c:set var="userProfileYn" value="${user.userProfileYn}"/>
+																<c:choose>
+																	<c:when test="${userProfileYn eq '0'}">
+																		<a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" class="rounded-circle" alt="image"></a>
+																	</c:when>
+																	<c:otherwise>
+																		<c:forEach items="${profileImages}" var="img">
+																			<a><img src="${img.imagesUrl}" class="rounded-circle" alt="image"></a>
+																		</c:forEach>
+																	</c:otherwise>
+																</c:choose>
 															</div>
 															<div class="send-content col-xl-3 col-lg-3 col-md-3">
 																<h3>
@@ -555,7 +565,15 @@
 															<div class="padding-4 moreReview">
 																<div class="row">
 																	<div class="col-xl-1 col-lg-1 col-md-1">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+																		<c:choose>
+																			<c:when test="${review.userProfileYn eq '0'}">
+																				<a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" class="rounded-circle" alt="image"></a>
+																			</c:when>
+																			<c:otherwise>
+																				<a><img src="${review.userProfileImg}" class="rounded-circle" alt="image"></a>
+																			</c:otherwise>
+																		</c:choose>
+
 																	</div>
 																	<div class="send-content col-xl-3 col-lg-3 col-md-3">
 																		<h3>
@@ -593,15 +611,17 @@
 																					</a>
 																				</c:if>
 																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
-																				<c:if test="${not empty sessionScope.userNumber}">
+																				<c:if test="${review.userNumber ne sessionScope.userNumber}">
 																					<a type="button" class="gen-button-like reviewLikeUp" data-bs-toggle="modal" data-bs-target="#modalReport">
 																						<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
 																					</a>
 																				</c:if>
 																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
+																				<c:if test="${review.userNumber ne sessionScope.userNumber}">
 																				<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																				</a>
+																				</c:if>
 																			</div>
 																		</div>
 																	</div>
@@ -861,7 +881,6 @@
 			url: "/details/Ajax",
 			data: {contentNumber: contentNum}, /* 영상번호를 파라메터로 보내기 */
 			success: function(result){ // 돌아오는 데이터가 유튜브 링크
-				// alert('성공');
 				console.log(result);
 				if(result != "noYoutubeLink") { /* 유튜브 링크가 있을 경우 */
 					$('#change').empty(); /* id=change 아래 요소를 모두 삭제 */
@@ -870,7 +889,6 @@
 					$('#change').append('<iframe class="youtube" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 					$('.youtube').attr('src', result);
 				} else { /* 유튜브 링크가 없을 경우 */
-					// alert('유튜브 링크가 없습니다.');
 					$('#noYoutube').empty(); /* id=noYoutube 아래 버튼만 숨김 */
 					/* id=noYoutube 아래에 유튜브 링크가 없음을 1초 보여주고 1초 딜레이 1초 후 사라지게 함*/
 					$('#noYoutube').append('<h3>유튜브 링크가 없습니다.</h3>').fadeIn(1000).delay(1000).fadeOut(1000);
@@ -901,7 +919,6 @@
 
 	// 신고 모달 띄우기
 	$('.myModal').on('click', function () {
-		//$('#modalReport').modal('show');
 		let reviewNumber = $(this).prev().val();
 		// 해당 댓글 내용, 유저 이름 불러오기 - AJAX
 		$.ajax({
@@ -925,7 +942,6 @@
 
 	// 신고 등록
 	$('#reportInsertReview').on('click', function(){
-		// alert('ok');
 		let reviewReportContent = $('.reportContent option:selected').val();
 		let reportReviewNumber = $('#reportReviewNumber').val();
 
@@ -938,8 +954,9 @@
 				reportReviewNumber : reportReviewNumber
 			},
 			success: function (value){
-				alert('신고 등록 성공!');
+				// alert('신고 등록 성공!');
 				console.log(value);
+				location.href="/details/${content.contentNumber}";
 			},
 			error: function(err) {
 				alert('신고 등록 오류!!');
@@ -956,7 +973,6 @@
 
 	// AJAX 새로운 즐겨찾기 추가
 	$('#bookmarkInsert').on('click', function(){
-		// alert('ok');
 		let bookmarkName;
 		if($('#insertBookmarkName').val() === "") {
 			alert("즐겨찾기 이름을 입력해주세요!");
@@ -995,7 +1011,6 @@
 
 	// 즐겨찾기 선택
 	$('#insertBookmarkContent').on('click', function(){
-		// alert('ok');
 		let bookmarkName = $('.bookmark_check:checked').val();
 		let bookmarkNumber = $('.bookmark_check:checked').attr('id');
 		bookmarkNumber = bookmarkNumber.replace("bookmark", "");
@@ -1065,9 +1080,7 @@
 	// 스포일러보기
 	$('.showSpo').on('click', function(){
 		let reviewNumber = $(this).parent().attr('id');
-		// alert(reviewNumber);
 		let btn = "#" + reviewNumber;
-		// alert(btn);
 
 		$.ajax({
 			type:"GET",
@@ -1076,9 +1089,7 @@
 				reviewNumber : reviewNumber
 			},
 			success: function(data){
-				// alert('스포일러 보이기 성공');
 				console.log(data);
-				// alert(btn);
 				$(btn).html(data.reviewContent);
 			},
 			error: function(err){

@@ -34,6 +34,9 @@ public class DetailsServiceImpl implements DetailsService{
     @Autowired
     private BookmarkRepository bookmarkRepo;
 
+    @Autowired
+    private ImagesRepository imagesRepo;
+
     @Override
     public UserVO getUser(Integer userNumber) {
         return userRepo.findById(userNumber).get();
@@ -108,9 +111,12 @@ public class DetailsServiceImpl implements DetailsService{
 
         for(Review review : reviewList) { /* review 리스트를 나누어 review에 담기 */
             HashMap<String, String> map = new HashMap<String, String>(); /* 데이터를 담을 HashMap */
-            // 유저번호, 유저이름, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
+            // 유저번호, 유저이름, 유저이미지, 리뷰내용, 리뷰작성날짜, 좋아요, 스포일러상태, 리뷰평점
             map.put("userNumber", Integer.toString(review.getUser().getUserNumber())); /* 유저 번호 저장 - String 형으로 변환 */
             map.put("userName", review.getUser().getUserNickname()); /* 유저 닉네임 저장 */
+            String img = imagesRepo.profileImagesTest(review.getUser().getUserNumber()); /* 유저 프로필 사진 가져오기 */
+            map.put("userProfileImg", img); /* 해당 사진 저장 */
+            map.put("userProfileYn", Integer.toString(review.getUser().getUserProfileYn())); /* 유저 프로필 사진 유무 */
             map.put("reviewNumber", Integer.toString(review.getReviewNumber())); /* 리뷰 번호 저장 */
             map.put("reviewContent", review.getReviewContent()); /* 리뷰 내용 저장 */
             DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); /* 리뷰 작성 날짜를 String 형으로 저장하기 위해 Format 함수 가져오기 */
