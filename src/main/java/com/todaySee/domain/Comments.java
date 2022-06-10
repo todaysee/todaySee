@@ -32,14 +32,9 @@ public class Comments {
     @Column(name = "comments_date")
     Date commentsDate;
 
-    @ManyToOne
+    @ManyToOne    
     @JoinColumn(name = "user_number")
     private UserVO userVO;
-
-    @ManyToOne // 1:다
-    @JoinColumn(name="community_number")
-    private Community community;
-    
 
 
 }

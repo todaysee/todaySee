@@ -23,5 +23,5 @@ public interface CommunityService {
 
     void saveImagesFiles(MultipartFile files);
     
-    Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber);
+    Community communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber);
 }

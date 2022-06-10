@@ -108,7 +108,7 @@ public class HomeServiceImpl implements HomeService{
                 	message =message.replaceAll(match, "");
                 	
                 	// 넘어온 contentNumber를 통해 해당 콘텐츠 정보 검색하여 리스트에 담기
-                	recommendedContentList.add(contentRepository.selectContent(Integer.valueOf(message)));
+                	recommendedContentList.add(contentRepository.findById(Integer.valueOf(message)).get());
                 	
                 	System.out.println("파이썬에서 넘어옴 : "+message);
                 }// end of while

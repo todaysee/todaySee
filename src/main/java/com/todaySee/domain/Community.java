@@ -48,5 +48,8 @@ public class Community {
     @JoinColumn(name="user_number")
     private UserVO user;
     
+    @OneToMany
+    @JoinColumn(name="community_number")
+    List<Comments> comments;
 
 }
