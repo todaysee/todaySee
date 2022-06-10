@@ -87,7 +87,7 @@
                                 </div>
         
                                  
-                                 <button type="button" name="btn_findPwd" id="btn_findPwd" class="google-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
+                                 <button type="button" name="btn_findPwd" id="btn_findPwd" class="default-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
                                 padding-left: 20px !important; padding-right: 20px !important; margin-bottom: 20px !important;">
                                  비밀번호 찾기 </button>
                                  
