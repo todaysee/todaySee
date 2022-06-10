@@ -19,15 +19,18 @@ public class CommunityRestController {
 	
 	// 댓글 작성
     @PostMapping("/communityCommentsInsert")
-    public String communityCommentsInsert(Comments comments, UserVO user, Community community) {
-    Comments co = communityService.communityCommentsInsert(comments, user, community);
+    public String communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
+    Comments co = communityService.communityCommentsInsert(commentsContent, userNumber, communityNumber);
+    
     if(co==null) {
-    	return "댓글입력실패";
-    }else {
-    	return "댓글입력성공";
-    }
-  
-    	
-    }
+    	System.out.println("댓글입력실패");
+	    	return "댓글입력실패";
+	    }else {
+	    	System.out.println("댓글입력성공");
+	    	// 댓글 개수 +1 디비에 입력
+	    	return "댓글입력성공";
+	    }// end of if
+    
+    }// end of communityCommentsInsert()
 
 }
