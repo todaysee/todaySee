@@ -128,18 +128,6 @@
                         </div>
                     </div>
                 </div>
-				<div class="col-lg-12">
-	                    <div class="gen-load-more-button">
-	                        <div class="gen-btn-container loadMoreBtn">
-	                            <button type="button" class="gen-button gen-button-loadmore">
-	                                <span class="button-text">더 보기</span>
-	                                <span class="loadmore-icon" style="display: none;"><i
-	                                        class="fa fa-spinner fa-spin"></i></span>
-	                            </button>
-                        </div>
-                    </div>
-             	</div>
-
 			</div>
     </section>
     <!-- Section-1 End -->

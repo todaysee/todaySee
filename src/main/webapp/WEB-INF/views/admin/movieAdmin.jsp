@@ -392,7 +392,7 @@
                     <td>
                     ${contentList[12]} 
                     </td>
-                    <td>${contentList[2] }</td>
+                    <td>${contentList[1] }</td>
                     <td> ${contentList[8] }</td>
                     <td>${contentList[7] } </td>
                     

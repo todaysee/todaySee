@@ -108,30 +108,10 @@
 			padding: 3% 0% 1% 3%
 		}
 		
-		.gen-carousel-movies-style-3 .gen-movie-contain .gen-movie-meta-holder ul li{
-			font-size : 16px;
-		}
-		<!-- 커뮤니티 인기글 css --> 
-		.post_like{
-			color: #ffffff;
+		.gen-carousel-movies-style-2 .gen-movie-contain .gen-movie-meta-holder ul > li{
+			font-size : 17px;
 		}
 		
-		.like_number{
-			color: #ffffff;
-		}
-		
-		.comment_number{
-			color: #ffffff;
-		}
-		
-		.community_like_icon{
-			color: #ffffff;
-		}
-		
-		.community_comment_icon{
-			color: #ffffff;
-		}
-	
 	</style>
 </head>
 

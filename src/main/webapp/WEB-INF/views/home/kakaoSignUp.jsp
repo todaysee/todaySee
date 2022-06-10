@@ -12,7 +12,7 @@
 	<meta name="author" content="StreamLab" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>오늘 이거 볼래 ? | 회원가입</title>
+	<title>회원가입</title>
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
@@ -56,13 +56,13 @@
                             <div class="content-image">
                             
                             <!-- 이미지 링크 -->
-                              <!--   <div class = "logo" style="text-align:center">
-                                <img src="images/myPageCommunity/team4_Logo.png" alt="image" style="margin-top: 170px !important;">
-                                </div>  -->
-                                 <div class = "logo" style="text-align:center">
-                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 230px !important;">
+                                <div class="logo">
+                                    <a href="index.html"><img src="/images/mypageCommunity/logo.png" alt="Zust"></a>
                                 </div>
-                                                               
+                                <div class="vector-image">
+                                    <img src="/images/myPageCommunity/vector.png" alt="image">
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -74,20 +74,21 @@
                             <form id="signUp_frm" action="/signUp" method="post">
                                 <div class="form-group">
                                     <label>닉네임</label>
-                                    <input type="text" id="userNickname" name="userNickname" class="form-control">
+                                    <input type="text" id="userNickname" name="userNickname" class="form-control" value="kakao${id }">
                                     <span class="error_box"></span>
                                   </div>
+                                  <input type="hidden" name="kakao" value="${id }"/>
 
 								&nbsp;
 								<div class="row">
                                 <div class="form-group col-md-9" >
                                     <label for="userEmail">이메일</label>
-                                    <input type="email"  id="userEmail" name="userEmail" class="form-control" style="margin-right:0px;">
+                                    <input type="email" value="${email }" id="userEmail" name="userEmail" class="form-control" style="margin-right:0px;">
                              		<span class="error_box"></span>
 									</div>
 									<div class="post-btn col-md-3">
 									
-                                  <input type="button" id="btn_emailCheck" class="default-btn" name="btn_emailCheck" style="border-radius: 13px; 
+                                  <input type="button" id="btn_emailCheck" class="button_h" name="btn_emailCheck" style="border-radius: 13px; 
                                   padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;" value="중복확인"/>
                              		</div>
                              		</div>
@@ -138,7 +139,7 @@
                                 <div class="remember-me-wrap">
                                    		<input type="checkbox" id="checkBox" name="checkBox">
                                    		
-                                        <label for="checkBox" style="float: right;">이용약관에 동의합니다.</label>
+                                        <label for="checkBox" style="float: right;"> <a href="privacy.html">이용약관에 동의합니다.</a></label>
                                         <span class="error_box"></span>
                                         	&nbsp;&nbsp;	&nbsp;	
                                         	
@@ -147,20 +148,9 @@
                                 <div class="or-text"><span></span></div>  
                                 
                                 <div class="post-btn">
-								<button type="submit" id="btn_register" name="btn_register" class="default-btn" style="border-radius: 13px; 
-											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">회원가입</button>	
-											</div>
-											
-											
-						<!-- 		<div class="post-btn">
 								<button type="submit" id="btn_register" name="btn_register" style="border-radius: 13px; 
 											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">회원가입</button>	
-											</div>	
-											
-											
-								<button type="button" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
-                                 <div class="or-text"><span></span></div> 			
-                                  -->
+											</div>
 									
 									
 									<div class="lost-your-password-wrap" style="margin-top: 20px;">
@@ -220,7 +210,7 @@
 
 <!-- js추가 -->
  
-<script src="/js/home/UserLogin.js"></script>
+    <script src="/js/home/KakaoLogin.js"></script>
 
 
 </body>

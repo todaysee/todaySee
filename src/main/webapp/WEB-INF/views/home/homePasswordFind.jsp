@@ -54,11 +54,8 @@
                             <div class="content-image">
                             
                             	<!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
-                                </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
+                                <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 100px !important;">
                                 </div>
                                 
                             </div>
@@ -81,10 +78,7 @@
                                   padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;" value="인증번호 전송"/>
 									</div>
                              		</div>
-                                 <!--
-                                 <button type="button" class="button_h" id="btn_sendingMail" name="btn_sendingMail" style="border-radius: 13px; margin-top: 30px; margin-left: 5px; 
-                                 padding-left: 10px !important; padding-right: 10px !important; background-color: grey;">인증번호 전송</button>
-                             		-->
+                             
         
                                 <div class="form-group">
                                     <label> 인증번호 확인 </label>
@@ -93,7 +87,7 @@
                                 </div>
         
                                  
-                                 <button type="button" name="btn_findPwd" id="btn_findPwd" class="google-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
+                                 <button type="button" name="btn_findPwd" id="btn_findPwd" class="default-btn" style="margin-top: 30px; margin-left: 5px; width: 100%; 
                                 padding-left: 20px !important; padding-right: 20px !important; margin-bottom: 20px !important;">
                                  비밀번호 찾기 </button>
                                  

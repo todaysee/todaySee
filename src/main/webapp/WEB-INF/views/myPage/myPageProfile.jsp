@@ -68,7 +68,7 @@
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label>로그인 날짜</label> <input type="text" class="form-control"
+									<label>로그인 날짜</label> <input type="text" class="form-control date2"
 										value="${user.userLoginDate}" readonly>
 								</div>
 							</div>
@@ -80,7 +80,7 @@
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="form-group">
-									<label>가입일자</label> <input type="text" class="form-control"
+									<label>가입일자</label> <input type="text" class="form-control date1"
 										value="${user.userSignupDate}" readonly>
 								</div>
 							</div>
@@ -104,8 +104,8 @@
 							</div>
 							<div class="col-lg-3 col-md-3">
 								<div class="form-group">
-									<label>작성 게시글 수</label> <input type="number"
-										class="form-control" value="33" readonly>
+									<label>가입일로 부터 몇 일</label> <input type="number"
+										class="form-control" value="${userJoinDate}" readonly>
 								</div>
 							</div>
 							<div class="col-lg-2 col-md-12">
@@ -183,7 +183,17 @@
 	
 	<!-- JS 추가 !  -->
 	<script src="/js/mypageCommunity/password.js"></script>
-	
+	<script>
+		$(function () {
+			let dateCut1 = $(".date1").val()
+			let cut1 = dateCut1.substring(0,11)
+			$(".date1").val(cut1)
+
+			let dateCut2= $(".date2").val()
+			let cut2 = dateCut2.substring(0,11)
+			$(".date2").val(cut2)
+		})
+	</script>
 	
 </body>
 </html>
