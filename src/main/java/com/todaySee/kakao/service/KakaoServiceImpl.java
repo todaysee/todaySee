@@ -114,14 +114,11 @@ public class KakaoServiceImpl implements KakaoService {
 			JsonElement element = parser.parse(result);
 
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String id = element.getAsJsonObject().get("id").getAsString();
 
 			userInfo.put("nickname", nickname);
-			userInfo.put("email", email);
 			userInfo.put("id", id);
 			userInfo.put("nickname", properties.getAsJsonObject().get("nickname").getAsString());
 		} catch (IOException e) {
