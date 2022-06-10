@@ -446,7 +446,7 @@
         });
 
         $.ajax({
-            url: "http://localhost:8080/updateProfileImageAjax",
+            url: "/updateProfileImageAjax",
             type: 'POST',
             data: {
                 userNumber: ${sessionScope.userNumber}
@@ -469,7 +469,7 @@
         });
 
         $.ajax({
-            url: "http://localhost:8080/updateProfileTitleImageAjax",
+            url: "/updateProfileTitleImageAjax",
             type: 'POST',
             data: {
                 userNumber: ${sessionScope.userNumber}
