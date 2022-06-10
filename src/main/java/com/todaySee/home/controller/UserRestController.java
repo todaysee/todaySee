@@ -60,7 +60,7 @@ public class UserRestController {
     	
     	UserVO user = userService.login(userEmail, userPassword);
     	 String message = "";
-    	 if(user == null && user.getUserState() == 1) {
+    	 if(user == null || user.getUserState() == 1) {
     		 System.out.println("로그인실패");
     		 message = "N";
     		 return message;
@@ -111,7 +111,7 @@ public class UserRestController {
     	 
     } 
     }
-    
+    	//인증번호 메일로 전송 
         @PostMapping("/sendEmail")
     	public String sendForgotPassword(String userEmail) {
         	System.out.println(userEmail + "메일을 보내야되는 이메일 주소 ");
@@ -133,7 +133,7 @@ public class UserRestController {
             message.setTo(userEmail);
             message.setFrom(sender);
             message.setSubject(" [오늘 이거 볼래?] New Temporary Password is here!");
-            message.setText("Hello!.  We send your temporary password here. =====> " + sb.toString() + "  <==========But this is not secured so please change password once you sign into our site. ");
+            message.setText("Hello!.  We send your temporary password here. 모두 고생하셨습니다.  =====> " + sb.toString() + "  <==========But this is not secured so please change password once you sign into our site. ");
             mailSender.send(message);
             
             return sb.toString();
@@ -151,6 +151,7 @@ public class UserRestController {
         	
         }
         
+        //회원탈퇴 
         @PostMapping("/mypageSignOut")
         public String mypagSignOut(HttpSession session, String userPassword) {
         	UserVO user = userService.checkMypagePassword((Integer) session.getAttribute("userNumber"));
@@ -159,6 +160,6 @@ public class UserRestController {
         	}
         	return "N";
         }
-
+        
     }
 

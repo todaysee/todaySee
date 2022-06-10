@@ -4,6 +4,7 @@ package com.todaySee.home.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -90,6 +91,7 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	//비밀번호 수정 
 	@Override
 	public void updatingPwd(UserVO user) {
 		UserVO updateUser = userRepository.findByUserEmail(user.getUserEmail());
@@ -98,7 +100,7 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	@Override
+ @Override
 	public UserVO updateUserLoginDate(Integer userNumber) {
 		Date date = new Date();
 		UserVO userVO = userRepository.findById(userNumber).get();
@@ -114,19 +116,33 @@ public class UserServiceImpl implements UserService {
 
 	//회원탈퇴 
 	@Override
-	public UserVO removalEmail(Integer userNumber) {
+	public UserVO removalEmail(Integer userNumber,String userSignOut) {
 		//회원의 세션 정보로 레코드 검색 
 		UserVO userVO = userRepository.findById(userNumber).get();
 		
 		// 검색한 레코드에 칼럼값을 수정 - 회원의 상태
 		userVO.setUserState(1);
-		
+		userVO.setUserSignOut(userSignOut);
 	
 	return userRepository.save(userVO);
 }
 
 	
+	// 마이페이지 비밀번호변경 
+	@Override
+	public UserVO changePwdMypage(Integer userNumber, String userPassword) {
+		UserVO uservo = userRepository.findById(userNumber).get();
+		uservo.setUserPassword(encoder.encode(userPassword));
+		userRepository.save(uservo);
+		return null;
 	
+		//*****
+		// 1.  컨트롤러 userNumber, userPwd(입력값 )
+		// 2. userNumber로 회원의 레코드를 검색 -> user
+		// 3, 검색한 회원의 레코드에 userPwd를 인코딩 후 setPwd() 
+		// 4.레포 지토리에 save(user)
+
+	}
 
 }
 

@@ -358,13 +358,12 @@ $('#btn_Login').click(function(){
 				
 // 비밀번호 재설정 				
 	$('#btnResetting').click(function(){
-		alert("크레파스")
+	
 		let userPassword = $("#userPassword").val();
 		let userPassword2 = $("#rePassword").val();
 		
 		if(userPassword == ''){
 			$('#password ~ .error_message').html(blank);
-			$('#password').focus();
 			return;
 		}else{
 			$('#password ~ .error_message').html("");
