@@ -79,23 +79,10 @@ public class CommunityServiceImpl implements CommunityService{
         // 파일 이름으로 쓸 uuid 생성
         String uuid = UUID.randomUUID().toString();
     }
-
+    
+    /* 커뮤니티 댓글 이벤트 */
 	@Override
 	public Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
-		
-		/*
-		 * Community community = communityRepositroy.findById(communityNumber).get();
-		 * 
-		 * Comments comments = new Comments();
-		 * comments.setCommentsContent(commentsContent); comments.setCommentsLike(0);
-		 * comments.setCommentsState(0);
-		 * 
-		 * UserVO user = new UserVO(); user.setUserNumber(userNumber);
-		 * 
-		 * comments.setUserVO(user); community.setComments((List<Comments>) comments);
-		 * 
-		 * return communityRepositroy.save(community);
-		 */
 		Community community = communityRepositroy.findById(communityNumber).get();
 		
 		
@@ -109,6 +96,13 @@ public class CommunityServiceImpl implements CommunityService{
 		
 		 
 		return commentsRepository.save(comments);
+	}
+
+	@Override
+	public Community communityCommunityLike(Integer communityNumber) {
+		Community community = communityRepositroy.findById(communityNumber).get();
+		community.setCommunityLike(community.getCommunityLike()+1);
+		return communityRepositroy.save(community);
 	}
 }
 
