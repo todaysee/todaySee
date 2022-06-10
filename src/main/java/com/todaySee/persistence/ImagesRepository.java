@@ -16,4 +16,7 @@ public interface ImagesRepository extends CrudRepository<Images, Integer> {
     @Query(value = "SELECT images_url FROM images WHERE user_number=:user_number AND images_type='profileImages' ORDER BY images_upload_date DESC LIMIT 1",nativeQuery = true)
     List<Object[]> profileImages(Integer user_number);
 
+    @Query(value = "SELECT images_url FROM images WHERE user_number=:user_number AND images_type='profileImages' ORDER BY images_upload_date DESC LIMIT 1",nativeQuery = true)
+    String profileImagesTest(Integer user_number);
+
 }

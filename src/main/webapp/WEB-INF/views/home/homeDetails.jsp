@@ -514,7 +514,17 @@
 													<form name="comment" id="comment" action="/details/${content.contentNumber}" method="post">
 														<div class="row">
 															<div class="col-xl-1 col-lg-1 col-md-1">
-																<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+																<c:set var="userProfileYn" value="${user.userProfileYn}"/>
+																<c:choose>
+																	<c:when test="${userProfileYn eq '0'}">
+																		<a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" class="rounded-circle" alt="image"></a>
+																	</c:when>
+																	<c:otherwise>
+																		<c:forEach items="${profileImages}" var="img">
+																			<a><img src="${img.imagesUrl}" class="rounded-circle" alt="image"></a>
+																		</c:forEach>
+																	</c:otherwise>
+																</c:choose>
 															</div>
 															<div class="send-content col-xl-3 col-lg-3 col-md-3">
 																<h3>
@@ -555,7 +565,15 @@
 															<div class="padding-4 moreReview">
 																<div class="row">
 																	<div class="col-xl-1 col-lg-1 col-md-1">
-																		<a href="my-profile.html"><img src="/images/mypageCommunity/user/user-41.jpg" class="rounded-circle" alt="image"></a>
+																		<c:choose>
+																			<c:when test="${review.userProfileYn eq '0'}">
+																				<a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927" class="rounded-circle" alt="image"></a>
+																			</c:when>
+																			<c:otherwise>
+																				<a><img src="${review.userProfileImg}" class="rounded-circle" alt="image"></a>
+																			</c:otherwise>
+																		</c:choose>
+
 																	</div>
 																	<div class="send-content col-xl-3 col-lg-3 col-md-3">
 																		<h3>
