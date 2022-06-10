@@ -56,13 +56,13 @@
                             <div class="content-image">
                             
                             <!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
+                              <!--   <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/team4_Logo.png" alt="image" style="margin-top: 170px !important;">
+                                </div>  -->
+                                 <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 230px !important;">
                                 </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
-                                </div>
-                                
+                                                               
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
 									</div>
 									<div class="post-btn col-md-3">
 									
-                                  <input type="button" id="btn_emailCheck" class="button_h" name="btn_emailCheck" style="border-radius: 13px; 
+                                  <input type="button" id="btn_emailCheck" class="default-btn" name="btn_emailCheck" style="border-radius: 13px; 
                                   padding-left: 20px !important; padding-right: 20px !important; margin-top: 30px; margin-left:5px;" value="중복확인"/>
                              		</div>
                              		</div>
@@ -147,9 +147,20 @@
                                 <div class="or-text"><span></span></div>  
                                 
                                 <div class="post-btn">
-								<button type="submit" id="btn_register" name="btn_register" style="border-radius: 13px; 
+								<button type="submit" id="btn_register" name="btn_register" class="default-btn" style="border-radius: 13px; 
 											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">회원가입</button>	
 											</div>
+											
+											
+						<!-- 		<div class="post-btn">
+								<button type="submit" id="btn_register" name="btn_register" style="border-radius: 13px; 
+											padding-left: 20px !important; padding-right: 20px !important; width: 100%;">회원가입</button>	
+											</div>	
+											
+											
+								<button type="button" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
+                                 <div class="or-text"><span></span></div> 			
+                                  -->
 									
 									
 									<div class="lost-your-password-wrap" style="margin-top: 20px;">
