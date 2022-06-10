@@ -5,6 +5,8 @@
 
 <div id="gen-loading">
 <div id="gen-loading-center">
-    <img src="/images/home/logo-1.png" alt="loading">
+    <img src="/images/home/logo-1.png"
+         style = "height: 50px;"
+         alt="loading">
 </div>
 </div>
