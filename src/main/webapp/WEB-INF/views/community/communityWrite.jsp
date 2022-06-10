@@ -21,14 +21,31 @@
     <!-- js files -->
     <script src="../js/mypageCommunity/chatList.js"></script>
 
-	<style type="text/css">
-		#imagesCommunityFile { display:none; }
-		.nickname {font-weight: bold;}
-		.comments {padding: 1%;}
-		.commentsbox{width:90%;}
-		.commentsbtn{background-color:#3644D9; color:white; border-radius:20%; height:50%;}
-		
-	</style>
+    <style type="text/css">
+        #imagesCommunityFile {
+            display: none;
+        }
+
+        .nickname {
+            font-weight: bold;
+        }
+
+        .comments {
+            padding: 1%;
+        }
+
+        .commentsbox {
+            width: 90%;
+        }
+
+        .commentsbtn {
+            background-color: #3644D9;
+            color: white;
+            border-radius: 20%;
+            height: 50%;
+        }
+
+    </style>
 
     <title>오늘 이거 볼래 ? | 커뮤니티 글쓰기 </title>
 
@@ -40,7 +57,7 @@
 
 
 <!-- Start Preloader Area -->
-<%@ include file="../inculde/home/preLoader.jsp"%>
+<%@ include file="../inculde/home/preLoader.jsp" %>
 
 
 <!-- Start Main Content Wrapper Area -->
@@ -74,38 +91,27 @@
                     </div>
                     <div class="news-feed news-feed-form">
                         <h3 class="news-feed-title">글쓰기</h3>
-
-                        <form action="/communityBoardSave" method="post" enctype="multipart/form-data">
+                        <form id="uploadForm">
                             <input type="hidden" name="communityCategory" value="${category}">
                             <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
-                            <!-- <div class="form-group">
-									<textarea name="title" class="form-control titlebox input-search" id="titlebox"
-                                              placeholder="제목을 입력하세요."></textarea>
-                            </div> -->
                             <div class="form-group">
 									<textarea class="form-control"
                                               placeholder="내용을 적어주세요." name="communityContent"></textarea>
                             </div>
 
-                            <ul
-                                    class="button-group d-flex justify-content-between align-items-center">
+                            <ul class="button-group d-flex justify-content-between align-items-center">
                                 <li class="photo-btn">
-                                    <button type="button"  id="imagesCommunityFileUploadButton">
+                                    <button type="button" id="imagesCommunityFileUploadButton">
                                         <i class="flaticon-gallery"></i> 사진
                                     </button>
                                     <div id="fileName">
                                         첨부파일 없음
                                     </div>
-                                        <input type="file" id="imagesCommunityFile" name="imagesCommunityFile" onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg"/>
+                                    <input type="file" id="imagesCommunityFile" name="imagesCommunityFile"
+                                           onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg">
                                 </li>
                                 <li class="post-btn">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" id="imagesCommunityFileUploadCheck">
-										<label class="form-check-label" for="imagesCommunityFileUploadCheck">
-											사진 업로드
-										</label>
-									</div>
-                                    <input  type="submit" value="작성">
+                                    <button type="button" value="작성" id="uploadBtn">
                                 </li>
                             </ul>
                         </form>
@@ -151,12 +157,12 @@
                                             class="fa fa-exclamation-triangle"></i>신고</span>
                                     </a></li>
                                 </ul>
-  								<div class="comments">
-  									<div class="nickname">닉네임</div>
-  									<div class="comments_content">댓글내용</div>
-  								</div>
-  								
-  								
+                                <div class="comments">
+                                    <div class="nickname">닉네임</div>
+                                    <div class="comments_content">댓글내용</div>
+                                </div>
+
+
                                 <form class="post-footer">
                                     <!-- <div class="footer-image">
                                         <a href="#"><img src="/images/mypageCommunity/user/user-2.jpg"
@@ -171,12 +177,13 @@
                                 </form>
                                 <form class="d-flex align-items-center">
                                     <input type="hidden" class="communityNumber" value="${board.communityNumber }"/>
-                                    <input type="hidden" class="userNumber" value="${sessionScope.userNumber }"/> 
+                                    <input type="hidden" class="userNumber" value="${sessionScope.userNumber }"/>
                                     <input type="hidden" class="userNickname" value="${sessionScope.userNickname}"/>
-                                    <input type="text" class="form-control commentsbox" id="commentsbox" placeholder="댓글을 적어주세요.">
+                                    <input type="text" class="form-control commentsbox" id="commentsbox"
+                                           placeholder="댓글을 적어주세요.">
                                     <button type="button" class="send-btn d-inline-block commentsbtn">작성</button>
                                 </form>
-                                
+
                             </div>
                         </div>
                     </c:forEach>
@@ -266,57 +273,58 @@
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
 <script type="text/javascript" src="/js/qrcode.js"></script>
+<script type="text/javascript" src="/js/flask.js"></script>
 <script type="text/javascript">
     $(function () {
+
         $('#imagesCommunityFileUploadButton').click(function (e) {
             e.preventDefault();
             $('#imagesCommunityFile').click();
         });
 
-        
-        $('.commentsbtn').click(function(){
-        	let nickname = $(this).siblings('.userNickname').val()
-        	let commentsContent = $(this).siblings('#commentsbox').val()
-        	const list = $(this).parent().siblings('.comments')
-        	$.ajax({
-            	type:'post',
-            	url:"/communityCommentsInsert",
-            	data:{
-            		user : $(this).siblings('.userNumber').val(),
-            		community : $(this).siblings('.communityNumber').val(),
-            		comments : commentsContent,
-                	},
-                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-                success : function(commentsList){
-                    alert(commentsList)
-                    let content =  ' <div class="nickname">'+ nickname + '</div>'
-                        + ' <div class="comments_content">' + commentsContent + '</div>'
-                        list.append(content);
-						
-                    },
-                error : function(e){
-                        console.log("ERROR: ", e);
-                        alert('실패')
-                     }
-            	})
-            })
-    });
-    //파일 업로드여부 체크박스
-    $("#imagesCommunityFileUploadCheck").change(function(){
-        if($("#imagesCommunityFileUploadCheck").is(":checked")){
-            alert("체크박스 체크했음!");
+        $('#uploadBtn').click(function () {
+            alert('전송!')
             uploadFile();
-        }else{
-            alert("체크박스 체크 해제!");
-        }
+        });
+
+
+        $('.commentsbtn').click(function () {
+            let nickname = $(this).siblings('.userNickname').val()
+            let commentsContent = $(this).siblings('#commentsbox').val()
+            const list = $(this).parent().siblings('.comments')
+            $.ajax({
+                type: 'post',
+                url: "/communityCommentsInsert",
+                data: {
+                    user: $(this).siblings('.userNumber').val(),
+                    community: $(this).siblings('.communityNumber').val(),
+                    comments: commentsContent,
+                },
+                contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+                success: function (commentsList) {
+                    alert(commentsList)
+                    let content = ' <div class="nickname">' + nickname + '</div>'
+                        + ' <div class="comments_content">' + commentsContent + '</div>'
+                    list.append(content);
+
+                },
+                error: function (e) {
+                    console.log("ERROR: ", e);
+                    alert('실패')
+                }
+            })
+        })
+
+
     });
+
     function changeValue(obj) {
-        // alert((obj.value).replace("C:\\fakepath\\",""));
-        $("#fileName").text("파일명 : " + (obj.value).replace("C:\\fakepath\\",""));
+        $("#fileName").text("파일명 : " + (obj.value).replace("C:\\fakepath\\", ""));
+        // $("#fileNameText").val((obj.value).replace("C:\\fakepath\\",""))
     }
 
     function uploadFile() {
-        let form = $('#imagesCommunityFileUploadForm')[0];
+        let form = $('#uploadForm')[0];
         let formData = new FormData(form);
         $.ajax({
             url: flaskIp2,  //플라스크 아이피주소
@@ -328,8 +336,6 @@
             callback(data);
         });
     }
-    
-
 </script>
 
 </body>
