@@ -59,13 +59,9 @@
 						<div class="content-image">
 
 							<!-- 이미지 링크 -->
-							<div class="logo">
-								<a href="index.html"><img
-									src="images/mypageCommunity/logo.png" alt="Zust"></a>
-							</div>
-							<div class="vector-image">
-								<img src="images/myPageCommunity/vector.png" alt="image">
-							</div>
+							<div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 50px !important; margin-bottom: 50px !important;">
+                                </div>
 
 						</div>
 					</div>

@@ -55,13 +55,9 @@
                             <div class="content-image">
                             
                             	<!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
+                             	  <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 100px !important;">
                                 </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -109,16 +105,7 @@
                                         	</div>
                                         	<div class="or-text"><span></span></div> 
                                         
-                                        	
-                                        	<!-- 이미지 링크 -->
-                                        	<p>
-                                       	
-                                        	<div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
-										<img src="images/home/login/googleLogin.png" alt="google" style="text-align: center; border-right-style: solid !important; 
-										border-right-width: 0px !important; margin-left: 50px !important; margin-top: 30px !important;">
-                                     	</div>
-                                     	
-                                       
+                               
                             </form>
                         </div>
                     </div>
