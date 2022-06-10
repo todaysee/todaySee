@@ -57,11 +57,10 @@ public class UserRestController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword,boolean emailCheckBox, Model model, 
     		HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-    	//로그인 할 때 마다 날짜 업데이트 
-    	//System.out.println("PostMapping"+emailCheckBox);
+    	
     	UserVO user = userService.login(userEmail, userPassword);
     	 String message = "";
-    	 if(user == null) {
+    	 if(user == null && user.getUserState() == 1) {
     		 System.out.println("로그인실패");
     		 message = "N";
     		 return message;
@@ -109,7 +108,8 @@ public class UserRestController {
     		 userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
     		 
     		 return message;
-    	 } 
+    	 
+    } 
     }
     
         @PostMapping("/sendEmail")

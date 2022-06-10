@@ -151,6 +151,7 @@ public class UserController {
 					Cookie deleteEmail=new Cookie("userEmail", null);
 					deleteEmail.setMaxAge(0);
 					response.addCookie(deleteEmail);
+		
 				} 
 			} 
 		} 
@@ -163,8 +164,10 @@ public class UserController {
     	
     		return "redirect:/";
     }
-
-
+    
+    
+    
+    
     
     }
  
