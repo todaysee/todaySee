@@ -282,6 +282,7 @@
             $('#imagesCommunityFile').click();
         });
 
+
         $('#uploadBtn').click(function () {
             alert('전송!')
             uploadFile();
@@ -336,6 +337,77 @@
             callback(data);
         });
     }
+
+        // 댓글 작성 버튼을 클릭 시 DB 입력 + 화면에 출력
+        $('.commentsbtn').click(function(){
+        	
+        	// 댓글 작성자의 userNumber
+        	let userNumber = $(this).siblings('.userNumber').val()
+        	
+        	// 댓글 작성자의 userNickname
+        	let nickname = $(this).siblings('.userNickname').val()
+        	
+        	// 댓글 내용
+        	let commentsContent = $(this).siblings('#commentsbox').val()
+        	
+        	// 댓글을 작성한 게시글의 communityNumber
+        	let communityNumber = $(this).siblings('.communityNumber').val()
+        	
+        	// 작성한 댓글을 화면에 출력할 위치
+        	const list = $(this).parent().siblings('.comments')
+        	
+        	$.ajax({
+            	type:'post',
+            	url:"/communityCommentsInsert",
+            	data:{
+            		userNumber : userNumber,
+            		communityNumber : communityNumber,
+            		commentsContent : commentsContent
+                	},
+                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+                success : function(result){
+                	console.log(result)
+                    let content =  ' <div class="nickname">'+ nickname + '</div>'
+                        + ' <div class="comments_content">' + commentsContent + '</div>'
+                        list.append(content);
+                    },
+                error : function(e){
+                        console.log("ERROR: ", e);
+                        alert('실패')
+                     }
+            	});// end of Ajax
+            })// end of  $('.commentsbtn').click()
+            
+         //파일 업로드여부 체크박스
+	    $("#imagesCommunityFileUploadCheck").change(function(){
+	        if($("#imagesCommunityFileUploadCheck").is(":checked")){
+	            alert("체크박스 체크했음!");
+	            uploadFile();
+	        }else{
+	            alert("체크박스 체크 해제!");
+	        }
+	    });
+	    function changeValue(obj) {
+	        // alert((obj.value).replace("C:\\fakepath\\",""));
+	        $("#fileName").text("파일명 : " + (obj.value).replace("C:\\fakepath\\",""));
+	    }
+	
+	    function uploadFile() {
+	        let form = $('#imagesCommunityFileUploadForm')[0];
+	        let formData = new FormData(form);
+	        $.ajax({
+	            url: flaskIp2,  //플라스크 아이피주소
+	            type: 'POST',
+	            data: formData,
+	            processData: false,
+	            contentType: false
+	        }).done(function (data) {
+	            callback(data);
+	        });
+	    }
+    });// end of  $(function (){})
+   
+
 </script>
 
 </body>

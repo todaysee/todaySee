@@ -256,8 +256,7 @@ public class AdminController {
 		return "redirect:/admin/communityReport";
 	}
 	
-	/**
-	 * @param m 리뷰신고번호를 찾아 view단으로 보냅니다.
+	 /* @param m 리뷰신고번호를 찾아 view단으로 보냅니다.
 	 * @param reportNumber 리뷰 신고번호를 받아 정보를 찾는다
 	 * @return view page
 	 */

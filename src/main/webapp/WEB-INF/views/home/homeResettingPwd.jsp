@@ -53,13 +53,10 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="profile-authentication-image">
                             <div class="content-image">
-                            
-                            	<!-- 이미지 링크 -->
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/mypageCommunity/logo.png" alt="Zust"></a>
-                                </div>
-                                <div class="vector-image">
-                                    <img src="images/myPageCommunity/vector.png" alt="image">
+                      
+                                 <!-- 이미지 링크 -->
+                             	  <div class = "logo" style="text-align:center">
+                                <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 100px !important;">
                                 </div>
                                 
                             </div>
@@ -95,7 +92,7 @@
                                         	<a href="/" class="lost-your-password">홈으로 가기  </a>
                                         	</div>
                                         	<a href="/login" class="lost-your-password">로그인하기   </a> &nbsp;&nbsp;&nbsp; 
-                                        	<a href="/homePasswordFind" class="lost-your-password">비밀번호 찾기 </a>
+                                        	<a href="/passwordFind" class="lost-your-password">비밀번호 찾기 </a>
                                         	<div style="float:right; color:grey;">
                                   	 	</div>
                                         	</div>

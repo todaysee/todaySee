@@ -47,5 +47,6 @@ public class Community {
     @ManyToOne // 1:다
     @JoinColumn(name="user_number")
     private UserVO user;
+    
 
 }

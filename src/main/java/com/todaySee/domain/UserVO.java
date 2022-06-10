@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -71,6 +73,19 @@ public class UserVO {
 */
   
     
-	
+
+	/*
+	 * @Column(name = "user_role")
+	 * 
+	 * @Enumerated(EnumType.STRING) Role role;
+	 */
+    
+    @JsonIgnore
+    String kakao;
+   
+
+
+
+
 
 }
