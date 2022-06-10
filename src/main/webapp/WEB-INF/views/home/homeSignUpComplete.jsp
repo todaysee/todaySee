@@ -81,10 +81,10 @@
         
                                  
                                  <form>
-                                  <div class="row" style="margin-left: 40px !important; color: white;"> 
-                                 
-								<button type="submit" class="google-btn" style="width: 45%; margin-right: 15px !important; color: white;"> <a href="/">메인화면</a> </button>                                
-								<button type="submit" class="google-btn" style="width: 45%; margin-left: 15px !important;"><a href="/login"> 로그인 </a></button>  
+                                  <div class="row" style="margin-left: 40px !important; color: white;">
+
+								<button type="button" class="google-btn" id="homeBtn" onclick="location.href='/'" style="width: 45%; margin-right: 15px !important; color: white;" >메인화면</button>
+								<button type="button" class="google-btn" id="loginBtn" onclick="location.href='/login'" style="width: 45%; margin-left: 15px !important;">로그인</button>
 								                   
 								                               
 								 </div>
