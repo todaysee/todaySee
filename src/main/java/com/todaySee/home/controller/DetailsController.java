@@ -6,6 +6,7 @@ import com.todaySee.domain.Images;
 import com.todaySee.domain.Review;
 import com.todaySee.domain.UserVO;
 import com.todaySee.home.service.DetailsService;
+import com.todaySee.home.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ public class DetailsController {
 
     @Autowired
     private DetailsService detailsService;
+
+    @Autowired
+    private HomeService homeService;
 
     /**
      * 컨텐츠 번호에 따른 영화 상세 페이지
@@ -46,6 +50,15 @@ public class DetailsController {
             /* 즐겨찾기 불러오기 */
             List<HashMap<String, String>> bookmarkList = detailsService.getBookmarkList(userNumber);
             model.addAttribute("bookmarkList", bookmarkList);
+
+            // 파이썬 소켓 연결 유무
+            if(!homeService.recommendedContentList(userNumber).isEmpty()) {
+                // 연결이 되어 있을 때 사용자 추천 콘텐츠 출력
+                model.addAttribute("RecommendedContentList",homeService.recommendedContentList(userNumber));
+            }else {
+                // 연결이 안됐으면 랜덤 영상 10개 출력
+                model.addAttribute("RecommendedContentList",homeService.mainContentList());
+            }
         }
 
         /* 컨텐츠 상세 내용 가져오기 */
