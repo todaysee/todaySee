@@ -1,5 +1,6 @@
 package com.todaySee.community.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.todaySee.domain.Comments;
 import com.todaySee.domain.Community;
+import com.todaySee.domain.Content;
 import com.todaySee.domain.Genre;
 import com.todaySee.domain.Ott;
 import com.todaySee.domain.UserVO;
@@ -48,13 +50,14 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
     @Override
-    public void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent) {
+    public void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent, String fileNameText) {
 
         Date day = new Date();
         Community community = new Community();
         community.setUser(userRepository.findById(userNumber).get());
         community.setCommunityCategory(communityCategory);
         community.setCommunityContent(communityContent);
+        community.setImagesCommunityFileName(fileNameText);
         community.setCommunityState(1);
         community.setCommunityDate(day);
 
@@ -78,22 +81,24 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
 	@Override
-	public Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
+	public Community communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
 		
+		Community community = communityRepositroy.findById(communityNumber).get();
 		
+		List<Comments> c = new ArrayList<Comments>();
 		Comments comments = new Comments();
 		comments.setCommentsContent(commentsContent);
 		comments.setCommentsLike(0);
 		comments.setCommentsState(0);
+		
 		UserVO user = new UserVO();
 		user.setUserNumber(userNumber);
-		Community community = new Community();
-		community.setCommunityNumber(communityNumber);
+		
 		comments.setUserVO(user);
-		comments.setCommunity(community);
+		c.add(comments);
+		community.setComments(c);
 		
-		return commentsRepository.save(comments);
-		
+		return communityRepositroy.save(community);
 	}
 }
 

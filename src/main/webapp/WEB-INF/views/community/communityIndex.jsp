@@ -40,13 +40,14 @@
 
     <title>오늘 이거 볼래 ? | 커뮤니티 </title>
 
-    <link rel="shortcut icon" href="/images/home/favicon.png">
+    <link rel="icon" type="image/png"
+          href="/images/mypageCommunity/favicon.png">
 </head>
 
 <body>
 
 <!-- Start Preloader Area -->
-<%@ include file="../inculde/home/preLoader.jsp"%>
+<%@ include file="../inculde/community/preLoader.jsp" %>
 
 
 <!-- Start Main Content Wrapper Area -->
