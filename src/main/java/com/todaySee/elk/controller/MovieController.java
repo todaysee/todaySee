@@ -29,7 +29,6 @@ public class MovieController {
 		
 		List<Movie> movieList = SearchSer.getByQuery(query);
 		
-		System.out.println(movieList.get(0).getId()+"테스트");
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("home/homeList_content");
