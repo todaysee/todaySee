@@ -78,10 +78,17 @@ public class CommunityServiceImpl implements CommunityService{
     }
 
 	@Override
-	public Comments communityCommentsInsert(Comments comments, UserVO user, Community community) {
-
+	public Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber) {
+		
+		
+		Comments comments = new Comments();
+		comments.setCommentsContent(commentsContent);
 		comments.setCommentsLike(0);
 		comments.setCommentsState(0);
+		UserVO user = new UserVO();
+		user.setUserNumber(userNumber);
+		Community community = new Community();
+		community.setCommunityNumber(communityNumber);
 		comments.setUserVO(user);
 		comments.setCommunity(community);
 		
