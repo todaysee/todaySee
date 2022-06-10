@@ -593,15 +593,17 @@
 																					</a>
 																				</c:if>
 																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
-																				<c:if test="${not empty sessionScope.userNumber}">
+																				<c:if test="${review.userNumber ne sessionScope.userNumber}">
 																					<a type="button" class="gen-button-like reviewLikeUp" data-bs-toggle="modal" data-bs-target="#modalReport">
 																						<span><i class="fa fa-thumbs-up"></i> 마음에들어요</span>
 																					</a>
 																				</c:if>
 																				<input type="hidden" class="spoReview" name="reviewNumber" value="${review.reviewNumber}"/>
+																				<c:if test="${review.userNumber ne sessionScope.userNumber}">
 																				<a type="button" class="gen-button-like myModal" data-bs-toggle="modal" data-bs-target="#modalReport">
 																					<span><i class="fa fa-exclamation-triangle"></i> 신고</span>
 																				</a>
+																				</c:if>
 																			</div>
 																		</div>
 																	</div>
@@ -934,8 +936,9 @@
 				reportReviewNumber : reportReviewNumber
 			},
 			success: function (value){
-				alert('신고 등록 성공!');
+				// alert('신고 등록 성공!');
 				console.log(value);
+				location.href="/details/${content.contentNumber}";
 			},
 			error: function(err) {
 				alert('신고 등록 오류!!');
