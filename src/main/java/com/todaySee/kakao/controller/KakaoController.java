@@ -22,8 +22,9 @@ public class KakaoController {
 	
 	
 	@GetMapping("/kakao/SignPage")
-	public String kakaoLoginGo() {
+	public String kakaoLoginGo(@RequestParam(value = "code", required = false) String code) {
 		
+	
 		return "/home/kakaoSignUp";
 	}
 	
@@ -50,7 +51,7 @@ public class KakaoController {
 				
 				if (ks.findByKakao(id) == null) {
 					redirect.addFlashAttribute("id",id);
-					
+					redirect.addFlashAttribute("code",code);
 					redirect.addFlashAttribute("email",email);
 					
 					
@@ -62,6 +63,7 @@ public class KakaoController {
 				session.setAttribute("email", email);
 				session.setAttribute("userNumber", user.getUserNumber());
 				session.setAttribute("userNickname", "Kakao"+id);
+				session.setAttribute("admin", user.getUserAdmin());
 				
 				return "redirect:/";
 
