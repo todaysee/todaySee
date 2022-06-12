@@ -131,7 +131,9 @@
                                     <div class="form-group">
                                         <label class="text-center">변경할 닉네임 입력</label>
                                         <input id="userNinknameTextInput" type="text" class="form-control" name="userNickname">
+                                        	 <span class="error_message"></span>
                                         <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
+                                        	
                                     </div>
                                 </form>
                             </div>
@@ -169,7 +171,7 @@
                         </div>
                         <div class="col-lg-2 col-md-12">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" name="btnChangePwd" id="btnChangePwd" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-danger" name="btnChangePwd" id="btnChangePwd" disabled='disabled' style="margin-bottom: 15px;">
                                 비밀번호 변경
                             </button>
                         </div>
@@ -195,6 +197,14 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <div style="margin-bottom: 10px;">탈퇴사유</div>
+                               
+                               <div class='form-check' style="display:none;">
+                          			<input type="hidden">
+                                    <input class="form-check-input" type='radio'
+                                           name='userSignOut' value="선택하지 않음" checked="checked" > <label
+                                        class='form-check-label'>선택하지 않음 </label>
+                                </div>
+                               
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
                                            name='userSignOut' value="영상 컨텐츠 부족"> <label
@@ -228,7 +238,7 @@
                         </div>
                         <div class="col-lg-2 col-md-12">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" name ="btnSignOut" id="btnSignOut" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-danger" name ="btnSignOut" id="btnSignOut" disabled='disabled' style="margin-bottom: 15px;">
                                 회원 탈퇴하기
                             </button>
                             </form>
@@ -427,10 +437,12 @@
             $('#profileMainImagesSaveModal').modal('show');
         });
 
+        /*
         $('#userNicknameChangeBtn').on('click', function () {
             $('#profileNicknameChangeModal').modal('show');
             $('#nickNameChange').submit();
         });
+        */
     });
 
 
