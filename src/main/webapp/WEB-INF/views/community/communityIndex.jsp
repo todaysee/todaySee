@@ -87,13 +87,13 @@
 								<div class="single-groups-card">
 									<div class="groups-image">
 										<a href="/community/${ott.ottName}">
-											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+											<img src="/images/mypageCommunity/groups/groups-bg-12.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">
 										<div class="groups-info d-flex justify-content-between align-items-center">
 											<a href="/community/${ott.ottName}">
-												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+												<img src="/images/mypageCommunity/groups/community-01.png" alt="image">
 											</a>
 											<div class="text ms-3">
 												<h3><a href="/community/${ott.ottName}">${ott.ottName}</a></h3>
@@ -128,13 +128,13 @@
 								<div class="single-groups-card">
 									<div class="groups-image">
 										<a href="/community/${genre.genreName}">
-											<img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+											<img src="/images/mypageCommunity/groups/groups-bg-12.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">
 										<div class="groups-info d-flex justify-content-between align-items-center">
 											<a href="/community/${genre.genreName}">
-												<img src="/images/mypageCommunity/groups/groups-1.jpg" alt="image">
+												<img src="/images/mypageCommunity/groups/community-01.png" alt="image">
 											</a>
 											<div class="text ms-3">
 												<h3><a href="/community/${genre.genreName}">${genre.genreName}</a></h3>
@@ -166,7 +166,7 @@
     <!-- End Content Page Box Area -->
 
     <!-- Start Right Sidebar Area -->
-    <%@ include file="../inculde/community/rightSidebar.jsp" %>
+    
 
 
 </div>
