@@ -73,6 +73,7 @@
                                     <div class="groups-image">
                                         <a href="#">
                                             <img src="${review.content.contentMainImagesUrl}" alt="image">
+                                            
                                         </a>
                                     </div>
                                     <div class="groups-content">
@@ -131,7 +132,7 @@
     <!--========== Body ==============-->
 
     <!--========== Right SideBar ==============-->
-    
+    <%@ include file="../inculde/community/rightSidebar.jsp" %>
     <!--========== Right SideBar ==============-->
 
 </div>
