@@ -11,8 +11,8 @@
         </div>
         <div class="contact-search-box">
             <form>
-                <input type="text" class="input-search" placeholder="채팅방 검색">
-                <button type="button"><i class="ri-search-line"></i></button>
+               <!--  <input type="text" class="input-search" placeholder="채팅방 검색">
+                <button type="button"><i class="ri-search-line"></i></button> -->
             </form>
         </div>
         <div class="contact-body" data-simplebar>
