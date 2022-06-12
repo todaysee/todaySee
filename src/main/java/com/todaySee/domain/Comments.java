@@ -35,6 +35,10 @@ public class Comments {
     @ManyToOne    
     @JoinColumn(name = "user_number")
     private UserVO userVO;
+    
+    @ManyToOne    
+    @JoinColumn(name = "community_number")
+    private Community community;
 
 
 }

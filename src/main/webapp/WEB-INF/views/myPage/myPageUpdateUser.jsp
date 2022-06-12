@@ -85,7 +85,7 @@
                                              onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileImagesBtn" type="button" class="btn btn-primary" disabled='disabled'
+                                <button id="profileImagesBtn" type="button" class="btn btn-danger" disabled='disabled'
                                         style="margin-top: 15px;">
                                     프로필 이미지 바꾸기
                                 </button>
@@ -103,7 +103,7 @@
                                              onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileTittleImagesBtn" type="button" class="btn btn-primary"
+                                <button id="profileTittleImagesBtn" type="button" class="btn btn-danger"
                                         disabled='disabled' style="margin-top: 15px;">
                                     프로필 배경 이미지 바꾸기
                                 </button>
@@ -138,7 +138,7 @@
                             <div class="col-md-1 ms-auto" style="margin-right: 33px;">
                                 <!-- Button trigger modal -->
                                 <input type="button" id='userNicknameChangeBtn' disabled='disabled'
-                                       class="btn btn-primary"
+                                       class="btn btn-danger"
                                        value="닉네임 바꾸기" style="margin-bottom:15px;"/>
                             </div>
                         </div>
@@ -146,8 +146,9 @@
 
                 </div>
             </div>
-
+<!-- form 입력 -->
             <div class="tab-pane fade" id="userPassword" role="tabpanel">
+				<form action="/changePwd" method="post" id="updatingPwdFrm" name="updatingPwdFrm">
                 <div class="account-setting-form">
                     <h3>비밀번호 변경하기</h3>
 
@@ -155,24 +156,28 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>비밀번호 변경하기</label>
-                                <input type="password" class="form-control" readonly>
+                                <input type="password" class="form-control" name="userPassword" id="userPasswordMyPage">
+                            	<span class="error_message"></span>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>변경할 비밀번호 한번더 입력</label>
-                                <input type="password" class="form-control" readonly>
+                                <input type="password" class="form-control" name="userPassword2" id="userPassword2">
+                            	<span class="error_message"></span>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-12">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-danger" name="btnChangePwd" id="btnChangePwd" style="margin-bottom: 15px;">
                                 비밀번호 변경
                             </button>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
+<!--  form 끝 -->
 
 			
             <div class="tab-pane fade" id="signOut" role="tabpanel">
@@ -192,33 +197,32 @@
                                 <div style="margin-bottom: 10px;">탈퇴사유</div>
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="영상 컨텐츠 정보 부족"> <label
-                                        class='form-check-label'>상품 다양성/가격품질 불만</label>
+                                           name='userSignOut' value="영상 컨텐츠 부족"> <label
+                                        class='form-check-label'>영상 컨텐츠 정보 부족</label>
                                 </div>
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="교환/환불/품질불만"> <label
-                                        class='form-check-label'>교환/환불/품질불만</label>
+                                           name='userSignOut' value="영상 평가 부족"> <label
+                                        class='form-check-label'>영상 평가 부족</label>
                                 </div>
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="배송지연"> <label
-                                        class='form-check-label'>배송지연</label>
+                                           name='userSignOut' value="커뮤니티 부족"> <label
+                                        class='form-check-label'>커뮤니티 부족</label>
                                 </div>
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="이용빈도 낮음"><label
+                                           name='userSignOut' value="이용빈도 낮음"><label
                                         class='form-check-label'>이용빈도 낮음</label>
                                 </div>
                                 <div class='form-check'>
                                     <input class="form-check-input" type='radio'
-                                           name='account_Reason' value="etc"> <label
+                                           name='userSignOut' value="etc"> <label
                                         class='form-check-label'>기타</label>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="textEtc"
-                                           placeholder="입력해주세요." name='account_ReasonText' readonly>
-                                           	<span class="error_message"></span>
+                                           placeholder="기타 선택 후 입력해주세요." name='userSignOut' readonly>
                                 </div>
                             </div>
                         </div>
@@ -283,11 +287,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="profileNicknameChangeModalLabel">프로필 이미지 저장</h5>
+                        <h5 class="modal-title" id="profileNicknameChangeModalLabel">프로필 닉네임 변경</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        이미지 저장 하시겠습니까?
+                        닉네임 변경 하시겠습니까?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="profileNicknameChangeModalBtn"
@@ -446,7 +450,7 @@
         });
 
         $.ajax({
-            url: "http://localhost:8080/updateProfileImageAjax",
+            url: "/updateProfileImageAjax",
             type: 'POST',
             data: {
                 userNumber: ${sessionScope.userNumber}
@@ -469,13 +473,22 @@
         });
 
         $.ajax({
-            url: "http://localhost:8080/updateProfileTitleImageAjax",
+            url: "/updateProfileTitleImageAjax",
             type: 'POST',
             data: {
                 userNumber: ${sessionScope.userNumber}
             },
         });
     }
+
+    $("input[name='userSignOut']").on('click', function() {
+        if($("input[name='userSignOut']:checked").val() =='etc'){
+            $('#textEtc').prop('readonly', false);
+        } else if ($("input[name='userSignOut']:checked").val() !='etc') {
+            $('#textEtc').prop('readonly', true);
+            $('#textEtc').val("");
+        }
+    });
 </script>
 </body>
 <iframe name='blankifr' style='display:none;'></iframe>

@@ -75,6 +75,7 @@
 			wsOpen();
 			$("#yourName").hide();
 			$("#yourMsg").show();
+			$("#startBtn").prop("disabled", true);
 		}
 	}
 

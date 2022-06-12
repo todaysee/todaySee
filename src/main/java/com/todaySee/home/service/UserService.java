@@ -28,11 +28,13 @@ public interface UserService {
 	// 로그인 할때마다 날짜 업데이트
 	UserVO updateUserLoginDate(Integer userNumber);
 	
+	// 마이페이지 비밀번호 체크 
 	UserVO checkMypagePassword(Integer userNumber);
 	
+	// 마이페이지 비밀번호 변경 
+	UserVO changePwdMypage(Integer userNumber, String userPassword);
+	
 	//회원탈퇴
-	//UserVO removalEmail(HttpSession session);
-
-	UserVO removalEmail(Integer userNumber);
+	UserVO removalEmail(Integer userNumber, String userSignOut);
 	
 }

@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.StringTokenizer;
 
+import com.todaySee.myPage.javaClass.MyPageImages;
+import com.todaySee.persistence.ImagesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -36,6 +38,9 @@ public class HomeController {
 
 	@Autowired
 	private HomeService homeService;
+
+    @Autowired
+    ImagesRepository myPageImgRepository;
 
     //테스트 페이지
     @GetMapping("/2")
@@ -77,7 +82,13 @@ public class HomeController {
      */
     @GetMapping("/")
     public String homeIndex(Model model, HttpSession session) {
-    	
+
+
+        //회원 이미지 불러오기
+        String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages);
+        System.out.println("테스트 프로필 이미지"+profileImages);
+
     	// 최신 콘텐츠 출력
     	model.addAttribute("newContent",homeService.newContent());
     	
@@ -123,6 +134,8 @@ public class HomeController {
     		}
     	
     	}// end of if
+
+
     	
 		        return "/home/homeIndex";
       
@@ -133,7 +146,13 @@ public class HomeController {
      * @return
      */
     @GetMapping("/search/content")
-    public String homeList_content() {
+    public String homeList_content(Model model, HttpSession session) {
+
+        //회원 이미지 불러오기
+        String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages);
+        System.out.println("테스트 프로필 이미지"+profileImages);
+
     	System.out.println("content");
         return "/home/homeList_content";
     }
@@ -145,7 +164,12 @@ public class HomeController {
      */
 	
 	  @GetMapping("/search/genres") 
-	  public String homeList_person(Integer genreNumber, Model model, Integer page) {
+	  public String homeList_person(Integer genreNumber, Model model, Integer page, HttpSession session) {
+
+          //회원 이미지 불러오기
+          String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+          model.addAttribute("profileImages", profileImages);
+          System.out.println("테스트 프로필 이미지"+profileImages);
 	  
 		  // 장르 번호에 따른 콘텐츠 정보들이 List로 담긴다  
 		  Page<Content> genresContent = homeService.getGenresContentList(genreNumber, page);
@@ -164,7 +188,12 @@ public class HomeController {
 	   * @return
 	   */
 	  @GetMapping("/search/ott")
-	  public String homeList_ott(Integer ottNumber, Integer page, Model model) {
+	  public String homeList_ott(Integer ottNumber, Integer page, Model model, HttpSession session) {
+
+          //회원 이미지 불러오기
+          String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+          model.addAttribute("profileImages", profileImages);
+          System.out.println("테스트 프로필 이미지"+profileImages);
 		  
 		  Page<Content> content = homeService.ottContentList(ottNumber, page);
 		  
@@ -180,7 +209,12 @@ public class HomeController {
      * @return
      */
     @GetMapping("/search/bookmark")
-    public String homeList_bookmark() {
+    public String homeList_bookmark(Model model, HttpSession session) {
+        //회원 이미지 불러오기
+        String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages);
+        System.out.println("테스트 프로필 이미지"+profileImages);
+
     	return "/home/homeList_bookmark";
     }
     
@@ -188,14 +222,26 @@ public class HomeController {
      * @return
      */
     @GetMapping("/search/community")
-    public String homeList_community() {
-    	return "/home/homeList_community";
+    public String homeList_community(Model model, HttpSession session) {
+
+        //회원 이미지 불러오기
+        String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages);
+        System.out.println("테스트 프로필 이미지"+profileImages);
+
+        return "/home/homeList_community";
     }
     
 
     //상세 페이지
     @GetMapping("/details")
-    public String homeDetails() {
+    public String homeDetails(Model model, HttpSession session) {
+
+        //회원 이미지 불러오기
+        String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages);
+        System.out.println("테스트 프로필 이미지"+profileImages);
+
         return "/home/homeDetails";
     }
     

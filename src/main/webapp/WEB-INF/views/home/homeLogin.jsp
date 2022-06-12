@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title>오늘 이거 볼래 ? | 로그인 </title>
-	
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="/images/home/favicon.png">
 	<!-- CSS -->
@@ -24,7 +24,17 @@
 <body>
 
 <!--=========== Loader =============-->
-<%@ include file="../inculde/home/preLoader.jsp"%>
+<!-- Start Preloader Area -->
+<div class="preloader-area">
+    <div class="spinner">
+        <div class="inner">
+            <div class="disc"></div>
+            <div class="disc"></div>
+            <div class="disc"></div>
+        </div>
+    </div>
+</div>
+<!-- End Preloader Area -->
 <!--=========== Loader =============-->
 
 <!--========== Header ==============-->
@@ -34,18 +44,8 @@
 <!--========== Body ==============-->
 
 
-        <!-- Start Preloader Area -->
-        <div class="preloader-area">
-            <div class="spinner">
-                <div class="inner">
-                    <div class="disc"></div>
-                    <div class="disc"></div>
-                    <div class="disc"></div>
-                </div>
-            </div>
-        </div>
-        <!-- End Preloader Area -->
-        
+
+
         <!-- Start Preloader Area -->
         <div class="profile-authentication-area">
             <div class="container">
@@ -53,7 +53,6 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="profile-authentication-image">
                             <div class="content-image">
-                            
                             	<!-- 이미지 링크 -->
                              	  <div class = "logo" style="text-align:center">
                                 <img src="images/myPageCommunity/logo-2.png" alt="image" style="margin-top: 100px !important;">
@@ -61,25 +60,25 @@
                             </div>
                         </div>
                     </div>
-    	
+
                     <div class="col-lg-6 col-md-12">
                         <div class="login-form">
                             <div style="text-align:center"><h2>Login</h2></div>
-        
+
                             <form action="/successLogin" method="post" id="loginFrm" name="loginFrm">
-                            
+
                                 <div class="form-group">
                                     <label> 이메일 </label>
                                     <input type="text" name="userEmail"  id="userEmail"  value="${ cookie.checkEmail.value}"class="form-control">
                                 	<span class="error_message"></span>
                                 </div>
-        
+
                                 <div class="form-group">
                                     <label> 비밀번호 </label>
                                     <input type="password" name="userPassword" id="userPassword" class="form-control">
                                 	<span class="error_message"></span>
                                 </div>
-                              		
+
                                         	<div class="lost-your-password-wrap">
                                         	 <div style="float:left; color:grey;">
                                        <userEmail:if test="${not empty cookie.checkEmail.value }">
@@ -87,12 +86,12 @@
                                         	</userEmail:if>
                                         		<input type="checkbox" id="emailCheckBox" name="emailCheckBox" value="true" ${checked }/>
                                         		 	<label for="emailCheckBox">이메일 기억하기</label>
-                                       	
+
                                         	</div>
-                                       	
+
                                 <button type="button" class="default-btn" name="btn_Login" id="btn_Login"> 로그인 </button>
-                                 <div class="or-text"><span></span></div> 
-                                                               
+                                 <div class="or-text"><span></span></div>
+
                                 		<div class="lost-your-password-wrap">
                                 		<div style="float:left; color:grey;">
                                         	<a href="/" class="lost-your-password">홈으로 가기  </a>
@@ -103,30 +102,18 @@
                                         	</div>
                                         	</div>
                                         	</div>
-                                        	<div class="or-text"><span></span></div> 
-                                        
+                                        	<div class="or-text"><span></span></div>
 
-                                        	
+
+
                                         	<!-- 이미지 링크 -->
                                         	<p>
-                                       	
-                                        	<div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
 
-                                  <!--       	<a id="btn-kakao-login" href="kakao/login">
-                                     <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 250px;">
-                                     </a> -->
-                                     
-                                     
+                                    <div class="loginImages" name="loginImages" id="loginImages" style="margin-left: 45px !important;">
                                      <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e7b755dd375b2a88db6fd8313155c72c&redirect_uri=http://localhost:8080/kakao/login&response_type=code">
-                                     <img src="images/home/login/kakao-login.png" alt="kakao" style="width: 450px; height: 70px">
+                                     <img src="images/home/login/kakao.png" alt="kakao" style="width: 450px; height: 70px">
                                      </a>
-                                     
-                                    <!--  
-                                     <img src="images/home/login/naver-login.png" alt="naver" style="width: 225px;">
-                              		</div> -->
-
-                                       
-
+                                    </div>
                             </form>
                         </div>
                     </div>
@@ -138,8 +125,8 @@
             </div>
         </div>
         <!-- End Preloader Area -->
-        
-         
+
+
 <script src="/js/mypageCommunity/jquery.min.js"></script>
 <script src="/js/mypageCommunity/bootstrap.bundle.min.js"></script>
 <script src="/js/mypageCommunity/jquery.magnific-popup.min.js"></script>
@@ -149,7 +136,7 @@
 <script src="/js/mypageCommunity/owl.carousel.min.js"></script>
 <script src="/js/mypageCommunity/wow.min.js"></script>
 <script src="/js/mypageCommunity/main.js"></script>
-   
+
 <!--========== Body ==============-->
 
 
@@ -173,7 +160,7 @@
 <script src="/js/home/script.js"></script>
 
 <!-- js추가 -->
- 
+
 <script src="/js/home/UserLogin.js"></script>
 
 

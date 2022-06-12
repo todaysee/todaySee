@@ -38,7 +38,7 @@
                                 <c:set var="userProfileYn" value="${user.userProfileYn}"/>
                                 <c:choose>
                                     <c:when test="${userProfileYn eq '0'}">
-                                        <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile2.uf.tistory.com%2Fimage%2F2672F24D565C2ED7144C63"
+                                        <img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
                                              class="rounded-circle" alt="image">
                                     </c:when>
                                     <c:otherwise>

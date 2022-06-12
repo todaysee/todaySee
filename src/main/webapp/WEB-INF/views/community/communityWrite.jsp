@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -111,7 +112,7 @@
                                            onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg">
                                 </li>
                                 <li class="post-btn">
-                                    <button type="button" value="작성" id="uploadBtn">
+                                    <button type="button" id="uploadBtn">작성</button>
                                 </li>
                             </ul>
                         </form>
@@ -120,17 +121,25 @@
                         <div class="news-feed news-feed-post">
                             <div class="post-header d-flex justify-content-between align-items-center">
                                 <div class="image">
-                                    <img src="/images/mypageCommunity/user/user-35.jpg" class="rounded-circle"
-                                         alt="image">
+                                    <c:choose>
+                                        <c:when test="${board.userProfileYn eq '0'}">
+                                            <a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
+                                                    class="rounded-circle" alt="image"></a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a><img src="${board.userProfileImg}"
+                                                    class="rounded-circle" alt="image"></a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="info ms-3">
-                                    <span class="name community_title"><a
-                                            href="my-profile.html">${board.communityCategory}</a></span>
+                                    <span class="name community_title">
+                                            ${board.communityCategory}</span>
                                     <div class="row">
-                                        <span class="small-text user_name col-md-9"><a
-                                                href="#">${board.user.userNickname}</a></span>
+                                        <span class="small-text user_name col-md-9">
+                                                작성자 : ${board.userNickname}</span>
                                         <span class="small-text col-md-3 write_date"><a
-                                                href="#">${board.communityDate}</a></span>
+                                                href="#">글번호 : ${board.communityNumber}</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -138,43 +147,37 @@
                             <div class="post-body">
                                 <p>${board.communityContent}</p>
                                 <div class="post-image">
-                                    <img src="/images/mypageCommunity/news-feed-post/post-2.jpg" alt="image">
+                                    <c:set var="image" value="${board.imagesCommunityFileName }"/>
+                                    <c:choose>
+                                        <c:when test="${image == ''}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="${board.imagesCommunityUrl }" alt="image">
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
-                                <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+                                <ul class="post-meta-wrap d-flex justify-content-between align-items-center ulTag">
                                     <li class="post-react">
                                         <button class="community_like">
-                                            <i class="flaticon-like"></i><span>Like</span> <span
-                                                class="number">3 </span>
+                                            <i class="flaticon-like"></i><span>좋아요</span> <span class="number LikeCount">${board.communityLike } </span>
                                         </button>
                                     </li>
-                                    <li class="post-comment"><a href="#"><i
-                                            class="flaticon-comment"></i><span>Comment</span> <span
-                                            class="number">0 </span></a></li>
-                                    <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>Share</span>
-                                        <span class="number">0 </span></a></li>
+                                    <li class="post-comment"><i
+                                            class="flaticon-comment"></i><span>댓글</span> <span class="number commentCount">${fn:length(board.comments)} </span></li>
+                                    <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>작성시간</span>
+                                        <span class="number">${board.communityDate}</span></a></li>
                                     <li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal"
                                            data-bs-target="#modalReport"> <span><i
                                             class="fa fa-exclamation-triangle"></i>신고</span>
                                     </a></li>
                                 </ul>
                                 <div class="comments">
-                                    <div class="nickname">닉네임</div>
-                                    <div class="comments_content">댓글내용</div>
+	                                <c:forEach items="${board.comments }" var="comment">
+	                                    <div class="nickname">${comment.userVO.userNickname}</div>
+	                                    <div class="comments_content">${comment.commentsContent }</div>
+	                                </c:forEach>
                                 </div>
 
-
-                                <form class="post-footer">
-                                    <!-- <div class="footer-image">
-                                        <a href="#"><img src="/images/mypageCommunity/user/user-2.jpg"
-                                                         class="rounded-circle" alt="image"></a>
-                                    </div> -->
-                                    <!-- <div class="form-group">
-                                        <textarea name="message" class="form-control comments_keypress" id="comments_keypress"
-                                                  placeholder="댓글을 적어주세요."></textarea>
-                                                  <button type="submit" class="send-btn d-inline-block">Send</button>
-
-                                    </div> -->
-                                </form>
                                 <form class="d-flex align-items-center">
                                     <input type="hidden" class="communityNumber" value="${board.communityNumber }"/>
                                     <input type="hidden" class="userNumber" value="${sessionScope.userNumber }"/>
@@ -188,7 +191,7 @@
                         </div>
                     </c:forEach>
                     <div class="load-more-posts-btn">
-                        <a href="#"><i class="flaticon-loading"></i> Load More Posts</a>
+                        <a href="#"><i class="flaticon-loading"></i>마지막 글 입니다.</a>
                     </div>
                 </div>
             </div>
@@ -284,39 +287,97 @@
 
 
         $('#uploadBtn').click(function () {
-            alert('전송!')
             uploadFile();
+            alert("작성되었습니다.")
+           	location.reload();
         });
+	
+        // 좋아요 클릭 이벤트
+		$('.community_like').click(function(){
+			 
+			// 좋아요를 클릭한 유저의 번호
+			let userNumber = $(this).parents().siblings('.d-flex.align-items-center').children('.userNumber').val()
+			
+			// 좋아요 클릭한 게시글의 번호
+			let communityNumber = $(this).parents().siblings('.d-flex.align-items-center').children('.communityNumber').val()
+			
+			// 현재 좋아요 개수
+			let LikeCountInteger = parseInt($(this).children('.LikeCount').html())
+			let LikeCount = $(this).children('.LikeCount')
+			
+			$.ajax({
+	                type:'get',
+	                url:"/communityCommunityLike",
+	                data:{
+	                    communityNumber : communityNumber
+	                },
+	                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+	                success : function(result){
+	                	if(result == 'N'){
+	                		console.log("좋아요 이벤트 실패")
+	                	}else{
+	                		console.log("좋아요 이벤트 성공")
+	                		console.log(LikeCountInteger)
+	                		LikeCount.html(LikeCountInteger+1)
+	                		
+	                	}//end of if
+	                },
+	                error : function(e){
+	                    console.log("ERROR: ", e);
+	                    alert('실패')
+	                }
+	            });// end of Ajax
+			
+		});// end of $('.community_like').click()
+		
+        // 댓글 작성 버튼을 클릭 시 DB 입력 + 화면에 출력
+        $('.commentsbtn').click(function(){
 
+            // 댓글 작성자의 userNumber
+            let userNumber = $(this).siblings('.userNumber').val()
 
-        $('.commentsbtn').click(function () {
+            // 댓글 작성자의 userNickname
             let nickname = $(this).siblings('.userNickname').val()
+
+            // 댓글 내용
             let commentsContent = $(this).siblings('#commentsbox').val()
+            let commentsContent2 = $(this).siblings('#commentsbox')
+
+            // 댓글을 작성한 게시글의 communityNumber
+            let communityNumber = $(this).siblings('.communityNumber').val()
+
+            // 댓글 작성 시 개수 늘리기
+            let commentCountInteger = parseInt($(this).parent().siblings('.ulTag').children('.post-comment').children('.commentCount').html())
+            let commentCount = $(this).parent().siblings('.ulTag').children('.post-comment').children('.commentCount')
+            
+            // 작성한 댓글을 화면에 출력할 위치
             const list = $(this).parent().siblings('.comments')
+
             $.ajax({
-                type: 'post',
-                url: "/communityCommentsInsert",
-                data: {
-                    user: $(this).siblings('.userNumber').val(),
-                    community: $(this).siblings('.communityNumber').val(),
-                    comments: commentsContent,
+                type:'post',
+                url:"/communityCommentsInsert",
+                data:{
+                    userNumber : userNumber,
+                    communityNumber : communityNumber,
+                    commentsContent : commentsContent
                 },
-                contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-                success: function (commentsList) {
-                    alert(commentsList)
-                    let content = ' <div class="nickname">' + nickname + '</div>'
+                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+                success : function(result){
+                    console.log(result)
+                    let content =  ' <div class="nickname">'+ nickname + '</div>'
                         + ' <div class="comments_content">' + commentsContent + '</div>'
                     list.append(content);
-
+                    commentsContent2.val("")
+                    
+                    // 댓글 작성 시 개수 +1 해주기
+                    commentCount.html(commentCountInteger+1)
                 },
-                error: function (e) {
+                error : function(e){
                     console.log("ERROR: ", e);
                     alert('실패')
                 }
-            })
-        })
-
-
+            });// end of Ajax
+        })// end of  $('.commentsbtn').click()
     });
 
     function changeValue(obj) {
@@ -338,75 +399,8 @@
         });
     }
 
-        // 댓글 작성 버튼을 클릭 시 DB 입력 + 화면에 출력
-        $('.commentsbtn').click(function(){
-        	
-        	// 댓글 작성자의 userNumber
-        	let userNumber = $(this).siblings('.userNumber').val()
-        	
-        	// 댓글 작성자의 userNickname
-        	let nickname = $(this).siblings('.userNickname').val()
-        	
-        	// 댓글 내용
-        	let commentsContent = $(this).siblings('#commentsbox').val()
-        	
-        	// 댓글을 작성한 게시글의 communityNumber
-        	let communityNumber = $(this).siblings('.communityNumber').val()
-        	
-        	// 작성한 댓글을 화면에 출력할 위치
-        	const list = $(this).parent().siblings('.comments')
-        	
-        	$.ajax({
-            	type:'post',
-            	url:"/communityCommentsInsert",
-            	data:{
-            		userNumber : userNumber,
-            		communityNumber : communityNumber,
-            		commentsContent : commentsContent
-                	},
-                contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-                success : function(result){
-                	console.log(result)
-                    let content =  ' <div class="nickname">'+ nickname + '</div>'
-                        + ' <div class="comments_content">' + commentsContent + '</div>'
-                        list.append(content);
-                    },
-                error : function(e){
-                        console.log("ERROR: ", e);
-                        alert('실패')
-                     }
-            	});// end of Ajax
-            })// end of  $('.commentsbtn').click()
-            
-         //파일 업로드여부 체크박스
-	    $("#imagesCommunityFileUploadCheck").change(function(){
-	        if($("#imagesCommunityFileUploadCheck").is(":checked")){
-	            alert("체크박스 체크했음!");
-	            uploadFile();
-	        }else{
-	            alert("체크박스 체크 해제!");
-	        }
-	    });
-	    function changeValue(obj) {
-	        // alert((obj.value).replace("C:\\fakepath\\",""));
-	        $("#fileName").text("파일명 : " + (obj.value).replace("C:\\fakepath\\",""));
-	    }
-	
-	    function uploadFile() {
-	        let form = $('#imagesCommunityFileUploadForm')[0];
-	        let formData = new FormData(form);
-	        $.ajax({
-	            url: flaskIp2,  //플라스크 아이피주소
-	            type: 'POST',
-	            data: formData,
-	            processData: false,
-	            contentType: false
-	        }).done(function (data) {
-	            callback(data);
-	        });
-	    }
-    });// end of  $(function (){})
-   
+
+
 
 </script>
 
