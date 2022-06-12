@@ -1,27 +1,20 @@
 package com.todaySee.myPage.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.todaySee.domain.*;
+import com.todaySee.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.todaySee.Converter.CommunityConverter;
-import com.todaySee.domain.Community;
-import com.todaySee.domain.Content;
-import com.todaySee.domain.Review;
-import com.todaySee.domain.UserVO;
 import com.todaySee.dto.CommunityDto;
-import com.todaySee.persistence.CommunityJpaRepositroy;
-import com.todaySee.persistence.CommunityRepositroy;
-import com.todaySee.persistence.ContentRepository;
-import com.todaySee.persistence.GenreRepositroy;
-import com.todaySee.persistence.ReviewJpaRepository;
-import com.todaySee.persistence.ReviewRepository;
-import com.todaySee.persistence.UserRepository;
 
 @Service
 public class MyPageServiceImpl implements MyPageService{
@@ -46,6 +39,9 @@ public class MyPageServiceImpl implements MyPageService{
 	
 	@Autowired
 	private ContentRepository contentRepository;
+
+    @Autowired
+    private CommentsRepository commentsRepo;
     
     @Override
     public UserVO getUserInfo(UserVO user) {
@@ -145,6 +141,41 @@ public class MyPageServiceImpl implements MyPageService{
     @Override
     public Integer userJoinDate(Integer userNumber) {
         return userRepository.userJoinDate(userNumber);
+    }
+
+    /****************************** 댓글 - 권소연 추가 ***********************************/
+
+    /**
+     * 유저 번호에 따른 댓글 리스트 가져오기
+     * @param userNumber : 유저 번호
+     * @return List<HashMap<String, String>> : 출력할 내용을 담은 리스트 리턴
+     */
+    public List<HashMap<String, String>> getCommentList(Integer userNumber){
+        List<HashMap<String, String>> returnList = new ArrayList<HashMap<String, String>>();
+
+        // 유저 번호가 userNumber 와 같고 해당 댓글의 상태가 0인 댓글 리스트 가져오기
+        List<Comments> commentsList = commentsRepo.findByUserVOAndCommentsState(userRepository.findById(userNumber).get(), 0);
+
+        for(Comments c : commentsList) {
+            HashMap<String, String> map = new HashMap<String, String>();
+            // 댓글번호, 댓글내용, 작성날짜, 게시글번호, 게시글내용, 게시글작성유저닉네임
+            map.put("commentNumber", Integer.toString(c.getCommentsNumber())); /* 댓글 번호 저장 */
+            map.put("commentContent", c.getCommentsContent()); /* 댓글 내용 저장 */
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); /* 댓글 작성 날짜를 String 형으로 저장하기 위해 Format 함수 가져오기 */
+            map.put("commentDate", df.format(c.getCommentsDate())); /* 댓글 작성 날짜 저장 */
+            map.put("communityNumber", Integer.toString(c.getCommunity().getCommunityNumber())); /* 댓글이 작성된 게시글 번호 저장 */
+            String communityContent = c.getCommunity().getCommunityContent(); /* 댓글이 작성된 게시글 내용 저장 */
+            if(communityContent.length() <= 10) { /* 게시글 내용이 10글자보다 적을 경우 */
+                map.put("communityContent", communityContent); /* 그대로 저장 */
+            } else { /* 많을 경우 */
+                communityContent = communityContent.substring(0, 10) + " ..."; /* 10글자 이하로 잘라서 ...을 붙이기 */
+                map.put("communityContent", communityContent); /* 저장 */
+            }
+            map.put("communityWriter", c.getCommunity().getUser().getUserNickname()); /* 게시글을 작성한 유저의 닉네임 */
+            returnList.add(map);
+        }
+
+        return returnList;
     }
 
 }

@@ -31,6 +31,204 @@
             display: none;
         }
 
+        /************************************************************
+          댓글 table 스타일 추가 - 권소연
+         ************************************************************/
+        .comment-table {
+            background-color: var(--white-color);
+            padding: 30px;
+        }
+
+        .comment-table table {
+            margin-bottom: 0;
+        }
+
+        .comment-table table thead tr {
+            border: none;
+        }
+
+        .comment-table table thead tr th {
+            border: none;
+            border-bottom-width: 0px;
+            vertical-align: middle;
+            padding: 15px 25px;
+            white-space: nowrap;
+            font-size: 15px;
+            color: var(--black-color);
+            font-weight: 600;
+            font-family: var(--heading-font-family);
+        }
+
+        .comment-table table thead tr th:first-child {
+            padding-left: 0;
+        }
+
+        .comment-table table thead tr th:last-child {
+            padding-right: 0;
+        }
+
+        .comment-table table tbody tr {
+            border: none;
+        }
+
+        .comment-table table tbody tr td {
+            border: none;
+            vertical-align: middle;
+            color: var(--paragraph-color);
+            white-space: nowrap;
+            padding: 15px 25px;
+            font-weight: 400;
+            font-size: 15px;
+            word-break: break-all;
+            height: auto;
+        }
+
+        .comment-table table tbody tr td:first-child {
+            padding-left: 0;
+        }
+
+        .comment-table table tbody tr td:last-child {
+            padding-right: 0;
+        }
+
+        .comment-table table tbody tr td a {
+            color: var(--main-color);
+        }
+
+        .comment-table table tbody tr td h5 {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .comment-table table tbody tr td p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .comment-table table tbody tr td span {
+            font-size: 14px;
+        }
+
+        /*==================================
+           체크박스 css 추가
+       ==================================*/
+
+        .comment-checkbox input[type="checkbox"],
+        input[type="radio"] {
+            border: 0;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        .comment-checkbox input[type="checkbox"]:hover + label:before,
+        input[type="radio"]:hover + label:before {
+            border-color: #999;
+        }
+
+        .comment-checkbox input[type="checkbox"]:active + label:before,
+        input[type="radio"]:active + label:before {
+            transition-duration: 0;
+            filter: brightness(0.2);
+        }
+
+        .comment-checkbox input[type="checkbox"] + label,
+        input[type="radio"] + label {
+            position: relative;
+            padding-left: 26px;
+            font-weight: normal;
+        }
+
+        .comment-checkbox input[type="checkbox"] + label:before, input[type="checkbox"] + label:after,
+        input[type="radio"] + label:before,
+        input[type="radio"] + label:after {
+            box-sizing: content-box;
+            position: absolute;
+            content: '';
+            display: block;
+            left: 0;
+        }
+
+        .comment-checkbox input[type="checkbox"] + label:before,
+        input[type="radio"] + label:before {
+            top: 50%;
+            width: 16px;
+            height: 16px;
+            margin-top: -10px;
+            border: 2px solid #d9d9d9;
+            text-align: center;
+        }
+
+        .comment-checkbox input[type="checkbox"] + label:after,
+        input[type="radio"] + label:after {
+            background-color: #00bad2;
+            top: 50%;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            margin-top: -4px;
+            transform: scale(0);
+            transform-origin: 50%;
+            transition: transform 200ms ease-out;
+        }
+
+        .comment-checkbox input[type="radio"]:checked + label:before {
+            -moz-animation: borderscale 300ms ease-in;
+            -webkit-animation: borderscale 300ms ease-in;
+            animation: borderscale 300ms ease-in;
+            background-color: #fff;
+        }
+
+        .comment-checkbox input[type="radio"]:checked + label:after {
+            transform: scale(1);
+        }
+
+        .comment-checkbox input[type="radio"] + label:before, input[type="radio"] + label:after {
+            border-radius: 50%;
+        }
+
+        .comment-checkbox input[type="checkbox"] + label:after {
+            background-color: transparent;
+            top: 50%;
+            left: 5px;
+            width: 7px;
+            height: 4px;
+            margin-top: -5px;
+            border-style: solid;
+            border-color: #00bad2;
+            border-width: 0 0 3px 3px;
+            -moz-transform: rotate(-45deg) scale(0);
+            -ms-transform: rotate(-45deg) scale(0);
+            -webkit-transform: rotate(-45deg) scale(0);
+            transform: rotate(-45deg) scale(0);
+            -moz-transition: none;
+            -o-transition: none;
+            -webkit-transition: none;
+            transition: none;
+        }
+
+        .comment-checkbox input[type="checkbox"]:checked + label:before {
+            -moz-animation: borderscale 200ms ease-in;
+            -webkit-animation: borderscale 200ms ease-in;
+            animation: borderscale 200ms ease-in;
+        }
+
+        .comment-checkbox input[type="checkbox"]:checked + label:after {
+            content: '';
+            -moz-transform: rotate(-45deg) scale(1);
+            -ms-transform: rotate(-45deg) scale(1);
+            -webkit-transform: rotate(-45deg) scale(1);
+            transform: rotate(-45deg) scale(1);
+            -moz-transition: -moz-transform 200ms ease-out;
+            -o-transition: -o-transform 200ms ease-out;
+            -webkit-transition: -webkit-transform 200ms ease-out;
+            transition: transform 200ms ease-out;
+        }
+
     </style>
 </head>
 
@@ -151,17 +349,47 @@
                     </div>
                     <div class="col-lg-10 col-md-12">
                         <div class="account-setting-form">
-                            <h3>내 댓글</h3>
-                            <div class="card card-primary card-outline">
-                                <div class="card-body p-0">
-                                    <div>
-                                        <button id="btnAllSelect" class="btn btn-primary btn-block" type="button">전체선택
-                                        </button>
-                                    </div>
-                                    <div id="pagingCommentsBody">
+
+                                    <h3>내 댓글</h3>
+
+                            </div>
+                                <div id="pagingCommentsBody">
+                                    <div class="comment-table table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <button id="btnAllSelect" class="btn btn-primary btn-block" type="button">전체선택</button>
+                                                    </th>
+                                                    <th>댓글내용</th>
+                                                    <th>작성날짜</th>
+                                                    <th>작성된 게시글</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach items="${commentList}" var="comment">
+                                                <tr>
+                                                    <td>
+                                                        <div class="comment-checkbox">
+                                                            <input type="checkbox" id="comment${comment.commentNumber}" class="checkbox2" value="${comment.commentNumber}"/><label for="comment${comment.commentNumber}"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <p>
+                                                            ${comment.commentContent}
+                                                        </p>
+                                                    </td>
+                                                    <td>${comment.commentDate}</td>
+                                                    <td>
+                                                        <p>${comment.communityContent}</p>
+                                                        <span>${comment.communityWriter}</span>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            </div>
                             <!-- /.card -->
                         </div>
                         <ul id="paginationComments" class="pagination justify-content-center"
@@ -246,348 +474,6 @@
             }
         }
 
-        $('#btnAllSelect').click(function () {
-            var clicks = $(this).data('clicks')
-            if (clicks) {
-                //Uncheck all checkboxes
-                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
-                $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
-            } else {
-                //Check all checkboxes
-                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
-                $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
-            }
-            $(this).data('clicks', !clicks)
-        })
-
-        let totalPages = 1;
-        let totalCommentsPages = 1;
-
-        function fetchNotes(startPage) {
-            $.ajax({
-                type: "GET",
-                url: "/ajaxPaging",
-                data: {
-                    page: startPage,
-                    size: 8
-                },
-                success: function (response) {
-                    $('#boardBody').empty();
-                    $.each(response.content, (i, content) => {
-                        let boardRow = '<div class="col-lg-3 col-md-6">' +
-                            '<div class="single-events-card">' +
-                            '<div class="text-center h2">' +
-                            content.content_title +
-                            '</div>' +
-                            '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop' + content.content_number + '">' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="modal fade" id="staticBackdrop' + content.content_number + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
-                            '<div class="modal-dialog">' +
-                            '<div class="modal-content">' +
-                            '<div class="modal-header">' +
-                            '<h5 class="modal-title" id="staticBackdropLabel">' + content.content_title + '</h5>' +
-                            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                            '</div>' +
-                            '<div class="modal-body">' +
-                            '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
-                            '<div>' + content.content_info +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                            '<button type="button" class="btn btn-primary">Understood</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-                        $('#boardBody').append(boardRow);
-                    });
-
-                    if ($('ul#paginationBoard li').length - 2 != response.totalPages) {
-                        // build pagination list at the first time loading
-                        $('ul#paginationBoard').empty();
-                        buildPagination(response);
-                    }
-                },
-                error: function (e) {
-                    alert("ERROR: ", e);
-                    console.log("ERROR: ", e);
-                }
-            });
-        }
-
-        function fetchComments(startPageComments) {
-            $.ajax({
-                type: "GET",
-                url: "/ajaxPaging",
-                data: {
-                    page: startPageComments,
-                    size: 8
-                },
-                success: function (response) {
-                    $('#pagingCommentsBody').empty();
-                    $.each(response.content, (i, content) => {
-                        let reviewRow = '<div class="table-responsive mailbox-messages">' +
-                            '<table class="table table-hover table-striped">' +
-                            '<tbody>' +
-                            '<tr>' +
-                            '<td width="50">' +
-                            '<div class="icheck-primary">' +
-                            '<input type="checkbox" value="">' +
-                            '</div>' +
-                            '</td>' +
-                            '<td width="350" class="mailbox-name">' + '<a data-bs-toggle="modal" data-bs-target="#staticBackdrop2' + content.content_number + '">' + content.content_title + '</a>' + '</td>' +
-                            '<td width="250"  class="mailbox-subject"><b>' + content.content_number + '</b>' +
-                            '</td>' +
-                            '<td width="100" class="mailbox-date">' + content.content_release_date + '</td>' +
-                            '</tr>' +
-                            '</tbody>' +
-                            '</table>' +
-                            '</div>' +
-                            '<div class="modal fade" id="staticBackdrop2' + content.content_number + '"' + 'data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">' +
-                            '<div class="modal-dialog">' +
-                            '<div class="modal-content">' +
-                            '<div class="modal-header">' +
-                            '<h5 class="modal-title" id="staticBackdropLabel">' + content.content_title + '</h5>' +
-                            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
-                            '</div>' +
-                            '<div class="modal-body">' +
-                            '<img src="' + content.content_poster_images_url + '" alt="image" data-bs-toggle="modal" data-bs-target="#staticBackdrop">' +
-                            '<div>' + content.content_info +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>' +
-                            '<button type="button" class="btn btn-primary">Understood</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-                        $('#pagingCommentsBody').append(reviewRow);
-                    });
-
-                    if ($('ul#paginationComments li').length - 2 != response.totalPages) {
-                        // build pagination list at the first time loading
-                        $('ul#paginationComments').empty();
-                        buildPaginationComments(response);
-                    }
-                },
-                error: function (e) {
-                    alert("ERROR: ", e);
-                    console.log("ERROR: ", e);
-                }
-            });
-        }
-
-        function buildPagination(response) {
-            totalPages = response.totalPages;
-
-            var pageNumber = response.pageable.pageNumber;
-
-            var numLinks = 10;
-
-            // print 'previous' link only if not on page one
-            var first = '';
-            var prev = '';
-            if (pageNumber > 0) {
-                if (pageNumber !== 0) {
-                    first = '<li class="page-item"><a class="page-link">« First</a></li>';
-                }
-                prev = '<li class="page-item"><a class="page-link">‹ Prev</a></li>';
-            } else {
-                prev = '<li class="page-item disabled"><a class="page-link">‹ Prev</a></li>'; // on the page one, don't show 'previous' link
-                first = '<li class="page-item disabled"><a class="page-link">« First</a></li>'; // nor 'first page' link
-            }
-
-            // print 'next' link only if not on the last page
-            var next = '';
-            var last = '';
-            if (pageNumber < totalPages) {
-                if (pageNumber !== totalPages - 1) {
-                    next = '<li class="page-item"><a class="page-link">Next ›</a></li>';
-                    last = '<li class="page-item"><a class="page-link">Last »</a></li>';
-                }
-            } else {
-                next = ''; // on the last page, don't show 'next' link
-                last = ''; // nor 'last page' link
-            }
-
-            var start = pageNumber - (pageNumber % numLinks) + 1;
-            var end = start + numLinks - 1;
-            end = Math.min(totalPages, end);
-            var pagingLink = '';
-
-            for (var i = start; i <= end; i++) {
-                if (i == pageNumber + 1) {
-                    pagingLink += '<li class="page-item active"><a class="page-link"> ' + i + ' </a></li>'; // no need to create a link to current page
-                } else {
-                    pagingLink += '<li class="page-item"><a class="page-link"> ' + i + ' </a></li>';
-                }
-            }
-
-            // return the page navigation link
-            pagingLink = first + prev + pagingLink + next + last;
-
-            $("ul#paginationBoard").append(pagingLink);
-        }
-
-        function buildPaginationComments(response) {
-            totalCommentsPages = response.totalCommentsPages;
-
-            var pageNumber = response.pageable.pageNumber;
-
-            var numLinks = 10;
-
-            // print 'previous' link only if not on page one
-            var first = '';
-            var prev = '';
-            if (pageNumber > 0) {
-                if (pageNumber !== 0) {
-                    first = '<li class="page-item"><a class="page-link">« First</a></li>';
-                }
-                prev = '<li class="page-item"><a class="page-link">‹ Prev</a></li>';
-            } else {
-                prev = '<li class="page-item disabled"><a class="page-link">‹ Prev</a></li>'; // on the page one, don't show 'previous' link
-                first = '<li class="page-item disabled"><a class="page-link">« First</a></li>'; // nor 'first page' link
-            }
-
-            // print 'next' link only if not on the last page
-            var next = '';
-            var last = '';
-            if (pageNumber < totalPages) {
-                if (pageNumber !== totalPages - 1) {
-                    next = '<li class="page-item"><a class="page-link">Next ›</a></li>';
-                    last = '<li class="page-item"><a class="page-link">Last »</a></li>';
-                }
-            } else {
-                next = ''; // on the last page, don't show 'next' link
-                last = ''; // nor 'last page' link
-            }
-
-            var start = pageNumber - (pageNumber % numLinks) + 1;
-            var end = start + numLinks - 1;
-            end = Math.min(totalPages, end);
-            var pagingLink = '';
-
-            for (var i = start; i <= end; i++) {
-                if (i == pageNumber + 1) {
-                    pagingLink += '<li class="page-item active"><a class="page-link"> ' + i + ' </a></li>'; // no need to create a link to current page
-                } else {
-                    pagingLink += '<li class="page-item"><a class="page-link"> ' + i + ' </a></li>';
-                }
-            }
-
-            // return the page navigation link
-            pagingLink = first + prev + pagingLink + next + last;
-
-            $("ul#paginationComments").append(pagingLink);
-        }
-
-        $(document).on("click", "ul#paginationBoard li a", function () {
-            var data = $(this).attr('data');
-            let val = $(this).text();
-            console.log('val: ' + val);
-
-            // click on the NEXT tag
-            if (val.toUpperCase() === "« FIRST") {
-                let currentActive = $("li.active");
-                fetchNotes(0);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "LAST »") {
-                fetchNotes(totalPages - 1);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "NEXT ›") {
-                let activeValue = parseInt($("ul#paginationBoard li.active").text());
-                if (activeValue < totalPages) {
-                    let currentActive = $("li.active");
-                    startPage = activeValue;
-                    fetchNotes(startPage);
-                    // remove .active class for the old li tag
-                    $("li.active").removeClass("active");
-                    // add .active to next-pagination li
-                    currentActive.next().addClass("active");
-                }
-            } else if (val.toUpperCase() === "‹ PREV") {
-                let activeValue = parseInt($("ul#paginationBoard li.active").text());
-                if (activeValue > 1) {
-                    // get the previous page
-                    startPage = activeValue - 2;
-                    fetchNotes(startPage);
-                    let currentActive = $("li.active");
-                    currentActive.removeClass("active");
-                    // add .active to previous-pagination li
-                    currentActive.prev().addClass("active");
-                }
-            } else {
-                startPage = parseInt(val - 1);
-                fetchNotes(startPage);
-                // add focus to the li tag
-                $("li.active").removeClass("active");
-                $(this).parent().addClass("active");
-                //$(this).addClass("active");
-            }
-        });
-
-        $(document).on("click", "ul#paginationComments li a", function () {
-            var data = $(this).attr('data');
-            let val = $(this).text();
-            console.log('val: ' + val);
-
-            // click on the NEXT tag
-            if (val.toUpperCase() === "« FIRST") {
-                let currentActive = $("li.active");
-                fetchComments(0);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "LAST »") {
-                fetchComments(totalPages - 1);
-                $("li.active").removeClass("active");
-                // add .active to next-pagination li
-                currentActive.next().addClass("active");
-            } else if (val.toUpperCase() === "NEXT ›") {
-                let activeValue = parseInt($("ul#paginationComments li.active").text());
-                if (activeValue < totalPages) {
-                    let currentActive = $("li.active");
-                    startPage = activeValue;
-                    fetchComments(startPage);
-                    // remove .active class for the old li tag
-                    $("li.active").removeClass("active");
-                    // add .active to next-pagination li
-                    currentActive.next().addClass("active");
-                }
-            } else if (val.toUpperCase() === "‹ PREV") {
-                let activeValue = parseInt($("ul#paginationComments li.active").text());
-                if (activeValue > 1) {
-                    // get the previous page
-                    startPage = activeValue - 2;
-                    fetchComments(startPage);
-                    let currentActive = $("li.active");
-                    currentActive.removeClass("active");
-                    // add .active to previous-pagination li
-                    currentActive.prev().addClass("active");
-                }
-            } else {
-                startPage = parseInt(val - 1);
-                fetchComments(startPage);
-                // add focus to the li tag
-                $("li.active").removeClass("active");
-                $(this).parent().addClass("active");
-                //$(this).addClass("active");
-            }
-        });
-
-
-        (function () {
-            // get first-page at initial time
-            fetchNotes(0);
-            fetchComments(0);
-        })();
     };
 
 
