@@ -2701,7 +2701,7 @@ header#gen-header.gen-header-default .gen-menu-search-block {
     width: 45px;
     line-height: 45px;
     text-align: center;
-    background: var(--primary-color);
+    /*background: var(--primary-color);*/
     color: var(--white-color);
     display: inline-block;
     border-radius: 90px;

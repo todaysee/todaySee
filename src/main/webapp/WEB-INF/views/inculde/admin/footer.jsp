@@ -4,9 +4,8 @@
 
 
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2022-2022 <a href="/">오늘 이거 볼래?</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
     </div>
 </footer>

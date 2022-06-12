@@ -138,8 +138,8 @@ public class UserController {
     
     //회원탈퇴 
     @PostMapping("/completeSignOut")
-    public String completeSignOut(HttpSession session, HttpServletRequest request, HttpServletResponse response ) {
-    	userService.removalEmail((Integer)session.getAttribute("userNumber"));
+    public String completeSignOut(HttpSession session, HttpServletRequest request, HttpServletResponse response,String userSignOut ) {
+    	userService.removalEmail((Integer)session.getAttribute("userNumber"),userSignOut);
     	
     	// 쿠키 삭제 
 		Cookie[] getCookie = request.getCookies();
@@ -151,6 +151,7 @@ public class UserController {
 					Cookie deleteEmail=new Cookie("userEmail", null);
 					deleteEmail.setMaxAge(0);
 					response.addCookie(deleteEmail);
+		
 				} 
 			} 
 		} 
@@ -163,8 +164,17 @@ public class UserController {
     	
     		return "redirect:/";
     }
+    
+    //마이페이지 비밀번호 변경 
+    @PostMapping("/changePwd")
+    public String changePwd(String userPassword, HttpSession session) {
+    	userService.changePwdMypage((Integer) session.getAttribute("userNumber"), userPassword);
+    	System.out.println(userPassword+ "나와주세요");
 
-
+    	return "redirect:/myPage/profile";
+    }
+    
+    
     
     }
  

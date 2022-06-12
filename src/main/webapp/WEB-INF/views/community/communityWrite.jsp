@@ -112,7 +112,7 @@
                                            onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg">
                                 </li>
                                 <li class="post-btn">
-                                    <button type="button" value="작성" id="uploadBtn">
+                                    <button type="button" id="uploadBtn">작성</button>
                                 </li>
                             </ul>
                         </form>
@@ -121,17 +121,25 @@
                         <div class="news-feed news-feed-post">
                             <div class="post-header d-flex justify-content-between align-items-center">
                                 <div class="image">
-                                    <img src="/images/mypageCommunity/user/user-35.jpg" class="rounded-circle"
-                                         alt="image">
+                                    <c:choose>
+                                        <c:when test="${board.userProfileYn eq '0'}">
+                                            <a><img src="https://t1.daumcdn.net/cfile/tistory/2513B53E55DB206927"
+                                                    class="rounded-circle" alt="image"></a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a><img src="${board.userProfileImg}"
+                                                    class="rounded-circle" alt="image"></a>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="info ms-3">
-                                    <span class="name community_title"><a
-                                            href="my-profile.html">${board.communityCategory}</a></span>
+                                    <span class="name community_title">
+                                            ${board.communityCategory}</span>
                                     <div class="row">
-                                        <span class="small-text user_name col-md-9"><a
-                                                href="#">${board.user.userNickname}</a></span>
+                                        <span class="small-text user_name col-md-9">
+                                                작성자 : ${board.userNickname}</span>
                                         <span class="small-text col-md-3 write_date"><a
-                                                href="#">${board.communityDate}</a></span>
+                                                href="#">글번호 : ${board.communityNumber}</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -139,18 +147,25 @@
                             <div class="post-body">
                                 <p>${board.communityContent}</p>
                                 <div class="post-image">
-                                    <img src="${board.imagesCommunityUrl }" alt="image">
+                                    <c:set var="image" value="${board.imagesCommunityFileName }"/>
+                                    <c:choose>
+                                        <c:when test="${image == ''}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="${board.imagesCommunityUrl }" alt="image">
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <ul class="post-meta-wrap d-flex justify-content-between align-items-center ulTag">
                                     <li class="post-react">
                                         <button class="community_like">
-                                            <i class="flaticon-like"></i><span>Like</span> <span class="number LikeCount">${board.communityLike } </span>
+                                            <i class="flaticon-like"></i><span>좋아요</span> <span class="number LikeCount">${board.communityLike } </span>
                                         </button>
                                     </li>
                                     <li class="post-comment"><i
-                                            class="flaticon-comment"></i><span>Comment</span> <span class="number commentCount">${fn:length(board.comments)} </span></li>
-                                    <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>Share</span>
-                                        <span class="number">0 </span></a></li>
+                                            class="flaticon-comment"></i><span>댓글</span> <span class="number commentCount">${fn:length(board.comments)} </span></li>
+                                    <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>작성시간</span>
+                                        <span class="number">${board.communityDate}</span></a></li>
                                     <li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal"
                                            data-bs-target="#modalReport"> <span><i
                                             class="fa fa-exclamation-triangle"></i>신고</span>
@@ -176,7 +191,7 @@
                         </div>
                     </c:forEach>
                     <div class="load-more-posts-btn">
-                        <a href="#"><i class="flaticon-loading"></i> Load More Posts</a>
+                        <a href="#"><i class="flaticon-loading"></i>마지막 글 입니다.</a>
                     </div>
                 </div>
             </div>
@@ -273,6 +288,7 @@
 
         $('#uploadBtn').click(function () {
             uploadFile();
+            alert("작성되었습니다.")
            	location.reload();
         });
 	

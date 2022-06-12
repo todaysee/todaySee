@@ -1,7 +1,7 @@
 /**
 *	유효성 검사 정규식
  */
-let RegexNick = /^[가-힣a-zA-Z0-9]{1,10}$/;
+let RegexNick = /^[가-힣a-zA-Z0-9]{1,4}$/;
 let RegexEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 let RegexPW =/^(?=.*[a-zA-Z])(?=.*[0-9]).{6,15}$/;
 let RegexName = /^[가-힣]+$/;
@@ -26,6 +26,7 @@ $('#btn_emailCheck').click(function(){
 	if(userEmail == ''){
 
 		$('#userEmail ~ .error_box').html(blank);
+		$('#userEmail').focus();
 		return false;
 
 	}
@@ -45,7 +46,6 @@ $('#btn_emailCheck').click(function(){
     		
     		// 중복 검사 후 나오는 결과 에러박스에 출력
     		if(result == 'Y'){
-	        		//$('label[for="memberEmail"] .error_box').css('color','#4ABA99');
 	        		$('#userEmail ~ .error_box').html("사용 가능한 이메일입니다.");
 	        		emailCheck = true;
 				}else{
@@ -84,7 +84,7 @@ $('#btn_register').click(function(){
 			}
 			
 	 if( !RegexNick.test(userNickname) ){
-		$('#userNickname ~ .error_box').html("한글, 영문 그리고 숫자만 입력 가능합니다.");
+		$('#userNickname ~ .error_box').html("한글, 영문, 숫자 그리고 4글자 이하만 입력 가능합니다.");
 		$('#userNickname').focus();
 		return false;
 	}else{
@@ -348,7 +348,6 @@ $('#btn_Login').click(function(){
 		let checkAuthenticNumber = $("#checkAuthenticNumber").val();
 		
 		if(random == checkAuthenticNumber){
-			alert("크레파스")
 			document.sendEmail_Frm.submit();
 		}else{
 			$('#checkAuthenticNumber ~ .error_message').html("인증번호가 일치하지 않습니다.");
@@ -358,13 +357,12 @@ $('#btn_Login').click(function(){
 				
 // 비밀번호 재설정 				
 	$('#btnResetting').click(function(){
-		alert("크레파스")
+	
 		let userPassword = $("#userPassword").val();
 		let userPassword2 = $("#rePassword").val();
 		
 		if(userPassword == ''){
 			$('#password ~ .error_message').html(blank);
-			$('#password').focus();
 			return;
 		}else{
 			$('#password ~ .error_message').html("");

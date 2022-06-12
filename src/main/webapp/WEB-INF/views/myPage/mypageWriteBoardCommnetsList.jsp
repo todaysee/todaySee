@@ -81,13 +81,19 @@
                 </div>
                 <div class="row">
                     <c:forEach items="${userBoardList}" var="board">
-                        <!-- 리뷰 item 시작 -->
+                        <!-- 작성글 item 시작 -->
                         <div class="col-lg-3 col-sm-6 review_mark_body">
                             <div class="single-groups-card">
-                                <div class="groups-image">
-                                    <a href="#">
-                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
-                                    </a>
+                                <div class="groups-image" style="text-align : center;">
+                                    <c:set var="image" value="${board.imagesCommunityFileName }"/>
+                                    <c:choose>
+                                        <c:when test="${image == ''}">
+                                            <img src="/images/mypageCommunity/300.png" alt="image">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img src="${board.imagesCommunityUrl }" alt="image">
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="groups-content">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -122,7 +128,7 @@
                                             ${board.communityContent}
                                     </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary" onclick="location.href='/community/${board.communityCategory}'">게시판이동</button>
+                                        <button class="btn btn-primary" onclick="location.href='/community/${board.communityCategory}'">작성 게시판 이동</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
                                     </div>
                                 </div>
@@ -178,7 +184,7 @@
 <!--========== Body ==============-->
 
 <!--========== Right SideBar ==============-->
- <%@ include file="../inculde/community/rightSidebar.jsp" %>
+ 
 <!--========== Right SideBar ==============-->
 
 </div>

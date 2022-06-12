@@ -57,11 +57,10 @@ public class UserRestController {
     @PostMapping("/login")
     public String login(String userEmail, String userPassword,boolean emailCheckBox, Model model, 
     		HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-    	//로그인 할 때 마다 날짜 업데이트 
-    	//System.out.println("PostMapping"+emailCheckBox);
+    	
     	UserVO user = userService.login(userEmail, userPassword);
     	 String message = "";
-    	 if(user == null) {
+    	 if(user == null || user.getUserState() == 1) {
     		 System.out.println("로그인실패");
     		 message = "N";
     		 return message;
@@ -72,6 +71,7 @@ public class UserRestController {
     		 session.setAttribute("admin", user.getUserAdmin());
     		 session.setMaxInactiveInterval(60*60*24);
     		 //로그인 할때 마다 가입일짜 업데이트
+    		 
     		 if(emailCheckBox) {
     			 // 체크박스에 체크가 되어있다면 
     			Cookie[] getCookie = request.getCookies();
@@ -108,9 +108,10 @@ public class UserRestController {
     		 userService.updateUserLoginDate((Integer) session.getAttribute("userNumber"));
     		 
     		 return message;
-    	 } 
+    	 
+    } 
     }
-    
+    	//인증번호 메일로 전송 
         @PostMapping("/sendEmail")
     	public String sendForgotPassword(String userEmail) {
         	System.out.println(userEmail + "메일을 보내야되는 이메일 주소 ");
@@ -132,7 +133,7 @@ public class UserRestController {
             message.setTo(userEmail);
             message.setFrom(sender);
             message.setSubject(" [오늘 이거 볼래?] New Temporary Password is here!");
-            message.setText("Hello!.  We send your temporary password here. =====> " + sb.toString() + "  <==========But this is not secured so please change password once you sign into our site. ");
+            message.setText("Hello!.  We send your temporary password here. 모두 고생하셨습니다.  =====> " + sb.toString() + "  <==========But this is not secured so please change password once you sign into our site. ");
             mailSender.send(message);
             
             return sb.toString();
@@ -150,6 +151,7 @@ public class UserRestController {
         	
         }
         
+        //회원탈퇴 
         @PostMapping("/mypageSignOut")
         public String mypagSignOut(HttpSession session, String userPassword) {
         	UserVO user = userService.checkMypagePassword((Integer) session.getAttribute("userNumber"));
@@ -158,6 +160,6 @@ public class UserRestController {
         	}
         	return "N";
         }
-
+        
     }
 

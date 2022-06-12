@@ -39,7 +39,7 @@ var ws;
 				var roomNumber = d.chatroomNumber;
 				tag += '<div class="item d-flex justify-content-between align-items-center cricle">'+
 					'<div class="figure">'+
-						'<img src="../images/mypageCommunity/user/lol.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
+						'<img src="../images/mypageCommunity/user/chat-icon.png" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+
 					'</div>'+
 					'<div class="text">'+
 						'<h4>'+
@@ -52,7 +52,7 @@ var ws;
 				
 				tag1 +=
             '<div class="contact-item">'+
-                '<a href="#">' + '<img src="/images/mypageCommunity/user/lol.jpg" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+'</a>'+
+                '<a href="#">' + '<img src="/images/mypageCommunity/user/chat-icon.png" class="rounded-circle" alt="image" onclick="goRoom(\''+roomNumber+'\', \''+rn+'\')">'+'</a>'+
                '<span class="name"><a>' + rn + '</a></span>'+
             '</div>'
 			});
