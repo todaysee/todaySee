@@ -220,6 +220,10 @@
                                            name='userSignOut' value="etc"> <label
                                         class='form-check-label'>기타</label>
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="textEtc"
+                                           placeholder="기타 선택 후 입력해주세요." name='userSignOut' readonly>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-12">
@@ -283,11 +287,11 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="profileNicknameChangeModalLabel">프로필 이미지 저장</h5>
+                        <h5 class="modal-title" id="profileNicknameChangeModalLabel">프로필 닉네임 변경</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        이미지 저장 하시겠습니까?
+                        닉네임 변경 하시겠습니까?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="profileNicknameChangeModalBtn"
@@ -476,6 +480,15 @@
             },
         });
     }
+
+    $("input[name='userSignOut']").on('click', function() {
+        if($("input[name='userSignOut']:checked").val() =='etc'){
+            $('#textEtc').prop('readonly', false);
+        } else if ($("input[name='userSignOut']:checked").val() !='etc') {
+            $('#textEtc').prop('readonly', true);
+            $('#textEtc').val("");
+        }
+    });
 </script>
 </body>
 <iframe name='blankifr' style='display:none;'></iframe>
