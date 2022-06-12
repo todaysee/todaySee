@@ -138,8 +138,7 @@
                                     <div class="row">
                                         <span class="small-text user_name col-md-9">
                                                 작성자 : ${board.userNickname}</span>
-                                        <span class="small-text col-md-3 write_date"><a
-                                                href="#">글번호 : ${board.communityNumber}</a></span>
+                                        <span class="small-text col-md-3 write_date">글번호 : ${board.communityNumber}</span>
                                     </div>
                                 </div>
                             </div>
@@ -164,12 +163,12 @@
                                     </li>
                                     <li class="post-comment"><i
                                             class="flaticon-comment"></i><span>댓글</span> <span class="number commentCount">${fn:length(board.comments)} </span></li>
-                                    <li class="post-share"><a href="#"><i class="flaticon-share"></i><span>작성시간</span>
-                                        <span class="number">${board.communityDate}</span></a></li>
-                                    <li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal"
+                                    <li class="post-share"><i class="flaticon-calendar"></i><span>작성시간</span>
+                                        <span class="number">${board.communityDate}</span></li>
+<!--                                     <li><a type="button" class="gen-button-like myModal" data-bs-toggle="modal"
                                            data-bs-target="#modalReport"> <span><i
                                             class="fa fa-exclamation-triangle"></i>신고</span>
-                                    </a></li>
+                                    </a></li> -->
                                 </ul>
                                 <div class="comments">
 	                                <c:forEach items="${board.comments }" var="comment">

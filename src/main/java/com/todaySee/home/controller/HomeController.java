@@ -131,12 +131,11 @@ public class HomeController {
     		}else {
     			// 연결이 안됐으면 랜덤 영상 10개 출력
     			model.addAttribute("RecommendedContentList",homeService.mainContentList());
-    		}
+    		}// end of if
     	
     	}// end of if
 
         return "/home/homeIndex";
-
     }//end of homeIndex
 
   
