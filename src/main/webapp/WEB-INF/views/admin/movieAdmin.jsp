@@ -361,11 +361,6 @@
         </div>
           <!-- modal end -->
           
-    <%--     <c:forEach items="${contentList}" var="contentList">
-
-		
-
-        </c:forEach> --%>
 
 
 
