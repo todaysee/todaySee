@@ -131,7 +131,7 @@
     <!--========== Body ==============-->
 
     <!--========== Right SideBar ==============-->
-    <%@ include file="../inculde/community/rightSidebar.jsp" %>
+    
     <!--========== Right SideBar ==============-->
 
 </div>
