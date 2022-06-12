@@ -131,7 +131,9 @@
                                     <div class="form-group">
                                         <label class="text-center">변경할 닉네임 입력</label>
                                         <input id="userNinknameTextInput" type="text" class="form-control" name="userNickname">
+                                        	 <span class="error_message"></span>
                                         <input type="hidden" name="userNumber" value="${sessionScope.userNumber}">
+                                        	
                                     </div>
                                 </form>
                             </div>
