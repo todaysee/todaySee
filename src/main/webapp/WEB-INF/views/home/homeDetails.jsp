@@ -738,7 +738,7 @@
                                                                                 <div class="gen-info-contain">
                                                                                     <div class="gen-movie-info">
                                                                                         <h3>
-                                                                                            <a href="single-movie.html">${list.contentTitle}</a>
+                                                                                            <a href="/details/${list.contentNumber}">${list.contentTitle}</a>
                                                                                         </h3>
                                                                                     </div>
                                                                                     <div class="gen-movie-meta-holder">
@@ -805,14 +805,11 @@
                                 <ul>
                                     <li>
                                         <span>리뷰 작성자 :</span>
-                                        <span id="reportUser">English</span>
+                                        <span id="reportUser"></span>
                                     </li>
                                     <li>
                                         <span>리뷰 내용 :</span>
-                                        <p id="reportReview">Streamlab is a long established fact that a reader will be
-                                            distracted by the readable content of a page when Streamlab at its layout.
-                                            The point of using Lorem Streamlab is that it has a more-or-less normal
-                                            distribution of Streamlab as opposed Streamlab.
+                                        <p id="reportReview">
                                         </p>
                                     </li>
                                 </ul>

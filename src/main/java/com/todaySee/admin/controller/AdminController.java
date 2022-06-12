@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,19 +40,30 @@ import com.todaySee.domain.UserVO;
 public class AdminController {
 
 	
+	
 	@Autowired
 	AdminService adminService;
 	
 	
 	@GetMapping("/admin")
-	public String adminChart() {
+	public String adminChart(HttpSession session) {
+		
+		
+		if ( (int)session.getAttribute("admin") == 0) {
+			
+			return "redirect:/";
+		}
+		
+		
 		return "admin/movieChart";
+		
+		
 	}
 	
-	@GetMapping("/admin/userChart")
-	public String adminChart2() {
-		return "admin/userChart";
-	}
+	/*
+	 * @GetMapping("/admin/userChart") public String adminChart2() { return
+	 * "admin/userChart"; }
+	 */
 	
 	
 	
@@ -61,8 +73,13 @@ public class AdminController {
 	 * @return view page
 	 */
 	@GetMapping("/admin/userList")
-	public String userList(Model m, UserVO user) {
-	m.addAttribute("userList",adminService.getUserList(user));
+	public String userList(Model m, UserVO user,HttpSession session) {
+				
+			if ( (int)session.getAttribute("admin") == 0) {
+				return "redirect:/";
+			}
+		
+			m.addAttribute("userList",adminService.getUserList(user));
 		
 		return "admin/userList";
 	}

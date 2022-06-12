@@ -117,7 +117,7 @@
        $(document).on('click','.deleteBtn',function(){
 			
           const userNumber= $(this).attr('cba')
-          alert("유저번호는 : "+userNumber)
+          /* alert("유저번호는 : "+userNumber) */
           
           
           $.ajax({
@@ -347,10 +347,10 @@
               <thead>
               <tr>
                 <th>유저번호</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
+                <th>유저이메일</th>
+                <th>유저닉네임</th>
+                <th>유저성별</th>
+                <th>유저이름</th>
                 <th>삭제</th>
               </tr>
               </thead>
@@ -362,7 +362,7 @@
                     <td class="userTable1">${test1.userEmail}</td>
                     <td class="userTable1">${test1.userNickname }</td>
                     <td class="userTable1">${test1.userGender }</td>
-                    <td class="userTable1">${test1.userState }</td>
+                    <td class="userTable1">${test1.userName }</td>
                     <td><button class="btn btn-outline-danger deleteBtn" cba="${test1.userNumber}">삭제</button></td>
                   </tr>
                   </c:if>

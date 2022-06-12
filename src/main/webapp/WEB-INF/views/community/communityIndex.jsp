@@ -40,8 +40,7 @@
 
     <title>오늘 이거 볼래 ? | 커뮤니티 </title>
 
-    <link rel="icon" type="image/png"
-          href="/images/mypageCommunity/favicon.png">
+    <link rel="shortcut icon" href="/images/home/favicon.png">
 </head>
 
 <body>
