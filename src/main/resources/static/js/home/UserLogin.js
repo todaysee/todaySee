@@ -348,7 +348,6 @@ $('#btn_Login').click(function(){
 		let checkAuthenticNumber = $("#checkAuthenticNumber").val();
 		
 		if(random == checkAuthenticNumber){
-			alert("크레파스")
 			document.sendEmail_Frm.submit();
 		}else{
 			$('#checkAuthenticNumber ~ .error_message').html("인증번호가 일치하지 않습니다.");
