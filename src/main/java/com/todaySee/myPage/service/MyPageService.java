@@ -48,4 +48,9 @@ public interface MyPageService {
 
    // 유저 회원가입 날짜로 부터 몇일인지?
    public Integer userJoinDate(Integer userNumber);
+
+   /****************************** 댓글 - 권소연 추가 ***********************************/
+   // 유저 번호에 따른 댓글 리스트 가져오기
+   public List<HashMap<String, String>> getCommentList(Integer userNumber);
+
 }

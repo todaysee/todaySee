@@ -169,7 +169,11 @@ public class MyPageController {
         List<Object[]> profileImages = myPageImgRepository.profileImages((Integer) session.getAttribute("userNumber"));
         model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
 
-        
+        /********************************** 댓글 추가 - 권소연 *****************************************/
+        Integer userNumber = (Integer) session.getAttribute("userNumber");
+        List<HashMap<String, String>> commentList = myPageService.getCommentList(userNumber);
+        model.addAttribute("commentList", commentList);
+
         return "/myPage/mypageWriteBoardCommnetsList";
     }
 
