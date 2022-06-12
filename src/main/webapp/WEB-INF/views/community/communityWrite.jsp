@@ -112,7 +112,7 @@
                                            onchange="changeValue(this)" accept=".gif, .jpg, .png, .jpeg">
                                 </li>
                                 <li class="post-btn">
-                                    <button type="button" value="작성" id="uploadBtn">
+                                    <button type="button" id="uploadBtn">작성</button>
                                 </li>
                             </ul>
                         </form>
@@ -123,6 +123,7 @@
                                 <div class="image">
                                     <img src="/images/mypageCommunity/user/user-35.jpg" class="rounded-circle"
                                          alt="image">
+                                    ${board.user.userNumber} 테스트
                                 </div>
                                 <div class="info ms-3">
                                     <span class="name community_title"><a
