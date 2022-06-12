@@ -85,7 +85,7 @@
                                              onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileImagesBtn" type="button" class="btn btn-primary" disabled='disabled'
+                                <button id="profileImagesBtn" type="button" class="btn btn-danger" disabled='disabled'
                                         style="margin-top: 15px;">
                                     프로필 이미지 바꾸기
                                 </button>
@@ -103,7 +103,7 @@
                                              onerror="imgAreaError()"/>
                                     </div>
                                 </form>
-                                <button id="profileTittleImagesBtn" type="button" class="btn btn-primary"
+                                <button id="profileTittleImagesBtn" type="button" class="btn btn-danger"
                                         disabled='disabled' style="margin-top: 15px;">
                                     프로필 배경 이미지 바꾸기
                                 </button>
@@ -138,7 +138,7 @@
                             <div class="col-md-1 ms-auto" style="margin-right: 33px;">
                                 <!-- Button trigger modal -->
                                 <input type="button" id='userNicknameChangeBtn' disabled='disabled'
-                                       class="btn btn-primary"
+                                       class="btn btn-danger"
                                        value="닉네임 바꾸기" style="margin-bottom:15px;"/>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="col-lg-2 col-md-12">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" name="btnChangePwd" id="btnChangePwd" style="margin-bottom: 15px;">
+                            <button type="button" class="btn btn-danger" name="btnChangePwd" id="btnChangePwd" style="margin-bottom: 15px;">
                                 비밀번호 변경
                             </button>
                         </div>
