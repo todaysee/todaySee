@@ -88,7 +88,7 @@
 								<div class="single-groups-card">
 									<div class="groups-image">
 										<a href="/community/${ott.ottName}">
-											<img src="/images/mypageCommunity/groups/background.jpg" alt="image">
+											<img src="/images/mypageCommunity/groups/groups-bg-12.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">
@@ -129,7 +129,7 @@
 								<div class="single-groups-card">
 									<div class="groups-image">
 										<a href="/community/${genre.genreName}">
-											<img src="/images/mypageCommunity/groups/background.jpg" alt="image">
+											<img src="/images/mypageCommunity/groups/groups-bg-12.jpg" alt="image">
 										</a>
 									</div>
 									<div class="groups-content">

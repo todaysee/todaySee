@@ -86,7 +86,7 @@
                             <div class="single-groups-card">
                                 <div class="groups-image">
                                     <a href="#">
-                                        <img src="/images/mypageCommunity/groups/groups-bg-1.jpg" alt="image">
+                                        <img src="/images/mypageCommunity/groups/groups-bg-12.jpg" alt="image">
                                     </a>
                                 </div>
                                 <div class="groups-content">
