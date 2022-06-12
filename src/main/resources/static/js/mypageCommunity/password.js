@@ -111,6 +111,8 @@ $("#btnCheckPwd").click(function(){
 	} 
 		});	
 		
+		
+		//***********닉네임 변경시의 유효성검사  */
 		$('#userNicknameChangeBtn').click(function(){
 		
 		let userNinknameTextInput = $("#userNinknameTextInput").val();
@@ -129,5 +131,30 @@ $("#btnCheckPwd").click(function(){
 		}else{
 			$('#userNinknameTextInput ~ .error_message').html("");
 		}
+		});
 		
-		})
+		
+		
+		
+		//**************회원탈퇴 버튼 활성화 ********* */
+		
+		 $(function(){
+        $("#SignOutPwd").on('input',function(){
+            if($("#SignOutPwd").val()=='')
+                $("#btnSignOut").attr("disabled",true);
+            else
+                $("#btnSignOut").attr("disabled",false);
+        });
+    })
+		
+		
+		//*********비밀번호 변경 버튼 활성화 비활성화   */
+		
+		$(function(){
+        $("#userPasswordMyPage").on('input',function(){
+            if($("#userPasswordMyPage").val()=='')
+                $("#btnChangePwd").attr("disabled",true);
+            else
+                $("#btnChangePwd").attr("disabled",false);
+        });
+    })
