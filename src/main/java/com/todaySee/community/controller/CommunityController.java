@@ -72,7 +72,7 @@ public class CommunityController {
         model.addAttribute("category", categoryName);
 
         /* 작성 글 가져오기 */
-        List<Community> communityBoardList = communityService.getCommunityBoardList(categoryName);
+        List<HashMap<String, String>> communityBoardList = communityService.getCommunityBoardList(categoryName);
         model.addAttribute("communityBoardList", communityBoardList);
 
 
