@@ -19,9 +19,11 @@ public interface CommunityService {
 
     void communityOttBoardSave(Integer userNumber, String communityCategory, String communityContent, String fileNameText);
 
-    List<Community> getCommunityBoardList(String communityCategory);
+    List<HashMap<String, String>>  getCommunityBoardList(String communityCategory);
 
-    void saveImagesFiles(MultipartFile files);
     
+    /* 커뮤니티 댓글 이벤트 */
     Comments communityCommentsInsert(String commentsContent, Integer userNumber, Integer communityNumber);
+    
+    Community communityCommunityLike(Integer communityNumber);
 }

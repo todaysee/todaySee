@@ -47,6 +47,11 @@ public class DetailsController {
         /* 유저번호 세션 */
         Integer userNumber = (Integer) session.getAttribute("userNumber");
 
+        //회원 이미지 불러오기
+        String profileImages2 = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
+        model.addAttribute("profileImages", profileImages2);
+        System.out.println("테스트 프로필 이미지"+profileImages2);
+
         if(userNumber != null) {
             /* 유저 닉네임 가져오기 */
             UserVO user = detailsService.getUser(userNumber);
@@ -67,7 +72,7 @@ public class DetailsController {
 
             MyPageImages myPageImages = new MyPageImages();
             List<Object[]> profileImages = myPageImgRepository.profileImages(userNumber);
-            model.addAttribute("profileImages", myPageImages.profileImages(profileImages));
+            model.addAttribute("profileImages2", myPageImages.profileImages(profileImages));
         }
 
         /* 컨텐츠 상세 내용 가져오기 */

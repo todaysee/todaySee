@@ -30,7 +30,10 @@ public interface ReviewRepository extends CrudRepository<Review, Integer> {
     @Query(value = "SELECT count(*) FROM review WHERE user_number = :userNumber and review_state = 0", nativeQuery = true)
     Integer reviewCount(Integer userNumber);
 
-    @Query(value = "SELECT sum(review_like) FROM review WHERE user_number = :userNumber and review_state = 0", nativeQuery = true)
+    @Query(value = "SELECT sum(a.rl + b.cl)\n" +
+            "FROM\n" +
+            "(SELECT sum(review_like) rl FROM review WHERE user_number = :userNumber and review_state = 0) a,\n" +
+            "(SELECT sum(community_like) cl FROM community WHERE user_number = :userNumber and community_state = 1) b", nativeQuery = true)
     Integer reviewLikeSum(Integer userNumber);
 
 
