@@ -165,7 +165,7 @@ public class AdminController {
 	public String movieAdmin(Model m) {
 		m.addAttribute("contentList",adminService.getAllContent());
 		
-		return "admin/movieAdmin";
+		return "/admin/movieAdmin";
 	}
 	
 	
@@ -175,7 +175,7 @@ public class AdminController {
 	 * @param contentNumber findbyid를 통해서 상태를 1로 바꿈
 	 * @return viewpage
 	 */
-	@PutMapping("admin/contentDeleteUpdate")	// 넘어가는 값이 폼태그 안에 있는 값으로 넘어가기 때문에 어쩔수 없이 url 주소가아니라 변수로 받아야함
+	@PutMapping("/admin/contentDeleteUpdate")	// 넘어가는 값이 폼태그 안에 있는 값으로 넘어가기 때문에 어쩔수 없이 url 주소가아니라 변수로 받아야함
 	public String contentDeleteUpdate( Integer contentNumber) {
 		System.out.println("**********************"+contentNumber);
 		adminService.contentDeleteUpdate(contentNumber);
@@ -188,7 +188,7 @@ public class AdminController {
 	 * @param contentNumber : findbyid로 정보 찾은뒤 기존의 데이터에 수정된 값을 교체하기 위해 
 	 * @return view page
 	 */
-	@PutMapping("admin/contentUpdate")
+	@PutMapping("/admin/contentUpdate")
 	public String contentUpdate(Content content, Integer contentNumber) {
 		
 		adminService.contentUpdate(content, contentNumber);

@@ -119,13 +119,11 @@
                       
                     </a>
                   </li>
-                  
                 </ul>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          
           </div>
           <!-- /.col -->
         <div class="col-md-9">
