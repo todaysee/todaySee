@@ -42,18 +42,13 @@
 <div class="wrapper">
   <!-- Navbar -->
   
-  
-  	
      
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-   
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -159,20 +154,14 @@
 				 </div>
                <div class="mailbox-read-message communityContent">
                <pre>신고 사유 : ${communityReport.communityReportContent }</pre>
-				 
 				 </div>
-
-                
               </div>
               <!-- /.mailbox-read-message -->
             </div>
             <!-- /.card-body -->
             <div class="card-footer bg-white">
-            
             </div>
-            
             <!-- /.card-footer -->
-           
             <!-- /.card-footer -->
           </div>
           <!-- /.card -->
