@@ -437,10 +437,12 @@
             $('#profileMainImagesSaveModal').modal('show');
         });
 
+        /*
         $('#userNicknameChangeBtn').on('click', function () {
             $('#profileNicknameChangeModal').modal('show');
             $('#nickNameChange').submit();
         });
+        */
     });
 
 

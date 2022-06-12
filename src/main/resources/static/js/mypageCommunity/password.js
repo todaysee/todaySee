@@ -111,8 +111,7 @@ $("#btnCheckPwd").click(function(){
 	} 
 		});	
 		
-		
-		//***********닉네임 변경시의 유효성검사  */
+		//***********닉네임 변경시의 유효성검사  
 		$('#userNicknameChangeBtn').click(function(){
 		
 		let userNinknameTextInput = $("#userNinknameTextInput").val();
@@ -129,9 +128,12 @@ $("#btnCheckPwd").click(function(){
 			$('#userNinknameTextInput ~ .error_message').html("닉네임은 4자리까지 가능합니다");
 			return false;
 		}else{
-			$('#userNinknameTextInput ~ .error_message').html("");
+			$('#profileNicknameChangeModal').modal('show');
+           	$('#nickNameChange').submit();
 		}
 		});
+
+		
 		
 		
 		
