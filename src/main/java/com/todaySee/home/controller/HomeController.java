@@ -131,14 +131,11 @@ public class HomeController {
     		}else {
     			// 연결이 안됐으면 랜덤 영상 10개 출력
     			model.addAttribute("RecommendedContentList",homeService.mainContentList());
-    		}
+    		}// end of if
     	
     	}// end of if
 
-
-    	
-		        return "/home/homeIndex";
-      
+        return "/home/homeIndex";
     }//end of homeIndex
 
   
@@ -162,7 +159,6 @@ public class HomeController {
      * @return List<Content> 
      * 			- 장르 번호에 따른 콘텐츠 정보를 List로 담음
      */
-	
 	  @GetMapping("/search/genres") 
 	  public String homeList_person(Integer genreNumber, Model model, Integer page, HttpSession session) {
 
@@ -182,11 +178,16 @@ public class HomeController {
 		  
 		  return "/home/homeList_genres"; 
 	  }// end of homeList_person()
-	 
 
+	  
 	  /** ott별 상세 페이지
-	   * @return
-	   */
+
+	 * @param ottNumber : 페이지에 출력한 해당 ott 번호
+	 * @param page : 해당 페이지 번호 
+	 * @param model : 화면에 출력
+	 * @return
+	 */
+
 	  @GetMapping("/search/ott")
 	  public String homeList_ott(Integer ottNumber, Integer page, Model model, HttpSession session) {
 
@@ -194,17 +195,16 @@ public class HomeController {
           String profileImages = myPageImgRepository.profileImagesTest((Integer) session.getAttribute("userNumber"));
           model.addAttribute("profileImages", profileImages);
           System.out.println("테스트 프로필 이미지"+profileImages);
-		  
+
+		  // 페이징 처리한 ott 콘텐츠 리스트를 불러온다
 		  Page<Content> content = homeService.ottContentList(ottNumber, page);
 		  
-		  // 위에서 얻어온 리스트에서 콘텐츠만 리스트에 다시 담는다
-		  List<Content> ottContentList = content.getContent();
-		  
-		  model.addAttribute("ottContentList", ottContentList);
+		  model.addAttribute("ottContentList", content.getContent()); // 위에서 얻어온 리스트에서 콘텐츠만 리스트에 다시 담는다
 		  model.addAttribute("totalPage",content.getTotalPages()); // 전체 페이지 번호
 		  return "/home/homeList_ott";
-	  }
+	  }// end of homeList_ott()
 	  
+
     /** 검색 결과 페이지 - 즐겨찾기
      * @return
      */
@@ -246,3 +246,4 @@ public class HomeController {
     }
     
 }
+

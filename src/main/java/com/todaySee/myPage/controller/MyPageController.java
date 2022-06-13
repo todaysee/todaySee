@@ -213,12 +213,14 @@ public class MyPageController {
     }
 
     @PostMapping("/myPage/update")
-    public void updateUserNickname(Integer userNumber, @RequestParam String userNickname) {
+    public void updateUserNickname(Integer userNumber, @RequestParam String userNickname, HttpSession session) {
 
 
         System.out.println(userNumber + ":" + userNickname);
         myPageService.updateNickname(userNumber, userNickname);
-
+       
+        // 닉네임 수정 시 세션에 다시 저장
+        session.setAttribute("userNickname", userNickname);
     }
 
 
